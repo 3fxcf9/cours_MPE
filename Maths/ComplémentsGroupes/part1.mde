@@ -1,0 +1,446 @@
+# Compléments sur les groupes
+
+## Rappels
+
+%def Groupe
+  $(g, \times )$ est un groupe si
+  - $G$ est un ensemble muni d’une loi $\star$
+  - $\star$ est associative
+  - $\exists e \in G: \forall x \in G, x\star e = e\star x = x$
+  - $\forall x \in G, \exists x' \in G: x\star x' = x'\star x = x$
+%
+
+%rem
+  1. $\begin{cases}\forall x \in G, x\star e_{1} = e_{1}\star x = x\\x\star e_{2} = e_{2}\star x = x\end{cases} \implies \begin{cases}e_{2}\star e_{1} = e_{2}\\e_{1}\star e_{1} = e_{2}\end{cases}$
+  2. $\begin{cases}x'\star x = x\star x' = s\\ x''\star x = x\star x'' = x\end{cases} \implies \begin{cases}x''\star(x\star x') = x''\star e = x'' \\ (x''\star x)\star x' = e\star x' = x'\end{cases}$
+
+     Dans un groupe $G$, l’émément $x'$ associé à $x \in G$ est unique et appelé symétrique de $x$ et noté $x^{-1}$.
+  3. Dans un groupe $(G,\star)$, tout élément est simplifiable (régulier) à gauche et à droite~:
+  $$
+    x\star y = z\star y \implies  x=z
+  $$
+  $$
+    y\star x = y\star z \implies x=z
+  $$
+  4. Dans un groupe $(G,\star)$ et pour $(x,y)\in G^{2}$,
+     - si $x\star y = e (=x\star x^{-1})$, alors $y=x^{-1}$
+     - $(x\star y)^{-1} = y^{-1}\star x^{-1}$ (car $(x\star y)\star (y^{-1}\star x^{-1}) = e$)
+  5. Dans un groupe $(G,\star)$, pour $x \in G$, on pose
+     $$
+       x^{0} = e \quad\text{et}\quad \forall k \in \N, x^{k+1} = x^{k}\star x
+     $$
+     puis on pose
+     $$
+       \forall k \in \N, x^{-k} = (x^{k})^{-1}
+     $$
+     On a alors
+     $$
+       \forall (k,l)\in \Z^{2}, \begin{cases}x^{k}\star x^{l} = x^{k+l}\\(x^{k})^{l} = x^{kl}\end{cases}
+     $$
+     En notation additive dans $(G,+)$ avec $+$ commutative pour $x \in G$, on pose (le neutre est noté $0_{G}$ ou $0$ et le symétrique de $x$ est noté $-x$)~:
+     $$
+       0_{\Z}x = 0_{G} \quad\text{et}\quad \forall k \in \N, \begin{cases}(k+1)x := kx+x\\(-k)x := -(kx)\end{cases}
+     $$
+     on a alors
+     $$
+       \forall (k,l)\in \Z^{2}, \begin{cases}(k+l)x = kx+lx\\k(lx) = (kl)x\end{cases}
+     $$
+%
+
+%def Élément conjugué
+    Soit $(G,\star)$ un groupe. Soit $(x,y)\in G^{2}$. L’élément $x\star y\star x^{-1}$ est appelé conjugué de $y$ sous l’action de $x$.
+%
+
+%eg
+  1. Soit $n \in \N^{*}$. $(S_{n}, \circ)$ est le « groupe symétrique ». Soit $\sigma = (a_{1} \cdots a_{p})$ un p-cycle. On a
+
+     $$
+       \sigma = (a_{1}a_{2})(a_{2}a_{3}) \cdots(a_{p-1}a_{p})
+     $$
+
+  2. Soit $\tau \in S_{n}$.
+     $$
+       \tau\circ \sigma\circ \tau^{-1} = (\tau(a_{1}) \cdots \tau(a_{p}))
+     $$
+%
+
+%proof
+  - Soit $k \in \icc{1,n}\setminus \{\tau(a_{1}), \ldots, \tau(a_{p})\}$, i.e. $k\notin \{\tau(a_{1}), \ldots, \tau(a_{p})\}$.
+    $$
+      \tau^{-1}(k)\notin \{a_{1}, \ldots, a_{p}\}
+    $$
+    Donc $\sigma(\tau^{-1}(k)) = \tau^{-1}(k)$, d’où $\tau(\sigma(\tau^{-1}(k))) = k$, soit
+    $$
+      (\tau\circ \sigma\circ \tau^{-1})(k) = k
+    $$
+
+  - Soit $i \in \icc{1,p-1}$.
+    $$
+      (\tau\circ \sigma)(\tau^{-1}(\tau(a_{i}))) = (\tau\circ \sigma)(a_{i}) = \tau(a_{i+1})
+    $$
+    $$
+      (\tau\circ \sigma)(\tau^{-1}(\tau(a_{p}))) = (\tau\circ \sigma)(a_{p}) = \tau(a_{1})
+    $$
+%
+
+%lemma
+  Dans $(S_{n}, \circ)$, deux p-cycles ($2 \leq p \leq n$) sont toujours conjugués
+%
+
+%proof
+  Soient $\sigma = (a_{1} \cdots a_{p})$ et $\sigma' = (b_{1} \cdots b_{p})$. Soit $\tau \in S_{n}$ tel que
+  $$
+    \forall i \in \icc{1,p}, \tau(a_{i}) = b_{i}
+  $$
+  et $\tau$ envoyant bijectivement $\icc{1,n}\setminus \underbrace{\{a_{1}, \ldots, a_{p}\}}_{=\supp(\sigma)}$ sur $\icc{1,n} \setminus \supp(\sigma')$. On a alors
+  $$
+    \tau\circ \sigma\circ \tau^{-1} = \sigma'
+  $$
+%
+
+%def Sous-groupe
+  Soit $(G,\star)$ un groupe. On appelle sous-groupe de $G$ toute partie $H$ de $G$ stable par $\star$ et telle que $H$ muni de la restriction de $\star$ à $H$ ait une structure de groupe.
+
+  $H$ est un sous-groupe de $G$ si
+  ~  $(x,y)\in H^{2} \implies x\star y \in H$  ~ $(H,\star_{|H\times H})$ est un groupe
+%
+
+
+%rem
+  - Notons $e'$ le neutre de $(H,\star_{|H \times H})$ et $e$ le neutre de $(G,\star)$.
+    $$
+      e'\star_{|H \times H} e' = e'
+    $$
+    Donc $e'\star e' = e'$ dans $(G,\star)$. Comme $e'$ est simplifiable, on a
+    $$
+      e' = e
+    $$
+
+  - Soit $x \in H$. Si $x' \in H$ vérifie:
+    $$
+      x\star_{|H \times H}x' = e
+    $$
+    alors on a
+    $$
+      x\star x' = e
+    $$
+    dans $G$ donc $x'=x^{-1}$ (symétrique de $x$ dans $G$).
+%
+
+%thm Caractérisation
+  Soit $(G,\star)$ un groupe. Un ensemble $H$ est un sous-groupe de $(G,\star)$ si et seulement si
+  1. $H$ est une partie non vide de $G$  2. $\forall (x,y) \in H^{2}, x\star y \in H$  3. $\forall x \in H, x^{-1} \in H$
+%
+
+%rem
+  Les deux dernières conditions sont équivelentes à
+  $$
+    \forall (x,y) \in H^{2}, x\star y^{-1} \in H
+  $$
+%
+
+%eg
+  Si $(G,\star)$ est un groupe, alors
+   $$
+     Z(G) = \{x \in G \mid \forall y \in G, x\star y = y\star x\}
+   $$
+  est un sous-groupe de $(G,\star)$ appelé ++centre de $G$++, et de plus,
+  $$
+    Z(G) = G \iff \star \text{ est commutative}
+  $$
+%
+
+%proof
+  $Z(G)\subset G$ et $e \in Z(G)$ donc $Z(G)$ est une partie non vide du groupe $(G,\star)$. Soient $(x, x')\in Z(G)^{2}$. Soit $y \in G$. On a
+  $$
+    (x\star x')\star y = x\star (x'\star y) = x\star (y\star x') = (x\star y)\star x' = (y\star x)\star x' = y\star (x\star x')
+  $$
+  donc $x\star x' \in Z(G)$. On a aussi
+  $$
+    x\star y^{-1} = y^{-1}\star x \implies  (x\star y^{-1})^{-1} = (y^{-1}\star x)^{-1}
+  $$
+  soit $y\star x^{-1} = x^{-1}\star y$ donc $x^{-1} \in Z(G)$. Ainsi, $Z(G)$ est un sous-groupe de $G$.
+%
+
+%eg
+  $S_{1} = \{\text{id}\}$, $Z(S_{1}) = S_{1}$. $S_{2} = \{\text{id}, (12)\}$. $S_{3} = \{\text{id}, (12), (13), (23), (123), (132))\}$.
+
+  Soit $n \geq 3$ et $\sigma \in S_{n} \setminus \{\text{id}\}$. Il existe donc $(i,j) \in \icc{1,n}^{2}$ avec $i\neq j$ et $\sigma(i) = j$. Soit $k \in \icc{1,n} \setminus \{i,j\}$.
+  Soit $\tau = (jk)$.
+  $$
+    (\tau\circ \sigma)(i) = \tau(j) = k
+  $$
+  $$
+    (\sigma\circ \tau)(i) = \sigma(i) = j
+  $$
+  donc $\tau\circ \sigma \neq \sigma\circ \tau$ donc $\sigma\notin Z(S_{n})$. Ainsi, pour $n\geq 3$, on a
+  $$
+    Z(S_{n}) = \{\text{id}\}
+  $$
+%
+
+%thm
+  Les sous-groupes de $(\Z,+)$ sont les groupes $(m\Z,+)$ avec $m \in \Z$.
+%
+
+%proof
+  - Soit $n \in \Z$. $n\Z$ est une partie non vide de $\Z$ ($0 = n \times 0 \in n\Z$) et pour $(k,k') \in \Z^{2}$, on a
+    $$
+      nk - nk' = n(k-k') \in n\Z
+    $$
+    donc $\forall n \in \Z, n\Z < (\Z,+)$.
+  - Soit $H<(\Z,+)$. $0 \in H$.
+    - ++Premier cas++, $H = \{0\}$. On a $H = 0\Z$.
+    - ++Second cas++, $H \neq \{0\}$. Soit $k \in H \setminus \{0\}$. Comme $H < (\Z,+)$, on a $-k \in H \setminus \{0\}$. D’où $\abs{k} = \max\{k,-k\} \in H \cap \N^{*}$ donc $H \cap \N^{*}$ est une partie non vide de $\N$. Elle admet donc un plus petit élément. Soit $n = \min H \cap \N^{*}$.
+      $$
+        n \in H \quad\text{et}\quad H<(\Z,+)
+      $$
+      donc
+      $$
+        \forall k \in \Z, kn \in H
+      $$
+      (i.e. $n\Z \subset H$).
+
+      Soit $l \in H$. On a
+      $$
+        l = qn+r
+      $$
+      avec $(q,r) \in \Z \times \N$ et $0 \leq r < n$. D’où
+      $$
+        r = l-qn
+      $$
+      or $l \in H$ et $qn \in n\Z \subset H$. Comme $H<(\Z,+)$, on a
+      $$
+        r \in H \quad\text{et}\quad r \in \icc{0,n} \quad\text{et}\quad r\neq n
+      $$
+      or $n = \min H \cap \N^{*}$ donc $r=0$. Ainsi, $l=qn \in n\Z$ donc $H \subset n\Z$.
+%
+
+%eg Exemples de groupes
+  - $(Q_{+}^{*}, \times ) < (\Q^{*}, \times )<(\R^{*}, \times )<(\C^{*}, \times )$
+  - Si $E$ est un $\K$-espace vectoriel, alors $(\GL_{n}(E), \circ)$ est le groupe linéaire
+  - $(\Z,+)<(\D,+)<(\Q,+)<(\R,+)<(\C,+)$
+  - $(\GL_{n}(K), \times )$ est le groupe des matrices inversibles
+  - Si $X$ est un ensemble, alors on note $S_{X}$ l’ensemble des permutations de $X$, c’est un groupe pour la loi do composition des fonctions.
+  - Pour $n \in \N^{*}$, on pose $S_{n} = S_{\icc{1,n}}$ et $A_{n} = \{\sigma \in S_{n}\mid \varepsilon(\sigma) = 1\}$. On a
+    $$
+      A_{n} < (S_{n},\circ)
+    $$
+%
+
+## Groupe-produit
+
+%def Groupe produit
+  Soit $n \in \N^{*}$. Soient $(G_{1},\star_{1}), \ldots, (G_{n},\star_{n})$ des groupes (de neutres respectifs $e_{1}, \ldots, e_{n}$). On munit $G_{1} \times  \cdots \times G_{n}$ d’une loi $\star$ ainsi~:
+  $$
+    (g_{1}, \ldots, g_{n})\star (g'_{1}, \ldots, g'_{n}) := (g_{1}\star g'_{1}, \ldots, g_{n}\star_{n} g'_{n})
+  $$
+  $(G_{1} \star \cdots, G_{n}, \star)$ est alors un groupe appelé groupe-produit.
+  - Son neutre est $(e_{1}, \ldots, e_{n})$ et le symétrique d’un élément $(x_{1}, \ldots, x_{n})$ est $(x_{1}^{-1}, \ldots, x_{n}^{-1})$.
+  - Le groupe-produit est abélien si et selement si chacun des groupes $G_{i}$ l’est.
+%
+
+%proof
+  - $\forall i \in \icc{1,n}, g_{i}\star_{i} g'_{i} \in G_{i}$ donc $\star$ est une l.c.i dans $G_{1} \times \cdots \times G_{n}$.
+  - De plus
+    $$
+      \begin{align*}
+        \left[(g_{i})\star (g'_{i})\right]\star (g''_{i}) &= (g_{i}\star_{i} g'_{i})\star (g''_{i})_{1\leq i\leq n}\\
+        &= \left((g_{i}\star_{i} g'_{i})\star_{i} g''_{i}\right)_{1\leq i\leq n}\\
+        &=\left(g_{i}\star_{i}(g'_{i} \star_{i} g''_{i})\right)_{1\leq i\leq n}\\
+        &=\cdots\\
+        &=(g_{i})\star \left[(g'_{i})\star (g''_{i})\right]\\
+      \end{align*}
+    $$
+    donc $\star$ est associative et pour tous $(g_{1}, \ldots, g_{n}) \in G_{1} \times \cdots \times G_{n}$,
+    $$
+      (g_{1}, \ldots, g_{n})\star(e_{1}, \ldots, e_{n}) = (e_{1}, \ldots, e_{n})\star(g_{1}, \ldots, g_{n}) = (g_{1}, \ldots, g_{n})
+    $$
+%
+
+%eg
+  1. $(\Z, +)$ avec
+     $$
+       (p_{1}, \ldots, p_{n}) + (q_{1}, \ldots, q_{n}) = (p_{1} + q_{1}, \ldots, p_{n}+q_{n})
+     $$
+     est un groupe. C’est le groupe-produit de $n$ corps de $(\Z,+)$ (pour $n \in \N^{*}$).
+  2. $(\U_{2}, \times ) = (\{-1, 1\}, \times)$ est un groupe. On considère le groupe produit~:
+     $$
+       (\U_{2}^{2}, \times) = (\{-1,1\}^{2}, \times )
+     $$
+     qui est un groupe abélien de cardinal 4.
+     On trace sa table de Klein~:
+     ==TABLE==
+  3. Si $H_{1} < (G_{1}, \star_{1}) \cdots H_{n} < (G_{n}, \star_{n})$, alors
+  $$
+    H_{1} \times \cdots \times H_{n} < (G_{1} \times  \cdots \times G_{n}, \star)
+  $$
+%
+
+%proof Preuve du 3e point
+  $H_{1} \times  \cdots \times H_{n} < G_{1} \times  \cdots \times G_{n}$ et $(e_{1}, \ldots, e_{n}) \in H_{1} \times  \cdots \times H_{n}$ car
+  $$
+    \forall i \in \icc{1,n}, e_{i} \in H_{i}
+  $$
+  Donc $H_{1} \times  \cdots \times H_{n}$ est une partie non vide du groupe-produit.
+  Soit $\left((h_{1}, \ldots, h_{n}), (h'_{1}, \ldots, h'_{n})\right) \in H(H_{1} \times  \ldots \times H_{n})^{2}$.
+  $$
+    \begin{align*}
+      (h_{1}, \ldots, h_{n})\star (h'_{1}, \ldots, h'_{n})^{-1} &= (h_{1}, \ldots, h_{n})\star (h_{n}^{-1}, \ldots, h_{n}^{-1})\\
+  &= (h_{1} \star_{1} {h'}_{1}^{-1}, \ldots, h_{n}\star_{n} {h'}_{n}^{-1}) \in H_{1} \times \cdots \times H_{n}\\
+    \end{align*}
+  $$
+
+  car $\forall i \in \icc{1,n}, H_{i} < (G_{i}, \star_{i})$.
+
+  Par exemple
+  $$
+    \Z \times (2\Z) \times  \cdots \times (2^{n-1}\Z) < (Z^{n},+)
+  $$
+%
+
+
+**Attention**: les sous-groupes du groupe produit $G_{1} \times  \cdots \times G_{n}$ ne sont pas tous du type $H_{1} \times  \cdots \times H_{n}$.
+
+%eg
+  $\Z(1, \ldots, 1) = \{(p, \ldots, p) \mid p \in \Z\}$.
+  $$
+    \Z(1, \ldots, 1) < (\Z^{n}, +)
+  $$
+  mais $\Z(1, \ldots , 1)$ n’est pas un produit cartésiens de sous-groupes de $\Z$.
+%
+
+%rem
+  $(G, \star)$ un groupe~:
+  $$
+    G^{\infty} = \prod_{i \in \N} \{(g_{n})_{n \in \N}\mid \forall n \in \N, g_{n} \in  G\} = G^\N = \F(\N,G)
+  $$
+  On pose
+  $$
+    (g_{n})_{n \in \N} \star (g'_{n})_{n \in \N} = (g_{n} \star g'_{n})_{n \in \N}
+  $$
+  $(G^{\infty}, \star)$ est alors un groupe. $(\Z^\N, +)  = (\F(\N,\Z),+)$ est un groupe de même que $(\R^\N,+)$ et $(\C^\N,+)$.
+%
+
+## Partie génératrice d’un groupe
+
+%thm
+   Soit $(H_{i})_{i \in  I}$ une famille de sous-groupes d’un groupe $(G, \star)$. Alors
+
+  $$
+    \bigcap_{i \in I}H_{i} < (G,\star)
+  $$
+%
+
+%proof
+  $\bigcap_{i \in I}H_{i}$ est une partie non vide de $G$, et de plus
+  $$
+    \forall i \in I, e \in H_{i}
+  $$
+  donc $e \in \bigcap_{i \in I}H_{i}$. Ainsi $\bigcap_{i \in I}H_{i}$ est une partie non vide du groupe $(G,\star)$.
+
+  Soit $(h, h') \in \left(\bigcap_{i \in I}H_{i}\right)^{2}$. On a pour tout $i \in I$, $(h, h') \in H_{i}$ donc pour tout $i \in I$, $h\star h'^{-1} \in H_{i}$ car $H_{i} < (G, \star)$. Ainsi,
+  $$
+    h\star h'^{-1} \in \bigcap_{i \in I}H_{i}
+  $$
+%
+
+%thm
+  1. Pour $(a,b) \in \Z^{2}$, on a $\boxed{a\Z \subset b\Z \iff b|a}$
+  2. Pour tout sous-groupe $H$ de $(\Z,+)$, il existe un unique entier naturel $n \in \N$ tel que $H = n\Z$.
+  3. Soit $n \in \N^{*}$. Soit $(a_{1}, \ldots, a_{n}) \in \Z^{n}$. Il existe un unique entier naturel $n \in \N$ tel que
+     $$
+       \bigcap_{i \in \icc{1,n}}a_{i}\Z = m\Z
+     $$
+     On pose $m = \bigvee_{i \in \icc{1,n}}a_{i}$ et on a
+     $$
+       m = \ppcm(a_{1}, \ldots, a_{n})
+     $$
+     et si $a_{1}\neq 0, \ldots, a_{n}\neq  0$, alors
+     $$
+       m = \ppcm_{(\N^{*},\leq)}(a_{1}, \ldots, a_{n}) = \min\{k \in \N^{*} \mid a_{1}|k \text{ et }\cdots \text{ et }a_{n} | k\}
+     $$
+     et sinon
+     $$
+       m = 0 \left(=\min\{k \in \N \mid a_{1}|k \text{ et }\cdots \text{ et }a_{n}|k\}\right)
+     $$
+%
+
+%proof
+  1. $a\Z \subset b\Z \implies a = a \times 1 \in b\Z$ donc $b|a$
+      - si $b|a$, alors il existe $k \in \Z$ tel que $a = bk \in b\Z$ or $b\Z<(\Z,+)$ donc $a\Z \subset b\Z$.
+  2. Soit $(m, m') \in \Z'2$.
+     $$
+       m\Z = m'\Z \iff \begin{cases}m|m'\\m'|m\end{cases} \iff  \abs{m} = \abs{m'}
+     $$
+     Pour tout $i \in \icc{1,n}, a_{i}\Z < (\Z,+)$. Donc $\bigcap_{i \in \icc{1,n}}a_{i}\Z < (\Z,+)$.
+     Donc il existe d’après 2 un unique entier $m \in \N$ tel que
+     $$
+       \bigcap_{i \in \icc{1,n}}a_{i}\Z = m\Z
+     $$
+     on a donc pour tout $i \in \icc{1,n}$, $n\Z \subset a_{i}\Z$, donc $a_{i}|m$
+
+     Donc $m$ est un multiple commun à $a_{1}, \ldots, a_{n}$. Soit $m' \in \N$ avec pour tout $i \in \icc{1,n}, a_{i}|m'$. On a donc $m'\Z \subset \bigcap_{i \in Z}a_{i}\Z$, i.e. $m'\Z \subset m\Z$, i.e. $m|m'$.
+     - Supposons $(a_{1}, \ldots, a_{n}) \neq 0$. On a $(a_{1}, \ldots, a_{n}) \in \bigcap_{i \in \icc{1,n}}a_{i}\Z = m\Z$ donc $m\neq 0$.
+       $$
+         \left( \left\{k \in \N^{*} \mid a_{1}|k \text{ et } \cdots \text{ et }a_{n}|k\right\} \neq \emptyset\right)
+       $$
+       Soit $k \in \N^{*}$ avec $a_{1}|k$ et $\cdots$ et $a_{n}|k$, i.e
+       $$
+         k \in \bigcap_{i \in \Z}a_{i}\Z_{i} = m\Z
+       $$
+       Donc il existe $a \in \N^{*}$ tel que $k = ma \geq m$
+      - Si $a_{1} \cdot sa_{n} = 0$, alors il existe $i_{0} \in \icc{1,n}$ tel que $a_{i_{0}} = 0$. Donc $a_{i_{0}} \Z = \{0\}$ d’où $\bigcap_{i \in \icc{1,n}}a_{i}\Z = \{0\}$, donc $m = 0$.
+%
+
+%def Définition-proposition
+  Soit $(G,\star)$ un groupe.
+  1. Soit $X$ une partie de $G$. On appelle sous-groupe de $G$ engendré par $X$ le sous-groupe suivant~:
+     $$
+       \text{gr}(X) = \grp X = \bigcap_{\substack{H < (G,\star)\\X \subset H}}H
+     $$
+     C’est le plus petit sous-groupe de $G$ (au sens de l’inclusion) contenant $X$.
+  2. $\langle\emptyset\rangle = \{e\}$. Pour $X \in \Part(G)$, on a $\langle X\rangle = X \iff X<(G,\star)$.
+
+     NOPROGSTART
+     si $X\neq \emptyset$, alors
+
+     $$
+       \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{:=M(X)}
+     $$
+     NOPROGEND
+%
+
+%proof
+  1. On a
+     $$
+       \mathcal{H} = \left\{H \in P(G) \mid H < G \quad\text{et}\quad X \subset H\right\}
+     $$
+     $$
+       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H < (G,\star)
+     $$
+     De plus, $\forall H \in \mathcal{H}, G \subset H$ donc $X \subset \langle X\rangle$.
+     $\langle X\rangle$ est un sous-groupe de $(G,\star)$ sontenant $X$.
+     Soit $K \in \mathcal{H}$.
+     $$
+       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H = \left(\bigcap_{H \in \mathcal{H}\setminus \{K\}}H\right)  \cap  K \subset K
+     $$
+  2. NOPROGSTART Soit $X \neq \emptyset$.
+     $$
+       \forall x \in X, (x,x^{-1}) \in \langle X\rangle^{2}
+     $$
+     comme $\langle X\rangle< (G,\star)$, on a $M(X) \subset \langle X\rangle$.
+     $$
+       \forall x \in X, x = x^{1} \in M(X)
+     $$
+     donc $X \subset M(X)  \subset \langle X\rangle$.
+     Reste à voir que $M(X)$ est un groupe (car $\grp X$ est le plus petit sous-groupe de $G$ contenant $X$).
+
+     $$
+       (x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}})\star (k_{1}^{\eta_{1}}\star \cdots\star y_{p}^{\eta_{p}})^{-1} = x_{1}^{\varepsilon_{1}} \star \cdots \star x_{n}^{\varepsilon_{n}}\star y_{p}^{-\eta_{p}}\star \cdots\star y_{1}^{-\eta_{1}} \in M(X)
+     $$
+
+     ainsi $M(X) = \langle X\rangle$.
+     NOPROGEND
+%
+
