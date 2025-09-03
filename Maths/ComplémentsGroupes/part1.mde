@@ -402,14 +402,14 @@
      C’est le plus petit sous-groupe de $G$ (au sens de l’inclusion) contenant $X$.
   2. $\langle\emptyset\rangle = \{e\}$. Pour $X \in \Part(G)$, on a $\langle X\rangle = X \iff X<(G,\star)$.
 
-     NOPROGSTART
-     si $X\neq \emptyset$, alors
+     %offprog
+       si $X\neq \emptyset$, alors
 
-     $$
-       \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{:=M(X)}
-     $$
-     C’est l’ensemble des « mots » constitués des « lettres » du groupe et de leur symétrique.
-     NOPROGEND
+       $$
+         \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{:=M(X)}
+       $$
+       C’est l’ensemble des « mots » constitués des « lettres » du groupe et de leur symétrique.
+     %
 %
 
 %proof
@@ -426,23 +426,24 @@
      $$
        \langle X\rangle = \bigcap_{H \in \mathcal{H}}H = \left(\bigcap_{H \in \mathcal{H}\setminus \{K\}}H\right)  \cap  K \subset K
      $$
-  2. NOPROGSTART Soit $X \neq \emptyset$.
-     $$
-       \forall x \in X, (x,x^{-1}) \in \langle X\rangle^{2}
-     $$
-     comme $\langle X\rangle< (G,\star)$, on a $M(X) \subset \langle X\rangle$.
-     $$
-       \forall x \in X, x = x^{1} \in M(X)
-     $$
-     donc $X \subset M(X)  \subset \langle X\rangle$.
-     Reste à voir que $M(X)$ est un groupe (car $\grp X$ est le plus petit sous-groupe de $G$ contenant $X$).
+  2. %offprog
+       Soit $X \neq \emptyset$.
+       $$
+         \forall x \in X, (x,x^{-1}) \in \langle X\rangle^{2}
+       $$
+       comme $\langle X\rangle< (G,\star)$, on a $M(X) \subset \langle X\rangle$.
+       $$
+         \forall x \in X, x = x^{1} \in M(X)
+       $$
+       donc $X \subset M(X)  \subset \langle X\rangle$.
+       Reste à voir que $M(X)$ est un groupe (car $\grp X$ est le plus petit sous-groupe de $G$ contenant $X$).
 
-     $$
-       (x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}})\star (k_{1}^{\eta_{1}}\star \cdots\star y_{p}^{\eta_{p}})^{-1} = x_{1}^{\varepsilon_{1}} \star \cdots \star x_{n}^{\varepsilon_{n}}\star y_{p}^{-\eta_{p}}\star \cdots\star y_{1}^{-\eta_{1}} \in M(X)
-     $$
+       $$
+         (x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}})\star (k_{1}^{\eta_{1}}\star \cdots\star y_{p}^{\eta_{p}})^{-1} = x_{1}^{\varepsilon_{1}} \star \cdots \star x_{n}^{\varepsilon_{n}}\star y_{p}^{-\eta_{p}}\star \cdots\star y_{1}^{-\eta_{1}} \in M(X)
+       $$
 
-     ainsi $M(X) = \langle X\rangle$.
-     NOPROGEND
+       ainsi $M(X) = \langle X\rangle$.
+     %
 %
 
 
@@ -466,122 +467,129 @@
      $$
        \grp{\{x_{1}, \ldots, x_{n}\}} = \{k_{1}x_{1} + \cdots+ k_{n}x_{n} / (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
      $$
-  4. Si $(Z^{n}, +) = \grp{\{e_{1}, \ldots, e_{n}\}}$ alors $e_{1} = (0,\ldots, 0,1,0, \ldots, 0)$.
+  4. Si $(\Z^{n}, +) = \grp{\{e_{1}, \ldots, e_{n}\}}$ alors $e_{i} = (0,\ldots, 0,1,0, \ldots, 0)$.
 %
 
 %def
   Soit $(G,\star)$ un groupe
   1. On dit qu’une partie $X$ de $G$ engendre $G$ si $G = \grp X$, i.e. si $X$ est une partie génératrice de $G$.
-  NOPROGSTART
-  2. On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
-     $$
-       \rang(G) = \min\{\abs{x} / X \in \Part(G), X \text{ est finie}, \grp X = G\}
-     $$
+  2. %offprog
+       On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
+       $$
+         \rang(G) = \min\{\abs{X} / X \in \Part(G), X \text{ est finie}, \grp X = G\}
+       $$
+     %
 %
 
 %eg
-  1. $\rang(G) = 0 \iff G = \grp\emptyset \iff G = \{e\}$
-  2. On a aussi
-     $$
-       \begin{align*}
-          \rang(G) = 1 &\iff  \begin{cases}G \neq \{e\} \\ \exists x \in G, G = \grp{\{x\}}\end{cases}\\
-          &\iff \exists  x \in G \setminus \{e\}: G = \grp{\{x\}}\\
-          &\iff \exists x \in G \setminus \{e\}: G = \{x^{k} / k \in \Z\}
-       \end{align*}
-     $$
-  3. $\rang(\Z) = 1$ car $\Z = \grp{\{1\}}$
-  4. $\rang(\Z^{n}) \leq n$ car $\Z = \grp{\{e_{1}, \ldots, e_{n}\}}$
-     Soient $n = \rang(\Z^{n}) \geq 1$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in (\Z^{n})^{r}$ tels que $\Z^{n} = \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{n}\}}$. Alors,
-     $$
-       \forall i \in \icc{1,n}, e_{i} \in \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{n}\}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{r}\right\}
-     $$
-     Donc
-     $$
-       \underbrace{\Vect_{\R}\left\{e_{1}, \ldots, e_{n}\right\}}_{=\R^{n}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{n}\right\}
-     $$
-     or $\dim_{\R} \R^{n} = n$ donc $r \geq n$. Ainsi, $\rang(\Z^{n}) = n$.
-     NOPROGEND
-  5. $S_{1} = \{\id \} = \grp\emptyset$ NOPROGSTART $\rang S_{1} = 0$ NOPROGEND; $S_{2} = \{\id , (12)\} = \grp{(12)}$ NOPROGSTART $\rang S_{2} = 1$ NOPROGEND.
+  %offprog
+    1. $\rang(G) = 0 \iff G = \grp\emptyset \iff G = \{e\}$
+    2. On a aussi
+       $$
+         \begin{align*}
+            \rang(G) = 1 &\iff  \begin{cases}G \neq \{e\} \\ \exists x \in G, G = \grp{\{x\}}\end{cases}\\
+            &\iff \exists  x \in G \setminus \{e\}: G = \grp{\{x\}}\\
+            &\iff \exists x \in G \setminus \{e\}: G = \{x^{k} / k \in \Z\}\\
+            &(\implies G\text{ est abélien})
+         \end{align*}
+       $$
+    3. $\rang(\Z) = 1$ car $\Z = \grp{\{1\}}$
+    4. $\rang(\Z^{n}) \leq n$ car $\Z = \grp{\{e_{1}, \ldots, e_{n}\}}$.
+       Soient $n = \rang(\Z^{n}) \geq 1$ et $(\varepsilon_{1}, \ldots, \varepsilon_{r}) \in (\Z^{n})^{r}$ tels que $\Z^{n} = \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{r}\}}$. Alors,
+       $$
+         \forall i \in \icc{1,n}, e_{i} \in \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{r}\}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{r}\right\}
+       $$
+       Donc
+       $$
+         \underbrace{\Vect_{\R}\left\{e_{1}, \ldots, e_{n}\right\}}_{=\R^{n}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{r}\right\}
+       $$
+       or $\dim_{\R} \R^{n} = n$ donc $r \geq n$. Ainsi, $\rang(\Z^{n}) = n$.
+    5. - $S_{1} = \{\id \} = \grp\emptyset$ donc $\rang S_{1} = 0$.
+       - $S_{2} = \{\id , (12)\} = \grp{(12)}$ donc $\rang S_{2} = 1$.
+       - Pour $n \geq 3, (S_{n}, \circ)$ n’est pas abélien donc pour $n \geq 3$, $\rang S_{n} \geq 2$ or $S_{3} = \grp{\{(12), (123)\}}$, donc $\rang S_{3} = 2$.
 
-     Pour $n \geq 3, (S_{n}, \circ)$ n’est pas abélien donc pour $n \geq 3$, $\rang S_{n} \geq 2$ or $S_{3} = \grp{\{(12), (123)\}}$, donc $\rang S_{3} = 2$.
-
-     Soit $n \geq 3$. $S_{n} = \grp{\{(ij) / 1 \leq i < j \leq x\}}$ d’où $\rang S_{n} \leq \binom{n}{2} = \frac{n(n-1)}{2}$. Cependand, pour $1 \leq i \leq j \leq n$, on a
-     $$
-       (ij) = (1i)(1j)(1i)^{-1}
-     $$
-     $$
-       \tau\circ(a_{1} \cdots a_{p})\circ \tau^{-1} = (\tau(a_{1}) \cdots \tau(a_{p}))
-     $$
-     Ainsi $\rang S_{n} \leq n-1$~:
-     $$
-       \underbrace{(12 \cdots (i-1))}_{=(12)(23) \cdots (i-2, i-1)}\underbrace{(i-1, i)}_{=(1i)}(12 \cdots (i-1))^{-1}
-     $$
-     Donc $S_{n} = \grp{\{(i,i+1) / 1 \leq i \leq n-1\}}$ et
-     $$
-       (12 \cdots n)(12)(12 \cdots n)^{-1} = (23)
-     $$
-     $$
-       (12 \cdots n)^{2}(12)(12 \cdots n)^{-2} = (34)
-     $$
-     $$
-       (12 \cdots n)^{i}(12)(12 \cdots n)^{-i} = (i+1, i+2)
-     $$
-     pour $0 \leq i \leq n-2$. Ainsi
-     $$
-       S_{n} = \grp{\{(12), (12 \cdots n)\}}
-     $$
-     d’où pour $n \geq 3, \rang S_{n} = 2$.
+         Soit $n \geq 3$. $S_{n} = \grp{\{(ij) / 1 \leq i < j \leq n\}}$ d’où $\rang S_{n} \leq \binom{n}{2} = \frac{n(n-1)}{2}$. Cependant, pour $1 \leq i < j \leq n$, on a
+         $$
+           (ij) = (1i)(1j)(1i)^{-1}
+         $$
+         car
+         $$
+           \tau\circ(a_{1} \cdots a_{p})\circ \tau^{-1} = (\tau(a_{1}) \cdots \tau(a_{p}))
+         $$
+         Ainsi $\rang S_{n} \leq n-1$~:
+         $$
+           \underbrace{(12 \cdots (i-1))}_{=(12)(23) \cdots (i-2, i-1)}\underbrace{(i-1, i)}_{=(1i)}(12 \cdots (i-1))^{-1}
+         $$
+         Donc $S_{n} = \grp{\{(i,i+1) / 1 \leq i \leq n-1\}}$ et
+         $$
+           (12 \cdots n)(12)(12 \cdots n)^{-1} = (23)
+         $$
+         $$
+           (12 \cdots n)^{2}(12)(12 \cdots n)^{-2} = (34)
+         $$
+         $$
+           (12 \cdots n)^{i}(12)(12 \cdots n)^{-i} = (i+1, i+2)
+         $$
+         pour $0 \leq i \leq n-2$. Ainsi
+         $$
+           S_{n} = \grp{\{(12), (12 \cdots n)\}}
+         $$
+         d’où pour $n \geq 3, \rang S_{n} = 2$.
+  %
 %
 
 ## Généralités
 
-NOPROGSTART
-%thm Théorème de Lagrange
-  Si $H$ est un sous-groupe d’un groupe fini $G$, alors le cardinal de $H$ divise le cardinal de $G$.
-%
+%offprog
+  %thm Théorème de Lagrange
+    Si $H$ est un sous-groupe d’un groupe fini $G$, alors le cardinal de $H$ divise le cardinal de $G$.
+  %
 
-%proof
-  - Si $H = \{e\}$ ou $H = G$, alors la propriété est immédiate
-  - Sinon, notons $r = \abs{H}$ et numérotons les éléments de $H$~: $H = \{h1, \ldots, h_{r}\}$. Soit $a_{1} \in G \setminus H$. Les éléments $h1, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}$ sont $2r$ éléments *distincts* de $G$.
-  En effet,
-  $$
-    a_{1} \star h_{i} = a_{1} \star h_{j} \implies  h_{i} = h_{j} \implies a_{1}\star h_{i} = h_{j} \implies  a_{1} = \underbrace{h_{j}\star h_{i}^{-1}}_{\in H < G}
-  $$
-  ce qui est faux. Notons
-  $$
-    H_{1} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}\}
-  $$
-  C’est un ensemble de cardinal $2r$. Si $H_{1} \neq G$, alors on prend $a_{2} \in G \setminus H_{1}$. Alors les éléments
-  $$
-    h_{1}, \ldots, _{h}r, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}
-  $$
-  sont $3r$ éléments distincts de $G$. En effet,
-  $$
-    a_{2} \star h_{i} = a_{2} \star h_{j} \implies h_{i} = h_{j} \implies \begin{cases}a_{2} \star h_{i} = h_{j} \implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} \implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H \subset H_{1}\end{cases}
-  $$
-  Ainsi,
-  $$
-    H_{2} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1} \star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}\}
-  $$
-  On itère le processus en s’arrêtant car $G$ est fini. Il existe ainsi $d \in \N^{*}$ tel que
-  $$
-    Hd = G
-  $$
-  donc $\abs{H_{d}} = (d+1) \times \abs{H} = \abs{G}$, donc $\abs{H}$ divise $\abs{G}$.
+  %proof
+    - Si $H = \{e\}$ ou $H = G$, alors la propriété est immédiate
+    - Sinon, notons $r = \abs{H}$ et numérotons les éléments de $H$~: $H = \{h_{1}, \ldots, h_{r}\}$. Soit $a_{1} \in G \setminus H$. Les éléments $h1, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}$ sont $2r$ éléments *distincts* de $G$.
+    En effet,
+    $$
+      \bigl(a_{1} \star h_{i} = a_{1} \star h_{j} \implies  h_{i} = h_{j}\bigr) \quad\text{et}\quad  \bigl(a_{1}\star h_{i} = h_{j} \implies  a_{1} = \underbrace{h_{j}\star h_{i}^{-1}}_{\in H < G}\bigr)
+    $$
+    ce qui est faux. Notons
+    $$
+      H_{1} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}\}
+    $$
+    C’est un ensemble de cardinal $2r$. Si $H_{1} \neq G$, alors on prend $a_{2} \in G \setminus H_{1}$. Alors les éléments
+    $$
+      h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}
+    $$
+    sont $3r$ éléments distincts de $G$. En effet,
+    $$
+       \begin{align*}a_{2} \star h_{i} = a_{2} \star h_{j} &\implies h_{i} = h_{j} \\ a_{2} \star h_{i} = h_{j} &\implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} &\implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H \subset H_{1}\end{align*}
+    $$
+    On note alors
+    $$
+      H_{2} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1} \star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}\}
+    $$
+    On itère le processus en s’arrêtant car $G$ est fini. Il existe ainsi $d \in \N^{*}$ tel que
+    $$
+      H_{d} = G
+    $$
+    or $\abs{H_{d}} = (d+1) \times \abs{H} = \abs{G}$, donc $\abs{H}$ divise $\abs{G}$.
+  %
 %
 
 %eg
-  1. Soit $meg$ un groupe de cardinal $p$ premier (par exemple $(\U_{p}, \times )$). Soit $eh$ un sous-groupe de $G$. Par le téorème de Lagrange, on a $\abs{H} \in \{1,p\}$, soit $H = \{e\}$ ou $H = G$. Ainsi, $G$ ne possède que des sous-groupes trivisux.
-    NOPROGEND
+  %offprog
+    1. Soit $G$ un groupe de cardinal $p$ premier (par exemple $(\U_{p}, \times )$). Soit $H$ un sous-groupe de $G$. Par le téorème de Lagrange, on a $\abs{H} \in \{1,p\}$, soit $H = \{e\}$ ou $H = G$. Ainsi, $G$ ne possède que des sous-groupes triviaux.
+  %
+
   2. $(\U_{2}^{2}, \times ) = (\{-1, 1\}^{2}, \times )$ est un groupe fini de cardinal 4. Si $H$ en est un sous-groupe, alors $\abs{H} \in \{1,2,4\}$.
      - $\abs{H} = 1 \iff  H = \{(1,1)\}$
      - $\abs{H} = 4 \iff  H = \U_{2}^{2}$
-     - $\abs{H} = 2 \iff  \exists x \in \U_{2}^{2} \setminus \{(1,1)\}: H = \{(1,1)\xi\} = \grp x$ (car $x^{2} = (1,1)$).
+     - $\abs{H} = 2 \iff  \exists x \in \U_{2}^{2} \setminus \{(1,1)\}: H = \{(1,1), x\} = \grp x$ (car $x^{2} = (1,1)$).
   3. $A_{n} < (S_{n},\circ)$. Pour $n \geq 2$, on a $\card A_{n} \mid \card S_{n}$. Précisément, $\card A_{n} = \frac{\card S_{n}}{2} = \frac{n!}{2}$. La fonction
      $$
        \applic{S_{n}}{S_{n}}{\sigma}{(12)\circ \sigma}
      $$
-     vérifie $f^{2} = \id _{S_{n}}$ donc $f$ est bijective. $\forall  \sigma \in S_{n}, \varepsilon(\sigma)\varepsilon(f(\sigma)) < 0$. $f^{-1}$ envoie bijectivement les permutations paires sur les permutations impaires.
+     vérifie $f^{2} = \id _{S_{n}}$ donc $f$ est bijective donc $\forall  \sigma \in S_{n}, \varepsilon(\sigma)\varepsilon(f(\sigma)) < 0$. $f^{-1}$ envoie bijectivement les permutations paires sur les permutations impaires.
 %
 
 %def
@@ -644,23 +652,23 @@ NOPROGSTART
      $$
      donc $\ker \varphi = \{e\}$. Ainsi, $\varphi:G \longrightarrow S_{G}$ est un morphisme injectif (Théorème de Cayley).
 
-     NOPROGSTART
-     $$
-       G\overset{\simeq}{\longrightarrow} \Img \varphi = \varphi(G)
-     $$
-     $$
-       \underbrace{(\varphi(g),\star')}_{(G,\star)} < (S_{G}, \circ)
-     $$
-     Ceci montre (puisque $\rang S_{G} \leq 2$) que pour $H < G$, on ne peut rien dire sur $\rang H$ par rapport à $\rang G$ (puisque $\rang S_{G} \leq 2$).
+     %offprog
+       $$
+         G\overset{\simeq}{\longrightarrow} \Img \varphi = \varphi(G)
+       $$
+       $$
+         \underbrace{(\varphi(g),\star')}_{\simeq (G,\star)} < (S_{G}, \circ)
+       $$
+       Ceci montre (puisque $\rang S_{G} \leq 2$) que pour $H < G$, on ne peut rien dire sur $\rang H$ par rapport à $\rang G$ (puisque $\rang S_{G} \leq 2$).
 
-     Dans $(\U_{2}^{3}, \times )$, $\rang \U_{2}^{3} \notin\{0,1\}$. Soient $u = (\varepsilon_{1}, \varepsilon_{2}, \varepsilon_{3})$ et $v=(\varepsilon_{1}', \varepsilon_{2}', \varepsilon_{3}')$ ($u^{2} = v^{2}$) deux éléments de $\U_{2}^{3} \setminus \{(1,1,1)\}$
-     $$
-       \grp{\{u,v\}} = \{(1,1,1), u, v, uv\} \neq \U_{2}^{3}\neq \U_{2}^{3}
-     $$
-     $$
-       U_{2}^{3} = \grp{\{(-1,1,1),(1,-1,1),(1,1,-1)\}}
-     $$
-     NOPROGEND
+       Dans $(\U_{2}^{3}, \times )$, $\rang \U_{2}^{3} \notin\{0,1\}$. Soient $u = (\varepsilon_{1}, \varepsilon_{2}, \varepsilon_{3})$ et $v=(\varepsilon_{1}', \varepsilon_{2}', \varepsilon_{3}')$ ($u^{2} = v^{2}$) deux éléments de $\U_{2}^{3} \setminus \{(1,1,1)\}$
+       $$
+         \grp{\{u,v\}} = \{(1,1,1), u, v, uv\} \neq \U_{2}^{3}\neq \U_{2}^{3}
+       $$
+       $$
+         U_{2}^{3} = \grp{\{(-1,1,1),(1,-1,1),(1,1,-1)\}}
+       $$
+     %
   3. Soient $(G,\star)$ un groupe et $x \in G$. On pose
      $$
        \varphi_{x}:\applic{G}{G}{y}{x\star y\star x^{-1}}
@@ -668,12 +676,11 @@ NOPROGSTART
      - C’est un momphisme~: $\varphi_{x}(y\star y') = x\star (y\star y')\star x^{-1} = (x\star y\star x^{-1})\star (x\star y'\star x^{-1})$
      - $\varphi_{x}$ est bijective~: $\varphi_{x}\circ \varphi_{x^{-1}} = \id $
 
+     De plus,
      $$
        \varphi: \applic{(G,\circ)}{(\Aut G, \circ)}{x}{\varphi_{x}}
      $$
-     est un morphisme
-
-     Soient $(x,x') \in G^{2}$.
+     est un morphisme~: soient $(x,x') \in G^{2}$.
      $$
        \begin{align*}
          \forall y \in G, (\varphi_{x\star x'})(y) &= (x\star x')\star y \star (x\star x')^{-1}\\
@@ -696,10 +703,7 @@ NOPROGSTART
 
      - ++Analyse++:
        Soit $f \in \Aut\Z$.
-       $$
-         f: \applic{\Z}{\Z}{variable}{function}
-       $$
-       Posons $f(1) = k \in \Z^{*}$. Alors $\forall p \in \Z, f(p) - pf(1) = kp$
+       Posons $f(1) = k \in \Z^{*}$. Alors $\forall p \in \Z, f(p) = pf(1) = kp$
        $$
          f: \applic{\Z}{\Z}{p}{kp}
        $$
