@@ -163,9 +163,9 @@
 %
 
 %eg
-  $S_{1} = \{\text{id}\}$, $Z(S_{1}) = S_{1}$. $S_{2} = \{\text{id}, (12)\}$. $S_{3} = \{\text{id}, (12), (13), (23), (123), (132))\}$.
+  $S_{1} = \{\id \}$, $Z(S_{1}) = S_{1}$. $S_{2} = \{\id , (12)\}$. $S_{3} = \{\id , (12), (13), (23), (123), (132))\}$.
 
-  Soit $n \geq 3$ et $\sigma \in S_{n} \setminus \{\text{id}\}$. Il existe donc $(i,j) \in \icc{1,n}^{2}$ avec $i\neq j$ et $\sigma(i) = j$. Soit $k \in \icc{1,n} \setminus \{i,j\}$.
+  Soit $n \geq 3$ et $\sigma \in S_{n} \setminus \{\id \}$. Il existe donc $(i,j) \in \icc{1,n}^{2}$ avec $i\neq j$ et $\sigma(i) = j$. Soit $k \in \icc{1,n} \setminus \{i,j\}$.
   Soit $\tau = (jk)$.
   $$
     (\tau\circ \sigma)(i) = \tau(j) = k
@@ -175,7 +175,7 @@
   $$
   donc $\tau\circ \sigma \neq \sigma\circ \tau$ donc $\sigma\notin Z(S_{n})$. Ainsi, pour $n\geq 3$, on a
   $$
-    Z(S_{n}) = \{\text{id}\}
+    Z(S_{n}) = \{\id \}
   $$
 %
 
@@ -408,6 +408,7 @@
      $$
        \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{:=M(X)}
      $$
+     C’est l’ensemble des « mots » constitués des « lettres » du groupe et de leur symétrique.
      NOPROGEND
 %
 
@@ -444,3 +445,313 @@
      NOPROGEND
 %
 
+
+%eg
+  1. Dans $(S_{3}, \circ)$,
+     $$
+       \grp{\{(12)\}} = \{\id , (12)\}
+     $$
+     $$
+       \grp{\{(12), (123)\}} = \{\id , (13), (23), (123), (132)\} = S_{3}
+     $$
+  2. Soit $(G,\star)$ un groupe. Si $x \in G$, alors
+     $$
+       \grp{\{x\}} = \{x^{k} / k \in \Z\}
+     $$
+  3. Si $(G,\star)$ est un groupe abélien, et $(x_{1}, \ldots, x_{n}) \in G^{n}$, alors
+     $$
+       \grp{\{x_{1}, \ldots, x_{n}\}} = \{x_{1}^{k_{1}} \times  \cdots \times  x_{n}^{k_{n}} / (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
+     $$
+     En notation additive dans $(G, +)$,
+     $$
+       \grp{\{x_{1}, \ldots, x_{n}\}} = \{k_{1}x_{1} + \cdots+ k_{n}x_{n} / (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
+     $$
+  4. Si $(Z^{n}, +) = \grp{\{e_{1}, \ldots, e_{n}\}}$ alors $e_{1} = (0,\ldots, 0,1,0, \ldots, 0)$.
+%
+
+%def
+  Soit $(G,\star)$ un groupe
+  1. On dit qu’une partie $X$ de $G$ engendre $G$ si $G = \grp X$, i.e. si $X$ est une partie génératrice de $G$.
+  NOPROGSTART
+  2. On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
+     $$
+       \rang(G) = \min\{\abs{x} / X \in \Part(G), X \text{ est finie}, \grp X = G\}
+     $$
+%
+
+%eg
+  1. $\rang(G) = 0 \iff G = \grp\emptyset \iff G = \{e\}$
+  2. On a aussi
+     $$
+       \begin{align*}
+          \rang(G) = 1 &\iff  \begin{cases}G \neq \{e\} \\ \exists x \in G, G = \grp{\{x\}}\end{cases}\\
+          &\iff \exists  x \in G \setminus \{e\}: G = \grp{\{x\}}\\
+          &\iff \exists x \in G \setminus \{e\}: G = \{x^{k} / k \in \Z\}
+       \end{align*}
+     $$
+  3. $\rang(\Z) = 1$ car $\Z = \grp{\{1\}}$
+  4. $\rang(\Z^{n}) \leq n$ car $\Z = \grp{\{e_{1}, \ldots, e_{n}\}}$
+     Soient $n = \rang(\Z^{n}) \geq 1$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in (\Z^{n})^{r}$ tels que $\Z^{n} = \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{n}\}}$. Alors,
+     $$
+       \forall i \in \icc{1,n}, e_{i} \in \grp{\{\varepsilon_{1}, \ldots, \varepsilon_{n}\}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{r}\right\}
+     $$
+     Donc
+     $$
+       \underbrace{\Vect_{\R}\left\{e_{1}, \ldots, e_{n}\right\}}_{=\R^{n}} \subset \Vect_{\R}\left\{\varepsilon_{1}, \ldots, \varepsilon_{n}\right\}
+     $$
+     or $\dim_{\R} \R^{n} = n$ donc $r \geq n$. Ainsi, $\rang(\Z^{n}) = n$.
+     NOPROGEND
+  5. $S_{1} = \{\id \} = \grp\emptyset$ NOPROGSTART $\rang S_{1} = 0$ NOPROGEND; $S_{2} = \{\id , (12)\} = \grp{(12)}$ NOPROGSTART $\rang S_{2} = 1$ NOPROGEND.
+
+     Pour $n \geq 3, (S_{n}, \circ)$ n’est pas abélien donc pour $n \geq 3$, $\rang S_{n} \geq 2$ or $S_{3} = \grp{\{(12), (123)\}}$, donc $\rang S_{3} = 2$.
+
+     Soit $n \geq 3$. $S_{n} = \grp{\{(ij) / 1 \leq i < j \leq x\}}$ d’où $\rang S_{n} \leq \binom{n}{2} = \frac{n(n-1)}{2}$. Cependand, pour $1 \leq i \leq j \leq n$, on a
+     $$
+       (ij) = (1i)(1j)(1i)^{-1}
+     $$
+     $$
+       \tau\circ(a_{1} \cdots a_{p})\circ \tau^{-1} = (\tau(a_{1}) \cdots \tau(a_{p}))
+     $$
+     Ainsi $\rang S_{n} \leq n-1$~:
+     $$
+       \underbrace{(12 \cdots (i-1))}_{=(12)(23) \cdots (i-2, i-1)}\underbrace{(i-1, i)}_{=(1i)}(12 \cdots (i-1))^{-1}
+     $$
+     Donc $S_{n} = \grp{\{(i,i+1) / 1 \leq i \leq n-1\}}$ et
+     $$
+       (12 \cdots n)(12)(12 \cdots n)^{-1} = (23)
+     $$
+     $$
+       (12 \cdots n)^{2}(12)(12 \cdots n)^{-2} = (34)
+     $$
+     $$
+       (12 \cdots n)^{i}(12)(12 \cdots n)^{-i} = (i+1, i+2)
+     $$
+     pour $0 \leq i \leq n-2$. Ainsi
+     $$
+       S_{n} = \grp{\{(12), (12 \cdots n)\}}
+     $$
+     d’où pour $n \geq 3, \rang S_{n} = 2$.
+%
+
+## Généralités
+
+NOPROGSTART
+%thm Théorème de Lagrange
+  Si $H$ est un sous-groupe d’un groupe fini $G$, alors le cardinal de $H$ divise le cardinal de $G$.
+%
+
+%proof
+  - Si $H = \{e\}$ ou $H = G$, alors la propriété est immédiate
+  - Sinon, notons $r = \abs{H}$ et numérotons les éléments de $H$~: $H = \{h1, \ldots, h_{r}\}$. Soit $a_{1} \in G \setminus H$. Les éléments $h1, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}$ sont $2r$ éléments *distincts* de $G$.
+  En effet,
+  $$
+    a_{1} \star h_{i} = a_{1} \star h_{j} \implies  h_{i} = h_{j} \implies a_{1}\star h_{i} = h_{j} \implies  a_{1} = \underbrace{h_{j}\star h_{i}^{-1}}_{\in H < G}
+  $$
+  ce qui est faux. Notons
+  $$
+    H_{1} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}\}
+  $$
+  C’est un ensemble de cardinal $2r$. Si $H_{1} \neq G$, alors on prend $a_{2} \in G \setminus H_{1}$. Alors les éléments
+  $$
+    h_{1}, \ldots, _{h}r, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}
+  $$
+  sont $3r$ éléments distincts de $G$. En effet,
+  $$
+    a_{2} \star h_{i} = a_{2} \star h_{j} \implies h_{i} = h_{j} \implies \begin{cases}a_{2} \star h_{i} = h_{j} \implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} \implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H \subset H_{1}\end{cases}
+  $$
+  Ainsi,
+  $$
+    H_{2} = \{h_{1}, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1} \star h_{r}, a_{2}\star h_{1}, \ldots, a_{2}\star h_{r}\}
+  $$
+  On itère le processus en s’arrêtant car $G$ est fini. Il existe ainsi $d \in \N^{*}$ tel que
+  $$
+    Hd = G
+  $$
+  donc $\abs{H_{d}} = (d+1) \times \abs{H} = \abs{G}$, donc $\abs{H}$ divise $\abs{G}$.
+%
+
+%eg
+  1. Soit $meg$ un groupe de cardinal $p$ premier (par exemple $(\U_{p}, \times )$). Soit $eh$ un sous-groupe de $G$. Par le téorème de Lagrange, on a $\abs{H} \in \{1,p\}$, soit $H = \{e\}$ ou $H = G$. Ainsi, $G$ ne possède que des sous-groupes trivisux.
+    NOPROGEND
+  2. $(\U_{2}^{2}, \times ) = (\{-1, 1\}^{2}, \times )$ est un groupe fini de cardinal 4. Si $H$ en est un sous-groupe, alors $\abs{H} \in \{1,2,4\}$.
+     - $\abs{H} = 1 \iff  H = \{(1,1)\}$
+     - $\abs{H} = 4 \iff  H = \U_{2}^{2}$
+     - $\abs{H} = 2 \iff  \exists x \in \U_{2}^{2} \setminus \{(1,1)\}: H = \{(1,1)\xi\} = \grp x$ (car $x^{2} = (1,1)$).
+  3. $A_{n} < (S_{n},\circ)$. Pour $n \geq 2$, on a $\card A_{n} \mid \card S_{n}$. Précisément, $\card A_{n} = \frac{\card S_{n}}{2} = \frac{n!}{2}$. La fonction
+     $$
+       \applic{S_{n}}{S_{n}}{\sigma}{(12)\circ \sigma}
+     $$
+     vérifie $f^{2} = \id _{S_{n}}$ donc $f$ est bijective. $\forall  \sigma \in S_{n}, \varepsilon(\sigma)\varepsilon(f(\sigma)) < 0$. $f^{-1}$ envoie bijectivement les permutations paires sur les permutations impaires.
+%
+
+%def
+  Soient $(G,\star)$ et $(G', \star')$ deux groupes. Une application $f$ de $G$ dans $G'$ est un ++morphisme de groupes++ si~:
+  $$
+    \forall (x,y) \in G^{2}, f(x\star y) = f(x) \star' f(y)
+  $$
+  - Si de plus, $f$ est bijective, alors on parle d’++isomorphisme++ de groupes.
+  - Si $f$ est un isomorphisme et $(G,\star) = (G', \star')$, alors $f$ est appelé ++automorphisme++ de $G$ est on note $f \in \Aut(G)$.
+  - $(G,\star)$ et $(G', \star')$ sont dits isomorphes s’il existe un isomorphisme entre ces groupes. On note alors
+    $$
+      (G,\star) \simeq (G', \star')
+    $$
+%
+
+%property
+  Soient $(G, \star)$ et $(G', \star')$ deux groupes de noutres respectifs $e$ et $e'$. Soit $f$ un morphisme de $G$ dans $G'$. On a
+  1. $f(e) = e'$ (car $f(e) = f(e\star e) = f(e)\star' f(e)$)
+  2. $\forall n \in \Z, \forall x \in G, f(x^{n}) = f(x)^{n}$
+  3. Si $H < G$, alors $f(H) < G'$ (l’image de $f$ est un sous-groupe de $G'$)
+
+     Si $K < G'$, alors $f^{-1}(K) < G$ (le noyau de $f$ est un sous-groupe de $G$)
+  4. $f$ est injective si et seulement si son noyau est réduit à $\{e\}$.
+
+     $f$ est surjective si et seulement si son image vaut $G'$.
+  5. $(\Aut(G),\circ) < (S_{G}, \circ)$.
+%
+
+%proof
+  5. $\Aut G \subset S_{G}$ et $\id _{G} \subset \Aut G$. De plus,
+     $$
+       (f,g) \in \Aut(G)^{2} \geq f \begin{cases}f\circ g \in \Aut G\\f^{-1} \in \Aut G\end{cases}
+     $$
+%
+
+%eg
+  1. $A_{n} = \ker \varepsilon < S_{n}$
+  2. Soit $G$ un groupe fini et
+     $$
+       \varphi: \applic{G}{S_{G}}{g}{\left[ \applic{G}{G}{h}{g\star h}\right]}
+     $$
+     Alors $\varphi(g)$ est bijective et $\varphi(g)^{-1} = \varphi(g^{-1})$.
+
+     Soient $(g,g') \in G^{2}$ et $h \in G$.
+     $$
+       \begin{align*}
+         \varphi(g\star g')(h) &= (g\star g')\star h\\
+         &= g\star (g'\star h)\\
+         &= \varphi(g)(\varphi(g')(h))\\
+         &=(\varphi(g)\circ \varphi(g'))(h)\\
+       \end{align*}
+     $$
+     donc
+     $$
+       \varphi(g\star g') = \varphi(g)\circ \varphi(g')
+     $$
+     Donc $\varphi$ est un morphisme de groupes
+     $$
+       g \in \ker \varphi \iff  \varphi(g) = \id _{G} \iff \forall h \in G, g\star h = h \iff g=e
+     $$
+     donc $\ker \varphi = \{e\}$. Ainsi, $\varphi:G \longrightarrow S_{G}$ est un morphisme injectif (Théorème de Cayley).
+
+     NOPROGSTART
+     $$
+       G\overset{\simeq}{\longrightarrow} \Img \varphi = \varphi(G)
+     $$
+     $$
+       \underbrace{(\varphi(g),\star')}_{(G,\star)} < (S_{G}, \circ)
+     $$
+     Ceci montre (puisque $\rang S_{G} \leq 2$) que pour $H < G$, on ne peut rien dire sur $\rang H$ par rapport à $\rang G$ (puisque $\rang S_{G} \leq 2$).
+
+     Dans $(\U_{2}^{3}, \times )$, $\rang \U_{2}^{3} \notin\{0,1\}$. Soient $u = (\varepsilon_{1}, \varepsilon_{2}, \varepsilon_{3})$ et $v=(\varepsilon_{1}', \varepsilon_{2}', \varepsilon_{3}')$ ($u^{2} = v^{2}$) deux éléments de $\U_{2}^{3} \setminus \{(1,1,1)\}$
+     $$
+       \grp{\{u,v\}} = \{(1,1,1), u, v, uv\} \neq \U_{2}^{3}\neq \U_{2}^{3}
+     $$
+     $$
+       U_{2}^{3} = \grp{\{(-1,1,1),(1,-1,1),(1,1,-1)\}}
+     $$
+     NOPROGEND
+  3. Soient $(G,\star)$ un groupe et $x \in G$. On pose
+     $$
+       \varphi_{x}:\applic{G}{G}{y}{x\star y\star x^{-1}}
+     $$
+     - C’est un momphisme~: $\varphi_{x}(y\star y') = x\star (y\star y')\star x^{-1} = (x\star y\star x^{-1})\star (x\star y'\star x^{-1})$
+     - $\varphi_{x}$ est bijective~: $\varphi_{x}\circ \varphi_{x^{-1}} = \id $
+
+     $$
+       \varphi: \applic{(G,\circ)}{(\Aut G, \circ)}{x}{\varphi_{x}}
+     $$
+     est un morphisme
+
+     Soient $(x,x') \in G^{2}$.
+     $$
+       \begin{align*}
+         \forall y \in G, (\varphi_{x\star x'})(y) &= (x\star x')\star y \star (x\star x')^{-1}\\
+         &= x\star (x'\star y\star x^{-1})\star x^{-1}\\
+         &= \varphi_{x} ( \varphi_{x'}(y))\\
+         &=(\varphi_{x}\circ \varphi_{x'})(y)
+       \end{align*}
+     $$
+     donc $\varphi_{x\star x'} = \varphi_{x} \circ \varphi_{x'}$.
+
+     $$
+       \begin{align*}
+         x \in \ker \varphi &\iff  \varphi_{x} = \id _{G}\\
+         &\iff  \forall y \in G, x\star y\star x^{-1} = y\\
+         &\iff \forall y \in G, x\star y=y\star x
+       \end{align*}
+     $$
+      donc $\ker  \varphi = Z(G) < (G,\star)$ et $\Img \varphi = \{\varphi_{x} / x \in eg\} = \Img  G < (\Aut G,\circ)$.
+  4. Quid de $(\Aut \Z, \circ)$ ?
+
+     - ++Analyse++:
+       Soit $f \in \Aut\Z$.
+       $$
+         f: \applic{\Z}{\Z}{variable}{function}
+       $$
+       Posons $f(1) = k \in \Z^{*}$. Alors $\forall p \in \Z, f(p) - pf(1) = kp$
+       $$
+         f: \applic{\Z}{\Z}{p}{kp}
+       $$
+       or $f(\Z) = \Z$, i.e. $k\Z = \Z$. Ainsi, $k \in \{1, -1\}$, donc $(\Aut \Z, \circ) \subset \{\id _{\Z}, -\id _{\Z}\}$
+
+     - ++Synthèse++:
+       $\id _{\Z} \in \Aut\Z$ et $-\id _{\Z} \in \Aut\Z$ donc
+       $$
+         (\Aut\Z,\circ) = (\{\id _{\Z},-\id _{\Z}\},\circ)
+       $$
+%
+
+## Le groupe $(\Z/n\Z,+)$ pour $n \in \N$
+
+%thm
+  - Soit $n \in \N$. La relation binaire sur $\Z^{2}$ définie par
+  $$
+    a\cgm b n \iff  a-b \in n\Z
+  $$
+  est une relation d’équivalence sur $\Z$.
+  - La classe de $a \in \Z$ est alors
+    $$
+      \left\{a+kn / k \in \Z\right\} = «\:a+n\Z\:»
+    $$
+    On la note $(\bar{a}), \dot a, [a]_{n}$…
+  - L’ensemble des classes est noté $\Z/n\Z$.
+  - Si $n \geq 1$, $\Z/n\Z$ possède $n$ éléments~:
+    $$
+      \Z/n\Z = \left\{\bar{0}, \bar{1}, \ldots, \bar{n-1}\right\}
+    $$
+  - Si $n=0$,
+    $$
+      \Z/0\Z = \left\{\bar{k} / k \in \Z\right\}
+    $$
+%
+
+%proof
+  - $a-a = 0 \in n\Z$ donc $a \cgm a n$
+  - Si $a\cgm b n$, alors $a-b \in n\Z$ d’où $b-a \in n\Z$ soit $b \cgm a n$
+  - Si $a\cgm b n$ et $b\cgm c n$, alors $a-b \in n\Z$ et $b-c \in n\Z$ d’où $(a-b) + (b-c) =a-c \in n\Z$ donc $a\cgm c n$.
+  - $b \in \bar{a} \iff  a\cgm bn \iff  b-a \in n\Z \iff  b \in a+n\Z$
+
+    Soit $n \geq 1$. Soit $a \in \Z$.  Posons $a = qn+r$ avec $q \in \Z$ et $r \in \N$ avec $r < n$. On a alors $a \cgm rn$ donc $\bar{a} = \bar{r}$ et $r \in \icc{0, n-1}$.
+    $$
+      \Z/n\Z = \left\{\bar{0} = \bar{-n}, \ldots, \bar{n-1} = \bar{-1}\right\}
+    $$
+    $$
+      (i,j) \in \icc{0,n-1}
+    $$
+    $$
+      n \mid j-i \in \icc{-(n-1), (n-1)} \implies  j-i = 0
+    $$
+    - $n=0$: $a\cgm b0 \iff a=b$ donc $\forall a \in \Z, \bar{a} = \{a\}$
+
+%
