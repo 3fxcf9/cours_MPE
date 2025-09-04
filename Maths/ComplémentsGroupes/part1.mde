@@ -757,5 +757,289 @@
       n \mid j-i \in \icc{-(n-1), (n-1)} \implies  j-i = 0
     $$
     - $n=0$: $a\cgm b0 \iff a=b$ donc $\forall a \in \Z, \bar{a} = \{a\}$
+%
+
+%thm
+  Soit $n \in \N$. L’application
+  $$
+    \applic{(\Z/n\Z)^{2}}{\Z/n\Z}{(\bar{a}, \bar{b})}{\bar{a+b}}
+  $$
+  est correctement définie.((On doit obtenir le même résultat peu importe les représentants choisis)) On pose alors
+  $$
+    \bar{+}:\applic{(\Z/n\Z)^{2}}{\Z/n\Z}{(\bar{a}, \bar{b})}{\bar{a} \bar{+} \bar{b} = \bar{a+b}}
+  $$
+  qui munit $(\Z/n\Z,\bar{+})$ d’une structure de groupe abélien.
+
+  Si $n \in \N^{*}$, alors $(\Z/n\Z,\bar{+}) = (\{\bar{0}, \bar{1}, \ldots, \bar{n-1}\}, \bar{+})$ est un groupe abélien fini de cardinal $n$, isomorphe à $(\Z,+)$ si $n=0$.
+%
+
+%proof
+  Soit $(a,b,a', b') \in \Z^{4}$ avec $a\cgm {a'}n$ et $b\cgm{b'}n$. On a alors
+  $$
+    a-a' \in  n\Z \quad\text{et}\quad b-b' \in n\Z
+  $$
+  d’où
+  $$
+    (a-a')+(b-b') = (a+b) - (a'+b') \in n\Z
+  $$
+  donc $a+b\cgm{a'+b'}n$ soit $\bar{a+b} = \bar{a'+b'}$.
+  - $\bar{+}$ est alors une l.c.i sur $\Z/n\Z$, associative, commutative, admet $\bar{0}$ comme élément neutre, et pour laquelle $\bar{(-a)}$ est le symétrique de $\bar{a}$.
+
+
+  Si $n=0$, alors
+  $$
+    \Z/n\Z = \{\{k\} / k \in \Z\}
+  $$
+  donc l’application
+  $$
+    \applic{(\Z,+)}{(\Z/n\Z, \bar{+})}{k}{\{k\}}
+  $$
+  est un isomorphisme de groupes.
+%
+
+%lemma
+  Ainsi, dans $(\Z/n\Z)$, on a pour $(a,b) \in \Z^{2}$ et $k \in \Z$,
+  1. $\bar{a}\bar{+} = \bar{a+b}$  2. $-\bar{a} = \bar{-a}$  3. $k \bar{a} = \bar{ka}$
+%
+
+%proof Preuve du troisième point
+  Soit $a \in \Z$. Considérons la propriété $\prop(k): «\:k \bar{a} = \bar{ka}\:»$ définie pour $n \in \N$.
+  - $0 \bar{a} = \bar{0} = \bar{0 \times a}$ donc $\prop(0)$ est vraie
+  - Supposons $\prop(k)$ vraie pour $k$ fixé dans $\N$.
+    $$
+      \begin{align*}
+        (k+1)\bar{a} &= k \bar{a} \bar{+} \bar{a}\\
+        &= \bar{ka} \bar{+} = \bar{ka+a}\\
+        &= \bar{(k+1)a}
+      \end{align*}
+    $$
+    d’où la véracité de $\prop(k+1)$.
+  Ainsi, par le principe de récurrence, on a $\forall k \in \N, k \bar{a} = \bar{ka}$.
+
+  Soit $k \in \N$.
+  $$
+    (-k) \bar{a} = -(k \bar{a}) = - \bar{ka} = \bar{-(ka)}
+  $$
+  Ainsi, $\forall k \in \Z, k \bar{a} = \bar{ka}$.
+%
+
+%eg
+  %rfig table_Z_2Z
+      @[./figures/table_z_2z_optimized.svg]
+  %
+  - $(\Z/1\Z, \bar{+}) = (\{\bar{0}\}, \bar{+})$
+  - $(\Z/2\Z, \bar{+}) = (\{\bar{0}, \bar{1}\}, \bar{+}) \simeq (\U_{2}, \times)$
+%
+
+%rem
+  Dans chaque ligne et chaque colonne de la table d’un groupe, chaque élément n’apparaît qu’une seule fois. Il n’y a donc qu’une seule table possible pour un groupe à deux éléments, donc de tels groupes sont tous égaux à isomorphisme près.
+
+  On s’apperçois de plus, en traçant les tables de $(\Z/3\Z, \bar{+})$ et de $(\U_{3}, \times )$ que ces deux groupes sont aussi isomorphes. Ceci se généralise en remarquant l’unicité de la table d’un groupe à 3 éléments. Il n’en existe donc qu’un seul à isomorphisme près, qui est abélien.
+%
+
+%thm
+  Pour $n \in \N^{*}$, les groupes $(\Z/n\Z, \bar{+})$ et $(\U_{n}, \times )$ sont isomorphes.
+%
+
+%proof
+  L’application
+  $$
+    \applic{\Z/n\Z}{\U_{n}}{\bar{k}}{e^{\frac{2ik \pi}{n}}}
+  $$
+  est correctement définie. En effet, soit $(k,l) \in \Z^{2}$ avec $\bar{k} = \bar{l}$. On a $k\cgm ln$, donc
+  $$
+    \exists q \in \Z: k = l+nq
+  $$
+  d’où
+  $$
+    e^{\frac{2ik \pi}{n}} = e^{\frac{2i(l+nq) \pi}{n}} = e^{\frac{2il \pi}{n}} \cdot e^{2iq \pi} = e^{\frac{2il \pi}{n}}
+  $$
+
+  - Soit $(k,l) \in \Z^{2}$.
+    $$
+      f(\bar{k} \bar{+} \bar{l}) = f(\bar{k+l}) = e^{\frac{2i(k+l) \pi}{n}} = e^{\frac{2ik \pi}{n}} \cdot e^{\frac{2il \pi}{n}} = f(\bar{k}) \cdot f(\bar{l})
+    $$
+    donc $f$ est un morphisme surjectif de groupes.
+  - On a
+    $$
+      \begin{align*}
+        \bar{k} \in \ker f &\iff e^{\frac{2ik \pi}{n}} = 1 \\
+        &\iff k \in n\Z\\
+        &\iff \bar{k} = \bar{0}
+      \end{align*}
+    $$
+    Donc $\ker f = \{\bar{0}\}$, d’où l’injectivité de $f$.
+    %rem
+      On aurait aussi pu utiliser l’égalité des cardinaux des deux groupes.
+    %
+%
+
+## Ordre d’un élément dans un groupe
+
+%def Ordre d’un élément dans un groupe
+  Soit $(G, \star)$ un groupe. Soit $x \in G$. On appelle ordre de $x$ l’élément de $\N \cup \{+ \infty\}$ noté $\omega(x)$ ou $o(x)$, défini par
+  $$
+    \omega(x) = \begin{cases}
+      \min\{k \in \N^{*} / x^{k} = e\} & \text{si }\{k \in \N^{*} / x^{k} = e\} \neq \emptyset\\
+      +\infty & \text{sinon}
+    \end{cases}
+  $$
+
+  En notation additive dans $(G,+)$,
+  $$
+    \omega(x) = \begin{cases}
+      \min\{k \in \N^{*} / kx = 0\} & \text{si }\{k \in \N^{*} / kx = 0\} \neq \emptyset\\
+      +\infty & \text{sinon}
+    \end{cases}
+  $$
+%
+
+%eg
+  1. Dans $(\Z,+)$, $\omega(0) = 1$ et $\forall n \in \Z^{*}, \omega(n) = +\infty$
+  2. Dans $(\U_{2}, \times )$, $\omega(1) = 1$ et $\omega(-1) = 2$
+  3. Dans $(\U_{4}, \times )$, $\omega(1) = 1$, $\omega(-1) = 2$, $\omega(i) = 4$, $\omega(-1) = 4$
+  4. L’ensemble $\mathbb{P}_{n} = \{z \in \U_{n} / \omega(z) = n\}$ est l’ensemble des racines primitives n-ièmes de l’unité.
+     $\mathbb{P}_{1} = \{1\}$; $\mathbb{P}_{2} = \{-1\}$; $\mathbb{P}_{3} = \{j,j^{2}\}$; $\mathbb{P}_{4} = \{i,-i\}$
+  5. Dans $(Z_{n},\circ)$, un p-cycle est d’ordre $p$. Si une permutation $\sigma$ de $S_{n}$ se décompose comme le produits des cycles $c_{1}, \ldots, c_{k}$, alors $\omega(\sigma) = \ppcm (\text{long}(c_{1}), \ldots, \text{long}(c_{k}))$(($\sigma^{l} = c_{1}^{l} \circ \cdots \circ c_{k}^{l} = \id \iff \begin{cases}l \in \text{long}(c_{1})\Z\\ \vdots \\ l \in \text{long}(c_{k})\end{cases}$))
+  6. Dans le groupe  $(\GL_{2}(\R), \times )$ en posant $A = \mtx{0&1\\-1&0}\in \GL_{2}(\R)$ et $B = \mtx{0&1\\-1&-1} \in \GL_{2}(\R)$, on a $\omega(A) = 4$ et $\omega(B) = 3$. De plus, $A \times B = -(I+J)$ avec $J = \mtx{0&1\\0&0}$ (vérifiant $J^{2} = I_{2}$), donc
+     $$
+       \forall k \in \N^{*}, (A \times B)^{k} = (-1)^{k}(I+kJ) \neq I_{2}
+     $$
+     donc $\omega(A \times B) = + \infty$.
+%
+
+%thm
+  Soient $(G,\star)$ un groupe et $(x,y)\in G$.
+  1. Si $G$ est fini, alors tout élément de $G$ est d’ordre fini
+  2. $\omega(x) = 1 \iff  x = e$
+  3. $\forall x \in G, \omega(x) = \omega(x^{-1})$
+  4. %offprog
+       Si $f: G \longrightarrow G'$ est un ++morphisme injectif++ de groupes, alors $\omega(f(x)) = \omega(x)$
+     %
+  5. %offprog
+       $\omega(xy) = \omega(yx)$
+     %
+  6. Il existe un unique entier $d \in \N$ tel que
+     $$
+       \{k \in \Z / x^{k} = e\} = d\Z
+     $$
+     donc pour $d \in \N^{*}$,
+     $$
+       \omega(x) = d \iff \left[\begin{cases}
+         x^{k} = e \\ k \in \Z
+       \end{cases} \iff  k \in d\Z\right]
+     $$
+%
+
+%proof
+  1. Supposons $G$ fini. Soit $x \in G$. Supposons $\omega(x) = + \infty$. Alors la suite $(x^{k})_{k \in \N}$ est injective, en effet,
+     $$
+       \begin{cases}
+         (k,l) \in \N^{2}\\
+         k \leq l\\
+         x^{k} = x^{l}
+       \end{cases}\implies \begin{cases}
+         x^{l-k} = e\\
+         l-k \in \N
+       \end{cases}
+       \implies l-k = 0
+     $$
+     Cependant, $\{x^{k} / k \in \N\} \subset G$ et $G$ est fini — contradiction. Ainsi, $\forall x \in G, \omega(x) < +\infty$.
+  2. On a
+     $$
+       \omega(x) = 1 \iff  \min\{k \in \N^{*} / x^{k} = e\} = 1 \iff  x^{1} = e \iff x=e
+     $$
+  3. $\{k \in \N/x^{k}=e\} = \{k \in \N* / (x^{k})^{-1} = e^{-1}\} = \{k \in \N^{*} / (x^{-1})^{k} = e\}$ d’où $\omega(x) = \omega(x^{-1})$.
+  4. %offprog
+       $\{k \in \N^{*} / f(x)^{k} = e'\} = \{k \in \N^{*}/ f(x^{k}) = e'\} \underset{\text{inj.}}= \{k \in \N^{*} / x^{k} = e\}$ d’où $\omega(f(x)) = \omega(x)$.
+     %
+  5. %offprog
+       Soit $(x,y) \in G^{2}$. L’application
+       $$
+         \varphi_{k} : \applic{G}{G}{z}{y\ctar z\star y^{-1}}
+       $$
+       est un automorphisme (dit *intérieur*) injectif, d’où $\omega(\varphi_{y}(xy)) = \omega(xy)$ donc $\omega(yxyy^{-1}) = \omega(xy)$, ainsi $\omega(xy) = \omega(yx)$.
+     %
+  6. L’application
+     $$
+       f: \applic{(\Z,+)}{(G,\star)}{k}{x^{k}}
+     $$
+     est un morphisme. Son noyau est alors un sous-groupe de $(\Z,+)$. Il existe donc un unique $d \in \N$ tel que
+     $$
+       \{k \in \Z/x^{k} = e\} = d\Z \quad (\triangle)
+     $$
+     Supposons $d \in \N^{*}$, alors
+     $$
+       (\triangle) \iff \min\{k \in \N* / x^{k} = e\} = d \iff \omega(x) = d
+     $$
+     donc
+     $$
+       \omega(x) = d \iff  \left[\begin{cases}
+         x^{k} = e\\
+         k \in \Z
+       \end{cases}\iff d\mid k\right]
+     $$
+%
+
+%eg
+  1. Soient $(G,\star)$ et $(G',\star')$ deux groupes. Soit $x \in G$ d’ordre $d \in \N^{*}$ et $x' \in G$ d’ordre $d' \in \N^{*}$. Soit $G \times G'$ le groupe produit de ces deux groupes.
+     $$
+       \begin{cases}
+         (x,x')^{k} = (e,e')\\
+         k \in \Z
+       \end{cases}\iff \begin{cases}
+         (x^{k}, {x'}^{k}) = (e,e')\\
+         k \in \Z
+       \end{cases}\iff \begin{cases}
+         x^{k} = e\\
+         {x'}^{k} = e\\
+         k \in \Z
+       \end{cases}\iff \begin{cases}
+         k \in d\Z\\
+         k \in d'\Z
+       \end{cases}\iff k \in (d\Z \cap d'\Z) \iff  k \in (d \lor d')\Z
+     $$
+     donc $\omega((x,x')) = d \lor d'$.
+  2. - $(\Z/4\Z, \bar{+}) \simeq (\U_{4}, \times )$.
+
+       $\omega(1) = 1$, $\omega(-1) = 2$, $\omega(i) = \omega(-i) = 4$
+
+       $\omega(\bar{0}) = 1$, $\omega(\bar{1}) = 4$, $\omega(\bar{2}) = \bar{2}$, $\omega(\bar{3}) = \omega(\bar{-1}) = \omega(-\bar{1}) = 4$.
+
+     - $(\U_{2}^{2}, \times )$((groupe de *Klein*)) est un groupe abélien de cardinal 4 dans lequel $w((1,1)) = 1$ et
+       $$
+         \forall x \in \U_{2}^{2} \setminus \{(1,1)\}, \omega(x) = 2
+       $$
+
+     Aucun élément de $(\U_{2}^{2}, \times )$ n’est d’ordre 4. ++Il y a donc deux structures distinctes de groupes de cardinal 4++.
+
+     - Soit $G = \{e,a,b,c\}$ un groupe de cardinal 4.
+       %fig table_groupe_card_4
+           @[./figures/table_groupe_card_4_optimized.svg]
+       %
+       Il n’y a, à isomorphisme près, ++que deux types de groupes à 4 éléments++ (tous deux abéliens), ceux de $(\Z/4\Z,\bar{+})$ et de $(\U_{2}^{2}, \times )$.
+  3. Soit $(G,\star)$ un groupe. Soit $x \in G$.
+    - Si $\omega(x) = +\infty$, alors que peut-on dire de $\omega(x^{p})$ pour $p \in \Z$ ?
+      $$
+        \pi(x^{0}) = \omega(e) = 1
+      $$
+      Soit $p \in \Z^{*}$. Supposons $\omega(x^{p}) = d \in \N^{*}$. Alors $(x^{p})^{d} = e$, i.e. $x^{pd} = e$ ou encome $x^{\abs{p}d} = e$ et $\abs{p}d \in \tn*$; ce qui est en contradiction avec $\omega(x) = +\infty$.
+  4. Soit $(G,\star)$ un groupe. Soit $x \in G$ avec $\omega(x) < +\infty$. Soit $p \in \N$. Déterminer $\omega(x^{p})$.
+     $$
+       \begin{align*}
+         \begin{cases}
+           (x^{p})^{k} = e\\k \in \Z
+         \end{cases} &\iff \begin{cases}
+           x^{pk} = e\\k \in \Z
+         \end{cases}\\&\iff d\mid pk\\
+         &\iff d'\mid p' k \underset{d' \land  p'}\iff  d' \mid k
+       \end{align*}
+     $$
+     en posant
+     ~ $d = (p \land  d)d'$  ~ p = (d and d)p'  ~ $d' \land p' = 1$
+     Donc $\omega(x^{p}) = d' = \frac{d}{p \land  d}$,
+     $$
+       \forall p \in \Z, \omega(x^{p}) = \frac{\omega(x)}{p \land \omega(x)}
+     $$
 
 %
