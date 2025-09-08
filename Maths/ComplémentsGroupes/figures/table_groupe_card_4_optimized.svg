@@ -1,114 +1,150 @@
-<svg id="svg8" width="191.78mm" height="57.207mm" version="1.1" viewBox="0 0 191.78 57.207" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg id="svg8" width="170.33mm" height="48.708mm" version="1.1" viewBox="0 0 170.33 48.708" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs id="defs2">
+  <g id="g1">
+   <g id="glyph-0-0">
+    <path id="path1-1" d="m2.9219-2.0625 1.625 1.7812c0.03125 0.046875 0.0625 0.0625 0.10938 0.0625 0.10938 0 0.10938-0.09375 0.10938-0.10938 0-0.03125-0.03125-0.10938-0.0625-0.14062l-1.1719-2.0469 2.1406-0.96875c0.15625-0.046875 0.17188-0.0625 0.17188-0.14062 0-0.0625-0.046875-0.10938-0.125-0.10938l-2.4062 0.5-0.26562-2.3125c-0.015625-0.17188-0.015625-0.21875-0.125-0.21875-0.09375 0-0.09375 0.046875-0.125 0.23438l-0.26562 2.2969-2.4062-0.5c-0.078125 0-0.125 0.046875-0.125 0.10938 0 0.078125 0.0625 0.09375 0.15625 0.14062l2.1562 0.96875-1.1562 2.0312c-0.078125 0.14062-0.078125 0.15625-0.078125 0.15625 0 0.015625 0 0.10938 0.10938 0.10938 0.015625 0 0.0625 0 0.17188-0.10938z"/>
+   </g>
+  </g>
+  <g id="g1-8">
+   <g id="glyph-0-0-7">
+    <path id="path1-9" d="m3.5938-1.4219c-0.0625 0.20312-0.0625 0.23438-0.21875 0.45312-0.26562 0.32812-0.79688 0.84375-1.3594 0.84375-0.48438 0-0.76562-0.4375-0.76562-1.1406 0-0.65625 0.375-2 0.60938-2.5 0.40625-0.84375 0.96875-1.2656 1.4219-1.2656 0.79688 0 0.95312 0.98438 0.95312 1.0781 0 0.015625-0.03125 0.15625-0.046875 0.1875zm0.76562-3.0625c-0.125-0.3125-0.45312-0.78125-1.0781-0.78125-1.3438 0-2.7969 1.7344-2.7969 3.5156 0 1.1719 0.6875 1.875 1.5 1.875 0.65625 0 1.2188-0.51562 1.5469-0.90625 0.125 0.70312 0.6875 0.90625 1.0469 0.90625s0.64062-0.21875 0.85938-0.65625c0.1875-0.40625 0.35938-1.125 0.35938-1.1719 0-0.0625-0.046875-0.10938-0.125-0.10938-0.10938 0-0.10938 0.0625-0.15625 0.23438-0.1875 0.70312-0.40625 1.4531-0.90625 1.4531-0.34375 0-0.35938-0.3125-0.35938-0.54688 0-0.26562 0.03125-0.40625 0.14062-0.875 0.078125-0.29688 0.14062-0.5625 0.23438-0.90625 0.4375-1.7969 0.54688-2.2188 0.54688-2.2969 0-0.15625-0.125-0.29688-0.3125-0.29688-0.375 0-0.46875 0.42188-0.5 0.5625z"/>
+   </g>
+  </g>
+  <g id="g1-0">
+   <g id="glyph-0-0-2">
+    <path id="path1-3" d="m2.1406-2.7656c0.32812 0 1.1406-0.03125 1.7031-0.25 0.90625-0.34375 1-1.0312 1-1.25 0-0.53125-0.45312-1-1.25-1-1.25 0-3.0625 1.125-3.0625 3.25 0 1.2656 0.71875 2.1406 1.8125 2.1406 1.625 0 2.6562-1.2656 2.6562-1.4219 0-0.078125-0.078125-0.14062-0.125-0.14062-0.03125 0-0.046875 0.015625-0.15625 0.125-0.76562 1.0156-1.8906 1.1875-2.3594 1.1875-0.67188 0-1.0312-0.53125-1.0312-1.4219 0-0.15625 0-0.46875 0.17188-1.2188zm-0.57812-0.25c0.51562-1.8438 1.6562-2.0156 2.0312-2.0156 0.53125 0 0.89062 0.3125 0.89062 0.76562 0 1.25-1.9219 1.25-2.4219 1.25z"/>
+   </g>
+  </g>
+  <g id="g1-5">
+   <g id="glyph-0-0-9">
+    <path id="path1-2" d="m2.7656-8c0-0.046875 0.03125-0.10938 0.03125-0.17188 0-0.125-0.125-0.125-0.14062-0.125s-0.4375 0.03125-0.65625 0.0625c-0.20312 0.015625-0.39062 0.03125-0.59375 0.046875-0.29688 0.03125-0.375 0.03125-0.375 0.25 0 0.125 0.10938 0.125 0.23438 0.125 0.60938 0 0.60938 0.10938 0.60938 0.21875 0 0.09375-0.09375 0.4375-0.14062 0.65625l-0.28125 1.1406c-0.125 0.48438-0.8125 3.1875-0.85938 3.4062-0.0625 0.29688-0.0625 0.5-0.0625 0.65625 0 1.2188 0.6875 1.8594 1.4688 1.8594 1.375 0 2.8125-1.7812 2.8125-3.5156 0-1.1094-0.60938-1.875-1.5156-1.875-0.625 0-1.1875 0.51562-1.4062 0.75zm-0.75 7.875c-0.39062 0-0.8125-0.28125-0.8125-1.2188 0-0.39062 0.046875-0.60938 0.25-1.4531 0.046875-0.15625 0.23438-0.92188 0.28125-1.0781 0.015625-0.09375 0.73438-1.1562 1.5469-1.1562 0.51562 0 0.76562 0.53125 0.76562 1.1406 0 0.57812-0.34375 1.9375-0.64062 2.5469-0.29688 0.65625-0.84375 1.2188-1.3906 1.2188z"/>
+   </g>
+  </g>
+  <g id="g1-9">
+   <g id="glyph-0-0-73">
+    <path id="path1-6" d="m4.6719-4.5c-0.21875 0-0.32812 0-0.5 0.15625-0.078125 0.046875-0.20312 0.23438-0.20312 0.42188 0 0.23438 0.17188 0.39062 0.40625 0.39062 0.28125 0 0.60938-0.25 0.60938-0.71875 0-0.57812-0.54688-1.0156-1.375-1.0156-1.5625 0-3.125 1.7031-3.125 3.4062 0 1.0312 0.64062 1.9844 1.8594 1.9844 1.625 0 2.6562-1.2656 2.6562-1.4219 0-0.078125-0.078125-0.14062-0.125-0.14062-0.03125 0-0.046875 0.015625-0.15625 0.125-0.76562 1.0156-1.8906 1.1875-2.3594 1.1875-0.8125 0-1.0781-0.71875-1.0781-1.3125 0-0.42188 0.20312-1.5781 0.625-2.3906 0.3125-0.5625 0.96875-1.2031 1.7188-1.2031 0.15625 0 0.8125 0.015625 1.0469 0.53125z"/>
+   </g>
+  </g>
+ </defs>
  <metadata id="metadata5">
   <rdf:RDF>
    <cc:Work rdf:about="">
     <dc:format>image/svg+xml</dc:format>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:title/>
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g id="layer1" transform="translate(-23.643 -203.1)">
-  <path id="path1" d="m36.372 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path2" d="m46.955 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path3" d="m57.539 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path4" d="m68.122 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path5" d="m23.643 247.58h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path6" d="m23.643 237h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path7" d="m23.643 226.42h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path8" d="m23.643 215.83h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <text id="text8" x="24.045382" y="210.30696" fill="none" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#000000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan8" x="24.045382" y="210.30696" fill="#000000" letter-spacing=".37042px" stroke="none" stroke-width=".14044">$\star$</tspan></text>
-  <text id="text9" x="51.130051" y="209.97041" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan9" x="51.130051" y="209.97041" stroke-width=".14044">a</tspan></text>
-  <text id="text10" x="61.627705" y="210.35696" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan10" x="61.627705" y="210.35696" stroke-width=".14044">b</tspan></text>
-  <text id="text11" x="51.130051" y="220.76051" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan11" x="51.130051" y="220.76051" stroke-width=".14044">a</tspan></text>
-  <text id="text12" x="72.788528" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan12" x="72.788528" y="209.96962" stroke-width=".14044">c</tspan></text>
-  <text id="text13" x="61.627705" y="221.14706" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan13" x="61.627705" y="221.14706" stroke-width=".14044">b</tspan></text>
-  <text id="text14" x="72.788528" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan14" x="72.788528" y="220.75972" stroke-width=".14044">c</tspan></text>
-  <text id="text15" x="40.896606" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan15" x="40.896606" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <text id="text16" x="40.825966" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan16" x="40.825966" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text17" x="40.887875" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan17" x="40.887875" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text18" x="40.904549" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan18" x="40.904549" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text19" x="51.191959" y="231.22131" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan19" x="51.191959" y="231.22131" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
-  <text id="text20" x="51.20863" y="241.80655" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan20" x="51.20863" y="241.80655" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text21" x="51.200691" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan21" x="51.200691" y="254.48456" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text22" x="61.644379" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan22" x="61.644379" y="230.83395" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text24" x="61.565796" y="254.48535" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan24" x="61.565796" y="254.48535" stroke="#ff0000" stroke-width=".14044">a</tspan></text>
-  <text id="text25" x="72.780586" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan25" x="72.780586" y="230.83395" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text26" x="140.37958" y="241.80734" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan26" x="140.37958" y="241.80734" stroke="#ff0000" stroke-width=".14044">a</tspan></text>
-  <text id="text27" x="72.771851" y="254.8719" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan27" x="72.771851" y="254.8719" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
-  <text id="text28" x="27.859056" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan28" x="27.859056" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text29" x="28.009951" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan29" x="28.009951" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text30" x="28.160845" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan30" x="28.160845" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text31" x="27.708155" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan31" x="27.708155" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <path id="path31" d="m104.13 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path32" d="m114.71 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path33" d="m125.29 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path34" d="m135.88 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path35" d="m91.396 247.58h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path36" d="m91.396 237h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path37" d="m91.396 226.42h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path38" d="m91.396 215.83h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <text id="text38" x="91.798401" y="210.30696" fill="none" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#000000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan38" x="91.798401" y="210.30696" fill="#000000" letter-spacing=".37042px" stroke="none" stroke-width=".14044">$\star$</tspan></text>
-  <text id="text39" x="118.09581" y="209.97041" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan39" x="118.09581" y="209.97041" stroke-width=".14044">a</tspan></text>
-  <text id="text40" x="128.65863" y="210.35696" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan40" x="128.65863" y="210.35696" stroke-width=".14044">b</tspan></text>
-  <text id="text41" x="118.2467" y="220.76051" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan41" x="118.2467" y="220.76051" stroke-width=".14044">a</tspan></text>
-  <text id="text42" x="140.45816" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan42" x="140.45816" y="209.96962" stroke-width=".14044">c</tspan></text>
-  <text id="text43" x="128.80954" y="221.14706" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan43" x="128.80954" y="221.14706" stroke-width=".14044">b</tspan></text>
-  <text id="text44" x="140.45816" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan44" x="140.45816" y="220.75972" stroke-width=".14044">c</tspan></text>
-  <text id="text45" x="107.98567" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan45" x="107.98567" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <text id="text46" x="108.89105" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan46" x="108.89105" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text47" x="108.58926" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan47" x="108.58926" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text48" x="109.34375" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan48" x="109.34375" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text49" x="118.54849" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan49" x="118.54849" y="230.83395" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text50" x="119.75568" y="241.80655" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan50" x="119.75568" y="241.80655" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text51" x="119.00119" y="254.8719" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan51" x="119.00119" y="254.8719" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
-  <text id="text52" x="129.56403" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan52" x="129.56403" y="230.83395" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
+ <g id="layer1" transform="translate(-26.224 -190.18)">
+  <path id="path3" d="m35.956 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
   <text id="text53" x="170.96696" y="244.45122" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan53" x="170.96696" y="244.45122" stroke-width=".14044"/></text>
-  <text id="text54" x="130.01672" y="254.48535" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan54" x="130.01672" y="254.48535" stroke="#ff0000" stroke-width=".14044">a</tspan></text>
-  <text id="text55" x="140.44148" y="231.22131" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan55" x="140.44148" y="231.22131" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
-  <text id="text57" x="140.45021" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan57" x="140.45021" y="254.48456" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text58" x="95.612076" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan58" x="95.612076" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text59" x="95.76297" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan59" x="95.76297" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text60" x="95.913864" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan60" x="95.913864" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text61" x="95.461166" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan61" x="95.461166" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <text id="text63" x="130.01672" y="241.80655" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan63" x="130.01672" y="241.80655" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text64" x="207.07378" y="241.98514" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan64" x="207.07378" y="241.98514" stroke="#ff0000" stroke-width=".14044">e/a</tspan></text>
-  <path id="path64" d="m170.94 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path65" d="m181.53 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path66" d="m192.11 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path67" d="m202.69 203.1v57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path68" d="m158.22 247.58h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path69" d="m158.22 237h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path70" d="m158.22 226.42h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <path id="path71" d="m158.22 215.83h57.207" fill="none" stroke="#000" stroke-width=".12946"/>
-  <text id="text71" x="158.61819" y="210.30696" fill="none" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#000000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan71" x="158.61819" y="210.30696" fill="#000000" letter-spacing=".37042px" stroke="none" stroke-width=".14044">$\star$</tspan></text>
-  <text id="text72" x="184.9156" y="209.97041" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan72" x="184.9156" y="209.97041" stroke-width=".14044">a</tspan></text>
-  <text id="text73" x="195.47842" y="210.35696" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan73" x="195.47842" y="210.35696" stroke-width=".14044">b</tspan></text>
-  <text id="text74" x="185.0665" y="220.76051" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan74" x="185.0665" y="220.76051" stroke-width=".14044">a</tspan></text>
-  <text id="text75" x="206.98927" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan75" x="206.98927" y="209.96962" stroke-width=".14044">c</tspan></text>
-  <text id="text76" x="195.62933" y="221.14706" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan76" x="195.62933" y="221.14706" stroke-width=".14044">b</tspan></text>
-  <text id="text77" x="206.98927" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan77" x="206.98927" y="220.75972" stroke-width=".14044">c</tspan></text>
-  <text id="text78" x="174.80547" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan78" x="174.80547" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <text id="text78-6" x="176.51413" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan78-7" x="176.51413" y="209.96962" stroke-width=".14044">e</tspan></text>
-  <text id="text79" x="175.71085" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan79" x="175.71085" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text80" x="175.40906" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan80" x="175.40906" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text81" x="176.16354" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan81" x="176.16354" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text82" x="185.36829" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan82" x="185.36829" y="230.83395" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text83" x="186.57547" y="241.80655" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan83" x="186.57547" y="241.80655" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text84" x="185.82098" y="254.8719" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan84" x="185.82098" y="254.8719" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
-  <text id="text85" x="196.38382" y="230.83395" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan85" x="196.38382" y="230.83395" stroke="#ff0000" stroke-width=".14044">c</tspan></text>
-  <text id="text86" x="193.76367" y="254.66315" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan86" x="193.76367" y="254.66315" stroke="#ff0000" stroke-width=".14044">e/a</tspan></text>
-  <text id="text87" x="207.16585" y="231.22131" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan87" x="207.16585" y="231.22131" stroke="#ff0000" stroke-width=".14044">b</tspan></text>
   <text id="text88" x="249.10408" y="243.69673" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan88" x="249.10408" y="243.69673" stroke-width=".14044"/></text>
-  <text id="text89" x="207.05791" y="254.66315" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan89" x="207.05791" y="254.66315" stroke="#ff0000" stroke-width=".14044">a/e</tspan></text>
-  <text id="text90" x="162.43187" y="254.48456" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan90" x="162.43187" y="254.48456" stroke-width=".14044">c</tspan></text>
-  <text id="text91" x="162.58276" y="242.19389" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan91" x="162.58276" y="242.19389" stroke-width=".14044">b</tspan></text>
-  <text id="text92" x="162.73366" y="230.83475" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan92" x="162.73366" y="230.83475" stroke-width=".14044">a</tspan></text>
-  <text id="text93" x="162.28096" y="220.75972" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan93" x="162.28096" y="220.75972" stroke-width=".14044">e</tspan></text>
-  <text id="text94" x="195.24904" y="241.98514" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan94" x="195.24904" y="241.98514" stroke="#ff0000" stroke-width=".14044">a/e</tspan></text>
-  <text id="text95" x="109.31087" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan95" x="109.31087" y="209.96962" stroke-width=".14044">e</tspan></text>
-  <text id="text96" x="40.896606" y="209.96962" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan96" x="40.896606" y="209.96962" stroke-width=".14044">e</tspan></text>
-  <text id="text97" x="61.63644" y="241.80655" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan97" x="61.63644" y="241.80655" stroke="#ff0000" stroke-width=".14044">e</tspan></text>
-  <text id="text98" x="72.709946" y="241.80734" fill="#000000" font-family="'MonaspiceXe Nerd Font Mono'" font-size="3.175px" letter-spacing=".37042px" stroke="#ff0000" stroke-width=".14044" text-align="justify" word-spacing=".023812px" style="line-height:1.8" xml:space="preserve"><tspan id="tspan98" x="72.709946" y="241.80734" stroke="#ff0000" stroke-width=".14044">a</tspan></text>
+  <use id="use1" transform="matrix(.40455 0 0 .40455 24.4 189.09)" x="11.955" y="17.518" fill="#000000" xlink:href="#glyph-0-0"/>
+  <use id="use1-2" transform="matrix(.40455 0 0 .40455 44.993 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use1-7" transform="matrix(.40455 0 0 .40455 34.588 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use1-28" transform="matrix(.40455 0 0 .40455 54.459 187.85)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use1-1" transform="matrix(.40455 0 0 .40455 64.359 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use2" transform="matrix(.40455 0 0 .40455 45.145 227.88)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use3" transform="matrix(.40455 0 0 .40455 44.993 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use4" transform="matrix(.40455 0 0 .40455 34.588 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use5" transform="matrix(.40455 0 0 .40455 54.459 197.48)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use6" transform="matrix(.40455 0 0 .40455 64.359 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use10" transform="matrix(.40455 0 0 .40455 45.183 207.39)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <use id="use11" transform="matrix(.40455 0 0 .40455 54.431 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use12" transform="matrix(.40455 0 0 .40455 34.436 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use13" transform="matrix(.40455 0 0 .40455 24.311 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use14" transform="matrix(.40455 0 0 .40455 64.35 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use15" transform="matrix(.40455 0 0 .40455 24.501 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use16" transform="matrix(.40455 0 0 .40455 34.626 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use17" transform="matrix(.40455 0 0 .40455 34.626 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use18" transform="matrix(.40455 0 0 .40455 45.154 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use20" transform="matrix(.40455 0 0 .40455 54.421 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use21" transform="matrix(.40455 0 0 .40455 64.198 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <use id="use22" transform="matrix(.40455 0 0 .40455 24.472 227.88)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use23" transform="matrix(.40455 0 0 .40455 34.598 227.88)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use24" transform="matrix(.40455 0 0 .40455 24.463 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use25" transform="matrix(.40455 0 0 .40455 64.388 226.61)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <use id="use26" transform="matrix(.40455 0 0 .40455 54.269 227.88)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <path id="path50" d="m45.818 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path51" d="m55.421 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path52" d="m65.154 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path53" d="m74.886 199.91h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path54" d="m74.886 209.77h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path55" d="m74.886 219.38h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path56" d="m74.886 229.11h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path57" d="m96.767 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <use id="use57" transform="matrix(.40455 0 0 .40455 85.21 189.09)" x="11.955" y="17.518" fill="#000000" xlink:href="#glyph-0-0"/>
+  <use id="use58" transform="matrix(.40455 0 0 .40455 105.8 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use59" transform="matrix(.40455 0 0 .40455 95.399 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use60" transform="matrix(.40455 0 0 .40455 115.27 187.85)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use61" transform="matrix(.40455 0 0 .40455 125.17 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use62" transform="matrix(.40455 0 0 .40455 125.16 228.47)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use63" transform="matrix(.40455 0 0 .40455 105.8 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use64" transform="matrix(.40455 0 0 .40455 95.399 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use65" transform="matrix(.40455 0 0 .40455 115.27 197.48)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use66" transform="matrix(.40455 0 0 .40455 125.17 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use67" transform="matrix(.40455 0 0 .40455 125.2 207.39)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <use id="use68" transform="matrix(.40455 0 0 .40455 105.96 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use69" transform="matrix(.40455 0 0 .40455 95.247 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use70" transform="matrix(.40455 0 0 .40455 85.122 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use71" transform="matrix(.40455 0 0 .40455 115.23 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use72" transform="matrix(.40455 0 0 .40455 85.312 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use73" transform="matrix(.40455 0 0 .40455 95.437 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use74" transform="matrix(.40455 0 0 .40455 95.437 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use75" transform="matrix(.40455 0 0 .40455 115.24 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use76" transform="matrix(.40455 0 0 .40455 105.96 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use77" transform="matrix(.40455 0 0 .40455 125.01 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <use id="use78" transform="matrix(.40455 0 0 .40455 85.283 228.47)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use79" transform="matrix(.40455 0 0 .40455 95.408 228.47)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use80" transform="matrix(.40455 0 0 .40455 85.274 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use81" transform="matrix(.40455 0 0 .40455 105.99 227.2)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <use id="use82" transform="matrix(.40455 0 0 .40455 115.08 228.47)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <path id="path82" d="m106.63 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path83" d="m116.23 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path84" d="m125.96 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path85" d="m135.7 199.91h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path86" d="m135.7 209.77h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path87" d="m135.7 219.38h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path88" d="m135.7 229.11h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path89" d="m157.58 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <use id="use89" transform="matrix(.40455 0 0 .40455 146.02 189.09)" x="11.955" y="17.518" fill="#000000" xlink:href="#glyph-0-0"/>
+  <use id="use90" transform="matrix(.40455 0 0 .40455 166.61 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use91" transform="matrix(.40455 0 0 .40455 156.21 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use92" transform="matrix(.40455 0 0 .40455 176.08 187.85)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use93" transform="matrix(.40455 0 0 .40455 185.98 189.12)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use94" transform="matrix(.40455 0 0 .40455 188.58 229.91)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use95" transform="matrix(.40455 0 0 .40455 166.61 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use96" transform="matrix(.40455 0 0 .40455 156.21 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use97" transform="matrix(.40455 0 0 .40455 176.08 197.48)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use98" transform="matrix(.40455 0 0 .40455 185.98 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use99" transform="matrix(.40455 0 0 .40455 186.33 207.39)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <use id="use100" transform="matrix(.40455 0 0 .40455 176.05 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use101" transform="matrix(.40455 0 0 .40455 156.06 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use102" transform="matrix(.40455 0 0 .40455 145.93 208.67)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-7"/>
+  <use id="use103" transform="matrix(.40455 0 0 .40455 166.18 208.67)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use104" transform="matrix(.40455 0 0 .40455 146.12 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use105" transform="matrix(.40455 0 0 .40455 156.25 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use106" transform="matrix(.40455 0 0 .40455 156.25 217.2)" x="11.955" y="20.257999" fill="#000000" xlink:href="#glyph-0-0-9"/>
+  <use id="use107" transform="matrix(.40455 0 0 .40455 166.78 218.48)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-73"/>
+  <use id="use108" transform="matrix(.40455 0 0 .40455 183.42 216.22)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use109" transform="matrix(.40455 0 0 .40455 173.41 216.22)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <use id="use110" transform="matrix(.40455 0 0 .40455 146.09 227.88)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use111" transform="matrix(.40455 0 0 .40455 156.22 227.88)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-73"/>
+  <use id="use112" transform="matrix(.40455 0 0 .40455 146.08 198.76)" x="11.955" y="17.103001" fill="#000000" xlink:href="#glyph-0-0-2"/>
+  <use id="use113" transform="matrix(.40455 0 0 .40455 166.48 226.61)" x="11.955" y="20.257999" fill="#b7044d" xlink:href="#glyph-0-0-9"/>
+  <path id="path114" d="m167.44 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path115" d="m177.04 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path116" d="m186.77 190.18v48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path117" d="m196.51 199.91h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <path id="path118" d="m196.51 209.77h-48.662" fill="none" stroke="#000" stroke-width=".129"/>
+  <path id="path119" d="m196.51 219.38h-48.662" fill="none" stroke="#000" stroke-width=".129"/>
+  <path id="path120" d="m196.51 229.11h-48.662" fill="none" stroke="#000" stroke-width=".12946"/>
+  <use id="use120" transform="matrix(.40455 0 0 .40455 178.39 220.57)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use121" transform="matrix(.40455 0 0 .40455 188.43 220.57)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <use id="use122" transform="matrix(.40455 0 0 .40455 183.27 226.12)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <use id="use123" transform="matrix(.40455 0 0 .40455 173.56 226.12)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-2"/>
+  <use id="use124" transform="matrix(.40455 0 0 .40455 178.24 229.91)" x="11.955" y="17.103001" fill="#b7044d" xlink:href="#glyph-0-0-7"/>
+  <path id="path124" d="m177.04 238.84 19.465-19.465" fill="none" stroke="#000" stroke-width=".129"/>
+  <path id="path125" d="m177.04 229.19 9.7375-9.8128" fill="none" stroke="#000" stroke-width=".129"/>
+  <path id="path126" d="m196.51 229.11-9.7324 9.7324" fill="none" stroke="#000" stroke-width=".129"/>
  </g>
 </svg>

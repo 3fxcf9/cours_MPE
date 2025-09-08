@@ -1,4 +1,22 @@
-<svg id="svg8" width="32.628mm" height="32.628mm" version="1.1" viewBox="0 0 32.628 32.628" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg id="svg8" width="30.164mm" height="30.164mm" version="1.1" viewBox="0 0 30.164 30.164" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs id="defs2">
+  <g id="g1"></g>
+  <g id="g1-7">
+   <g id="glyph-0-0-5">
+    <path id="path1" d="m4.7656-2.7656h3.2969c0.17188 0 0.39062 0 0.39062-0.20312 0-0.23438-0.20312-0.23438-0.39062-0.23438h-3.2969v-3.2969c0-0.17188 0-0.39062-0.21875-0.39062s-0.21875 0.20312-0.21875 0.39062v3.2969h-3.2969c-0.17188 0-0.39062 0-0.39062 0.21875s0.20312 0.21875 0.39062 0.21875h3.2969v3.2969c0 0.17188 0 0.39062 0.21875 0.39062s0.21875-0.20312 0.21875-0.39062z"/>
+   </g>
+  </g>
+  <g id="g1-2">
+   <g id="glyph-0-0-7">
+    <path id="path1-0" d="m5.3594-3.8281c0-0.98438-0.0625-1.9531-0.5-2.8594-0.48438-1-1.3438-1.2656-1.9375-1.2656-0.6875 0-1.5312 0.34375-1.9844 1.3438-0.32812 0.75-0.45312 1.5-0.45312 2.7812 0 1.1562 0.09375 2.0312 0.51562 2.8906 0.46875 0.90625 1.2969 1.1875 1.9219 1.1875 1.0312 0 1.625-0.625 1.9844-1.3125 0.42188-0.89062 0.45312-2.0625 0.45312-2.7656zm-2.4375 3.8438c-0.39062 0-1.1719-0.21875-1.3906-1.5156-0.125-0.71875-0.125-1.625-0.125-2.4688 0-0.98438 0-1.8594 0.1875-2.5625 0.20312-0.8125 0.8125-1.1719 1.3281-1.1719 0.45312 0 1.1406 0.26562 1.375 1.2969 0.15625 0.6875 0.15625 1.625 0.15625 2.4375 0 0.79688 0 1.7031-0.14062 2.4375-0.21875 1.3125-0.98438 1.5469-1.3906 1.5469z"/>
+   </g>
+  </g>
+  <g id="g1-6">
+   <g id="glyph-0-0-0">
+    <path id="path1-6" d="m3.4375-7.6562c0-0.28125 0-0.29688-0.23438-0.29688-0.28125 0.32812-0.89062 0.76562-2.1094 0.76562v0.34375c0.26562 0 0.85938 0 1.5312-0.29688v6.2188c0 0.4375-0.046875 0.57812-1.0938 0.57812h-0.375v0.34375c0.32812-0.03125 1.4844-0.03125 1.875-0.03125 0.40625 0 1.5469 0 1.875 0.03125v-0.34375h-0.375c-1.0469 0-1.0938-0.14062-1.0938-0.57812z"/>
+   </g>
+  </g>
+ </defs>
  <metadata id="metadata5">
   <rdf:RDF>
    <cc:Work rdf:about="">
@@ -8,12 +26,46 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g id="layer1" transform="translate(-57.863 -209.2)" fill="none" stroke="#000" stroke-width=".12034">
-  <path id="path1" d="m63.593 209.2v32.628"/>
-  <path id="path2" d="m74.177 209.2v32.628"/>
-  <path id="path3" d="m84.76 209.2v32.628"/>
-  <path id="path4" d="m57.863 236.09h32.628"/>
-  <path id="path5" d="m57.863 225.51h32.628"/>
-  <path id="path6" d="m57.863 214.93h32.628"/>
+ <g id="layer1" transform="translate(-62.472 -209.28)">
+  <path id="path4" d="m62.472 219.3 30.164 0.0385" fill="none" stroke="#000" stroke-width=".076925"/>
+  <path id="path13" d="m62.472 229.39 30.164 0.0385" fill="none" stroke="#000" stroke-width=".076925"/>
+  <path id="path14" d="m82.62 209.28-0.03848 30.164" fill="none" stroke="#000" stroke-width=".076925"/>
+  <path id="path15" d="m72.526 209.28-0.03848 30.164" fill="none" stroke="#000" stroke-width=".076925"/>
+  <g id="g27" transform="matrix(.63922 0 0 .63922 19.791 75.211)">
+   <path id="path2" d="m71.086 213.62h6.9953" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use2" transform="matrix(.76825 0 0 .76825 61.906 203.88)" x="11.955" y="21.237" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-5"/>
+  </g>
+  <g id="g26" transform="matrix(.63922 0 0 .63922 22.158 75.132)">
+   <path id="path2-9" d="m84.388 213.63h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use2-3" transform="matrix(.76825 0 0 .76825 75.208 203.9)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-7"/>
+  </g>
+  <g id="g25" transform="matrix(.63922 0 0 .63922 23.511 75.255)">
+   <path id="path2-2" d="m98.229 213.63h4.4985" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use2-6" transform="matrix(.76825 0 0 .76825 88.989 203.9)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-0"/>
+  </g>
+  <g id="g29" transform="matrix(.63922 0 0 .63922 22.158 75.534)">
+   <path id="path16" d="m84.388 228.86h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use16" transform="matrix(.76825 0 0 .76825 75.208 219.13)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-7"/>
+  </g>
+  <g id="g30" transform="matrix(.63922 0 0 .63922 23.511 75.657)">
+   <path id="path17" d="m98.229 228.86h4.4985" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use17" transform="matrix(.76825 0 0 .76825 88.989 219.13)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-0"/>
+  </g>
+  <g id="g32" transform="matrix(.63922 0 0 .63922 22.158 75.649)">
+   <path id="path18" d="m84.388 244.87h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use18" transform="matrix(.76825 0 0 .76825 75.148 235.13)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-0"/>
+  </g>
+  <g id="g33" transform="matrix(.63922 0 0 .63922 19.791 75.649)">
+   <path id="path19" d="m72.334 244.87h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use19" transform="matrix(.76825 0 0 .76825 63.094 235.13)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-0"/>
+  </g>
+  <g id="g28" transform="matrix(.63922 0 0 .63922 19.791 75.742)">
+   <path id="path20" d="m72.334 228.54h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use20" transform="matrix(.76825 0 0 .76825 63.154 218.8)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-7"/>
+  </g>
+  <g id="g31" transform="matrix(.63922 0 0 .63922 23.511 75.596)">
+   <path id="path21" d="m98.229 244.76h4.4984" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width=".20616"/>
+   <use id="use21" transform="matrix(.76825 0 0 .76825 89.049 235.03)" x="11.955" y="22.051001" fill="#000000" stroke-width=".94452" xlink:href="#glyph-0-0-7"/>
+  </g>
  </g>
 </svg>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="99.984406mm"
+   height="57.386387mm"
+   viewBox="0 0 99.984406 57.386387"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="groupe-cyclique.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="199.40411"
+     inkscape:cy="63.993162"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1158"
+     inkscape:window-x="0"
+     inkscape:window-y="42"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false"
+       originx="-62.55739"
+       originy="-26.773347" />
+    <sodipodi:guide
+       position="58.829007,81.583666"
+       orientation="0,-1"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="50.260667,90.152004"
+       orientation="1,0"
+       id="guide3"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-62.557392,-203.77335)">
+    <circle
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.614101;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       id="path1"
+       cx="90.06559"
+       cy="233.65154"
+       r="27.201147" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.296788;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       id="path2"
+       cx="117.26674"
+       cy="233.65154"
+       r="0.9304831"
+       inkscape:transform-center-x="-27.19918"
+       inkscape:transform-center-y="0.0022707411" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.296788;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       id="circle3"
+       cx="-11.624664"
+       cy="247.38228"
+       r="0.9304831"
+       inkscape:transform-center-x="-23.556326"
+       inkscape:transform-center-y="-13.597594"
+       transform="rotate(-30)" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.296788;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       id="circle4"
+       cx="-130.11324"
+       cy="194.8277"
+       r="0.9304831"
+       inkscape:transform-center-x="-13.601559"
+       inkscape:transform-center-y="-23.554047"
+       transform="rotate(-60)" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.296788;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       id="circle5"
+       cx="222.02461"
+       cy="157.31471"
+       r="0.9304831"
+       inkscape:transform-center-x="-23.55404"
+       inkscape:transform-center-y="13.601579"
+       transform="rotate(30)" />
+    <text
+       style="font-size:4.62774px;font-family:'MonaspiceNe Nerd Font';-inkscape-font-specification:'MonaspiceNe Nerd Font, Normal';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.385645"
+       xml:space="preserve"
+       id="text1"
+       y="207.86427"
+       x="104.93208"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="104.93208"
+         y="207.86427"
+         style="font-size:4.62774px;stroke-width:0.385645">$x^{2}$</tspan></text>
+    <text
+       style="font-size:4.62774px;font-family:'MonaspiceNe Nerd Font';-inkscape-font-specification:'MonaspiceNe Nerd Font, Normal';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.385645"
+       xml:space="preserve"
+       id="text5"
+       y="217.82072"
+       x="116.47435"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         x="116.47435"
+         y="217.82072"
+         style="font-size:4.62774px;stroke-width:0.385645">$x^{1}$</tspan></text>
+    <text
+       style="font-size:2.64583px;font-family:'MonaspiceNe Nerd Font';-inkscape-font-specification:'MonaspiceNe Nerd Font, Normal';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       xml:space="preserve"
+       id="text6"
+       y="242.18968"
+       x="132.32793"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         x="132.32793"
+         y="242.18968"
+         style="stroke-width:0.264583" /></text>
+    <text
+       style="font-size:4.62774px;font-family:'MonaspiceNe Nerd Font';-inkscape-font-specification:'MonaspiceNe Nerd Font, Normal';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.385645"
+       xml:space="preserve"
+       id="text7"
+       y="248.112"
+       x="116.52171"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         x="116.52171"
+         y="248.112"
+         style="font-size:4.62774px;stroke-width:0.385645">$x^{2}$</tspan></text>
+    <text
+       style="font-size:4.62774px;font-family:'MonaspiceNe Nerd Font';-inkscape-font-specification:'MonaspiceNe Nerd Font, Normal';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.385645"
+       xml:space="preserve"
+       id="text1-3"
+       y="234.58202"
+       x="119.73978"><tspan
+         sodipodi:role="line"
+         id="tspan1-6"
+         x="119.73978"
+         y="234.58202"
+         style="font-size:4.62774px;stroke-width:0.385645">$e=x^{0}=x^{d}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;line-height:1.8;font-family:'MonaspiceXe Nerd Font Mono';-inkscape-font-specification:'MonaspiceXe Nerd Font Mono';text-align:justify;letter-spacing:0.370417px;word-spacing:0.0238125px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.421322;stroke-dasharray:none;stroke-opacity:1;marker-start:none;marker-end:none"
+       x="128.38905"
+       y="218.20885"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="stroke-width:0.421322"
+         x="128.38905"
+         y="218.20885" /></text>
+  </g>
+</svg>

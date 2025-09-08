@@ -415,16 +415,16 @@
 %proof
   1. On a
      $$
-       \mathcal{H} = \left\{H \in P(G) \mid H < G \quad\text{et}\quad X \subset H\right\}
+       \mathbb{H} = \left\{H \in P(G) \mid H < G \quad\text{et}\quad X \subset H\right\}
      $$
      $$
-       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H < (G,\star)
+       \langle X\rangle = \bigcap_{H \in \mathbb{H}}H < (G,\star)
      $$
-     De plus, $\forall H \in \mathcal{H}, G \subset H$ donc $X \subset \langle X\rangle$.
+     De plus, $\forall H \in \mathbb{H}, G \subset H$ donc $X \subset \langle X\rangle$.
      $\langle X\rangle$ est un sous-groupe de $(G,\star)$ sontenant $X$.
-     Soit $K \in \mathcal{H}$.
+     Soit $K \in \mathbb{H}$.
      $$
-       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H = \left(\bigcap_{H \in \mathcal{H}\setminus \{K\}}H\right)  \cap  K \subset K
+       \langle X\rangle = \bigcap_{H \in \mathbb{H}}H = \left(\bigcap_{H \in \mathbb{H}\setminus \{K\}}H\right)  \cap  K \subset K
      $$
   2. %offprog
        Soit $X \neq \emptyset$.
@@ -473,12 +473,12 @@
 %def
   Soit $(G,\star)$ un groupe
   1. On dit qu’une partie $X$ de $G$ engendre $G$ si $G = \grp X$, i.e. si $X$ est une partie génératrice de $G$.
-  2. %offprog
-       On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
+  %offprog
+    2. On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
        $$
          \rang(G) = \min\{\abs{X} / X \in \Part(G), X \text{ est finie}, \grp X = G\}
        $$
-     %
+  %
 %
 
 %eg
@@ -824,8 +824,8 @@
 %
 
 %eg
-  %rfig table_Z_2Z
-      @[./figures/table_z_2z_optimized.svg]
+  %rfig Table de $\Z/2\Z$
+    @[./figures/table_z_2z_optimized.svg]
   %
   - $(\Z/1\Z, \bar{+}) = (\{\bar{0}\}, \bar{+})$
   - $(\Z/2\Z, \bar{+}) = (\{\bar{0}, \bar{1}\}, \bar{+}) \simeq (\U_{2}, \times)$
@@ -898,8 +898,8 @@
   1. Dans $(\Z,+)$, $\omega(0) = 1$ et $\forall n \in \Z^{*}, \omega(n) = +\infty$
   2. Dans $(\U_{2}, \times )$, $\omega(1) = 1$ et $\omega(-1) = 2$
   3. Dans $(\U_{4}, \times )$, $\omega(1) = 1$, $\omega(-1) = 2$, $\omega(i) = 4$, $\omega(-1) = 4$
-  4. L’ensemble $\mathbb{P}_{n} = \{z \in \U_{n} / \omega(z) = n\}$ est l’ensemble des racines primitives n-ièmes de l’unité.
-     $\mathbb{P}_{1} = \{1\}$; $\mathbb{P}_{2} = \{-1\}$; $\mathbb{P}_{3} = \{j,j^{2}\}$; $\mathbb{P}_{4} = \{i,-i\}$
+  4. L’ensemble $\mathbf{P}_{n} = \{z \in \U_{n} / \omega(z) = n\}$ est l’ensemble des racines primitives n-ièmes de l’unité.
+     $\mathbf{P}_{1} = \{1\}$; $\mathbf{P}_{2} = \{-1\}$; $\mathbf{P}_{3} = \{j,j^{2}\}$; $\mathbf{P}_{4} = \{i,-i\}$
   5. Dans $(Z_{n},\circ)$, un p-cycle est d’ordre $p$. Si une permutation $\sigma$ de $S_{n}$ se décompose comme le produits des cycles $c_{1}, \ldots, c_{k}$, alors $\omega(\sigma) = \ppcm (\text{long}(c_{1}), \ldots, \text{long}(c_{k}))$(($\sigma^{l} = c_{1}^{l} \circ \cdots \circ c_{k}^{l} = \id \iff \begin{cases}l \in \text{long}(c_{1})\Z\\ \vdots \\ l \in \text{long}(c_{k})\end{cases}$))
   6. Dans le groupe  $(\GL_{2}(\R), \times )$ en posant $A = \mtx{0&1\\-1&0}\in \GL_{2}(\R)$ et $B = \mtx{0&1\\-1&-1} \in \GL_{2}(\R)$, on a $\omega(A) = 4$ et $\omega(B) = 3$. De plus, $A \times B = -(I+J)$ avec $J = \mtx{0&1\\0&0}$ (vérifiant $J^{2} = I_{2}$), donc
      $$
@@ -949,14 +949,14 @@
      $$
        \omega(x) = 1 \iff  \min\{k \in \N^{*} / x^{k} = e\} = 1 \iff  x^{1} = e \iff x=e
      $$
-  3. $\{k \in \N/x^{k}=e\} = \{k \in \N* / (x^{k})^{-1} = e^{-1}\} = \{k \in \N^{*} / (x^{-1})^{k} = e\}$ d’où $\omega(x) = \omega(x^{-1})$.
+  3. $\{k \in \N/x^{k}=e\} = \{k \in \N^* / (x^{k})^{-1} = e^{-1}\} = \{k \in \N^{*} / (x^{-1})^{k} = e\}$ d’où $\omega(x) = \omega(x^{-1})$.
   4. %offprog
        $\{k \in \N^{*} / f(x)^{k} = e'\} = \{k \in \N^{*}/ f(x^{k}) = e'\} \underset{\text{inj.}}= \{k \in \N^{*} / x^{k} = e\}$ d’où $\omega(f(x)) = \omega(x)$.
      %
   5. %offprog
        Soit $(x,y) \in G^{2}$. L’application
        $$
-         \varphi_{k} : \applic{G}{G}{z}{y\ctar z\star y^{-1}}
+         \varphi_{k} : \applic{G}{G}{z}{y\star z\star y^{-1}}
        $$
        est un automorphisme (dit *intérieur*) injectif, d’où $\omega(\varphi_{y}(xy)) = \omega(xy)$ donc $\omega(yxyy^{-1}) = \omega(xy)$, ainsi $\omega(xy) = \omega(yx)$.
      %
@@ -970,7 +970,7 @@
      $$
      Supposons $d \in \N^{*}$, alors
      $$
-       (\triangle) \iff \min\{k \in \N* / x^{k} = e\} = d \iff \omega(x) = d
+       (\triangle) \iff \min\{k \in \N^* / x^{k} = e\} = d \iff \omega(x) = d
      $$
      donc
      $$
@@ -1000,7 +1000,8 @@
        \end{cases}\iff k \in (d\Z \cap d'\Z) \iff  k \in (d \lor d')\Z
      $$
      donc $\omega((x,x')) = d \lor d'$.
-  2. - $(\Z/4\Z, \bar{+}) \simeq (\U_{4}, \times )$.
+  2. De plus,
+     - $(\Z/4\Z, \bar{+}) \simeq (\U_{4}, \times )$.
 
        $\omega(1) = 1$, $\omega(-1) = 2$, $\omega(i) = \omega(-i) = 4$
 
@@ -1014,16 +1015,16 @@
      Aucun élément de $(\U_{2}^{2}, \times )$ n’est d’ordre 4. ++Il y a donc deux structures distinctes de groupes de cardinal 4++.
 
      - Soit $G = \{e,a,b,c\}$ un groupe de cardinal 4.
-       %fig table_groupe_card_4
-           @[./figures/table_groupe_card_4_optimized.svg]
+       %fig Table des groupes de cardinal 4
+         @[./figures/table_groupe_card_4_optimized.svg]
        %
        Il n’y a, à isomorphisme près, ++que deux types de groupes à 4 éléments++ (tous deux abéliens), ceux de $(\Z/4\Z,\bar{+})$ et de $(\U_{2}^{2}, \times )$.
   3. Soit $(G,\star)$ un groupe. Soit $x \in G$.
-    - Si $\omega(x) = +\infty$, alors que peut-on dire de $\omega(x^{p})$ pour $p \in \Z$ ?
-      $$
-        \pi(x^{0}) = \omega(e) = 1
-      $$
-      Soit $p \in \Z^{*}$. Supposons $\omega(x^{p}) = d \in \N^{*}$. Alors $(x^{p})^{d} = e$, i.e. $x^{pd} = e$ ou encome $x^{\abs{p}d} = e$ et $\abs{p}d \in \tn*$; ce qui est en contradiction avec $\omega(x) = +\infty$.
+     - Si $\omega(x) = +\infty$, alors que peut-on dire de $\omega(x^{p})$ pour $p \in \Z$ ?
+       $$
+         \omega(x^{0}) = \omega(e) = 1
+       $$
+       Soit $p \in \Z^{*}$. Supposons $\omega(x^{p}) = d \in \N^{*}$. Alors $(x^{p})^{d} = e$, i.e. $x^{pd} = e$ ou encome $x^{\abs{p}d} = e$ et $\abs{p}d \in \N^{*}$; ce qui est en contradiction avec $\omega(x) = +\infty$.
   4. Soit $(G,\star)$ un groupe. Soit $x \in G$ avec $\omega(x) < +\infty$. Soit $p \in \N$. Déterminer $\omega(x^{p})$.
      $$
        \begin{align*}
@@ -1041,5 +1042,379 @@
      $$
        \forall p \in \Z, \omega(x^{p}) = \frac{\omega(x)}{p \land \omega(x)}
      $$
+%
 
+## Groupes monogènes et groupes $(\Z/n\Z,\bar{+})$
+
+%def Groupe monogène
+  Un groupe $(G,\star)$ est dit monogène si il existe $x \in G$ tel que $G = \grp{\{x\}} = \{x^{k} / k \in \Z\}$.
+  %offprog
+    Un groupe est monogène si et seulement si son rang vaut 0 ou 1.
+  %
+%
+
+%thm Description des groupes monogènes
+  Soit $(G,\star)$ un groupe monogène. Soit $x \in G$ tel que $G = \grp x$.
+  - si $\omega(x) = +\infty$, alors
+    $$
+      \forall (k,l) \in \Z^{2}, k\neq l \implies x^{k}\neq x^{l}
+    $$
+    donc $G$ est infini et isomorphe à $(\Z,+) = \grp 1$.
+  - sinon, $\omega(x) = d \in \N^{*}$. Alors $G$ est fini de cardinal $d$ et $G = \{e,x, \ldots, x^{d-1}\}$ donc
+    $$
+     \abs{G} = d = \omega(x) \quad\text{et}\quad (G,\star)\simeq(\Z/n\Z,\bar{+}) \simeq (\U_{d}, \times )
+    $$
+    $G$ est donc monogène fini (i.e. *cyclique*)
+%
+
+%lemma
+  - Groupes monogènes: $(\Z,+)$ et $(\Z/d\Z,\bar{+})$ avec $d \in \N^{*}$
+  - Groupes cycliques: $(\Z/d\Z,\bar{+})\simeq (\U_{d}, \times )$
+%
+
+%proof
+  - si $\omega(x) = +\infty$, alors
+    $$
+      f: \applic{(\Z,+)}{G}{k}{x^{k}}
+    $$
+    est un morphisme surjectif de groupes de noyau $\ker f = \{0\}$. C’est donc un isomorphisme.
+  - sinon, $\omega(x) = d \in \N^{*}$. Alors
+    $$
+      \ker f = \{k \in \Z / x^{k} = e\} = d\Z
+    $$
+    L’application
+    $$
+      g:\applic{(\Z/d\Z,+)}{G}{\bar{k}}{x^{k}}
+    $$
+    est correctement définie. En effet, pour $(k,l) \in \Z^{2}$,
+    $$
+      \bar{k} = \bar{l} \iff  k\cgm l[d] \iff  \exists q \in \Z, k = l + q d \implies x^{k} = x^{l+qd} = x^{l} \star(x^{d})^{q} = x^{l}
+    $$
+
+    - Soit $(k,l) \in \Z^{2}$.
+      $$
+        g(\bar{k} \bar{+} \bar{l}) = g(\bar{k+l}) = x^k+l = x^{k}\star x^{l} = g(\bar{k}) \star g(l)
+      $$
+      Donc $g$ est un morphisme de groupes.
+      - $g$ est surjectif
+      - Soit $k \in \Z$.
+        $$
+          \bar{k} \in \ker g \iff x^{k} = e \iff  k \in d\Z \iff \bar{k} = \bar{0}
+        $$
+        donc $\ker g = \{\bar{0}\}$.
+      Ainsi, $g$ est un isomorphisme de groupes.
+    donc $\Z/d\Z$ étant fini de cardinal, $G$ l’est aussi et
+    $$
+      G = \{g(\bar{0}), g(\bar{1}), \ldots, g(\bar{d-1})\} = \{e,x,\ldots, x^{d-1}\}
+    $$
+    d’où $\abs{G} = d = \omega(x)$
+%fig Groupe cyclique
+  @[./figures/groupe-cyclique_optimized.svg]
+%
+
+%
+
+En conclusion, pour un groupe $(G,\star)$, on a~:
+- $G$ monogène si et seulement si
+  $$
+    \exists x \in G, G = \grp x
+  $$
+- $G$ cyclique si et seulement si
+  $$
+    \begin{cases}
+      G \text{ fini}\\
+      \exists x \in G:G=\grp x
+    \end{cases} \iff \exists x \in G:\begin{cases}
+      \omega(x) < +\infty\\
+      \abs{G} = \omega(x)
+    \end{cases}
+  $$
+
+%thm THÉORÈME
+  Soit $(G,\star)$ un groupe fini.
+  L’ordre de tout élément de $G$ divise le cardinal de $G$. On a donc toujours
+  $$
+    \forall x \in G, x^{\abs{G}} = e
+  $$
+%
+
+%proof
+  Soit $x \in G$. Posons $H = \grp x$. $H$ est un sous-groupe de $G$ fini donc $H$ est monogène fini, donc cyclique, donc
+  $$
+    \omega(x) \in \N^{*} \quad\text{et}\quad \abs{H} = \omega(x)
+  $$
+  %offprog
+    D’après le théorème de Lagrange,
+    $\abs{H}$ divise $\abs{G}$. Il existe donc $k \in \N^{*}$ tel que $\abs{G} = k \omega(x)$, d’où
+    $$
+      x^{\abs{G}} = (x^{\omega(x)})^{k} = e
+    $$
+  %
+%
+
+%eg
+  1. $\forall \sigma \in S_{n}, \sigma^{n!} = \id_{\icc{1,n}}$
+  2. Soit $G$ un grope de cardinal $p$ premier. Soit $x \in G$. On a $\omega(x) \mid p$, donc $\omega(x) \in \{1,p\}$.
+     Alors, pour tout $x \in G \setminus \{e\}$, $\omega(x) \neq \emptyset$, donc
+     $$
+       G = \grp x \simeq (\Z/p\Z,+)
+     $$
+
+     Si $\abs{G} = k$, alors $G$ est isomorphe à
+     - $k=2$: $(\Z/2\Z, \bar{+})$
+     - $k=3$: $(\Z/3\Z, \bar{+})$
+     - $k=4$: $(\Z/4\Z, \bar{+})$ ou $(\U_{2}^{2}, \times )\simeq ((\Z/2\Z)^{2},+)$
+     - $k=5$: $(\Z/5\Z, \bar{+})$
+     - $k=6$: $(\Z/6\Z, \bar{+})$ ou $(S_{3},\circ)$((cf. TD))
+     - $k=7$: $(\Z/7\Z, \bar{+})$
+  3. ++Sous-groupes finis de $(\U, \times )$++. Soit $H$ un sous-groupe fini de cardinal $n \in \N^{*}$ de $(\U_{n}, \times )$. Pour tout $z \in H$, $z^{n} = 1$ donc $H \subset \U_{n}$. Or $\abs{H} = \abs{\U_{n}} = n$ donc $H = \U_{n}$.
+     **Les sous-groupes finis de $(\U, \times )$ sont les groupes $(\U_{n}, \times )$.**
+%
+
+%offprog
+  %thm
+    Soit $d$ un diviseur de $n \in \N^{*}$. Tout ++groupe cyclique++ de cardinal $n$ possède un sous-groupe de cardinal $d$ et un seul. Ce dernier est cyclique.
+  %
+
+  %proof
+    - Sous-groupe de $(\U_{n}, \times )$. Soit $d$ un diviseur de $n$. Soit $H$ un sous-groupe de $(\U_{n}, \times )$ de cardinal $d$. On a
+      $$
+        H < (\U, \times ) \quad\text{et}\quad \abs{H} = d
+      $$
+      donc $H = \U_{d}$. $\U_{d}$ est bien un groupe cyclique et
+      $$
+        d\mid n \implies  \left[ \begin{cases}z \in \C\\z^{d} = 1\end{cases} \implies z^{n} = 1\right] \implies  \U_{d} \subset \U_{n}
+      $$
+      $(\U_{n}, \times )$ possède un seul sous-groupe de cardinal $d$ (diviseur de $n$).
+    - $(G, \star)$ cyclique de cardinal $n$. Il existe un isomorphisme $f: (G, x) \implies  (\U_{n}, \times )$ d’où pour $d$ un diviseur de $n$,
+      $$
+        \begin{cases}H < G \\ \abs{H} = d\end{cases} \iff  \begin{cases}f(H) < \U_{n} \\ \abs{f(H)} = d\end{cases} \iff  f(H) = \U_{d} \iff  H = f^{-1}(\U_{d})
+      $$
+      $$
+        \begin{align*}
+          H &= \{f^{-1}(e^{\frac{2ik \pi}{n}}) / k \in \icc{0,d-1}\}\\
+          &= \{(f^{-1}(e^{\frac{2i \pi}{d}}) / k \in \Z)\}\\
+          &=\grp{ f^{-1}(e^{\frac{2i \pi}{d}})} \text{ est un groupe mopnogène fini}
+        \end{align*}
+      $$
+  %
+
+  %rem
+    Si $G = \grp x$ et $\omega(x) = n$, alors $\grp{x^{n/d}} = H$ est l’unique sous-groupe de $G$ de cardina $d$ et
+    $$
+      \omega(x^{n/d}) = \frac{n}{\left(\frac{n}{d}\right) \land n} = \frac{n}{\left(\frac{n}{d}\right)}=d
+    $$
+  %
+
+  %eg
+    $(\Z/8\Z, \bar{+})$ est un groupe cyclique de cardinal 8. Les diviseurs de 8 sont 1,2,5 et 8. $(\Z/8\Z, \bar{+})$ possède 4 sous-groupes (cyoliques)~:
+    - $H_{1} = \{\bar{0}\}$
+    - $H_{2} = \grp{\bar{4}} = \{\bar{0}, \bar{4}\} \simeq (\Z/2\Z, \bar{+})$
+    - $H_{4} = \grp{\bar{2}} = \grp{\bar{6}} = \{\bar{0}, \bar{2}, \bar{4} \bar{6}\} \simeq \Z/4\Z$
+    - $H_{8} = (\Z/8\Z, \bar{+}) = \grp{\bar{1}} = \grp{\bar{3}} = \grp{\bar{5}} = \grp{\bar{7}}$
+    $\omega(\bar{k}) = \omega(k \cdot \bar{1}) = \frac{\omega(\bar{1})}{k \land \omega(\bar{1})} = \frac{8}{8 \land k}$
+
+    $$
+      \begin{align*}
+        \bar{k} &= \bar{0}, \bar{1}, \bar{2}, \bar{3}, \bar{4}, \bar{5}, \bar{6}, \bar{7}\\
+        \omega(\bar{k}) &= 1, 8, 4, 8, 2, 8, 4, 8
+      \end{align*}
+    $$
+  %
+%
+
+%thm Théorème chinois
+  Soit $(m,n) \in \N^{*}$.
+  1. Si $m \land  n = 1$, alors
+     $$
+       \left(\Z/mn\Z, \bar{+}\right) \simeq  \left(\Z/m\Z \times \Z/n\Z, \bar{+}\right)
+     $$
+  %offprog
+    2. La réciproque est vraie
+  %
+%
+
+%proof
+  1. Supposons $m \land  n = 1$. Posons, sous réserve d’existence
+     $$
+       f: \applic{(\Z/mn\Z,\bar{+})}{(\Z/m\Z \times \Z/n\Z, +)}{\bar{k}}{(\dot k,\hat k)}
+     $$
+     - $f$ est correctement définie. En effet, pour $(k,l) \in \Z^{2}$, on a
+       $$
+         \bar{k} = \bar{l} \iff  k\cgm l{mn} \implies  \begin{cases}k\cgm lm\\k\cgm ln\end{cases} \implies  \begin{cases}\dot k = \dot l\\\hat k = \hat l\end{cases}
+       $$
+     - Soit $(k,l) \in \Z^{2}$.
+       $$
+         \begin{align*}
+           f(\bar{k} \bar{+} \bar{l})&= f(\bar{k+l})\\
+           &= (\overset{\cdot}{\overgroup{k+l}}, \widehat{k+l})\\&=(\dot k\dot +\dot l, \hat k \hat + \hat l)\\
+           &=(\dot k, \hat k) + (\dot l, \hat l)\\
+           &=f(\bar k) + f(\bar{l})
+         \end{align*}
+       $$
+       donc $f$ est un morphisme de groupes.
+     - ++Surjectivité.++ Soit $k \in \Z$.
+       $$
+         \begin{align*}
+           k \in \ker f &\iff  \begin{cases}\dot k = \dot 0\\\hat k = \hat 0\end{cases}\\ &\iff \begin{cases}k \in m\Z\\k \in  n\Z\end{cases}\\ &\iff  k \in (m\Z) \cap (n\Z) \\&\iff  k \in (m \lor n)\Z
+         \end{align*}
+       $$
+       Comme $m \land  n = 1$, on a $m \lor  n = mn$. Alors
+       $$
+         \dot k \in \ker f \iff  k \in mn\Z \iff  \bar{k} = \bar{0}
+       $$
+       Donc $f$ est injectif.
+     - De plus,
+       $$
+         \abs{\Z/mn\Z} = mn = \abs{\Z/m\Z} \times \abs{\Z/n\Z} = \abs{\Z/m\Z \times \Z/n\Z}
+       $$
+       si bien que $f$ est un isomorphisme de groupes.
+  %offprog
+    2. Supposons qu’il existe un isomorphisme
+       $$
+         g:(\Z/mn\Z, \bar{+}) \longrightarrow (\Z/m\Z \times \Z/n\Z, +)
+       $$
+       Posons $g(\bar{1}) = (a,b)$. Comme $g$ est un morphisme injectif, on a
+       $$
+         \omega((a,b)) = \omega(g(\bar{1})) = \omega(\bar{1})
+       $$
+       d’où $\omega(a) \lor \omega(b) = mn$.
+
+       $a \in \Z/m\Z$ donc $\omega(a) \mid m = \abs{\Z/m\Z}$.
+
+       $b \in \Z/n\Z$ donc $\omega(b) \mid n = \abs{\Z/n\Z}$.
+
+       Ainsi, $\omega(a) \mid (m \lor  n)$ et $\omega(b)\mid (m \lor  n)$, soit
+       $$
+         (\omega(a) \lor \omega(b)) \mid m \lor n
+       $$
+       i.e. $mn\mid m \lor  n$. Cependant, $(mn)$ est un multiple commun à $m$ et $n$, donc $(m \lor  n)\mid mn$, d’où $m \lor  n = mn$ d’où $m \lor n = 1$.
+  %
+%
+
+%eg
+  $2 \land 3 = 1$ donc
+  $$
+    (\Z/2\Z \times \Z/3\Z,+) \simeq (\Z/6\Z, \bar{+})
+  $$
+%
+
+## Indicatrice d’Euler
+
+%def
+  On pose pour $n \in \N^{*}$
+  $$
+    \varphi(n) = \#\{k \in \icc{1,n} / k \land n = 1\}
+  $$
+%
+
+%property
+  1. $\varphi(1) = 1$ et
+     $$
+       \forall n \geq 2, \varphi(n) \in \cc{1,n-1}
+     $$
+  2. $\varphi(n) = \#\{k \in \icc{0,n-1} / k \land  n = 1\}$
+  3. $\varphi(n)$ est le nombre d’éléments d’ordre $n$ du groupe cyclique $(\Z/n\Z, \bar{+}) \simeq (\U_{n}, \times )$ donc
+     $$
+       \begin{align*}
+          \varphi(n) &=\#\{x \in \Z/n\Z / \Z/n\Z = \grp x\}\\
+          &=\#\{z \in \U_{n} / \omega(z) = n\}\\
+          &=\# \mathbf{P}_{n}
+       \end{align*}
+     $$
+%
+
+%proof
+  1. - $1 \land 1 = 1$ donc $\varphi(1) = \#\{1\} = 1$
+     - Soit $n \geq 2$. $n \land n = n\neq 1$ et $1 \land  n = 1$ donc $\varphi(n) \leq \#\icc{1,n-1}$ et $\varphi(n) \geq 1$. donc $\varphi(n) \in \icc{1, n-1}$.
+  2. $0 \land n = n \land n = n$
+  3. $\mathbf{P}_{n} = \{z \in \U_{n} / \omega(z)=n\}$ donc
+     $$
+       \begin{align*}
+         \# \mathbf{P}_{n} &= \#\{x \in \Z/n\Z / \omega(x) = n\} \\
+         &= \#\{x \in \Z/n\Z / \grp x = \Z/n\Z\}
+       \end{align*}
+     $$
+     or $\mathbf{P}_{n} = \{e^{\frac{2ik \pi}{n}} / k \in \icc{0,n-1} \text{ et } k \land  n = 1\}$ donc
+     $$
+       \#\mathbf{P}_{n} = \#\{k \in \icc{0,n-1} / k \land n = 1\} = \varphi(n)
+     $$
+     ==TABLEAU==
+%
+
+%property
+  1. Pour $n \in \N^*$, on a
+     $$
+       \varphi(n) = n-1 \iff n \text{ premier}
+     $$
+  2. Pour $p$ premier et $\alpha \in \N^{*}$, on a
+     $$
+       \varphi(p^{\alpha}) = p^{\alpha} - p^{\alpha-1} = p^{\alpha-1}(p-1)
+     $$
+  3. Pour $(m,n) \in (\N^{*})^{2}$, on a
+     $$
+       m \land  n = 1 \implies  \varphi(mn) = \varphi(m)\varphi(n)
+     $$
+     (on dit que $\varphi:\N^{*} \longrightarrow \N^{*}$ est une fonction arithmétique multiplicative)
+%
+
+%proof
+  1. $\varphi(n) = n-1 \geq 1 \iff  \begin{cases}n \geq 2 \\ \forall k \in \icc{1,n-1}, k \land  n = 1\end{cases} \iff n \text{ premier}$
+  2. On a
+     $$
+       \begin{align*}
+         \{k \in \icc{1, p^{\alpha}} / k \land  p^{\alpha} = 1\} &= \{k \in \icc{1, p^{\alpha}} / k \land  p = 1\} \\
+         &= \{k \in \icc{1, p^{\alpha}} / p \not\mid k\} \quad\text{où } p \text{ est premier}
+       \end{align*}
+     $$
+     Ainsi,
+     $$
+       \varphi(p^{\alpha}) = \#(\icc{1, p^{\alpha}}\setminus p, 2p, \ldots, p^{\alpha}) = p^{\alpha} - p^{\alpha-1} = p^{\alpha-1}(p-1)
+     $$
+  3. Soit $(m,n) \in (\N^{*})^{2}$ avec $m \land  n = 1$.
+     $$
+       \varphi(mn) = \# \mathbf{P}_{mn} = \#(\mathbf{P_{m} \times \mathbf{P}_{n}})
+     $$
+     car
+     $$
+       \applic{\mathbf{\P}_{m} \times \mathbf{P_{n}}}{\mathbf{P}_{mn}}{(a,b)}{ab}
+     $$
+     est une bijection((v. exercice 5.)). Donc $m \land  n = 1$, d’où
+     $$
+       \varphi(mn) = \# \mathbf{P}_{m} \times \# \mathbf{P}_{n} = \varphi(m)\varphi(n)
+     $$
+     - Calcul de $\varphi(n)$ pour $n \geq 2$. On pose
+       $$
+         n = p_{1}^{\alpha_{1}} \times \cdots \times p_{k}^{\alpha_{k}}
+       $$
+       avec
+       $$
+         p_{1} < \cdots < p_{k} \text{ premiers et } (\alpha_{1}, \ldots, \alpha_{k}) \in (\N^{*})^{k} \text{ pour } k \in \N^{*}
+       $$
+       Alors,
+       $$
+         p_{1}^{\alpha_{1}} \land  (p_{2}^{\alpha_{2}} \times \cdots \times p_{k}^{\alpha_{k}}) = 1
+       $$
+       d’où
+       $$
+         \varphi(n) = \varphi(p_{1}^{\alpha_{1}}) \times  \varphi(p_{2}^{\alpha_{2}} \times \cdots \times  p_{k}^{\alpha_{k}})
+       $$
+       Par récurrence finie, on a
+       $$
+         \varphi(n) = \prod_{i=1}^{k}vf(p_{i}^{\alpha_{i}})
+       $$
+       d’où
+       $$
+         \varphi(n) = \prod_{i=1}^{k}(p_{i}^{\alpha_{i}} - p_{i}^{\alpha_{i}-1}) = \prod_{i=1}^{k} p_{i}^{\alpha_{i}} \times \prod_{i=1}^{k}\left(1-\frac{1}{p_{i}}\right)
+       $$
+       d’où
+       $$
+         \varphi(n) = n \prod_{\substack{p\mid n\\p \text{ premier}}}  \left(1-\frac{1}{p}\right)
+       $$
+%
+
+%eg
+  $$
+    \varphi (126) = \varphi(2 \times 3^{2} \times 7) = 1 \times (3^{2}-3) \times 6 = 36
+  $$
 %
