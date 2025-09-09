@@ -1007,7 +1007,7 @@
 
        $\omega(\bar{0}) = 1$, $\omega(\bar{1}) = 4$, $\omega(\bar{2}) = \bar{2}$, $\omega(\bar{3}) = \omega(\bar{-1}) = \omega(-\bar{1}) = 4$.
 
-     - $(\U_{2}^{2}, \times )$((groupe de *Klein*)) est un groupe abélien de cardinal 4 dans lequel $w((1,1)) = 1$ et
+     - $(\U_{2}^{2}, \times )$((groupe de *Klein*)) est un groupe abélien de cardinal 4 dans lequel $\omega((1,1)) = 1$ et
        $$
          \forall x \in \U_{2}^{2} \setminus \{(1,1)\}, \omega(x) = 2
        $$
@@ -1037,7 +1037,7 @@
        \end{align*}
      $$
      en posant
-     ~ $d = (p \land  d)d'$  ~ p = (d and d)p'  ~ $d' \land p' = 1$
+     ~ $d = (p \land  d)d'$  ~ $p = (p \land d)p'$  ~ $d' \land p' = 1$
      Donc $\omega(x^{p}) = d' = \frac{d}{p \land  d}$,
      $$
        \forall p \in \Z, \omega(x^{p}) = \frac{\omega(x)}{p \land \omega(x)}
@@ -1108,10 +1108,9 @@
       G = \{g(\bar{0}), g(\bar{1}), \ldots, g(\bar{d-1})\} = \{e,x,\ldots, x^{d-1}\}
     $$
     d’où $\abs{G} = d = \omega(x)$
-%fig Groupe cyclique
-  @[./figures/groupe-cyclique_optimized.svg]
-%
-
+  %fig Groupe cyclique
+    @[./figures/groupe-cyclique_optimized.svg]
+  %
 %
 
 En conclusion, pour un groupe $(G,\star)$, on a~:
@@ -1154,8 +1153,8 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
 
 %eg
   1. $\forall \sigma \in S_{n}, \sigma^{n!} = \id_{\icc{1,n}}$
-  2. Soit $G$ un grope de cardinal $p$ premier. Soit $x \in G$. On a $\omega(x) \mid p$, donc $\omega(x) \in \{1,p\}$.
-     Alors, pour tout $x \in G \setminus \{e\}$, $\omega(x) \neq \emptyset$, donc
+  2. Soit $G$ un groupe de cardinal $p$ premier. Soit $x \in G$. On a $\omega(x) \mid p$, donc $\omega(x) \in \{1,p\}$.
+     Alors, pour tout $x \in G \setminus \{e\}$, $\omega(x) = p$, donc
      $$
        G = \grp x \simeq (\Z/p\Z,+)
      $$
@@ -1167,7 +1166,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
      - $k=5$: $(\Z/5\Z, \bar{+})$
      - $k=6$: $(\Z/6\Z, \bar{+})$ ou $(S_{3},\circ)$((cf. TD))
      - $k=7$: $(\Z/7\Z, \bar{+})$
-  3. ++Sous-groupes finis de $(\U, \times )$++. Soit $H$ un sous-groupe fini de cardinal $n \in \N^{*}$ de $(\U_{n}, \times )$. Pour tout $z \in H$, $z^{n} = 1$ donc $H \subset \U_{n}$. Or $\abs{H} = \abs{\U_{n}} = n$ donc $H = \U_{n}$.
+  3. ++Sous-groupes finis de $(\U, \times )$++. Soit $H$ un sous-groupe fini de cardinal $n \in \N^{*}$ de $(\U, \times )$. Pour tout $z \in H$, $z^{n} = 1$ donc $H \subset \U_{n}$. Or $\abs{H} = \abs{\U_{n}} = n$ donc $H = \U_{n}$.
      **Les sous-groupes finis de $(\U, \times )$ sont les groupes $(\U_{n}, \times )$.**
 %
 
@@ -1200,14 +1199,14 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   %
 
   %rem
-    Si $G = \grp x$ et $\omega(x) = n$, alors $\grp{x^{n/d}} = H$ est l’unique sous-groupe de $G$ de cardina $d$ et
+    Si $G = \grp x$ et $\omega(x) = n$, alors $\grp{x^{n/d}} = H$ est l’unique sous-groupe de $G$ de cardinal $d$ et
     $$
       \omega(x^{n/d}) = \frac{n}{\left(\frac{n}{d}\right) \land n} = \frac{n}{\left(\frac{n}{d}\right)}=d
     $$
   %
 
   %eg
-    $(\Z/8\Z, \bar{+})$ est un groupe cyclique de cardinal 8. Les diviseurs de 8 sont 1,2,5 et 8. $(\Z/8\Z, \bar{+})$ possède 4 sous-groupes (cyoliques)~:
+    $(\Z/8\Z, \bar{+})$ est un groupe cyclique de cardinal 8. Les diviseurs de 8 sont 1,2,5 et 8. $(\Z/8\Z, \bar{+})$ possède 4 sous-groupes (cycliques)~:
     - $H_{1} = \{\bar{0}\}$
     - $H_{2} = \grp{\bar{4}} = \{\bar{0}, \bar{4}\} \simeq (\Z/2\Z, \bar{+})$
     - $H_{4} = \grp{\bar{2}} = \grp{\bar{6}} = \{\bar{0}, \bar{2}, \bar{4} \bar{6}\} \simeq \Z/4\Z$
@@ -1317,8 +1316,8 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   3. $\varphi(n)$ est le nombre d’éléments d’ordre $n$ du groupe cyclique $(\Z/n\Z, \bar{+}) \simeq (\U_{n}, \times )$ donc
      $$
        \begin{align*}
-          \varphi(n) &=\#\{x \in \Z/n\Z / \Z/n\Z = \grp x\}\\
-          &=\#\{z \in \U_{n} / \omega(z) = n\}\\
+          \varphi(n) &=\#\{x \in \Z/n\Z \mid \Z/n\Z = \grp x\}\\
+          &=\#\{z \in \U_{n} \mid \omega(z) = n\}\\
           &=\# \mathbf{P}_{n}
        \end{align*}
      $$
@@ -1417,4 +1416,54 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   $$
     \varphi (126) = \varphi(2 \times 3^{2} \times 7) = 1 \times (3^{2}-3) \times 6 = 36
   $$
+%
+
+%offprog
+  %property
+    1. $\forall n \geq 3, \varphi(n)\cgm 02$
+    2. Si $d$ divise $n$, alors $\varphi(d)$ divise $\varphi(n)$
+    3. *Formule d’Euler-Möbius*: pour tout $n \in \N^{*}$,
+       $$
+         n = \sum_{d\mid n}\varphi(d)
+       $$
+  %
+
+  %proof
+    1. On a deux cas:
+       - si $\exists k \geq 2: n = 2^{k}$, alors
+         $$
+           \varphi(n) = 2^{k}-2^{k-1} = 2^{k-1}\cgm 02
+         $$
+         car $k-1 \geq 1$
+       - sinon, il existe $p \geq 3$ premier, $n \in \N^{*}$ et $\alpha \in \N^{*}$ tel que
+         $$
+           n = p^{\alpha}m \quad\text{et}\quad p \land m = 1
+         $$
+         On a alors
+         $$
+           \varphi(n) = \varphi(p^{\alpha})\varphi(m) = (p^{\alpha} - p^{\alpha-1})\varphi(n) = p^{\alpha-1}\underbrace{(p-1)}_{\text{pair}}\varphi(n)
+         $$
+         donc $\varphi(n)\cgm 02$.
+    2. Soient $p$ premier, $\alpha \in \N^{*}$ et $\beta \in \N$. Alors
+       $$
+         \varphi(p^{\alpha+\beta}) = p^{\alpha+\beta}-p^{\alpha+\beta-1} = p^{\beta}(\underbrace{p^{\alpha}-p^{\alpha-1}}_{=\varphi(p^{\alpha})})
+       $$
+       donc $\varphi(p^{\alpha})$ divise $\varphi(p^{\alpha+\beta})$. Pour tout $n \in \N^{*}$, $1\mid n$ et $\varphi(1) = 1 \mid \varphi(n)$. Soient $p_{1} < \cdots < p_{k}$ des nombres premiers.
+       $$
+         \varphi(p_{1}^{\alpha_{1}} \times \cdots \times p_{k}^{\alpha_{k}}) = \varphi(p_{1}^{\alpha_{1}}) \times  \cdots \times \varphi(p_{k}^{\alpha_{k}}) \mid \varphi(p_{1}^{\alpha_{1}+\beta_{1}}) \times  \cdots \times \varphi(p_{k}^{\alpha_{k}+\beta_{k}}) \times \varphi(n)
+       $$
+       avec $m \land (p_{1} \cdots p_{k})$ = 1.
+    3. Tout élément de $(\Z/n\Z, \bar{+})$ a un ordre qui divise $\abs{\Z/n\Z} = n$, d’ou
+       $$
+         \Z/n\Z = \bigsqcup_{d\mid n}\{x \in \Z/n\Z \mid \omega(x) = d\}
+       $$
+       donc
+       $$
+         \abs{\Z/n\Z} = \sum_{d\mid n}\underbrace{\#\{x \in \Z/n\Z \mid \omega(x) = d\}}_{=\varphi(d)}
+       $$
+       donc
+       $$
+         \varphi(n) = n- \sum_{\substack{d\mid n\\d \neq n}}\varphi(d)
+       $$
+  %
 %

@@ -1,0 +1,344 @@
+# Compléments sur les anneaux
+
+## Rappels
+
+%def Anneau unitaire
+  $(A,+, \times )$ est un anneau unitaire si
+  - $(A,+)$ est un groupe abélien (de neutre noté $0_{A}$)
+  - $\times $ est une l.c.i dans $A$
+  - $\times $ est associative
+  - $\times $ est doublement distributive par rapport à $+$
+  - $\times $ admet un élément neutre noté $1_{A}$ (appelé *élément unité*)
+%
+
+- « anneau non nul »~: $0_{A} \neq 1_{A}$
+- « anneau nul »~: $0_{A} = 1_{A}$ ($\iff A = \{0_{A}\}$)
+- « anneau commutatif »~: $\forall (a,b)\in A^{2}, a \times b = b \times a$
+
+Pour $a \in A$, on pose
+- $0a = 0_{a}$ et $a^{0} = 1_{A}$
+- Pour tout $n \in \N$,
+  ~ $(n+1)a = na+a$  ~ $(-n)a = -(na)$  ~ $a^{n+1} = a^{n} \times a$
+
+On a alors, pour $(k,l) \in \Z^{2}$ et $(a,b) \in A^{2}$,
+1. $0_{A} \times a = a \times 0_{A} = 0_{A}$
+2. $(-a) \times b = a \times (-b) = -(a \times b)$ *(règle des signes)*
+3. $(k+l)a = ka+la$ et $k(la) = (kl)a$
+4. $ka = (k 1_{A}) \times a = a \times (k 1_{A})$
+5. $k(a \times b) = (ka) \times b = a \times (kb)$
+6. pour  $(k,l) \in \N^{2}$,
+   ~ $a^{k+d} = a^{k} \times a^{l}$  ~ $(a^{k})^{l} = a^{kl}$
+
+%proof
+  1. $0_{A}  \times a = (0_{A} + 0_{A}) \times a = (0_{A} \times a) + (0_{A} \times a)$ d’où le résultat par simplification.
+  2. $0_{A} = 0_{1} \times b = (a+(-a)) \times b = (a \times b) + (-a) \times b$ d’où $(-a) \times b = -(a \times b)$
+  4. Considérons la propriété définie pour $k \in \N$ par
+     $$
+       \prop(k):« ka = (k1_{A}) \times a »
+     $$
+     - $0 a = 0_{A}$ donc $(0 1_{A})\times a = 0_{A} \times a = 0_{A}$ donc $\prop(0)$ est vraie.
+     - Supposons $\prop(k)$ vraie pour $k$ fixé dans $\N$.
+       $$
+         \begin{align*}
+           (k+1)a &= ka+a\\
+           &=((k1_{A})\times a)+(1_{A} \times a)\\
+           &= (k1_{A} + 1_{A})\times a\\
+           &=((k+1)1_{A})\times a
+         \end{align*}
+       $$
+       donc $\prop(k+1)$ est vraie.
+     Ainsi, par le principe de récurrence, on a
+     $$
+       \forall k \in \N, ka = (k1_{A})\times a
+     $$
+     Soit $k \in \N$.
+     $$
+       (-k)a = -(ka) \underset{\prop(k)}{=} -((k1_{A})\times a) \underset2= (-(k1_{A})) \times a = ((-k)1_{A})\times a
+     $$
+  5. $k(a \times b) = (k1_{A}) \times  (a \times b) = ((k1_{A}) \times a)\times b = (ka) \times b$
+%
+
+Dans un anneau unitaire((unitaire sera sous-entendu par la suite)) $(A,+, \times )$, si $a$ et $b$ sont deux éléments de $A$ qui commutent, alors
+$$
+  \forall n \in \N, (a+b)^{n} = \sum_{k=0}^{n}\binom{n}{k}a^{k}b^{n-k}
+$$
+et
+$$
+  a^{n+1} - b^{n+1} = (a-b)\sum_{k=0}^{n}a^{k}b^{n-k}
+$$
+
+%def Proposition-définition
+  Si $(A,+, \times )$ est un anneau unitaire, un élément $x$ est dit *inversible* (ou une *unité*) si
+  $$
+    \exists x' \in A: x \times x' = x' \times x = 1_{A}
+  $$
+  L’ensemble des éléments inversibles est noté $A^{\times}$ et $(A^{\times}, \times )$ est un groupe: c’est le *groupe des unités* de $A$ (de neutre $1_{A}$).
+%
+
+%eg
+  - $\Z^{\times} = \{1,-1\}$ donc $(\Z^{\times}, \times ) = (\U_{2}, \times )$
+  - $(\Q^{\times}, \times ) = (\Q^{\times}, \times )$
+  - $(\M_{n}(\R)^{\times}, \times ) = (\GL_{n}(\R), \times )$
+  - Si $E$ est un $\K$-espace vectoriel, alors
+    $$
+      (\L(E), +, \circ)^{\times} = (\GL(E), \circ)
+    $$
+%
+
+%def Proposition-définition
+  Soit $(A,+ \times )$ un anneau unitaire. Soit $x \in A$.
+  - $x$ est dit *idempotent* si $x^{2} = x$
+  - $x$ est dit *nilpotent* si $\exists n \in \N^{*}: x^{n} = 0_{A}$. Son *indice de nilpotence* est $\min\{n \in \N / x^{n} = 0_{A}\}$
+  %offprog
+    - $x$ est idempotent $\implies 1_{A}-x$ idempotent
+    - $x$ nilpotent $\implies 1_{A} - x \in A^{\times}$
+    - $\begin{cases}x \times y = y \times x\\x \text{ et } y \text{ nilpotents}\end{cases} \implies x+y \text{ et } x \times y \text{nilpotents}$
+  %
+%
+
+%offprog
+  %proof
+    - Supposons $x^{2} = x$.
+      $$
+        (1_{A} - x)^{2} = 1_{A} - 2x + x^{2} = 1_{A} - 2x + x = 1_{A} - x
+      $$
+    - Supposons $\exists n \in \N: x^{n+1} = 0_{A}$. Alors
+      $$
+        1_{A} = 1_{A}^{n+1} - x^{n+1} = (1_{A} - x)\sum_{k=0}^{n}x^{k} = \left(\sum_{k=0}^{n}x^{k}\right)(1_{A}-x)
+      $$
+      donc
+      $$
+        1_{A} -x \in A^{\times} \quad\text{et}\quad (1_{A} - x)^{-1} = \sum_{k=0}^{n}x^{k}
+      $$
+    - Supposons $\exists (p,q) \in (\N^{*})^{2}: x^{p} = y^{q} = 0_{A}$ et $x \times y = y \times x$. On a alors
+      $$
+        (x \times y)^{p} = x^{p} \times y^{p} = 0_{A} \times y^{p} = 0_{A}
+      $$
+      Comme $x \times  y = y \times x$, on a
+      $$
+        (x+y)^{p+q} = \sum_{k=0}^{p-1}\binom{p+q}{k}x^{k}\underbrace{y^{p+q-k}}_{=0_{A}} + \sum_{k=p}^{p+q}\binom{p+q}{k}\underbrace{x^{k}}_{=0_{A}}q^{p+q-k} = 0_{A}
+      $$
+  %
+%
+
+%def Anneau intègre
+  Un anneau unitaire $(A,+, \times )$ est dit *intègre* si $A$ est **non nul** et
+  $$
+    \forall (a,b) \in A^{2}, \big[a \times b = 0_{A} \implies a = 0_{A} \text{ ou }b=0_{A}\big]
+  $$
+%
+
+%rem
+  Si $(A,+ \times )$ est un anneau **non nul**, alors pour $n \geq 2$, l’anneau $(\M_{n}(A), +, \times )$ n’est pas intègre~:
+  $$
+    \mtx{0_{A} & \cdots & 0_{A}\\&\ddots&\\&&1_{A}} \times \underbrace{\text{diag}(A_{1}, 0_{A}, \ldots, 0_{A})}_{\neq 0} = 0_{n}
+  $$
+%
+
+%offprog
+  %thm
+    Soit $(A,+, \times )$ un anneau commutatif unitaire.
+    $$
+      (A[X],+, \times ) \text{ est un anneau intègre} \iff A \text{ est intègre}
+    $$
+  %
+
+  %proof
+    - Supposons $(A[X], +, \times )$ intègre. Alors $A \subset A[X] \neq\{0_{A}\}$ donc $A$ est intègre.
+    - Supposons $A$ intègre. $0_{A} \neq 1_{A}$ donc $A[X]$ n’est pas nul. Soit $(P,Q) \in (A[X] \setminus \{0\})^{2}$.
+      $$
+        \begin{cases}P = a_{m}X^{m} + \cdots + a_{0}\\Q = b_{n}X^{n} + \cdots + b_{0}\end{cases} \quad\text{avec}\quad \begin{cases}a_{m} \neq 0_{A}\\b_{n} \neq 0_{a}\end{cases}
+      $$
+      d’où
+      $$
+        P \times Q = a_{m}b_{n}X^{n+m} + \sum_{k=0}^{n+m-1}\alpha_{k}X^{k}
+      $$
+      or $a_{m}b_{n}\neq 0$ car $A$ est intègre, donc $P \times Q \neq 0$. Ainsi, $(A[X],+, \times )$ est intègre, et $\deg (PQ) = \deg P + \deg Q \in \N \cup \{-\infty\}$.
+
+  %
+
+  ++Généralisation++: pour $A$ commutatif unitaire,
+  $$
+    A[X,Y] = (A[X])[Y]
+  $$
+  et pour $n \in \N^{*}$,
+  $$
+    A[X_{1}, \ldots, X_{n+1}] = (A[X_{1}, \ldots, X_{n}])[X_{n}+1]
+  $$
+
+  %thm
+    Pour $(A,+, \times )$ est un anneau commutatif unitaire((noté a.c.u par la suite)) et $n \in \N^{*}$,
+    $$
+      (A[X_{1}, \ldots, X_{n}], +, \times ) \text{ anneau unitaire} \iff  (A,+, \times ) \text{ intègre}
+    $$
+  %
+  Par exemple, $(\Z[X_{1}, \ldots, X_{n}], +, \times )$ est un anneau intègre.
+%
+
+%def
+  %offprog
+    Un *anneau à division* est un anneau $(A,+, \times )$ vérifiant
+    $$
+      \begin{cases}A\neq\{0_{A}\}\\ \forall x \in A \setminus \{0\}, x \in A^{\times}\end{cases} \iff \begin{cases}A \text{ intégre}\\A^{\times} = A \setminus \{0_{A}\}\end{cases} \iff (A \setminus \{0_{A}\}, \times) \text{ groupe}
+    $$
+  %
+
+  Un anneau à division commutatif est appelé un corps. **Un corps est donc un anneau commutatif unitaire non nul dont tous les éléments non nuls sont inversibles.**
+%
+
+%proof
+  %offprog
+    - ++Premième implication++: Soit $(x,y) \in A^{2}$ avec $x \times y = 0_{A}$. Si $x\neq 0_{A}$, alors $x \in A^{\times}$, donc $x^{-1} \times (x \times y) = x^{-1}\times 0_{A} = 0_{A}$, i.e. $y=0_{A}$. Ainsi, $x \times y = 0_{A}$ donc $x_{A} = 0_{A}$ ou $y_{A} = 0_{A}$.
+    - ++Deuxième implication++:
+      - L’intégrité donne la stabilité de $A \setminus \{0_{A}\}$ par $x$.
+      - $\times $ est associative
+      - $A$ est intégre donc $A\neq\{0_{A}\}$ donc $A \setminus \{0_{A}\}\neq \emptyset$.
+      - $1_{A} \neq 0_{A}$ donc $1_{A} \in A \setminus \{0_{A}\}$ et $1_{A}$ est neutre.
+      - $A \setminus \{0_{A}\} = A^{\times}$ permet d’affirmer que tout élément de $A \setminus \{0_{A}\}$ est symétrisable.
+    - ++Troisième implication++:
+      - $A \setminus \{0_{A}\}$ est un groupe donc $A \neq \{0_{A}\}$
+      - $A \setminus \{0_{A}\}$ est stable pour $\times $ et $A\neq \{0_{A}\}$ donc $A$ est intègre.
+      - $1_{A}$ est le seul candidat pour le neutre de $(A \setminus \{0_{A}\}, \times )$, donc le symétrique de $x \in A \setminus \{0_{A}\}$ est son inverse.
+      -
+  %
+%
+
+%def Proposition-définition
+  Soit $(A,+, \times )$ un anneau (resp. corps) unitaire. Une partie $B$ de $A$ est un *sous-anneau* (resp. *sous-corps*) de $A$ si
+  ~  $B$ est stable pour $+$ et $\times $  ~ $(B,+, \times )$ est un anneau (resp. corps)  ~ l’élément unité de $B$ est $1_{A}$
+  ce qui revient pour un ensemble $B$ à
+  ~ $B \subset A$  ~ $1_{A} \in B$  ~ $\forall (x,y) \in B^{2}, (x-y, x \times y) \in B^{2}$
+  pour un corps, il faut rajouter la condition
+  $$
+    \forall x \in B \setminus \{0_{B}\}, x^{-1}  \in B
+  $$
+%
+
+%eg
+  - Soit $n \in \N^{*}$. Posons $\omega = e^{\frac{2i \pi}{n}}\in \C$. Posons
+    $$
+      \Q[\omega] = \{\tilde{P(\omega)} / P \in \Q[X]\}
+    $$
+    Soit $P \in \Q[X]$. On a
+    $$
+      P = (X^{n}-1)Q + R
+    $$
+    avec $(Q,R) \in \Q[X]$ et $\deg R < n$.
+    $$
+      Q[\omega] = \{\tilde{R(\omega)} / R \in \Q_{n-1}[X]\}
+    $$
+    $(\C,+, \times )$ est un anneau commutatif unitaire intègre. $\Q[\omega] \subset \C$ et $1_{\C} = \tilde{1}(\omega) \in \Q[\omega]$. Soit $(z,z') \in \Q[\omega]^{2}$. Il existe $(P,R) \in \Q[X]^{2}$ tels que $z = \tilde{P}(\omega)$ et $z' = \tilde{R}(\omega)$. Alors
+    $$
+      z- z' = \tilde{P-R}(\omega) \quad\text{et}\quad z \times z' = \tilde{PR}(\omega)
+    $$
+    or $(P-R, PR) \in (\Q[X])^{2}$ donc $(z-z', z \times z') \in \Q[\omega]^{2}$.
+
+    Ainsi, $(\Q[\omega], +, \times )$ est un sous-anneau de $(\C, +, \times )$.
+  - $\Q[i] = \{a+bi / (a,b)\in \Q^{2}\}$. Soit $z \in \Q[i] \setminus \{0\}$.
+    $$
+      \frac{1}{z} = \frac{a-bi}{a^{2}+b^{2}} = \frac{a}{a^{2}+b^{2}} - \frac{b}{a^{2}+b^{2}}i \in \Q[i]
+    $$
+    donc $(\Q[i], +, \times )$ est un sous-corps de $(\C, +, \times )$.
+  - $\Z[i] = \{a+bi/(a,b) \in \Z^{2}\}$. $\Z[i] \subset \C$ et $1_{\C} = 1+0i \in \Z[i]$.
+
+    Soit $(z,z') \in \Z[i]^{2}$. Il existe $(a,b,c,d) \in \Z^{4}$ tels que $z = a+bi$ et $z' = c+di$, d’où
+    $$
+      z-z' = (a-c) + (b-d)i \quad\text{et}\quad z \times z' = (ac-bd) + i(ad+b c)
+    $$
+    on a donc $(z-z', z \times z') \in (\Z[i])^{2}$.
+    Donc $(\Z[i], +, \times )$ est un sous-anneau de $(\C, +, \times )$ (appelé *anneau des entiers de Gauss*).
+  - Déterminons $\Z[i]^{\times}$. Soit $z \in \Z[i]$. Posons $z = a+bi$ avec $(a,b) \in \Z^{2}$
+    $$
+      z \in \Z[i]^{\times} \iff  \exists (a'\beta') \in \Z^{2}, z \times (a' + ib') = 1 \implies  \abs{z}^{2} \times ({a'}^{2} + {b'}^{2}) = 1
+    $$
+    i.e. $(a^{2} + b^{2}) \times  ({a'}^{2} + {b'}^{2}) = 1$, donc $a^{2} + b^{2} = 1$, d’où $z \in \{1, -1, i, -i\}$. Ainsi, $\Z[i]^{\times} \subset \U_{4}$.
+    or $1 \times 1 = 1$, $(-1) \times (-1) = 1$ et $i \times (-i) = 1$ donc $\U_{4} \subset \Z[i]^{\times}$.
+    Ainsi,
+    $$
+      (\Z[i]^{\times}, \times ) = (\U_{4}, \times )
+    $$
+%
+
+%lemma
+  Soit $(A,+, \times )$ un anneau unitaire. On note
+  $$
+    Z(A) = \{x \in A / \forall y \in  A, x \times y = y \times x\}
+  $$
+  C’est un sous-anneau de $(A,+, \times )$ appelé *centre de $A$*.
+%
+
+%offprog
+  %lemma
+    Pour $n \in \N^{*}$ et $\K$ un corps,
+    $$
+      Z(\M_{n}(\K)) = \{\lambda I_{n} / \lambda \in \K\}
+    $$
+  %
+%
+%proof
+  Soit $A \in Z(\M_{n}(\K))$. Posons
+  $$
+    A = \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}E_{kl} \quad\text{avec} \quad E_{kl} = \left(\delta_{ik} \delta_{ij}\right)_{\substack{1 \leq  i \leq n\\1 \leq j \leq n}}
+  $$
+  $$
+    A \in Z(\M_{n}(\K)) \iff \forall (i,j) \in \icc{1,n}^{2}, AE_{ij} = E_{ij}A
+  $$
+  $$
+    \begin{align*}
+      A \in Z(\M_{n}(\K)) &\iff  \forall (i,j) \in \icc{1,n}^{2}, \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}\delta_{li} E_{kj}
+      =\sum_{(k,l)\in \icc{1,n}^{2}}a_{kl}\delta_{jk}E_{il}\\
+      &\iff \forall (i,j) \in \icc{1,n}^{2}, \sum_{k=1}^{n}a_{ki}E_{kj} = \sum_{l=1}^{n}a_{jl}E_{il}\\
+      &\iff \forall (i,j) \in \icc{1,n}^{2}, \begin{cases}k\neq i &\implies a_{ki} = 0\\l\neq j &\implies  a_{jl} = 0\\a_{i1} &= a_{jj}\end{cases} \\
+      &\iff A \in \{\lambda I_{n} \mid \lambda \in \K\}
+    \end{align*}
+  $$
+%
+
+## Anneaux $(\Z/n\Z, \bar{+}, \bar{\times })$
+
+%thm
+  Soit $n \in \N$.
+  L’application
+  $$
+    \applic{(\Z/n\Z)^{2}}{\Z/n\Z}{(\bar{k}, \bar{l})}{\bar{kl}}
+  $$
+  est correctement définie, donc l’application
+  $$
+    \applic{(\Z/n\Z)^{2}}{\Z/n\Z}{(\bar{k}, \bar{l})}{\bar{k} \bar{\times } \bar{l} = \bar{kl}}
+  $$
+  est une l.c.i qui munit $(\Z/n\Z,\bar{+}, \bar{\times })$ d’une structure d’anneau commutatif unitaire (d’unité $\bar{1}$).
+
+  - $(\Z/0\Z,\bar{+}, \bar{\times }) \simeq (\Z, +, \times )$ a.e.u.i
+  - $(\Z/1\Z, \bar{+}, \bar{\times }) = (\{\bar{0}\}, \bar{+}, \bar{x})$ anneau nul
+  - Pour $n \geq 2$,
+    $$
+      (\Z/n\Z, \bar{+}, \bar{\times }) = (\{\bar{0}, \bar{1}, \ldots, \bar{n}\}, \bar{+}, \bar{\times })
+    $$
+    est un anneau commutatif unitaire à $n$ éléments appelé *anneau des classes résiduelles modulo $n$*.
+%
+
+%proof
+  Soit $(k,k'\lambda, l') \in \Z^{4}$ tels que $k\cgm {k'}n$ et $l \cgm {l'}n$, i.e. il existe $(q,q') \in \Z^{2}$  tels que $k = k'+nq$ et $l = l'+nq'$. Alors
+  $$
+    kl = k' l' + nr, n \in \Z
+  $$
+  donc $kl \cgm {k' l'}{n}$. donc $\bar{\times }$ est correctement définie et est une l.c.i dans $\Z/n\Z$.
+  - $(\Z/n\Z, \bar{+})$ est un groupe abélien
+  - $\forall (a,b) \in \Z^{2}, \bar{a} \bar{\times } \bar{b} = \bar{ab} = \bar{ba} = \bar{b} \bar{\times } \bar{a}$ donc $\bar{x}$ est commutative.
+  - $\forall (a,b,c) \in \Z^{3}, \bar{a} \bar{\times } (\bar{b} \bar{\times } \bar{c}) = \bar{a} \bar{\times } \bar{b c} = \bar{a(b c)} = \bar{(a b)c} = \bar{ab} \bar{\times } \bar{c} = (\bar{ a} \bar{\times } \bar{ b})\times \bar{c}$ donc $\bar{\times }$ est associative.
+  - $\forall (a,b,c) \in \Z^{3}, \bar{a} \bar{\times } (\bar{b} \bar{+} \bar{c}) = \bar{a} \bar{\times } \bar{ b+c} = \bar{a(b+c)} = \bar{a b + a c} = \bar{a b} \bar{+} \bar{a c} = (\bar{ a} \bar{ \times } \bar{ b})\bar{+} (\bar{ a} \bar{ \times } \bar{c})$ donc $\bar{\times }$ est distributive par rapport à $\bar{+}$.
+  - $\forall a \in \Z, \bar{1} \times \bar{a} = \bar{1 \times a} = \bar{a}$ donc $\bar{ 1}$ est neutre pour $\bar{\times }$.
+  - On a
+    $$
+      (\Z/0\Z, \bar{+}, \bar{\times }) = (\{\{a\}/a \in \Z\}, \bar{+} \bar{\times })
+    $$
+    et l’application
+    $$
+      \applic{(\Z, + , \times )}{(\Z/0\Z, \bar{+}, \bar{\times })}{a}{\{a\}}
+    $$
+    est un morphisme d’anneaux.
+%
+
+Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
+~ $\bar{k} \bar{+} \bar{l} = \bar{k+l}$  ~ $\bar{k} \bar{\times } \bar{l} = \bar{k l} = k \bar{l}$  ~ $n \bar{l} = \bar{0}$
+
