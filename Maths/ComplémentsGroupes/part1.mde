@@ -7,7 +7,7 @@
   - $G$ est un ensemble muni d’une loi $\star$
   - $\star$ est associative
   - $\exists e \in G: \forall x \in G, x\star e = e\star x = x$
-  - $\forall x \in G, \exists x' \in G: x\star x' = x'\star x = x$
+  - $\forall x \in G, \exists x' \in G: x\star x' = x'\star x = e$
 %
 
 %rem
