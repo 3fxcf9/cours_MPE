@@ -217,11 +217,11 @@
 %
 
 %eg Exemples de groupes
-  - $(Q_{+}^{*}, \times ) < (\Q^{*}, \times )<(\R^{*}, \times )<(\C^{*}, \times )$
+  - $(\Q_{+}^{*}, \times ) < (\Q^{*}, \times )<(\R^{*}, \times )<(\C^{*}, \times )$
   - Si $E$ est un $\K$-espace vectoriel, alors $(\GL_{n}(E), \circ)$ est le groupe linéaire
   - $(\Z,+)<(\D,+)<(\Q,+)<(\R,+)<(\C,+)$
   - $(\GL_{n}(K), \times )$ est le groupe des matrices inversibles
-  - Si $X$ est un ensemble, alors on note $S_{X}$ l’ensemble des permutations de $X$, c’est un groupe pour la loi do composition des fonctions.
+  - Si $X$ est un ensemble, alors on note $S_{X}$ l’ensemble des permutations de $X$, c’est un groupe pour la loi de composition des fonctions.
   - Pour $n \in \N^{*}$, on pose $S_{n} = S_{\icc{1,n}}$ et $A_{n} = \{\sigma \in S_{n}\mid \varepsilon(\sigma) = 1\}$. On a
     $$
       A_{n} < (S_{n},\circ)
@@ -235,7 +235,7 @@
   $$
     (g_{1}, \ldots, g_{n})\star (g'_{1}, \ldots, g'_{n}) := (g_{1}\star g'_{1}, \ldots, g_{n}\star_{n} g'_{n})
   $$
-  $(G_{1} \star \cdots, G_{n}, \star)$ est alors un groupe appelé groupe-produit.
+  $(G_{1} \times \cdots \times  G_{n}, \star)$ est alors un groupe appelé groupe-produit.
   - Son neutre est $(e_{1}, \ldots, e_{n})$ et le symétrique d’un élément $(x_{1}, \ldots, x_{n})$ est $(x_{1}^{-1}, \ldots, x_{n}^{-1})$.
   - Le groupe-produit est abélien si et selement si chacun des groupes $G_{i}$ l’est.
 %
@@ -369,7 +369,7 @@
 %proof
   1. $a\Z \subset b\Z \implies a = a \times 1 \in b\Z$ donc $b|a$
       - si $b|a$, alors il existe $k \in \Z$ tel que $a = bk \in b\Z$ or $b\Z<(\Z,+)$ donc $a\Z \subset b\Z$.
-  2. Soit $(m, m') \in \Z'2$.
+  2. Soit $(m, m') \in \Z^{2}$.
      $$
        m\Z = m'\Z \iff \begin{cases}m|m'\\m'|m\end{cases} \iff  \abs{m} = \abs{m'}
      $$
@@ -390,7 +390,7 @@
          k \in \bigcap_{i \in \Z}a_{i}\Z_{i} = m\Z
        $$
        Donc il existe $a \in \N^{*}$ tel que $k = ma \geq m$
-      - Si $a_{1} \cdot sa_{n} = 0$, alors il existe $i_{0} \in \icc{1,n}$ tel que $a_{i_{0}} = 0$. Donc $a_{i_{0}} \Z = \{0\}$ d’où $\bigcap_{i \in \icc{1,n}}a_{i}\Z = \{0\}$, donc $m = 0$.
+     - Si $a_{1} \cdot sa_{n} = 0$, alors il existe $i_{0} \in \icc{1,n}$ tel que $a_{i_{0}} = 0$. Donc $a_{i_{0}} \Z = \{0\}$ d’où $\bigcap_{i \in \icc{1,n}}a_{i}\Z = \{0\}$, donc $m = 0$.
 %
 
 %def Définition-proposition
@@ -415,16 +415,16 @@
 %proof
   1. On a
      $$
-       \mathbb{H} = \left\{H \in P(G) \mid H < G \quad\text{et}\quad X \subset H\right\}
+       \mathcal{H} = \left\{H \in P(G) \mid H < G \quad\text{et}\quad X \subset H\right\}
      $$
      $$
-       \langle X\rangle = \bigcap_{H \in \mathbb{H}}H < (G,\star)
+       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H < (G,\star)
      $$
-     De plus, $\forall H \in \mathbb{H}, G \subset H$ donc $X \subset \langle X\rangle$.
-     $\langle X\rangle$ est un sous-groupe de $(G,\star)$ sontenant $X$.
-     Soit $K \in \mathbb{H}$.
+     De plus, $\forall H \in \mathcal{H}, G \subset H$ donc $X \subset \langle X\rangle$.
+     $\langle X\rangle$ est un sous-groupe de $(G,\star)$ contenant $X$.
+     Soit $K \in \mathcal{H}$.
      $$
-       \langle X\rangle = \bigcap_{H \in \mathbb{H}}H = \left(\bigcap_{H \in \mathbb{H}\setminus \{K\}}H\right)  \cap  K \subset K
+       \langle X\rangle = \bigcap_{H \in \mathcal{H}}H = \left(\bigcap_{H \in \mathcal{H}\setminus \{K\}}H\right)  \cap  K \subset K
      $$
   2. %offprog
        Soit $X \neq \emptyset$.
@@ -457,15 +457,15 @@
      $$
   2. Soit $(G,\star)$ un groupe. Si $x \in G$, alors
      $$
-       \grp{\{x\}} = \{x^{k} / k \in \Z\}
+       \grp{\{x\}} = \{x^{k} \mid k \in \Z\}
      $$
   3. Si $(G,\star)$ est un groupe abélien, et $(x_{1}, \ldots, x_{n}) \in G^{n}$, alors
      $$
-       \grp{\{x_{1}, \ldots, x_{n}\}} = \{x_{1}^{k_{1}} \times  \cdots \times  x_{n}^{k_{n}} / (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
+       \grp{\{x_{1}, \ldots, x_{n}\}} = \{x_{1}^{k_{1}} \times  \cdots \times  x_{n}^{k_{n}} \mid (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
      $$
      En notation additive dans $(G, +)$,
      $$
-       \grp{\{x_{1}, \ldots, x_{n}\}} = \{k_{1}x_{1} + \cdots+ k_{n}x_{n} / (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
+       \grp{\{x_{1}, \ldots, x_{n}\}} = \{k_{1}x_{1} + \cdots+ k_{n}x_{n} \mid (k_{1}, \ldots, k_{n}) \in \Z^{n}\}
      $$
   4. Si $(\Z^{n}, +) = \grp{\{e_{1}, \ldots, e_{n}\}}$ alors $e_{i} = (0,\ldots, 0,1,0, \ldots, 0)$.
 %
@@ -476,7 +476,7 @@
   %offprog
     2. On dit que $G$ est de ++type fini++ si $G$ possède une partie génératrice finie. Dans ce cas, on pose
        $$
-         \rang(G) = \min\{\abs{X} / X \in \Part(G), X \text{ est finie}, \grp X = G\}
+         \rang(G) = \min\{\abs{X} \mid X \in \Part(G), X \text{ est finie}, \grp X = G\}
        $$
   %
 %
@@ -489,7 +489,7 @@
          \begin{align*}
             \rang(G) = 1 &\iff  \begin{cases}G \neq \{e\} \\ \exists x \in G, G = \grp{\{x\}}\end{cases}\\
             &\iff \exists  x \in G \setminus \{e\}: G = \grp{\{x\}}\\
-            &\iff \exists x \in G \setminus \{e\}: G = \{x^{k} / k \in \Z\}\\
+            &\iff \exists x \in G \setminus \{e\}: G = \{x^{k} \mid k \in \Z\}\\
             &(\implies G\text{ est abélien})
          \end{align*}
        $$
@@ -508,7 +508,7 @@
        - $S_{2} = \{\id , (12)\} = \grp{(12)}$ donc $\rang S_{2} = 1$.
        - Pour $n \geq 3, (S_{n}, \circ)$ n’est pas abélien donc pour $n \geq 3$, $\rang S_{n} \geq 2$ or $S_{3} = \grp{\{(12), (123)\}}$, donc $\rang S_{3} = 2$.
 
-         Soit $n \geq 3$. $S_{n} = \grp{\{(ij) / 1 \leq i < j \leq n\}}$ d’où $\rang S_{n} \leq \binom{n}{2} = \frac{n(n-1)}{2}$. Cependant, pour $1 \leq i < j \leq n$, on a
+         Soit $n \geq 3$. $S_{n} = \grp{\{(ij) \mid 1 \leq i < j \leq n\}}$ d’où $\rang S_{n} \leq \binom{n}{2} = \frac{n(n-1)}{2}$. Cependant, pour $1 \leq i < j \leq n$, on a
          $$
            (ij) = (1i)(1j)(1i)^{-1}
          $$
@@ -520,7 +520,7 @@
          $$
            \underbrace{(12 \cdots (i-1))}_{=(12)(23) \cdots (i-2, i-1)}\underbrace{(i-1, i)}_{=(1i)}(12 \cdots (i-1))^{-1}
          $$
-         Donc $S_{n} = \grp{\{(i,i+1) / 1 \leq i \leq n-1\}}$ et
+         Donc $S_{n} = \grp{\{(i,i+1) \mid 1 \leq i \leq n-1\}}$ et
          $$
            (12 \cdots n)(12)(12 \cdots n)^{-1} = (23)
          $$
@@ -621,7 +621,7 @@
 %proof
   5. $\Aut G \subset S_{G}$ et $\id _{G} \subset \Aut G$. De plus,
      $$
-       (f,g) \in \Aut(G)^{2} \geq f \begin{cases}f\circ g \in \Aut G\\f^{-1} \in \Aut G\end{cases}
+       (f,g) \in \Aut(G)^{2} \implies \begin{cases}f\circ g \in \Aut G\\f^{-1} \in \Aut G\end{cases}
      $$
 %
 
@@ -654,7 +654,7 @@
 
      %offprog
        $$
-         G\overset{\simeq}{\longrightarrow} \Img \varphi = \varphi(G)
+         G\overset{\simeq}{\longrightarrow} \img \varphi = \varphi(G)
        $$
        $$
          \underbrace{(\varphi(g),\star')}_{\simeq (G,\star)} < (S_{G}, \circ)
@@ -698,7 +698,7 @@
          &\iff \forall y \in G, x\star y=y\star x
        \end{align*}
      $$
-      donc $\ker  \varphi = Z(G) < (G,\star)$ et $\Img \varphi = \{\varphi_{x} / x \in eg\} = \Img  G < (\Aut G,\circ)$.
+      donc $\ker  \varphi = Z(G) < (G,\star)$ et $\img \varphi = \{\varphi_{x} \mid x \in eg\} = \img  G < (\Aut G,\circ)$.
   4. Quid de $(\Aut \Z, \circ)$ ?
 
      - ++Analyse++:
@@ -720,13 +720,13 @@
 
 %thm
   - Soit $n \in \N$. La relation binaire sur $\Z^{2}$ définie par
-  $$
-    a\cgm b n \iff  a-b \in n\Z
-  $$
-  est une relation d’équivalence sur $\Z$.
+    $$
+      a\cgm b n \iff  a-b \in n\Z
+    $$
+    est une relation d’équivalence sur $\Z$.
   - La classe de $a \in \Z$ est alors
     $$
-      \left\{a+kn / k \in \Z\right\} = «\:a+n\Z\:»
+      \left\{a+kn \mid k \in \Z\right\} = «\:a+n\Z\:»
     $$
     On la note $(\bar{a}), \dot a, [a]_{n}$…
   - L’ensemble des classes est noté $\Z/n\Z$.
@@ -736,7 +736,7 @@
     $$
   - Si $n=0$,
     $$
-      \Z/0\Z = \left\{\bar{k} / k \in \Z\right\}
+      \Z/0\Z = \left\{\bar{k} \mid k \in \Z\right\}
     $$
 %
 
@@ -783,12 +783,12 @@
     (a-a')+(b-b') = (a+b) - (a'+b') \in n\Z
   $$
   donc $a+b\cgm{a'+b'}n$ soit $\bar{a+b} = \bar{a'+b'}$.
-  - $\bar{+}$ est alors une l.c.i sur $\Z/n\Z$, associative, commutative, admet $\bar{0}$ comme élément neutre, et pour laquelle $\bar{(-a)}$ est le symétrique de $\bar{a}$.
+  $\bar{+}$ est alors une l.c.i sur $\Z/n\Z$, associative, commutative, admet $\bar{0}$ comme élément neutre, et pour laquelle $\bar{(-a)}$ est le symétrique de $\bar{a}$.
 
 
   Si $n=0$, alors
   $$
-    \Z/n\Z = \{\{k\} / k \in \Z\}
+    \Z/n\Z = \{\{k\} \mid k \in \Z\}
   $$
   donc l’application
   $$
@@ -799,7 +799,7 @@
 
 %lemma
   Ainsi, dans $(\Z/n\Z)$, on a pour $(a,b) \in \Z^{2}$ et $k \in \Z$,
-  1. $\bar{a}\bar{+} = \bar{a+b}$  2. $-\bar{a} = \bar{-a}$  3. $k \bar{a} = \bar{ka}$
+  1. $\bar{a}\bar{+}\bar{b} = \bar{a+b}$  2. $-\bar{a} = \bar{-a}$  3. $k \bar{a} = \bar{ka}$
 %
 
 %proof Preuve du troisième point
@@ -880,7 +880,7 @@
   Soit $(G, \star)$ un groupe. Soit $x \in G$. On appelle ordre de $x$ l’élément de $\N \cup \{+ \infty\}$ noté $\omega(x)$ ou $o(x)$, défini par
   $$
     \omega(x) = \begin{cases}
-      \min\{k \in \N^{*} / x^{k} = e\} & \text{si }\{k \in \N^{*} / x^{k} = e\} \neq \emptyset\\
+      \min\{k \in \N^{*} \mid x^{k} = e\} & \text{si }\{k \in \N^{*} \mid x^{k} = e\} \neq \emptyset\\
       +\infty & \text{sinon}
     \end{cases}
   $$
@@ -888,7 +888,7 @@
   En notation additive dans $(G,+)$,
   $$
     \omega(x) = \begin{cases}
-      \min\{k \in \N^{*} / kx = 0\} & \text{si }\{k \in \N^{*} / kx = 0\} \neq \emptyset\\
+      \min\{k \in \N^{*} \mid kx = 0\} & \text{si }\{k \in \N^{*} \mid kx = 0\} \neq \emptyset\\
       +\infty & \text{sinon}
     \end{cases}
   $$
@@ -898,7 +898,7 @@
   1. Dans $(\Z,+)$, $\omega(0) = 1$ et $\forall n \in \Z^{*}, \omega(n) = +\infty$
   2. Dans $(\U_{2}, \times )$, $\omega(1) = 1$ et $\omega(-1) = 2$
   3. Dans $(\U_{4}, \times )$, $\omega(1) = 1$, $\omega(-1) = 2$, $\omega(i) = 4$, $\omega(-1) = 4$
-  4. L’ensemble $\mathbf{P}_{n} = \{z \in \U_{n} / \omega(z) = n\}$ est l’ensemble des racines primitives n-ièmes de l’unité.
+  4. L’ensemble $\mathbf{P}_{n} = \{z \in \U_{n} \mid \omega(z) = n\}$ est l’ensemble des racines primitives n-ièmes de l’unité.
      $\mathbf{P}_{1} = \{1\}$; $\mathbf{P}_{2} = \{-1\}$; $\mathbf{P}_{3} = \{j,j^{2}\}$; $\mathbf{P}_{4} = \{i,-i\}$
   5. Dans $(Z_{n},\circ)$, un p-cycle est d’ordre $p$. Si une permutation $\sigma$ de $S_{n}$ se décompose comme le produits des cycles $c_{1}, \ldots, c_{k}$, alors $\omega(\sigma) = \ppcm (\text{long}(c_{1}), \ldots, \text{long}(c_{k}))$(($\sigma^{l} = c_{1}^{l} \circ \cdots \circ c_{k}^{l} = \id \iff \begin{cases}l \in \text{long}(c_{1})\Z\\ \vdots \\ l \in \text{long}(c_{k})\end{cases}$))
   6. Dans le groupe  $(\GL_{2}(\R), \times )$ en posant $A = \mtx{0&1\\-1&0}\in \GL_{2}(\R)$ et $B = \mtx{0&1\\-1&-1} \in \GL_{2}(\R)$, on a $\omega(A) = 4$ et $\omega(B) = 3$. De plus, $A \times B = -(I+J)$ avec $J = \mtx{0&1\\0&0}$ (vérifiant $J^{2} = I_{2}$), donc
@@ -921,7 +921,7 @@
      %
   6. Il existe un unique entier $d \in \N$ tel que
      $$
-       \{k \in \Z / x^{k} = e\} = d\Z
+       \{k \in \Z \mid x^{k} = e\} = d\Z
      $$
      donc pour $d \in \N^{*}$,
      $$
@@ -944,14 +944,14 @@
        \end{cases}
        \implies l-k = 0
      $$
-     Cependant, $\{x^{k} / k \in \N\} \subset G$ et $G$ est fini — contradiction. Ainsi, $\forall x \in G, \omega(x) < +\infty$.
+     Cependant, $\{x^{k} \mid k \in \N\} \subset G$ et $G$ est fini — contradiction. Ainsi, $\forall x \in G, \omega(x) < +\infty$.
   2. On a
      $$
-       \omega(x) = 1 \iff  \min\{k \in \N^{*} / x^{k} = e\} = 1 \iff  x^{1} = e \iff x=e
+       \omega(x) = 1 \iff  \min\{k \in \N^{*} \mid x^{k} = e\} = 1 \iff  x^{1} = e \iff x=e
      $$
-  3. $\{k \in \N/x^{k}=e\} = \{k \in \N^* / (x^{k})^{-1} = e^{-1}\} = \{k \in \N^{*} / (x^{-1})^{k} = e\}$ d’où $\omega(x) = \omega(x^{-1})$.
+  3. $\{k \in \N\mid x^{k}=e\} = \{k \in \N^* \mid (x^{k})^{-1} = e^{-1}\} = \{k \in \N^{*} \mid (x^{-1})^{k} = e\}$ d’où $\omega(x) = \omega(x^{-1})$.
   4. %offprog
-       $\{k \in \N^{*} / f(x)^{k} = e'\} = \{k \in \N^{*}/ f(x^{k}) = e'\} \underset{\text{inj.}}= \{k \in \N^{*} / x^{k} = e\}$ d’où $\omega(f(x)) = \omega(x)$.
+       $\{k \in \N^{*} \mid f(x)^{k} = e'\} = \{k \in \N^{*}\mid f(x^{k}) = e'\} \underset{\text{inj.}}= \{k \in \N^{*} \mid x^{k} = e\}$ d’où $\omega(f(x)) = \omega(x)$.
      %
   5. %offprog
        Soit $(x,y) \in G^{2}$. L’application
@@ -966,11 +966,11 @@
      $$
      est un morphisme. Son noyau est alors un sous-groupe de $(\Z,+)$. Il existe donc un unique $d \in \N$ tel que
      $$
-       \{k \in \Z/x^{k} = e\} = d\Z \quad (\triangle)
+       \{k \in \Z\mid x^{k} = e\} = d\Z \quad (\triangle)
      $$
      Supposons $d \in \N^{*}$, alors
      $$
-       (\triangle) \iff \min\{k \in \N^* / x^{k} = e\} = d \iff \omega(x) = d
+       (\triangle) \iff \min\{k \in \N^* \mid x^{k} = e\} = d \iff \omega(x) = d
      $$
      donc
      $$
@@ -1047,7 +1047,7 @@
 ## Groupes monogènes et groupes $(\Z/n\Z,\bar{+})$
 
 %def Groupe monogène
-  Un groupe $(G,\star)$ est dit monogène si il existe $x \in G$ tel que $G = \grp{\{x\}} = \{x^{k} / k \in \Z\}$.
+  Un groupe $(G,\star)$ est dit monogène si il existe $x \in G$ tel que $G = \grp{\{x\}} = \{x^{k} \mid k \in \Z\}$.
   %offprog
     Un groupe est monogène si et seulement si son rang vaut 0 ou 1.
   %
@@ -1080,7 +1080,7 @@
     est un morphisme surjectif de groupes de noyau $\ker f = \{0\}$. C’est donc un isomorphisme.
   - sinon, $\omega(x) = d \in \N^{*}$. Alors
     $$
-      \ker f = \{k \in \Z / x^{k} = e\} = d\Z
+      \ker f = \{k \in \Z \mid x^{k} = e\} = d\Z
     $$
     L’application
     $$
@@ -1191,8 +1191,8 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
       $$
       $$
         \begin{align*}
-          H &= \{f^{-1}(e^{\frac{2ik \pi}{n}}) / k \in \icc{0,d-1}\}\\
-          &= \{(f^{-1}(e^{\frac{2i \pi}{d}}) / k \in \Z)\}\\
+          H &= \{f^{-1}(e^{\frac{2ik \pi}{n}}) \mid k \in \icc{0,d-1}\}\\
+          &= \{(f^{-1}(e^{\frac{2i \pi}{d}}) \mid k \in \Z)\}\\
           &=\grp{ f^{-1}(e^{\frac{2i \pi}{d}})} \text{ est un groupe mopnogène fini}
         \end{align*}
       $$
@@ -1303,7 +1303,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
 %def
   On pose pour $n \in \N^{*}$
   $$
-    \varphi(n) = \#\{k \in \icc{1,n} / k \land n = 1\}
+    \varphi(n) = \#\{k \in \icc{1,n} \mid k \land n = 1\}
   $$
 %
 
@@ -1312,7 +1312,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
      $$
        \forall n \geq 2, \varphi(n) \in \cc{1,n-1}
      $$
-  2. $\varphi(n) = \#\{k \in \icc{0,n-1} / k \land  n = 1\}$
+  2. $\varphi(n) = \#\{k \in \icc{0,n-1} \mid k \land  n = 1\}$
   3. $\varphi(n)$ est le nombre d’éléments d’ordre $n$ du groupe cyclique $(\Z/n\Z, \bar{+}) \simeq (\U_{n}, \times )$ donc
      $$
        \begin{align*}
@@ -1327,16 +1327,16 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   1. - $1 \land 1 = 1$ donc $\varphi(1) = \#\{1\} = 1$
      - Soit $n \geq 2$. $n \land n = n\neq 1$ et $1 \land  n = 1$ donc $\varphi(n) \leq \#\icc{1,n-1}$ et $\varphi(n) \geq 1$. donc $\varphi(n) \in \icc{1, n-1}$.
   2. $0 \land n = n \land n = n$
-  3. $\mathbf{P}_{n} = \{z \in \U_{n} / \omega(z)=n\}$ donc
+  3. $\mathbf{P}_{n} = \{z \in \U_{n} \mid \omega(z)=n\}$ donc
      $$
        \begin{align*}
          \# \mathbf{P}_{n} &= \#\{x \in \Z/n\Z / \omega(x) = n\} \\
-         &= \#\{x \in \Z/n\Z / \grp x = \Z/n\Z\}
+         &= \#\{x \in \Z/n\Z \mid \grp x = \Z/n\Z\}
        \end{align*}
      $$
-     or $\mathbf{P}_{n} = \{e^{\frac{2ik \pi}{n}} / k \in \icc{0,n-1} \text{ et } k \land  n = 1\}$ donc
+     or $\mathbf{P}_{n} = \{e^{\frac{2ik \pi}{n}} \mid k \in \icc{0,n-1} \text{ et } k \land  n = 1\}$ donc
      $$
-       \#\mathbf{P}_{n} = \#\{k \in \icc{0,n-1} / k \land n = 1\} = \varphi(n)
+       \#\mathbf{P}_{n} = \#\{k \in \icc{0,n-1} \mid k \land n = 1\} = \varphi(n)
      $$
      ==TABLEAU==
 %
@@ -1362,8 +1362,8 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   2. On a
      $$
        \begin{align*}
-         \{k \in \icc{1, p^{\alpha}} / k \land  p^{\alpha} = 1\} &= \{k \in \icc{1, p^{\alpha}} / k \land  p = 1\} \\
-         &= \{k \in \icc{1, p^{\alpha}} / p \not\mid k\} \quad\text{où } p \text{ est premier}
+         \{k \in \icc{1, p^{\alpha}} \mid k \land  p^{\alpha} = 1\} &= \{k \in \icc{1, p^{\alpha}} \mid k \land  p = 1\} \\
+         &= \{k \in \icc{1, p^{\alpha}} \mid p \not\mid k\} \quad\text{où } p \text{ est premier}
        \end{align*}
      $$
      Ainsi,

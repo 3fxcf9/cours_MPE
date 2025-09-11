@@ -199,7 +199,6 @@ $$
       - $A \setminus \{0_{A}\}$ est un groupe donc $A \neq \{0_{A}\}$
       - $A \setminus \{0_{A}\}$ est stable pour $\times $ et $A\neq \{0_{A}\}$ donc $A$ est intègre.
       - $1_{A}$ est le seul candidat pour le neutre de $(A \setminus \{0_{A}\}, \times )$, donc le symétrique de $x \in A \setminus \{0_{A}\}$ est son inverse.
-      -
   %
 %
 
@@ -524,20 +523,278 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   Si $\K$ est un corps (resp. un anneau commutatif unitaire intègre), alors tout élément $P \in \K[X]$ de degré $n \in \N$ a au plus $n$ racines distinctes.
 %
 
-Notons $Z(P)$ l’ensemble de ces racines.
-- si $n=0$, alors $Z(p)\neq \emptyset$ et $\abs{\emptyset} = 0 < 0$
-- supposons le résultat vrai à l’ordre $n \in \N$. Soit $p \in \K[X]$ avec $\deg P = n+1$.
-  - si $Z(P) = \emptyset$, alors $\abs{\emptyset} = 0 \leq n-1$
-  - sinon, pour $\alpha \in Z(p)$ et $P = \sum_{k=0}^{n-1}a_{k}X^{k}$,
+%proof
+  Notons $Z(P)$ l’ensemble de ces racines.
+  - si $n=0$, alors $Z(p)\neq \emptyset$ et $\abs{\emptyset} = 0 < 0$
+  - supposons le résultat vrai à l’ordre $n \in \N$. Soit $p \in \K[X]$ avec $\deg P = n+1$.
+    - si $Z(P) = \emptyset$, alors $\abs{\emptyset} = 0 \leq n-1$
+    - sinon, pour $\alpha \in Z(p)$ et $P = \sum_{k=0}^{n-1}a_{k}X^{k}$,
+      $$
+        \begin{align*}
+          P &= P - \tilde{P}(\alpha)\\
+          &= \sum_{k=\mathbf 1}^{p+1}a_{k}(X^{k}-\alpha^{k})\\
+          &= (X-\alpha)\underbrace{\sum_{k=1}^{n+1}a_{k} \left(\sum_{i=0}^{k-1}\alpha^{i} X^{k-1-i}\right)}_{Q}
+        \end{align*}
+      $$
+      Par intégrité,
+      $$
+        \tilde{P}(x) = 0 \iff  x = \alpha \text{ ou } \tilde{Q}(x) = 0
+      $$
+      Ainsi, $Z(P) = \{\alpha\} \cup Z(Q)$ et $\deg Q \leq n$, donc $\abs{Z(P)} \leq 1+n$.
+%
+
+%cor
+  Soit $P \in \K[X]$ (voire $p \in A[X]$ avec $A$ commutatif unitaire intègre). Si
+  ~ $P$ a une infinité de racines  ~ $P$ a au moins $n+1$ racines distinctes avec $\deg P = n \in \N$
+  alors $P$ est nul.
+%
+
+%eg
+  Soit $p$ un nombre premier. Posons $Q = X^{p-1}-1 \in \F_{p}[X]$. $(\F_{p}^{\times}, \times ) = (\F_{p}^{*}, \times )$ est un groupe de cardinal $p-1$, donc
+  $$
+    \forall x \in \F_{p}^{*}, x^{p-1} = 1
+  $$
+  Tout élément de $\F_{p}^{*}$ est donc racine de $Q$, or
+  $$
+    \abs{\F_{p}^{*}} = p-1 = \deg Q \quad\text{et}\quad Q \text{ unitaire}
+  $$
+  donc $Q = \prod_{x \in \F_{p}^{*}}(X-x)$, doù
+  $$
+    \begin{align*}
+      \tilde{Q}(0) &= \prod_{x \in \F_{p}^{*}}(-x)\\
+                  -1&= (-1)^{p-1}\prod_{x \in \F_{p}^{*}}x\\
+                  &= (-1)^{p-1} \prod_{k=1}^{p-1}\bar{k}\\
+                  &= (-1)^{p-1}\bar{(p-1)!}
+    \end{align*}
+  $$
+  d’où $(p-1)! \cgm{(-1)^{p}}p$. Si $p$ est premier et $p \geq 3$, alors $p$ est impair donc
+  $$
+    (p-1)! \cgm{-1}p
+  $$
+  Si $p = 2$,
+  $$
+    (2-1)! \cgm12\cgm{-1}2
+  $$
+
+  ++Réciproque:++ Soit $n \geq 2$ tel que $(n-1)! \cgm{-1}n$. Alors il existe $q \in \Z$ tel que
+  $$
+    \prod_{k=1}^{n-1}k + qn = -1
+  $$
+  donc
+  $$
+    \forall k \in \icc{1,n-1}, k \land n = 1
+  $$
+  donc $n$ est premier.
+%
+
+%thm Théorème de Wilson
+  Soit $n \geq 2$.
+  $$
+    n \text{ premier} \iff (n-1)! \cgm{-1}n
+  $$
+%
+
+%rem
+  Dans $(\Z/6\Z, \bar{+}, \bar{\times })$, on considère l’anneau $(A = \{\bar{0}, \bar{3}\}, \bar{+}, \bar{\times })$.
+  ```
+    ┌───┬───┬───┐
+    │ + │ 0 │ 3 │
+    ├───┼───┼───┤
+    │ 0 │ 0 │ 3 │
+    ├───┼───┼───┤
+    │ 3 │ 3 │ 0 │
+    └───┴───┴───┘
+
+    ┌───┬───┬───┐
+    │ x │ 0 │ 3 │
+    ├───┼───┼───┤
+    │ 0 │ 0 │ 0 │
+    ├───┼───┼───┤
+    │ 3 │ 0 │ 3 │
+    └───┴───┴───┘
+  ```
+  $A$ n’est pas un sous-anneau de $(\Z/5\Z, \bar{+}, \bar{\times })$ car $1_{A} \neq \bar{1}$.
+%
+
+## Anneau produit
+
+%def
+  Soit $n \in \N$ avec $n \geq 2$. Soient $(A_{1}, +_{1}, \times _{1}), \ldots, (A_{n}, +_{n}, \times _{n})$ des anneaux unitaires. On définit deux lois de composition interne sur $A_{1} \times \cdots \times A_{n}$ de la façon suivante~:
+  $$
+    (a_{1}, \ldots, a_{n}) + (b_{1}, \ldots, b_{n}) = (a_{1}+_{1}b_{1}, \ldots, a_{n}+_{n}b_{n})
+  $$
+  $$
+    (a_{1}, \ldots, a_{n}) \times (b_{1}, \ldots, b_{n}) = (a_{1}\times_{1}b_{1}, \ldots, a_{n}\times_{n}b_{n})
+  $$
+  Ces lois munissent $(A_{1} \times  \cdots \times A_{n}, +, \times )$ d’une structure d’anneau unitaire. On appelle cet anneau *anneau produit*. Son élément unité est $(1_{A_{1}}, \ldots, 1_{A_{n}})$.
+%
+
+%lemma
+  1. $(A_{1}, \times , A_{n}, +, \times )$ est commutatif si et seulement si pour tout $i \in \icc{1,n}$, $(A_{i}, +_{i}, \times _{i})$ est commutatif.
+  2. Si l’un des anneaux $A_{i}$ est non nul, alors $A_{1} \times \cdots \times A_{n}$ n’est pas intègre.
+  3. $(A_{1} \times \cdots \times A_{n})^{\times} = A_{1}^{\times} \times \cdots \times A_{n}^{\times}$
+%
+
+%proof
+  1. Le groupe $(A_{1} \times  \cdots \times A_{n}, +)$ (groupe produit !) est abélier. $\times $ est une l.c.i dans $A_{1} \times \cdots \times A_{n}$,
+     $$
+       \ubar a \times (\ubar b \times \ubar c) = \ubar a \times  (\ubar{b_{i}}\times \ubar{c_{i}})_{1\leq  i\leq  n} = (a_{i} \times_{i}(b_{i} \times_{i} c_{i}))_{1 \leq i \leq n}
+     $$
+     $$
+       \ubar a \times  (\ubar b + \ubar c) = \ubar a \times (b_{i} +_{i} c_{i})_{1 \leq i \leq n} = (a_{i} \times_{i} (b_{i} +_{i} c_{i}))_{1 \leq i \leq n} = ((a_{i} \times_{i} b_{i}) + (a_{i} \times_{i} c_{i}))_{1 \leq i \leq n} = (\ubar a \times \ubar b) + (\ubar a \times \ubar c)
+     $$
+     $$
+       (\ubar a + \ubar b) \times \ubar c = \cdots = (\ubar a \times \ubar c) + (\ubar b  \times \ubar c)
+     $$
+     $$
+       \ubar a \times (1_{A_{1}}, \ldots, 1_{A_{n}}) = (a_{i} \times_{i} 1_{A_{i}})_{1 \leq i \leq n} = (a_{i})_{1 \leq i \leq n} = \ubar a = \cdots = \ubar a \times (1_{A}, \ldots, 1_{A_{n}})
+     $$
+     1. $\ubar a \times \ubar {a'} = \ubar{a'} \times \ubar a \iff \forall i \in \icc{1,n}, a_{i} \times_{i} {a'}_{i} = {a'}_{i} \times_{i} a_{i}$
+     2. $A_{i} \neq \{0_{A}\}$, i.e. $1_{A_{1}}\neq 0_{A_{i}}$ et il existe $j\neq i$ tel que $1_{A_{j}} \neq 0_{A_{j}}$
+        ==WHAT???==
+  3. Pour $\ubar a \in A_{1} \times  \cdots \times A_{n}$,
+     $$
+       \begin{align*}
+          \ubar a \in {(A_{1} \times \cdots \times A_{n})}^{\times} &\iff \exists \ubar{a'} \in A_{1} \times \cdots \times A_{n} : \ubar a \times \ubar{a'} = \ubar{a'} \times  \ubar a = (1_{A_{1}}, \ldots, 1_{A_{n}})\\
+          &\iff \exists (a_{1}', \ldots, a_{n}') \in A_{1} \times \cdots \times A_{n} : \forall i \in \icc{1,n}, a_{i} \times_{i} a_{i}' = a_{i}' \times_{i} a_{i} = 1_{A_{i}}\\
+          &\iff \forall i \in \icc{1,n}, a_{i} \in A_{i}^{\times}
+       \end{align*}
+     $$
+%
+
+%eg
+  1. Pour $n \geq 2$, $(\Z^{n}, +, \times )$ est un anneau commutatif unitaire, n’est pas intègre et ==MISSING==
+     $$
+       \left((\Z^{n})^{\times}, \times \right) = \left((\{-1,1\})^{n}, \times \right) = (\U_{2}^{n}, \times ) \simeq \left((\Z/2\Z)^{n}, +\right)
+     $$
+  2. $(\Z/2\Z \times \Z/8\Z, +, \times )$ est un anneau commutatif unitaire à 16 éléments, et
+     $$
+       \left((\Z/2\Z \times \Z/8\Z)^{\times}, \times \right) \simeq \left((\Z/2\Z)^{2}, +\right)
+     $$
+%
+
+## Morphismes d’anneaux unitaires
+
+%def
+  Soient $(A,+, \times )$ et $(A', +', \times')$ deux anneaux unitaires. Une application $f: A \longrightarrow  A'$ est un *morphisme d’anneaux* si
+  1. $f(1_{A}) = 1_{A'}$  2. $\forall (a,b) \in A^{2}, \begin{cases}f(a+b) = f(a) +' f(b)\\f(a \times b) = f(a) \times ' f(b)\end{cases}$
+
+  Soient $(\K, +, \times )$ et $(\K', +', \times ')$ deux corps. Une application $g: \K \longrightarrow \K'$ est appelé morphisme de corps si $g$ est un morphisme d’anneaux unitaires.
+%
+
+%thm
+  1. Soient $f: A \longrightarrow A'$ un morphisme d’anneaux unitaires et $g: \K \longrightarrow  \K'$ un morphisme de corps. On a
+     1. $\forall  a \in A^{\times}, f(a) \in (A')^{\times} \text{ et } f(a)^{-1} = f(a^{-1})$  2. $\applic{(A^{\times}, \times )}{((A')^{\times}, \times )}{a}{f(a)}$ est un morphisme de groupes. C’est un isomorphisme de groupes si $f$ est un isomorphisme d’anneaux.
+  2. L’image directe par $f$ (resp. par $g$) d’un sous-anneau de $A$ est un sous-anneau de $A'$ (resp. sous-corps de $\K$).
+  3. L’image réciproque par $f$ (resp. par $g$) d’un sous-anneau de $A'$ (resp. sous-corps de $\K'$) est un sous-anneau de $A$ (resp. sous-corps de $\K$).
+  4. $\img f := f(A)$ est un sous-anneau de $A'$
+
+     $\img g = g(\K)$ est un sous-corps de $\K'$
+
+     $\ker f = \{a \in A \mid f(a) = 0_{A}\}$ est un sous-groupe de $(A,+)$ mais n’est pas un sous-anneau si $A' \neq \{0_{A'}\}$.
+
+     $\ker g = \{a \in \K \mid g(a) = 0_{\K'}\} = \{0_{\K}\}$.
+%
+
+%proof
+  1. Si $a \in A^{\times}$, alors $1_{A} = a \times a^{-1} = a^{-1} \times a$ d’où
+     $$
+       1_{A'} = f(a) \times' f(a^{-1}) = f(a^{-1}) \times ' f(a)
+     $$
+     donc $f(a) \in {A'}^{\times}$ et $f(a)^{-1} = f(a^{-1})$.
+  2. On a
+     $$
+       \begin{cases}f\circ f^{-1} = \id_{A'}\\f^{-1}\circ f = \id_{A}\end{cases} \implies  \begin{cases}(f\circ f^{-1})_{|(A')^{\times}} = \id_{(A')^{\times}}\\\underbrace{(f^{-1}\circ f)_{|A^{\times}}}_{ = {f^{-1}}_{|(A')^{\times}}^{|A^{\times}} \circ f_{|A^{\times}}^{|(A')^{\times}}} = \id_{A^{\times}}\end{cases}
+     $$
+     donc $f_{|A^{\times}}^{|(A')^{\times}}$ est un morphisme de groupes.
+  2. Soit $L$ un sous-corps de $(\K, +, \times )$. $f(L)$ est alors un sous-anneau de $(\K', +, \times ')$. Soit $k \in f(L) \setminus \{0_{\K'}\}$. Alors il existe $x \in L$ tel que $y = f(x)$; or $f(0_{\K}) = 0_{\K'}$ donc $x \in L \setminus \{0\} = L^{\times}$ donc $y \in f(L)^{\times}$.
+  3. OK
+  4. On a~:
+     - $f(1_{A}) = 1_{A'} \neq 0_{A'}$ donc $1_{A} \neq \ker f$ donc $\ker f$ n’est pas un sous-anneau
+     - Soit $x \in \K^{*} = \K^{\times}$. Alors $g(x) \in g(\K)^{\times}$ donc $g(x) \neq 0_{\K'}$ donc $\ker g = \{0_{\K}\}$
+%
+
+
+%thm Théorème chinois
+  Soit $r$ un entier avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$. On a
+  $$
+    (\Z/n_{1}\Z \times \cdots \times \Z/n_{r}\Z, +, \times ) \underset{\text{anneau}}{\simeq} (\Z/n_{1} \cdots n_{r}\Z, \bar{+}, \bar{\times })
+  $$
+  si et seulement si
+  $$
+    \forall (i,j) \in \icc{1, r}^{2}, \left[i \neq j \implies  n_{i} \land n_{j} = 1\right]
+  $$
+%
+
+%proof
+  - Supposons
     $$
-      \begin{align*}
-        P &= P - \tilde{P}(\alpha)\\
-        &= \sum_{k=\mathbf 1}^{p+1}a_{k}(X^{k}-\alpha^{k})\\
-        &= (X-\alpha)\underbrace{\sum_{k=1}^{n+1}a_{k} \left(\sum_{i=0}^{k-1}\alpha^{i} X^{k-1-i}\right)}_{Q}
-      \end{align*}
+      \forall (i,j)\in \icc{1,r}, \left[i\neq j \implies  n_{i} \land  n_{j} = 1\right]
     $$
-    Par intégrité,
+    Sous réserve d’existence, considérons
     $$
-      \tilde{P}(x) = 0 \iff  x = \alpha \text{ ou } \tilde{Q}(x) = 0
+      f: \applic{\Z/n_{1} \cdots n_{r}\Z}{\Z/n_{1}\Z \times  \cdots \times \Z/n_{r}\Z}{\bar{k}}{([k]_{n_{1}}, \ldots, [k]_{n_{r}})}
     $$
-    Ainsi, $Z(P) = \{\alpha\} \cup Z(Q)$ et $\deg Q \leq n$, donc $\abs{Z(P)} \leq 1+n$.
+    - $f$ existe. En effet, pour $(k,l) \in \Z^{2}$,
+      $$
+        k\cgm l{n_{1} \cdots n_{r}} \implies  \forall i \in \icc{1,r}, k\cgm l[n_{i}]
+      $$
+    - $f(\bar{1}) = ([1]_{n_{1}}, \ldots, [1]_{n_{r}}) = 1_{\Z/n\Z \times \cdots \times \Z/n_{r}\Z}$,
+      $$
+        \forall (k,l) \in \Z^{2}, \begin{cases}f(\bar{k}\bar{+}\bar{l}) = f(\bar{k}) + f(\bar{l})\\f(\bar{k} \bar{\times }\bar{l}) = f(\bar{k}) \times  f(\bar{l})\end{cases}
+      $$
+    - Pour $k \in \Z$, on a
+      $$
+        \bar{k} \in \ker f \iff k \in \underbrace{\underbrace{(n_{1}\Z)\cap (n_{2}\Z)}_{=(n_{1} \lor n_{2})\Z = (n_{1}n_{2})\Z}\cap  (n_{3}\Z)}_{=[(n_{1}n_{2})\lor n_{3}]\Z = (n_{1}n_{2}n_{3})\Z)} \cap \cdots \cap (n_{r}\Z) = (n_{1} \lor  \cdots \lor  n_{r})\Z
+      $$
+      donc $\bar{k} \in \ker g \iff  k \in (n_{1} \times \cdots \times n_{r})\Z \iff  \bar{k} = \bar{0}$
+    - $f$ est un morphisme d’anneaux unitaires injectifs et
+      $$
+        \abs{\Z/n_{1} \cdots n_{r}\Z} = n_{1} \times  \cdots \times  n_{r} = \abs{\Z/n_{1} \Z \times  \cdots \times  \Z/n_{r} \Z}
+      $$
+      donc $f$ est un isomorphisme d’anneaux unitaires (*« isomorphisme naturel »*).
+
+  %offprog
+    - Supposons que $(\Z/n_{1}\Z \times  \cdots \times \Z/n_{r} \Z, +, \times )$ soit isomorphe à $(\Z/n_{1} \cdots n_{r} \Z, \bar{+}, \bar{\times })$. Alors $(\Z/n_{1} \Z \times  \cdots \times \Z/n_{r} \Z, +)$ est un groupe cyclique, donc pour $1 \leq  i < j \leq  n$, le sous-groupe
+      $$
+        \{\bar{0}\} \times  \cdots \times  \{\bar{0}\}\times \Z/n_{i}\Z \times \{0\} \times \cdots \times  \{0\} \times  \Z/n_{j}\Z \times  \{0\} \times  \cdots \times \{0\}
+      $$
+      est cyclique. Il est isomorphe à $\Z/n_{i}\Z \times  \Z/n_{j}\Z$. Colui-ci est cyclique si et seulement si $n_{i} \land  n_{j} = 1$.
+  %
+%
+
+
+%thm Théorème des restes chinois
+  Soit $r \in \N$ avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$ avec $n_{i} \land  n_{j} = 1$ pour tout $(i,j)\in \icc{1,n}^{2}$ et $i\neq j$. Soient $(a_{1}, \ldots, a_{n}) \in \Z^{r}$. Il existe un unique entier $x \in \icc{0,(n_{1}, \cdots, n_{r})-1}$ tel que
+  $$
+    \begin{cases}x\cgm{a_{1}}{n_{1}}\\ \vdots \\ x\cgm{a_{r}}{n_{r}}\end{cases} \quad (\star)
+  $$
+%
+
+%proof
+  L’application
+  $$
+    f: \applic{\Z/n_{1} \cdots n_{r}\Z}{\Z/n_{1}\Z \times  \cdots \times \Z/n_{r}\Z}{[k]_{n_{1} \cdots n_{r}}}{([k]_{n_{1}}, \ldots, [k]_{n_{r}})}
+  $$
+  est un morphisme d’anneaux. Or
+  $$
+    \begin{align*}
+      (\star) &\iff \begin{cases}[x]_{n_{1}} = [a_{1}]_{n_{1}} \\ \vdots \\ [x]_{n_{r}} = [a_{r}]_{n_{r}}\end{cases}\\
+      &\iff f([x]_{n_{1} \cdots n_{r}}) = ([a_{1}]_{n_{1}}, \ldots, [a_{r}]_{n_{r}})\\
+      &\iff [x]_{n_{1} \cdots n_{r}} = f^{-1}([a_{1}]_{n_{1}}, \ldots, [a_{r}]_{n_{r}}) \end{align*}
+  $$
+%
+
+++Comment trouver $x$ ?++:
+$$
+  \nu_{i} = \frac{n_{1} \cdots n_{r}}{n_{i}} \quad\text{et}\quad \nu_{i} \land n_{i} = 1
+$$
+donc
+$$
+  \nu_{i}^{\varphi(n_{i})} \cgm 1{n_{i}}
+$$
+Posons
+$$
+  x = \sum_{i=1}^{r}a_{i}\nu_{i}^{\varphi(n_{i})} \in \Z
+$$
+On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ dans $\Z$.
