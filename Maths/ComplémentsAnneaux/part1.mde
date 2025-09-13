@@ -388,17 +388,17 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
         &\iff k \land  n = 1
       \end{align*}
     $$
-  - Montrons l’équivalence entre les points $(i)$ et $(ii)$.
+  - Montrons l’équivalence entre les points $(i)$ et $(iii)$.
     - Supposons $k \land  n = 1$. Il existe $(a,b) \in \Z^{2}$ tel que
       $$
         ka + nb = 1
       $$
       D’où $\bar{k} \bar{\times } \bar{a} = \bar{1}$, soit $\bar{k} \in (\Z/n\Z)^{\times}$.
     - Supposons $\bar{k} \in (\Z/n\Z)^{\times}$. Il existe $a \in \Z$ tel que $\bar{k} \bar{\times } \bar{a} = \bar{1}$, i.e. $\bar{ka} = \bar{1}$. Il existe donc $q \in \Z$ tel que
-    $$
-      ak = 1-qn
-    $$
-    d’où $ak + qn = 1$, d’où $k \land n = 1$.
+      $$
+        ak = 1-qn
+      $$
+      d’où $ak + qn = 1$, d’où $k \land n = 1$.
 %
 
 %cor

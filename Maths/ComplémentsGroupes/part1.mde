@@ -1025,7 +1025,7 @@
          \omega(x^{0}) = \omega(e) = 1
        $$
        Soit $p \in \Z^{*}$. Supposons $\omega(x^{p}) = d \in \N^{*}$. Alors $(x^{p})^{d} = e$, i.e. $x^{pd} = e$ ou encome $x^{\abs{p}d} = e$ et $\abs{p}d \in \N^{*}$; ce qui est en contradiction avec $\omega(x) = +\infty$.
-  4. Soit $(G,\star)$ un groupe. Soit $x \in G$ avec $\omega(x) < +\infty$. Soit $p \in \N$. Déterminer $\omega(x^{p})$.
+  4. Soit $(G,\star)$ un groupe. Soit $x \in G$ d’ordre $d$ fini. Soit $p \in \N$. Déterminer $\omega(x^{p})$.
      $$
        \begin{align*}
          \begin{cases}
@@ -1038,10 +1038,10 @@
      $$
      en posant
      ~ $d = (p \land  d)d'$  ~ $p = (p \land d)p'$  ~ $d' \land p' = 1$
-     Donc $\omega(x^{p}) = d' = \frac{d}{p \land  d}$,
-     $$
-       \forall p \in \Z, \omega(x^{p}) = \frac{\omega(x)}{p \land \omega(x)}
-     $$
+     Ainsi $\omega(x^{p}) = d' = \frac{d}{p \land  d}$, soit
+    $$
+      \boxed{\omega(x^{p}) = \frac{\omega(x)}{p \land \omega(x)}}
+    $$
 %
 
 ## Groupes monogènes et groupes $(\Z/n\Z,\bar{+})$
@@ -1088,7 +1088,7 @@
     $$
     est correctement définie. En effet, pour $(k,l) \in \Z^{2}$,
     $$
-      \bar{k} = \bar{l} \iff  k\cgm l[d] \iff  \exists q \in \Z, k = l + q d \implies x^{k} = x^{l+qd} = x^{l} \star(x^{d})^{q} = x^{l}
+      \bar{k} = \bar{l} \iff  k\cgm ld \iff  \exists q \in \Z, k = l + q d \implies x^{k} = x^{l+qd} = x^{l} \star(x^{d})^{q} = x^{l}
     $$
 
     - Soit $(k,l) \in \Z^{2}$.
@@ -1370,46 +1370,70 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
      $$
        \varphi(p^{\alpha}) = \#(\icc{1, p^{\alpha}}\setminus p, 2p, \ldots, p^{\alpha}) = p^{\alpha} - p^{\alpha-1} = p^{\alpha-1}(p-1)
      $$
-  3. Soit $(m,n) \in (\N^{*})^{2}$ avec $m \land  n = 1$.
+  3. Notons $\mathbf P_{n}$ l’ensemble des racines primitives $n$-ièmes de l’unité.
+     L’application
      $$
-       \varphi(mn) = \# \mathbf{P}_{mn} = \#(\mathbf{P_{m} \times \mathbf{P}_{n}})
+      f:\applic{\mathbf{\mathbf P}_{m} \times \mathbf{P}_{n}}{\mathbf{P}_{mn}}{(z,z')}{zz'}
      $$
-     car
+     est bien définie: soient $(z,z') \in \mathbf{P}_{n} \times \mathbf{P}_{m}$. Alors $\omega(z) = n$, $\omega(z') = m$, $m \land n = 1$ et $zz' = z' z$ donc $\omega(zz') = mn$, d’où $zz' \in \mathbf{P}_{mn}$.
+
+     L’application
      $$
-       \applic{\mathbf{\P}_{m} \times \mathbf{P_{n}}}{\mathbf{P}_{mn}}{(a,b)}{ab}
+      g:\applic{\mathbf{P}_{mn}}{\mathbf{P}_{m} \times \mathbf{P}_{n}}{z}{(z^{um}, z^{vn})}
      $$
-     est une bijection((v. exercice 5.)). Donc $m \land  n = 1$, d’où
+     est bien définie: $m$ et $n$ étant premiers entre eux, il existe deux entiers $u$ et $v$ tels que
      $$
-       \varphi(mn) = \# \mathbf{P}_{m} \times \# \mathbf{P}_{n} = \varphi(m)\varphi(n)
+       um + vn = 1 \quad (*)
      $$
-     - Calcul de $\varphi(n)$ pour $n \geq 2$. On pose
+
+     - $(z^{um})^{n} = (z^{mn})^{u} = 1$ donc $z^{um} \in \U_{n}$. De plus,
        $$
-         n = p_{1}^{\alpha_{1}} \times \cdots \times p_{k}^{\alpha_{k}}
+         \omega(z^{um}) = \frac{\omega(z)}{um \land  \omega(z)} = \frac{mn}{(um) \land  (nm)} = \frac{n}{u \land  n}
        $$
-       avec
-       $$
-         p_{1} < \cdots < p_{k} \text{ premiers et } (\alpha_{1}, \ldots, \alpha_{k}) \in (\N^{*})^{k} \text{ pour } k \in \N^{*}
-       $$
-       Alors,
-       $$
-         p_{1}^{\alpha_{1}} \land  (p_{2}^{\alpha_{2}} \times \cdots \times p_{k}^{\alpha_{k}}) = 1
-       $$
-       d’où
-       $$
-         \varphi(n) = \varphi(p_{1}^{\alpha_{1}}) \times  \varphi(p_{2}^{\alpha_{2}} \times \cdots \times  p_{k}^{\alpha_{k}})
-       $$
-       Par récurrence finie, on a
-       $$
-         \varphi(n) = \prod_{i=1}^{k}vf(p_{i}^{\alpha_{i}})
-       $$
-       d’où
-       $$
-         \varphi(n) = \prod_{i=1}^{k}(p_{i}^{\alpha_{i}} - p_{i}^{\alpha_{i}-1}) = \prod_{i=1}^{k} p_{i}^{\alpha_{i}} \times \prod_{i=1}^{k}\left(1-\frac{1}{p_{i}}\right)
-       $$
-       d’où
-       $$
-         \varphi(n) = n \prod_{\substack{p\mid n\\p \text{ premier}}}  \left(1-\frac{1}{p}\right)
-       $$
+       or la relation $(*)$ implique que $u \land  n = 1$, donc $\omega(z^{um}) = n$ d’où $z^{um} \in \mathbf{P}_{m}$.
+     - On montre de même que $z^{vn} \in \mathbf{P_{n}}$.
+
+     Soit $z \in \mathbf P_{mn}$.
+     $$
+       (f \circ g)(z) = f((z^{um}, z^{vn})) = z^{um+vn}
+     $$
+     et
+     $$
+       (g\circ f)((z,z')) = g(zz') = ((zz')^{um}, (zz')^{vn}) = (z^{um}, z^{vn}) = (z^{1-vn}, z^{1-um}) = (z,z')
+     $$
+     Donc $f$ est bijective.
+     Ainsi,
+     $$
+      \varphi(mn) = \# \mathbf{P}_{mn} = \#(\mathbf{P}_{m} \times \mathbf{P}_{n}) = \# \mathbf{P}_{m} \times \# \mathbf{P}_{n} = \varphi(m)\varphi(n)
+     $$
+  4. Calcul de $\varphi(n)$ pour $n \geq 2$. On pose
+     $$
+       n = p_{1}^{\alpha_{1}} \times \cdots \times p_{k}^{\alpha_{k}}
+     $$
+     avec
+     $$
+       p_{1} < \cdots < p_{k} \text{ premiers et } (\alpha_{1}, \ldots, \alpha_{k}) \in (\N^{*})^{k} \text{ pour } k \in \N^{*}
+     $$
+     Alors,
+     $$
+       p_{1}^{\alpha_{1}} \land  (p_{2}^{\alpha_{2}} \times \cdots \times p_{k}^{\alpha_{k}}) = 1
+     $$
+     d’où
+     $$
+       \varphi(n) = \varphi(p_{1}^{\alpha_{1}}) \times  \varphi(p_{2}^{\alpha_{2}} \times \cdots \times  p_{k}^{\alpha_{k}})
+     $$
+     Par récurrence finie, on a
+     $$
+       \varphi(n) = \prod_{i=1}^{k}vf(p_{i}^{\alpha_{i}})
+     $$
+     d’où
+     $$
+       \varphi(n) = \prod_{i=1}^{k}(p_{i}^{\alpha_{i}} - p_{i}^{\alpha_{i}-1}) = \prod_{i=1}^{k} p_{i}^{\alpha_{i}} \times \prod_{i=1}^{k}\left(1-\frac{1}{p_{i}}\right)
+     $$
+     d’où
+     $$
+       \varphi(n) = n \prod_{\substack{p\mid n\\p \text{ premier}}}  \left(1-\frac{1}{p}\right)
+     $$
 %
 
 %eg
