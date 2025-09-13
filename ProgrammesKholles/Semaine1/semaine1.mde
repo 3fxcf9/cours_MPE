@@ -154,31 +154,32 @@ L’application
 $$
  f:\applic{\mathbf{\mathbf P}_{m} \times \mathbf{P}_{n}}{\mathbf{P}_{mn}}{(z,z')}{zz'}
 $$
-est bien définie: soient $(z,z') \in \mathbf{P}_{n} \times \mathbf{P}_{m}$. Alors $\omega(z) = n$, $\omega(z') = m$, $m \land n = 1$ et $zz' = z' z$ donc $\omega(zz') = mn$, d’où $zz' \in \mathbf{P}_{mn}$.
+est bien définie: soient $(z,z') \in \mathbf{P}_{m} \times \mathbf{P}_{n}$. Alors $\omega(z) = m$, $\omega(z') = n$, $m \land n = 1$ et $zz' = z' z$ donc $\omega(zz') = mn$, d’où $zz' \in \mathbf{P}_{mn}$.
 
 L’application
 $$
- g:\applic{\mathbf{P}_{mn}}{\mathbf{P}_{m} \times \mathbf{P}_{n}}{z}{(z^{um}, z^{vn})}
+ g:\applic{\mathbf{P}_{mn}}{\mathbf{P}_{m} \times \mathbf{P}_{n}}{z}{(z^{vn}, z^{um})}
 $$
 est bien définie: $m$ et $n$ étant premiers entre eux, il existe deux entiers $u$ et $v$ tels que
 $$
   um + vn = 1 \quad (*)
 $$
 
-- $(z^{um})^{n} = (z^{mn})^{u} = 1$ donc $z^{um} \in \U_{n}$. De plus,
-  $$
-    \omega(z^{um}) = \frac{\omega(z)}{um \land  \omega(z)} = \frac{mn}{(um) \land  (nm)} = \frac{n}{u \land  n}
-  $$
-  or la relation $(*)$ implique que $u \land  n = 1$, donc $\omega(z^{um}) = n$ d’où $z^{um} \in \mathbf{P}_{m}$.
-- On montre de même que $z^{vn} \in \mathbf{P_{n}}$.
-
 Soit $z \in \mathbf P_{mn}$.
+
+- $(z^{vn})^{m} = (z^{mn})^{v} = 1$ donc $z^{vn} \in \U_{m}$. De plus,
+  $$
+    \omega(z^{vn}) = \frac{\omega(z)}{vn \land  \omega(z)} = \frac{mn}{(vn) \land  (nm)} = \frac{m}{v \land  m}
+  $$
+  or la relation $(*)$ implique que $v \land  m = 1$, donc $\omega(z^{vn}) = m$ d’où $z^{vn} \in \mathbf{P}_{m}$.
+- On montre de même que $z^{um} \in \mathbf{P_{n}}$.
+
 $$
   (f \circ g)(z) = f((z^{um}, z^{vn})) = z^{um+vn}
 $$
 et
 $$
-  (g\circ f)((z,z')) = g(zz') = ((zz')^{um}, (zz')^{vn}) = (z^{um}, z^{vn}) = (z^{1-vn}, z^{1-um}) = (z,z')
+  (g\circ f)((z,z')) = g(zz') = ((zz')^{vn}, (zz')^{um}) = (z^{vn}, z^{um}) = (z^{1-um}, z^{1-vn}) = (z,z')
 $$
 Donc $f$ est bijective.
 Ainsi,
