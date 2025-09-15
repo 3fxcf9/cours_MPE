@@ -92,7 +92,7 @@ $$
   %offprog
     - $x$ est idempotent $\implies 1_{A}-x$ idempotent
     - $x$ nilpotent $\implies 1_{A} - x \in A^{\times}$
-    - $\begin{cases}x \times y = y \times x\\x \text{ et } y \text{ nilpotents}\end{cases} \implies x+y \text{ et } x \times y \text{nilpotents}$
+    - $\begin{cases}x \times y = y \times x\\x \text{ et } y \text{ nilpotents}\end{cases} \implies x+y \text{ et } x \times y \text{ nilpotents}$
   %
 %
 
@@ -216,7 +216,7 @@ $$
 %eg
   - Soit $n \in \N^{*}$. Posons $\omega = e^{\frac{2i \pi}{n}}\in \C$. Posons
     $$
-      \Q[\omega] = \{\tilde{P(\omega)} / P \in \Q[X]\}
+      \Q[\omega] = \{\tilde{P(\omega)} \mid P \in \Q[X]\}
     $$
     Soit $P \in \Q[X]$. On a
     $$
@@ -224,7 +224,7 @@ $$
     $$
     avec $(Q,R) \in \Q[X]$ et $\deg R < n$.
     $$
-      Q[\omega] = \{\tilde{R(\omega)} / R \in \Q_{n-1}[X]\}
+      Q[\omega] = \{\tilde{R(\omega)} \mid R \in \Q_{n-1}[X]\}
     $$
     $(\C,+, \times )$ est un anneau commutatif unitaire intègre. $\Q[\omega] \subset \C$ et $1_{\C} = \tilde{1}(\omega) \in \Q[\omega]$. Soit $(z,z') \in \Q[\omega]^{2}$. Il existe $(P,R) \in \Q[X]^{2}$ tels que $z = \tilde{P}(\omega)$ et $z' = \tilde{R}(\omega)$. Alors
     $$
@@ -233,12 +233,12 @@ $$
     or $(P-R, PR) \in (\Q[X])^{2}$ donc $(z-z', z \times z') \in \Q[\omega]^{2}$.
 
     Ainsi, $(\Q[\omega], +, \times )$ est un sous-anneau de $(\C, +, \times )$.
-  - $\Q[i] = \{a+bi / (a,b)\in \Q^{2}\}$. Soit $z \in \Q[i] \setminus \{0\}$.
+  - $\Q[i] = \{a+bi \mid (a,b)\in \Q^{2}\}$. Soit $z \in \Q[i] \setminus \{0\}$.
     $$
       \frac{1}{z} = \frac{a-bi}{a^{2}+b^{2}} = \frac{a}{a^{2}+b^{2}} - \frac{b}{a^{2}+b^{2}}i \in \Q[i]
     $$
     donc $(\Q[i], +, \times )$ est un sous-corps de $(\C, +, \times )$.
-  - $\Z[i] = \{a+bi/(a,b) \in \Z^{2}\}$. $\Z[i] \subset \C$ et $1_{\C} = 1+0i \in \Z[i]$.
+  - $\Z[i] = \{a+bi\mid (a,b) \in \Z^{2}\}$. $\Z[i] \subset \C$ et $1_{\C} = 1+0i \in \Z[i]$.
 
     Soit $(z,z') \in \Z[i]^{2}$. Il existe $(a,b,c,d) \in \Z^{4}$ tels que $z = a+bi$ et $z' = c+di$, d’où
     $$
@@ -261,7 +261,7 @@ $$
 %lemma
   Soit $(A,+, \times )$ un anneau unitaire. On note
   $$
-    Z(A) = \{x \in A / \forall y \in  A, x \times y = y \times x\}
+    Z(A) = \{x \in A \mid \forall y \in  A, x \times y = y \times x\}
   $$
   C’est un sous-anneau de $(A,+, \times )$ appelé *centre de $A$*.
 %
@@ -270,27 +270,27 @@ $$
   %lemma
     Pour $n \in \N^{*}$ et $\K$ un corps,
     $$
-      Z(\M_{n}(\K)) = \{\lambda I_{n} / \lambda \in \K\}
+      Z(\M_{n}(\K)) = \{\lambda I_{n} \mid \lambda \in \K\}
     $$
   %
-%
-%proof
-  Soit $A \in Z(\M_{n}(\K))$. Posons
-  $$
-    A = \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}E_{kl} \quad\text{avec} \quad E_{kl} = \left(\delta_{ik} \delta_{ij}\right)_{\substack{1 \leq  i \leq n\\1 \leq j \leq n}}
-  $$
-  $$
-    A \in Z(\M_{n}(\K)) \iff \forall (i,j) \in \icc{1,n}^{2}, AE_{ij} = E_{ij}A
-  $$
-  $$
-    \begin{align*}
-      A \in Z(\M_{n}(\K)) &\iff  \forall (i,j) \in \icc{1,n}^{2}, \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}\delta_{li} E_{kj}
-      =\sum_{(k,l)\in \icc{1,n}^{2}}a_{kl}\delta_{jk}E_{il}\\
-      &\iff \forall (i,j) \in \icc{1,n}^{2}, \sum_{k=1}^{n}a_{ki}E_{kj} = \sum_{l=1}^{n}a_{jl}E_{il}\\
-      &\iff \forall (i,j) \in \icc{1,n}^{2}, \begin{cases}k\neq i &\implies a_{ki} = 0\\l\neq j &\implies  a_{jl} = 0\\a_{i1} &= a_{jj}\end{cases} \\
-      &\iff A \in \{\lambda I_{n} \mid \lambda \in \K\}
-    \end{align*}
-  $$
+  %proof
+    Soit $A \in Z(\M_{n}(\K))$. Posons
+    $$
+      A = \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}E_{kl} \quad\text{avec} \quad E_{kl} = \left(\delta_{ik} \delta_{ij}\right)_{\substack{1 \leq  i \leq n\\1 \leq j \leq n}}
+    $$
+    $$
+      A \in Z(\M_{n}(\K)) \iff \forall (i,j) \in \icc{1,n}^{2}, AE_{ij} = E_{ij}A
+    $$
+    $$
+      \begin{align*}
+        A \in Z(\M_{n}(\K)) &\iff  \forall (i,j) \in \icc{1,n}^{2}, \sum_{(k,l) \in \icc{1,n}^{2}}a_{kl}\delta_{li} E_{kj}
+        =\sum_{(k,l)\in \icc{1,n}^{2}}a_{kl}\delta_{jk}E_{il}\\
+        &\iff \forall (i,j) \in \icc{1,n}^{2}, \sum_{k=1}^{n}a_{ki}E_{kj} = \sum_{l=1}^{n}a_{jl}E_{il}\\
+        &\iff \forall (i,j) \in \icc{1,n}^{2}, \begin{cases}k\neq i &\implies a_{ki} = 0\\l\neq j &\implies  a_{jl} = 0\\a_{i1} &= a_{jj}\end{cases} \\
+        &\iff A \in \{\lambda I_{n} \mid \lambda \in \K\}
+      \end{align*}
+    $$
+  %
 %
 
 ## Anneaux $(\Z/n\Z, \bar{+}, \bar{\times })$
@@ -308,7 +308,7 @@ $$
   est une l.c.i qui munit $(\Z/n\Z,\bar{+}, \bar{\times })$ d’une structure d’anneau commutatif unitaire (d’unité $\bar{1}$).
 
   - $(\Z/0\Z,\bar{+}, \bar{\times }) \simeq (\Z, +, \times )$ a.e.u.i
-  - $(\Z/1\Z, \bar{+}, \bar{\times }) = (\{\bar{0}\}, \bar{+}, \bar{x})$ anneau nul
+  - $(\Z/1\Z, \bar{+}, \bar{\times }) = (\{\bar{0}\}, \bar{+}, \bar{\times})$ anneau nul
   - Pour $n \geq 2$,
     $$
       (\Z/n\Z, \bar{+}, \bar{\times }) = (\{\bar{0}, \bar{1}, \ldots, \bar{n}\}, \bar{+}, \bar{\times })
@@ -365,7 +365,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   - Montrons $(iii) \implies (i)$ par la contraposée. Supposons $n$ non premier.
     - si $n=0$: $\Z/0\Z$ n’est pas fini
     - si $n=1$: $\Z/1\Z$ n’est pas intègre
-    - si $n \geq 4$, il existe $(p,q)\in \icc{2,n-1}^{2}$ tel que $n = p \lor q$, d’où
+    - si $n \geq 4$, il existe $(p,q)\in \icc{2,n-1}^{2}$ tel que $n = p \times q$, d’où
       $$
         \bar{0} = \bar{p} \bar{\times } \bar{q} \quad\text{et}\quad \bar{p} \neq \bar{0}, \bar{q} \neq \bar{0}
       $$
@@ -587,11 +587,13 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   donc $n$ est premier.
 %
 
-%thm Théorème de Wilson
-  Soit $n \geq 2$.
-  $$
-    n \text{ premier} \iff (n-1)! \cgm{-1}n
-  $$
+%offprog
+  %thm Théorème de Wilson
+    Soit $n \geq 2$.
+    $$
+      n \text{ premier} \iff (n-1)! \cgm{-1}n
+    $$
+  %
 %
 
 %rem
@@ -687,7 +689,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
      1. $\forall  a \in A^{\times}, f(a) \in (A')^{\times} \text{ et } f(a)^{-1} = f(a^{-1})$  2. $\applic{(A^{\times}, \times )}{((A')^{\times}, \times )}{a}{f(a)}$ est un morphisme de groupes. C’est un isomorphisme de groupes si $f$ est un isomorphisme d’anneaux.
   2. L’image directe par $f$ (resp. par $g$) d’un sous-anneau de $A$ est un sous-anneau de $A'$ (resp. sous-corps de $\K$).
   3. L’image réciproque par $f$ (resp. par $g$) d’un sous-anneau de $A'$ (resp. sous-corps de $\K'$) est un sous-anneau de $A$ (resp. sous-corps de $\K$).
-  4. $\img f := f(A)$ est un sous-anneau de $A'$
+  4. $\img f \coloneqq f(A)$ est un sous-anneau de $A'$
 
      $\img g = g(\K)$ est un sous-corps de $\K'$
 
@@ -798,3 +800,384 @@ $$
   x = \sum_{i=1}^{r}a_{i}\nu_{i}^{\varphi(n_{i})} \in \Z
 $$
 On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ dans $\Z$.
+
+%eg
+  Résoudre dans $\Z$ le système
+  $$
+    \begin{cases}x\cgm 25\\x\cgm 36\\x\cgm 47\end{cases}
+  $$
+  avec $5 \land 6 = 6 \land 7 = 5 \land 7 = 1$~:
+  $$
+    \mathscr S = \{\alpha + 210k \mid k \in \Z\}
+  $$
+  avec $\alpha = 2 \cdot 42^{4} + 3 \cdot 35^{2} +4 \cdot 30^{6}\cgm {207}{210}$.
+  $$
+    \mathscr S = \{207+210k \mid k \in \Z\}
+  $$
+  $\varphi(6) = \varphi(2) \varphi(3) = 2$
+%
+
+%eg
+  Soit $f: A \longrightarrow A'$ un morphisme d’anneaux unitaires avec $0_{A'} \neq 1_{A'}$. On a $f(1_{A}) = 1_{A'} \neq 0_{A'}$ donc $\ker f$ n’est pas un sous-anneau de $A$. Cependand, $\ker f$ est un sous-groupe de $(A,+)$.
+
+  D’autre part, pour $x \in \ker f$ et $a \in A$,
+  $$
+    \begin{align*}
+      f(a \times x) &= f(a) \times' f(x)\\&=f(a) \times' 0_{A'}\\
+      &=0_{A'}
+    \end{align*}
+  $$
+  et
+  $$
+    f(x \times a) = f(x) \times' f(a)=0_{A'} \times  f(a) = 0_{A'}
+  $$
+  donc $(a \times x, x \times a) \in \ker f$; on dit que $\ker f$ est un *idéal bilatère* de l’anneau $(A,+, \times )$.
+%
+
+## Idéaux d’un anneau commutatif unitaire
+
+%def
+  Soit $(A,+, \times )$ un anneau commutatif unitaire. Une partie $I$ de $A$ est appelée *idéal* de $A$ si
+  1. $(I,+) < (A,+)$  2. $\forall a \in A, \forall x \in I, a \times x (= x \times  a) \in I$((propriété d’absorption))
+%
+
+%prop
+  Soit $(A,+, \times )$ un anneau commutatif unitaire. Un ensemble $I$ est un idéal de $A$ si et seulement si
+  1. $I$ est une pertie non vide de l’anneau $(A,+, \times )$
+  2. $\forall (x,y) \in I^{2}, x+y \in I$
+  3. $\forall (a,x) \in A \times I, a \times  x \in I$
+%
+
+%proof
+  Le troisième point implique
+  $$
+    \forall x \in I, (-1_{A}) \times x = -(1_{A} \times x) = -x \in I
+  $$
+  Les deux derniers points impliquent
+  $$
+    \forall (x,y) \in I^{2}, (x,-y) \in I^{2} \text{ et } x+(-y) = x-y \in I
+  $$
+%
+
+%eg
+  Dans l’anneau $(\K[X], +, \times )$ où $\K$ est un corps,
+  1. $XK[X]$ est un idéal de $(K[X],+, \times )$. $1 \notin XK[X]$ donc $XK[X]$ n’est pas un sous-anneau de $(K[X],+, \times )$.
+  2. $K[X^{2}]$ est un sous-anneau de $(K[X], +, \times )$.
+     $X \cdot X^{2} \notin \K[X^{2}]$ donc $\K[X^{2}]$ n’est pas un idéal de $(\K[X], +, \times )$.
+%
+
+%prop
+  Soit $f:A \longrightarrow A'$ un morphisme d’anneaux commutatifs unitaires intègres. On a
+  1. $\img f = f(A)$ est un sous-anneau de $A'$
+     %offprog
+       $\img f = f(A)$ est un idéal de $(f(A), +', \times ')$
+     %
+  2. $\ker f$ est un idéal de $(A,+, \times )$.
+  %offprog
+    3. Si $I$ est un idéal de $A$, alors $f(I)$ est un idéal de $(f(A), +', \times ')$
+    4. Si $J$ est un idéal de $(A', +', \times ')$, alors $f^{-1}(J)$ est un idéal de $(A,+, \times )$.
+  %
+%
+
+%proof
+  %offprog
+    3. Soit $I$ un idéal de $(A,+, \times )$. Alors $(I,+) < (A,+)$ donc $(f(I), +) < (A', +')$ et $f(I) \subset f(A) < (A', +)$ d’où $(f(I), +) < (f(A), +)$.
+
+       Soit $(b,y) \in f(A) \times f(I)$. Alors il existe $(a,x) \in A \times I$ tel que $b = f(a)$ et $y = f(x)$ d’où
+       $$
+         b \times' y = f(a) \times ' f(x) = f(a \times x)
+       $$
+       Comme $I$ est un idéal, on a $ax \in I$, donc $b \times ' y \in f(I)$.
+    4. Soit $J$ un idéal de $(A', +', \times ')$. Alors $(J, +) < (A', +')$ donc $f^{-1}(J) < (A, +)$. Soit $(a,x) \in A \times f^{-1}(J)$. On a
+       $$
+         f(ax) = f(a) \times ' f(x)
+       $$
+       or $f(a) \in A'$ et $f(x) \in J$. Comme $J$ est un idéal, on a $f(a) \times ' f(x) \in J$ donc $f(ax) \in J$ d’où $ax \in f^{-1}(J)$.
+  %
+%
+
+%eg
+  1. Tout anneau commutatif unitaire $(A, +, \times )$ possède au moins les idéaux $\{0_{A}\}$ et $A$ appelés *idéaux triviaux*.
+  2. Il y a également tous les idéaux du type
+     $$
+       xA = \{x \times a \mid a \in A\}
+     $$
+     pour $x \in A$. On appelle ceux-ci *idéaux principaux*.
+     %rem
+        $0_{A}\cdot Ae = \{0_{A}\}$ et $1_{A}\cdot A = A$.
+     %
+  3. Si $(A, +, \times )$ est un anneau, on a
+     $$
+       \begin{cases}I \text{ idéal de } (A, +, \times )\\ 1_{A} \in I\end{cases} \implies I=A
+     $$
+  4. Les seuls idéaux d’un corps $(\K, +, \times )$ sont les idéaux triviaux.
+  5. - $S$: ensemble de suites réelles convergentes. C’est un sous-anneau de $(\R^{\N}, +, \times )$
+     - $S_{0}$: ensemble des suites réelles de limites nulle. C’est un idéal de $(S, +, \times )$.
+
+%
+
+%proof
+  2. $xA \in A$ et $x \times 0_{A} = 0_{A} \in xA$. Soit $(y, z) \in (xA)^{2}$. Il existe $(a, a') \in A^{2}$ tels que $y = xa$ et $z = xa'$ d’où
+     $$
+       y + z = x(a+a') \in xA
+     $$
+  3. Si $1_{A} \in I$, alors
+     $$
+       \forall a \in A, a \times 1_{A} = a \in I
+     $$
+     donc $A \subset I$. Ainsi,
+     $$
+       \begin{cases}I \text{ idéal de } (A, +, \times )\\I \text{ sous-anneau de } (A, +, \times )\end{cases} \implies  I = A
+     $$
+  4. Soit $I$ un idéal d’un corps $(\K, +, \times )$. Supposons $I \neq \{0_{\K}\}$. Soit $x \in I \setminus \{0_{\K}\}$. Comme $\K$ est un corps, $x$ est inversible et donc $x^{-1} \in \K$. Alors, comme $x \in I$, $x^{-1} \in \K$ et $I$ est un idéal de $\K$, on a $x^{-1} \times x = 1_{\K} \in I$, d’où $I = \K$.
+  5. Considérons
+     $$
+       \varphi: \applic{S}{\R}{u}{\lim u}
+     $$
+     On a $\varphi((1)_{n \in \N}) = 1$. Soit $(u,v) \in S^{2}$.
+     $$
+       \varphi(u + v) = \lim (u+v) = \lim u + \lim v = \varphi(u) + \varphi(v)
+     $$
+     et
+     $$
+       \varphi(u \times v) = \lim (u \times v) = \lim u \times \lim v = \varphi(u)\varphi(v)
+     $$
+     Donc $\varphi$ est un morphisme d’anneaux commutatifs unitaires et $S_{0} = \ker \varphi$.
+%
+
+%prop
+  1. Les idéaux de l’anneau commutatif unitaire $(\Z,+, \times )$ sont les idéaux principaux $n\Z$ avec $n \in \N$.
+  2. Les idéaux de l’anneau commutatif unitaire $(\K[X], +, \times )$ où $\K$ est un corps sont les idéaux principaux
+     $$
+       P\K[X] = \{PQ \mid Q \in \K[X]\}
+     $$
+     avec $P \in \K[X]$.
+  %offprog
+    3. Un anneau commutatif unitaire intègre ayant pour seuls idéaux les idéaux principaux est appelé *anneau principal*.
+  %
+%
+
+%proof
+  1. Soit $I$ un idéal de $(\Z,+, \times )$.. Alors $I < (\Z,+)$. Il existe donc $n \in \N$ tel que $I = n\Z$ et $n\Z$ a bien une structure d’idéal.
+  2. Soit $I$ un idéal de l’anneau $(\K[X], +, \times )$.
+     - Si $I = \{0\}$, alors $ei = 0 \cdot \K[X]$.
+     - Sinon, $I \neq \{0\}$. Soit
+       $$
+         d_{0} = \min\\underbrace{{\deg  P \mid P \in I \setminus \{0\}}}_{\text{partie non vide de }\R}
+       $$
+       Soit $P_{0} \in  I \setminus \{0\}$ tel que $d_{0} = \deg  P_{0}$. Alors $P_{0} \in I$ est un idéal de $\K[X]$. Par propriété d’absorption, on a $P_{0}\K[X]\subset I$.
+       - Soit $P \in I$. Effectuons la division euclidienne de $P$ par $P_{0}$ (possible dans $\K[X]$ car $\K$ est un corps):
+         $$
+           P = P_{0}Q + R
+         $$
+         avec $(Q,R) \in (\K[X])^{2}$ et $\deg R < d_{0}$. On a alors $R = P-P_{0}Q$, $P \in I$ et $P_{0}Q \in I$ or $I < (\K[X], +)$ donc $R \in I$ et
+         $$
+           \deg < 0 = \min \{\deg P \mid P \in I \setminus \{0\}\}
+         $$
+         donc $R = 0$. Ainsi, $P = P_{0}Q \in P_{0}\K[X]$ donc $I \subset P_{0}\K[X]$ d’où
+         $$
+           I = P_{0}\K[X] = \hat{P_{0}}\K[X]
+         $$
+         avec $P_{0}\neq 0$ et $\hat{P_{0}}$ un polynôme unitaire associé à $P_{0}$.
+%
+
+%eg
+  $E = \{P \in Q[X] \mid \tilde{P}(\sqrt{2}) = 0\}$. $X^{2} - 2 \in E$. Considérons l’application
+  $$
+    \varphi: \applic{(Q[X], +, \times )}{(\R, +, \times )}{P}{\tilde{P}(\sqrt{2})}
+  $$
+  On a $\varphi(1) = 1$. Soit $(P,Q) \in (Q[X])^{2}$.
+  $$
+    \varphi(P+Q) = \tilde{P+Q}(\sqrt{2}) = \tilde{P}(\sqrt{2}) + \tilde{Q}(\sqrt{2}) = \varphi(P) + \varphi(Q)
+  $$
+  et
+  $$
+    \varphi(PQ) = \varphi(P)\varphi(Q)
+  $$
+  $\varphi$ est donc un morphisme d’anneaux unitaires donc $\ker  \varphi = E$ est un idéal de l’anneau $(\Q[X], +, \times )$. Comme $(\Q, +, \times )$ est un corps, $E$ est un idéal principal non nul car $X^{2} - 2 \in E$. Il existe $P_{0} \in \Q[X]$ unitaire tel que $E = P_{0}\Q[X]$. $X^{2}-2 \in E$ donc $P_{0}\mid X^{2}-2$ dans $\Q[X]$ donc $\deg P_{0} \in \{0,1,2\}$.
+  - $\deg P_{0} = 0 \implies  P_{0}=1 \implies E = \Q[X]$ ce qui est faux
+  - $\deg P_{0} = 1 \implies  \exists a \in \Q: P = X-a \implies \exists a \in \Q: \sqrt{2}-a = 0$ ce qui est faux
+  donc $\deg P_{0} = 2$, d’où $P_{0} = X^{2}-2$.
+  $$
+    E = (X^{2}-2)\Q[X]
+  $$
+%
+
+%prop
+  Soit $(A,+, \times )$ un anneau commutatif unitaire.
+  %offprog
+    1. Soit $n \in \N^{*}$. Soient $I_{1}, \ldots, I_{n}$ des idéaux de $A$. Alors
+       $$
+         I_{1} + \cdots + I_{n} := \{x_{1} + cd + a_{n} \mid x_{1} \in I_{1}, \ldots, x_{n} \in I_{n}\}
+       $$
+       est un idéal de $A$.
+    2. Soit $(I_{e})_{e \in E}$ une famille d’idéaux de $A$. Alors $\bigcap_{e \in E}I_{e}$ est un idéal de $A$ et pour une partie $X$ de $A$,
+       $$
+         \text{id}(X) = \grp X = \bigcap_{\substack{I \text{ idéal de }A\\X \subset I}}
+       $$
+       est le plus petit idéal contenant $X$.
+  %
+  3. Soit $n \in \N^{*}$. Soit $(x_{1}, \ldots, x_{n}) \in A^{n}$. $\text{id}(\{x_{1}\}) = x_{1}A$ est « l’idéal engendré par $x_{1}$ ».
+     %offprog
+       $\text{id}(\{x_{1}, \ldots, x_{n}\}) = x_{1} A + \cdots + x_{n}A$
+     %
+  4. Soit $n \in \N$ avec $n \geq 2$. Soit $(a_{1}, \ldots, a_{n}) \in \Z^{n}$. Il existe un unique entier naturel $d \in \N$ tel que
+     $$
+       a_{1}\Z + \cdots + a_{n}\Z = d\Z
+     $$
+     avec $d = a_{1} \land  \cdots \land  a_{n}$.
+%
+
+%proof
+  %offprog
+    1. $I_{1} + \cdots + I_{n} \subset A$ car $(A,+)$ est un groupe, et $0_{A} = 0_{A} + \cdots + 0_{A} \in I_{1} + \cdots + I_{n}$. Soit $(x,y) \in (I_{1}+ \cdots + I_{n})^{2}$. Soit $a \in A$. On a
+       $$
+         x = x_{1} + \cdots + x_{n} \quad\text{et}\quad y = y_{1} + \cdots + y_{n}
+       $$
+       avec $(x_{i}, y_{i}) \in I_{i}$ pour tout $i \in \icc{1,n}^{2}$. D’où
+       $$
+         \begin{align*}
+           x+y &= \sum_{i=1}^{n}(x_{i} + y_{i}) \in \sum_{i=1}^{n}I_{i}
+         \end{align*}
+       $$
+       car $\forall i \in \icc{1,n}, x_{i} + y_{i} \in I_{i}$.
+       $$
+         a \times  x = \sum_{i=1}^{n}a x_{i} \in I_{1} + \cdots + I_{n}
+       $$
+       car les $I_{i}$ sont des idéaux.
+    2. $$
+         \bigcap_{e \in E}I_{e} < (A,+)
+       $$
+       Soit $(a,x) \in A \times \bigcap_{e \in E}I_{e}$ et
+       $$
+         \forall e \in E, \begin{cases}x \in I_{e}\\I_{e} \text{ idéal de } (A,+, \times )\end{cases}
+       $$
+       donc
+       $$
+         \forall e \in E, ax \in I_{e}
+       $$
+       d’où
+       $$
+         ax \in \bigcap_{e \in E}I_{e}
+       $$
+  %
+  3. $x_{1} \in \text{id}(\{x_{1}\})$. Par absorption, on a
+     ~ $x_{1}A \subset \text{id(\{x.1\})}$  ~ $x_{1} A$ est un idéal  ~ $x_{1} \in x_{1} A$
+     Alors nécessairement, $\text{id}(\{x_{1}\}) = x_{1}A$.
+     %offprog
+       $\forall i \in \icc{1,n}, x_{i} \in \text{id(\{x.1, ldd, x.n\})}$ donc $\forall i \in \icc{1,n}, x_{i} \subset \text{id(\{x.1, ldd, x.n\})}$, d’où par stabilité par $+$, on a
+       $$
+         \underbrace{\sum_{i=1}^{n}x_{i}A}_{\text{idéal (cf 1) contenant } \{x_{1}, \ldots, x_{n}\}} \subset \text{idv(\{x.1, ldd, x.n\})}
+       $$
+       d’où $\text{id}(\{x_{1}, \ldots, x_{n}\}) = x_{1} A + \cdots + x_{n} A$
+     %
+  %offprog
+    $a_{1}\Z + \cdots + a_{n} \Z$ est alors un idéal de $(\Z,+, \times )$ est un anneau principal. Alors il existe $d \in \N$ unique tel que
+    $$
+      a_{1}\Z + \cdots + a_{n}\Z = d\Z
+    $$
+    On pose $d = \bigwedge_{{i=1}}^{n}a_{i}$. On a
+    $$
+      \forall i \in \icc{1,n}, a_{i}\Z \subset d\Z
+    $$
+    d’où $\forall i \in \icc{1,n}, d\mid a_{i}$ donc $d$ est un diviseur commun aux $a_{i}$.
+
+    Soit $\delta \in \N$ avec $\forall i \in \icc{1,n}, \delta\mid a_{i}$. On a alors
+    $$
+      \forall i \in \icc{1,n}, a_{i}\Z \subset \delta\Z i
+    $$
+    Comme $\delta\Z$ est stable par $+$, on a
+    $$
+      a_{1}\Z + \cdots + a_{n}\Z \subset \delta\Z
+    $$
+    donc $d\Z \subset \delta\Z$ donc $\delta\mid d$ d’où $d = \gcd_{(\N,\mid)}(a_{1}, \ldots, a_{n})$
+  %
+%
+
+%rem
+  $$
+    a_{1} \land \cdots \land a_{n} = 0 \iff  (a_{1}, \ldots, a_{n}) = (0, \ldots, 0)
+  $$
+  En effet,
+  - $$
+      \begin{align*}
+        (a_{1} \land \cdots \land a_{n} = 0) &\implies \forall i \in \icc{1,n}, 0\mid a_{i}\\&\implies \forall i \in \icc{1,n}, a_{i}=0
+      \end{align*}
+    $$
+  - $$
+      \begin{align*}
+        (\forall i \in \icc{1,n}, a_{i} = 0) &\implies a_{1}\Z + \cdots + a_{n}\Z = \{0\} = 0\Z \\&\implies a_{1} \land  \cdots \land  a_{n} = 0
+      \end{align*}
+    $$
+  Si $(a_{1}, \ldots, a_{n}) \neq (0, \ldots, 0)$, alors
+  $$
+    a_{1} \land  \cdots \land  a_{n} = \max\{\delta \in \N^{*} \mid d\mid a_{1} \text{ et } \cdots \text{ et } d\mid a_{n}\}
+  $$
+  Alors $a_{1} \land  \cdots \land  a_{n} \neq 0$.
+  $$
+    \forall i \in \icc{1,n}, (a_{1} \land  \cdots \land  a_{n})\mid a_{i}
+  $$
+  et pour $\delta \in \N^{*}$ tel que $d\mid a_{i}$ et $\cdots$ et $\delta\mid a_{n}$. On a alors
+  $$
+     \delta\mid (a_{1} \land  \cdots \land  a_{n})
+  $$
+  Ainsi, il existe $k \in \N^{*}$ tel que
+  $$
+    \underbrace{a_{1} \land  \cdots \land  a_{n}}_{\neq 0} = k \delta \geq \delta
+  $$
+%
+
+%rem
+  $a_{1}\Z + \cdots + a_{n}\Z = \delta\Z = \underbrace{(a_{1}\Z + \cdots + a_{i}\Z)}_{=(a_{1} \land  \cdots \land  a_{i})\Z} + \underbrace{(a_{i+1}\Z + \cdots + a_{n}\Z)}_{=(a_{i+1} \land  \cdots \land  a_{n})\Z}$ d’où
+  $$
+    a_{1} \land  \cdots \land  a_{n} = (a_{1} \land  \cdots \land  a_{i}) \land  (a_{i+1} \land  \cdots \land  a_{n})
+  $$
+%
+
+%def Proposition-définition
+  Soit $(A,+, \times )$ un anneau commutatif unitaire intègre.
+  1. Soit $(a,b) \in A^{2}$. On dit que $a divise b$ s’il existe $c \in A$ tel que $b = a \times c$ et on note $a\mid b$. On a alors
+     $$
+       a\mid b \iff  bA \subset a A
+     $$
+
+     Soit $(a,b) \in A^{2}$, on dit que $a$ et $b$ sont associés si
+     $$
+       a A = b A
+     $$
+     ce qui revient à dire~:
+     $$
+       \exists u \in A^{\times}: a = bu
+     $$
+%
+
+%proof
+  1. $a\mid b \iff  \exists c \in A: b = a \times c \in a A \implies bA \subset  aA$ donc
+     $$
+       bA \subset aA \implies  b = v \times 1_{A} \in aA
+     $$
+     i.e. a\mid b
+  2. $$
+       \begin{align*}
+         aA = bA &\iff \begin{cases}aA \subset  bA \\ bA \subset  aA\end{cases}\\
+     &\iff \begin{cases}b\mid a\\a\mid b\end{cases}\\
+     &\iff \exists (u,v) \in A^{2}: \begin{cases}a = bu\\
+     b=av\end{cases}\\&\iff \exists (u,v) \in A^{2}: \begin{cases}a &= auv\\b&=av\end{cases}\\
+     &\underset{\text{intégrité}}{\iff} \exists (u,v) \in A^{2}:\begin{cases}a = 0\\b=0\end{cases} \quad\text{ou}\quad \begin{cases}a\neq 0\\1 = uv\\b=av\end{cases}
+       \end{align*}
+     $$
+%
+
+%eg
+  1. $\Z^{\times} = \{1,-1\}$ donc les associés de $n \in \Z$ sont $n$ et $-n$.
+  2. $\Z[i]^{\times} = \U_{4}$ donc les associés de $z \in \Z[i]$ sont $z, -z, iz$ et $-iz$.
+  3. Si $P \in \K[X]$, alors les associés de $P$ sont les polynômes $\lambda P$ avec $\lambda \in \K^{*}$ car $\K[X]^{\times} = \K^{*}$..
+  4. $I = 2\Z[X] + X\Z[X]$ est un idéal de l’anneau $(\Z[X], +, \times )$.
+     %proof
+       Supposons qu’il existe $P \in \Z[X]$ tel que $I = P\Z[X]$. Alors $2\Z[X] \subset P\Z[X]$ donc $P\mid 2$ da $\Z[X]$, d’où $\deg P = 0$ soit $P \in \{1, -1, 2, -2\}$.
+     %
+
+     A-t-on $\Z[X]$ ou $I = 2\Z[X]$ ? Non car
+     - $3+X \notin I$ donc $I \neq \Z[X]$
+     - $X \in I$ et $X \notin 2\Z[X]$
+%

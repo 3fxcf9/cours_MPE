@@ -3,7 +3,7 @@
 ## Rappels
 
 %def Groupe
-  $(g, \times )$ est un groupe si
+  $(G, \times )$ est un groupe si
   - $G$ est un ensemble muni d’une loi $\star$
   - $\star$ est associative
   - $\exists e \in G: \forall x \in G, x\star e = e\star x = x$
@@ -39,7 +39,7 @@
      $$
      En notation additive dans $(G,+)$ avec $+$ commutative pour $x \in G$, on pose (le neutre est noté $0_{G}$ ou $0$ et le symétrique de $x$ est noté $-x$)~:
      $$
-       0_{\Z}x = 0_{G} \quad\text{et}\quad \forall k \in \N, \begin{cases}(k+1)x := kx+x\\(-k)x := -(kx)\end{cases}
+       0_{\Z}x = 0_{G} \quad\text{et}\quad \forall k \in \N, \begin{cases}(k+1)x \coloneqq kx+x\\(-k)x \coloneqq -(kx)\end{cases}
      $$
      on a alors
      $$
@@ -233,7 +233,7 @@
 %def Groupe produit
   Soit $n \in \N^{*}$. Soient $(G_{1},\star_{1}), \ldots, (G_{n},\star_{n})$ des groupes (de neutres respectifs $e_{1}, \ldots, e_{n}$). On munit $G_{1} \times  \cdots \times G_{n}$ d’une loi $\star$ ainsi~:
   $$
-    (g_{1}, \ldots, g_{n})\star (g'_{1}, \ldots, g'_{n}) := (g_{1}\star g'_{1}, \ldots, g_{n}\star_{n} g'_{n})
+    (g_{1}, \ldots, g_{n})\star (g'_{1}, \ldots, g'_{n}) \coloneqq (g_{1}\star g'_{1}, \ldots, g_{n}\star_{n} g'_{n})
   $$
   $(G_{1} \times \cdots \times  G_{n}, \star)$ est alors un groupe appelé groupe-produit.
   - Son neutre est $(e_{1}, \ldots, e_{n})$ et le symétrique d’un élément $(x_{1}, \ldots, x_{n})$ est $(x_{1}^{-1}, \ldots, x_{n}^{-1})$.
@@ -406,7 +406,7 @@
        si $X\neq \emptyset$, alors
 
        $$
-         \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{:=M(X)}
+         \langle X\rangle = \underbrace{\left\{x_{1}^{\varepsilon_{1}}\star \cdots\star x_{n}^{\varepsilon_{n}} \mid n \in \N^{*} \quad\text{et}\quad \forall i \in \icc{1,n}, (x_{i} \in X \text{ et } \varepsilon_{i} \in \{-1, 1\})\right\}}_{\coloneqq M(X)}
        $$
        C’est l’ensemble des « mots » constitués des « lettres » du groupe et de leur symétrique.
      %
@@ -562,7 +562,7 @@
     $$
     sont $3r$ éléments distincts de $G$. En effet,
     $$
-       \begin{align*}a_{2} \star h_{i} = a_{2} \star h_{j} &\implies h_{i} = h_{j} \\ a_{2} \star h_{i} = h_{j} &\implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} &\implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H \subset H_{1}\end{align*}
+       \begin{align*}a_{2} \star h_{i} = a_{2} \star h_{j} &\implies h_{i} = h_{j} \\ a_{2} \star h_{i} = h_{j} &\implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} &\implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H_{1}\end{align*}
     $$
     On note alors
     $$
@@ -666,7 +666,7 @@
          \grp{\{u,v\}} = \{(1,1,1), u, v, uv\} \neq \U_{2}^{3}\neq \U_{2}^{3}
        $$
        $$
-         U_{2}^{3} = \grp{\{(-1,1,1),(1,-1,1),(1,1,-1)\}}
+         \U_{2}^{3} = \grp{\{(-1,1,1),(1,-1,1),(1,1,-1)\}}
        $$
      %
   3. Soient $(G,\star)$ un groupe et $x \in G$. On pose
@@ -678,7 +678,7 @@
 
      De plus,
      $$
-       \varphi: \applic{(G,\circ)}{(\Aut G, \circ)}{x}{\varphi_{x}}
+       \varphi: \applic{(G,\star)}{(\Aut G, \circ)}{x}{\varphi_{x}}
      $$
      est un morphisme~: soient $(x,x') \in G^{2}$.
      $$
@@ -698,7 +698,7 @@
          &\iff \forall y \in G, x\star y=y\star x
        \end{align*}
      $$
-      donc $\ker  \varphi = Z(G) < (G,\star)$ et $\img \varphi = \{\varphi_{x} \mid x \in eg\} = \img  G < (\Aut G,\circ)$.
+      donc $\ker  \varphi = Z(G) < (G,\star)$ et $\img \varphi = \{\varphi_{x} \mid x \in G\} = \img  G < (\Aut G,\circ)$.
   4. Quid de $(\Aut \Z, \circ)$ ?
 
      - ++Analyse++:
@@ -1252,7 +1252,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
          \end{align*}
        $$
        donc $f$ est un morphisme de groupes.
-     - ++Surjectivité.++ Soit $k \in \Z$.
+     - ++Injectivité.++ Soit $k \in \Z$.
        $$
          \begin{align*}
            k \in \ker f &\iff  \begin{cases}\dot k = \dot 0\\\hat k = \hat 0\end{cases}\\ &\iff \begin{cases}k \in m\Z\\k \in  n\Z\end{cases}\\ &\iff  k \in (m\Z) \cap (n\Z) \\&\iff  k \in (m \lor n)\Z
@@ -1260,7 +1260,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
        $$
        Comme $m \land  n = 1$, on a $m \lor  n = mn$. Alors
        $$
-         \dot k \in \ker f \iff  k \in mn\Z \iff  \bar{k} = \bar{0}
+         \bar k \in \ker f \iff  k \in mn\Z \iff  \bar{k} = \bar{0}
        $$
        Donc $f$ est injectif.
      - De plus,
@@ -1363,7 +1363,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
      $$
        \begin{align*}
          \{k \in \icc{1, p^{\alpha}} \mid k \land  p^{\alpha} = 1\} &= \{k \in \icc{1, p^{\alpha}} \mid k \land  p = 1\} \\
-         &= \{k \in \icc{1, p^{\alpha}} \mid p \not\mid k\} \quad\text{où } p \text{ est premier}
+         &= \{k \in \icc{1, p^{\alpha}} \mid p \nmid k\} \quad\text{où } p \text{ est premier}
        \end{align*}
      $$
      Ainsi,
@@ -1488,7 +1488,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
        $$
        donc
        $$
-         \varphi(n) = n- \sum_{\substack{d\mid n\\d \neq n}}\varphi(d)
+         n= \sum_{\substack{d\mid n\\d \neq n}}\varphi(d)
        $$
   %
 %

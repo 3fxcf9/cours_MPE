@@ -23,7 +23,7 @@
     $$
     sont $3r$ éléments distincts de $G$. En effet,
     $$
-       \begin{align*}a_{2} \star h_{i} = a_{2} \star h_{j} &\implies h_{i} = h_{j} \\ a_{2} \star h_{i} = h_{j} &\implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} &\implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H \subset H_{1}\end{align*}
+       \begin{align*}a_{2} \star h_{i} = a_{2} \star h_{j} &\implies h_{i} = h_{j} \\ a_{2} \star h_{i} = h_{j} &\implies  a_{2} = h_{j}\star h_{i}^{-1} \in H \subset H_{1} \\ a_{2} \star h_{i} = a_{1}\star h_{j} &\implies  a_{2} = a_{1}\star h_{j}\star h_{i}^{-1} \in H_{1}\end{align*}
     $$
     On note alors
     $$
@@ -90,7 +90,7 @@ $$
   - Montrons $(iii) \implies (i)$ par la contraposée. Supposons $n$ non premier.
     - si $n=0$: $\Z/0\Z$ n’est pas fini
     - si $n=1$: $\Z/1\Z$ n’est pas intègre
-    - si $n \geq 4$, il existe $(p,q)\in \icc{2,n-1}^{2}$ tel que $n = p \lor q$, d’où
+    - si $n \geq 4$, il existe $(p,q)\in \icc{2,n-1}^{2}$ tel que $n = p \times q$, d’où
       $$
         \bar{0} = \bar{p} \bar{\times } \bar{q} \quad\text{et}\quad \bar{p} \neq \bar{0}, \bar{q} \neq \bar{0}
       $$
@@ -100,50 +100,67 @@ $$
 ## Théorème chinois
 
 %thm Théorème chinois
-  Soit $r$ un entier avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$. On a
+  Soit $(m,n) \in \N^{*}$. Alors $m \land  n = 1$ si et seulement si
   $$
-    (\Z/n_{1}\Z \times \cdots \times \Z/n_{r}\Z, +, \times ) \underset{\text{anneau}}{\simeq} (\Z/n_{1} \cdots n_{r}\Z, \bar{+}, \bar{\times })
-  $$
-  si et seulement si
-  $$
-    \forall (i,j) \in \icc{1, r}^{2}, \left[i \neq j \implies  n_{i} \land n_{j} = 1\right]
+    \left(\Z/mn\Z, \bar{+}\right) \simeq  \left(\Z/m\Z \times \Z/n\Z, \bar{+}\right)
   $$
 %
 
 %proof
-  - Supposons
-    $$
-      \forall (i,j)\in \icc{1,r}, \left[i\neq j \implies  n_{i} \land  n_{j} = 1\right]
-    $$
-    Sous réserve d’existence, considérons
-    $$
-      f: \applic{\Z/n_{1} \cdots n_{r}\Z}{\Z/n_{1}\Z \times  \cdots \times \Z/n_{r}\Z}{\bar{k}}{([k]_{n_{1}}, \ldots, [k]_{n_{r}})}
-    $$
-    - $f$ existe. En effet, pour $(k,l) \in \Z^{2}$,
-      $$
-        k\cgm l{n_{1} \cdots n_{r}} \implies  \forall i \in \icc{1,r}, k\cgm l[n_{i}]
-      $$
-    - $f(\bar{1}) = ([1]_{n_{1}}, \ldots, [1]_{n_{r}}) = 1_{\Z/n\Z \times \cdots \times \Z/n_{r}\Z}$,
-      $$
-        \forall (k,l) \in \Z^{2}, \begin{cases}f(\bar{k}\bar{+}\bar{l}) = f(\bar{k}) + f(\bar{l})\\f(\bar{k} \bar{\times }\bar{l}) = f(\bar{k}) \times  f(\bar{l})\end{cases}
-      $$
-    - Pour $k \in \Z$, on a
-      $$
-        \bar{k} \in \ker f \iff k \in \underbrace{\underbrace{(n_{1}\Z)\cap (n_{2}\Z)}_{=(n_{1} \lor n_{2})\Z = (n_{1}n_{2})\Z}\cap  (n_{3}\Z)}_{=[(n_{1}n_{2})\lor n_{3}]\Z = (n_{1}n_{2}n_{3})\Z)} \cap \cdots \cap (n_{r}\Z) = (n_{1} \lor  \cdots \lor  n_{r})\Z
-      $$
-      donc $\bar{k} \in \ker g \iff  k \in (n_{1} \times \cdots \times n_{r})\Z \iff  \bar{k} = \bar{0}$
-    - $f$ est un morphisme d’anneaux unitaires injectifs et
-      $$
-        \abs{\Z/n_{1} \cdots n_{r}\Z} = n_{1} \times  \cdots \times  n_{r} = \abs{\Z/n_{1} \Z \times  \cdots \times  \Z/n_{r} \Z}
-      $$
-      donc $f$ est un isomorphisme d’anneaux unitaires (*« isomorphisme naturel »*).
-
+  1. Supposons $m \land  n = 1$. Posons, sous réserve d’existence
+     $$
+       f: \applic{(\Z/mn\Z,\bar{+})}{(\Z/m\Z \times \Z/n\Z, +)}{\bar{k}}{(\dot k,\hat k)}
+     $$
+     - $f$ est correctement définie. En effet, pour $(k,l) \in \Z^{2}$, on a
+       $$
+         \bar{k} = \bar{l} \iff  k\cgm l{mn} \implies  \begin{cases}k\cgm lm\\k\cgm ln\end{cases} \implies  \begin{cases}\dot k = \dot l\\\hat k = \hat l\end{cases}
+       $$
+     - Soit $(k,l) \in \Z^{2}$.
+       $$
+         \begin{align*}
+           f(\bar{k} \bar{+} \bar{l})&= f(\bar{k+l})\\
+           &= (\overset{\cdot}{\overgroup{k+l}}, \widehat{k+l})\\&=(\dot k\dot +\dot l, \hat k \hat + \hat l)\\
+           &=(\dot k, \hat k) + (\dot l, \hat l)\\
+           &=f(\bar k) + f(\bar{l})
+         \end{align*}
+       $$
+       donc $f$ est un morphisme de groupes.
+     - ++Injectivité.++ Soit $k \in \Z$.
+       $$
+         \begin{align*}
+           k \in \ker f &\iff  \begin{cases}\dot k = \dot 0\\\hat k = \hat 0\end{cases}\\ &\iff \begin{cases}k \in m\Z\\k \in  n\Z\end{cases}\\ &\iff  k \in (m\Z) \cap (n\Z) \\&\iff  k \in (m \lor n)\Z
+         \end{align*}
+       $$
+       Comme $m \land  n = 1$, on a $m \lor  n = mn$. Alors
+       $$
+         \bar{k} \in \ker f \iff  k \in mn\Z \iff  \bar{k} = \bar{0}
+       $$
+       Donc $f$ est injectif.
+     - De plus,
+       $$
+         \abs{\Z/mn\Z} = mn = \abs{\Z/m\Z} \times \abs{\Z/n\Z} = \abs{\Z/m\Z \times \Z/n\Z}
+       $$
+       si bien que $f$ est un isomorphisme de groupes.
   %offprog
-    - Supposons que $(\Z/n_{1}\Z \times  \cdots \times \Z/n_{r} \Z, +, \times )$ soit isomorphe à $(\Z/n_{1} \cdots n_{r} \Z, \bar{+}, \bar{\times })$. Alors $(\Z/n_{1} \Z \times  \cdots \times \Z/n_{r} \Z, +)$ est un groupe cyclique, donc pour $1 \leq  i < j \leq  n$, le sous-groupe
-      $$
-        \{\bar{0}\} \times  \cdots \times  \{\bar{0}\}\times \Z/n_{i}\Z \times \{0\} \times \cdots \times  \{0\} \times  \Z/n_{j}\Z \times  \{0\} \times  \cdots \times \{0\}
-      $$
-      est cyclique. Il est isomorphe à $\Z/n_{i}\Z \times  \Z/n_{j}\Z$. Colui-ci est cyclique si et seulement si $n_{i} \land  n_{j} = 1$.
+    2. Supposons qu’il existe un isomorphisme
+       $$
+         g:(\Z/mn\Z, \bar{+}) \longrightarrow (\Z/m\Z \times \Z/n\Z, +)
+       $$
+       Posons $g(\bar{1}) = (a,b)$. Comme $g$ est un morphisme injectif, on a
+       $$
+         \omega((a,b)) = \omega(g(\bar{1})) = \omega(\bar{1})
+       $$
+       d’où $\omega(a) \lor \omega(b) = mn$.
+
+       $a \in \Z/m\Z$ donc $\omega(a) \mid m = \abs{\Z/m\Z}$.
+
+       $b \in \Z/n\Z$ donc $\omega(b) \mid n = \abs{\Z/n\Z}$.
+
+       Ainsi, $\omega(a) \mid (m \lor  n)$ et $\omega(b)\mid (m \lor  n)$, soit
+       $$
+         (\omega(a) \lor \omega(b)) \mid m \lor n
+       $$
+       i.e. $mn\mid m \lor  n$. Cependant, $(mn)$ est un multiple commun à $m$ et $n$, donc $(m \lor  n)\mid mn$, d’où $m \lor  n = mn$ d’où $m \lor n = 1$.
   %
 %
 
