@@ -861,8 +861,8 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %eg
   Dans l’anneau $(\K[X], +, \times )$ où $\K$ est un corps,
-  1. $XK[X]$ est un idéal de $(K[X],+, \times )$. $1 \notin XK[X]$ donc $XK[X]$ n’est pas un sous-anneau de $(K[X],+, \times )$.
-  2. $K[X^{2}]$ est un sous-anneau de $(K[X], +, \times )$.
+  1. $X\K[X]$ est un idéal de $(\K[X],+, \times )$. $1 \notin X\K[X]$ donc $X\K[X]$ n’est pas un sous-anneau de $(\K[X],+, \times )$.
+  2. $\K[X^{2}]$ est un sous-anneau de $(\K[X], +, \times )$.
      $X \cdot X^{2} \notin \K[X^{2}]$ donc $\K[X^{2}]$ n’est pas un idéal de $(\K[X], +, \times )$.
 %
 
@@ -1036,9 +1036,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
        $$
        avec $(x_{i}, y_{i}) \in I_{i}$ pour tout $i \in \icc{1,n}^{2}$. D’où
        $$
-         \begin{align*}
-           x+y &= \sum_{i=1}^{n}(x_{i} + y_{i}) \in \sum_{i=1}^{n}I_{i}
-         \end{align*}
+         x+y = \sum_{i=1}^{n}(x_{i} + y_{i}) \in \sum_{i=1}^{n}I_{i}
        $$
        car $\forall i \in \icc{1,n}, x_{i} + y_{i} \in I_{i}$.
        $$
@@ -1136,7 +1134,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %def Proposition-définition
   Soit $(A,+, \times )$ un anneau commutatif unitaire intègre.
-  1. Soit $(a,b) \in A^{2}$. On dit que $a divise b$ s’il existe $c \in A$ tel que $b = a \times c$ et on note $a\mid b$. On a alors
+  1. Soit $(a,b) \in A^{2}$. On dit que $a$ divise $b$ s’il existe $c \in A$ tel que $b = a \times c$ et on note $a\mid b$. On a alors
      $$
        a\mid b \iff  bA \subset a A
      $$
@@ -1156,14 +1154,16 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
      $$
        bA \subset aA \implies  b = v \times 1_{A} \in aA
      $$
-     i.e. a\mid b
+     i.e. $a\mid b$
   2. $$
        \begin{align*}
          aA = bA &\iff \begin{cases}aA \subset  bA \\ bA \subset  aA\end{cases}\\
      &\iff \begin{cases}b\mid a\\a\mid b\end{cases}\\
      &\iff \exists (u,v) \in A^{2}: \begin{cases}a = bu\\
      b=av\end{cases}\\&\iff \exists (u,v) \in A^{2}: \begin{cases}a &= auv\\b&=av\end{cases}\\
-     &\underset{\text{intégrité}}{\iff} \exists (u,v) \in A^{2}:\begin{cases}a = 0\\b=0\end{cases} \quad\text{ou}\quad \begin{cases}a\neq 0\\1 = uv\\b=av\end{cases}
+     &\underset{\text{intégrité}}{\iff} \exists (u,v) \in A^{2}:\begin{cases}a = 0\\b=0\end{cases} \quad\text{ou}\quad \begin{cases}a\neq 0\\1 = uv\\b=av\end{cases}\\
+     &\iff \begin{cases}a=0\\b=0\end{cases} \quad\text{ou}\quad \begin{cases}a\neq 0\\ \exists v \in A^{\times}: b=av\end{cases}\\
+     &\iff \exists v \in A^{\times}: b=av
        \end{align*}
      $$
 %
@@ -1174,10 +1174,343 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   3. Si $P \in \K[X]$, alors les associés de $P$ sont les polynômes $\lambda P$ avec $\lambda \in \K^{*}$ car $\K[X]^{\times} = \K^{*}$..
   4. $I = 2\Z[X] + X\Z[X]$ est un idéal de l’anneau $(\Z[X], +, \times )$.
      %proof
-       Supposons qu’il existe $P \in \Z[X]$ tel que $I = P\Z[X]$. Alors $2\Z[X] \subset P\Z[X]$ donc $P\mid 2$ da $\Z[X]$, d’où $\deg P = 0$ soit $P \in \{1, -1, 2, -2\}$.
+       Supposons qu’il existe $P \in \Z[X]$ tel que $I = P\Z[X]$. Alors $2\Z[X] \subset P\Z[X]$ donc $P\mid 2$ dans $\Z[X]$, d’où $\deg P = 0$ soit $P \in \{1, -1, 2, -2\}$.
      %
 
      A-t-on $\Z[X]$ ou $I = 2\Z[X]$ ? Non car
      - $3+X \notin I$ donc $I \neq \Z[X]$
      - $X \in I$ et $X \notin 2\Z[X]$
+%
+
+## Anneau $(\K[X],+, \times )$ avec $\K$ un corps
+
+%def Proposition-définition
+  Soit $n \in \N$ avec $n \geq  2$. Soient $(P_{1}, \ldots, P_{n}) \in (\K[X])^{n}$
+  - Si $(P_{1}, \ldots, P_{n})\neq(0,\ldots, 0)$, alors il existe un unique polynôme **unitaire** $D \in \K[X]$ tel que
+    $$
+      P_{1}\K[X] + \cdots + P_{n}\K[X] = D\K[X]
+    $$
+    on pose $D = P_{1} \land \cdots land P_{n}$ et on a
+    $$
+      D = \gcd_{(\K[X]_{n},\mid)}(P_{1}, \ldots, P_{n})
+    $$
+
+  - Si $(P_{1}, \ldots, P_{n})=(0, \ldots, 0)$, alors
+    $$
+      P_{1} \K[X] + \cdots P_{n}\K[X] = \{0\} = 0\K[X]
+    $$
+  - Si $P_{1} \times \cdots P_{n} \neq 0$, alors il existe un unique polynome **unitaire** $M \in \K[X]$ tel que
+    $$
+      \bigcap_{i \in \icc{1 n}}P_{i}\K[X] = M\K[X]
+    $$
+    et on pose
+    $$
+      M = M_{1} \lor \cdots \lor M_{n} = \lcm_{(\K[X]_{n}, \mid)}(M_{1}, \ldots, M_{n})
+    $$
+  - Si $P_{1} \times  \cdots \times  P_{n} = 0$, alors
+    $$
+      \bigcap P_{i}\K[X] = \{0\}
+    $$
+    et on pose
+    $$
+      P_{n} \lor \cdots \lor  P_{n} = 0
+    $$
+%
+
+%proof
+  - Si $(P_{1}, \ldots, P_{n})\neq (0, \ldots, 0)$, alors $P_{1}\K[X] + \cdots + P_{n}\K[X]$ est un idéal de l’anneau $(\K[X], +, \times )$: il est principal car $\K$ est un corps. Il existe ainsi $D$ unitaire tel que
+    $$
+      P_{1}\K[X] + \cdots + P_{n}\K[X] = D\K[X]
+    $$
+    ++Unicité++:
+    $$
+      \begin{cases}D \text{ et } D_{1} \text{ unitaires}\\D\K[X] = D_{1}\K[X]\end{cases} \iff \begin{cases}D \text{ et } D_{1} \text{ unitaires}\\ \exists \lambda \in \K^{*}: D = \lambda D_{1}\end{cases} \implies \begin{cases}\lambda&=1\\D &= D_{1}\end{cases}
+    $$
+    ++PGCD++:
+    $$
+      \forall i \in \icc{1,n}, P_{i}\K[X] \subset D\K[X]
+    $$
+    i.e. $D\mid P_{i}$. Soit $\Delta \in \K[X]$ unitaire vérifiant
+    $$
+      \forall i \in \icc{1,n}, \Delta\mid P_{i}
+    $$
+    Alors,
+    $$
+      \forall i \in \icc{1,n}, P_{i}\K[X] \subset \underbrace{\Delta\K[X]}_{\text{stable par }+}
+    $$
+    donc $P_{1}\K[X] + \cdots + P_{n}\K[X] \subset \Delta\K[X]$ i.e. $D\K[X] \subset \Delta\K[X]$ donc $\Delta \mid D$.
+%
+
+%proposition
+  Soit $n \geq 2$. Soient $(P_{1}, \ldots, P_{n}) \in (\K[X])^{n}$.
+  $$
+    P_{1} \land  \cdots \land  P_{n} = 1 \iff  \exists (Q_{1}, \ldots, Q_{n}) \in (\K[X])^{2}: Q_{1}P_{1} + \cdots + Q_{n}P_{n} = 1
+  $$
+  Premier terme: « premiers entre eux dans leur ensemble ».
+%
+
+%proof
+  $$
+    \begin{align*}
+      P_{1} \land  \cdots \land  P_{n} = 1 &\iff P_{1}\K[X] + \cdots P_{n}\K[X] = 1\K[X] = \K[X]\\
+      &\iff 1 \in P\K[X] + \cdots + P_{n}\K[X]
+    \end{align*}
+  $$
+  car $1 \in I \implies I=A$.
+%
+
+%rem
+  ++Attention++: $P=X(X-1)$; $Q = (X-1)(X-2)$; $R = X(X-2)$ vérifient $P \land  Q \land  R = 1$, cependant $P \land  Q = X-1$, $Q \land  R = X-2$, $P \land  R = X$.
+
+  Par contre, si $P_{i} \land  P_{j} = 1$ avec $1 \leq i \leq  j \leq  n$, alors
+  $$
+  P_{1} \land  \cdots \land  P_{n} = (P_{i} \land  P_{j}) \land  \underbrace{\left(\bigwedge_{i \in \icc{1,n} \setminus \{i,j\}}P_{k}\right)}_{\coloneqq Q} = 1 land Q = 1
+  $$
+%
+
+%offprog
+  %def
+    Soit $(A,+, \times )$ un anneau commutatif unitaire intègre. Un élément $p$ de $A$ est dit *irréductible* si
+    1. $p \notin A^{\times}$  2. $\begin{cases}p = xq\\(x,y) \in Q^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
+    Autrement dit, $p$ est un irréductible et les seuls diviseurs de $p$ sont ses associés et les unités.
+  %
+  %eg
+   1. Les irréductibles de $\Z$ sont les nombres premiers et leurs opposés.
+   2. PROG:Soit $P \in \K[X]$. $P$ est irréductible si
+      1. $P \notin \K$, i.e.$\deg P \geq 1$
+      2. $\begin{cases}P = QR\\(Q,R) \in (\K[X])^{2}\end{cases}\implies Q \in \K^{*} \text{ ou } R \in \K^{*}$
+      Autrement dit, un polynôme $P$ est irréductible s’il est non constant et si les seuls diviseurs de $P$ sont ses associés et les constanstes non nulles.
+  %
+  k
+%
+
+%property Arithmétique dans $\K[X]$
+  1. $\begin{cases}A \land  C &=1\\B \land  C &= 1\end{cases}\implies (AB) \land  C = 1$
+  2. (*Lemme de Gauss*) $\begin{cases}A\mid BC\\A \land  B = 1\end{cases} \implies  A\mid C$
+  3. Pour $R$ irréductible, on a
+     $$
+       \forall P \in \K[X], R \land  P = 1 \text{ ou bien } R\mid P
+     $$
+  4. Si $R_{1}$ et $R_{2}$ sont irréductibles non associés, alors
+     $$
+       R_{1} \land  R_{2} = 1
+     $$
+  5. Si $\begin{cases}R \text{ est irréductible}\\R\mid A_{1} \times  \cdots \times  A_{n}\end{cases}$, alors
+     $$
+       \forall i \in \icc{1,n}, R\mid A_{i}
+     $$
+%
+
+%proof
+  1. $\underbrace{(AU+CV)(BU_{1} + CV_{1})}_{= ABUU_{1} + C(BU_{1}V + AUV_{1}+CVV_{1})} = 1 \times 1 = 1$
+  2. $AU+BV = 1 \implies  \underbrace{ACU + BCV}_{\text{divisible par }A} = C$
+  3. $R \land  P \in \{1, \hat R\}$ avec $\hat R$ un polynôme unitaire associé à $R$.
+  4. $R_{1} \land  R_{2} \in \{1, \hat R_{1}\}\cap \{1, \hat R_{2}\} = \{1\}$
+  5. $\text{non}(\exists i \in \icc{1,n}: R\mid A_{i}) \implies \forall i \in \icc{1_{n}}, R \land  A_{i} = 1$ car $R$ est irréductible. D’où
+     $$
+       R \land  (A_{1} \times  \cdots \times  A_{n}) = 1 \implies R\nmid (A_{1} \times  \cdots \times A_{n})
+     $$
+%
+
+%property
+  1. Tout polynôme de degré 1 de $\K[X]$ est irréductible.
+  2. Les polynômes de $\C[X]$ sont les polynômes de degré 1.
+  3. %offprog
+       Un polynôme de degré 2 ou 3 de $\K[X]$ est irréductible si et seulement si il ne possède pas de racine dans $\K$.
+     %
+%
+
+
+%proof
+  1. Soit $P \in \K[X]$ de degré 1.
+     $$
+       \begin{align*}
+         \begin{cases}P = QR\\(Q,R) \in \K[X]^{2}\end{cases} &\implies  \deg P = \deg Q + \deg R = 1
+         &\implies (\deg Q, \deg R) \in \{(1,0), (0,1)\}\\
+         &\implies \deg Q = 0 \text{ ou } \deg R = 0
+       \end{align*}
+     $$
+     i.e. $Q \in \K^{*}$ ou $R \in \K^{*}$.
+  2. Soit $P \in \C[X]$ vérifiant $\deg P \geq 2$. Comme $P$ est non constant, il existe $\alpha \in \C$ tel que $\tilde{P}(\alpha) = 0$. Ainsi il existe $Q \in \C[X]$ tel que $P = (X-\alpha)Q$ et $Q \notin\C^{*}$, donc $P$ est irréductible.
+  3. %offprog
+       Soit $P \in \K[X]$ avec $\deg P \in \{2,3\}$.
+       - Supposons $P$ réductible. Il existe alors $(Q,R) \in (\K[X])^{2}$ avec
+         $$
+           P = QR \quad\text{et}\quad \begin{cases}Q\notin \K^{*}\\R\notin \K^{*}\end{cases}
+         $$
+         Or
+         $$
+           \begin{cases}\deg P = \deg Q + \deg R\\\deg Q \geq 1 \text{ et }  \deg R \geq 1 \end{cases}
+         $$
+         Nécessairement, $\deg Q = 1$ ou $\deg R=1$. Si $\deg Q = 1$, alors il existe $(a,b) \in \K^{*} \times \K$ tel que $Q = aX+b$ et $P = (aX+b)R$. Alors $\tilde{P}(a^{-1} \times b) = 0$, soit $P$ a une racine dans $\K$.
+       - Supposons que $P$ possède une racine $\alpha \in \K$. Alors il existe $Q \in \K[X]$ tel que
+         $$
+           P = (X-\alpha)Q
+         $$
+         or $\deg  P \in \{2,3\}$ donc $Q\notin\K^{*}$ et $(X-\alpha) \notin \K^{*}$. Ainsi $P$ est réductible.
+  %
+%
+
+%eg
+  1. - $X^{2}-2 \in \Q[X]$ est irréductible.
+     - $X^{3}-2 \in \Q[X]$ est irréductible. En effet, soit $(a,b) \in \Z \times \N^{*}$ avec
+       $$
+         \left(\frac{a}{b}\right)^{3} = 2 \quad\text{et}\quad a \land  b = 1
+       $$
+       Alors $a^{3} = 2b^{3}$ donc $2\mid a^{3}$ or 2 est premier donc $2\mid a$. Ainsi $\exists  a' \in \Z: a = 2a'$ d’où $8{a'}^{3} = 2b^{3}$, i.e. $4{a'}^{3} = b^{3}$ donc $2\mid b$ exclu car $a \land  b = 1$.
+  2. %offprog
+       $X^{2} + X + 1 \in P_{2}[X]$ est de degré 2 et n’a pas de racine dans $\F_{2}$ donc $X^{2} + X + 1$ est irréductible. De même, $X^{3} + X + 1 \in \F_{2}[X]$ est irréductible.
+     %
+  3. $X^{4} + 1 \in \R[X]$ n’a pas de racine dans $\R$ mais
+     $$
+       X^{4}+1 = (X^{2}+1)^{2} - 2X^{2} = (X^{2} - \sqrt{2}X + 1)(X^{2} + \sqrt{2}X + 1)
+     $$
+     donc $X^{4} + 1$ est réductible.
+%
+
+%property
+  Les polynômes irréductibles de $\R[X]$ sont les polynômes de degré 1 et ceux de degré 2 à discriminant strictemen négatif.
+%
+
+%proof
+  Soit $P \in \R[X]$ avec $\deg  P \geq 3$. Alors $P \in \C[X]$ possède une racine $\alpha \in \C$.
+  - Si $\alpha \in \R$, alors $P = (X-\alpha)Q$ avec $Q \in \R[X]$ et $\deg Q \geq 1$, donc $P$ est réductible.
+  - Si $\alpha \in \C \setminus \R$, alors $\tilde{P}(\alpha) = 0 \implies  \tilde{P}(\bar{\alpha}) = 0$ donc
+    $$
+      \begin{align*}
+        P &= (X-\alpha)(X-\bar{\alpha})Q \quad\text{avec } Q \in \C[X]\\
+        &= \underbrace{(X^{2}-2\Re(\alpha)X + \abs{\alpha}^{2})}_{\in \R[X]}Q
+      \end{align*}
+    $$
+    donc $Q \in \R[X]$, d’où $P$ est réductible.
+%
+
+%proposition
+  Tout polynôme non constant de $\K[X]$ possède un diviseur irréductible.
+%
+
+%proof
+  Soit $P \in \K[X]$ non constant.
+  $$
+    A = \left\{\deg Q \mid Q \in \K[X], \text{ unitaire, non constant et tel que } Q\mid P\right\} \subset \N^{*}
+  $$
+  $\deg \hat P \in A$((Polynôme $P$ normalisé.)) donc $A$ est une partie non vide de $\N^{*}$. Soit $d = \min A$. Soit $D \in \K[X]$ non constant, unitaire, de degré $d$ et tel que $D\mid P$. Supposons $D = D_{1} \times D_{2}$ avec $(D_{1}, D_{2}) \in (\K[tx])^{2}$ deux polynômes unitaires. Alors $D_{1}\mid P$ et $D_{2}\mid P$ donc $D_{1}$ est constant (non nul) ou de degré plus grand que $d$ et de même, $D_{2}$ est constant (non nul) ou de degré plus grand que $d$. Or
+  $$
+    D_{1} \mid D \implies \deg D_{1} \leq d \quad\text{et}\quad D_{2} \mid D \implies \deg D_{2} \leq d
+  $$
+  d’où $D_{1} \in \K^{*}$ et $\deg  D_{2} = d$ ou $D_{2} \in \K^{*}$ et $\deg D_{1} = d$ d’où $D_{1} \in \K^{*}$ ou $D_{2} \in \K^{*}$. Ainsi, $D$ est un diviseur unitaire irréductible de $P$.
+%
+
+%proposition
+  Soit $P \in \K[X] \setminus \{0\}$. Soit $R$ un polynôme irréductible. Alors il existe un unique couple $(k,S) \in \N \times \K[X]$ tel que
+  $$
+    P = R^{k}S \quad\text{avec } R \land  S = 1
+  $$
+  On pose $k = \nu_{R}(P)$.
+%
+
+%proof
+  ++Existence++: Par récurrence sur $n = \deg P \in \N$.
+  - Si $n=0$, alors $P = R_{0}$ et $R \land  \underbrace{P}_{\text{constante non nulle}} = 1$.
+  - Supposons le  résultat vrai lorsque $0 \leq  \deg P \leq n$ avec $n \in \N$ fixé. Soit $P \in \K[X]$ de degré $n+1$.
+    - Si $R \land  P = 1$, on a $P = R_{0}P$ et $R \land  P = 1$
+    - Si $R\mid P$, alors il existe $Q \in \K[X]$ tel que $P = RQ$. Or $\deg  R \geq 1$ donc $\deg  Q \in \icc{0,n}$. D’après l’hypothèse de récurrence, il existe $(k,S) \in \N \times \K[X]$ tel que $Q = R^{k}S$ avec $R \land  S =1$.
+  ++Unicité++: Supposons $P = R^{k}S = R^{k_{1}}S_{1}$ avec $(k,k_{1}) \in \N^{*}$ vérifiant $k \leq k_{1}$ et $R \land  S = R \land  S_{1} = 1$. Alors
+  $$
+    R^{k_{1} - k}S_{1} = S
+  $$
+  Si $k_{1} > k$, alors $R\mid S$ ce qui est faux, donc $k_{1} = k$ et $S = S_{1}$.
+%
+
+%thm Théorème de décomposition (factorisation) en polynômes irréductibles
+  Soit $P \in \K[X]$ non constant. Il existe un unique scalaire $\lambda \in \K^{*}$, un unique ensemble fini $E$ formé de polynômes irréductibles unitaires et une unique famille $(\alpha_{R})_{R \in E}$ d’entiers naturels non nuls tels que
+  $$
+    P = \lambda \prod_{R \in E}R^{\alpha_{R}}
+  $$
+%
+
+%proof
+  ++Existence++: par récurrence sur $\deg P = n \in \N^{*}$.
+  - Si $\deg P=1$, alors $P$ est irréductible et $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$, $\hat P$ le polynôme unitaire irréductible associé à $P$.
+  - Supposons l’existence d’une telle décomposition pour tout polynôme $P \in \K[X]$ de degré compris entre $1$ et $n \in \N^{*}$ fixé. Soit $P \in \K[X]$ avec $\deg  P = n+1$.
+    - Si $P$ est irréductible, alprs $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$.
+    - Si $P$ est réductible, alors $P$ n’est pas constant donc possède un diviseur unitaire irréductible $R$. Il existe donc $Q \in \K[X]$ tel que $P = RQ$. Alors
+      $$
+        \deg R \geq 1 \quad\text{et}\quad  \deg R \neq n+1
+      $$
+      donc $1 \leq  \deg Q \leq n$. D’après l’hypothèse de récurrence, on a une écriture pour $Q$ de la forme attendue, d’où
+      $$
+        P = R \lambda \prod_{R \in E}R^{\alpha_{R}}
+      $$
+      est une écriture de $P$ de la forme attendue.
+  ++Unicité++: si $P = \lambda \prod_{R \in E}R^{\alpha_{R}}$, alors $\lambda$ est le coefficient dominant de $P$, $E$ est l’ensemble des diviseurs irréductibles de $P$, et pour $R \in E$, on a $P = R^{\alpha_{R}} \times Q$ avec
+  $$
+    Q = \lambda \prod_{S \in E \setminus \{R\}}S^{\alpha_{S}}
+  $$
+  Alors $R \land  Q =1$ d’où $\alpha_{R} = \nu_{R}(P)$.
+%
+
+%eg
+  1. $P = X^{4}-1 \in \K[X]$.
+     - si $\K = \R \text{ ou } \Q$, alors
+       $$
+         P = (X^{2}-1)(X^{2}+1) = (X-1)(X+1)(X^{2} + 1)
+       $$
+     - si $\K = \C$, alors
+       $$
+         P = (X-1)(X+1)(X+i)(X-i)
+       $$
+     - si $\K = \F_{2}$, alors
+       $$
+         P = (X^{2}-1)(X^{2}+1) = (X^{2} - 1)(X^{2}-1) = ((X-1)(X+1))^{2} = (X+1)^{4}
+       $$
+  2. Tout polynôme non constant de $\C[X]$ est produit de polynômes de degré 1. On dit que $\C$ est *algébriquement clos*.
+  3. Tout polynôme non constant de $\R[X]$ est produit de polynômes de degré 1 et de polynômes de degré 2 à discrimiant strictement négatif.
+  4. Soit $n \in \N^{*}$.Posons $P_{n} = X^{n} - 2 \in \Q[X]$((Irréductible pour $n \in \icc{1,3}$)). Soit $n \in \N^{*}$.
+     - $P_{n}$ n’est pas constant
+     - Supposons $P = QR$ avec $(Q,R) \in (\Q[X])^{2}$. On a aussi $(Q,R) \in (\C[X])^{2}$ et dans $\C[X]$,
+       $$
+         P = \prod_{\omega \in \U_{n}}(X-\sqrt[n]{2}\omega)
+       $$
+       Donc il existe $I \in \Part(\U_{n})$ telle que
+       $$
+         Q = \prod_{\omega \in I}(X-\sqrt[n]{2}\omega) \in \Q[X] \quad\text{et}\quad R = \prod_{\omega \in \U_{n} \setminus I}(X-\sqrt[n]{2}\omega) \in \Q[X]
+       $$
+       Donc $\abs{\tilde{Q}(0)} \in \Q^{+}$ d’où $(\sqrt[n]{2})^{\abs{I}}$.
+       - Si $I \neq\emptyset$, alors $p = \abs{I} \in \icc{1,n}$ d’où $2^{\frac{p}{n}} = \frac{a}{b}$ avec $(a,b)\in \Z \times \N^{*}$ et $a \land  b=1$, d’où
+         $$
+           2^{p}b^{n} = a_{n}
+         $$
+         Or $p \geq  1$ donc $2\mid a_{n}$ d’où par primalité de 2, $2\mid a$.
+         Il existe $a' \in \Z$ tel que $a = 2a'$ d’où
+         $$
+           2^{p}b^{n} = 2^{n}a^{n}
+         $$
+         donc $b^{n} = 2^{n-p}a_{n}$. Si $p < n$, alors $2\mid b$ exclu donc $p = n$. Ainsi, $I = \U_{n}$ donc $Q = P$ et $R=1$, d’où $P = X^{n} - 2 \in \Q[X]$ est irréductible.
+  5. $P = X^{4}-2$ est irréductible dans $\Q[X]$. Soit $Q = X^{4} + X^{3} - 2X - 2 \in \Q[X]$.
+     $$
+       Q = X(X^{3} - 2) + X^{3} - 2 = (X^{3} - 2)(X+1)
+     $$
+     Cette écriture est la décompositions de $Q$ en facteurs irréductible dans $\Q[X]$.
+  6. Si $P = a_{n}X^{n} + \cdots + a_{1}X + a_{0} \in \K[X]$ avec $n \in \N^{*}$ est scindé dans $\K$, alors
+     $$
+       P = a_{n}(X-z_{1}) \cdots (X-z_{n})
+     $$
+     et on a alors
+     $$
+       \begin{align*}
+         \sigma_{1} &= z_{1} + \cdots + z_{n} = -\frac{a_{n-1}}{a_{n}}\\
+         \sigma_{2} &= \sum_{1 \leq  i <  j \leq  n}z_{i}z_{j} = \frac{a_{n-1}}{a_{n}}\\
+         \vdots\\
+         \sigma_{k} &= \sum_{1 \leq  i_{1} < \cdots < i_{k} \leq  n}z_{i_{1}} \cdots z_{i_{k}} = (-1)^{k} \frac{a_{n-k}}{a_{n}}\\
+         \vdots\\
+         \sigma_{n} &= z_{1} \times  \cdots \times  z_{n} = (-1)^{n} \frac{a_{0}}{a_{n}}
+       \end{align*}
+     $$
+%
+
+%def Culture
+  $P \in \Z[X]$ est dir irréductible dans $\Z[X]$ si
+  1. $P \notin \{1,-1\}$
+  2. $\begin{cases}P = QR\\(Q,R) \in (\Z[X])^{2}\end{cases} \implies  (Q \in \{1,-1\} \text{ ou } R \in \{1,-1\}$
 %
