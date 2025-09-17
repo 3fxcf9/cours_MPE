@@ -85,7 +85,7 @@ $$
     $$
 %
 
-%def Proposition-définition
+%def prop-définition
   Soit $(A,+ \times )$ un anneau unitaire. Soit $x \in A$.
   - $x$ est dit *idempotent* si $x^{2} = x$
   - $x$ est dit *nilpotent* si $\exists n \in \N^{*}: x^{n} = 0_{A}$. Son *indice de nilpotence* est $\min\{n \in \N / x^{n} = 0_{A}\}$
@@ -1241,7 +1241,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
     donc $P_{1}\K[X] + \cdots + P_{n}\K[X] \subset \Delta\K[X]$ i.e. $D\K[X] \subset \Delta\K[X]$ donc $\Delta \mid D$.
 %
 
-%proposition
+%prop
   Soit $n \geq 2$. Soient $(P_{1}, \ldots, P_{n}) \in (\K[X])^{n}$.
   $$
     P_{1} \land  \cdots \land  P_{n} = 1 \iff  \exists (Q_{1}, \ldots, Q_{n}) \in (\K[X])^{2}: Q_{1}P_{1} + \cdots + Q_{n}P_{n} = 1
@@ -1388,7 +1388,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
     donc $Q \in \R[X]$, d’où $P$ est réductible.
 %
 
-%proposition
+%prop
   Tout polynôme non constant de $\K[X]$ possède un diviseur irréductible.
 %
 
@@ -1404,7 +1404,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   d’où $D_{1} \in \K^{*}$ et $\deg  D_{2} = d$ ou $D_{2} \in \K^{*}$ et $\deg D_{1} = d$ d’où $D_{1} \in \K^{*}$ ou $D_{2} \in \K^{*}$. Ainsi, $D$ est un diviseur unitaire irréductible de $P$.
 %
 
-%proposition
+%prop
   Soit $P \in \K[X] \setminus \{0\}$. Soit $R$ un polynôme irréductible. Alors il existe un unique couple $(k,S) \in \N \times \K[X]$ tel que
   $$
     P = R^{k}S \quad\text{avec } R \land  S = 1
@@ -1520,7 +1520,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %offprog
   %eg
-    1. Soit $p$ un nombre premier. $p \}otin \{0,1,-1\}$. Alors
+    1. Soit $p$ un nombre premier. $p \notin \{0,1,-1\}$. Alors
        $$
          \begin{cases}p = QR\\(Q,R) \in \Z[X]\end{cases} \implies Q \in \{-1,1\} \text{ ou } R\in \{-1,1\}
        $$
@@ -1533,7 +1533,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
        On dit que $P$ est *primitif*.
   %
 
-  %proposition
+  %prop
     Soit $P \in \Z[X] \setminus \{0,-1,1\}$. Alors $P$ s’écrit de façon unique (à l’ordre près des facteurs) comme produit de polynômes irréductibles de $\Z[X]$ (déterminés à multiplication par 1 ou -1 près).
   %
 %
@@ -1651,7 +1651,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   3. $\K[X]$ est une sous-algèbre de $(\K[X], +, \times , \cdot)$, c’est aussi une sous-algèbre de $(\K[[X]], +, \star , \cdot )$((Algèbre des séries formelles. $\left( \sum_{n \in \N}a_{n} X_{n}\right)\star \left(\sum_{n \in \N}b_{n}X_{n}\right) = \sum_{n \in \N} \left(\sum_{k=0}^{n} a_{k} b_{n-k}\right)X^{n}$)).
 %
 
-%proposition
+%prop
   Soit $f: A \longrightarrow A'$ un morphisme de $\K$-algèbres unitaires.
   1. L’image directe d’une sous-algèbre de $A$ est une sous-algèbre de $A'$
   2. L’image réciproque d’une sous-algèbre de $A'$ est une sous-algèbre de $A$

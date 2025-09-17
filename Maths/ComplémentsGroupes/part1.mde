@@ -127,7 +127,7 @@
     dans $G$ donc $x'=x^{-1}$ (symétrique de $x$ dans $G$).
 %
 
-%thm Caractérisation
+%prop Caractérisation
   Soit $(G,\star)$ un groupe. Un ensemble $H$ est un sous-groupe de $(G,\star)$ si et seulement si
   1. $H$ est une partie non vide de $G$  2. $\forall (x,y) \in H^{2}, x\star y \in H$  3. $\forall x \in H, x^{-1} \in H$
 %
@@ -179,7 +179,7 @@
   $$
 %
 
-%thm
+%prop
   Les sous-groupes de $(\Z,+)$ sont les groupes $(m\Z,+)$ avec $m \in \Z$.
 %
 
@@ -324,7 +324,7 @@
 
 ## Partie génératrice d’un groupe
 
-%thm
+%prop
    Soit $(H_{i})_{i \in  I}$ une famille de sous-groupes d’un groupe $(G, \star)$. Alors
 
   $$
@@ -345,7 +345,7 @@
   $$
 %
 
-%thm
+%prop
   1. Pour $(a,b) \in \Z^{2}$, on a $\boxed{a\Z \subset b\Z \iff b|a}$
   2. Pour tout sous-groupe $H$ de $(\Z,+)$, il existe un unique entier naturel $n \in \N$ tel que $H = n\Z$.
   3. Soit $n \in \N^{*}$. Soit $(a_{1}, \ldots, a_{n}) \in \Z^{n}$. Il existe un unique entier naturel $n \in \N$ tel que
@@ -718,7 +718,7 @@
 
 ## Le groupe $(\Z/n\Z,+)$ pour $n \in \N$
 
-%thm
+%prop
   - Soit $n \in \N$. La relation binaire sur $\Z^{2}$ définie par
     $$
       a\cgm b n \iff  a-b \in n\Z
@@ -759,7 +759,7 @@
     - $n=0$: $a\cgm b0 \iff a=b$ donc $\forall a \in \Z, \bar{a} = \{a\}$
 %
 
-%thm
+%prop
   Soit $n \in \N$. L’application
   $$
     \applic{(\Z/n\Z)^{2}}{\Z/n\Z}{(\bar{a}, \bar{b})}{\bar{a+b}}
@@ -837,7 +837,7 @@
   On s’apperçois de plus, en traçant les tables de $(\Z/3\Z, \bar{+})$ et de $(\U_{3}, \times )$ que ces deux groupes sont aussi isomorphes. Ceci se généralise en remarquant l’unicité de la table d’un groupe à 3 éléments. Il n’en existe donc qu’un seul à isomorphisme près, qui est abélien.
 %
 
-%thm
+%prop
   Pour $n \in \N^{*}$, les groupes $(\Z/n\Z, \bar{+})$ et $(\U_{n}, \times )$ sont isomorphes.
 %
 
@@ -908,7 +908,7 @@
      donc $\omega(A \times B) = + \infty$.
 %
 
-%thm
+%prop
   Soient $(G,\star)$ un groupe et $(x,y)\in G$.
   1. Si $G$ est fini, alors tout élément de $G$ est d’ordre fini
   2. $\omega(x) = 1 \iff  x = e$
@@ -1053,7 +1053,7 @@
   %
 %
 
-%thm Description des groupes monogènes
+%prop Description des groupes monogènes
   Soit $(G,\star)$ un groupe monogène. Soit $x \in G$ tel que $G = \grp x$.
   - si $\omega(x) = +\infty$, alors
     $$
@@ -1129,7 +1129,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
     \end{cases}
   $$
 
-%thm THÉORÈME
+%thm
   Soit $(G,\star)$ un groupe fini.
   L’ordre de tout élément de $G$ divise le cardinal de $G$. On a donc toujours
   $$
@@ -1171,7 +1171,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
 %
 
 %offprog
-  %thm
+  %prop
     Soit $d$ un diviseur de $n \in \N^{*}$. Tout ++groupe cyclique++ de cardinal $n$ possède un sous-groupe de cardinal $d$ et un seul. Ce dernier est cyclique.
   %
 
