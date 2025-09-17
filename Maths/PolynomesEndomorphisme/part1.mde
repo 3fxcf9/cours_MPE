@@ -1,0 +1,225 @@
+# Polynômes d’endomorphisme
+
+Dans ce chapitre, $\K$ désigne un sous-corps de $\C$ (voire un corps quelconque), $E$ est un $\K$-espace vectoriel (et rapidement, $E \neq \{0_{E}\}$).
+
+%notation
+  Soit $f \in \L(E)$. Soit $x \in E$. $f(x)$ est aussi noté $f\mdot x$.
+
+  Soient $(f,g)\in \L(E)^{2}$.
+  $$
+    (f\circ g)(x) = f(g(x)) = f \mdot (g \mdot x)
+  $$
+%
+
+## Algèbre $\K[f]$
+
+$(\L(E), +, \circ, \cdot)$ est une $\K$-algèbre (si $\dim_{\K} E = n$, alors $\dim \L(E) = n^{2} $).
+
+Soit $f \in \L(E)$. Soit $P \in \K[X]$.
+Posons $P = a_{0} + a_{1}X + \cdots + a_{d} X_{d}$. Alors, on pose
+$$
+  \begin{align*}
+    P(f) &= a_{0}f^{0} + a_{1} f + \cdots + a_{d} f^{d}\\
+         &= a_{0}\mathbf{\id_{E}} + a_{1} f + \cdots + a_{d}f^{d}
+  \end{align*}
+$$
+
+%prop
+  Pour $f \in \L(X)$, l’application
+  $$
+    \theta_{f} : \applic{\K[X]}{\L(E)}{P}{\theta_{f}(P) = P(f)}
+  $$
+  est un morphisme de $\K$-algèbres unitaires.
+%
+
+%proof
+  Soient $(a_{n})_{n \in \N} \in \K^{(\N)}$, $(b_{n})_{n \in \N} \in \K^{(\N)}$ et $(\lambda, \mu) \in \K^{2}$.
+  - $\theta_{f}(1) = 1(f) = 1 \cdot \id_{E} = \id_{E}$ et
+  - $$
+      \begin{align*}
+        \theta_{f} \left(\lambda \sum_{n \in \N}a_{n}X^{n} + \mu \sum_{n \in \N}b_{n}X^{n}\right) &= \theta_{f} \left(\sum_{n \in \N}(\lambda a_{n} + \mu b_{n})X^{n}\right)\\ &= \sum_{n \in \N}(\lambda a_{n} + \mu b_{n})f^{n}\\
+        &=\underset{\text{somme finie}}= \lambda \sum_{n \in \N}a_{n}f^{n} + \mu \sum_{n \in \N}b_{n} f^{n}\\
+        &= \lambda \theta_{f}(P) + \mu \theta_{p}(Q)
+      \end{align*}
+    $$
+  - $$
+      \begin{align*}
+        \theta_{f} \left(\sum_{n \in \N}a_{n}X^{n} \times \sum_{m \in \N}b_{m}X_{m}\right) &= \theta_{f} \left(\sum_{(n,m) \in \N^{2}}a_{n}b_{m} X^{n+m}\right)\\
+        &\underset{\text{linéarité}}= \sum_{(n,m) \in \N^{2}}a_{n}b_{m} \theta_{f}(X^{{n+m}}) \\
+        &= \sum_{(n,m) \in \N^{2}}a_{n}b_{m}f^{n+m}
+      \end{align*}
+    $$
+%
+
+%callout À retenir
+  - $(a_{0} + a_{1} X + \cdots)(f) = a_{0} \id_{E} + a_{1} f + \cdots$
+  - $(\lambda P + \mu Q)(f) = \lambda P(f) + \mu Q(f)$.
+  - $(P \mathbf{\times} Q) = P(f) \mathbf{\circ} Q(f)$
+%
+
+### Cas particuliers: noyaux itérés de $f \in \L(E)$
+
+%property
+  1. La suite des noyaux itérés $(\ker (f^{i}))_{i \in \N}$ est croissante
+  2. S’il existe $k \in \N$ tel que $\ker (f^{k}) = \ker (f^{k+1})$ alors
+     $$
+       \forall i \geq k, \ker (f^{i}) = \ker (f^{k})
+     $$
+  3. $f$ est dite nilpotente s’il existe $i \in \N^{*}$ tel que $f^{i} = 0_{L(E)}$. Alors, $p = \min\{i \in \N^{*} \mid f^{i} = 0_{\L(E)}\}$ est appelé indice de nilpotence de $f$.
+
+     Si $\dim E = n \in \N^{*}$, alors $p \leq n$ donc $f^{n} = 0_{\L(E)}$.
+  4. Si $f$ est nilpotente d’indice $n = \dim E$, alors
+     $$
+       \forall i \in \icc{0,n}, \dim (\ker f^{i}) = i
+     $$
+%
+
+%proof
+  1. Soit $x \in E$. Soit $i \in \N$.
+     $$
+       f^{i}(x) = 0_{E} \implies f(f^{i}(x)) = f(0_{E}) = 0_{E}
+     $$
+     i.e. $f^{i+1} = 0_{E}$. Ainsi, $\ker f^{i} \subset \ker f^{i+1}$.
+  2. Supposons $\ker f^{k} = \ker f^{k+1}$. Soit $p \in \N$. On a $\ker  f^{k+p} \subset  \ker f^{k+p+1}$ d’où
+     $$
+       x \in \ker  f^{k+p+1} \iff f^{p}(x) \in \ker (f^{k+1})\iff f^{p}(x) \in \ker  f^{k} \iff  x \in \ker  f^{k+p}
+     $$
+  3. $f^{p} = 0_{\L(E)}$.
+     et
+     $$
+       \{0\} = \ker f_{0} \subset \ker f \subset \ker f^{2} \subset \cdots \subset \ker  f^{p} = E
+     $$
+     donc $(\dim (\ker f^{2}))_{i \in \icc{0,p}}$ est une suite d’entiers naturels croissante. Elle est même strictement croissante. En effet, si $i \in \icc{0,p-1}$ et $\dim (\ker f^{2}) = \dim(\ker f^{i+1})$, alors $\ker  f^{i} = \ker  f^{i+1}$ d’où
+     $$
+       \ker  f^{i} = \ker  f^{p} = E
+     $$
+     donc $f^{i} = 0_{\L(E)}$ ce qui est faux par définition de $p$. Ainsi, $\dim \ker f_{0}  = 0$, d’où
+     $$
+       \forall i \in \icc{0, p}, \dim \ker f^{i} \geq i
+     $$
+     d’où $n = \dim E = \dim \ker f^{p} \geq p$.
+  4. Si $p = n = \dim E$, alors $(\ker f^{n})_{n \in \icc{0,n}}$ est strictement croissante. Or $0 = \dim \ker f^{0}$ et $n = \dim \ker f^{n}$ donc nécessairement,
+     $$
+       \forall i \in \icc{0,n}, \dim \ker f^{i} = 1
+     $$
+%
+
+### Cas général
+
+Soit $f \in \L(E)$ et
+$$
+ \theta_{f}: \applic{\K[X]}{\L(E)}{P}{P(f)}
+$$
+Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[f] = \{P(f) \ mid P \in \K[X]\}$ et $\ker \theta_{f} = \{P \in \K[X] \mid P(f) = 0_{\L(E)}\}$ est l’idéal des polynômes annulateurs de $f$.
+
+%proof
+  Soit $(P,Q) \in (\K[X])^{2}$.
+  $$
+    P(f)\circ Q(f) = (P \times Q)(f) = (Q \times P)(f) = Q(f) \circ P(f)
+  $$
+%
+
+%rem
+  $\ker  \theta_{f}$ peut être réduit à $\{0\}$ (en dimension infinie).
+
+  En effet, pour
+  $$
+    f: \applic{\K[X]}{\K[X]}{P}{XP}
+  $$
+  on a $f \in \L(\K[X])$. Soit $Q = a_{0} + a_{1} X + \cdots + a_{n} X^{n} \in \K[X]$ tel que $Q(f)= 0_{\L(\K[X])}$. Alors
+  $$
+    g \coloneqq a_{0} \id_{\K[X]} + a_{1} f + \cdots + a_{n} f^{n} = 0_{\L(\K[X])}
+  $$
+  $g(1) = 0_{\K[X]}$, i.e. $a_{0} + a_{1} X + \cdots + a_{n}X^{n} = Q$ donc $a_{0} = \cdots = a_{n} = 0$, d’où $Q = 0$. **Seul $0$ est un polynôme annulateur de $f$.**
+%
+
+%prop
+  Soit $f \in \L(E)$ avec $E \neq\{0_{E}\}$. Supposons $\ker  \theta_{f} = \{P  \in \K[X] \mid P(f) = 0_{\L(E)}\}\neq\{0\}$. Alors il existe un unique polynôme unitaire de degré au moins 1 noté $\pi_{f}$ (ou $\mu_{f}$) tel que
+  $$
+    \ker \theta_{f} = \pi_{f}\K[X]
+  $$
+  $\pi_{f}$ est alors appelé ++polynôme minimal++ de $f$.
+%
+
+%proof
+  $\ker \theta_{f}$ est un idéal de l’anneau commutatif unitaire $(\K[X], +, \times )$. Or $\K$ est un corps donc l’idéal est principal, par hypothèse non nul. Il existe donc un unique polynôme unitaire $\pi_{f}$ tel que $\ker  \theta_{f} = \pi_{f}\K[X]$. Or $\pi_{f} \neq 1$
+  $$
+    \Bigl(1(f) = 0_{\L(E)} \iff  1 f_{0} = 0_{\L(E)} \iff  \id_{E} = 0_{\L(E)} \iff  E = \{0_{E}\}\Bigr)
+  $$
+  donc $\deg \pi_{f} \geq 1$.
+%
+
+%prop Caractérisation de $\pi_f$
+  Soit $f \in \L(E)$ avec $E \neq \{0\}$ possèdant un polynôme minimal $\pi_{f}$. $\pi_{f} \in \K[X]$ est caractérisé par
+  $$
+    \begin{cases}\pi_{f} \in \K[X]\\\pi_{f} \text{ unitaire}\end{cases} \quad\text{et}\quad (*)\begin{cases}P \in \K[X] \\ P(f) = 0_{\L(E)}\end{cases} \iff \pi_{f} \mid P
+  $$
+  ou encore
+  $$
+    \begin{cases}\pi_{f} \in \K[X]\\ \pi_{f} \text{ unitaire}\end{cases} \quad\text{et}\quad (**)\begin{cases}\pi_{f}(f) = 0_{\L(E)}\\\begin{cases}P \in \K[X]\\P(f) = 0_{\L(E)}\end{cases} \implies  \pi_{f} \mid P\end{cases}
+  $$
+%
+
+%proof
+  $(**)$ Soit $P \in \K[X]$ avec $\pi_{f} \mid P$. Il existe $Q \in \K[X]$ tel que $P = \pi_{f} \times Q$ donc $P(f) = \pi_{f}(f) \circ Q(f) = 0_{\L(E)} \circ Q(f) = 0_{\L(E)}$.
+%
+
+%eg
+  Soit $n \in \N^{*}$ avec $n \geq 2$. Posons
+  $$
+    f: \applic{\M_{n}(\K)}{\M_{n}(\K)}{M}{M + M\transp}
+  $$
+  Alors $f = \id  + T \in \L(\M_{n}(\K))$ et
+  $$
+    f^{2} : M \longmapsto (M + M\transp) + (M + M\transp)\transp = M + M\transp + M\transp + M = 2(M + M\transp)
+  $$
+  donc $f^{2} = 2f$, d’où $X^{2} - 2X$ est un polynôme annulateur non nul de $f$. Ainsi $\pi_{f}$ existe et $\pi_{f} \mid X(X-2)$, soit $\pi_{f} \in \{X,X-2,X^{2}-2X\}$.
+  $$
+    \pi_{f} = X \implies  \pi_{f}(f) = f = 0_{\L(\M_{n}(\K))}
+  $$
+  ce qui est faux. Ainsi, $\pi_{f} \neq X$.
+
+  $\pi_{f} = X-2 \implies \pi_{f}(f) = f-2 \id  = 0$ et $f(E_{1n}) = E_{n1} + E_{1n} \neq 2E_{1n}$, donc $\boxed{\pi_{f} = X^{2} - 2X}$.
+%
+
+%prop
+  Si $E$ est un $\K$-espace vectoriel de dimension finie (non nulle), alors tout endomorphisme de $E$ possède un polynôme minimal.
+%
+
+%proof
+  Posons $n = \dim E$ avec $n \in \N^{*}$. Soit $f \in \L(E)$. On a $\dim \L(E) = n^{2}$. $(f^{i})_{0 \leq  i \leq  n^{2}}$ est une suite de $\L(E)$ de longueur $n^{2}+1 > \dim \L(E)$. Elle est donc liée. Il existe alors $(\alpha_{0}, \ldots, \alpha_{n^{2}}) \in \K^{n+1}\setminus \{(0,\ldots, 0)\}$ tels que
+  $$
+    \sum_{i=0}^{n^{2}}\alpha_{i}f^{i} = 0_{\L(E)}
+  $$
+  Autrement dit, $\sum_{i=0}^{n}\alpha_{i}X^{i}$ est un polynôme annulateur non nul de $f$.
+%
+
+%prop
+  Soit $f \in \L(E)$ ($1 \leq  \dim E \leq +\infty$) possèdant un polynôme minimal $\pi_{f}$ de degré $d \in \N^{*}$. Alors $\K[f]$ est une sous-algèbre commutative de $(\L(E), +, \circ, \cdot )$ de dimension finie égale à $d$ de base $(\id_{E}, f, \ldots, f^{d-1})$.
+%
+
+%proof
+  $\K[f] = \{P(f)\mid P \in \K[X]\}$. Soit $P \in \K[X]$. Effectuons la division euclidienne de $P$ par $\pi_{f}$~:
+  $$
+    P = Q \times \pi_{f} + R \quad\text{avec}\quad \begin{cases}(Q,R) \in (\K[X])^{2}\\ \deg R < d\end{cases}
+  $$
+  Donc
+  $$
+    P(f) = Q(f)\circ \pi_{f}(f) + R(f) = R(f)
+  $$
+  Ainsi $K[f] \subset \{R(f) \mid R \in \K_{d-1}[X]\} \subset \K[f]$, soit
+  $$
+    K[f] = \{R(f) \mid R \in \K_{d-1}[X]\} = \Vect\left\{\id_{E}, f, \cdots, f^{d-1}\right\}
+  $$
+  d’où $\K[f]$ est un $\K$-espace vctoriel de dimension finie.
+
+  Soit $(\alpha_{0}, \alpha_{1}, \ldots, \alpha_{d-1}) \in \K^{d}$ tel que
+  $$
+    \alpha_{0} \id + \alpha_{1} f + \cdots + \alpha_{d-1}f^{d-1} = 0_{\L(E)}
+  $$
+  i.e. $P = \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1}$ est un polynôme annulateur de $f$. Alors $\pi_{f} \mid P$ donc $\deg \pi_{f} = d$ d’où $\deg  P \leq d-1$. Ainsi $P=0$ d’où $(\id_{E}, f, \ldots, f^{d-1})$ est une base de $\K[f]$.
+%
+
+%cor Autre caractérisation de $\pi_f$
+  $\pi_{f} \in \K[X]$ est le polynôme unitaire de plus bas degré annulateur de $f$.
+%

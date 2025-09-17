@@ -843,7 +843,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %prop
   Soit $(A,+, \times )$ un anneau commutatif unitaire. Un ensemble $I$ est un idéal de $A$ si et seulement si
-  1. $I$ est une pertie non vide de l’anneau $(A,+, \times )$
+  1. $I$ est une partie non vide de l’anneau $(A,+, \times )$
   2. $\forall (x,y) \in I^{2}, x+y \in I$
   3. $\forall (a,x) \in A \times I, a \times  x \in I$
 %
@@ -904,7 +904,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
      $$
      pour $x \in A$. On appelle ceux-ci *idéaux principaux*.
      %rem
-        $0_{A}\cdot Ae = \{0_{A}\}$ et $1_{A}\cdot A = A$.
+        $0_{A}\cdot A = \{0_{A}\}$ et $1_{A}\cdot A = A$.
      %
   3. Si $(A, +, \times )$ est un anneau, on a
      $$
@@ -963,7 +963,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
      - Si $I = \{0\}$, alors $ei = 0 \cdot \K[X]$.
      - Sinon, $I \neq \{0\}$. Soit
        $$
-         d_{0} = \min\\underbrace{{\deg  P \mid P \in I \setminus \{0\}}}_{\text{partie non vide de }\R}
+         d_{0} = \min\underbrace{\{\deg  P \mid P \in I \setminus \{0\}\}}_{\text{partie non vide de }\R}
        $$
        Soit $P_{0} \in  I \setminus \{0\}$ tel que $d_{0} = \deg  P_{0}$. Alors $P_{0} \in I$ est un idéal de $\K[X]$. Par propriété d’absorption, on a $P_{0}\K[X]\subset I$.
        - Soit $P \in I$. Effectuons la division euclidienne de $P$ par $P_{0}$ (possible dans $\K[X]$ car $\K$ est un corps):
@@ -1271,17 +1271,20 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 %offprog
   %def
     Soit $(A,+, \times )$ un anneau commutatif unitaire intègre. Un élément $p$ de $A$ est dit *irréductible* si
-    1. $p \notin A^{\times}$  2. $\begin{cases}p = xq\\(x,y) \in Q^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
+    1. $p \notin A^{\times}$  2. $\begin{cases}p = xy\\(x,y) \in Q^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
     Autrement dit, $p$ est un irréductible et les seuls diviseurs de $p$ sont ses associés et les unités.
   %
-  %eg
-   1. Les irréductibles de $\Z$ sont les nombres premiers et leurs opposés.
-   2. PROG:Soit $P \in \K[X]$. $P$ est irréductible si
-      1. $P \notin \K$, i.e.$\deg P \geq 1$
-      2. $\begin{cases}P = QR\\(Q,R) \in (\K[X])^{2}\end{cases}\implies Q \in \K^{*} \text{ ou } R \in \K^{*}$
-      Autrement dit, un polynôme $P$ est irréductible s’il est non constant et si les seuls diviseurs de $P$ sont ses associés et les constanstes non nulles.
+%
+
+
+%eg
+  %offprog
+    1. Les irréductibles de $\Z$ sont les nombres premiers et leurs opposés.
   %
-  k
+  2. Soit $P \in \K[X]$. $P$ est irréductible si
+     1. $P \notin \K$, i.e.$\deg P \geq 1$
+     2. $\begin{cases}P = QR\\(Q,R) \in (\K[X])^{2}\end{cases}\implies Q \in \K^{*} \text{ ou } R \in \K^{*}$
+     Autrement dit, un polynôme $P$ est irréductible s’il est non constant et si les seuls diviseurs de $P$ sont ses associés et les constanstes non nulles.
 %
 
 %property Arithmétique dans $\K[X]$
@@ -1314,7 +1317,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %property
   1. Tout polynôme de degré 1 de $\K[X]$ est irréductible.
-  2. Les polynômes de $\C[X]$ sont les polynômes de degré 1.
+  2. Les polynômes irréductibles de $\C[X]$ sont les polynômes de degré 1.
   3. %offprog
        Un polynôme de degré 2 ou 3 de $\K[X]$ est irréductible si et seulement si il ne possède pas de racine dans $\K$.
      %
@@ -1325,7 +1328,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   1. Soit $P \in \K[X]$ de degré 1.
      $$
        \begin{align*}
-         \begin{cases}P = QR\\(Q,R) \in \K[X]^{2}\end{cases} &\implies  \deg P = \deg Q + \deg R = 1
+         \begin{cases}P = QR\\(Q,R) \in \K[X]^{2}\end{cases}\\ &\implies  \deg P = \deg Q + \deg R = 1
          &\implies (\deg Q, \deg R) \in \{(1,0), (0,1)\}\\
          &\implies \deg Q = 0 \text{ ou } \deg R = 0
        \end{align*}
@@ -1348,7 +1351,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
            P = (X-\alpha)Q
          $$
          or $\deg  P \in \{2,3\}$ donc $Q\notin\K^{*}$ et $(X-\alpha) \notin \K^{*}$. Ainsi $P$ est réductible.
-  %
+     %
 %
 
 %eg
@@ -1513,4 +1516,202 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   $P \in \Z[X]$ est dir irréductible dans $\Z[X]$ si
   1. $P \notin \{1,-1\}$
   2. $\begin{cases}P = QR\\(Q,R) \in (\Z[X])^{2}\end{cases} \implies  (Q \in \{1,-1\} \text{ ou } R \in \{1,-1\}$
+%
+
+%offprog
+  %eg
+    1. Soit $p$ un nombre premier. $p \}otin \{0,1,-1\}$. Alors
+       $$
+         \begin{cases}p = QR\\(Q,R) \in \Z[X]\end{cases} \implies Q \in \{-1,1\} \text{ ou } R\in \{-1,1\}
+       $$
+       Donc $(+p)$ et $(-p)$ sont des polynômes irréductibles de $\Z[X]$.
+    2. $P = 2X+2 \in \Z[X]$. On a $P = \underbrace{2}_{\notin\{-1,1\}}\underbrace{(X+1)}_{\notin\{-1,1\}}$ donc $P$ est réductible de $\Z[X]$.
+    3. Si $P \in \Z[X]$ est irréductible avec $P = \sum_{i=1}^{n}a_{i}X_{i}$, alors
+       $$
+         \bigwedge_{i=0}^{n}a_{i} = 1
+       $$
+       On dit que $P$ est *primitif*.
+  %
+
+  %proposition
+    Soit $P \in \Z[X] \setminus \{0,-1,1\}$. Alors $P$ s’écrit de façon unique (à l’ordre près des facteurs) comme produit de polynômes irréductibles de $\Z[X]$ (déterminés à multiplication par 1 ou -1 près).
+  %
+%
+
+## Structure de $\K$-algèbre
+
+%def $\K$-algèbre
+  Soit $(\K,+, \times )$ un corps. On dit que $(A,+_{A}, \times_{A}, \cdot)$ est une $\K$-algèbre {commutative} unitaire si
+  1. $(A,+_{A}, \times_{A})$ est un anneau {commutatif} unitaire
+  2. $(A,+_{A}, \cdot)$ est un $\K$-espace vectoriel.
+  3. $\forall (\lambda, \mu) \in \K^{2}, \forall (a,b) \in A^{2}, (\lambda \cdot a) \times_{A} (\mu \cdot b) = (\lambda \times \mu) \cdot (a \times_{A} b) $
+
+  On dit que la $\K$-algèbre est de dimension finie $d \in \N$ si le $\K$-espace vectoriel $(A,+_{A}, \cdot )$ est de dimension finie $d$.
+%
+
+%eg
+  1. $(\K^{n}, +, \times , \cdot )$ est une $\K$-algèbre commutative de dimension $n$ avec
+     $$
+       \lambda \cdot (x_{1}, \ldots, x_{n}) = (\lambda x_{1}, \ldots, \lambda x_{n})
+     $$
+  2. Si $L$ est un sous-corps de $\K$, alors $\K$ est un $L$-espace vectoriel et $(\K, +, \times , \cdot )$ est une $L$-algèbre avec
+     $$
+       \cdot : \applic{L \times \K}{\K}{(\lambda, x)}{\lambda \times x}
+     $$
+     Par exemple, $(\R, +, \times , \cdot )$ est une $\Q$-algèbre.
+  3. $(\K^{\N}, +, \times , \cdot )$, $(\K[X], +, \times , \cdot )$ et $(\F(X,K), +, \times , \cdot )$ sont des $\K$-algèbres commutatives.
+  4. $(\K[X_{1}, \ldots, X_{n}], +, \times , \cdot )$ est une $\K$-algèbre commutative. Dans celle-ci,
+     $$
+       \deg (X_{1}^{i_{1}} \times \cdots \times X_{n}^{x_{n}}) \coloneqq i_{1} + \cdots + i_{n}
+     $$
+     et
+     $$
+       \deg  \left(\sum_{(i_{1}, \ldots, i_{n}) \in \Part_{f}(\N^{n})} = \max \{i_{1} + \ldots, i_{n} \mid a_{i_{1} \cdots i_{n}} \neq 0\} \right)
+     $$
+     si le maximum existe.
+
+     Pour $d \in \N$,
+     $$
+       H_{d} = \left\{\sum_{(i_{1}, \ldots, i_{n}) \in \N^{n}} a_{i_{1}\cdots i_{n}}X_{1}^{i_{1}} \cdots X_{n}^{i_{n}} \mid (i_{1} + \cdots + i_{n} \neq 0) \implies  a_{i_{1} \cdots i_{n}} = 0 \right\}
+     $$
+     est l’ensemble des polynômes homogènes de degré $d$. $H_{d}$ est un sous-espace vectoriel de $\K[X_{1}, \ldots, X_{n}]$ dont une base est
+     $$
+       (X_{1}^{i_{1} \times  \cdots \times  X_{n}^{i_{n}}})_{\substack{(i_{1}, \ldots, i_{n}) \in \N^{n} \\ i_{1} + \cdots + i_{n} = d}}
+     $$
+     On obtient avec la technique du ruban (choisir $n-1$ séparateurs parmis $d+n-1$ cases),
+     $$
+       \dim H_{d} = \binom{d+n-1}{n-1} = \binom{d+n-1}{d}
+     $$
+     d’où
+     $$
+       \dim \K_{d}[X_{1}, \ldots, X_{n}] = \dim \left(\bigoplus_{k = 0}^d H_{k}\right) = \sum_{k=0}^{d}\dim H_{k} = \sum_{k=0}^{d}\binom{k+n-1}{k}
+     $$
+     $$
+       (X_{1}^{i_{1}} \times  \cdots \times X_{n}^{i_{n}})_{i_{1} + \cdots + i_{n} \leq d}
+     $$
+     $$
+       i_{1} + \cdots + i_{n} \leq d \iff  \begin{cases}i_{1} + \cdots + i_{n+1} = d\\ i_{n+1} = d-(i_{1} + \cdots + i_{n})\end{cases}
+     $$
+     $$
+       \dim \K_{d}[X_{1}, \ldots, X_{n}] = \binom{d+n}{d}
+     $$
+     donc
+     $$
+       \sum_{k=0}^{d} \binom{k+n-1}{k} = \binom{d+n}{d}
+     $$
+%
+
+%def Morphisme d’algèbres
+  Une application $f: A \longrightarrow A'$ entre deux $\K$-algèbres unitaires $A$ et $A'$ est appelée morphisme de $\K$-algèbre si
+  1. $f$ est $\K$-linéaire  2. $f$ est un morphisme d’annaux unitaires
+  i.e.
+  - $\forall (\lambda, \mu) \in \K^{2}, \forall (u,v) \in A^{2}, f(\lambda \cdot_{A} +_{A} \mu \cdot_{A} v ) = \lambda \cdot_{A'} f(u) +_{A'} \mu \cdot_{A'}f(v)$
+  - $\forall (u,v) \in A^{2}, f(u \times_{A} v) = f(u) \times_{A'} f(v)$
+  - $f(1_{A}) = 1_{A'}$
+%
+
+%eg
+  $(\M_{n}(\K),+, \times , \cdot )$ est une $\K$-algèbre unitaire non commutative de dimension $n^{2}$. En effet, soit $P \in \GL_{n}(\K)$. L’application
+  $$
+    f: \applic{\M_{n}(\K)}{\M_{n}(\K)}{M}{PMP^{-1}}
+  $$
+  est un automorphisme de l’algèbre $\M_{n}(\K)$:
+  - $f(I_{n}) = P I_{n} P^{-1} = I_{n}$
+  - Soient $(\lambda, \mu) \in \K^{2}$. Soient $(M, N) \in (\M_{n}(\K))^{2}$.
+    $$
+      f(\lambda M + \mu N ) = P(\lambda M + \mu N)P^{-1} = \lambda PM P^{-1} + \mu P N P^{-1} = \lambda f(M) + \mu f(N)
+    $$
+    et
+    $$
+      f(MN) = PMNP^{-1} = (PMP^{-1})(PNP^{-1}) = f(M) f(N)
+    $$
+  L’application
+  $$
+    g: \applic{\M_{n}(\K)}{\M_{n}(\K)}{M}{P^{-1} MP}
+  $$
+  est aussi un morphsme d’algèbre et $g = f^{-1}$.
+%
+
+%def Sous-algèbre
+  Soit $(A,+, \times , \cdot )$ une $\K$-algèbre unitaire. Une partie $B$ de $A$ est appelée sous-$\K$-algèbre de $A$ si
+  1. $B$ est stable par $+$, $\times $ et $\cdot $
+  2. $B$ muni des lois induites $+$, $\times $ et $\cdot $ est une $\K$-algèbre unitaire d’élément unité (pour $x$) $1_{A}$
+  Ce qui revient à dire
+  1. $B$ est un sous-espace vectoriel de $(A,+, \cdot )$
+  2. $B$ est un sous-anneau de $(A,+, \times )$
+  ou encoore
+  1. $1_{A} \in B$
+  2. $\forall (\lambda, \mu) \in \K^{2}, \forall (b,b') \in B^{2}, \lambda \cdot  b + \mu \cdot  b' \in B$
+  3. $\forall (b,b') \in B^{2}, b \times b' \in B$
+%
+
+%eg
+  1. $\T_{n}^{+}$ est une sous-algèbre de $(\M_{n}(\K), +, \times, \cdot )$
+  2. $\K^{(\N)}$ est l’ensemble des suites nulles à parti d’un certain rang à valeur dans $\K$. C’est *presque* une sous-algèbre de $(\K^{\N}, +, \times, \cdot )$ (il manque la suite constante égale à 1).
+  3. $\K[X]$ est une sous-algèbre de $(\K[X], +, \times , \cdot)$, c’est aussi une sous-algèbre de $(\K[[X]], +, \star , \cdot )$((Algèbre des séries formelles. $\left( \sum_{n \in \N}a_{n} X_{n}\right)\star \left(\sum_{n \in \N}b_{n}X_{n}\right) = \sum_{n \in \N} \left(\sum_{k=0}^{n} a_{k} b_{n-k}\right)X^{n}$)).
+%
+
+%proposition
+  Soit $f: A \longrightarrow A'$ un morphisme de $\K$-algèbres unitaires.
+  1. L’image directe d’une sous-algèbre de $A$ est une sous-algèbre de $A'$
+  2. L’image réciproque d’une sous-algèbre de $A'$ est une sous-algèbre de $A$
+  3. $\img f = f(A)$ est une sous-algèbre de $A'$
+  4. $\ker f$ est un sous-espace vectoriel de $(A,+, \cdot )$. C’est aussi un idéal bilatère de l’anneau $(A,+, \times )$.
+%
+
+%eg
+  1. Soit l’application
+     $$
+       \gamma:\applic{\C}{\M_{2}(\R)}{z}{\mtx{\Re z & -\Im z\\ \Im z & \Re z} = \Re(z)I_{2} + \Im(z)J}
+     $$
+     avec $J = \mtx{0 & -1 \\ 1 & 0}$ telle que $J^{2} = -I_{2}$. Alors
+     - $\gamma(1) = I_{2}$
+     - Soient $(\lambda, \mu) \in \N$ et $(z, z') \in \C^{2}$.
+       $$
+         f(\lambda z + \mu z') = \Re(\lambda z + \mu z') I_{2} + \Im(\lambda z + \mu z')J = \cdots = \lambda f(z) + \mu f(z')
+       $$
+       et
+       $$
+         \begin{align*}
+            f(z) \times  f(z')  &= (\Re z I_{2} + \Im z J)(\Re z' I_{2} + \Im z' J)\\
+            &= (\Re z\Re z' - \Im z \Im z')I_{2} + (\Re z\Im z' + \Im z\Re z') \\
+            &= \Re(zz')I_{2} + \Im(zz')J = f(zz')J
+         \end{align*}
+       $$
+     Donc $\gamma$ est un morphisme de $\R$-algèbres unitaires. De plus,
+     $$
+       z \in \ker \gamma \iff  \begin{cases}\Re z &= 0 \\\Im z &= 0\end{cases} \iff z = 0
+     $$
+     donc $\gamma$ est injectif. Ainsi,
+     $$
+        \mathscr{C} = \left\{\mtx{a &-b\\b&a}\mid (a,b) \in \R^{2}\right\} = \gamma(\C)
+     $$
+     est une sos-algèbre de $\R_{2}(\R)$ isomorphe à $\C$.
+     $$
+       \C \underset{\R-\text{algèbre}}\simeq \left\{\mtx{a & -b\\b & a} = aI_{2} + bJ \mid (a,b) \in \R^{2}\right\}
+     $$
+  2. L’application
+     $$
+       f: \applic{(\Q[X], +, \times , \cdot )}{(\R, +, \times , \cdot )}{P}{\tilde{P}(\sqrt{2})}
+     $$
+     est un morphisme de $\Q$-algèbres.
+     $$
+       \ker  f = (X^{2}-2)\Q[X]
+     $$
+     et
+     $$
+       \img f = \{r + r' \sqrt{2} \mid (r, r') \in \Q^{2}\}
+     $$
+     Et mieux, $\img f$ est un sous-corps de $(\R, +, \times )$.
+     $$
+       \begin{cases}a+b \sqrt{2} = 0\\(a,b) \in \Q^{2}\end{cases} \overset\cdots\iff a = b = 0
+     $$
+     Soit $x \in \img f \setminus \{0\}$. Il existe $(a,b) \in \Q^{2} \setminus \{(0,0)\}$. $x = a+ b \sqrt{2}$ d’où
+     $$
+       \frac{1}{x} = \frac{1}{a+b \sqrt{2}} = \frac{a-b \sqrt{2}}{a^{2}-2b^{2}} = \frac{a}{a^{2} - 2b^{2}} - \frac{b}{a^{2} - 2b^{2}}\sqrt{2} - 1
+     $$
+     On note
+     $$
+       \grp{\{ \sqrt{2}\}}_{\text{corps}} = \img f = \Q(\sqrt{2})
+     $$
 %
