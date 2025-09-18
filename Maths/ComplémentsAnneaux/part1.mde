@@ -1190,18 +1190,18 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
     $$
       P_{1}\K[X] + \cdots + P_{n}\K[X] = D\K[X]
     $$
-    on pose $D = P_{1} \land \cdots land P_{n}$ et on a
+    on pose $D = P_{1} \land \cdots \land P_{n}$ et on a
     $$
       D = \gcd_{(\K[X]_{n},\mid)}(P_{1}, \ldots, P_{n})
     $$
 
   - Si $(P_{1}, \ldots, P_{n})=(0, \ldots, 0)$, alors
     $$
-      P_{1} \K[X] + \cdots P_{n}\K[X] = \{0\} = 0\K[X]
+      P_{1} \K[X] + \cdots + P_{n}\K[X] = \{0\} = 0\K[X]
     $$
-  - Si $P_{1} \times \cdots P_{n} \neq 0$, alors il existe un unique polynome **unitaire** $M \in \K[X]$ tel que
+  - Si $P_{1} \times \cdots \times  P_{n} \neq 0$, alors il existe un unique polynome **unitaire** $M \in \K[X]$ tel que
     $$
-      \bigcap_{i \in \icc{1 n}}P_{i}\K[X] = M\K[X]
+      \bigcap_{i \in \icc{1,n}}P_{i}\K[X] = M\K[X]
     $$
     et on pose
     $$
@@ -1264,7 +1264,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
   Par contre, si $P_{i} \land  P_{j} = 1$ avec $1 \leq i \leq  j \leq  n$, alors
   $$
-  P_{1} \land  \cdots \land  P_{n} = (P_{i} \land  P_{j}) \land  \underbrace{\left(\bigwedge_{i \in \icc{1,n} \setminus \{i,j\}}P_{k}\right)}_{\coloneqq Q} = 1 land Q = 1
+  P_{1} \land  \cdots \land  P_{n} = (P_{i} \land  P_{j}) \land  \underbrace{\left(\bigwedge_{i \in \icc{1,n} \setminus \{i,j\}}P_{k}\right)}_{\coloneqq Q} = 1 \land Q = 1
   $$
 %
 
@@ -1513,7 +1513,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 %
 
 %def Culture
-  $P \in \Z[X]$ est dir irréductible dans $\Z[X]$ si
+  $P \in \Z[X]$ est irréductible dans $\Z[X]$ si
   1. $P \notin \{1,-1\}$
   2. $\begin{cases}P = QR\\(Q,R) \in (\Z[X])^{2}\end{cases} \implies  (Q \in \{1,-1\} \text{ ou } R \in \{1,-1\}$
 %
@@ -1566,17 +1566,17 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
      $$
      et
      $$
-       \deg  \left(\sum_{(i_{1}, \ldots, i_{n}) \in \Part_{f}(\N^{n})} = \max \{i_{1} + \ldots, i_{n} \mid a_{i_{1} \cdots i_{n}} \neq 0\} \right)
+       \deg  \left(\sum_{(i_{1}, \ldots, i_{n}) \in \Part_{f}(\N^{n})}a_{i_{1}, \ldots, i_{n}}X_{1}^{i_{1}} \cdots X_{n}^{i_{n}}\right) = \max \{i_{1} + \ldots+ i_{n} \mid a_{i_{1}, \ldots ,i_{n}} \neq 0\}
      $$
      si le maximum existe.
 
      Pour $d \in \N$,
      $$
-       H_{d} = \left\{\sum_{(i_{1}, \ldots, i_{n}) \in \N^{n}} a_{i_{1}\cdots i_{n}}X_{1}^{i_{1}} \cdots X_{n}^{i_{n}} \mid (i_{1} + \cdots + i_{n} \neq 0) \implies  a_{i_{1} \cdots i_{n}} = 0 \right\}
+       H_{d} = \left\{\sum_{(i_{1}, \ldots, i_{n}) \in \N^{n}} a_{i_{1},\ldots, i_{n}}X_{1}^{i_{1}} \cdots X_{n}^{i_{n}} \mid (i_{1} + \cdots + i_{n} \neq 0) \implies  a_{i_{1}, \ldots, i_{n}} = 0 \right\}
      $$
      est l’ensemble des polynômes homogènes de degré $d$. $H_{d}$ est un sous-espace vectoriel de $\K[X_{1}, \ldots, X_{n}]$ dont une base est
      $$
-       (X_{1}^{i_{1} \times  \cdots \times  X_{n}^{i_{n}}})_{\substack{(i_{1}, \ldots, i_{n}) \in \N^{n} \\ i_{1} + \cdots + i_{n} = d}}
+       \left(X_{1}^{i_{1} \times  \cdots \times  i_{n}}\right)_{\substack{(i_{1}, \ldots, i_{n}) \in \N^{n} \\ i_{1} + \cdots + i_{n} = d}}
      $$
      On obtient avec la technique du ruban (choisir $n-1$ séparateurs parmis $d+n-1$ cases),
      $$

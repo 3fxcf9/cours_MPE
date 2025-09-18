@@ -223,3 +223,241 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 %cor Autre caractérisation de $\pi_f$
   $\pi_{f} \in \K[X]$ est le polynôme unitaire de plus bas degré annulateur de $f$.
 %
+
+%eg Exemples fondamentaux
+  Soit $f \in \L(E)$ où $E \ne \{0_{E}\}$.
+  1. $\pi_{f} = X \iff  f = 0_{\L(E)}$
+  2. $\pi_{f} = X-\lambda \iff f = \lambda \id_{E}$ pour $\lambda \in \K$
+  3. $\pi_{f} = X^{2} - X \iff  f \text{ projecteur non trivial}$
+  4. $\pi_{f} = X^{2} - 1 \iff f \text{ symétrie non triviale}$
+  5. $\exists k \in \N^{*}: \pi_{f} = X^{k} \iff  f \text{ nilpotent}$
+%
+
+%proof
+  2. $\pi_{f} = X-\lambda \implies  \pi_{f}(f) = f-\lambda \id _{E} = 0_{\L(E)}$, i.e. $f = \lambda \id_{E}$. Si $f = \lambda \id_{E}$, alors $X-\lambda$ est un polynôme annulateur de $f$ unitaire de degré 1, donc $\pi_{f} = X-\lambda$.
+  3. - $\pi_{f} = X^{2}-X \implies \pi_{f}(f) = f^{2} - f = 0_{\L(E)}$ , i.e. $f^{2} = f$. De plus, $\pi_{f} \neq X$ donc $f\neq 0_{\L(E)}$ et $\pi_{f} \neq X-1$ donc $f\neq \id_{E}$.
+     - si $f^{2} = f$ avec $f\notin \{0_{L(E)}, \id_{\L(E)}\}$, alors $X^{2} - X = X(X-1)$ est annulateur de $f$ mais $X$ et $X-1$ ne sont pas annulateurs de $f$ donc $\pi_{f} \in \{X, X-1, X^{2}-X\} \setminus \{X, X-1\}$ soit $\pi_{f} = X^{2}-X$.
+  4. - $\pi_{f} = X^{2} - 1 \implies \begin{cases}\pi_{f}(f) = f^{2} - \id_{E} = 0_{\L(E)}\\ \pi_{f}\neq X-1 \text{ et } \pi_{f} \ne X+1\end{cases}$ donc $f$ est une symétrie vectorielle différente de $\pm\id_{E}$.
+     - Si $f^{2} = \id_{E}$ avec $f\notin \{\id_{E}, -\id_{E}\}$, alors $\pi_{f} \in \{(X-1), (X+1), (X^{2} - 1)\} \setminus \{X-1, X+1\}$ soit $\pi_{f} = X^{2}-1$.
+  5. $\exists k \in \N^{*}: \pi_{f} = X^{k} \implies  f^{k} = 0_{\L(E)}$ donc $f$ est nilpotent. Il existe donc $l \in \N^{*}$ tel que $f^{l} = 0_{\L(E)}$, d’où $X^{l}$ est annulateur de $f$. Ainsi $\exists l \in \N^{*}: \pi_{f} \mid X^{l}$ donc $\exists k \in \N^{*}: \pi_{f} = X^{k}$.
+%
+
+## Sous-espaces stables par $f\in\L(E)$
+
+%def Sous-espace vectoriel stable
+  Soit $f \in \L(E)$. Un sous-espace vectoriel $F$ de $E$ est stable par $f$ (ou $f$-stable) si $f(F) \subset F$.
+
+  On peut alors définir l’endomorphisme induit~:
+  $$
+    f_{|F}^{|F} = « f_{|F} »: \applic{F}{F}{x}{f(x)} \in \L(F)
+  $$
+%
+
+%eg
+  1. $\{0_{E}\}$ et $E$ sont $f$-stables.
+  2. Si $(F_{i})_{i \in I}$ est une famille de sous-espaces vectoriels de $E$ stable par $f \in \L(E)$, alors $\bigcap_{i \in I}F_{i}$ est un sous-espace vectoriel de $E$ stable par $f$.
+  3. Si $F$ est un sous-espace vectoriel de $E$ stable par $f \in \L(E)$, et par $g \in \L(G)$, alors $F$ est stable par $f\circ g$, par $g\circ f$ et par toute combinaison linéaire $\lambda f + \mu g$ ($(\lambda, \mu) \in \K^{2}$). De plus, $(f\circ g)_{|F} = f_{|F}\circ g_{|F}$ et $(\lambda f + \mu g)_{|F} = \lambda f_{|F} + \mu g_{|F}$
+  4. Si $F$ est un sous-espace vectoriel de $E$ stable par $f \in \L(E)$, alors $F$ est stable par $P(f)$ pour tout $P \in \K[X]$.
+  5. Si $f = \lambda \id_{E}$ ($k \in \N^{*}$), alors pour tout $F$ sous-espace vectoriel de $E$, on a
+     $$
+       f(F) = \lambda F = \begin{cases}F &\text{si } \lambda\ne 0\\\{0_{E}\} & \text{sinon}\end{cases}
+     $$
+     donc $f(F) \subset F$.
+
+     Soit $f \in \L(E)$ tel que $\forall x \in  E \setminus \{0\}, f(Kx) \subset K x$.
+
+     Soit $u, v \in E \setminus \{0\}$. On a $f(u) = \lambda u$ pour un scalaire $\lambda \in \K$.
+     - si $(u,v)$ est libre, il existe $(\mu, \nu) \in \K^{2}$ tels que $f(v) = \mu v$. $f(\underbrace{u+v}_{\ne 0}) = \nu(u+v)$. Donc $f(u) + f(v) = \nu(u+v)$, i.e. $\lambda u + \mu v = \nu(u+v)$. Par liberté de $(u,v)$, on a $\lambda = \mu = \nu$.
+     - sinon, $(u,v)$ est liée, donc $\exists k \in \K^{*}: v = ku$ donc $\exists \mu \in \K: f(v) = \mu v$. Or $f(v) = f(ku) = k f(u) = k \lambda u = \lambda v$ d’où $\lambda = \mu$ (car $v\ne 0$). Donc $\exists  \lambda \in \K: \forall x \in  E \setminus \{0\}, f(x) = \lambda x$, d’où $\exists \lambda \in \K: f = \lambda \id_{E}$.
+     ==REFORMULER==
+%
+
+%proof
+  2. $\forall j \in I, \bigcap_{i \in I}F_{i} \subset F_{j}$ d’où $\forall j \in I, f \left(\bigcap_{i \in I}F_{i}\right) \subset f(F_{j}) \subset F_{j}$. Ainsi $f \left(\bigcap_{i \in I}F_{i}\right) \subset \bigcap_{j \in J}F_{j}$ et $\bigcap_{i \in I}F_{i}$ est un sous-espace vectoriel de $E$.
+  3. $(f\circ g)(F) = f(g(F)) \subset f(F) \subset F$ et $(\lambda f + \mu g)(F) \subset \lambda f(F) + \mu g(F) \subset \lambda F + \mu F \subset F$ car $F$ est stable par combinaison linéaire.
+     $$
+       \begin{align*}
+         \forall x \in F, (f\circ g)_|F(x) &= (f\circ g)(x)\\
+          &= f(g_{|F}(x)) \quad\text{car } x \in F\\
+          &= f_{|F}(g_{|F}(x)) \quad\text{car } g_{|F}(x) \in F\\
+          &= (f_{|F}\circ g_{|F})(x)
+       \end{align*}
+     $$
+     et
+     $$
+       \begin{align*}
+         (\lambda f + \mu g)_{F} (x) &= (\lambda f + \mu g)(x)\\
+          &= \lambda f(x) + \mu g(x) \\
+          &= \lambda f_{|F} + \mu g(x)\\
+          &= \lambda f_{|F}(x) + \mu g_{|F}(x) \quad\text{car } x \in F\\
+          &= (\lambda f_{|F} + \mu g_{|F})(x)
+       \end{align*}
+     $$
+  4. Si $P = \sum_{k=0}^{d}a_{k}X^{k}$, alors $P(f) = \sum_{k=0}^{d}=\sum_{k = 0}^{d}a_{k} f^{k}$ or $F$ est stable par $f^{k}$ (pour $k \in \N^{*}$ et même $k=0$), donc par combinaison linéaire, $F$ est stable par $P(f)$ et
+    $$
+      P(f)_{|F} = \sum_{k=0}^{d}a_{k}(f^{k})_{|F} = \sum_{k=0}^{d}a_{k}(f_{|F})^{k}
+    $$
+    donc $P(f)_{|F} = P(f_{|F}) \in \L(F)$.
+%
+
+%proposition
+  Soit $(f,g) \in \L(E)^{2}$ tels que $f\circ g = g \circ f$, i.e. $f\circ g - g\circ f = [f,g] = 0_{\L(E)}$. Alors $\ker g$ et $\img g$ sont stables par $f$.
+%
+
+%proof
+  Supposons $f\circ g = g\circ f$.
+  - Soit $x \in \ker g$.
+    $$
+      g(f(x)) = (g\circ f)(x) = (f\circ g)(x) = f(g(x)) = f(0_{E}) = 0_{E}
+    $$
+    donc $f(x) \in \ker g$.
+  - Soit $y \in \img g$. Il existe donc $x \in E$ tel que $y = g(x)$.
+    $$
+      f(y) = f(g(x)) = g(f(x)) \in \img g
+    $$
+%
+
+%eg
+  $f \in \L(E)$ nilpotent d’indice maximal $n = \dim E$. $\forall k \in \N, [f^{k}, f] = 0_{\L(E)}$ donc pour tout $k \in \N$, $\ker  f^{k}$ est stable par $f$. On a alors
+  $$
+    \forall k \in \icc{0,n}, \dim (\ker  f^{k}) = k
+  $$
+  - Soit $k \in \icc{0,n}$. Soit $F_{k}$ un sous-espace vectoriel de $E$ stable par $f$ (nilpotent d’indice $n$) de dimension $k$. On a $f_{|F_{k}} \in \L(F_{k})$ donc
+    $$
+      (f_{|F_{k}})^{n} = f^{n}_{|F_{k}} = {(0_{\L(E)})}_{|F_{k}} = 0_{\L(E)}
+    $$
+    donc $f_{|F_{k}}$ est nilpotent dans $\L(F_{k})$ et son indice de nilpotence $p$ vérifie récursivement $p \leq \dim F_{k} = k$ donc $(f_{|F_{k}})^{k} = 0_{\L(E)}$, i.e. $f^{k}_{|F_{k}} = 0_{\L(F_{k})}$, et ainsi $F_{k} \subset \ker f^{k}$. On a alors, par égalité des dimension,
+    $$
+      F_{k} = \ker f^{k}
+    $$
+%
+
+%prop
+  Soit $F$ un sous-espace vectoriel stable par $f \in \L(E)$ avec $F\ne\{0\}$. Si $f$ possède un polynôme minimal $\pi_{f}$ alors $f_{|F}$ possède aussi un polynôme minimal et $\pi_{f_{|F}}$ divise $\pi_{f}$.
+%
+
+%proof
+  On a ${\pi_{f}(f)}_{|F} = \pi_{f}(f_{|F})$ car $F$ est stable par $f$, donc $(0_{\L(F)})_{|F} = \pi_{f}(f_{|F})$, i.e. $0_{\L(F)} = \pi_{f}(f_{|F})$. Ainsi, $\pi_{f}$ est un polynôme annulateur non nul de $f_{\F}$, donc $f_{|F}$ admet un polynôme minimal et $\pi_{(f_{|F})} \mid \pi_{f}$
+%
+
+%eg
+  Soit $f \in \L(E)$ possédant un polynôme minimal $\pi_{f}$. Supposons $E = \bigoplus_{i=1}^{n} E_{i}$ avec pour tout $i \in \icc{1,r}$, $E_{i}\ne\{0\}$ et $E_{i}$ stable par $f$. Alors
+  $$
+    \pi_{f} = \lcm(\pi_{f_{|E_{1}}}, \ldots, \pi_{f_{|E_{n}}})
+  $$
+  On a alors $\forall i \in \icc{1,n}, \pi_{f_{|E_{i}}} \mid \pi_{f}$, donc
+  $$
+    \lcm(\pi_{f_{|E_{1}}}, \ldots, \pi_{f_{|E_{1}}}) \mid \pi_{f}
+  $$
+  Soit $i \in \icc{1,n}$. Il existe $Q_{i} \in \K[X]$ tel que $M = Q_{i} \times \pi_{f_{|F_{i}}}$ donc
+  $$
+    M(f_{|E_{i}}) = Q_{i}(f_{|E_{i}})\circ \pi_{f_{|F_{i}}}(f_{|E_{i}}) = Q_{i}(f_{|E_{i}})\circ 0_{\L(E_{i})} = 0_{\L(E_{i})}
+  $$
+  donc $M(f)_{|E_{i}} = 0_{\L(E_{i})}$ soit
+  $$
+    M(f) \in \L(E) \quad\text{et}\quad E = \bigoplus_{i=1}^{n} E_{i}
+  $$
+  Ainsi, $M(f) = 0_{\L(E)}$, d’où $\pi_{f} \mid M$.
+%
+
+## Lemme de décomposition des noyaux
+
+%prop
+  Soit $n \in \N$ avc $n \geq 2$. Soient $P_{1}, \ldots, P_{n}$ des éléments de $\K[X]$ **premiers entre deux à deux**. Posons $P = P_{1} \times \cdots \times P_{n}$. Si $f \in \L(E)$, alors
+  $$
+    P(f) = \bigoplus_{i=1}^{n} \ker (P_{i}(f))
+  $$
+  %callout Attention
+    $\ker P$ ou $\ker P_{i}$ n’ont aucun sens !
+  %
+%
+
+%proof
+  Posons $\forall j \in \icc{1,n}, R_{j} = \prod_{\substack{i=1\\i\ne j}}^{n}P_{i}$.
+
+  $R_{1} = P_{2} \cdots P_{n}$; $R_{2} = P_{1}P_{3} \cdots P_{n}$; $R_{3} = P_{1}P_{2}P_{4} \cdots P_{n}$.
+
+  $R_{1} \land  R_{2} = \hat{P_{3} \cdots P_{n}} (P_{2} \land  P_{1}) = \hat{P_{3} \cdots P_{n}}$ donc $R_{1} \land  R_{2} \land  R_{3} = (P_{3} \cdots P_{n}) \land  (P_{1} P_{2} P_{4} \cdots P_{n}) = \hat{P_{4} \cdots P_{n}}\underbrace{(P_{3} \land  (P_{1}P_{2}))}_{=1}$, d’où $R_{1} \land  \cdots \land R_{n} = \hat 1 = 1$. Ainsi, il existe $(U_{1}, \ldots, U_{n}) \in (\K[X])^{n}$ tels que
+  $$
+    U_{1} R_{1} + \cdots + U_{n}R_{n} = 1
+  $$
+  d’où
+  $$
+    U_{1}(f) \circ R_{1}(f) + \cdots + U_{n}(f) \circ R_{n}(f) = \id_{E}
+  $$
+  donc
+  $$
+    \forall x \in E, x = \sum_{i=1}^{n}\underbrace{U_{n}(k)(R_{i}(f)(x))}_{=(U_{1}(f) \circ R_{i}(f))\mdot x = x_{i}}
+  $$
+  Soit $x \in \ker P(f)$. On a $x = \sum_{i=1}^{n}x_{i}$, et
+  $$
+    \begin{align*}
+      P_{i}(f) \mdot x_{i} &= P_{i}(f) \mdot (U_{i}(f)\mdot (R_{i}(f) \mdot x))\\
+          &= (P_{i} \times U_{i} \times R_{i})(f) \mdot x\\
+          &= (U_{i} \times P)(f)\mdot x\\
+          &= U_{i}(f) \mdot (P(f)\mdot x) = U_{i}(f) \mdot 0_{E} = 0_{E}
+    \end{align*}
+  $$
+  donc
+  $$
+    \ker (P(f)) \subset \sum_{i=1}^{n}\ker (P_{i}(f))
+  $$
+
+  Réciproquement, soit $x \in \ker (P_{i}(f))$. Comme $P(f) = R_{i}(f) \circ P_{i}(f)$, on a $x \in \underbrace{\ker P(f)}_{=x_{v}}$, donc
+  $$
+    \sum_{i=1}^{n}\ker (P_{i}(f)) \subset \ker (P(f))
+  $$
+  On a alors
+  $$
+    \ker P(f) = \sum_{i=1}^{n}\ker (P_{i}(f))
+  $$
+
+  Montrons que la somme est directe: posons $0 = \sum_{i=1}^{n}y_{i}$ avec $y_{i} \in \ker (P_{i}(f))$
+  ==FIN PREUVE en exo==
+%
+
+%callout Rappels – somme directe
+  $$
+    \begin{align*}
+      E = \bigoplus_{i=1}^{n}E_{i} &\iff E_{1} \times \cdots \times E_{n} \overset{\simeq}{\longrightarrow} E: (x_{1}, \ldots, x_{n}) \longmapsto \sum_{i=1}^{n}x_{i} \\
+      &\iff \begin{cases}E = \sum_{i=1}^{n}E_{i}\\ \forall i \in \icc{1,n}, E_{i} \cap \sum_{\substack{j=1\\j\ne i}}^{n}E_{j} = \{0\}\end{cases}\\
+      \scriptsize{\text{(en dim. finie)}}&\iff \begin{cases}E = \sum_{i=1}^{n}E_{i}\\ \dim E = \dim (E_{1} \times  \cdots \times E_{n}) = \sum_{i=1}^{n}\dim  E_{i}\end{cases}
+    \end{align*}
+  $$
+%
+
+%eg
+  1. $f \in \L(E)$ avec $f^{k} = \id_{E}$, pour $k \in \N^{*}$. On a $f^{k} = \id_{E} = 0_{\L(E)}$.
+     $$
+       X^{k} - 1 = (X-1)(X^{k-1} + \cdots + X + 1)
+     $$
+     or $(X-1) \land  (X^{k-1} + \cdots + X+1) = 1$ donc
+     $$
+       \ker (f^{k} - \id_{E}) = \ker (f-\id_{E}) \oplus \ker (f^{k-1} + \cdots + f + \id _{E})
+     $$
+  2. Avec $T: \applic{\C^{\N}}{\C^{\N} \in \L(\C^{\N})}{u}{(u_{n+1})_{n \in \N}}$, on a
+     $$
+       \begin{align*}
+         \begin{cases}(u_{n})_{n \in \N} \in \C^{\N}\\ \forall n \in \N, u_{n+3} = u_{n+2} + u_{n+1} + 2u_{n}\end{cases} &\iff  \begin{cases}u \in \C^{\N}\\ T^{3}(u) = T^{2}(u) + T(u) + 2u\end{cases}\\
+         &\iff \begin{cases}u \in \C^{\N}\\(T^{3} - T^{2} - T - 2 \id)\mdot u = 0\end{cases}
+       \end{align*}
+     $$
+     Donc $\mathscr S = \ker (T^{3} - T^{2} - T - 2 \id_{\C^{\N}})$. De plus,((Utiliser l’[algorithme de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner)))
+     $$
+       X^{3} - X^{2} - X - 2 = (X-2)(X^{2} + X + 1) = (X-2)(X-j)(X-j^{2})
+     $$
+     donc
+     $$
+       (X-2) \land  (X-j) = (X-2) \land  (X-j^{2}) = (X-j) \land  (X-j^{2}) = 1
+     $$
+     donc
+     $$
+       \mathscr S = \ker (T- 2 \id) \oplus \ker (T - j \id ) \oplus \ker (T - j^{2} \id ) = \Vect\left\{((2^{n})_{n \in \N})\right\} \oplus \Vect\left\{(j^{n})_{n \in \N}\right\} \oplus \Vect\left\{(j^{2n})_{n \in \N}\right\}
+     $$
+     soit
+     $$
+       \mathscr S = \{(\alpha 2^{n} + \beta j^{n} + \gamma j^{2n}) \mid (\alpha , \beta, \gamma) \in \C^{3}\}
+     $$
+%
+
+algo de horner
