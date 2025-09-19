@@ -767,7 +767,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
 
 
 %thm Théorème des restes chinois
-  Soit $r \in \N$ avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$ avec $n_{i} \land  n_{j} = 1$ pour tout $(i,j)\in \icc{1,n}^{2}$ et $i\neq j$. Soient $(a_{1}, \ldots, a_{n}) \in \Z^{r}$. Il existe un unique entier $x \in \icc{0,(n_{1}, \cdots, n_{r})-1}$ tel que
+  Soit $r \in \N$ avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$ avec $n_{i} \land  n_{j} = 1$ pour tout $(i,j)\in \icc{1,n}^{2}$ et $i\neq j$. Soient $(a_{1}, \ldots, a_{n}) \in \Z^{r}$. Il existe un unique entier $x \in \icc{0,(n_{1} \cdots n_{r})-1}$ tel que
   $$
     \begin{cases}x\cgm{a_{1}}{n_{1}}\\ \vdots \\ x\cgm{a_{r}}{n_{r}}\end{cases} \quad (\star)
   $$
@@ -787,19 +787,19 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   $$
 %
 
-++Comment trouver $x$ ?++:
+++Comment trouver $x$ ?++: posons pour tout $i \in \icc{1,r}$
 $$
-  \nu_{i} = \frac{n_{1} \cdots n_{r}}{n_{i}} \quad\text{et}\quad \nu_{i} \land n_{i} = 1
+  v_{}{i} = \frac{n_{1} \cdots n_{r}}{n_{i}}
 $$
-donc
+on a alors $v_{i} \land n_{i} = 1$ donc
 $$
-  \nu_{i}^{\varphi(n_{i})} \cgm 1{n_{i}}
+  v_{i}^{\varphi(n_{i})} \cgm 1{n_{i}}
 $$
 Posons
 $$
-  x = \sum_{i=1}^{r}a_{i}\nu_{i}^{\varphi(n_{i})} \in \Z
+  x = \sum_{i=1}^{r}a_{i}v_{i}^{\varphi(n_{i})} \in \Z
 $$
-On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ dans $\Z$.
+Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ dans $\Z$.
 
 %eg
   Résoudre dans $\Z$ le système
@@ -814,7 +814,6 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   $$
     \mathscr S = \{207+210k \mid k \in \Z\}
   $$
-  $\varphi(6) = \varphi(2) \varphi(3) = 2$
 %
 
 %eg
@@ -838,7 +837,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %def
   Soit $(A,+, \times )$ un anneau commutatif unitaire. Une partie $I$ de $A$ est appelée *idéal* de $A$ si
-  1. $(I,+) < (A,+)$  2. $\forall a \in A, \forall x \in I, a \times x (= x \times  a) \in I$((propriété d’absorption))
+  1. $(I,+) < (A,+)$  2. $\forall a \in A, \forall x \in I, a \times x \;(= x \times  a) \in I$((propriété d’absorption))
 %
 
 %prop
@@ -952,8 +951,11 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
        P\K[X] = \{PQ \mid Q \in \K[X]\}
      $$
      avec $P \in \K[X]$.
-  %offprog
-    3. Un anneau commutatif unitaire intègre ayant pour seuls idéaux les idéaux principaux est appelé *anneau principal*.
+%
+
+%offprog
+  %def
+    Un anneau commutatif unitaire intègre ayant pour seuls idéaux les idéaux principaux est appelé *anneau principal*.
   %
 %
 
@@ -1008,12 +1010,12 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   %offprog
     1. Soit $n \in \N^{*}$. Soient $I_{1}, \ldots, I_{n}$ des idéaux de $A$. Alors
        $$
-         I_{1} + \cdots + I_{n} := \{x_{1} + cd + a_{n} \mid x_{1} \in I_{1}, \ldots, x_{n} \in I_{n}\}
+         I_{1} + \cdots + I_{n} := \{x_{1} + \cdots + x_{n} \mid x_{1} \in I_{1}, \ldots, x_{n} \in I_{n}\}
        $$
        est un idéal de $A$.
     2. Soit $(I_{e})_{e \in E}$ une famille d’idéaux de $A$. Alors $\bigcap_{e \in E}I_{e}$ est un idéal de $A$ et pour une partie $X$ de $A$,
        $$
-         \text{id}(X) = \grp X = \bigcap_{\substack{I \text{ idéal de }A\\X \subset I}}
+         \text{id}(X) = \grp X = \bigcap_{\substack{I \text{ idéal de }A\\X \subset I}}I
        $$
        est le plus petit idéal contenant $X$.
   %
@@ -1025,7 +1027,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
      $$
        a_{1}\Z + \cdots + a_{n}\Z = d\Z
      $$
-     avec $d = a_{1} \land  \cdots \land  a_{n}$.
+     et $d = a_{1} \land  \cdots \land  a_{n}$.
 %
 
 %proof
@@ -1246,7 +1248,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
   $$
     P_{1} \land  \cdots \land  P_{n} = 1 \iff  \exists (Q_{1}, \ldots, Q_{n}) \in (\K[X])^{2}: Q_{1}P_{1} + \cdots + Q_{n}P_{n} = 1
   $$
-  Premier terme: « premiers entre eux dans leur ensemble ».
+  Des polynômes vérifiant cette relation sont dits *premiers dans leur ensemble*.
 %
 
 %proof
@@ -1407,7 +1409,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 %prop
   Soit $P \in \K[X] \setminus \{0\}$. Soit $R$ un polynôme irréductible. Alors il existe un unique couple $(k,S) \in \N \times \K[X]$ tel que
   $$
-    P = R^{k}S \quad\text{avec } R \land  S = 1
+    P = R^{k}S \quad\text{avec}\quad  R \land  S = 1
   $$
   On pose $k = \nu_{R}(P)$.
 %
@@ -1603,7 +1605,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 
 %def Morphisme d’algèbres
   Une application $f: A \longrightarrow A'$ entre deux $\K$-algèbres unitaires $A$ et $A'$ est appelée morphisme de $\K$-algèbre si
-  1. $f$ est $\K$-linéaire  2. $f$ est un morphisme d’annaux unitaires
+  1. $f$ est $\K$-linéaire  2. $f$ est un morphisme d’anneaux unitaires
   i.e.
   - $\forall (\lambda, \mu) \in \K^{2}, \forall (u,v) \in A^{2}, f(\lambda \cdot_{A} +_{A} \mu \cdot_{A} v ) = \lambda \cdot_{A'} f(u) +_{A'} \mu \cdot_{A'}f(v)$
   - $\forall (u,v) \in A^{2}, f(u \times_{A} v) = f(u) \times_{A'} f(v)$
@@ -1635,7 +1637,7 @@ On a alors $x\cgm{a_{i} \lor 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)$ d
 %def Sous-algèbre
   Soit $(A,+, \times , \cdot )$ une $\K$-algèbre unitaire. Une partie $B$ de $A$ est appelée sous-$\K$-algèbre de $A$ si
   1. $B$ est stable par $+$, $\times $ et $\cdot $
-  2. $B$ muni des lois induites $+$, $\times $ et $\cdot $ est une $\K$-algèbre unitaire d’élément unité (pour $x$) $1_{A}$
+  2. $B$ muni des lois induites $+$, $\times $ et $\cdot $ est une $\K$-algèbre unitaire d’élément unité (pour $\times$) $1_{A}$
   Ce qui revient à dire
   1. $B$ est un sous-espace vectoriel de $(A,+, \cdot )$
   2. $B$ est un sous-anneau de $(A,+, \times )$

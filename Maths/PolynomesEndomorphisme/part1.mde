@@ -87,7 +87,7 @@ $$
   3. $f^{p} = 0_{\L(E)}$.
      et
      $$
-       \{0\} = \ker f_{0} \subset \ker f \subset \ker f^{2} \subset \cdots \subset \ker  f^{p} = E
+       \{0\} = \ker f_{0} \subset \ker f \subset \ker f^{i} \subset \cdots \subset \ker  f^{p} = E
      $$
      donc $(\dim (\ker f^{2}))_{i \in \icc{0,p}}$ est une suite d’entiers naturels croissante. Elle est même strictement croissante. En effet, si $i \in \icc{0,p-1}$ et $\dim (\ker f^{2}) = \dim(\ker f^{i+1})$, alors $\ker  f^{i} = \ker  f^{i+1}$ d’où
      $$
@@ -110,7 +110,7 @@ Soit $f \in \L(E)$ et
 $$
  \theta_{f}: \applic{\K[X]}{\L(E)}{P}{P(f)}
 $$
-Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[f] = \{P(f) \ mid P \in \K[X]\}$ et $\ker \theta_{f} = \{P \in \K[X] \mid P(f) = 0_{\L(E)}\}$ est l’idéal des polynômes annulateurs de $f$.
+Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[f] = \{P(f) \mid P \in \K[X]\}$ et $\ker \theta_{f} = \{P \in \K[X] \mid P(f) = 0_{\L(E)}\}$ est l’idéal des polynômes annulateurs de $f$.
 
 %proof
   Soit $(P,Q) \in (\K[X])^{2}$.
@@ -347,7 +347,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
   $$
   On a alors $\forall i \in \icc{1,n}, \pi_{f_{|E_{i}}} \mid \pi_{f}$, donc
   $$
-    \lcm(\pi_{f_{|E_{1}}}, \ldots, \pi_{f_{|E_{1}}}) \mid \pi_{f}
+    \underbrace{\lcm(\pi_{f_{|E_{1}}}, \ldots, \pi_{f_{|E_{1}}})}_{=M} \mid \pi_{f}
   $$
   Soit $i \in \icc{1,n}$. Il existe $Q_{i} \in \K[X]$ tel que $M = Q_{i} \times \pi_{f_{|F_{i}}}$ donc
   $$
@@ -412,8 +412,16 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
     \ker P(f) = \sum_{i=1}^{n}\ker (P_{i}(f))
   $$
 
-  Montrons que la somme est directe: posons $0 = \sum_{i=1}^{n}y_{i}$ avec $y_{i} \in \ker (P_{i}(f))$
-  ==FIN PREUVE en exo==
+  Montrons que la somme est directe: soit $(y_{1}, \ldots, y_{r}) \in \ker P_{1}(f) \times \cdots \times  \ker P_{r}(f)$ tels que $y_{1} + \cdots + y_{r} = 0$. On a
+  $$
+    \begin{align*}
+      y_{i} &= \sum_{j=1}^{r}(U_{j}(f) \circ R_{j}(f))(y_{i})\\
+      &= (U_{i}(f) \circ R_{i}(f))(y_{i})\\
+      &= (U_{i}(f) \circ R_{i}(f))(y_{1} + \cdots + y_{r})\\
+      &=0
+    \end{align*}
+  $$
+  (dans la dernière égalité, on a remplacé $y_{i}$ par $y_{1} + \cdots + y_{r}$ car les autres $y_{j}$ sont dans $\ker R_{i}(f)$).
 %
 
 %callout Rappels – somme directe
@@ -442,7 +450,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
          &\iff \begin{cases}u \in \C^{\N}\\(T^{3} - T^{2} - T - 2 \id)\mdot u = 0\end{cases}
        \end{align*}
      $$
-     Donc $\mathscr S = \ker (T^{3} - T^{2} - T - 2 \id_{\C^{\N}})$. De plus,((Utiliser l’[algorithme de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner)))
+     Donc $\mathscr S = \ker (T^{3} - T^{2} - T - 2 \id_{\C^{\N}})$. De plus,((Utiliser l’[algorithme de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner) ))
      $$
        X^{3} - X^{2} - X - 2 = (X-2)(X^{2} + X + 1) = (X-2)(X-j)(X-j^{2})
      $$
@@ -459,5 +467,3 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
        \mathscr S = \{(\alpha 2^{n} + \beta j^{n} + \gamma j^{2n}) \mid (\alpha , \beta, \gamma) \in \C^{3}\}
      $$
 %
-
-algo de horner
