@@ -1,0 +1,216 @@
+# Semaine 2
+
+## Théorème chinois
+
+%thm Théorème chinois
+  Soit $r$ un entier avec $r \geq 2$. Soit $(n_{1}, \ldots, n_{r}) \in (\N^{*})^{r}$. On a
+  $$
+    (\Z/n_{1}\Z \times \cdots \times \Z/n_{r}\Z, +, \times ) \underset{\text{anneau}}{\simeq} (\Z/n_{1} \cdots n_{r}\Z, \bar{+}, \bar{\times })
+  $$
+  si et seulement si
+  $$
+    \forall (i,j) \in \icc{1, r}^{2}, \left[i \neq j \implies  n_{i} \land n_{j} = 1\right]
+  $$
+%
+
+%proof
+  - Supposons
+    $$
+      \forall (i,j)\in \icc{1,r}, \left[i\neq j \implies  n_{i} \land  n_{j} = 1\right]
+    $$
+    Sous réserve d’existence, considérons
+    $$
+      f: \applic{\Z/n_{1} \cdots n_{r}\Z}{\Z/n_{1}\Z \times  \cdots \times \Z/n_{r}\Z}{\bar{k}}{([k]_{n_{1}}, \ldots, [k]_{n_{r}})}
+    $$
+    - $f$ existe. En effet, pour $(k,l) \in \Z^{2}$,
+      $$
+        k\cgm l{n_{1} \cdots n_{r}} \implies  \forall i \in \icc{1,r}, k\cgm l{n_{i}}
+      $$
+    - $f(\bar{1}) = ([1]_{n_{1}}, \ldots, [1]_{n_{r}}) = 1_{\Z/n\Z \times \cdots \times \Z/n_{r}\Z}$,
+      $$
+        \forall (k,l) \in \Z^{2}, \begin{cases}f(\bar{k}\bar{+}\bar{l}) = f(\bar{k}) + f(\bar{l})\\f(\bar{k} \bar{\times }\bar{l}) = f(\bar{k}) \times  f(\bar{l})\end{cases}
+      $$
+    - Pour $k \in \Z$, on a
+      $$
+        \bar{k} \in \ker f \iff k \in \underbrace{\underbrace{(n_{1}\Z)\cap (n_{2}\Z)}_{=(n_{1} \lor n_{2})\Z = (n_{1}n_{2})\Z}\cap  (n_{3}\Z)}_{=[(n_{1}n_{2})\lor n_{3}]\Z = (n_{1}n_{2}n_{3})\Z)} \cap \cdots \cap (n_{r}\Z) = (n_{1} \lor  \cdots \lor  n_{r})\Z
+      $$
+      donc $\bar{k} \in \ker g \iff  k \in (n_{1} \times \cdots \times n_{r})\Z \iff  \bar{k} = \bar{0}$
+    - $f$ est un morphisme d’anneaux unitaires injectifs et
+      $$
+        \abs{\Z/n_{1} \cdots n_{r}\Z} = n_{1} \times  \cdots \times  n_{r} = \abs{\Z/n_{1} \Z \times  \cdots \times  \Z/n_{r} \Z}
+      $$
+      donc $f$ est un isomorphisme d’anneaux unitaires (*« isomorphisme naturel »*).
+
+  %offprog
+    - Supposons que $(\Z/n_{1}\Z \times  \cdots \times \Z/n_{r} \Z, +, \times )$ soit isomorphe à $(\Z/n_{1} \cdots n_{r} \Z, \bar{+}, \bar{\times })$. Alors $(\Z/n_{1} \Z \times  \cdots \times \Z/n_{r} \Z, +)$ est un groupe cyclique, donc pour $1 \leq  i < j \leq  n$, le sous-groupe
+      $$
+        \{\bar{0}\} \times  \cdots \times  \{\bar{0}\}\times \Z/n_{i}\Z \times \{0\} \times \cdots \times  \{0\} \times  \Z/n_{j}\Z \times  \{0\} \times  \cdots \times \{0\}
+      $$
+      est cyclique. Il est isomorphe à $\Z/n_{i}\Z \times  \Z/n_{j}\Z$. Colui-ci est cyclique si et seulement si $n_{i} \land  n_{j} = 1$.
+  %
+%
+
+## Idéaux de $\K[X]$
+
+%prop
+  Les idéaux de l’anneau commutatif unitaire $(\K[X], +, \times )$ où $\K$ est un corps sont les idéaux principaux
+  $$
+    P\K[X] = \{PQ \mid Q \in \K[X]\}
+  $$
+  avec $P \in \K[X]$.
+%
+
+%proof
+  Soit $I$ un idéal de l’anneau $(\K[X], +, \times )$.
+  - Si $I = \{0\}$, alors $I = 0 \cdot \K[X]$.
+  - Sinon, $I \neq \{0\}$. Soit
+    $$
+      d_{0} = \min\underbrace{\{\deg  P \mid P \in I \setminus \{0\}\}}_{\text{partie non vide de }\R}
+    $$
+    Soit $P_{0} \in  I \setminus \{0\}$ tel que $d_{0} = \deg  P_{0}$. Alors $P_{0} \in I$ qui est un idéal de $\K[X]$. Par propriété d’absorption, on a $P_{0}\K[X]\subset I$.
+  - Soit $P \in I$. Effectuons la division euclidienne de $P$ par $P_{0}$ (possible dans $\K[X]$ car $\K$ est un corps):
+    $$
+      P = P_{0}Q + R
+    $$
+    avec $(Q,R) \in (\K[X])^{2}$ et $\deg R < d_{0}$. On a alors $R = P-P_{0}Q$, $P \in I$ et $P_{0}Q \in I$ or $I < (\K[X], +)$ donc $R \in I$ et
+    $$
+      \deg R < d_{0} = \min \{\deg P \mid P \in I \setminus \{0\}\}
+    $$
+    donc $R = 0$. Ainsi, $P = P_{0}Q \in P_{0}\K[X]$ donc $I \subset P_{0}\K[X]$ d’où
+    $$
+      I = P_{0}\K[X] = \hat{P_{0}}\K[X]
+    $$
+    avec $P_{0}\neq 0$ et $\hat{P_{0}}$ un polynôme unitaire associé à $P_{0}$.
+%
+
+## Décomposition de polynômes en éléments irréductibles
+
+%thm Théorème de décomposition (factorisation) en polynômes irréductibles
+  Soit $P \in \K[X]$ non constant. Il existe un unique scalaire $\lambda \in \K^{*}$, un unique ensemble fini $E$ formé de polynômes irréductibles unitaires et une unique famille $(\alpha_{R})_{R \in E}$ d’entiers naturels non nuls tels que
+  $$
+    P = \lambda \prod_{R \in E}R^{\alpha_{R}}
+  $$
+%
+
+%proof
+  ++Existence++: par récurrence sur $\deg P = n \in \N^{*}$.
+  - Si $\deg P=1$, alors $P$ est irréductible et $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$ et $\hat P$ le polynôme unitaire irréductible associé à $P$.
+  - Supposons l’existence d’une telle décomposition pour tout polynôme $P \in \K[X]$ de degré compris entre $1$ et $n \in \N^{*}$ fixé. Soit $P \in \K[X]$ avec $\deg  P = n+1$.
+    - Si $P$ est irréductible, alors $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$.
+    - Si $P$ est réductible, alors $P$ n’est pas constant donc possède un diviseur unitaire irréductible $R$. Il existe donc $Q \in \K[X]$ tel que $P = RQ$. $\deg R \geq 1$ et $\deg R \ne n+1$ donc
+      $$
+        1 \leq  \deg Q \leq n
+      $$
+      D’après l’hypothèse de récurrence, on a une écriture pour $Q$ de la forme attendue, d’où
+      $$
+        P = R \lambda \prod_{R \in E}R^{\alpha_{R}}
+      $$
+      est une écriture de $P$ de la forme attendue.
+  ++Unicité++: si $P = \lambda \prod_{R \in E}R^{\alpha_{R}}$, alors $\lambda$ est le coefficient dominant de $P$, $E$ est l’ensemble des diviseurs irréductibles de $P$, et pour $R \in E$, on a $P = R^{\alpha_{R}} \times Q$ avec
+  $$
+    Q = \lambda \prod_{S \in E \setminus \{R\}}S^{\alpha_{S}}
+  $$
+  Alors $R \land  Q =1$ d’où $\alpha_{R} = \nu_{R}(P)$.
+%
+
+## Un endomorphisme laissant stable toute droite vectorielle est une homothétie
+
+%proof
+  Soit $f$ un endomorphisme de $E$ tel que $\forall x \in  E \setminus \{0\}, f(Kx) \subset K x$.
+
+  Soit $u, v \in E \setminus \{0\}$. On a $f(u) = \lambda u$ avec un scalaire $\lambda \in \K$.
+  - si $(u,v)$ est libre, il existe $(\mu, \nu) \in \K^{2}$ tels que $f(v) = \mu v$ et $f(\underbrace{u+v}_{\ne 0}) = \nu(u+v)$. Donc $f(u) + f(v) = \nu(u+v)$, i.e. $\lambda u + \mu v = \nu(u+v)$. Ainsi, par liberté de $(u,v)$, on a $\lambda = \mu = \nu$ donc $f$ est une homothétie.
+  - sinon, $(u,v)$ est liée, donc $\exists k \in \K^{*}: v = ku$. Par ailleurs, $\exists \mu \in \K: f(v) = \mu v$. Or $f(v) = f(ku) = k f(u) = k \lambda u = \lambda v$ d’où $\lambda = \mu$ (car $v\ne 0$). Donc $\exists  \lambda \in \K: \forall x \in  E \setminus \{0\}, f(x) = \lambda x$, d’où $f$ est une homothétie.
+%
+
+## Dimension de $\K[f]$ si $f$ possède un polynôme minimal
+
+%prop
+  Soit $f \in \L(E)$ ($1 \leq  \dim E \leq +\infty$) possèdant un polynôme minimal $\pi_{f}$ de degré $d \in \N^{*}$. Alors $\K[f]$ est une sous-algèbre commutative de $(\L(E), +, \circ, \cdot )$ de dimension finie égale à $d$ de base $(\id_{E}, f, \ldots, f^{d-1})$.
+%
+
+%proof
+  Soit $P \in \K[X]$. Effectuons la division euclidienne de $P$ par $\pi_{f}$~:
+  $$
+    P = Q \times \pi_{f} + R \quad\text{avec}\quad \begin{cases}(Q,R) \in (\K[X])^{2}\\ \deg R < d\end{cases}
+  $$
+  Donc
+  $$
+    P(f) = Q(f)\circ \pi_{f}(f) + R(f) = R(f)
+  $$
+  Ainsi $K[f] \subset \{R(f) \mid R \in \K_{d-1}[X]\} \subset \K[f]$, soit
+  $$
+    K[f] = \{R(f) \mid R \in \K_{d-1}[X]\} = \Vect\left\{\id_{E}, f, \cdots, f^{d-1}\right\}
+  $$
+  d’où $\K[f]$ est un $\K$-espace vectoriel de dimension finie.
+
+  Soit $(\alpha_{0}, \alpha_{1}, \ldots, \alpha_{d-1}) \in \K^{d}$ tel que
+  $$
+    \alpha_{0} \id + \alpha_{1} f + \cdots + \alpha_{d-1}f^{d-1} = 0_{\L(E)}
+  $$
+  i.e. $P = \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1}$ est un polynôme annulateur de $f$. Alors $\pi_{f} \mid P$ donc $d = \deg \pi_{f} \leq \deg P \leq  d-1$. Ainsi $P=0$ d’où $(\id_{E}, f, \ldots, f^{d-1})$ est une base de $\K[f]$.
+%
+
+## Lemme de décomposition des noyaux
+
+%lemma
+  Soit $n \in \N$ avc $n \geq 2$. Soient $P_{1}, \ldots, P_{n}$ des éléments de $\K[X]$ **premiers entre eux deux à deux**. Posons $P = P_{1} \times \cdots \times P_{n}$. Si $f \in \L(E)$, alors
+  $$
+    \ker P(f) = \bigoplus_{i=1}^{n} \ker (P_{i}(f))
+  $$
+  %callout Attention
+    $\ker P$ ou $\ker P_{i}$ n’ont aucun sens !
+  %
+%
+
+%proof
+  Posons $\forall j \in \icc{1,n}, R_{j} = \prod_{\substack{i=1\\i\ne j}}^{n}P_{i}$.
+
+  $R_{1} = P_{2} \cdots P_{n}$; $R_{2} = P_{1}P_{3} \cdots P_{n}$; $R_{3} = P_{1}P_{2}P_{4} \cdots P_{n}$.
+
+  $R_{1} \land  R_{2} = \hat{P_{3} \cdots P_{n}} (P_{2} \land  P_{1}) = \hat{P_{3} \cdots P_{n}}$ donc $R_{1} \land  R_{2} \land  R_{3} = (P_{3} \cdots P_{n}) \land  (P_{1} P_{2} P_{4} \cdots P_{n}) = \hat{P_{4} \cdots P_{n}}\underbrace{(P_{3} \land  (P_{1}P_{2}))}_{=1}$, d’où $R_{1} \land  \cdots \land R_{n} = \hat 1 = 1$. Ainsi, il existe $(U_{1}, \ldots, U_{n}) \in (\K[X])^{n}$ tels que
+  $$
+    U_{1} R_{1} + \cdots + U_{n}R_{n} = 1
+  $$
+  d’où
+  $$
+    U_{1}(f) \circ R_{1}(f) + \cdots + U_{n}(f) \circ R_{n}(f) = \id_{E}
+  $$
+  donc
+  $$
+    \forall x \in E, x = \sum_{i=1}^{n}\underbrace{\bigl(U_{i}(f)(R_{i}(f)\bigr)(x)}_{=(U_{i}(f) \circ R_{i}(f))\mdot x = x_{i}}
+  $$
+  Soit $x \in \ker P(f)$. On a $x = \sum_{i=1}^{n}x_{i}$, et
+  $$
+    \begin{align*}
+      P_{i}(f) \mdot x_{i} &= P_{i}(f) \mdot (U_{i}(f)\mdot (R_{i}(f) \mdot x))\\
+          &= (P_{i} \times U_{i} \times R_{i})(f) \mdot x\\
+          &= (U_{i} \times P)(f)\mdot x\\
+          &= U_{i}(f) \mdot (P(f)\mdot x) = U_{i}(f) \mdot 0_{E} = 0_{E}
+    \end{align*}
+  $$
+  donc
+  $$
+    \ker (P(f)) \subset \sum_{i=1}^{n}\ker (P_{i}(f))
+  $$
+
+  Réciproquement, soit $x \in \ker (P_{i}(f))$. Comme $P(f) = R_{i}(f) \circ P_{i}(f)$, on a $x \in \underbrace{\ker P(f)}_{=x_{v}}$, donc
+  $$
+    \sum_{i=1}^{n}\ker (P_{i}(f)) \subset \ker (P(f))
+  $$
+  On a alors
+  $$
+    \ker P(f) = \sum_{i=1}^{n}\ker (P_{i}(f))
+  $$
+
+  Montrons que la somme est directe: soit $(y_{1}, \ldots, y_{n}) \in \ker P_{1}(f) \times \cdots \times  \ker P_{n}(f)$ tels que $y_{1} + \cdots + y_{n} = 0$. On a
+  $$
+    \begin{align*}
+      y_{i} &= \sum_{j=1}^{n}(U_{j}(f) \circ R_{j}(f))(y_{i})\\
+      &= (U_{i}(f) \circ R_{i}(f))(y_{i})\\
+      &= (U_{i}(f) \circ R_{i}(f))(y_{1} + \cdots + y_{n})\\
+      &=0
+    \end{align*}
+  $$
+  (dans la dernière égalité, on a remplacé $y_{i}$ par $y_{1} + \cdots + y_{n}$ car les autres $y_{j}$ sont dans $\ker R_{i}(f)$).
+%

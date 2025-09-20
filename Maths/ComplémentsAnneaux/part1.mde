@@ -739,7 +739,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
     $$
     - $f$ existe. En effet, pour $(k,l) \in \Z^{2}$,
       $$
-        k\cgm l{n_{1} \cdots n_{r}} \implies  \forall i \in \icc{1,r}, k\cgm l[n_{i}]
+        k\cgm l{n_{1} \cdots n_{r}} \implies  \forall i \in \icc{1,r}, k\cgm l{n_{i}}
       $$
     - $f(\bar{1}) = ([1]_{n_{1}}, \ldots, [1]_{n_{r}}) = 1_{\Z/n\Z \times \cdots \times \Z/n_{r}\Z}$,
       $$
@@ -962,25 +962,25 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 %proof
   1. Soit $I$ un idéal de $(\Z,+, \times )$.. Alors $I < (\Z,+)$. Il existe donc $n \in \N$ tel que $I = n\Z$ et $n\Z$ a bien une structure d’idéal.
   2. Soit $I$ un idéal de l’anneau $(\K[X], +, \times )$.
-     - Si $I = \{0\}$, alors $ei = 0 \cdot \K[X]$.
+     - Si $I = \{0\}$, alors $I = 0 \cdot \K[X]$.
      - Sinon, $I \neq \{0\}$. Soit
        $$
          d_{0} = \min\underbrace{\{\deg  P \mid P \in I \setminus \{0\}\}}_{\text{partie non vide de }\R}
        $$
-       Soit $P_{0} \in  I \setminus \{0\}$ tel que $d_{0} = \deg  P_{0}$. Alors $P_{0} \in I$ est un idéal de $\K[X]$. Par propriété d’absorption, on a $P_{0}\K[X]\subset I$.
-       - Soit $P \in I$. Effectuons la division euclidienne de $P$ par $P_{0}$ (possible dans $\K[X]$ car $\K$ est un corps):
-         $$
-           P = P_{0}Q + R
-         $$
-         avec $(Q,R) \in (\K[X])^{2}$ et $\deg R < d_{0}$. On a alors $R = P-P_{0}Q$, $P \in I$ et $P_{0}Q \in I$ or $I < (\K[X], +)$ donc $R \in I$ et
-         $$
-           \deg < 0 = \min \{\deg P \mid P \in I \setminus \{0\}\}
-         $$
-         donc $R = 0$. Ainsi, $P = P_{0}Q \in P_{0}\K[X]$ donc $I \subset P_{0}\K[X]$ d’où
-         $$
-           I = P_{0}\K[X] = \hat{P_{0}}\K[X]
-         $$
-         avec $P_{0}\neq 0$ et $\hat{P_{0}}$ un polynôme unitaire associé à $P_{0}$.
+       Soit $P_{0} \in  I \setminus \{0\}$ tel que $d_{0} = \deg  P_{0}$. Alors $P_{0} \in I$ qui est un idéal de $\K[X]$. Par propriété d’absorption, on a $P_{0}\K[X]\subset I$.
+     - Soit $P \in I$. Effectuons la division euclidienne de $P$ par $P_{0}$ (possible dans $\K[X]$ car $\K$ est un corps):
+       $$
+         P = P_{0}Q + R
+       $$
+       avec $(Q,R) \in (\K[X])^{2}$ et $\deg R < d_{0}$. On a alors $R = P-P_{0}Q$, $P \in I$ et $P_{0}Q \in I$ or $I < (\K[X], +)$ donc $R \in I$ et
+       $$
+         \deg R < d_{0} = \min \{\deg P \mid P \in I \setminus \{0\}\}
+       $$
+       donc $R = 0$. Ainsi, $P = P_{0}Q \in P_{0}\K[X]$ donc $I \subset P_{0}\K[X]$ d’où
+       $$
+         I = P_{0}\K[X] = \hat{P_{0}}\K[X]
+       $$
+       avec $P_{0}\neq 0$ et $\hat{P_{0}}$ un polynôme unitaire associé à $P_{0}$.
 %
 
 %eg
@@ -1416,7 +1416,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 
 %proof
   ++Existence++: Par récurrence sur $n = \deg P \in \N$.
-  - Si $n=0$, alors $P = R_{0}$ et $R \land  \underbrace{P}_{\text{constante non nulle}} = 1$.
+  - Si $\deg P=1$, alors $P$ est irréductible et $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$ et $\hat P$ le polynôme unitaire irréductible associé à $P$.
   - Supposons le  résultat vrai lorsque $0 \leq  \deg P \leq n$ avec $n \in \N$ fixé. Soit $P \in \K[X]$ de degré $n+1$.
     - Si $R \land  P = 1$, on a $P = R_{0}P$ et $R \land  P = 1$
     - Si $R\mid P$, alors il existe $Q \in \K[X]$ tel que $P = RQ$. Or $\deg  R \geq 1$ donc $\deg  Q \in \icc{0,n}$. D’après l’hypothèse de récurrence, il existe $(k,S) \in \N \times \K[X]$ tel que $Q = R^{k}S$ avec $R \land  S =1$.
@@ -1438,12 +1438,12 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
   ++Existence++: par récurrence sur $\deg P = n \in \N^{*}$.
   - Si $\deg P=1$, alors $P$ est irréductible et $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$, $\hat P$ le polynôme unitaire irréductible associé à $P$.
   - Supposons l’existence d’une telle décomposition pour tout polynôme $P \in \K[X]$ de degré compris entre $1$ et $n \in \N^{*}$ fixé. Soit $P \in \K[X]$ avec $\deg  P = n+1$.
-    - Si $P$ est irréductible, alprs $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$.
-    - Si $P$ est réductible, alors $P$ n’est pas constant donc possède un diviseur unitaire irréductible $R$. Il existe donc $Q \in \K[X]$ tel que $P = RQ$. Alors
+    - Si $P$ est irréductible, alors $P = \lambda\hat P$ avec $\lambda$ le coefficient dominant de $P$.
+    - Si $P$ est réductible, alors $P$ n’est pas constant donc possède un diviseur unitaire irréductible $R$. Il existe donc $Q \in \K[X]$ tel que $P = RQ$. $\deg R \geq 1$ et $\deg R \ne n+1$ donc
       $$
-        \deg R \geq 1 \quad\text{et}\quad  \deg R \neq n+1
+        1 \leq  \deg Q \leq n
       $$
-      donc $1 \leq  \deg Q \leq n$. D’après l’hypothèse de récurrence, on a une écriture pour $Q$ de la forme attendue, d’où
+      D’après l’hypothèse de récurrence, on a une écriture pour $Q$ de la forme attendue, d’où
       $$
         P = R \lambda \prod_{R \in E}R^{\alpha_{R}}
       $$

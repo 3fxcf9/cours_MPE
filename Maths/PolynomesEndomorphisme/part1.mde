@@ -54,7 +54,7 @@ $$
 %callout À retenir
   - $(a_{0} + a_{1} X + \cdots)(f) = a_{0} \id_{E} + a_{1} f + \cdots$
   - $(\lambda P + \mu Q)(f) = \lambda P(f) + \mu Q(f)$.
-  - $(P \mathbf{\times} Q) = P(f) \mathbf{\circ} Q(f)$
+  - $(P \mathbf{\times} Q)(f) = P(f) \mathbf{\circ} Q(f)$
 %
 
 ### Cas particuliers: noyaux itérés de $f \in \L(E)$
@@ -199,7 +199,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 %
 
 %proof
-  $\K[f] = \{P(f)\mid P \in \K[X]\}$. Soit $P \in \K[X]$. Effectuons la division euclidienne de $P$ par $\pi_{f}$~:
+  Soit $P \in \K[X]$. Effectuons la division euclidienne de $P$ par $\pi_{f}$~:
   $$
     P = Q \times \pi_{f} + R \quad\text{avec}\quad \begin{cases}(Q,R) \in (\K[X])^{2}\\ \deg R < d\end{cases}
   $$
@@ -211,13 +211,13 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
   $$
     K[f] = \{R(f) \mid R \in \K_{d-1}[X]\} = \Vect\left\{\id_{E}, f, \cdots, f^{d-1}\right\}
   $$
-  d’où $\K[f]$ est un $\K$-espace vctoriel de dimension finie.
+  d’où $\K[f]$ est un $\K$-espace vectoriel de dimension finie.
 
   Soit $(\alpha_{0}, \alpha_{1}, \ldots, \alpha_{d-1}) \in \K^{d}$ tel que
   $$
     \alpha_{0} \id + \alpha_{1} f + \cdots + \alpha_{d-1}f^{d-1} = 0_{\L(E)}
   $$
-  i.e. $P = \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1}$ est un polynôme annulateur de $f$. Alors $\pi_{f} \mid P$ donc $\deg \pi_{f} = d$ d’où $\deg  P \leq d-1$. Ainsi $P=0$ d’où $(\id_{E}, f, \ldots, f^{d-1})$ est une base de $\K[f]$.
+  i.e. $P = \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1}$ est un polynôme annulateur de $f$. Alors $\pi_{f} \mid P$ donc $d = \deg \pi_{f} \leq \deg P \leq  d-1$. Ainsi $P=0$ d’où $(\id_{E}, f, \ldots, f^{d-1})$ est une base de $\K[f]$.
 %
 
 %cor Autre caractérisation de $\pi_f$
@@ -264,12 +264,11 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
      $$
      donc $f(F) \subset F$.
 
-     Soit $f \in \L(E)$ tel que $\forall x \in  E \setminus \{0\}, f(Kx) \subset K x$.
+     Soit $f$ un endomorphisme de $E$ tel que $\forall x \in  E \setminus \{0\}, f(Kx) \subset K x$.
 
-     Soit $u, v \in E \setminus \{0\}$. On a $f(u) = \lambda u$ pour un scalaire $\lambda \in \K$.
-     - si $(u,v)$ est libre, il existe $(\mu, \nu) \in \K^{2}$ tels que $f(v) = \mu v$. $f(\underbrace{u+v}_{\ne 0}) = \nu(u+v)$. Donc $f(u) + f(v) = \nu(u+v)$, i.e. $\lambda u + \mu v = \nu(u+v)$. Par liberté de $(u,v)$, on a $\lambda = \mu = \nu$.
-     - sinon, $(u,v)$ est liée, donc $\exists k \in \K^{*}: v = ku$ donc $\exists \mu \in \K: f(v) = \mu v$. Or $f(v) = f(ku) = k f(u) = k \lambda u = \lambda v$ d’où $\lambda = \mu$ (car $v\ne 0$). Donc $\exists  \lambda \in \K: \forall x \in  E \setminus \{0\}, f(x) = \lambda x$, d’où $\exists \lambda \in \K: f = \lambda \id_{E}$.
-     ==REFORMULER==
+     Soit $u, v \in E \setminus \{0\}$. On a $f(u) = \lambda u$ avec un scalaire $\lambda \in \K$.
+     - si $(u,v)$ est libre, il existe $(\mu, \nu) \in \K^{2}$ tels que $f(v) = \mu v$ et $f(\underbrace{u+v}_{\ne 0}) = \nu(u+v)$. Donc $f(u) + f(v) = \nu(u+v)$, i.e. $\lambda u + \mu v = \nu(u+v)$. Ainsi, par liberté de $(u,v)$, on a $\lambda = \mu = \nu$ donc $f$ est une homothétie.
+     - sinon, $(u,v)$ est liée, donc $\exists k \in \K^{*}: v = ku$. Par ailleurs, $\exists \mu \in \K: f(v) = \mu v$. Or $f(v) = f(ku) = k f(u) = k \lambda u = \lambda v$ d’où $\lambda = \mu$ (car $v\ne 0$). Donc $\exists  \lambda \in \K: \forall x \in  E \setminus \{0\}, f(x) = \lambda x$, d’où $f$ est une homothétie.
 %
 
 %proof
@@ -300,7 +299,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
     donc $P(f)_{|F} = P(f_{|F}) \in \L(F)$.
 %
 
-%proposition
+%prop
   Soit $(f,g) \in \L(E)^{2}$ tels que $f\circ g = g \circ f$, i.e. $f\circ g - g\circ f = [f,g] = 0_{\L(E)}$. Alors $\ker g$ et $\img g$ sont stables par $f$.
 %
 
@@ -362,10 +361,10 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 
 ## Lemme de décomposition des noyaux
 
-%prop
-  Soit $n \in \N$ avc $n \geq 2$. Soient $P_{1}, \ldots, P_{n}$ des éléments de $\K[X]$ **premiers entre deux à deux**. Posons $P = P_{1} \times \cdots \times P_{n}$. Si $f \in \L(E)$, alors
+%lemma
+  Soit $n \in \N$ avc $n \geq 2$. Soient $P_{1}, \ldots, P_{n}$ des éléments de $\K[X]$ **premiers entre eux deux à deux**. Posons $P = P_{1} \times \cdots \times P_{n}$. Si $f \in \L(E)$, alors
   $$
-    P(f) = \bigoplus_{i=1}^{n} \ker (P_{i}(f))
+    \ker P(f) = \bigoplus_{i=1}^{n} \ker (P_{i}(f))
   $$
   %callout Attention
     $\ker P$ ou $\ker P_{i}$ n’ont aucun sens !
@@ -387,7 +386,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
   $$
   donc
   $$
-    \forall x \in E, x = \sum_{i=1}^{n}\underbrace{U_{n}(k)(R_{i}(f)(x))}_{=(U_{1}(f) \circ R_{i}(f))\mdot x = x_{i}}
+    \forall x \in E, x = \sum_{i=1}^{n}\underbrace{\bigl(U_{i}(f)(R_{i}(f)\bigr)(x)}_{=(U_{i}(f) \circ R_{i}(f))\mdot x = x_{i}}
   $$
   Soit $x \in \ker P(f)$. On a $x = \sum_{i=1}^{n}x_{i}$, et
   $$
@@ -412,16 +411,16 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
     \ker P(f) = \sum_{i=1}^{n}\ker (P_{i}(f))
   $$
 
-  Montrons que la somme est directe: soit $(y_{1}, \ldots, y_{r}) \in \ker P_{1}(f) \times \cdots \times  \ker P_{r}(f)$ tels que $y_{1} + \cdots + y_{r} = 0$. On a
+  Montrons que la somme est directe: soit $(y_{1}, \ldots, y_{n}) \in \ker P_{1}(f) \times \cdots \times  \ker P_{n}(f)$ tels que $y_{1} + \cdots + y_{n} = 0$. On a
   $$
     \begin{align*}
-      y_{i} &= \sum_{j=1}^{r}(U_{j}(f) \circ R_{j}(f))(y_{i})\\
+      y_{i} &= \sum_{j=1}^{n}(U_{j}(f) \circ R_{j}(f))(y_{i})\\
       &= (U_{i}(f) \circ R_{i}(f))(y_{i})\\
-      &= (U_{i}(f) \circ R_{i}(f))(y_{1} + \cdots + y_{r})\\
+      &= (U_{i}(f) \circ R_{i}(f))(y_{1} + \cdots + y_{n})\\
       &=0
     \end{align*}
   $$
-  (dans la dernière égalité, on a remplacé $y_{i}$ par $y_{1} + \cdots + y_{r}$ car les autres $y_{j}$ sont dans $\ker R_{i}(f)$).
+  (dans la dernière égalité, on a remplacé $y_{i}$ par $y_{1} + \cdots + y_{n}$ car les autres $y_{j}$ sont dans $\ker R_{i}(f)$).
 %
 
 %callout Rappels – somme directe
