@@ -1,4 +1,4 @@
-# Polynômes d’endomorphisme
+# Polynômes d’un endomorphisme
 
 Dans ce chapitre, $\K$ désigne un sous-corps de $\C$ (voire un corps quelconque), $E$ est un $\K$-espace vectoriel (et rapidement, $E \neq \{0_{E}\}$).
 
@@ -466,3 +466,290 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
        \mathscr S = \{(\alpha 2^{n} + \beta j^{n} + \gamma j^{2n}) \mid (\alpha , \beta, \gamma) \in \C^{3}\}
      $$
 %
+
+%property Conséquences
+  Si $n \geq 2$ et $P_{1}, \ldots, P_{n}$ sont des éléments de $\K[X]$ premiers entre eux et $f$ est un endomorphisme de $E$ vérifiant $(P_{1} \times  \cdotsc \times P_{n})(f) = 0_{\L(E)}$, alors
+  $$
+    E = \bigoplus_{i=1}^{n}\ker (P_{i}(f))
+  $$
+  De plus, chaque sous espace $\ker  P_{i}(f)$ est stable par $f$ et
+  %offprog
+    les projections de chaque facteur associées à cette somme directe sont des polynômes.
+  %
+%
+
+%proof
+  Comme $P_{i} land P_{j} = 1$ pour tout $1 \leq  i < j \leq  n$, on a par le lemme de décomposition des noyaux:
+  $$
+    \underbrace{\ker (P_{1} \times  \cdots \times  P_{n})(f)}_{ = \ker (U_{\L(E)}) = E} = \bigoplus_{i=1}^{n}\ker  P_{i}(f)
+  $$
+
+  %offprog
+    Si $r_{i}$ est la projection sur $\ker  P_{i}(f)$ parallèlement à $\bigoplus_{j=1, j\ne i}^{n}\ker  P_{j}(f)$, alors
+    $$
+      r_{i} = U_{i}(f) \circ R_{i}(f) \in \K[f]
+    $$
+    $1 = U_{1} R_{1} + \cdots + U_{n} R_{n}$  donc
+    $$
+      \forall x \in E, x = \sum_{i=1}^{n}x_{i}
+    $$
+    avec $x_{i} = \big(U_{i}(f) \circ R_{i}(f)\big)\mdot x \in \ker  P_{i}(f)$
+  %
+%
+
+## Polynôme minimal de $A \in \M_{n}(\K)$
+
+Soit $A \in \M_{n}(\K)$. Si $P = \sum_{k=0}^{d}a_{k} X^{k} \in \K[X]$ alors on pose
+$$
+  \begin{align*}
+    P(A) &= \sum_{k=0}^{d}a_{k}A^{k} \in \M_{n}(\K)\\
+        &= a_{0}A^{0} + \cdots a_{d} A^{d}\\
+        &= a_{0} I_{n} + \cdots + a_{d} A^{d}
+  \end{align*}
+$$
+Alors, l’application
+$$
+  \varphi_{A}: \applic{(\K[X], +, \times , \cdot )}{(\M_{n}(\K), +, \times , \cdot )}{P}{P(A)}
+$$
+est un morphisme de $\K$-algèbres unitaires car $1(A) = I_{n}$ et
+$$
+  \forall (\lambda, \mu) \in \K^{2}, \forall (P,Q) \in (\K[X])^{2}, \begin{cases}(\lambda P + \mu Q)(A) = \lambda P(A) + \mu P(A)\\ (P \times  Q)(A) = P(A) \times Q(A)\end{cases}
+$$
+donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynômes annulateurs de $A$. Il est non nul et n’est pas $\K[X]$(($(I, A, \ldots, A^{n^{2}})$ est une suite de longueur $(n^{2}+1)$ du $\K$-espace $\M_{n}(\K)$ de dimension $n^{2}$. Cette suite est donc liée donc il existe des scalaire tels que $\alpha_{0} I + \cdots + \alpha_{n^{2}} A^{n^{2}} = 0_{n}$ donc $P = \alpha0 + \cdots + \alpha_{n^{2}} X^{n^{2}} \ne 0$ donc $P \in \ker \varphi_{A}$ et $1(A) = I_{n}\ne 0_{n}$ donc $\deg  \pi_{A}$ geq 1)). L’unique polynôme unitaire noté $\pi_{A}$ tel que $\ker  \varphi_{A} = \pi_{A}\K[X]$ est appelé le polynôme minimal de $A$. On a
+- $\deg \pi_{A} \geq  1$
+- $\pi_{A}$ unitaire
+- $\begin{cases}P \in \K[X]\\ P(A) = 0\end{cases} \iff  \pi_{A} \mid P$
+
+%eg
+  1. Soit $A \in \M_{n}(\K)$.
+     $$
+       \begin{align*}
+         A \text{ nilpotente} &\iff \exists k \in \N^{*}: A^{k} = 0_{n} \\
+         &\iff \exists k \in \N^{*}: X^{k} \text{ annulateur de }A\\
+         &\iff \exists k \in \N^{*}: \pi_{A} \mid X^{k}\\
+         &\iff \exists l \in \N^{*}: \pi_{A} = X^{l}
+       \end{align*}
+     $$
+     On a aussi
+     $$
+       \begin{align*}
+         A \text{ nilpotente} &\iff f_{A}: \applic{M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{AX} \text{ nilpotent}\\
+         &\iff f_{A}^{n} = 0_{\L(E)}
+       \end{align*}
+     $$
+     Ainsi,
+     $$
+       A \text{ nilpotente} \iff A^{n} = 0_{n} \iff  \exists k \in \N^{*}, \pi_{A} = X^{k}
+     $$
+  2. Soit $\lambda \in \K$.
+     $$
+       A = \lambda I_{n} \iff  \pi_{A} = X-\lambda
+     $$
+  3. $A = \diag(A_{1}, \ldots, A_{r}) = \mtx{A_{1} & \cdots & 0\\0 \ddots & 0\\ 0 & \cdots & A_{r}}$. Alors $\forall k \in \N, A^{k} = \diag (A_{1}^{k}, \ldots, A_{r}^{k})$ d’où pour $P = \sum_{k=0}^{d}a_{k} X^{k} \in \K[X]$,
+     $$
+       P(A) = \sum_{k=0}^{d}a_{k}\diag(A_{1}^{k}, \ldots, A_{r}^{k}) = \diag (P(A_{1}), \ldots, P(A_{n}))
+     $$
+     et
+     $$
+       \begin{align*}
+         P(A) = 0_{n} &\iff P(A_{1}) = 0, \ldots, P(A_{1})=0\\
+         &\iff \pi_{A_{1}}\mid P \text{ et } \cdots \text{ et }\pi_{A_{r}}\mid P\\
+         &\iff P \in  \bigcap_{i=1}^{r}\pi_{A_{i}}\K[X] = \lcm(\pi_{A_{1}}, \ldots, \pi_{A_{n}})
+       \end{align*}
+     $$
+     $$
+       \pi_{A} = \lcm(\pi_{A_{1}}, \ldots, \pi_{A_{r}}uu)
+     $$
+  4. Soit $A \in \M_{n}(\K)$ avec $\rg A = 1$. Il existe
+     $$
+       A = \mtx{x_{1} Y\transp\\x_{2} Y\transp\\\vdots\\x_{n}Y\transp}
+     $$
+     avec $Y \in \M_{n}(\K) \setminus \{0\}$ et $\mtx{x_{1}\\\vdots\\x_{n}} \in \M_{n}(\K)\setminus  \{0\}$. Ainsi,
+     $$
+       A = \mtx{x_{1}\\\vdots\\x_{n}}Y\transp = XY\transp
+     $$
+
+     $A^{2} = X \underbrace{Y\transp X}_{\scprod{Y,X}_{\text{can}}}Y\transp = (Y\transp X)XY\transp$. Donc $A^{2} = (Y\transp X)A$.
+     Or $\tr A =\tr (XY\transp) = \tr (Y\transp X) = Y\transp X$ or $\tr (AB) = \tr (BA) don$ donc $A^{2} = \tr (A) A$.
+     Ainsi, $X^{2} - \tr (A)X$ est un polynôme annulateur de $A$, d’où
+     $$
+       \pi_{A} \in \{tx,X-\tr A, X^{2}-\tr (A)X\}
+     $$
+     - $\pi_{A} = X \iff A = 0_{n}$ est exclu car $\rg A = 1$
+     - $\pi_{A} = X-\tr A \iff  A = (\tr  A)I_{n}$ et $\rg ((\tr A)I_{n}) = 1 \iff  \begin{cases}\tr A\ne 0\\n=1\end{cases}$
+     donc si $n \geq 2$, alors $\pi_{A} = X^{2} - (\tr A)X$
+  5. $A = \mtx{a&b\\c&d} \in \M_{2}(\K)$.
+     - $A = \mtx{\alpha} = \alpha I_{1} \iff \pi_{A} = X-\alpha$
+       $$
+         \mtx{a&b\\c&d} \mtx{a^{2}+b c & c b + b d\\ a c + c d & b c + d^{2}} = \mtx{a^{2} + b c & b(a+d)\\ c(a+d) & b c + d^{2}}
+       $$
+       donc
+       $$
+         A^{2} - \tr (A) A = \mtx{a^{2} + b c - (a+d)a & 0\\0 & b c + d^{2} - (a+d)c} = \mtx{ b c - a d& 0 \\ 0 & b c - a d} = -\det A \cdot I_{2}
+       $$
+       d’où $A^{2} - \tr(A) A + (\det A)I_{2} = 0_{2}$ soit
+       $$
+         X^{2} - \tr (A)X + \det  A
+       $$
+       est un polynôme annulateur de $A$. Si $\deg \pi_{A} =1\iff  \begin{cases}a = d \\ b = c = 0\end{cases}$. Ainsi
+       %lemma
+         - si $A = \lambda I_{2}$ avec $\lambda \in \K$, alors $\pi_{A} = X-\lambda$
+         - si $A\notin \Vect\left\{I_{2}\right\}$, alors
+           $$
+             \pi_{A} = X^{2} - \tr (A)X + \det A
+           $$
+       %
+  6. $A = \mtx{0&1\\-1&2} \in \M_{2}(\R)$. $\pi_{A} = X^{2} - 2X + 1 = (X-1)^{2}$. Soit $n \in \N$.
+     $$
+       X^{n} = Q_{n} \pi_{A} + R_{n} \quad\text{avec}\quad \begin{cases}(Q_{n}\Pi_{n}) \in \R[X]^{2}\\ \deg R_{n} \leq  1\end{cases}
+     $$
+     d’où $A^{2} = A_{n}(A) \times \pi_{A} + R_{n}(A) = R_{n}(A)$. Posons $R_{n} = a_{n} X + b_{n}$. Alors $A^{n} = a_{n} A + b_{n}$.
+     $$
+       \begin{cases}X^{n} = Q_{n} (X-1)^{2} + a_{n} X + b_{n}\\ nX^{n-1} = Q'_{n}(X-1)^{2} + 2 Q_{n}(X-1)+ a_{n}\end{cases}
+     $$
+     donc
+     $$
+       \begin{cases}A = 0 + a_{n} + b_{n}\\n = a_{n}\end{cases} \iff \begin{cases}a_{n} = n\\b_{n} = 1-n\end{cases}
+     $$
+     Ainsi,
+     $$
+       \forall n \in \N, A^{n} = nA + (1-n)I_{2} = \mtx{1-n&n\\-n & 1+n}
+     $$
+%
+
+%prop
+  Soit $A \in \M_{n}(\K)$. Si $d = \deg  \pi_{A} \in \N^{*}$, alors $K[A]$ est une sous-algèbre commutative de $\M_{n}(\K)$ de dimension $d$ et ayant pour base $(I A, \ldots, A^{d-1})$.
+%
+
+%proof
+  Idée de preuve:
+  $$
+    K[A] = \{P(A) \mid P \in \K[X]\}=\{R(A) \mid R \in \K_{d-1}[X]\}
+  $$
+  et $(I, A, \ldots, A^{d-1})$ est $\K$-libre car
+  $$
+    \begin{align*}
+      \alpha_{0} I + \alpha_{1} A + \cdots + \alpha_{d-1}A^{d-1} = 0_{n} &\implies \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1} \text{ annulateur de }A\\&\implies  \pi_{A} \mid \alpha_{0} + \alpha_{1} X + \cdots + \alpha_{d-1}X^{d-1}\\
+      \scriptsize (\deg \pi_{A} = d)&\implies \alpha_{0} = \alpha_{1} = \cdots = \alpha_{d-1} = 0
+    \end{align*}
+  $$
+%
+
+%offprog
+  %property Invariance du polynôme minimal par extension de corps
+    Sit $\K$ un sous-corps d’un corps $L$. Soit $A \in \M_{n}(\K)$ (donc $A \in \M_{n}(\K)$). Soient $\pi_{A,\K} \in \K[X]$ et $\pi_{A,\L} \in L[X]$ deux polynômes unitaires tels que
+    $$
+      \{P \in \K[X] \mid P(A) = 0_{n}\} = \pi_{A,\K} \cdot K[X]
+    $$
+    $$
+      \{Q \in L[X] \mid Q(A) = 0_{n}\} = \pi_{A,L} \cdot L[X]
+    $$
+    Alors $\pi_{A,\K} = \pi_{A,L}$.
+  %
+
+  %proof
+    $\begin{cases}\pi_{A,\K} \subset L[X]\\ \pi_{A,\K}(A) = 0 \text{ dans }\M_{n}(L)\end{cases}$ donc $\pi_{A,L} \mid \pi_{A,\K}$. Posons $d_{\K} = \deg \pi_{A,\K}$ et $d_{L} = \deg (\pi_{A,L})$. On a $d_{L}  \leq d_{\K}$. Montrons l’inégalité réciproque: Soit $\mathscr{F} = (I, A, \ldots, A^{d_{\K}-1})$ une famille de $\M_{n}(\K)$, qui est aussi une famille de $\M_{n}(L)$. $\mathscr{F}$ est $\K$-libre dans $\K[A]$.
+
+    Si $\mathscr F$ est $L$-libre dans $L[A]$, alors $\text{long} F = d_{\K} \leq \dim L[A]$.
+    Soit $(\alpha_{0}, \ldots, \alpha_{d_{\K}-1})$ tel que
+    $$
+      \alpha_{0} I + \alpha_{1} A + \cdots + \alpha_{d_{\K}-1}A^{d_{\K}-1} = 0_{n}
+    $$
+    Alors $F = \Vect_{\K}\left\{\alpha_{0}, \ldots, \alpha_{d_{\K}-1}\right\}$ est un sous $\K$-espace vectoriel de dimension finie du $\K$-espace vectoriel $L$. Soit $(\varphi_{1}, \ldots, \varphi_{p})$ une $\K$-base de $F\:(\subset L)$. Posons
+    $$
+      \forall i \in \icc{0, d_{\K-1}}, \alpha_{i} = \sum_{j=1}^{p}\alpha_{ij}\underbrace{\varepsilon_{j}}_{\in L}
+    $$
+    $$
+      \forall (k,l) \in \icc{1,n}^{2}, \left[\left(\sum_{j=1}^{p}\alpha_{0,j}\varepsilon_{j}\right)I + \left(\sum_{j=1}^{p}\alpha_{1,j}\varepsilon_{j}\right)A + \cdots + \left(\sum_{j=1}^{p}\alpha_{d_{\K}-1}\varepsilon_{j}\right)A^{d_{\K}-1}\right]_{k,l} = [0]_{k,l}
+    $$
+    donc
+    $$
+      \forall (k,l) \in \icc{1,n}^{2}, \sum_{j=1}^{p} \underbrace{\left(\alpha_{0,j} \delta_{k,l} + \alpha_{1,j}(A)_{k,l} + \cdots + \alpha_{d_{\K}-1, j}\mtx{A^{d_{\K}-1}}_{k,l}\right)}_{ \in \K}\varepsilon_{j} = 0
+    $$
+    Par $\K$-liberté de $(\varepsilon_{1}, \ldots, \varepsilon_{p})$, on a
+    $$
+      \forall (k,l) \in \icc{1,n}^{2}, \forall j \in \icc{1,p}, \alpha_{0, j} \delta_{{kl}} + \alpha_{{1,j}}\mtx{A}_{k,l} + \cdots + \alpha_{d_{\K}-1, j}\mtx{A^{d_{\K}-1}}_{k,l} = 0
+    $$
+    d’où
+    $$
+      \forall j \in \icc{1,p}, \underbrace{\alpha_{0,j}}_{\in  \K}I + \underbrace{\alpha_{1,j}}_{\in \K}A + \cdots +\underbrace{ \alpha_{d_{\K}-1, j}}_{\in \K} A^{d_{\K}-1} = 0
+    $$
+    par $\K$-linéarité de $\mathscr F$, on a
+    $$
+      \forall j \in \icc{1,p}, \begin{cases}\alpha_{0,j} &= 0 \\ \alpha_{1,j} &= 0 \\ \vdots \\ \alpha_{d_{\K}-1, j} &= 0\end{cases}
+    $$
+    donc $\forall j \in \icc{1,p}, \alpha_{j} = 0_{L}$.
+  %
+  %lemma Conséquences
+    - si $A \in \M_{n}(\R)$, alors $\pi_{A,\R} = \pi_{A, \C} \in \R[X]$
+    - si $A \in \M_{n}(\Q)$, alors $\pi_{A,\Q} = \pi_{A,\R} = \pi_{A,\C} \in \Q[X]$
+  %
+%
+
+## Matrices semblables
+
+%def
+  Soit $(A,b) \in (\M_{n}(\K))^{2}$. On dit que $A$ et $B$ sont semblables s’il existe $P \in \GL_{n}(\K)$ telle que
+  $$
+    A = PBP^{-1}
+  $$
+  Ce qui revient à dire qu’il existe un endomorphisme $f \in \L(E)$ avec $\dim _{\K}E = n$ et deux bases $\mathscr C$ et $\mathscr C'$ telles que
+  $$
+    A = \mat_{\mathscr C}(f), B = \mat_{\mathscr C'}(f) \quad\text{et}\quad P = P_{\mathscr  C, \mathscr C'}
+  $$
+  On note $A\sembl B$.
+  Pour $(A,B) \in \M_{n,p}(\K)$, on a
+  $$
+    \begin{align*}
+      \underbrace{A \text{ équivalente à } B}_{\text{noté }A\sim B} &\iff  \exists (P,Q) \in \GL_{n}(\K) \times \GL_{p}(\K): A = PBQ\\
+    &\iff \rg A = \rg B
+    \end{align*}
+  $$
+  et on a
+  $$
+    \rg A \in \icc{1,\min\{n,p\}} \iff  A \sim J_{r} = \mtx{I_{r} & 0 \\ 0 & 0}
+  $$
+%
+
+%property
+  Dans $\M_{n}(\K)$,
+  1. $A \sembl \lambda I_{n} \implies A = \lambda I_{n}$ pour $\lambda \in \K$.
+  2. $A \sembl B \implies  \begin{cases}\forall Q \in \K[X], Q(A)\sembl Q(B)\\ \forall \lambda \in \K, A + \lambda I_{n} \sembl B+\lambda I_{n}\end{cases}$
+  3. $\begin{cases}A \sembl B\\A \in \GL_{n}(\K)\end{cases} \implies  \begin{cases}B \in \GL_{n}(\K)\\ A^{-1} \sembl B^{-1}\end{cases}$
+  4. $A \sembl B \implies  \begin{cases}A\sim B \text{ i.e. }\rg A = \rg B\\ \tr A = \tr B\\ \det A = \det B\\ \pi_{A} = \pi_{B}\end{cases}$
+     %callout Attention
+       Soient $A = \mtx{1&1&0&0\\0&1&0&0\\0&0&1&1\\0&0&0&1}$ et $B = \mtx{1&1&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1}$ deux matrices de $\M_{4}(\R)$. $\rg A = \rg B = 4$ donc $A\sim B$. $\det A = \det B = 1$ et $\tr A = \tr B = 4$.
+       $$
+         A - I_{4} = \mtx{0&1&0&0\\0&0&0&0\\0&0&0&1\\0&0&0&1}
+       $$
+       donc $(A - I_{4})^{2} = 0_{4}$ donc $(X-1)^{2}$ est annulateur de $A$ mais ce n’est pas le cas de $X-1$.
+     %
+%
+
+%proof
+  1. $P \times (\lambda I_{n})\times P^{-1} = \lambda PP^{-1} = \lambda I_{n}$
+  2. Supposons qu’il existe $P \in \GL_{n}(\K)$ tel que $A = PBP^{-1}$. Considérons la propriété $\prop(k): « A^{k} = PB^{k}P^{-1} »$ définie pour $k \in \N$.
+     - $A_{0} = 9_{n} = PI_{n} P^{-1}$ donc $\prop(0)$ est vraie
+     - Supposons $\prop(k)$ vraie pour un entier naturel $k$ fixé.
+       $$
+         A^{k+1} = A^{k} \times A = PB^{k}P^{-1} \times PBP^{-1} = PB^{k+1}P^{-1}
+       $$
+       donc $\prop(k+1)$ est vraie.
+     Soit $Q = \sum_{k=0}^{d}a_{k} X^{k} \in \K[X]$. Alors
+     $$
+       Q(A) = \sum_{k=1}^{d}a_{k}A^{k} = P \left(\sum_{k=0}^{d}a_{k} B^{k}\right)P^{-1} = P \times  Q(B) \times P^{-1}
+     $$
+     donc $Q(A) \sembl Q(B)$. Ainsi, pour $Q = X+\lambda$, on a bien $A + \lambda I_{n} \sembl B + \lambda I_{n}$.
+  3. $\begin{cases}A = PBP^{-1} \\ A \in \GL_{n}(\K)\end{cases} \implies  \begin{cases}B = P^{-1}AP \\ A \in \GL_{n}(\K)\end{cases} \implies  \begin{cases}B \in \GL_{n}(\K)\\ B^{-1} = P^{-1}A^{-1}P\end{cases}$ donc $B^{-1}\sembl A^{-1}$ car $(\GL_{n}(\K), \times )$ est un groupe.
+  4. $\tr A = \tr ((PB)P^{-1}) = \tr (P^{-1} PB) = \tr B$ et $\det A = \det (PBP^{-1}) = \det P \times \det B \times  (\det P)^{-1} = \det B$.
+     Si $A = PBP^{-1}$ avec $P \in \GL_{n}(\K)$, alors pour $Q \in \K[X]$, on a
+     $$
+       Q(A) = PQ(B)P^{-1}
+     $$
+     donc
+     $$
+       Q(A) = 0_{n} \iff  PQ(B)P^{-1} = 0 \iff  Q(B) = 0
+     $$
+     Ainsi, $\pi_{A} = \pi_{B}$.
+%
+
