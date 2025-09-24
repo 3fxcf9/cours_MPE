@@ -1,0 +1,190 @@
+
+## Éléments propres d’un endomorphisme
+
+%def
+  Soit $f \in \L(E)$.
+  1. $\lambda \in \K$ est appelé valeur propre de $f$((faudrait-il dire « propre ++à++ $f$ » ?)) s’il existe $x \in E \setminus \{0\}$ tel que $f(x) = \lambda x$
+  2. Un vecteur $x$ de $E$ est appelé vecteur propre de $f$ si
+     ~ $x\ne 0_{E}$  ~ $\exists \lambda \in \K: f(x) = \lambda x$
+     Un tel scalaire $\lambda$ est alors unique et est appelé valeur propre associée au vecteur propre $x$.
+  3. L’ensemble des valeurs propres de $f$ est appelé spectre de $f$ et noté en général $\sp f$.
+     Pour $\lambda \in \sp f$, $\ker (f - \lambda \id ) = E_{\lambda}(f)$ est appelé le sous-espace propre de $f$ associé à la valeur propre $\lambda$ (ce sont les vecteurs propres de $f$ dont la valeur propre associée est $\lambda$ et le vecteur nul).
+%
+
+%rem
+  1. $0 \in \sp f \iff f \text{ injectif}$
+     $0 \in \sp f \iff f \text{ non injectif}$
+  2. Pour $\lambda \in \K$, on a $\sp(\lambda \id_{E}) = \{\lambda\}$
+  3. %callout
+       Si $\lambda \in \sp f$, alors $E_{\lambda}$ est stable par $f$.
+     %
+     En effet, $E_{\lambda}(f) = \ker (f-\lambda \id_{E})$ et $[f- \lambda \id_{E}, f] = 0_{\L(E)}$
+  4. %callout
+       Si $(f,g) \in \L(E)^{2}$ avec $[f,g] = 0_{\L_{E}}$, alors pour tout $\lambda \in \sp g$, $E_{\lambda}(g)$ est stable par $f$.
+     %
+     En effet, $E_{\lambda}(g) = \ker (g - \lambda \id_{E})$ et $[g- \lambda \id_{E}, f] = 0_{\L(E)}$
+  5. Pour $x \in E \setminus \{0\}$ et $f \in \L(E)$, on a
+     $$
+       x\text{ vecteur propre de }f \iff \K x \text{ stable par }f
+     $$
+  6. $E = \Cont^{\infty}(\R,\C)$.
+     $$
+       \varphi: \applic{E}{E}{f}{f'}
+     $$
+     est un endomorphisme du $C$-espace vectoriel $E$. Soit $(\lambda, f) \in \C \times E \setminus \{0\}$ tel que((« Équation aux éléments propres »))
+     $$
+       \varphi(f) = \lambda f
+     $$
+     Alors
+     $$
+       \begin{cases}\varphi(f) = \lambda f\\f\neq 0_\K\end{cases} \iff  \begin{cases}f' = \lambda f\\f\ne 0_{E}\end{cases} \iff  \exists k \in \C^{*}: \forall x \in \R, f(x) = k e^{\lambda x}
+     $$
+     Donc $\sp \varphi = \C$ et pour $\lambda \in \C$, on a $E_{\varphi} = \Vect\left\{x \longmapsto e^{\lambda x}\right\}$
+  7. $E = \K[X]$.
+     $$
+       \psi: \applic{E}{E}{P}{P'}
+     $$
+     est un endomorphisme de $\K[X]$. Soit $\lambda \in \K$.
+     $$
+       \psi(P) = \lambda P \iff  P' = \lambda P \iff \begin{cases}\deg  P \geq 1\\ P = \lambda P\end{cases} \text{ ou } \begin{cases}P \in \R_{0}[X] \setminus \{0\} \\ \lambda P = 0\end{cases} \iff \begin{cases}P \in \R_{0}[X] \setminus \{0\}\\ \lambda = 0\end{cases}
+     $$
+     ce qui est impossible. Ainsi, $\sp(\psi) = \{0\}$ et $E_{0}(\psi) = \R_{0}[X]$.
+  8. L’application
+     $$
+       f: \applic{\R^{2}}{\R^{2}}{(x,y)}{(-y,x)}
+     $$
+     est un endomorphisme de $\R_{2}$. Soit $\lambda \in \R$.
+     $$
+       f(x,y) = \lambda(x,y) \iff  \begin{cases}-y = \lambda x\\x = \lambda y\end{cases} \iff  \begin{cases}-y = \lambda x\\ x = \lambda ^{2} x\end{cases} \iff  \begin{cases}-y = \lambda x\\ (1+\lambda^{2})x = 0\end{cases} \iff  x = y = 0
+     $$
+     donc $\sp f = \emptyset$.
+%
+
+%prop
+  Soit $f \in \L(E)$.
+  1. Si $(\lambda, x) \in \K \times E$ vérifie $f(x) = \lambda x$, alors $\forall P \in \K[X], P(f) \mdot x = \tilde{P}(\lambda)x$
+  2. Si $P \in \K[X]$ vérifie $P(f) = 0_{\L(E)}$, alors $\sp f \subset Z_{\K}(P) = \tilde{P}^{-1}(\{0\})$ avec $\tilde{P}: K \longrightarrow \K$
+  3. Si $f \in \L(E)$ possède un polynôme minimal $\pi_{f}$, alors
+     $$
+       \sp f = Z_{k}(\pi_{f})
+     $$
+%
+
+%proof
+  1. Supposons $f(x) = \lambda x$. Considérons la propriété $\prop(k): « f^{k}(x) = \lambda^{k}x »$ définie pour $k \in \N$.
+     - $f_{0}(x) = \id_{E}(x) = x = 1_{\K}\cdot x = \lambda_{0} \cdot x$ donc $\prop(0)$ est vraie.
+     - Supposons $\prop(k)$ vraie pour $k \in \N$ fixé.
+       $$
+         \begin{align*}
+           f^{k+1}(x) = f(f^{k}(x)) = f(\lambda^{k}x) = \lambda^{k}f(x) = \lambda^{k} \cdot (\lambda \cdot x) = (\lambda^{k} \lambda)\cdot x = \lambda^{k+1}\cdot x
+         \end{align*}
+       $$
+       Si $P = \sum_{k=0}^{d}a_{k} X^{k}$, alors
+       $$
+         \begin{align*}
+           P(f) \mdot x&= \left(\sum_{k=0}^{d}a_{k}f^{k}\right)\mdot x\\
+           &=\sum_{k =0}^{d}a_{k} f^{k}(x)\\
+           &= \sum_{k=0}^{d}a_{k} \lambda^{k}x\\
+           &= \left(\sum_{k=0}^{d}a_{k} \lambda^{k}\right)\mdot x\\
+           &= \tilde{P}(\lambda)\mdot x
+         \end{align*}
+       $$
+  2. Supposons $P(f) = 0_{\L(E)}$ et $\lambda \in \sp f$. Il existe $x \in E \setminus \{0\}$ tel que $f(x) = \lambda x$ d’où $P(f)\mdot x = \tilde{P}(\lambda)\mdot x$, i.e. $\tilde{P}(\lambda)\mdot x = 0_{E}$. Or $x\ne 0_{E}$ donc $\tilde{P}(\lambda) = 0$. Ainsi, $\sp f \subset Z_{k}(P)$.
+  3. Si $\cdot \pi_{f}$ existe, alors $\pi_{f}(f) = 0_{\L(E)}$ donc
+     $$
+       \sp f \subset Z_{\K}(\pi_{f})
+     $$
+     Soit $\lambda \in Z_{\K}(\pi_{f})$. Il existe $\alpha \in \N^{*}$ et $Q \in \K[X]$ tel que
+     $$
+       \begin{cases}\pi_{f} = (X-\lambda)^{\alpha}Q\\Q \land (X-\lambda) = 1 \iff \tilde{Q}(\lambda)\ne 0_\K\end{cases}
+     $$
+     d’où $\ker \pi_{f}(f) = \ker (f-\lambda \id_{E})^{\alpha} \oplus \ker Q(f)$.
+
+     Si $(f-\lambda \id_{E})$ est injectif, alors $(f- \lambda \id_{E})^{\alpha}$ aussi, d’où
+     $$
+       E = \{0_{E}\} \oplus \ker Q(f) = \ker Q(f)
+     $$
+     Donc $Q(f) = 0_{\L(E)}$ donc $\pi_{f} \mid Q$ ce qui est faux. Ainsi, $(f-\lambda \id_{E})$ n’est pas injectif donc $\lambda \in \sp f$.
+%
+
+%eg
+  1. Si $f \in \L(E)$ est nilpotent, alors $\exists k \in \N^{*}: \pi_{f} = X^{k}$, donc $\sp f = Z_{\K}(\pi_{f}) = \{0\}$.
+  2. Si $p:E \longrightarrow E$ est un projecteur, i.e. $p \in \L(E)$ et $p^{2} = p$, alors $X^{2} - X = X(X-1)$ est annulateur de $p$, donc $\sp p \subset \{0,1\}$(($p = \id_{E} \implies  \sp p = \{1\}$ et $p = 0_{\L(E)} \implies  \sp p = \{0\}$)). $\pi_{f} \in \{X,X-1, X^{2}-X\}$. $\sp p = \{0\} \iff  p = 0_{\L(E)}$, $\sp p = {1} \iff  p = \id$ et $p \notin \{0,\id \} \iff  \sp p = \{0,1\}$.
+%
+
+%cor
+  Si $E$ est un $\C$-espace vectoriel de **dimension finie** non nulle et si $f \in \L_{\C}(E)$, alors
+  1. $\sp f \ne \emptyset$  2. $f \text{ nilpotent} \iff  \sp f = \{0\}$
+  %offprog
+    Ce résultat est vrai dans un corps algébriquement clos, peu importe la dimension tant que $f$ possède un polynôme minimal.
+  %
+%
+
+%proof
+  1. Comme $\dim_{\C} E < +\infty$, $\pi_{f}$ existe et $\pi_{f} \in \C[X]$ avec $\deg  \pi_{f} \geq 1$, donc $\pi_{f}$ possède au moins une racine dans $\C$, d’où
+     $$
+       \sp f = Z_{\C}(\pi_{f}) \ne \emptyset
+     $$
+  2. $$
+       \begin{align*}
+         f \text{ nilpotent} \iff  \exists k \in \N^{*}: \pi_{f} = X^{k}\\
+         &= Z_\C(\pi_{f}) = \{0\} \iff  \sp f = \{0\}
+       \end{align*}
+     $$
+%
+
+%eg
+  1. L’application
+     $$
+       \varphi:\applic{\C_{n}[X]}{\C_{n}[X]}{P}{P'}
+     $$
+     est un endomorphisme nilpotent ($\varphi^{n+1} = 0_{\L(C_{n}[X])}$) donc $\sp \varphi = \{0\}$.
+  2. En dimension infinie, l’endomorphisme
+     $$
+       \varphi: \applic{\C[X]}{\C[X]}{P}{P'}
+     $$
+     n’est pas nilpotente, donc $\varphi$ ne possède pas de polynôme minimal.
+  3. Posons
+     $$
+       \psi:\applic{\R^{3}}{\R^{3}}{(x,y,z)}{(-y, x, 0)}
+     $$
+     Alors
+     $$
+       \varphi(x,y,z) = \lambda(x,y,z) \iff  \begin{cases}-y &= \lambda x&= \lambda y\\0 &= \lambda z\\\end{cases}\iff \begin{cases}x &= 0\\y &= 0\\\lambda z &= 0\end{cases}
+     $$
+     donc $\sp \psi = \{0\}$ et $E_{0}(\psi) = \ker \psi = \{(0,0,k)\mid k \in \R\}$. De plus, $\psi^{2} \ne 0 \ne \psi^{3}$ donc $\psi$ n’est pas nilpotente.
+%
+
+%prop
+  Soit $f \in \L(E)$.
+  1. Si $(x_{i})_{i \in I}$ est une famille de vecteurs propres de $f$ associés à des valeurs propres distinctes de $f$, alors $(x_{i})_{i \in I}$ est libre dans $E$.
+  2. Si $\dim_{\K}E = n \in \N$, alors $\abs{\sp f} \leq n$
+  3. Si $(\lambda_{i})_{i \in I}$ est une famille de valeurs propres distinctes de $f$, alors
+     $$
+       \underbrace{\sum_{i \in I} E_{\lambda_{i}}(f)}_{=\Vect\left\{\bigcup_{i \in I}E_{\lambda_{i}}(f)\right\}} = \bigoplus_{i \in I}E_{\lambda_{i}}(f)
+     $$
+  %offprog
+    4. Si $(f,g) \in \L(E)^{2}$ et $h \in \GL(E)$ vérifiant $f = h\circ g\circ h^{-1}$, alors
+       ~ $\sp f = \sp g$  ~ $\forall \lambda \in \sp(g), E_{\lambda}(f) = h(E_{\lambda}(g))$
+  %
+%
+
+%proof
+  1. Considérons la propriété $\prop(k): « \text{si } x_{1}, \ldots, x_{k} \text{ sont des vecteurs propres associés à des valeurs propres distinctes } \lambda_{1}, \ldots, \lambda_{k} \text{ alors } (x_{1}, \ldots, x_{k}) \text{ est libre} »$.
+     - $x_{1}$ est un vecteur propre donc $x_{1}\ne 0_{E}$ donc $\prop(1)$ est vraie
+     - Supposons $\prop(k)$ vraie pour $k$ fixé dans $\N^{*}$. Soient $(x_{1}, \ldots, x_{k+1}) \in (E \setminus \{0\})^{n+1}$ et $(\lambda_{1}, \ldots, \lambda_{k+1}) \in \K^{k+1}$ distincts deux à deux vérifiant $\forall i \in \icc{1,k+1}, f(x_{i}) = \lambda_{i} x_{i}$. Supposons $\alpha_{1} x_{1} + \cdots + \alpha_{k+1}x_{k+1} = 0_{E}$ et appliquons $f$: $\alpha_{1} \lambda_{1} x_{1} + \cdots + \alpha_{k+1}\lambda_{k+1}x_{k+1} = 0_{E}$, d’où par combinaison linéaire des deux dernières lignes (en multipliant par $-\lambda_{k+1}$ la seconde),
+     $$
+       \alpha_{1}(\lambda_{1} - \lambda_{k+1})x_{1} + \cdots + \alpha_{k}(\lambda_{k} - \lambda_{k+1})x_{k} = 0_{E}
+     $$
+     d’où par $\K$-liberté de $(x_{1}, \ldots, x_{k})$ on a $\alpha_{1} + \cdots = \alpha_{k} = 0$, donc $(x_{i})_{i \in I}$ est libre.
+  2. - Si $\dim  E = 0$, alors $E = \{0\}$ et $\sp f = \emptyset$ donc $\abs{\sp f} = 0$.
+     - Sinon, notons $\dim E = n \in \N^{*}$. Alors toute famille libre de $E$ a au plus $n$ éléments. Il y a donc au plus $n$ valeurs propres distinctes: $\abs{\sp f} \leq n$.
+  3. Soit $J \in \Part_{f}(I)$ et $(x_{j})_{j \in J} \in \prod_{j \in J}E_{\lambda_{j}}(f)$ avec $\sum_{j \in J}x_{j} = 0$. Posons $J' = \{j \in J \mid x_{j} \ne 0\}$. On a
+     $$
+       \sum_{j \in J'}x_{j} = 0_{E} \quad (\star)
+     $$
+     or la famille $(x_{j})_{j \in J'}$ est libre si $J'\ne\emptyset$ donc la relation $(\star)$ donne $J'=\emptyset$. Ainsi,
+     $$
+       \forall j \in J, x_{j} = 0_{E}
+     $$
+%

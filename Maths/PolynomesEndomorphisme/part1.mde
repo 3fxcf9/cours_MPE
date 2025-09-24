@@ -753,3 +753,106 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      Ainsi, $\pi_{A} = \pi_{B}$.
 %
 
+%eg
+  1. Si $N \in \M_{n}(\K)$ est nilpotente d’indice $n$, alors
+     $$
+       N \sembl \mtx{0&1&0& \cdots&0\\\vdots&\ddots&\ddots&\vdots\\\vdots&\ddots&\ddots&1\\0& \cdots&0}
+     $$
+     Soit
+     $$
+       f: \applic{\M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{NX}
+     $$
+     l’endomorphisme canoniquement associé à $N$. On a $f^{n} = 0$ et $f\neq 0$. Soit $X_{0}\in \M_{n,1}(\K)$ tel que $f^{n-1}(X_{0})\neq 0$. Considérons $\mathscr  B=(f^{n-1}(X_{0}), \ldots, f(X_{0}), X_{0})$. $\mathscr B$ est de longueur $n = \dim \M_{n,1}(\K)$.
+     - Supposons $\mathscr  B$ liée. Il existe $(\alpha_{0}, \ldots, \alpha_{n-1})\in \K^{n} \setminus \{(0,\ldots, 0)\}$ tels que
+       $$
+         \sum_{k=0}^{n-1}\alpha_{k}f^{k}(X_{0}) = 0 \quad (\star)
+       $$
+       Soit $i = \min\{k \in \icc{0,n-1}\mid \alpha_{i}\neq 0_{\K}\}$. On applique $f^{n-1-i}$ à $(\star)$:
+       $$
+         \alpha_{i}f^{n-1}(X_{0}) = 0
+       $$
+       or $\alpha_{i}\neq 0_{\K}$ et $f^{n-1}(X_{0})\neq 0$ — contradiction.
+     $\mathscr B$ est donc libre et contient $n$ élément. C’est donc une base de $\M_{n,1}(\K)$ et
+     $$
+       N \sembl \mat_{\mathscr  B}f = \mtx{0&1&0& \cdots&0\\\vdots&&\ddots&&\vdots\\\vdots&&&1&0\\\vdots & &&&1\\0&\cdots & \cdots & \cdots &0}
+     $$
+     2. %lemma
+          Soit $(A,B) \in \M_{n}(\R)^{2}$. On a
+          $$
+            A\underset{\M_{n}(\C)}\sembl B \implies A\underset{\M_{n}(\R)}\sembl B
+          $$
+        %
+        %proof
+          Il existe $P \in \GL_{n}(\C)$ tel que $A = PBP^{-1}$, i.e. $AP = PB$. On a $P = U+iV$ avec $(U,V) \in \M_{n}(\R)^{2}$. Alors, $A(U+iV) = (U+iV)B$, i.e.
+          $$
+            \underbrace{AU}_{\in \M_{n}(\R)}+i \underbrace{AV}_{\in \M_{n}(\R)} = UB + iVB
+          $$
+          d’où par identification, $AU = UB$ et $AV = VB$. Ainsi,
+          $$
+            \forall z \in \C, A(U+zV) = AU+zAV = UB+zVB = (U+zV)B
+          $$
+          La fonction
+          $$
+            f: \applic{\C}{\C}{z}{\det (U+zV)}
+          $$
+          est polynomiale et $f(i) = \det P\neq 0$. Le polynôme ssocié n’est donc pas le polnôme nul. Il n’a donc qu’un nombre fini de racines réelles. Notons $x_{0} \in \R$ tel que $f(x_{0})\ne 0$. Alors
+          $$
+            Q = U+x_{0}V \in \GL_{n}(\R)
+          $$
+          et $QA = QB$ donc
+          $$
+            A \underset{\M_{n}(\R)}\sembl B
+          $$
+        %
+     3. %lemma
+          Si $A \in \M_{n}(\C)$ est une matrice de trace nulle, alors elle est semblable à une matrice à diagonale nulle.
+        %
+        %rem
+          $I_{2} \in \M_{2}(\F_{2})$ est de trace nulle mais elle est semblable qu’à elle même.
+        %
+        %proof
+          - $\begin{cases}A \in \M_{1}(\C)\\\tr a = 0\end{cases}$, i.e. $\begin{cases}A = \mtx{\alpha}\\\alpha = 0\end{cases}$ donc $A = 0_{1} \sembl 0_{1}$.
+          - Supposons la propriété vraie pour $n \in \N^{*}$ fixé. Soit $A \in \M_{n+1}(\C)$ de trace nulle.
+            - Si $A \in \Vect\left\{(I_{n+1})\right\}$, alors il existe $\lambda \in \K: A = \lambda I_{n+1}$ donc
+              $$
+                \tr A = 0 \implies (n+1)\lambda = 0 \implies  \lambda=0
+              $$
+              Donc $A = 0_{n+1} \sembl 0_{n+1}$ qui est une matrice à diagonale nulle.
+            - Sinon, soit $f: x \longmapsto Ax$ canoniquement associé à $A$. Alors $f \neq \Vect\left\{\id_{\M_{n,1}(\K)}\right\}$.
+              %offprog
+                Alors, il existe $x \in E \setminus \{0\}$ tel que $f(\C x) \not\subset \C x$, donc
+                $$
+                  \exists x \in E \setminus \{0\}: f(x) \notin \C x
+                $$
+                car si $f(x) \in \C x$, alors par liberté, $f(\C x) \subset \C x$. Ainsi, $(x, f(x))$ est libre dans $\M_{n,1}(\C)\simeq \C^{n}$.
+              %
+              Complétons-la en une base $\mathscr  B = (x, f(x), e_{3}, \ldots, e_{n+1})$ de $\C^{n+1}$.
+              - si $n=1$,
+                $$
+                  A \sembl \mat_{\mathscr B}(f) = \mtx{0&\alpha\\1&\beta}
+                $$
+                avec $\beta=0$ car $\tr A = 0$. Ainsi
+                $$
+                  A\sembl \mtx{0&\alpha\\1&0}
+                $$
+              - si $n \geq 2$,
+                $$
+                  A \sembl \mat_{\mathscr  B}(f) =  \arrmtx{c|c}{0&L\\\hline 1&\\0&\\\vdots&\hspace{2em}A'\hspace{2em}\\0&}= \arrmtx{c|c}{0&L\\\hline C&A'}
+                $$
+                et $\tr  A = 0 \implies 0+\tr A' = 0$, i.e. $\begin{cases}\tr A' = 0\\A' \in \M_{n}(\C)\end{cases}$. Il existe donc $B \in \M_{n}(\C)$ à diagonale nulle et $P \in \GL_{n}(\C)$ telle que $A' = PBP^{-1}$.
+                $$
+                  \begin{array}{c|c}\end{array}
+                $$
+                $$
+                  A \sembl \underbrace{\arrmtx{c|c}{0 & L\\\hline C&PBP^{-1}}}_{\arrmtx{c|c}{1&0\\\hline 0&P} \arrmtx{c|c}{0&L'\\\hline C'&B}\arrmtx{c|c}{1&0\\\hline 0&P^{-1}}} \sembl \arrmtx{c|c}{0&L'\\\hline C'&B}
+                $$
+                avec $L' =LP$ et $C' = P^{-1}C$.
+        %
+%
+
+%rem
+  Pour $f \in \L(E)$ et $x \in E$, dire que la droite vectorielle engendrée par $x$ est stable par $f$ revient à
+  $$
+    \begin{cases}x \neq 0_{E}\\f(\K x) \subset \K x\end{cases}\iff \begin{cases}x\ne 0_{E}\\f(x) \in \K x\end{cases}\iff \begin{cases}x\ne 0_{E}\\ \exists \lambda \in \K: f(x) = \lambda x\end{cases}
+  $$
+%
