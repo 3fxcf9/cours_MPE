@@ -1065,9 +1065,9 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
      ~ $x_{1}A \subset \text{id(\{x.1\})}$  ~ $x_{1} A$ est un idéal  ~ $x_{1} \in x_{1} A$
      Alors nécessairement, $\text{id}(\{x_{1}\}) = x_{1}A$.
      %offprog
-       $\forall i \in \icc{1,n}, x_{i} \in \text{id(\{x.1, ldd, x.n\})}$ donc $\forall i \in \icc{1,n}, x_{i} \subset \text{id(\{x.1, ldd, x.n\})}$, d’où par stabilité par $+$, on a
+       $\forall i \in \icc{1,n}, x_{i} \in \text{id(\{x_1, \ldots, x_n\})}$ donc $\forall i \in \icc{1,n}, x_{i} \subset \text{id(\{x_1, \ldots, x_n\})}$, d’où par stabilité par $+$, on a
        $$
-         \underbrace{\sum_{i=1}^{n}x_{i}A}_{\text{idéal (cf 1) contenant } \{x_{1}, \ldots, x_{n}\}} \subset \text{idv(\{x.1, ldd, x.n\})}
+         \underbrace{\sum_{i=1}^{n}x_{i}A}_{\text{idéal (cf 1) contenant } \{x_{1}, \ldots, x_{n}\}} \subset \text{idv(\{x_1, \ldots, x_n\})}
        $$
        d’où $\text{id}(\{x_{1}, \ldots, x_{n}\}) = x_{1} A + \cdots + x_{n} A$
      %

@@ -1103,3 +1103,569 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
        Nécessairement, il existe $i \in \icc{1,n}$ tel que $f-\lambda_{i}\id_{E}$ ne soit pas injectif. Il existe donc $i_{0} \in \icc{1,r}$ tel que $\lambda_{i_{0}} \in \sp f$. Or $\tilde{P}(\lambda_{i}) - \mu = 0_{\K}$ donc $\mu = \tilde{P}(\lambda_{i})$.
   %
 %
+
+
+## Éléments propres en dimension finie
+
+%def
+  Soit $A \in \M_{n}(\K)$ ($n \in \N^{*}$).
+  1. $\lambda \in \K$ est appelé valeur propre de $A$ si $\lambda$ est valeur propre de
+     $$
+       f_{A}: \applic{\M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{AX}
+     $$
+     i.e.
+     $$
+       \exists X \in \M_{n,1}(\K) \setminus \{0\}: AX = \lambda X
+     $$
+     i.e.
+     $$
+       (A- \lambda I_{n}) \notin GL_{n}(\K)
+     $$
+     i.e.
+     $$
+       \det (A-\lambda I_{n}) = 0
+     $$
+     L’ensemble des valeurs propres de $A$ est appelé spectre de $A$ et noté $\sp_{\K}(A)$.
+  2. Un vecteur $X \in \M_{n,1}(\K)$ est appelé vecteur propre de $A$ si
+     ~ $X\ne 0$  ~ $\exists \lambda \in \K: AX = \lambda X$
+     ($X$ est appelé vecteur propre associé à la valeur propre $\lambda$).
+  3. Pour $\lambda \in \sp_{\K}(A)$, le sous-espace vectoriel $E_{\lambda}(A) = \ker (A-\lambda I_{n})$ est le sous-espace propre associé à la valeur propre $\lambda$.
+%
+
+%eg
+  1. $A = \mtx{1&1&1\\1&1&1\\1&1&1} \in \M_{3}(\R)$. $A \mtx{1\\1\\1} = 3 \mtx{1\\1\\1}$ donc $3 \in \sp_{\R}(A)$.
+     $$
+       \mtx{x\\y\\z} \in E_{3}(A) \iff  A \mtx{x\\y\\z} - 3 \mtx{x\\y\\z}
+     $$
+     On a alors le système
+     $$
+       E_{3}(A): \begin{cases}
+         -2x + y + z &= 0\\
+         x - 2y + z &= 0\\
+         (x+y-2z &= 0) & \tiny\text{somme des autres lignes}
+       \end{cases} \iff \begin{cases}
+         -2x + y + z &= 0 \\ 3x - 3y &= 0 & \tiny L_{2} - L_{1}
+       \end{cases}
+     $$
+     si bien que
+     $$
+       E_{3}(A) = \{(x,x,x) \mid x \in \R\} = \R \mtx{1\\1\\1}
+     $$
+     $A \mtx{1\\-₁\\0} = \mtx{0\\0\\0}$ et $\mtx{1\\-1\\0} \ne 0$ donc $\ker A \ne \{0\}$, i.e. $0 \in \sp_{\R}(A)$. $\ker A: x+y+z = 0$ (plan vectoriel de $\R^{3}$) donc
+     $$
+       E_{0}(A) \oplus E_{3}(A) \subset \R^{3}\simeq \M_{3,1}(\R)
+     $$
+  2. $\sp_{\K} \mtx{\lambda_{1} &  & *\\ & \ddots & \\0 & & \lambda_{n}} = \{\lambda_1, \ldots, \lambda_{n}\}$.
+     $$
+       \lambda \in \sp_{\K}(A) \iff  \det (A - \lambda I_{n}) = 0 \iff  \vmtx{\lambda_{1} &  & *\\ & \ddots & \\0 & & \lambda_{n}}_{(n)} = \prod_{i=1}^{n}(\lambda_{i} - \lambda) = 0
+     $$
+     $\sp_{\K}(\lambda I_{n}) = \{\lambda\}$. $\sp_{\K}(\diag(\lambda_{1}, \ldots, \lambda_{n})) = \{\cdot 1, \ldots, \lambda_{n}\}$
+  3. Soit $ea \in \M_{n}(\K)$. Posons
+     $$
+       \varphi: \applic{\M_{n}(\K)}{\M_{m}(\K)}{M}{AM}
+     $$
+     Montrons que $\sp \varphi = \sp_{\K}(A)$. Soit $\lambda \in \sp \varphi$. Il existe $M \in \M_{n}(\K) \setminus \{0_{n}\}$ telle que $\varphi(M) = \lambda M$, i.e. $AM = \lambda M \quad (*)$. Posons $M = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}}$ de sorte que $AM = \arrmtx{c|c|c}{AC_{1} & \cdots & AC_{n}}$. Alors
+     $$
+       (*) \iff  \forall i \in \icc{1,n}, AC_{i} = \lambda C_{i}
+     $$
+     $R\ne 0$ donc $\exists i \in \icc{1,n}: C_{i_{0}} \ne 0$. $\begin{cases}C_{i_{0}}\ne 0\\AC_{i_{0}}=\lambda C_{i_{0}}\end{cases}$ donc $\lambda \in \sp_{\K}(A)$.
+     - Soit $\lambda \in \sp_{\K}(A)$. Il existe $V \in \M_{n,1}(\K) \setminus \{0\}$ tel que $AV = \lambda V$. Posons $M = \arrmtx{c|c|c}{V & \cdots & V} \ne 0_{n}$. Alors
+     $$
+       AM = \arrmtx{c|c|c}{AV & \cdots & AV} = \arrmtx{c|c|c}{\lambda V & \cdots & \lambda V} = \lambda M
+     $$
+     Donc $\lambda \in \sp \varphi$.
+%
+
+%property
+  Soit $A \in \M_{n}(\K)$.
+  1. $0 \in \sp_{\K}(A) \iff  A \notin \GL_{n}(\K)$
+  2. $\abs{\sp_{\K}(A)} \leq n$
+  3. Si $\K$ est un sous-corps de $L$, alors $A \in \M_{n}(L)$ et $\sp_{\K}(A) \subset \sp_{L}(A)$
+  4. %lemma
+       Si $P \in \K[X]$ et $P(A) = 0_{n}$, alors
+       $$
+         \sp_{\K}(A) \subset \Z_{\K}(P)
+       $$
+       et mieux,
+       $$
+         \sp_{\K}(A) = Z_{\K}(\pi_{A})
+       $$
+     %
+  5. Si $A = \mat_{\mathscr C}(f)$ avec $f \in \L(E)$, $\dim E = n$ et $\mathscr C$ une base de $E$, alors
+     $$
+       \sp_{\K}(A) = \sp(f)
+     $$
+  7. Si $A\sembl A'$, alors $\sp_{\K}(A) = \sp_{\K}(A')$.
+     %offprog
+       Mieux: si $A = U \times  A' \times U^{-1}$ avec $eu \in \GL_{n}(\K)$, alors pour tout $\lambda \in \sp_{\K}(A) = \sp_{\K}(A')$,
+       $$
+         E_{\lambda}(A) = U \times  E_{\lambda}(A')
+       $$
+     %
+  8. Si $A \in \GL_{n}(K)$, alors
+     $$
+       \lambda \in \sp_{\K}(A^{-1}) \iff  \frac{1}{\lambda} \in \sp_{\K}(A)
+     $$
+%
+
+$\K$ est un sous-corps de $(\K(x), +, \times )$. Soit $A \in \M(K)$. On a $A \in \M_{n}(\K(X))$. $(\M_{n}(\K(X)), +, \times , \cdot)$ est bien une $\K(X)$-algèbre. Prenons
+$$
+  A = \mtx{X^{-1} & X^{2} \\ -X^{2} & X^{-1}} \in \M_{2}(\K(X))
+$$
+On a alors pour tout $(M,N) \in (\M_{n}(\K(X)))^{2}$ et $F \in \K(X)$~:
+$$
+  F \cdot (M \times N) = (F \cdot M) \times N = M \times (F \cdot N)
+$$
+En particulier,
+$$
+  X \cdot (MN) = (XM)\cdot N = M \cdot (XN)
+$$
+d’où
+$$
+  XA - I_{2} = \mtx{0 & X^{3} \\ -\frac{1}{X} & 0} \in \M_{2}(\K(X))
+$$
+
+%def Définition-proposition
+  Soit $A \in \M_{n}(\K)$.
+  $$
+    X \cdot I_{n} - A = \mtx{X-a_{1 1} & -a_{12} & \cdots & -a_{1n}\\
+                             -a_{21} & \ddots & \ddots& \vdots\\
+                             \vdots & \ddots&\ddots& -a_{n-1,n}\\
+                             -a_{n1} & \cdots & -a_{n,n-1} & X-a_{n,n}}
+  $$
+  On pose $\chi_{A}(X) = \det (X \cdot I_{n}-A)$.
+  1. On a alors $\chi_{A} \in \K[X]$ et $\chi_{A}$ est unitaire de degré $n$. On nomme $\chi_{A}$ le *polynôme caractéristique de $A$*.
+     - Le coefficient de $X^{n-1}$ est $-\tr  A$.
+     - Le coefficient constant est $(-1)^{n} \det A$
+
+     On a
+     $$
+       \chi_{A}(X) = X^{n}-\tr A  X^{n-1} + \cdots + (-1)^{n} \det A
+     $$
+     Et pour $\lambda \in \K$,
+     $$
+       \lambda \in \sp_{\K}(A) \iff  \tilde{\chi_{A}}(\lambda) = 0
+     $$
+     autrement dit
+     $$
+       \boxed{\sp_{\K}(A) = Z_{\K}(\chi_{A})}
+     $$
+     et aussi $\sp_{\K}(A) = Z_{\K}(\pi_{A})$.
+  2. $\chi_{A} = \chi_{A\transp}$ donc $\sp_{\K}(A) = \sp_{\K}(A\transp)$
+  3. $A\sembl A' \implies \begin{cases}\chi_{A} = \chi_{A'}\\\pi_{A} = \pi_{A'}\end{cases}$
+  4. Si $f$ est un endomorphisme du $\K$-espace vectoriel $E$ de dimension $n \in \N^{*}$, alors pour $\mathscr C$ une base de $E$, on pose
+     $$
+       \chi_{f} = \chi_{A} \quad\text{avec}\quad A = \mat_{\mathscr C}(f)
+     $$
+     On a donc
+     $$
+       \chi_{f} = X^{n} - \tr f X^{n-1} + \cdots + (-1)^{n} \det f
+     $$
+  %offprog
+    5. Si $(A,B) \in (\M_{n}(\K))^{2}$, alors $\chi_{AB} = \chi_{BA}$ donc
+       $$
+         \sp_{\K}(AB) = \sp_{\K}(BA)
+       $$
+  %
+%
+
+%proof
+  1. Posons $A' = X I_{n} - A = (a'_{ij})_{\substack{1 \leq  i \leq  n\\1 \leq  j \leq n}}$. On a
+     $$
+       \forall (i,j) \in \cc{1,n}^{2}, \begin{cases}
+         a'_{ij} = X - a_{ii}\\ a'_{ij} = -a_{ij} & \text{pour } i\ne j
+       \end{cases}
+     $$
+     or
+     $$
+       \begin{align*}
+         \det A' &= \sum_{\sigma \in S_{n}}\varepsilon(\sigma) a'_{\sigma(1)1}\cdots a'_{\sigma(n)n}\\
+           &= \varepsilon(\id )\underbrace{a'_{^{-1}}}_{=(X-a_{ 1 1})} \cdots \underbrace{a'_{ n n}}_{= (X-a_{n n})} + Q \quad\text{avec } Q \in \K_{n-2}[X]\\
+           &= X^{n} - (a_{1 1} + \cdots + a_{n n})X^{n-1} + R \quad\text{avec }  R \in \K_{n-2}[X]\\
+           &= X^{n} - \tr A \cdot X^{n-1} + R
+       \end{align*}
+     $$
+     et
+     $$
+       \tilde{\chi_{A}}(0) = \det (-A) = (-1)^{n} \det A
+     $$
+     $$
+       \lambda \in \sp_{\K}(A) \iff  \det (A - \lambda I_{n}) = 0 = (-1)^{n} \det (\lambda I_{n} - A) \iff \tilde{\chi_{A}}(\lambda) = 0
+     $$
+  2. Calculons~:
+     $$
+       \begin{align*}
+         \chi_{A\transp} &= \det (X \cdot I_{n} - A\transp)\\ &= \det ((X I_{n} - A)\transp) \\&= \det (X I_{n} - A) \\&= \chi_{A}(A)
+       \end{align*}
+     $$
+     donc $\sp_{\K}(A) = \sp_{\K}(A\transp))$.
+  3. $A = P A' P^{-1}$ avec $P \in \GL_{n}(\K)$.
+     $$
+       \begin{align*}
+         \chi_{A}(X) &= \det (X I_{n} - P A' P^{-1}) \\&= \det (P(X I_{n} - A^{n}) P^{-1}) \\&= \det (X ei_{n} - A')\\ &= \chi_{A'}(X)
+       \end{align*}
+     $$
+  %offprog
+    5. $PQ = \arrmtx{c|c}{I_{n} & B \\ A & I_{n}} \times \arrmtx{c|c}{I_{n} & -B\\ 0_{n} & X I_{n}} = \arrmtx{c|c}{XI_{n}&0_{n}\\A & -AB + X I_{n}}$ et $Q(PQ) = \arrmtx{c|c}{I_{n} & -B\\0 & X I_{n}} \times \arrmtx{c|c}{X I_{n} - BA & 0 \\ XA & XI_{n}}$. On a $\det M = \det N$ (car $\det (PQ) = \det (QP)$).
+       $$
+         \det (X I_{n} - BA)\det (XI_{n}) = \det (X I_{n})\det (-AB + XI_{n})
+       $$
+       donc $X^{n} \chi_{BA} = X^{n} \chi_{AB}$. Comme $(\K[X], +, \times )$ est un anneau intègre, on a $(X^{n}\ne 0)$ d’où
+       $$
+         \chi_{BA} = \chi_{AB}
+       $$
+  %
+%
+
+%eg
+  1. $A = \lambda I_{n}$.
+     $$
+       \chi_{A} = \vmtx{X-\lambda & & 0\\ & \ddots & \\ 0 & & X - \lambda} = (X-\lambda)^{n}
+     $$
+  2. $A = \mtx{\lambda_{1} & & *\\ & \ddots & \\ 0 & & \lambda_{n}}$. Alors
+     $$
+       \chi_{A}(X) = \vmtx{X-\lambda_{1} & & -(*)\\ & \ddots & \\ 0 & & X-\lambda_{n}} = \prod_{i=1}^{n}(X-\lambda_{i})
+     $$
+  3. Si $A \in \M_{2}(\K)$, alors $\chi_{A} = X^{2} - \tr  AX + \det A$
+  4. $A \in \M_{3}(\K)$.
+     $$
+       \chi_{A} = X^{3} - \tr A X^{2} + \alpha X - \det  A
+     $$
+     $\alpha = \chi_{A}'(0)$ et
+     $$
+       \chi_{A}(X) = \sum_{\sigma \in S_{n}}\varepsilon(\sigma) a_{\sigma(1)1}(X) \cdots a_{\sigma(n)n}(X)
+     $$
+     donc
+     $$
+       \chi_{A}'(X) = \left(\sum_{\sigma \in S_{n}}\varepsilon(\sigma)a'_{\sigma(1)1}(X) a_{\sigma(2)2}(X) \cdots a_{\sigma(n)n}(X)\right) + \cdots + \left(\sum_{\sigma \in S_{n}}\varepsilon(\sigma)a_{\sigma(1)1}(X) \cdots a_{\sigma(n)n}(X) \right)
+     $$
+     Ainsi
+     $$
+       \begin{align*}
+          \chi_{A}'(X) &= \sum_{j = 1}^{n}j\vmtx{X-a_{1,1} & \cdots & 0 & \cdots&a_{1,n}\\
+                                                \vdots&\ddots&\vdots&&\vdots\\
+                                                \vdots&&1&&\vdots\\
+                                                \vdots&&\vdots&\ddots&\vdots\\
+                                                a_{n,1}&\cdots&0&\cdots&X-a_{n,n}}\\
+          &= \sum_{j=1}^{n}\Delta_{ii}(-A)\\
+       \end{align*}
+     $$
+     (le 1 apparaît à la position $j,j$) d’où
+     $$
+       \alpha = \sum_{j=1}^{n}(-1)^{n-1}\Delta_{ii}(A)
+     $$
+  5. $A_{n} = \mtx{1 & \cdots & 1\\ \vdots & \ddots & \vdots \\ 1 & \cdots & 1} \in \M_{n}(\R)$. $A_{1} = \mtx{1}$ donc $\chi_{A_{1}} = \abs{X-1} = X-1$.
+
+     Pour $n \geq 2$,
+     $$
+       \begin{align*}
+         \chi_{A_{n}} &= \vmtx{X-1 & & -1\\ &\ddots&\\-1 & & X-1}_{(n)}\\
+         \scriptsize\text{(en sommant les colones)}&= \vmtx{X-n & -1 & \cdots &\cdots& -1\\
+                  \vdots & X-1 & \ddots&&\vdots\\
+                  \vdots & -1 &\ddots &\ddots&\vdots\\
+                  \vdots & \vdots &\ddots &\ddots& -1\\
+                  X-n & -1 & \cdots &-1&X-1}\\
+         &= (X-n)\vmtx{1 & -1 & \cdots &\cdots& -1\\
+                  \vdots & X-1 & \ddots&&\vdots\\
+                  \vdots & -1 &\ddots &\ddots&\vdots\\
+                  \vdots & \vdots &\ddots &\ddots& -1\\
+                  1 & -1 & \cdots &-1&X-1} \\
+         \substack{\scriptsize\text{(en soustrayant la}\\\text{première ligne aux autres)}}&= (X-n)\vmtx{1 & -1 & \cdots &\cdots& -1\\
+                  0 & X & 0&\cdots&0\\
+                  \vdots & 0 &\ddots &\ddots&\vdots\\
+                  \vdots & \vdots &\ddots &\ddots& 0\\
+                  0 & 0 & \cdots &0&X}\\
+                  &= (X-n)X^{n-1}
+       \end{align*}
+     $$
+     donc $\sp_{\R}(A_{n}) = \{0,n\}$.
+%
+
+%offprog
+  %prop
+    Soit $H$ un hyperplan de $E$. Soit $\mathscr C$ une base de $E$. Soit $\varphi \in \L(E) \setminus \{0\}$ tel que $H = \ker \varphi$. Soit $f \in \L(E)$. Posons $A = \mat_{\mathscr C}(f)$ et $L = \mat_{\mathscr C}(\varphi)$.
+    $$
+      H \text{ stable par } f \iff L\transp \text{ vecteur propre de } A\transp
+    $$
+  %
+
+  %proof
+    $$
+      \begin{align*}
+        f(H) \subset H &\iff  \forall X \in \M_{n,1}(\K), \big(LX = 0 \implies LAX = 0\big)\\
+        &\iff \underbrace{\ker L}_{\text{de dim. n-1}} \subset \underbrace{\ker (LA)}_{\text{de dim. n-1 ou n}}\\
+        &\iff LA = 0 \quad\text{ou}\quad \exists \lambda \in \K^{*}: LA = \lambda L\\
+        &\iff \exists \lambda \in \K: LA = \lambda L\\
+        &\iff \exists \lambda \in \K: A\transp L\transp = \lambda L\transp
+      \end{align*}
+    $$
+  %
+%
+
+%prop
+  Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$.
+  1. Si $F$ est un sous-espace vectoriel non réduit à $\{0_{E}\}$ stable par $f$, alors $\chi_{f_{|F}}$ divise $\chi_{f}$
+  %offprog
+    2. Si $E = \bigoplus_{i=1}^{n}F_{i}$ avec $F_{i}$ un sous-espace vectoriel non réduit à $\{0\}$ stable par $f$, alors
+       $$
+         \chi_{f} = \prod_{i=1}^{r}\chi_{f_{|F_{i}}}
+       $$
+  %
+%
+
+%proof
+  1. Si $F=E$, alors $f_{|F} = f$ donc $\chi_{f_{|F}} = \chi_{f}$
+     - Supposons $F$ stable par $f$. $F\ne \{0_{E}\}$ et $F\ne E$. Soit $G$ un sous-espace vectoriel supplémentaire de $F$, i.e. $E = F\oplus G$. Soient $\mathscr B_{F}$ et $\mathscr B_{G}$ deux bases respectives de $F$ et $G$.
+       $$
+         \mat_{\mathscr B_{F}\cup \mathscr B_{G}}(f) = \arrmtx{c|c}{\mat_{\mathscr B_{F}}(f_{|F}) & C \\\hline 0 & D}
+       $$
+       donc
+       $$
+         \chi_{f} = \arrvmtx{c|c}{XI-\mat_{\mathscr B_{F}}(f_{|F}) & -C \\\hline 0 & XI-D} = \det (XI - mat_{\mathscr  B_{F}}(f_{|F})) \times \det (XI - D) = \chi_{f_{|F}} \times \chi_{D}
+       $$
+       donc $\chi_{f_{\F}}\mid \chi_{f}$ dans $\K[X]$.
+  2. $E = \bigoplus_{i=1}^{n}F_{i}$ avec $F_{i}$ non nul et $f$-stable. Soient $\mathscr B_{1} \cap \cdots \cap \mathscr B_{n}$ une base adaptée à cette somme directe. On a
+     $$
+       \mat_{\mathscr B_{1} \cup \cdots \cup \mathscr B_{n}}(f) = \arrmtx{c|c|c}{\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& \mat_{\mathscr B_{n}}(f_{|F_{n}})}
+     $$
+     donc
+     $$
+       \chi_{f} = \arrvmtx{c|c|c}{XI-\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& XI-\mat_{\mathscr B_{n}}(f_{|F_{n}})}
+     $$
+
+%
+
+%def Proposition-définition
+  Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$. Soit $\lambda \in \sp f$. On appelle multiplicité *(algébrique)* de $\lambda$ l’ordre de multiplicité de $\lambda$ comme racine de $\chi_{f}$. Si on le note $m(\lambda)$, alors on a
+  $$
+    \chi_{f} = (X-\lambda)^{m(\lambda)}Q
+  $$
+  avec $\tilde{Q}(\lambda)\ne 0$ et $Q \in \K[X]$.
+  - si $m(\lambda) = 1$, on dit que $\lambda$ est une valeur propre simple de $f$
+  - si $m(\lambda) = 2$, alors on parle de valeur propre double
+  - si $m(\lambda) \geq 2$, alors $\lambda$ est « valeur propre multiple » de $f$
+  On a
+  $$
+    \forall  \lambda \in \sp f, 1 \leq  \underbrace{\dim E_{\lambda}(f)}_{\text{multiplicité géométrique de }\lambda} \leq m(\lambda)
+  $$
+%
+
+%proof
+  Soit $\lambda \in \sp f$. $E_{\lambda}(f) = \ker (f-\lambda \id _{E})$ est stable par $f$ et est non nul, donc $\chi_{f_{|E_{\lambda}(f)}}$ divise $\chi_{f}$. Or $f_{|E_{\lambda}(f)} = \lambda \id_{E_{\lambda}(f)}$ donc $\chi_{f_{|E_{\lambda}(f)}} = (X-\lambda)^{\dim E_{\lambda}(f)}$. Ainsi
+  $$
+    (X-\lambda)^{\dim  E_{\lambda}(f)} \mid (X-\lambda)^{m(\lambda)}
+  $$
+  avec $Q \land (X-\lambda)=1$. Donc $\dim E_{\lambda}(f) \leq  m(\lambda)$ et $\dim E_{\lambda}(f) \ne 0$.
+%
+
+%eg
+  1. Posons $J = \mtx{0&1&0&\cdots&0\\
+               \vdots&\ddots&\ddots&\ddots&\vdots\\
+               \vdots&&\ddots&\ddots&0\\
+               \vdots&&&\ddots&1\\
+               0&\cdots&\cdots&\cdots&0} \in \M_{n+1}(\K)$.
+     $$
+       \chi_{J} = \vmtx{X&-1&&0\\\vdots&\ddots&\ddots&\\\vdots&&\ddots&-1\\0&\cdots&\cdots&X} = X^{n+1}
+     $$
+     donc $\sp_{\K}(J) = \{0\}$. 0 est valeur propre d’ordre $n+1$. $E_{0}(J) = \ker J$ est de dimension $n+1- \rg J = n+1-n = 1$.
+  2. $A_{n} = \mtx{1&1&\cdots &1\\1&1&&0\\\vdots & &\ddots&\vdots\\1 & & &1}$.
+     - $A_{1} = \mtx{1}$. $\chi_{A_{1}} = X-1$.
+     - $A_{2} = \mtx{1&1\\1&1}$. $\chi_{A_{2}} = X^{2} - 3X +0$.
+     - Soit $n \geq 2$.
+       $$
+         \begin{align*}
+           \chi_{A_{n+1}} &= \vmtx{X-1 & -1 & -1 & \cdots & -1\\
+                                  -1 & X-1 & 0 & \cdots & 0\\
+                                   -1 & 0 & \ddots & \ddots & \vdots \\
+                                  \vdots & \vdots & \ddots & \ddots & 0\\
+                                  -1 & 0 & \cdots & 0 & X-1}_{(n+1)}\\
+                            &= (X-1)\chi_{A_{n}} + (-1)^{1+(n+1)}(-1)MAT\\
+                            &= (X-1) \chi_{A_{n}} + (-1)^{n+1} (-1)^{n+1}(-1)(X-1)^{n-1}\\
+                            &= (X-1)\chi_{A_{n}} - (X-1)^{n-1}\\
+         \end{align*}
+       $$
+       donc
+       $$
+         \frac{\chi_{A_{n+1}}}{(X-1)^{n+1}} = \frac{\chi_{A_{n}}}{(X-1)^{n}} - \frac{1}{(X-1)^{2}}
+       $$
+       $$
+         \sum_{k=1}^{n-1}\left(\frac{\chi_{A_{k+1}}}{(X-1)^{k+1}} - \frac{\chi_{A_{k}}}{(X-1)^{k}}\right) = -\sum_{k=1}^{n} \frac{1}{(X-1)^{2}} = -\frac{n-1}{(X-1)^{2}}
+       $$
+       $$
+         \frac{\chi_{A_{n}}}{(X-1)^{n}} - \frac{X-1}{X-1} = -\frac{n-1}{(X-1)^{2}}
+       $$
+       $$
+         \begin{align*}
+           \chi_{A_{n}} &= (X-1)^{n} \left(1 - \frac{n-1}{(X-1)^{2}}\right)\\
+           &= (X-1)^{n-2} \left((X-1)^{2} - (n-1)\right)\\
+           &= (X-1)^{n-2} (X-1-\sqrt{n-1})(tx-1+\sqrt{n-1})
+         \end{align*}
+       $$
+       Ainsi, pour $n \geq 3$,
+       $$
+         \sp_{\R}(A_{n}) = \{1,1-\sqrt{n-1}, 1+\sqrt{n-1}\}
+       $$
+       - 1 est valeur propre de multiplicité $n-2$
+       - $1\pm \sqrt{n-1}$ sont valeurs propres multiples de $A_{n}$.
+       $$
+         \begin{align*}
+           x \in E_{1}(A) &\iff  AX = X\\
+           &\iff \begin{cases}x_{2} + \cdots + x_{n} = 0 \\ x_{1} = 0 \\ \vdots \\ x_{1} = 0\end{cases}\\
+           &\iff \begin{cases}x_{2} + \cdots + x_{n} = 0\\ x_{1} = 0\end{cases}
+         \end{align*}
+       $$
+       donc $\dim E_{1}(A) = n-2 = m_{A_{n}}(1)$ et $\dim E_{1+\sqrt{2}}(A) \in \icc{1, m(1+ \sqrt{n-1})} = \{1\}$ et $\dim E_{1+\sqrt{n-1}}(A) = \dim _{1-\sqrt{n-1}}(A) = 1$, d’où
+       $$
+         \R^{n} = E_{1}(A) \oplus E_{1+\sqrt{n-1}}(A) \oplus E_{1-\sqrt{n-1}}(A)
+       $$
+%
+
+%prop
+  Soit $A \in \M_{n}(\K)$. Soit $L$ un sous-corps de $\K$ où $\chi_{A}$ est scindé.
+  $$
+    \chi_{A}(X) = \prod_{i=1}^{n}(X-\lambda_{i})
+  $$
+  avec $(\lambda_{1}, \ldots, \lambda_{n}) \in L^{n}$. On a alors
+  $$
+    \tr A = \sum_{i=1}^{n}\lambda_{i} \quad\text{et}\quad \det A = \prod_{i=1}^{n}\lambda_{i}
+  $$
+  - La trace de $A$ est donc une somme de valeurs propres de $A$ dans $L$ comptées avec multiplicité((Moyen de détecter des erreurs de calcul))
+  - Le déterminant de $A$ est un produit de valeurs propres de $A$
+%
+
+%proof
+  $$
+    \begin{align*}
+      \chi_A(X) &= X^{2} - \sigma_{1}(\lambda_{1}, \ldots, \lambda_{n})X^{n-1} + \sigma_{2}(\lambda_{1}, \ldots, \lambda_{n})X^{n-2} - \cdots + (-1)^{n} \sigma_{n}(\lambda_{1}, \ldots, \lambda_{n})\\
+        &= X^{n} - (\lambda_{1} + \cdots + \lambda_{n})X^{n-1} + \cdots + (-1)^{n} \prod_{i=1}^{n}\lambda_{i}\\
+        &= X^{n} - \tr A \cdot X^{n-1} + \cdots + (-1)^{n} \det A
+    \end{align*}
+  $$
+%
+
+%eg
+  $A_{n} = \mtx{1&1&\cdots &1\\1&1&&0\\\vdots & &\ddots&\vdots\\1 & & &1}$.
+  $$
+    \tr A = 1 \times (n-2) + (1+\sqrt{n-1}) \times 1 + (1-\sqrt{n-1}) \times 1 = n
+  $$
+  $$
+    \det A_{n} = 1^{n-2}\times (1+\sqrt{n-1})^{1} \times  (1-\sqrt{n-1})^{1} = 1-(n-1) = 2-n
+  $$
+%
+
+## Lien entre $\pi_{A}$ et $\chi_{A}$
+
+%offprog
+  %def Proposition-définition
+    Soit $(a_{0}, \ldots, a_{n-1})\in \K^{n}$. Posons $P = a_{0} + a_{1}T + \cdots + a_{n-1}T^{n-1} + T^{n}$. La *matrice compagnon* associée à $P$ est
+    $$
+      C(P) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)} \in \M_{n}(\K)
+    $$
+    On a
+    $$
+      \chi_{C(P)} = P
+    $$
+  %
+
+  %proof
+    - $C(a_{0} + T) = (-a_{0})$ donc $\chi_{C(1)} = a_{0} + X$.
+    - $C(a_{0} + a_{1}T + T^{2}) = \mtx{0 & -a_{0}\\ 1 & -a_{1}}$
+      $$
+        \chi_{C(a_{0} + a_{1} et + T^{2})} = X^{2} + a_{1}X + a_{0}
+      $$
+      Supposons $\chi_{C(P)} = P$ pour $P$ unitaire de degré $n \in \N^{*}$.
+      $$
+        \begin{align*}
+          \chi_{C(a_{0} + a_{1}T + \cdots + a_{n} T^{n} + T^{n+1})} &= \vmtx{X & 0 & \cdots & 0 & a_{0}\\
+                                                                          -1 & X & \ddots & \vdots & a_{1}\\
+                                                                           0 & \ddots & \ddots & 0 & \vdots \\
+                                                                          \vdots & \ddots & \ddots & \ddots & a_{n-1}\\
+                                                                          0 & \cdots &0 & -1 & X+a_{n}}_{(n+1)} \\
+           &= X \chi_C(a_{1} + a_{2} T + \cdots + a_{n} T^{n-1} + T^{n}) + (-1)^{1 + (n+1)} a_{0}\vmtx{-1 &X &&0\\ & \ddots & \ddots &\\ & &\ddots & X\\ 0 & & & -1}\\
+            &= X(a_{1} + a2 X + \cdots + a_{n} X^{n-1} + X^{n}) + (-1)^{n} a_{0} (-1)^{n}\\
+            &= a_{0} + a_{1} X + a_{2} X^{2} + \cdots + a_{n} X^{n} + X^{n+1}
+        \end{align*}
+      $$
+  %
+%
+
+%eg
+  - $A = \mtx{\alpha} \in \M_{1}(\K)$. $\chi_{A} = X-\alpha$. $\chi_{A}(A) = A - \alpha I_{1} = 0_{1}$.
+  - $A \in \M_{2}(\K)$. $\chi_{A} = X^{2} - \tr A X + \det A$ et $\chi_{A}(A) = A^{2} - \tr  A \cdot  A + (\det  A)I_{2} = 0_{2}$
+%
+
+%thm Théorème de Cayley-Hamilton
+  1. Soit $A \in \M_{n}(\K)$ ($n \in \N^{*}$). $\chi_{A}$ est un polynôme annulateur de $A$, autrement dit $\boxed{\pi_{f} \mid \chi_{f}}$
+  2. Soit $f \in \L_{\K}(E)$ avec $\dim _{\K}E = n \in \N^{*}$. On a $\chi_{f}(f) = 0_{\L(E)}$, i.e. $\boxed{\pi_{f} \mid \chi_{f}}$
+%
+
+%proof
+  2. Soit $f \in \L(E)$. Soit $x \in E \setminus \{0\}$. Montrons que $\chi_{f}(f) \cdot x = 0_{E}$. Posons
+     $$
+       d = \min \underbrace{\big\{i \in \N^{*} \mid (x,f(x), \cdots f^{i}(x)) \text{ liée}\big\}}_{\coloneqq A}
+     $$
+     $n \in A$ donc $A$ est une partie finie non vide de $\N^{*}$. Donc $(x, f(x), \ldots, f^{d-1}(x))$ est libre, et $(x, f(x), \ldots, f^{d}(x))$ est liée. Donc
+     $$
+       f^{d}(x) = -a_{0}x - a_{1} f(x) - \cdots - a_{d-1}f^{d-1}(x)
+     $$
+     avec $(a_{0}, a_{1}, \ldots, a_{d-1}) \in \K^{d}$.
+     ~ $F = \Vect\left\{x, f(x), \ldots, f^{d-1}(x)\right\}$  ~ $\dim F = d \in \N^{*}$  ~ $F$ est stable par $F$
+     donc $\chi_{f_{|F}}$ divise $\chi_{f}$.
+     $$
+       \mat_{(x, f(x), \ldots, f^{d-1}(x))}(f_{|F}) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)}
+     $$
+     d’où
+     $$
+       \chi_{f_{|F}} = a_{0} + a_{1} X + \cdots + a_{d-1}X^{d-1}+X^{d}
+     $$
+     or il existe $P \in \K[X]$ tel que $\chi_{f} = P \times \chi_{f_{|F}}$ d’où $\chi_{f}(f) = P(f) \circ \chi_{f_{|F}}(f)$ donc
+     $$
+       \begin{align*}
+         \chi_{f}(f) \mdot x &= P(f)\mdot(\chi_{f_{|F}}(f)\mdot x)\\ &= P(f)\mid (\underbrace{a_{0} x + a_{1} f(x) + \cdots + a_{d-1} f^{d-1}(x) + f^{d}(x)}_{=0_{E}})\\&=0_{E}
+       \end{align*}
+     $$
+%
+
+%proof
+  ++Preuve fausse :++ $\chi_{A} = \det (X \cdot I_{n} - A)$ donc $\chi_{A}(A) = \det (A \cdot I_{n} - A) = 0$ **Erreur d’homogénéité !** Il faudrait remplacer $X$ par $A$ dans l’expression polynomiale du déterminant, ce qui ne montre pas sa nullité: cette preuve n’aboutit pas.
+%
+
+%eg
+  1. $\forall A \in \M_{n}(\K), \pi_{A} \mid \chi_{A}$ donc
+     $$
+       \forall A \in \M_{n}(\K), \deg (\pi_{A}) \leq \deg (\chi_{A}) = n
+     $$
+     $\begin{cases}\dim E = n \in \N^{*}\\f \in \L(E)\end{cases} \implies  \deg \pi_{f} \leq n = \deg \chi_{f}$
+  2. %lemma
+       Soit $(A,B) \in (\M_{n}(\Z))^{2}$ avec $\det A \land \det B = 1$.
+       $$
+         \exists (U,V) \in (M_{n}(\Z))^{2}: UA + VB = I_{n}
+       $$
+     %
+     %proof
+       Il existe $(u,v) \in \Z^{2}$ tels que $u \det A + v \det B = 1$.
+       $$
+         \begin{cases}
+           \chi_{A} &= (-1)^{n} \det A + XP & \text{avec }P \in \Z[X]\\
+           \chi_{B} &= (-1)^{n} \det B + XQ & \text{avec }Q \in \Z[X]
+         \end{cases}
+       $$
+       D’après le théorème de Cayley-Hamilton, on a
+       $$
+         \begin{cases}
+           0_{n} &= \chi_{A}(A) = (-1)^{n} \det A \cdot  I_{n} + A \times P(A)\\
+           0_{n} &= \chi_{B}(B) = (-1)^{n} \det B \cdot I_{n} + B \times Q(B)
+         \end{cases}
+       $$
+       d’où en multipliant la première ligne par $u$ et la seconde par $v$, on obtient
+       $$
+         0_{n} = (-1)^{n} I_{n} + uA \times P(A) + vBQ(B)
+       $$
+       d’où
+       $$
+         U \times A + V \times B = I_{n}
+       $$
+       avec $U = (-1)^{n+1}u P(A) \in \M_{n}(\Z)$ et $V = (-1)^{n+1} vQ(B) \in \M_{n}(\Z)$.
+     %
+%
+
