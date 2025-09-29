@@ -5,10 +5,10 @@
 %def Anneau unitaire
   $(A,+, \times )$ est un anneau unitaire si
   - $(A,+)$ est un groupe abélien (de neutre noté $0_{A}$)
-  - $\times $ est une l.c.i dans $A$
-  - $\times $ est associative
-  - $\times $ est doublement distributive par rapport à $+$
-  - $\times $ admet un élément neutre noté $1_{A}$ (appelé *élément unité*)
+  - $\times$ est une l.c.i dans $A$
+  - $\times$ est associative
+  - $\times$ est doublement distributive par rapport à $+$
+  - $\times$ admet un élément neutre noté $1_{A}$ (appelé *élément unité*)
 %
 
 - « anneau non nul »~: $0_{A} \neq 1_{A}$
@@ -85,7 +85,7 @@ $$
     $$
 %
 
-%def prop-définition
+%def Définition-proposition
   Soit $(A,+ \times )$ un anneau unitaire. Soit $x \in A$.
   - $x$ est dit *idempotent* si $x^{2} = x$
   - $x$ est dit *nilpotent* si $\exists n \in \N^{*}: x^{n} = 0_{A}$. Son *indice de nilpotence* est $\min\{n \in \N / x^{n} = 0_{A}\}$
@@ -179,7 +179,7 @@ $$
   %offprog
     Un *anneau à division* est un anneau $(A,+, \times )$ vérifiant
     $$
-      \begin{cases}A\neq\{0_{A}\}\\ \forall x \in A \setminus \{0\}, x \in A^{\times}\end{cases} \iff \begin{cases}A \text{ intégre}\\A^{\times} = A \setminus \{0_{A}\}\end{cases} \iff (A \setminus \{0_{A}\}, \times) \text{ groupe}
+      \begin{cases}A\neq\{0_{A}\}\\ \forall x \in A \setminus \{0\}, x \in A^{\times}\end{cases} \iff \begin{cases}A \text{ intègre}\\A^{\times} = A \setminus \{0_{A}\}\end{cases} \iff (A \setminus \{0_{A}\}, \times) \text{ groupe}
     $$
   %
 
@@ -191,11 +191,11 @@ $$
     - ++Premième implication++: Soit $(x,y) \in A^{2}$ avec $x \times y = 0_{A}$. Si $x\neq 0_{A}$, alors $x \in A^{\times}$, donc $x^{-1} \times (x \times y) = x^{-1}\times 0_{A} = 0_{A}$, i.e. $y=0_{A}$. Ainsi, $x \times y = 0_{A}$ donc $x_{A} = 0_{A}$ ou $y_{A} = 0_{A}$.
     - ++Deuxième implication++:
       - L’intégrité donne la stabilité de $A \setminus \{0_{A}\}$ par $x$.
-      - $\times $ est associative
-      - $A$ est intégre donc $A\neq\{0_{A}\}$ donc $A \setminus \{0_{A}\}\neq \emptyset$.
+      - $\times$ est associative
+      - $A$ est intègre donc $A\neq\{0_{A}\}$ donc $A \setminus \{0_{A}\}\neq \emptyset$.
       - $1_{A} \neq 0_{A}$ donc $1_{A} \in A \setminus \{0_{A}\}$ et $1_{A}$ est neutre.
       - $A \setminus \{0_{A}\} = A^{\times}$ permet d’affirmer que tout élément de $A \setminus \{0_{A}\}$ est symétrisable.
-    - ++Troisième implication++:
+    - ++Sens réciproque de la seconde implication++:
       - $A \setminus \{0_{A}\}$ est un groupe donc $A \neq \{0_{A}\}$
       - $A \setminus \{0_{A}\}$ est stable pour $\times $ et $A\neq \{0_{A}\}$ donc $A$ est intègre.
       - $1_{A}$ est le seul candidat pour le neutre de $(A \setminus \{0_{A}\}, \times )$, donc le symétrique de $x \in A \setminus \{0_{A}\}$ est son inverse.
@@ -307,7 +307,7 @@ $$
   $$
   est une l.c.i qui munit $(\Z/n\Z,\bar{+}, \bar{\times })$ d’une structure d’anneau commutatif unitaire (d’unité $\bar{1}$).
 
-  - $(\Z/0\Z,\bar{+}, \bar{\times }) \simeq (\Z, +, \times )$ a.e.u.i
+  - $(\Z/0\Z,\bar{+}, \bar{\times }) \simeq (\Z, +, \times )$ anneau commutatif unitaire intègre
   - $(\Z/1\Z, \bar{+}, \bar{\times }) = (\{\bar{0}\}, \bar{+}, \bar{\times})$ anneau nul
   - Pour $n \geq 2$,
     $$
@@ -508,7 +508,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
     $$
       \forall d \in \N^{*}, \abs{G_{d}} \leq d
     $$
-    donc $(\F_{p}^{*}, \times )$ est un groupe syslique à $(p-1)$ éléments.
+    donc $(\F_{p}^{*}, \times )$ est un groupe cyclique à $(p-1)$ éléments.
 %
 
 %thm
@@ -580,7 +580,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   $$
     \prod_{k=1}^{n-1}k + qn = -1
   $$
-  donc
+  donc (Bezout)
   $$
     \forall k \in \icc{1,n-1}, k \land n = 1
   $$
@@ -653,7 +653,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
      $$
      1. $\ubar a \times \ubar {a'} = \ubar{a'} \times \ubar a \iff \forall i \in \icc{1,n}, a_{i} \times_{i} {a'}_{i} = {a'}_{i} \times_{i} a_{i}$
      2. $A_{i} \neq \{0_{A}\}$, i.e. $1_{A_{1}}\neq 0_{A_{i}}$ et il existe $j\neq i$ tel que $1_{A_{j}} \neq 0_{A_{j}}$
-        ==WHAT???==
+        ==TODO==
   3. Pour $\ubar a \in A_{1} \times  \cdots \times A_{n}$,
      $$
        \begin{align*}
@@ -665,7 +665,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
 %
 
 %eg
-  1. Pour $n \geq 2$, $(\Z^{n}, +, \times )$ est un anneau commutatif unitaire, n’est pas intègre et ==MISSING==
+  1. Pour $n \geq 2$, $(\Z^{n}, +, \times )$ est un anneau commutatif unitaire, n’est pas intègre et ==TODO==
      $$
        \left((\Z^{n})^{\times}, \times \right) = \left((\{-1,1\})^{n}, \times \right) = (\U_{2}^{n}, \times ) \simeq \left((\Z/2\Z)^{n}, +\right)
      $$
@@ -686,7 +686,8 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
 
 %thm
   1. Soient $f: A \longrightarrow A'$ un morphisme d’anneaux unitaires et $g: \K \longrightarrow  \K'$ un morphisme de corps. On a
-     1. $\forall  a \in A^{\times}, f(a) \in (A')^{\times} \text{ et } f(a)^{-1} = f(a^{-1})$  2. $\applic{(A^{\times}, \times )}{((A')^{\times}, \times )}{a}{f(a)}$ est un morphisme de groupes. C’est un isomorphisme de groupes si $f$ est un isomorphisme d’anneaux.
+     - $\forall  a \in A^{\times}, f(a) \in (A')^{\times} \text{ et } f(a)^{-1} = f(a^{-1})$
+     - $\applic{(A^{\times}, \times )}{((A')^{\times}, \times )}{a}{f(a)}$ est un morphisme de groupes. C’est un isomorphisme de groupes si $f$ est un isomorphisme d’anneaux.
   2. L’image directe par $f$ (resp. par $g$) d’un sous-anneau de $A$ est un sous-anneau de $A'$ (resp. sous-corps de $\K$).
   3. L’image réciproque par $f$ (resp. par $g$) d’un sous-anneau de $A'$ (resp. sous-corps de $\K'$) est un sous-anneau de $A$ (resp. sous-corps de $\K$).
   4. $\img f \coloneqq f(A)$ est un sous-anneau de $A'$
@@ -789,7 +790,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
 
 ++Comment trouver $x$ ?++: posons pour tout $i \in \icc{1,r}$
 $$
-  v_{}{i} = \frac{n_{1} \cdots n_{r}}{n_{i}}
+  v_{i} = \frac{n_{1} \cdots n_{r}}{n_{i}}
 $$
 on a alors $v_{i} \land n_{i} = 1$ donc
 $$
@@ -817,7 +818,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 %
 
 %eg
-  Soit $f: A \longrightarrow A'$ un morphisme d’anneaux unitaires avec $0_{A'} \neq 1_{A'}$. On a $f(1_{A}) = 1_{A'} \neq 0_{A'}$ donc $\ker f$ n’est pas un sous-anneau de $A$. Cependand, $\ker f$ est un sous-groupe de $(A,+)$.
+  Soit $f: A \longrightarrow A'$ un morphisme d’anneaux unitaires avec $0_{A'} \neq 1_{A'}$. On a $f(1_{A}) = 1_{A'} \neq 0_{A'}$ donc $\ker f$ n’est pas un sous-anneau de $A$. Cependant, $\ker f$ est un sous-groupe de $(A,+)$.
 
   D’autre part, pour $x \in \ker f$ et $a \in A$,
   $$
@@ -1065,33 +1066,31 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
      ~ $x_{1}A \subset \text{id(\{x.1\})}$  ~ $x_{1} A$ est un idéal  ~ $x_{1} \in x_{1} A$
      Alors nécessairement, $\text{id}(\{x_{1}\}) = x_{1}A$.
      %offprog
-       $\forall i \in \icc{1,n}, x_{i} \in \text{id(\{x_1, \ldots, x_n\})}$ donc $\forall i \in \icc{1,n}, x_{i} \subset \text{id(\{x_1, \ldots, x_n\})}$, d’où par stabilité par $+$, on a
+       $\forall i \in \icc{1,n}, x_{i} \in \text{id}(\{x_1, \ldots, x_n\})$ donc $\forall i \in \icc{1,n}, x_{i} \subset \text{id}(\{x_1, \ldots, x_n\})$, d’où par stabilité par $+$, on a
        $$
-         \underbrace{\sum_{i=1}^{n}x_{i}A}_{\text{idéal (cf 1) contenant } \{x_{1}, \ldots, x_{n}\}} \subset \text{idv(\{x_1, \ldots, x_n\})}
+         \underbrace{\sum_{i=1}^{n}x_{i}A}_{\text{idéal (cf 1) contenant } \{x_{1}, \ldots, x_{n}\}} \subset \text{id}(\{x_1, \ldots, x_n\})
        $$
        d’où $\text{id}(\{x_{1}, \ldots, x_{n}\}) = x_{1} A + \cdots + x_{n} A$
      %
-  %offprog
-    $a_{1}\Z + \cdots + a_{n} \Z$ est alors un idéal de $(\Z,+, \times )$ est un anneau principal. Alors il existe $d \in \N$ unique tel que
-    $$
-      a_{1}\Z + \cdots + a_{n}\Z = d\Z
-    $$
-    On pose $d = \bigwedge_{{i=1}}^{n}a_{i}$. On a
-    $$
-      \forall i \in \icc{1,n}, a_{i}\Z \subset d\Z
-    $$
-    d’où $\forall i \in \icc{1,n}, d\mid a_{i}$ donc $d$ est un diviseur commun aux $a_{i}$.
+  4. $a_{1}\Z + \cdots + a_{n} \Z$ est alors un idéal de $(\Z,+, \times )$ est un anneau principal. Alors il existe $d \in \N$ unique tel que
+     $$
+       a_{1}\Z + \cdots + a_{n}\Z = d\Z
+     $$
+     On pose $d = \bigwedge_{{i=1}}^{n}a_{i}$. On a
+     $$
+       \forall i \in \icc{1,n}, a_{i}\Z \subset d\Z
+     $$
+     d’où $\forall i \in \icc{1,n}, d\mid a_{i}$ donc $d$ est un diviseur commun aux $a_{i}$.
 
-    Soit $\delta \in \N$ avec $\forall i \in \icc{1,n}, \delta\mid a_{i}$. On a alors
-    $$
-      \forall i \in \icc{1,n}, a_{i}\Z \subset \delta\Z i
-    $$
-    Comme $\delta\Z$ est stable par $+$, on a
-    $$
-      a_{1}\Z + \cdots + a_{n}\Z \subset \delta\Z
-    $$
-    donc $d\Z \subset \delta\Z$ donc $\delta\mid d$ d’où $d = \gcd_{(\N,\mid)}(a_{1}, \ldots, a_{n})$
-  %
+     Soit $\delta \in \N$ avec $\forall i \in \icc{1,n}, \delta\mid a_{i}$. On a alors
+     $$
+       \forall i \in \icc{1,n}, a_{i}\Z \subset \delta\Z i
+     $$
+     Comme $\delta\Z$ est stable par $+$, on a
+     $$
+       a_{1}\Z + \cdots + a_{n}\Z \subset \delta\Z
+     $$
+     donc $d\Z \subset \delta\Z$ donc $\delta\mid d$ d’où $d = \gcd_{(\N,\mid)}(a_{1}, \ldots, a_{n})$
 %
 
 %rem
@@ -1273,7 +1272,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 %offprog
   %def
     Soit $(A,+, \times )$ un anneau commutatif unitaire intègre. Un élément $p$ de $A$ est dit *irréductible* si
-    1. $p \notin A^{\times}$  2. $\begin{cases}p = xy\\(x,y) \in Q^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
+    1. $p \notin A^{\times}$  2. $\begin{cases}p = xy\\(x,y) \in A^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
     Autrement dit, $p$ est un irréductible et les seuls diviseurs de $p$ sont ses associés et les unités.
   %
 %
@@ -1330,7 +1329,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
   1. Soit $P \in \K[X]$ de degré 1.
      $$
        \begin{align*}
-         \begin{cases}P = QR\\(Q,R) \in \K[X]^{2}\end{cases}\\ &\implies  \deg P = \deg Q + \deg R = 1
+         \begin{cases}P = QR\\(Q,R) \in \K[X]^{2}\end{cases} &\implies  \deg P = \deg Q + \deg R = 1\\
          &\implies (\deg Q, \deg R) \in \{(1,0), (0,1)\}\\
          &\implies \deg Q = 0 \text{ ou } \deg R = 0
        \end{align*}
@@ -1501,7 +1500,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
      $$
        P = a_{n}(X-z_{1}) \cdots (X-z_{n})
      $$
-     et on a alors
+     et on a alors((Formules de Viète))
      $$
        \begin{align*}
          \sigma_{1} &= z_{1} + \cdots + z_{n} = -\frac{a_{n-1}}{a_{n}}\\
@@ -1648,7 +1647,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 %
 
 %eg
-  1. $\T_{n}^{+}$ est une sous-algèbre de $(\M_{n}(\K), +, \times, \cdot )$
+  1. $\mathscr T_{n}^{+}$ est une sous-algèbre de $(\M_{n}(\K), +, \times, \cdot )$
   2. $\K^{(\N)}$ est l’ensemble des suites nulles à parti d’un certain rang à valeur dans $\K$. C’est *presque* une sous-algèbre de $(\K^{\N}, +, \times, \cdot )$ (il manque la suite constante égale à 1).
   3. $\K[X]$ est une sous-algèbre de $(\K[X], +, \times , \cdot)$, c’est aussi une sous-algèbre de $(\K[[X]], +, \star , \cdot )$((Algèbre des séries formelles. $\left( \sum_{n \in \N}a_{n} X_{n}\right)\star \left(\sum_{n \in \N}b_{n}X_{n}\right) = \sum_{n \in \N} \left(\sum_{k=0}^{n} a_{k} b_{n-k}\right)X^{n}$)).
 %

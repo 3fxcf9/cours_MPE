@@ -142,9 +142,9 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 %
 
 %proof
-  $\ker \theta_{f}$ est un idéal de l’anneau commutatif unitaire $(\K[X], +, \times )$. Or $\K$ est un corps donc l’idéal est principal, par hypothèse non nul. Il existe donc un unique polynôme unitaire $\pi_{f}$ tel que $\ker  \theta_{f} = \pi_{f}\K[X]$. Or $\pi_{f} \neq 1$
+  $\ker \theta_{f}$ est un idéal de l’anneau commutatif unitaire $(\K[X], +, \times )$. Or $\K$ est un corps donc l’idéal est principal, par hypothèse non nul. Il existe donc un unique polynôme unitaire $\pi_{f}$ tel que $\ker  \theta_{f} = \pi_{f}\K[X]$. Or $\pi_{f} \neq 1$ car
   $$
-    \Bigl(1(f) = 0_{\L(E)} \iff  1 f_{0} = 0_{\L(E)} \iff  \id_{E} = 0_{\L(E)} \iff  E = \{0_{E}\}\Bigr)
+    1(f) = 0_{\L(E)} \iff  1 f_{0} = 0_{\L(E)} \iff  \id_{E} = 0_{\L(E)} \iff  E = \{0_{E}\}
   $$
   donc $\deg \pi_{f} \geq 1$.
 %
@@ -468,7 +468,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 %
 
 %property Conséquences
-  Si $n \geq 2$ et $P_{1}, \ldots, P_{n}$ sont des éléments de $\K[X]$ premiers entre eux et $f$ est un endomorphisme de $E$ vérifiant $(P_{1} \times  \cdotsc \times P_{n})(f) = 0_{\L(E)}$, alors
+  Si $n \geq 2$ et $P_{1}, \ldots, P_{n}$ sont des éléments de $\K[X]$ premiers entre eux et $f$ est un endomorphisme de $E$ vérifiant $(P_{1} \times  \cdots \times P_{n})(f) = 0_{\L(E)}$, alors
   $$
     E = \bigoplus_{i=1}^{n}\ker (P_{i}(f))
   $$
@@ -479,7 +479,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
 %
 
 %proof
-  Comme $P_{i} land P_{j} = 1$ pour tout $1 \leq  i < j \leq  n$, on a par le lemme de décomposition des noyaux:
+  Comme $P_{i} \land P_{j} = 1$ pour tout $1 \leq  i < j \leq  n$, on a par le lemme de décomposition des noyaux:
   $$
     \underbrace{\ker (P_{1} \times  \cdots \times  P_{n})(f)}_{ = \ker (U_{\L(E)}) = E} = \bigoplus_{i=1}^{n}\ker  P_{i}(f)
   $$
@@ -515,7 +515,7 @@ est un morphisme de $\K$-algèbres unitaires car $1(A) = I_{n}$ et
 $$
   \forall (\lambda, \mu) \in \K^{2}, \forall (P,Q) \in (\K[X])^{2}, \begin{cases}(\lambda P + \mu Q)(A) = \lambda P(A) + \mu P(A)\\ (P \times  Q)(A) = P(A) \times Q(A)\end{cases}
 $$
-donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynômes annulateurs de $A$. Il est non nul et n’est pas $\K[X]$(($(I, A, \ldots, A^{n^{2}})$ est une suite de longueur $(n^{2}+1)$ du $\K$-espace $\M_{n}(\K)$ de dimension $n^{2}$. Cette suite est donc liée donc il existe des scalaire tels que $\alpha_{0} I + \cdots + \alpha_{n^{2}} A^{n^{2}} = 0_{n}$ donc $P = \alpha0 + \cdots + \alpha_{n^{2}} X^{n^{2}} \ne 0$ donc $P \in \ker \varphi_{A}$ et $1(A) = I_{n}\ne 0_{n}$ donc $\deg  \pi_{A}$ geq 1)). L’unique polynôme unitaire noté $\pi_{A}$ tel que $\ker  \varphi_{A} = \pi_{A}\K[X]$ est appelé le polynôme minimal de $A$. On a
+donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynômes annulateurs de $A$. Il est non nul et n’est pas $\K[X]$(($(I, A, \ldots, A^{n^{2}})$ est une suite de longueur $(n^{2}+1)$ du $\K$-espace $\M_{n}(\K)$ de dimension $n^{2}$. Cette suite est donc liée: il existe des scalaire tels que $\alpha_{0} I + \cdots + \alpha_{n^{2}} A^{n^{2}} = 0_{n}$ donc $P = \alpha0 + \cdots + \alpha_{n^{2}} X^{n^{2}} \ne 0$ donc $P \in \ker \varphi_{A}$ et $1(A) = I_{n}\ne 0_{n}$ donc $\deg  \pi_{A}$ geq 1)). L’unique polynôme unitaire noté $\pi_{A}$ tel que $\ker  \varphi_{A} = \pi_{A}\K[X]$ est appelé le polynôme minimal de $A$. On a
 - $\deg \pi_{A} \geq  1$
 - $\pi_{A}$ unitaire
 - $\begin{cases}P \in \K[X]\\ P(A) = 0\end{cases} \iff  \pi_{A} \mid P$
@@ -545,7 +545,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
        A = \lambda I_{n} \iff  \pi_{A} = X-\lambda
      $$
-  3. $A = \diag(A_{1}, \ldots, A_{r}) = \mtx{A_{1} & \cdots & 0\\0 \ddots & 0\\ 0 & \cdots & A_{r}}$. Alors $\forall k \in \N, A^{k} = \diag (A_{1}^{k}, \ldots, A_{r}^{k})$ d’où pour $P = \sum_{k=0}^{d}a_{k} X^{k} \in \K[X]$,
+  3. $A = \diag(A_{1}, \ldots, A_{r}) = \mtx{A_{1} &  & 0\\&\ddots & \\ 0 &  & A_{r}}$. Alors $\forall k \in \N, A^{k} = \diag (A_{1}^{k}, \ldots, A_{r}^{k})$ d’où pour $P = \sum_{k=0}^{d}a_{k} X^{k} \in \K[X]$,
      $$
        P(A) = \sum_{k=0}^{d}a_{k}\diag(A_{1}^{k}, \ldots, A_{r}^{k}) = \diag (P(A_{1}), \ldots, P(A_{n}))
      $$
@@ -557,23 +557,24 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
          &\iff P \in  \bigcap_{i=1}^{r}\pi_{A_{i}}\K[X] = \lcm(\pi_{A_{1}}, \ldots, \pi_{A_{n}})
        \end{align*}
      $$
+     donc
      $$
-       \pi_{A} = \lcm(\pi_{A_{1}}, \ldots, \pi_{A_{r}}uu)
+       \pi_{A} = \lcm(\pi_{A_{1}}, \ldots, \pi_{A_{r}})
      $$
-  4. Soit $A \in \M_{n}(\K)$ avec $\rg A = 1$. Il existe
+  4. Soit $A \in \M_{n}(\K)$ avec $\rg A = 1$. On peut écrire
      $$
        A = \mtx{x_{1} Y\transp\\x_{2} Y\transp\\\vdots\\x_{n}Y\transp}
      $$
-     avec $Y \in \M_{n}(\K) \setminus \{0\}$ et $\mtx{x_{1}\\\vdots\\x_{n}} \in \M_{n}(\K)\setminus  \{0\}$. Ainsi,
+     avec $Y \in \M_{n,1}(\K) \setminus \{0\}$ et $\mtx{x_{1}\\\vdots\\x_{n}} \in \M_{n}(\K)\setminus  \{0\}$. Ainsi,
      $$
        A = \mtx{x_{1}\\\vdots\\x_{n}}Y\transp = XY\transp
      $$
 
-     $A^{2} = X \underbrace{Y\transp X}_{\scprod{Y,X}_{\text{can}}}Y\transp = (Y\transp X)XY\transp$. Donc $A^{2} = (Y\transp X)A$.
-     Or $\tr A =\tr (XY\transp) = \tr (Y\transp X) = Y\transp X$ or $\tr (AB) = \tr (BA) don$ donc $A^{2} = \tr (A) A$.
+     $A^{2} = X \underbrace{Y\transp X}_{\scalar{Y}{X}_{\text{can}}}Y\transp = (Y\transp X)XY\transp$. Donc $A^{2} = (Y\transp X)A$.
+     Or $\tr A =\tr (XY\transp) = \tr (Y\transp X) = Y\transp X$ or $\tr (AB) = \tr (BA)$ donc $A^{2} = \tr (A) A$.
      Ainsi, $X^{2} - \tr (A)X$ est un polynôme annulateur de $A$, d’où
      $$
-       \pi_{A} \in \{tx,X-\tr A, X^{2}-\tr (A)X\}
+       \pi_{A} \in \{X,X-\tr A, X^{2}-\tr (A)X\}
      $$
      - $\pi_{A} = X \iff A = 0_{n}$ est exclu car $\rg A = 1$
      - $\pi_{A} = X-\tr A \iff  A = (\tr  A)I_{n}$ et $\rg ((\tr A)I_{n}) = 1 \iff  \begin{cases}\tr A\ne 0\\n=1\end{cases}$
@@ -618,7 +619,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 %
 
 %prop
-  Soit $A \in \M_{n}(\K)$. Si $d = \deg  \pi_{A} \in \N^{*}$, alors $K[A]$ est une sous-algèbre commutative de $\M_{n}(\K)$ de dimension $d$ et ayant pour base $(I A, \ldots, A^{d-1})$.
+  Soit $A \in \M_{n}(\K)$. Si $d = \deg  \pi_{A} \in \N^{*}$, alors $K[A]$ est une sous-algèbre commutative de $\M_{n}(\K)$ de dimension $d$ et ayant pour base $(I, A, \ldots, A^{d-1})$.
 %
 
 %proof
@@ -637,7 +638,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 
 %offprog
   %property Invariance du polynôme minimal par extension de corps
-    Sit $\K$ un sous-corps d’un corps $L$. Soit $A \in \M_{n}(\K)$ (donc $A \in \M_{n}(\K)$). Soient $\pi_{A,\K} \in \K[X]$ et $\pi_{A,\L} \in L[X]$ deux polynômes unitaires tels que
+    Soit $\K$ un sous-corps d’un corps $L$. Soit $A \in \M_{n}(\K)$ (donc $A \in \M_{n}(\K)$). Soient $\pi_{A,\K} \in \K[X]$ et $\pi_{A,L} \in L[X]$ deux polynômes unitaires tels que
     $$
       \{P \in \K[X] \mid P(A) = 0_{n}\} = \pi_{A,\K} \cdot K[X]
     $$
@@ -655,9 +656,9 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
     $$
       \alpha_{0} I + \alpha_{1} A + \cdots + \alpha_{d_{\K}-1}A^{d_{\K}-1} = 0_{n}
     $$
-    Alors $F = \Vect_{\K}\left\{\alpha_{0}, \ldots, \alpha_{d_{\K}-1}\right\}$ est un sous $\K$-espace vectoriel de dimension finie du $\K$-espace vectoriel $L$. Soit $(\varphi_{1}, \ldots, \varphi_{p})$ une $\K$-base de $F\:(\subset L)$. Posons
+    Alors $F = \Vect_{\K}\left\{\alpha_{0}, \ldots, \alpha_{d_{\K}-1}\right\}$ est un sous $\K$-espace vectoriel de dimension finie du $\K$-espace vectoriel $L$. Soit $(\varepsilon_{1}, \ldots, \varepsilon_{p})$ une $\K$-base de $F\:(\subset L)$. Posons
     $$
-      \forall i \in \icc{0, d_{\K-1}}, \alpha_{i} = \sum_{j=1}^{p}\alpha_{ij}\underbrace{\varepsilon_{j}}_{\in L}
+      \forall i \in \icc{0, d_{\K-1}}, \alpha_{i} = \sum_{j=1}^{p}\alpha_{i,j}\underbrace{\varepsilon_{j}}_{\in L}
     $$
     $$
       \forall (k,l) \in \icc{1,n}^{2}, \left[\left(\sum_{j=1}^{p}\alpha_{0,j}\varepsilon_{j}\right)I + \left(\sum_{j=1}^{p}\alpha_{1,j}\varepsilon_{j}\right)A + \cdots + \left(\sum_{j=1}^{p}\alpha_{d_{\K}-1}\varepsilon_{j}\right)A^{d_{\K}-1}\right]_{k,l} = [0]_{k,l}
@@ -707,7 +708,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
   $$
   et on a
   $$
-    \rg A \in \icc{1,\min\{n,p\}} \iff  A \sim J_{r} = \mtx{I_{r} & 0 \\ 0 & 0}
+    \rg A \in \icc{1,\min\{n,p\}} \iff  A \sim J_{r} = \arrmtx{c|c}{I_{r} & 0 \\\hline 0 & 0}
   $$
 %
 
@@ -720,7 +721,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      %callout Attention
        Soient $A = \mtx{1&1&0&0\\0&1&0&0\\0&0&1&1\\0&0&0&1}$ et $B = \mtx{1&1&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&1}$ deux matrices de $\M_{4}(\R)$. $\rg A = \rg B = 4$ donc $A\sim B$. $\det A = \det B = 1$ et $\tr A = \tr B = 4$.
        $$
-         A - I_{4} = \mtx{0&1&0&0\\0&0&0&0\\0&0&0&1\\0&0&0&1}
+         A - I_{4} = \mtx{0&1&0&0\\0&0&0&0\\0&0&0&1\\0&0&0&0}
        $$
        donc $(A - I_{4})^{2} = 0_{4}$ donc $(X-1)^{2}$ est annulateur de $A$ mais ce n’est pas le cas de $X-1$.
      %
@@ -729,7 +730,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 %proof
   1. $P \times (\lambda I_{n})\times P^{-1} = \lambda PP^{-1} = \lambda I_{n}$
   2. Supposons qu’il existe $P \in \GL_{n}(\K)$ tel que $A = PBP^{-1}$. Considérons la propriété $\prop(k): « A^{k} = PB^{k}P^{-1} »$ définie pour $k \in \N$.
-     - $A_{0} = 9_{n} = PI_{n} P^{-1}$ donc $\prop(0)$ est vraie
+     - $A^{0} = I_{n} = PI_{n} P^{-1}$ donc $\prop(0)$ est vraie
      - Supposons $\prop(k)$ vraie pour un entier naturel $k$ fixé.
        $$
          A^{k+1} = A^{k} \times A = PB^{k}P^{-1} \times PBP^{-1} = PB^{k+1}P^{-1}
@@ -756,7 +757,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 %eg
   1. Si $N \in \M_{n}(\K)$ est nilpotente d’indice $n$, alors
      $$
-       N \sembl \mtx{0&1&0& \cdots&0\\\vdots&\ddots&\ddots&\vdots\\\vdots&\ddots&\ddots&1\\0& \cdots&0}
+       N \sembl \mtx{0&1&&0\\\vdots&\ddots&\ddots&\\\vdots&&\ddots&1\\0&\cdots&\cdots&0}
      $$
      Soit
      $$
@@ -774,7 +775,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
        or $\alpha_{i}\neq 0_{\K}$ et $f^{n-1}(X_{0})\neq 0$ — contradiction.
      $\mathscr B$ est donc libre et contient $n$ élément. C’est donc une base de $\M_{n,1}(\K)$ et
      $$
-       N \sembl \mat_{\mathscr  B}f = \mtx{0&1&0& \cdots&0\\\vdots&&\ddots&&\vdots\\\vdots&&&1&0\\\vdots & &&&1\\0&\cdots & \cdots & \cdots &0}
+       N \sembl \mat_{\mathscr  B}f = \mtx{0&1&&0\\\vdots&\ddots&\ddots&\\\vdots&&\ddots&1\\0&\cdots&\cdots&0}
      $$
      2. %lemma
           Soit $(A,B) \in \M_{n}(\R)^{2}$. On a
@@ -813,12 +814,12 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
         %proof
           - $\begin{cases}A \in \M_{1}(\C)\\\tr a = 0\end{cases}$, i.e. $\begin{cases}A = \mtx{\alpha}\\\alpha = 0\end{cases}$ donc $A = 0_{1} \sembl 0_{1}$.
           - Supposons la propriété vraie pour $n \in \N^{*}$ fixé. Soit $A \in \M_{n+1}(\C)$ de trace nulle.
-            - Si $A \in \Vect\left\{(I_{n+1})\right\}$, alors il existe $\lambda \in \K: A = \lambda I_{n+1}$ donc
+            - Si $A \in \Vect\left\{I_{n+1}\right\}$, alors il existe $\lambda \in \K: A = \lambda I_{n+1}$ donc
               $$
                 \tr A = 0 \implies (n+1)\lambda = 0 \implies  \lambda=0
               $$
               Donc $A = 0_{n+1} \sembl 0_{n+1}$ qui est une matrice à diagonale nulle.
-            - Sinon, soit $f: x \longmapsto Ax$ canoniquement associé à $A$. Alors $f \neq \Vect\left\{\id_{\M_{n,1}(\K)}\right\}$.
+            - Sinon, soit $f: x \longmapsto Ax$ canoniquement associé à $A$. Il vérifie $f \notin \Vect\left\{\id_{\M_{n,1}(\K)}\right\}$.
               %offprog
                 Alors, il existe $x \in E \setminus \{0\}$ tel que $f(\C x) \not\subset \C x$, donc
                 $$
@@ -910,7 +911,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
        f: \applic{\R^{2}}{\R^{2}}{(x,y)}{(-y,x)}
      $$
-     est un endomorphisme de $\R_{2}$. Soit $\lambda \in \R$.
+     est un endomorphisme de $\R^{2}$. Soit $\lambda \in \R$.
      $$
        f(x,y) = \lambda(x,y) \iff  \begin{cases}-y = \lambda x\\x = \lambda y\end{cases} \iff  \begin{cases}-y = \lambda x\\ x = \lambda ^{2} x\end{cases} \iff  \begin{cases}-y = \lambda x\\ (1+\lambda^{2})x = 0\end{cases} \iff  x = y = 0
      $$
@@ -946,8 +947,8 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
            &= \tilde{P}(\lambda)\mdot x
          \end{align*}
        $$
-  2. Supposons $P(f) = 0_{\L(E)}$ et $\lambda \in \sp f$. Il existe $x \in E \setminus \{0\}$ tel que $f(x) = \lambda x$ d’où $P(f)\mdot x = \tilde{P}(\lambda)\mdot x$, i.e. $\tilde{P}(\lambda)\mdot x = 0_{E}$. Or $x\ne 0_{E}$ donc $\tilde{P}(\lambda) = 0$. Ainsi, $\sp f \subset Z_{k}(P)$.
-  3. Si $\cdot \pi_{f}$ existe, alors $\pi_{f}(f) = 0_{\L(E)}$ donc
+  2. Supposons $P(f) = 0_{\L(E)}$ et $\lambda \in \sp f$. Il existe $x \in E \setminus \{0\}$ tel que $f(x) = \lambda x$ d’où $P(f)\mdot x = \tilde{P}(\lambda)\cdot x$, i.e. $\tilde{P}(\lambda)\cdot x = 0_{E}$. Or $x\ne 0_{E}$ donc $\tilde{P}(\lambda) = 0$. Ainsi, $\sp f \subset Z_{k}(P)$.
+  3. Si $\pi_{f}$ existe, alors $\pi_{f}(f) = 0_{\L(E)}$ donc
      $$
        \sp f \subset Z_{\K}(\pi_{f})
      $$
@@ -984,8 +985,8 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
   2. $$
        \begin{align*}
-         f \text{ nilpotent} \iff  \exists k \in \N^{*}: \pi_{f} = X^{k}\\
-         &= Z_\C(\pi_{f}) = \{0\} \iff  \sp f = \{0\}
+         f \text{ nilpotent} &\iff  \exists k \in \N^{*}: \pi_{f} = X^{k}\\
+         &\iff  Z_\C(\pi_{f}) = \{0\} \\&\iff  \sp f = \{0\}
        \end{align*}
      $$
 %
@@ -1027,7 +1028,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 %
 
 %proof
-  1. Considérons la propriété $\prop(k): « \text{si } x_{1}, \ldots, x_{k} \text{ sont des vecteurs propres associés à des valeurs propres distinctes } \lambda_{1}, \ldots, \lambda_{k} \text{ alors } (x_{1}, \ldots, x_{k}) \text{ est libre} »$.
+  1. Considérons la propriété $\prop(k):$ « si $x_{1}, \ldots, x_{k}$ sont des vecteurs associés à des valeurs propres distinctes $\lambda_{1}, \ldots, \lambda_{k}$ alors $(x_{1}, \ldots, x_{k})$ est libre ».
      - $x_{1}$ est un vecteur propre donc $x_{1}\ne 0_{E}$ donc $\prop(1)$ est vraie
      - Supposons $\prop(k)$ vraie pour $k$ fixé dans $\N^{*}$. Soient $(x_{1}, \ldots, x_{k+1}) \in (E \setminus \{0\})^{n+1}$ et $(\lambda_{1}, \ldots, \lambda_{k+1}) \in \K^{k+1}$ distincts deux à deux vérifiant $\forall i \in \icc{1,k+1}, f(x_{i}) = \lambda_{i} x_{i}$. Supposons $\alpha_{1} x_{1} + \cdots + \alpha_{k+1}x_{k+1} = 0_{E}$ et appliquons $f$: $\alpha_{1} \lambda_{1} x_{1} + \cdots + \alpha_{k+1}\lambda_{k+1}x_{k+1} = 0_{E}$, d’où par combinaison linéaire des deux dernières lignes (en multipliant par $-\lambda_{k+1}$ la seconde),
      $$
@@ -1068,21 +1069,21 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
   1. La famille $(x \longmapsto e^{\alpha x})$ set libre dans $\Func(\R,\C)$ en tant que vecteurs propres de l’endomorphisme dérivation.
   2. Soit $f \in \L(E)$. Soit $P \in \K[X]$. Soit $\lambda \in \sp f$. Il existe $x \in E \setminus \{0\}$ tel que $f(x) = \lambda x$, d’où $P(f)\mdot x = \tilde{P}(\lambda)x$ et $x \ne 0_{E}$, donc $\tilde{P}(\lambda) \in \sp(P(f))$, d’où
      $$
-       \{\tilde{P}(\lambda) \mid \lambda \in \sp f\} \subset \sp(P(f))
+       \Bigl\{\tilde{P}(\lambda) \mid \lambda \in \sp f\Bigr\} \subset \sp(P(f))
      $$
 %
 
 %offprog
   %prop
     Soit $f \in \L_{\K}(E)$. Soit $P \in \K[X]$.
-    1. $\{ \tilde{P}(\lambda) \mid \lambda \in \sp f\} \subset  \sp(P(f))$
+    1. $\Bigl\{ \tilde{P}(\lambda) \mid \lambda \in \sp f\Bigr\} \subset  \sp(P(f))$
     2. Pour $(a,b) \in \K^{2}$, on a
        $$
          \sp (af + b \id_{E}) = \{a \lambda + b \mid \lambda \in \sp(f)\}
        $$
     3. Si $\K$ est un corps algèbriquement clos, alors
        $$
-         \sp (P(f)) = \{\tilde{P}(\lambda)\mid \lambda \in \sp(f)\}
+         \sp (P(f)) = \Bigl\{\tilde{P}(\lambda)\mid \lambda \in \sp(f)\Bigr\}
        $$
   %
 
@@ -1302,11 +1303,11 @@ $$
   3. $A = P A' P^{-1}$ avec $P \in \GL_{n}(\K)$.
      $$
        \begin{align*}
-         \chi_{A}(X) &= \det (X I_{n} - P A' P^{-1}) \\&= \det (P(X I_{n} - A^{n}) P^{-1}) \\&= \det (X ei_{n} - A')\\ &= \chi_{A'}(X)
+         \chi_{A}(X) &= \det (X I_{n} - P A' P^{-1}) \\&= \det (P(X I_{n} - A^{n}) P^{-1}) \\&= \det (X I_{n} - A')\\ &= \chi_{A'}(X)
        \end{align*}
      $$
   %offprog
-    5. $PQ = \arrmtx{c|c}{I_{n} & B \\ A & I_{n}} \times \arrmtx{c|c}{I_{n} & -B\\ 0_{n} & X I_{n}} = \arrmtx{c|c}{XI_{n}&0_{n}\\A & -AB + X I_{n}}$ et $Q(PQ) = \arrmtx{c|c}{I_{n} & -B\\0 & X I_{n}} \times \arrmtx{c|c}{X I_{n} - BA & 0 \\ XA & XI_{n}}$. On a $\det M = \det N$ (car $\det (PQ) = \det (QP)$).
+    5. $PQ = \arrmtx{c|c}{XI_{n} & B \\\hline A & I_{n}} \times \arrmtx{c|c}{I_{n} & -B\\\hline 0_{n} & X I_{n}} = \arrmtx{c|c}{XI_{n}&0_{n}\\\hline A & -AB + X I_{n}}$ et $QP = \arrmtx{c|c}{I_{n} & -B\\\hline0 & X I_{n}} \times \arrmtx{c|c}{XI_{n}&B\\\hline A&I_{n}} =\arrmtx{c|c}{X I_{n} - BA & 0 \\\hline XA & XI_{n}}$. On a $\det M = \det N$ (car $\det (PQ) = \det (QP)$).
        $$
          \det (X I_{n} - BA)\det (XI_{n}) = \det (X I_{n})\det (-AB + XI_{n})
        $$
@@ -1453,7 +1454,7 @@ $$
 %proof
   Soit $\lambda \in \sp f$. $E_{\lambda}(f) = \ker (f-\lambda \id _{E})$ est stable par $f$ et est non nul, donc $\chi_{f_{|E_{\lambda}(f)}}$ divise $\chi_{f}$. Or $f_{|E_{\lambda}(f)} = \lambda \id_{E_{\lambda}(f)}$ donc $\chi_{f_{|E_{\lambda}(f)}} = (X-\lambda)^{\dim E_{\lambda}(f)}$. Ainsi
   $$
-    (X-\lambda)^{\dim  E_{\lambda}(f)} \mid (X-\lambda)^{m(\lambda)}
+    (X-\lambda)^{\dim  E_{\lambda}(f)} \mid (X-\lambda)^{m(\lambda)}Q
   $$
   avec $Q \land (X-\lambda)=1$. Donc $\dim E_{\lambda}(f) \leq  m(\lambda)$ et $\dim E_{\lambda}(f) \ne 0$.
 %
@@ -1536,7 +1537,7 @@ $$
 %proof
   $$
     \begin{align*}
-      \chi_A(X) &= X^{2} - \sigma_{1}(\lambda_{1}, \ldots, \lambda_{n})X^{n-1} + \sigma_{2}(\lambda_{1}, \ldots, \lambda_{n})X^{n-2} - \cdots + (-1)^{n} \sigma_{n}(\lambda_{1}, \ldots, \lambda_{n})\\
+      \chi_A(X) &= X^{n} - \sigma_{1}(\lambda_{1}, \ldots, \lambda_{n})X^{n-1} + \sigma_{2}(\lambda_{1}, \ldots, \lambda_{n})X^{n-2} - \cdots + (-1)^{n} \sigma_{n}(\lambda_{1}, \ldots, \lambda_{n})\\
         &= X^{n} - (\lambda_{1} + \cdots + \lambda_{n})X^{n-1} + \cdots + (-1)^{n} \prod_{i=1}^{n}\lambda_{i}\\
         &= X^{n} - \tr A \cdot X^{n-1} + \cdots + (-1)^{n} \det A
     \end{align*}
@@ -1595,7 +1596,7 @@ $$
 %
 
 %thm Théorème de Cayley-Hamilton
-  1. Soit $A \in \M_{n}(\K)$ ($n \in \N^{*}$). $\chi_{A}$ est un polynôme annulateur de $A$, autrement dit $\boxed{\pi_{f} \mid \chi_{f}}$
+  1. Soit $A \in \M_{n}(\K)$ ($n \in \N^{*}$). $\chi_{A}$ est un polynôme annulateur de $A$, autrement dit $\boxed{\pi_{A} \mid \chi_{A}}$
   2. Soit $f \in \L_{\K}(E)$ avec $\dim _{\K}E = n \in \N^{*}$. On a $\chi_{f}(f) = 0_{\L(E)}$, i.e. $\boxed{\pi_{f} \mid \chi_{f}}$
 %
 
@@ -1612,7 +1613,7 @@ $$
      ~ $F = \Vect\left\{x, f(x), \ldots, f^{d-1}(x)\right\}$  ~ $\dim F = d \in \N^{*}$  ~ $F$ est stable par $F$
      donc $\chi_{f_{|F}}$ divise $\chi_{f}$.
      $$
-       \mat_{(x, f(x), \ldots, f^{d-1}(x))}(f_{|F}) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)}
+       \mat_{(x, f(x), \ldots, f^{d-1}(x))}(f_{|F}) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{n-1}}}_{(n)}
      $$
      d’où
      $$
@@ -1669,3 +1670,100 @@ $$
      %
 %
 
+%offprog
+  %prop
+    Soit $A \in \M_{n}(\K)$.
+
+    $\chi_{A}$ et $\pi_{A}$ ont les mêmes facteurs irréductibles dans $\K[X]$.
+  %
+
+  %proof
+    - On a $\pi_{A} \mid \chi_{A}$ (Théorème de Cayley-Hamilton) donc tout diviseur de $\pi_{A}$ est un diviseur de $\chi_{A}$.
+    - On travaille dans $\M_{n}(\K(X))$.
+      $$
+        \pi_{A}(X)I_{n} = \pi_{A}(X)I_{n} - \pi_{A}(A)
+      $$
+      On pose $\pi_{A} = \sum_{k=0}^{d}a_{k}X^{k}$ avec $a_{d} = 1$.
+      $$
+        \begin{align*}
+          \pi_{A}(X) I_{n} &= \sum_{k=0}^{d}(a_{k} X^{k}I_{n}) - \sum_{k=0}^{d}a_{k}A^{k}\\
+          &= \sum_{k=1}^{d}a_{k} \big((XI_{n})^{k} - A^{k}\big)\\
+          \scriptsize{([X I_{n},A]=0_{n})}&= \sum_{k=1}^{d}a_{k} (XI_{n} - A) \times  \sum_{q=0}^{k-1}(XI_{n})^{k-1-q}A^{k}\\
+          &=(XI_{n} - A) \times \underbrace{\sum_{k=1}^{d}a_{k} \left(\sum_{q=0}^{k-1}(XI_{n})^{k-1-q}A^{q}\right)}_{=B \in \M_{n}(\K[X])}\\
+        \end{align*}
+      $$
+      En prenant le déterminant, on a
+      $$
+        \pi_{A}(X)^{n} = \chi_{A}(X)\underbrace{\det B}_{\in \K[X]}
+      $$
+      donc $\chi_{A}\mid \pi_{A}^{n}$. Soit $D$ un diviseur irréductible de $\chi_{A}$. On a $\begin{cases}D\mid \pi_{A}^{n}\\Q \text{ irréductible}\end{cases}$, donc $D\mid \pi_{A}$.
+  %
+%
+
+%cor
+  %offprog
+    1. - Si $\chi_{A} = \prod_{i=1}^{r}P_{i}^{\alpha_{i}}$ avec $P_{i}$ irréductibles dans $\K[X]$ et $\alpha_{i} \in \N^{*}$, alors
+         $$
+           \pi_{A} = \sum_{i=1}^{r}P_{i}^{\beta_{i}}
+         $$
+         avec $\beta_{i} \in \icc{1,\alpha_{i}}$.
+       - Si $\pi_{A} = \prod_{i=1}^{r}P_{i}^{\beta_{i}}$ avec $P_{i}$ irréductibles dans $\K[X]$ et $\beta_{i} \in \N^{*}$, alors
+         $$
+           \chi_{A} = \prod_{i=1}^{r}P_{i}^{\alpha_{i}}
+         $$
+         avec $\alpha_{i} \geq \beta_{i}$, pour tout $i \in \icc{1,r}$.
+  %
+  2. Soit $A \in \M_{n}(\K)$. Les propositions suivantes sont équivalentes~:
+     1. $A$ est nilpotente  2. $\exists k \in \icc{1,n}: \underbrace{\pi_{A} = X^{k}}_{\iff \chi_{A} = tx^{n}}$  3. $A^{n} = 0_{n}$
+  3. Pour $f \in \L(E)$ avec $\dim E = n \in \N^{*}$. On a
+     $$
+       \pi_{f} \text{ scindé dans } \K[X] \iff  \chi_{f} \text{ scindé dans } \K[X]
+     $$
+%
+
+%offprog
+  %prop
+    Soit $A \in \M_{n}(\K)$. Il y a équivalence entre
+    1. $\pi_{A} = \chi_{A}$  2. $A$ est semblable à une matrice compagnon
+  %
+
+  %proof
+    - Supposons que $A \sembl C(P)$(($C(P) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)}$)) avec $P = X^{n} + a_{n-1}X^{n-1} + \cdots + a_{1}X + a_{0}$. On a $\begin{cases}\pi_{A} = \pi_{C(P)}\\\chi_{A} = \chi_{C(P)}\end{cases}$ et $\pi_{C(P)} \mid \chi_{C(P)}$. Soit $m = \deg \pi_{C(P)}$. Supposons $m \leq  n-1$. Posons
+      $$
+        \pi_{C(P)} = X^{m} + b_{m-1}X^{m-1} + \cdots + b_{0}
+      $$
+      Notons $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\K)$. On a $\pi_{C(P)}(C(P)) = 0_{n}$ donc $\pi_{C(P)}(C(P)) \times E_{1} = 0_{n,1}$.
+      $$
+        (b_{0}I_{n} + b_{1} C(P) + \cdots + b_{m-1} C(P)^{m-1} + C(P)^{m})E_{1} = 0_{n,1}
+      $$
+      i.e.
+      $$
+        b_{0}E_{1} + b_{1}E_{2} + b_{2} E_{3} + \cdots + b_{m-1}E_{m} + 1E_{m+1} = 0_{n,1}
+      $$
+      ce qui est impossible car $1\neq 0$ et $(E_{1}, \ldots, E_{m})$ est libre. Ainsi,
+      $$
+        \begin{cases}\deg (\pi_{C(P)}) = \deg  \chi_{C(P)} \\ \pi_{C(P)} \mid \chi_{C(P)}\\ \pi_{C(P)} \text{ et } \chi_{C(P)} \text{ unitaires}\end{cases}
+      $$
+      et $\pi_{C(P)} = \chi_{C(P)} = P$ d’où
+      $$
+        \pi_{A} = \pi_{C(P)} = \chi_{C(P)} = \chi_{A}
+      $$
+    - Soit $f: \K^{n} \longrightarrow K^{n}$ l’endomorphisme canoniquement associé à $A$. Supposons $\pi_{f} = \chi_{f}$, i.e. $\deg \pi_{f} = n$. Pour $x \in E$, on pose
+      $$
+        I_{x} = \{P \in \K[X] \mid P(f)\mdot x = 0_{E}\}
+      $$
+      Il existe $P_{x}$ unitaire tel que $I_{x} = P_{x} \times \K[X]$. Or il existe $x_{0} \in E$ tel que $P_{x_{0}} = \pi_{f}$. Posons
+      $$
+        E_{x_{0}} = \{P(f) \mdot x_{0} \mid P \in \K[X]\} = \K[f](x_{0})
+      $$
+      C’est un sous-espace vectoriel de $\K^{n}$ de dimension $\deg P_{x_{0}} = \deg (\pi_{f}) = \deg (\chi_{f}) = n$, or par division euclidienne de $P$ par $P_{x_{0}}$,
+      $$
+        E_{x_{0}} = \Vect\left\{x_{0}, f(x_{0}), \ldots, f^{n-1}(x_{0})\right\}
+      $$
+      et $\dim E_{x_{0}} = n$ donc $\mathscr B = (x_{0}, f(x_{0}), \ldots, f^{n-1}(x_{0}))$ est une base de $\K^{n}$. Ainsi
+      $$
+        A\sembl \mat_{\mathscr B}f = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)}
+      $$
+      $f(f^{n-1}(x_{0}))\in E_{x_{0}}$ donc si $f(f^{n-1}(x_{0})) = -a_{0}x_{0} - \cdots - a_{n-1}f^{n-1}(x_{0})$. Alors $A \sembl C(P)$ avec $P = X^{n} + a_{n-1}X^{n-1} + \cdots + a_{1}X + a_{0}$ car $\chi_{A} = \chi_{C(CP)} = P = \pi_{f} = \chi_{f}$.
+  %
+%

@@ -1,0 +1,179 @@
+# Réductions des endomorphismes en dimension finie
+
+Dans ce chapitre, $(\K, +, \times )$ est un corps et $E$ désigne un $\K$-espace vectoriel de dimension finie $n \in \N^{*}$.
+
+## Cas $\chi_{f}$ scindé dans $\K[X]$
+
+Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Notons $\lambda_{1}, \ldots, \lambda_{r}$ les valeurs propres distinctes de $f$ dans $\K$ ($r \in \N^{*}$).
+$$
+  \chi_{f} = \prod_{i=1}^{r}(X-\lambda_{i})^{m(\lambda_{i})}
+$$
+pour $1 \leq  j \neq k \leq n$, on a $(X-\lambda_{j})^{m(\lambda_{j})} \land (X-\lambda_{k})^{m(\lambda_{k})} = 1$. D’après le lemme de décomposition des noyaux, on a
+$$
+  \ker \chi_{f}(f) = \bigoplus_{i=1}^{r}\ker (f-\lambda_{i} \id_{E})^{m(\lambda_{i})}
+$$
+D’après le théorème de Cayley-Hamilton, on a
+$$
+  \chi_{f}(f) = 0_{\L(E)}
+$$
+d’où
+$$
+  E = \bigoplus_{i=1}^{r}\ker  \big((f-\lambda_{i} \id_{E})^{m(\lambda_{i})}\big)
+$$
+
+%def Définition-proposition
+  Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Soit $\lambda$ une valeur propre de $f$ de multiplicité notée $m(\lambda)$.
+  $$
+    F_{\lambda}(f) = \ker  \big((f-\lambda \id_{E})^{m(\lambda)}\big)
+  $$
+  est appelé ++sous-espace caractéristique de $f$ associé à la valeur propre $\lambda$++. On a
+  1. $E_{\lambda}(f) \subset F_{\lambda}(f)$
+  2. $F_{\lambda}(f)$ est un sous-espace vectoriel minimal de $E$ stable par $f$
+  3. $\boxed{E = \bigoplus_{\lambda \in \sp A}F_{\lambda}(f)}$
+  4. $\boxed{\dim  F_{\lambda}(f) = m(\lambda)}$
+%
+
+%proof
+  1. $\ker (f-\lambda \id_{E}) \subset \ker \big((f-\lambda \id_{E})^{m(\lambda)}\big)$ (croissance de la suite des noyaux itérés).
+  2. $E_{\lambda}(f) \ne \{0\}$ car $\lambda \in \sp f$ donc $F_{\lambda}(f)$ est un sous-espace non nul de $E$.
+     $$
+       \big[(f-\lambda \id_{E})^{m(\lambda)}, f\big]
+     $$
+     est stable par $f$.
+  4. Soit $\lambda \in \sp f$. Posons $m = m(\lambda)$. On a
+     $$
+       \chi_{f} = (X-\lambda)^{m}Q \quad\text{et}\quad Q \land (X-\lambda) = 1
+     $$
+     d’où (LDN):
+     $$
+       E = F_{\lambda}(f)\oplus \ker (Q(f))
+     $$
+     Posons $g = f_{|F_{\lambda}(f)}$ et $h = f_{|\ker (Q(f))}$. On a $\boxed{\chi_{f} = \chi_{g} \times \chi_{h} \quad (\star)}$.
+     $$
+       (X-\lambda)^{m}(g) = (f-\lambda \id_{E})^{m}_{|F_{\lambda}(f)}
+     $$
+     donc $\pi_{g}\mid (X-\lambda)^{m}$ donc $\sp g = \{\lambda\}$. Or $\chi_{g} \mid \chi_{f}$ et $\chi_{f}$ est scindé dans $\K[X]$ donc $\chi_{g}$ l’est aussi. Ainsi, $\chi_{g} = (X-\lambda)^{\dim F_{\lambda}(f)}$.
+
+     De même, $Q(h) = Q(f)_{|\ker Q(f)} = 0_{\L(Q(f))}$ donc $\sp h \subset Z_{\K}(Q)$. Or $\tilde{Q}(\lambda)\ne 0$ donc $\lambda \in \sp h$ donc $(X-\lambda)\land \chi_{h}=1$.
+     $$
+       (\star) \iff \begin{cases}(X-\lambda)^{m}Q = (X-\lambda)^{\dim  F_{\lambda}(f)} \times \chi_{h}\\ \chi_{h} \land (X-\lambda) = 1\end{cases}
+     $$
+     d’où $\dim F_{\lambda}(f) = m$.
+%
+
+%rem
+  Si $\lambda \in \sp f$ et $m(\lambda)=1$, alors $E_{\lambda}(f) = F_{\lambda}(f)$ (de dimension 1)
+%
+
+%eg
+  $A = \mtx{1&1&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&-1} \in \M_{4}(\R)$.
+  $$
+    \chi_{A}(X) = \vmtx{X-1&-1&0&0\\0&X-1&0&0\\0&0&X-1&0\\0&0&0&X+1} = (X-1)^{3}(X+1)
+  $$
+  $\chi_{A}$ est scindé dans $\R[X]$, donc $\R^{4} = F_{1}(A)\oplus F_{-1}(A)$, i.e. $\R^{4} = F_{1}(A)\oplus E_{-1}(A)$ et $\dim E_{-1}(A) = 1$. Notons $(e_{1}, e_{2}, e_{3}, e_{4})$ la base canonique de $\R^{4}$. On a $E_{-1} = \Vect\left\{e_{4}\right\}$. $F_{1}(A) = \ker ((A-I)^{3})$ est de dimension 3.
+  $$
+    A-I_{4} = \mtx{0&1&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&-2}
+  $$
+  est de rang 2 donc $\dim \ker (A-I_{4}) = \dim E_{1}(A) = 4-2=2$, d’où $E_{1}(A) = \Vect\left\{e_{1}, e_{3}\right\}$.
+  $$
+    (A-I_{4})^{2} = \arrmtx{c|c}{\arr{cc}{0&0\\0&0}&\arr{cc}{0&0\\0&0}\\\hline\arr{cc}{0&0\\0&0}&\arr{cc}{0&0\\0&4}}
+  $$
+  est de rang 1 donc $\dim \big(\ker (A-i_{4})^{2}\big) = 4-1=3$.
+  $$
+    \begin{cases}\ker (A-I_{4})^{2} = \Vect\left\{e_{1}, e_{2}, e_{3}\right\}\\\ker \big((A-I_{4})^{2}\big) \subset F_{1}(A)\\\dim F_{1}(A)=3\end{cases}
+  $$
+  donc $F_{1}(A) = \ker (A-I_{4})^{2} = \Vect\left\{e_{1}, e_{2}, e_{3}\right\}$.
+%
+
+%prop
+  Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Si
+  - $\chi_{f} = \prod_{\lambda \in \sp A}(X-\lambda)^{m(\lambda)}$
+  - $\pi_{f} = \prod_{\lambda \in \sp A}(X-\lambda)^{n(\lambda)}$
+  alors
+  $$
+    \forall \lambda \in \sp f, F_{\lambda}(f) = \ker  \big((f-\lambda \id_{E})^{n(\lambda)}\big)
+  $$
+%
+
+%proof
+  $\pi_{f}f = \chi_{f}(f) = 0_{\L(E)}$. Le lemme de décomposition des noyaux donne
+  $$
+    E = \bigoplus_{\lambda \in \sp f}\ker (f-\lambda \id_{E})^{n(\lambda)} = \bigoplus_{\lambda \in \sp f}F_{\lambda}(f)
+  $$
+  donc
+  $$
+    \forall  \lambda \in \sp f, \ker (f-\lambda \id_{E})^{n(\lambda)} \subset F_{\lambda}(f)
+  $$
+  d’où
+  $$
+    n = \sum_{\lambda \in \sp f}\dim (\ker (f-\lambda \id_{E}))^{n(\lambda)} \leq \sum_{\lambda \in \sp f}\dim F_{\lambda}(f) = n
+  $$
+  Il y a donc nécessairement égalité, à savoir
+  $$
+    \forall \lambda \in \sp f, \ker (f-\lambda \id_{E})^{n(\lambda)} = F_{\lambda}(f)
+  $$
+  Mieux: pour $\lambda \in \sp f$, $\Bigl(\big((f-\lambda \id_{E})^{k}\big)\Bigr)_{0 \leq  k \leq  n(\lambda)}$ est strictement croissante((si $1 \leq  k < n(\lambda)$, alors $Q = (X-\lambda)^{k}\prod_{\mu \in \sp(f) \setminus \{\lambda\}}(X-\mu)^{n(\mu)}$ n’est pas annulateur de $f$, donc $E\ne \ker  \big((f-\lambda \id_{E})^{k}\big)\oplus(\bigoplus_{\mu \in \sp(A)\setminus \{\lambda\}}\ker (f-\mu \id_{E}) )$ donc $\ker (f-\lambda \id_{E})^{k}\ne \ker (f-\lambda \id_{E})^{k+1}$ (sinon $\ker (f-\lambda \id_{E})^{k} = \ker (f-\lambda \id_{E})^{n(d)}$) et il y aurait égalité avec $E$ pour la somme directe.)) et $\big(\ker (f-\lambda \id_{E})\big)_{k \geq  n(\lambda)}$ est constante.
+%
+
+%thm Théorème spectral caractéristique
+  Soit $A \in \M_{n}(\K)$ telle que $\chi_{A}$ soit scindé dans $\K[X]$. Notons $\lambda_{1}, \ldots, \lambda_{n}$ les valeurs propres distinctes de $A$ de multiplicités respectives $m_{1}, \ldots, m_{r}$ ($r \in \N^{*}$). Alors $A$ est semblable à une matrice diagonale par blocs du type
+  $$
+    \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}}
+  $$
+  avec $T_{i} = \mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{i}}$.
+%
+
+%proof
+  Soit $f:\K^{n} \longrightarrow \K^{n}$ l’endomorphisme canoniquement associé à $A$. On a
+  $$
+    K^{n} = \bigoplus_{i=1}^{r}F_{\lambda_i}(f)
+  $$
+  et $\dim F_{\lambda_{i}}(f) = m_{i}$ pour tout $i \in \icc{1,r}$. Chaque $F_{\lambda_{i}}(f)$ est $f$-stable. Posons $f_{i} = f_{|F_{\lambda_{i}}(f)}$.
+  $$
+    (f-\lambda_{i} \id_{E})^{m_{i}}_{|F_{\lambda_{i}}(f)} = 0_{\L(F_{\lambda_{i}}(f))}
+  $$
+  i.e. $(f_{i} - \lambda_{i} \id_{F_{\lambda_{i}}(f)})^{m_{i}}=0$. Alors $u_{i} f f_{i} - \lambda_{i} \id_{F_{\lambda_{i}}(f)}$ est nilpotent, et $f_{i} = \lambda_{i} \id_{F_{\lambda_{i}}(f)} + u_{i}$. Il existe donc une base $\mathscr B_{i}$ de $F_{\lambda_{i}}(f)$ (ex. 7) tel que $\mat_{\mathscr B_{i}}(u_{i}) = \mtx{0 & &*\\&\ddots&\\0&&0}$ d’où $\mat_{\mathscr  B_{i}}(f_{i}) = \mtx{\lambda_{i} &&*\\&\ddots&\\0&&\lambda_{i}}$. En concaténant les bases $\mathscr  B_{1}, \ldots, \mathscr B_{r}$ on obtient la forme voulue.
+%
+
+%eg
+  $A = \mtx{2&-1&-1\\2&1&-2\\3&-1&-2}\in M_{3}(\R)$.
+  $$
+    \begin{align*}
+      \chi_{A}(X) &= \vmtx{X-2&1&1\\-2&X-1&2\\-3&1&X+2}\\
+      \scriptsize{(C_{3} \leftarrow C_{1}+C_{3})}&= \vmtx{X-2&1&X-1\\-2&X-1&0\\-3&1&X-1}\\
+      &= (X-1)\vmtx{X-2&1&1\\-2&X-1&0\\-3&1&1}\\
+      \scriptsize{(L_{1}\leftarrow L_{1}-L_{3})}&= (X-1)\vmtx{X+1&0&0\\-2&X-1&0\\-3&1&1}\
+      &= \chi_{A}(X) = (X-1)^{2}(X+1)
+    \end{align*}
+  $$
+  donc $\chi_{A}$ est scindé dans $\R[X]$ et
+  $$
+    A\sembl \arrmtx{c|c}{-1&\arr{cc}{0&0}\\\hline\arr{c}{0\\0}&\arr{cc}{1&*\\0&1}}
+  $$
+  $$
+    \begin{align*}
+      \begin{cases}2x-y-z &= -x\\2x+y-2z &= -y\\3x-y-2z &= -z\end{cases} &\iff \begin{cases}3x-y-z &= 0\\2x + 2y - 2z &= 0\\(3x-y-z &= 0)\end{cases}\\
+      &\iff \begin{cases}3x-y-z &= 0\\x+y-z &= 0\end{cases}\\
+      &\iff \begin{cases}x+y-z &= 0\\4x-2z = 0\end{cases}\\
+      &\iff \begin{cases}y&=x\\z&=2x\end{cases}
+    \end{align*}
+  $$
+  $E_{-1}(A) = \R \cdot \mtx{1\\1\\2}$.
+  $$
+    \R^{3} = E_{-1}(A)\oplus \underbrace{F_{1}(A)}_{=\ker \big((A-I)^{2}\big)}
+  $$
+  $$
+    \begin{cases}2x-y-z &= x\\2x+y-2z &= y\\3x-y-2z &= z\end{cases} \iff \begin{cases}x-y-z &= 0\\2x &= 2z\\3x-y - 3z &= 0\end{cases} \iff \begin{cases}x=z\\y=0\end{cases}
+  $$
+  $E_{1}(A) = \R \cdot \mtx{1\\0\\1}$
+  $$
+    (1-I)^{2} = \mtx{-4&0&4\\-4&0&4\\8&0&8}
+  $$
+  donc $\ker  \big((A-I)^{2}\big) = \Vect\left\{\mtx{1&0&1}\mtx{0&1&0}\right\}$. $\mathscr B = \left(\mtx{1\\1\\2}, \mtx{1\\0\\1}, \mtx{0\\1\\0}\right)$. $P = \mtx{1&1&0\\1&0&1\\2&1&0}$.
+  $$
+    A = P \cdot \arrmtx{c|c}{-1 & \arr{cc}{0&0}\\\hline \arr{c}{0\\0}&\arr{cc}{1&-1\\0&1}}P^{-1}
+  $$
+  $$
+    A \mtx{0\\1\\0} = \mtx{-1\\1\\0}-\mtx{1\\0\\1}
+  $$
+%
