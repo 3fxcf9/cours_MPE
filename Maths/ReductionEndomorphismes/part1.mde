@@ -169,11 +169,326 @@ $$
   $$
     (1-I)^{2} = \mtx{-4&0&4\\-4&0&4\\8&0&8}
   $$
-  donc $\ker  \big((A-I)^{2}\big) = \Vect\left\{\mtx{1&0&1}\mtx{0&1&0}\right\}$. $\mathscr B = \left(\mtx{1\\1\\2}, \mtx{1\\0\\1}, \mtx{0\\1\\0}\right)$. $P = \mtx{1&1&0\\1&0&1\\2&1&0}$.
+  donc $\ker  \big((A-I)^{2}\big) = \Vect\left\{\mtx{1\\0\\1}\mtx{0\\1\\0}\right\}$. $\mathscr B = \left(\mtx{1\\1\\2}, \mtx{1\\0\\1}, \mtx{0\\1\\0}\right)$. $P = \mtx{1&1&0\\1&0&1\\2&1&0}$.
   $$
     A = P \cdot \arrmtx{c|c}{-1 & \arr{cc}{0&0}\\\hline \arr{c}{0\\0}&\arr{cc}{1&-1\\0&1}}P^{-1}
   $$
   $$
     A \mtx{0\\1\\0} = \mtx{-1\\1\\0}-\mtx{1\\0\\1}
   $$
+%
+
+De manière générale (pour $A \in \M_{n}(\K)$ avec $\chi_{A}$ scindé dans $\K[X]$),
+$$
+  A\sembl \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}}
+$$
+avec $T_{i} = \mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{i}}$.
+$$
+  \K^{n} = \bigoplus_{i=1}^{r}\underbrace{F_{\lambda}(A)}_{\ker (A-\lambda_{i}I_{n})^{m(\lambda)}}
+$$
+si $\chi_{A} = \prod_{i=1}^{r}(X-\lambda_{i})^{m(\lambda)}$.
+$$
+  E_{\lambda_{i}}(A) = \ker (A-\lambda_{i} I_{n}) \subset \cdots \subset F_{\lambda_{i}}(A)
+$$
+$e \in \ker \big((A-\lambda_{i} I_{n})^{k+1}\big) \setminus \ker \big((A-\lambda_{i})^{k}\big)$. Alors $(A-\lambda_{i} I)(e) \in \ker  \big((A-\lambda I)^{k}\big)$
+$$
+  Ae = \lambda_{i} e + u \quad\text{avec} u \in \ker \big((A-\lambda_{i} I)^{k}\big)
+$$
+Soient $\lambda \in \sp A$ et $(e_{1}, \ldots, e_{p})$ base de $E_{\lambda}(A)$. Complétons-la en une base de $\ker \big((A-\lambda I)^{2}\big)$: $(e_{1}, \ldots, e_{p}, e_{p+1}, \ldots, e_{q})$. On itère le processus pour obtenir une base $(e_{1}, \ldots, e_{m_{i}})$ de $F_{\lambda}(A)$, dans laquelle
+$$
+  \mat({f_{A}}_{|F_{\lambda}(A)}) = \arrmtx{c|c|c|c|c}{\arr{ccc}{\lambda&&\\&\ddots&\\&&\lambda}&&&&*\\\hline &\arr{ccc}{\lambda&&\\&\ddots&\\&&\lambda}&&&\\\hline&&\arr{ccc}{\lambda&&\\&\ddots&\\&&\lambda}&&\\\hline&&&\arr{ccc}{&&\\&\ddots&\\&&}&\\\hline*&&&&\arr{ccc}{\lambda&&\\&\ddots&\\&&\lambda}}
+$$
+
+## Trigonalisation
+
+%def
+  1. $f \in \L(E)$ est dit trigonalisable s’il existe une base $\mathscr B$ de $E$ telle que $\mat_{\mathscr B}(f)$ soit une matrice triangulaire supérieure.
+  2. $A \in \M_{n}(\K)$ est dite trigonalisable si $A$ est semblable à une matrice triangulaire supérieure (ce qui revient à dire que $A$ est la matrice associée à un endomorphisme trigonalisable).
+%
+
+%eg
+  1. Toute matrice $A \in \M_{n}(\K)$ avec $\chi_{A}$ scindé dans $\K[X]$ est trigonalisable (théorème spectral caractéristique).
+  2. Si $f \in \L(E)$ et $\mathscr B = (e_{1}, \ldots, e_{n})$ est une base de $E$ telle qe que
+     $$
+       \mat_{\mathscr  B}(f) = \mtx{a_{1,1}&\cdots&a_{1,n}\\&\ddots&\vdots\\0&&a_{n,n}}
+     $$
+     Alors pour $\mathscr  C = (e_{n}, \ldots, e_{1})$, on a
+     $$
+       \mat_{\mathscr C}(f) = \mtx{a_{n,1}&&0\\\vdots&\ddots&\\a_{1,n}&\cdots&a_{1,1}}
+     $$
+     qui est triangulaire inférieure.
+%
+
+%prop
+  Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N$. Il y a équivalence entre
+  1. $\chi_{f}$ est scindé dans $\K[X]$
+  2. $f$ est trigonalisable
+  3. Il existe un polynôme annulateur de $f$ scindé dans $\K[X]$
+  4. $\pi_{f}$ est scindé dans $\K[X]$
+%
+
+%proof
+  On a $(3) \implies (4) \implies (1) \implies (2)$.
+  - Supposons $f$ trigonalisable. Soit $\mathscr B$ une base de $E$ telle que
+    $$
+      \mat_{\mathscr B}(f) = \mtx{\lambda_{1} & \cdots & *\\&\ddots&\\0&&\lambda_{n}}
+    $$
+    Alors $\chi_{f} = \prod_{i=1}^{n}(X-\lambda_{i})$ est scindé dans $\K[X]$ et est un polynôme annulateur de $f$ (théorème de Cayley-Hamilton).
+%
+
+%eg
+  1. $A = \mtx{0&-1\\1&0} \in \M_{2}(\R)$. $\chi_{A} = \vmtx{X&1\\-1&X} = X^{2}+1$ n’est pas scindé dans $\R[X]$ donc $A$ n’est par trigonalisable. $\chi_{A}$ est scindé dans $\C[X]$ donc $A$ est trigonalisable dans $\M_{2}(\C)$.
+  2. - Toute matrice de $\M_{n}(\C)$ est trigonalisable.
+     - Tout endomorphisme d’un $\C$-espace vectoriel de dimension finie non nulle est trigonalisable.
+  3. $f \in \L(E) \text{ trigonalisable} \implies \sp f\ne\emptyset$ car $\chi_{f}$ est scindé dans $\K[X]$.
+  %offprog
+    4. Si $A \in \M_{n}(\K)$ est trigonalisable, alors pour tout polynôme $Q \in \K[X]$, $Q(A)$ est une matrice trigonalisable.
+       %proof
+         Il existe $P \in \GL_{n}(\K)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+         $$
+           A = P \mtx{\lambda_{1} &&*\\&\ddots&\\0&&\lambda_{n}} P^{-1}
+         $$
+         d’où
+         $$
+           \forall k \in \N, A^{k} = P \mtx{\lambda_{1}^{k} & &*'\\&\ddots&\\0&&\lambda_{n}^{k}} P^{-1}
+         $$
+         d’où
+         $$
+           Q(A) = P \mtx{\tilde{Q}(\lambda_{1})&&*''\\&\ddots&\\0&&\tilde{Q}(\lambda_{n})}P^{-1}
+         $$
+       %
+  %
+  5. $A = \mtx{3&5&-1\\0&1&-2\\0&2&-3} \in \M_{3}(\R)$ est-elle trigonalisable ?
+     $$
+       \begin{align*}
+         \chi_{A} &= \vmtx{X-3&-5&1\\0&X-1&2\\0&-2&X+3}\\
+         &= (X-3)\vmtx{X-1&2\\-2&X+3}\\
+         &= (X-3)\vmtx{X+1&2\\X+1&X+3}\\
+         &= (X-3)(X+1)\vmtx{1&2\\1&X+3}
+       \end{align*}
+     $$
+     $\chi_{A} = (X-3)(X+1)^{2}$ est scindé dans $\M_{3}(\R)$ donc $A$ est trigonalisable dans $\M_{3}(\R)$. Il existe  donc $(a,b,c) \in \R^{3}$ tel que $A\sembl \mtx{3&a&b\\0&-1&0\\0&0&-1}$. Mieux (TSC): il existe $\alpha \in \R$ tel que $A\sembl \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&\alpha\\0&-1}}$.
+
+     En effet, $\dim E_{3}(A) = 1$ donc $E_{3}(A)=\R \mtx{1\\0\\0}$.
+     $$
+       \begin{align*}
+         \mtx{x\\y\\z} \in E_{-1}(A) &\iff \begin{cases}3x+5y-z &= -x\\y-2z &= -y\\(2y-3z &= -z)\end{cases}\\
+         &\iff \begin{cases}4x+4y &= 0\\y&=z\end{cases}\\
+         &\iff \begin{cases}x&=-y\\y&=z\end{cases}
+       \end{align*}
+     $$
+     $E_{-1}(A) = \R \cdot \mtx{1\\-1\\-1}$. Si $\mathscr B = \left(\mtx{1\\0\\0}, \mtx{1\\-1\\-1},u\right)$ est une base de $\R^{3}$, alors
+     $$
+       \mat_{\mathscr  B} (f_{A}) = \mtx{3&0&s\\0&-1&t\\0&0&-1}
+     $$
+     Par exemple pour $P = \mtx{1&1&0\\0&-1&0\\0&-1&1} \in \GL_{3}(\R)$. Comme
+     $$
+       A \cdot \mtx{0\\0\\1} = \mtx{-1\\-2\\-3} = -\mtx{0\\0\\1} +2 \mtx{1\\-1\\-1}-3 \mtx{1\\0\\0}
+     $$
+     on a
+     $$
+       A = P \mtx{3&0&-3\\0&-1&2\\0&0&-1}
+     $$
+
+     Mieux: $\R^{3} = F_{3}(A) \oplus F_{-1}(A) = E_{3}(A) \oplus F_{-1}(A)$.
+     $$
+       A+I_{3} = \mtx{4&5&-1\\0&2&-1\\0&2&-2} \quad\text{donc}\quad (A+I_{3})^{2} = \mtx{16&28&-12\\0&0&0\\0&0&0}
+     $$
+     $$
+         \mtx{x\\y\\z} \in \ker \big((A+I_{3})^{2}\big) \iff 4x+7y - 3z = 0
+     $$
+     donc pour $Q = \mtx{1&1&3\\0&-1&0\\0&-1&4}$,
+     $$
+       A \cdot \mtx{3\\0\\4} = \mtx{5\\-8\\-12} = -\mtx{3\\0\\4} + 8 \mtx{1\\-1\\-1}
+     $$
+     d’où
+     $$
+       A = Q \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&8\\0\-1}}
+     $$
+  6. Soit $A \in \M_{2}(\C)$ telle que $A\notin \Vect\left\{I_{2}\right\}$ et $\chi_{A} = (X-\lambda)^{2}$ avec $\lambda \in \C$. $\chi_{A}$ est scindé dans $\C[X]$ donc $A$ est trigonalisable. Il existe donc $\alpha \in \C$ et une base $(e_{1}, e_{2}) $ de $\C$ tels que
+     $$
+       \mat_{(e_{1}, e_{3})}(f_{A}) = \mtx{\lambda&a\\0\\\lambda}
+     $$
+     donc $f_{A}\ne \lambda \id_{\C^{2}}$ donc $a \in \C^{*}$, d’où $\mat_{(ae_{1}, e_{2})}(f) = \mtx{\lambda&1\\0&\lambda}$.
+
+     ++Retour sur 5.++
+     $f(e_{2}) = e_{3}+a e_{1}$ donc pour $R = \mtx{1&8&3\\0&-8&0\\0&-8&4}$, on a
+     $$
+       A  = R \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&-1\\0&-1}}
+     $$
+  7. $A_{k} = \big(a_{i,j}(k)\big)_{\substack{1 \leq i \leq n\\1 \leq  j \leq n}} \in \M_{n}(\C)$.
+     $$
+       A_{k}\arrowlim{k \to +\infty}B = \big(b_{i,j}\big)_{\substack{1 \leq i \leq n\\1 \leq j \leq n}} \overset{\text{def}}\iff \forall (i,j) \in \icc{1,n}^{2}, a_{i,j}(k) \arrowlim{k \to +\infty}b_{i,j}
+     $$
+     Toute matrice de $\M_{n}(\C)$ est la limite d’une seuite de matrices possétant toutes $n$ valeurs propres distinctes.
+     %proof
+       Soit $A \in \M_{n}(\C)$. Comme $\chi_{A}$ est scindé dans $\C[X]$, $A$ est trigonalisable. Posons
+       $$
+         A = \prod_{i=1}^{r}(X-\lambda_{i})^{m_{i}}
+       $$
+       avec $\lambda_{1}, \ldots, \lambda_{n}$ valeurs propres distinctes de $A$, et $(m_{1}, \ldots, m_{r}) \in (\N^{*})^{r}$ ($r \in \N^{*}$). Il existe $P \in \GL_{n}(\C)$ tel que
+       $$
+         A = P \arrmtx{c|c|c}{I_{1}&&0\\\hline&\ddots&\\\hline0&&I_{n}} P^{-1}
+       $$
+       avec $T_{i} = \mtx{\lambda_{i}&&*\\&\ddots&\\0&&\lambda_{i}} \in \M_{m_{i}}(\C)$.
+       - si $r=1$, alors $\chi_{A} = (X-\lambda_{1})^{n}$.
+         $$
+           A = P \mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{1}}P^{-1}
+         $$
+         Posons pour tout $k \in \N^{*}$,
+         $$
+           A_{k} = A+P \mtx{1/k&&&0\\&2/k&&\\&&\ddots&\\0&&&n/k} P^{-1} = P \mtx{\lambda_{1}+1/k&&&0\\&\lambda_{1}+2/k&&\\&&\ddots&\\0&&&\lambda_{1} + n/k} P^{-1}
+         $$
+         donc
+         $$
+           \sp A_{k} = \left\{\lambda_{1} + \frac{1}{k}, \ldots, \lambda_{1} + \frac{n}{k}\right\}
+         $$
+         donc $\forall k \in \N^{*}, \abs{\sp(A_{k})} = n$ et $\lim_{k\to +\infty}A_{k} = A+0_{n} = 1$
+       - si $r \geq 2$, soit $d = \min_{1 \leq  i < j \leq r} \abs{\lambda_{i} - \lambda_{j}}$.
+         $$
+           \forall k \in \N^{*}, A_{k} = A+P \mtx{1/k&&&0\\&2/k&&\\&&\ddots&\\0&&&n/k} P^{-1} = P \arrmtx{c|c|c}{T'_{1}&&\\\hline&\ddots&\\0&&T'_{r}} P^{-1}
+         $$
+         chaque $T_{i}'$ a des éléments diagonaux distincts. Soit $1 \leq i < j \leq r$. Pour $1 \leq n_{i} < n_{j} \leq n$,
+         $$
+           \begin{align*}
+             \lambda_{i} + \frac{n_{i}}{k} = \lambda_{j}+\frac{n_{j}}{k} &\iff  \lambda_{i} - \lambda_{j} = \frac{n_{j}-n_{i}}{k}\\
+             &\implies \abs{\lambda_{i} - \lambda_{j}} \leq \frac{n}{k}
+           \end{align*}
+         $$
+         Soit $k_{0} \in \N^{*}$ tel que $\forall k \geq k_{0}, \frac{n}{k} < d$. Alors $\forall k \geq k_{0}, \abs{\lambda_{i} - \lambda_{j}} \leq \frac{n}{k}$ ce qui est faux. Ainsi,
+         $$
+           \forall k \geq k_{0}, \lambda_{i} + \frac{n_{i}}{k}\ne \lambda_{j} + \frac{n_{j}}{k}
+         $$
+         $A_{k}$ possède donc, pour $k \geq k_{0}$, $n$ valeurs propres distinctes et $A_{k}\arrowlim{k \to +\infty}A$.
+     %
+%
+
+%prop
+  1. Si $f \in \L(E)$ est trigonalisable et $F$ est un sous-espace vectoriel de $E$ non nul et stable par $f$, alors $f_{|F} \in \L(F)$ est trigonalisable.
+  2. Soit $f \in \L(E)$ avec $\dim_{\K} E = n \in \N$. Il y a équivalence entre
+     - $f$ nilpotente
+     - $\exists k \in \icc{1,n}: \pi_{f} = X^{k}$
+     - $\chi_{f} = X^{n}$
+     - $\begin{cases}\sp f = \{0\}\\ \chi_{f} \text{ scindé dans }\K[X]\end{cases}$
+     donc $f$ est nilpotent si et seulement si ($f$ est trigonalisable et $\sp f=\{0\}$).
+%
+
+%proof
+  1. Comme $f$ est trigonalisable, $\chi_{f}$ est scindé dans $\K[X]$, or $\chi_{f_{|F}}$ divise $\chi_{f}$ donc $\chi_{f_{|F}}$ est également scindé dans $\K[X]$. Ainsi, $f_{|F}$ est trigonalisable.
+%
+
+## Diagonalisation
+
+%def Proposition-définition
+  $f$ est dite diagonalisable si l’une des conditions équivalentes suivantes est vérifiée :
+  1. Il existe une base $\mathscr B$ de $E$ dans laquelle la matrice de $f$ soit diagonale
+  2. $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$
+  3. Il existe une base $(e_{1}, \ldots, e_{n})$ de $E$ constituée de vecteurs propres de $f$.
+%
+
+%proof
+  - Supposons qu’il existe $\mathscr B = (e_{1}, \ldots, e_{n})$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que $\mat_{\mathscr B}(f) = \mtx{\lambda_{1} &&0\\&\ddots&\\0&&\lambda_{n}}$, i.e. $\forall i \in \icc{1,n}, f(e_{i}) = \lambda_{i} e_{i}$. Alors
+    $$
+      \chi_{f} = \prod_{i=1}^{n}(X-\lambda_{i})
+    $$
+    d’où $\sp f = \{\lambda_{1}, \ldots, \lambda_{n}\} \ne\emptyset$. Soit $\lambda_{i_{1}}, \ldots, \lambda_{i_{r}}$ les valeurs propres distinctes de $f$ avec $1 \leq i_{1} < \cdots < i_{r} \leq n$ et $n \in \N^{*}$. Pour $k \in \icc{1,r}$, on note
+    $$
+      I_{k} = \{j \in \icc{1,n} \mid \lambda_{j} = \lambda_{i_{k}}\} \quad\text{et}\quad \mathscr  B_{k} = (e_{j})_{j \in \I_{k}}
+    $$
+    Alors
+    $$
+      E = \Vect\left\{e_{1}, \ldots, e_{n}\right\} = \bigoplus_{k=1}^{r}\Vect\left\{\mathscr  B_{k}\right\} \subset \bigoplus_{k=1}^{r}E_{\lambda_{i_{k}}}(f) \subset E
+    $$
+    donc
+    $$
+      E = \bigoplus_{k=1}^{r} E_{\lambda_{i_{k}}}(f) = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)
+    $$
+  - Supposons le spectre de $f$ non vide et $E = \bigoplus_{\lambda \in \sp f} E_{\lambda}(f)$. Pour tout $\lambda \in \sp f$, noto $\mathscr B_{\lambda}$ une base de $E_{\lambda}(f)$. Comme les $E_{\lambda}$ est une somme directe, $\mathscr B = \bigcup_{\lambda \in \sp f}\mathscr B_{\lambda}$ est une base de $E$ et $\mathscr B$ est formée de vecteurs propres de $f$.
+  - Si $(e_{1}, \ldots, e_{n})$ est une base de $E$ formée de vecteurs propres de $f$, alors il existe $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+    $$
+      \forall i \in \icc{1,n}, f(e_{i}) = \lambda_{i} e_{i}
+    $$
+    d’où
+    $$
+      \mat_{e_{1}, \ldots, e_{n}}(f) = \mtx{\lambda_{1} &&0\\&\ddots&\\0&&\lambda_{n}}
+    $$
+%
+
+%def
+  Soit $A \in \M_{n}(\K)$. $A$ est dite diagonalisable si $A$ est semblable à une matrice diagonale. Autrement dit, s’il existe $P \in \GL_{n}(\K)$ et $(\lambda_{1}, \ldots, \lambda_{n})\in \K^{n}$ tels que $A = PDP^{-1}$, avec $D = \diag(\lambda_{1}, \ldots, \lambda_{n})$.
+
+  Ceci signifie que $P$ est la matrice de passage de la base canonique de $\M_{n+1}(\K)$ vers une base $(X_{1}, \ldots, X_{n})$ de vecteurs propres de $A$.
+  $$
+    A = \arrmtx{c|c|c}{X_{1}&\cdots&X_{n}}\mtx{\lambda_{1}&&0\\&\ddots&\\0&&\lambda_{n}}\arrmtx{c|c|c}{X_{1}&\cdots&X_{n}}^{-1}
+  $$
+
+  Cela revient à dire que $A$ est la matrice associée à un endomorphisme diagonalisable.
+%
+
+%eg
+  1. $\lambda \id_{E}$ est un endomorphisme diagonalisable, et toute matrice carrée diagonale est diagonalisable.
+  2. Si $A \in \M_{n}(\K)$ est diagonalisable, alors pour tout $Q \in \K[X]$, la matrice $Q(A)$ est diagonalisable. De plus, si
+     $$
+       A = P\diag(\lambda_{1}, \ldots, \lambda_{n})P^{-1}
+     $$
+     avec $P \in \GL_{n}(\K)$, alors
+     $$
+       Q(A) = P\diag(\tilde{Q}(\lambda_{1}), \ldots, \tilde{Q}(\lambda_{n}))P^{-1}
+     $$
+  3. $A \in \M_{n}(\K)$ est diagonalisable et possède une unique valeur propre $\lambda$ si et seulement si $A\sembl \lambda I_{n}$, donc si et seulement si $\lambda I_{n}$.
+  4. $f$ est nilpotent et diagonalisable ? Comme $f$ est nilpotent, on a $\sp f = \{0\}$ donc selon le point précédent, $f = 0 \cdot \id_{E} = 0_{\L(E)}$.
+%
+
+%prop
+  1. Si $A \in \M_{n}(\K)$ possède $n$ valeurs propres distinctes dans $\K$, alors $A$ est diagonalisable
+  2. Si $f \in \L(E)$ (avec $\dim E = n \in \N^{*}$) possède $n$ valeurs propres distinctes, alors $f$ est diagonalisable
+  3. Les réciproques sont fausses
+%
+
+%proof
+  1. $\chi_{A} = \prod_{i=1}^{n}(X-\lambda_{i})$ avec $\lambda_{1}, \ldots, \lambda_{n}$ deux à deux distinctes, d’où
+     $$
+       \K^{n} = \ker \chi_{A}(A) = \bigoplus_{i=1}^{n}\ker  (A-\lambda_{i} I_{n})
+     $$
+     $\K^{n}$ est donc la somme directe des sous-espaces propres donc $A$ est diagonalisable.
+  3. $A = \lambda I_{n}$ est diagonalisable et $\lambda$ est valeur propre de multiplicité $n$.
+%
+
+%eg
+  1. $A = \mtx{0&\cdots&\cdots&0&-1\\1&\ddots&&\vdots&-1\\0&\ddots&\ddots&\vdots&\vdots\\\vdots&\ddots&\ddots&0&\vdots\\0&\cdots&0&1&-1} \in \M_{n}(\C)$.
+     $$
+       \chi_{A} = X^{n} + X^{n-1} + \cdots + 1 = \frac{1-X^{n+1}}{1-X} = \prod_{\omega \in \U_{n+1}\setminus \{1\}}
+     $$
+     $A$ possède $n$ valeurs propres distinctes dans $\C$ donc $A$ est diagonalisable et
+     $$
+       A\sembl \mtx{\omega&&&0\\&\omega^{2}&&\\&&\ddots&\\&&&\omega_{n}}
+     $$
+     avec $\omega = \exp \left(\frac{2i \pi}{n+1}\right)$.
+  2. Toute matrice de $\M_{n}(\C)$ est la limite d’une suite de matrices diagonalisable (cf. supra)
+  3. Soit $(A,B) \in \big(\M_{2}(\C)\big)^{2}$ avec $\pi_{A} = \pi_{B}$. Que dire de $A$ et $B$ ?
+     - si $\pi_{A} = \pi_{B} = X-\lambda$ avec $\lambda \in \C$, alors $A = B = \lambda I_{2}$
+     - si $\pi_{A} = \pi_{B} = (X-\lambda)(X-\mu)$ avec $(\lambda, \mu) \in \C^{2}$ distincts. Alors $A$ et $B$ possèdent deux valeurs propres distinctes $\lambda$ et $\mu$: elles sont donc diagonalisables:
+       $$
+         A \sembl \mtx{\lambda &0\\0&\mu} \sembl B
+       $$
+
+       %offprog
+         ++Autre méthode:++
+         $$
+           \pi_{A} = \chi_{A} = (X-\lambda)(X-\mu) = \pi_{B} = \chi_{B}
+         $$
+         donc
+         $$
+           \begin{cases}A \sembl C(P) &\implies \chi_{A} = \chi_{C(P)}=P\\ B\sembl C(Q) &\implies  \chi_{B} = C\end{cases}
+         $$
+       %
+
+       or $\chi_{A} \neq \chi_{B}$ donc on a
+       $$
+         Q\sembl B\sembl C(\chi_{A}) = C(\pi_{A}) = \mtx{0&-\lambda \mu\\1&\lambda + \mu}
+       $$
+     - sinon, $\pi_{A} = \pi_{B} = (X-\lambda)^{2}$ pour $\lambda \in \C$, alors
+       $$
+         A \sembl \mtx{\lambda&1\\0&\lambda} \sembl B
+       $$
 %
