@@ -303,7 +303,7 @@ $$
      $$
      d’où
      $$
-       A = Q \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&8\\0\-1}}
+       A = Q \arrmtx{c|c}{3&\arr{cc}{0&0}\\\hline\arr{c}{0\\0}&\arr{cc}{-1&8\\0&-1}}
      $$
   6. Soit $A \in \M_{2}(\C)$ telle que $A\notin \Vect\left\{I_{2}\right\}$ et $\chi_{A} = (X-\lambda)^{2}$ avec $\lambda \in \C$. $\chi_{A}$ est scindé dans $\C[X]$ donc $A$ est trigonalisable. Il existe donc $\alpha \in \C$ et une base $(e_{1}, e_{2}) $ de $\C$ tels que
      $$
@@ -314,7 +314,7 @@ $$
      ++Retour sur 5.++
      $f(e_{2}) = e_{3}+a e_{1}$ donc pour $R = \mtx{1&8&3\\0&-8&0\\0&-8&4}$, on a
      $$
-       A  = R \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&-1\\0&-1}}
+       A  = R \arrmtx{c|c}{3&\arr{cc}{0&0}\\\hline\arr{c}{0\\0}&\arr{cc}{-1&-1\\0&-1}}
      $$
   7. $A_{k} = \big(a_{i,j}(k)\big)_{\substack{1 \leq i \leq n\\1 \leq  j \leq n}} \in \M_{n}(\C)$.
      $$
@@ -346,7 +346,7 @@ $$
          donc $\forall k \in \N^{*}, \abs{\sp(A_{k})} = n$ et $\lim_{k\to +\infty}A_{k} = A+0_{n} = 1$
        - si $r \geq 2$, soit $d = \min_{1 \leq  i < j \leq r} \abs{\lambda_{i} - \lambda_{j}}$.
          $$
-           \forall k \in \N^{*}, A_{k} = A+P \mtx{1/k&&&0\\&2/k&&\\&&\ddots&\\0&&&n/k} P^{-1} = P \arrmtx{c|c|c}{T'_{1}&&\\\hline&\ddots&\\0&&T'_{r}} P^{-1}
+           \forall k \in \N^{*}, A_{k} = A+P \mtx{1/k&&&0\\&2/k&&\\&&\ddots&\\0&&&n/k} P^{-1} = P \arrmtx{c|c|c}{T'_{1}&&\\\hline&\ddots&\\\hline0&&T'_{r}} P^{-1}
          $$
          chaque $T_{i}'$ a des éléments diagonaux distincts. Soit $1 \leq i < j \leq r$. Pour $1 \leq n_{i} < n_{j} \leq n$,
          $$
@@ -461,7 +461,7 @@ $$
      $$
      $A$ possède $n$ valeurs propres distinctes dans $\C$ donc $A$ est diagonalisable et
      $$
-       A\sembl \mtx{\omega&&&0\\&\omega^{2}&&\\&&\ddots&\\&&&\omega_{n}}
+       A\sembl \mtx{\omega&&&0\\&\omega^{2}&&\\&&\ddots&\\0&&&\omega_{n}}
      $$
      avec $\omega = \exp \left(\frac{2i \pi}{n+1}\right)$.
   2. Toute matrice de $\M_{n}(\C)$ est la limite d’une suite de matrices diagonalisable (cf. supra)
