@@ -75,65 +75,63 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   $$
 %
 
-%callout Exemples fondamentaux à connaître
-  %eg Exemples fondamentaux
-    1. Normes sur le $\K$-espace vectoriel $\K$.
-       - *Analyse :* Soit $N:\K \longrightarrow \R_{+}$ une norme sur $\K$. On a
-         $$
-           \forall x \in \K, N(x) = N(x \cdot 1) = \abs{x}N(1)
-         $$
-         or $1\ne 0$ donc $N(1) > 0$.
-       - *Synthèse :* Soit $\alpha > 0$. Posons
-         $$
-           N_{\alpha}: \applic{\K}{\R_{+}}{z}{\alpha \abs{z}}
-         $$
-         - On a bien $N_{\alpha} \geq 0$ et pour $z \in \K$, on a
-           $$
-             N_{\alpha}(z) = 0 \implies \abs{z} = 0 \implies z = 0
-           $$
-         - Soit $(\lambda, z) \in \K \times \K$.
-           $$
-             N_{\alpha}(\lambda z) = \alpha \abs{\lambda z} = \abs{\lambda}(\alpha \abs{z}) = \abs{\lambda}N_{\alpha}(z)
-           $$
-         - Soit $(z,zy) \in \K^{2}$. $N_{\alpha}(z+zy) = \alpha \abs{z+z'}$ or $\abs{z+z'} \leq  \abs{z} + \abs{z'}$ et comme $\alpha \geq 0$,
-           $$
-             \alpha \abs{z+z'}\leq \alpha \abs{z} + \alpha \abs{z'}
-           $$
-           i.e. $N_{\alpha}(z+z') \leq N_{\alpha}(z) + N_{\alpha}(zy)$
+### Exemples fondamentaux à connaître
+%eg
+  Normes sur le $\K$-espace vectoriel $\K$.
+  - *Analyse :* Soit $N:\K \longrightarrow \R_{+}$ une norme sur $\K$. On a
+    $$
+      \forall x \in \K, N(x) = N(x \cdot 1) = \abs{x}N(1)
+    $$
+    or $1\ne 0$ donc $N(1) > 0$.
+  - *Synthèse :* Soit $\alpha > 0$. Posons
+    $$
+      N_{\alpha}: \applic{\K}{\R_{+}}{z}{\alpha \abs{z}}
+    $$
+    - On a bien $N_{\alpha} \geq 0$ et pour $z \in \K$, on a
+      $$
+        N_{\alpha}(z) = 0 \implies \abs{z} = 0 \implies z = 0
+      $$
+    - Soit $(\lambda, z) \in \K \times \K$.
+      $$
+        N_{\alpha}(\lambda z) = \alpha \abs{\lambda z} = \abs{\lambda}(\alpha \abs{z}) = \abs{\lambda}N_{\alpha}(z)
+      $$
+    - Soit $(z,zy) \in \K^{2}$. $N_{\alpha}(z+zy) = \alpha \abs{z+z'}$ or $\abs{z+z'} \leq  \abs{z} + \abs{z'}$ et comme $\alpha \geq 0$,
+      $$
+        \alpha \abs{z+z'}\leq \alpha \abs{z} + \alpha \abs{z'}
+      $$
+      i.e. $N_{\alpha}(z+z') \leq N_{\alpha}(z) + N_{\alpha}(zy)$
 
-        Les normes sur $\K$ sont $N_{\alpha} : z \longmapsto  \alpha \abs{z}$ avec $\alpha \in \R_{+}^{*}$.
-    2. %prop
-         Si $(E_{1},N_{1}), \ldots, (E_{p},N_{p})$ sont des $\K$-espaces vectoriels normés avec $p \geq 2$, alors $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$ est un $\K$-espace vectoriel normé avec pour tous $(x_{1}, \ldots, x_{p}) \in E_{1} \times  \cdots \times E_{p}$,
-         $$
-           N_{\infty}\big((x_{1}, \ldots, x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(x_{i})
-         $$
-         $N_{\infty}$ est appelé norme-produit.
-       %
-       %proof
-         - $N_{\infty} \geq 0$
-         - $$
-             \begin{align*}
-               N_{\infty}(x) = 0 &\implies  \forall i \in \icc{1,p}, N_{i}(x_{i}) = 0\\
-               &\implies \forall i \in \icc{1,p}, x_{i} = 0_{E_{i}}
-             \end{align*}
-           $$
-         - $$
-             \begin{align*}
-               N_{\infty}(\lambda \cdot x) &= N_{\infty} \big((\lambda x_{1}, \ldots, \lambda x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(\lambda x_{i})\\
-               &= \max_{i \in \icc{1,p}} \big( \abs{\lambda}N_{i}(x_{i})\big)\\
-               &= \abs{\lambda}\max_{i \in \icc{1,p}}N_{i}(x_{i})\\
-               &= \abs{\lambda}N_{\infty}(x)
-             \end{align*}
-           $$
-         - $N_{\infty}(x+y) = \max_{i \in \icc{1,p}} N_{i}(x_{i} + y_{i})$
-           $$
-             \forall i \in \icc{1,p}, N_{i}(x_{i}+y_{i}) \leq  N_{i}(x_{i}) + N_{i}(y_{i}) \leq N_{\infty}(x) + N_{\infty}(y)
-           $$
-           donc $N_{\infty}(x+y) \leq  N_{\infty}(x) + N_{\infty}(y)$
-       %
-  %
+  Les normes sur $\K$ sont $N_{\alpha} : z \longmapsto  \alpha \abs{z}$ avec $\alpha \in \R_{+}^{*}$.
 %
-
+%prop
+  Si $(E_{1},N_{1}), \ldots, (E_{p},N_{p})$ sont des $\K$-espaces vectoriels normés avec $p \geq 2$, alors $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$ est un $\K$-espace vectoriel normé avec pour tous $(x_{1}, \ldots, x_{p}) \in E_{1} \times  \cdots \times E_{p}$,
+  $$
+    N_{\infty}\big((x_{1}, \ldots, x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(x_{i})
+  $$
+  $N_{\infty}$ est appelé norme-produit.
+%
+%proof
+  - $N_{\infty} \geq 0$
+  - $$
+      \begin{align*}
+        N_{\infty}(x) = 0 &\implies  \forall i \in \icc{1,p}, N_{i}(x_{i}) = 0\\
+        &\implies \forall i \in \icc{1,p}, x_{i} = 0_{E_{i}}
+      \end{align*}
+    $$
+  - $$
+      \begin{align*}
+        N_{\infty}(\lambda \cdot x) &= N_{\infty} \big((\lambda x_{1}, \ldots, \lambda x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(\lambda x_{i})\\
+        &= \max_{i \in \icc{1,p}} \big( \abs{\lambda}N_{i}(x_{i})\big)\\
+        &= \abs{\lambda}\max_{i \in \icc{1,p}}N_{i}(x_{i})\\
+        &= \abs{\lambda}N_{\infty}(x)
+      \end{align*}
+    $$
+  - $N_{\infty}(x+y) = \max_{i \in \icc{1,p}} N_{i}(x_{i} + y_{i})$
+    $$
+      \forall i \in \icc{1,p}, N_{i}(x_{i}+y_{i}) \leq  N_{i}(x_{i}) + N_{i}(y_{i}) \leq N_{\infty}(x) + N_{\infty}(y)
+    $$
+    donc $N_{\infty}(x+y) \leq  N_{\infty}(x) + N_{\infty}(y)$
+%
 
 %prop
   Si $x = (x_{1}, \ldots, x_{n})\in \K^{n}$, alors on pose
@@ -197,7 +195,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %proof
-  $X \longmapsto  0_{\K}$ est bornée. Soit $(f,g) \in (\mathscr B(tx,\K))^{2}$. Soit $(\lambda, \mu) \in \K^{2}$.
+  $X \longmapsto  0_{\K}$ est bornée. Soit $(f,g) \in (\mathscr B(X,\K))^{2}$. Soit $(\lambda, \mu) \in \K^{2}$.
   $$
     \exists (M,M') \in (\R_{+})^{2}: \forall x \in X, \begin{cases}\abs{f(x)} \leq M \\ \abs{g(x)} \leq M\end{cases}
   $$
@@ -209,10 +207,10 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
       &\leq  \abs{\lambda}M + \abs{\mu}M'
     \end{align*}
   $$
-  donc $\lambda f + \mu g \in \mathscr B(X,\K)$. Ainsi, $\mathscr   B(X,\K)$ est un sous-espace vectoriel de $(\Func(tx,\K), +, \cdot )$.
+  donc $\lambda f + \mu g \in \mathscr B(X,\K)$. Ainsi, $\mathscr   B(X,\K)$ est un sous-espace vectoriel de $(\Func(X,\K), +, \cdot )$.
   - Si $f \in \mathscr B(X,\K)$, alors $\big\{\abs{f(x)} \mid x \in X\big\}$ est une partie non vide et majorée de $\R_{+}$, donc elle admet une borne supérieure, donc $\norm f_{\infty,X}$ est correctement définie et $\norm \cdot _{\infty, X}$.
   - $\norm f_{\infty,X} = 0 \implies  \forall x \in X, \abs{f(x)} \leq 0 \implies \forall x \in X, f(x) = 0 \implies f = \tilde{0}$.
-  - Soit $\lambda \in \R$. Soit $f \in \mathscr B(tx,\K)$. Alors
+  - Soit $\lambda \in \R$. Soit $f \in \mathscr B(X,\K)$. Alors
     $$
       \norm{\lambda f}_{\infty, X} = \sum_{x \in X}\big( \abs{\lambda} \cdot \abs{f(x)}\big) = \abs{\lambda}\sup_{x \in X}\abs{f(x)} = \abs{\lambda}\cdot  \norm f_{\infty,X}
     $$
@@ -233,8 +231,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 %lemma
   $\Cont([a,b],\K)$ peut être muni de 3 normes usuelles.
-  - $f \longmapsto  \norm f_{1} = \int_{a}^{b}\abs{f}$
-  - $f \longmapsto  \norm f_{2} = \left(\int_{a}^{b}\abs{f}^{2}\right)^{1/2}$
+  - $f \longmapsto  \norm f_{1} = \displaystyle\int_{a}^{b}\abs{f}$
+  - $f \longmapsto  \norm f_{2} = \left(\displaystyle\int_{a}^{b}\abs{f}^{2}\right)^{1/2}$
   - $f \longmapsto \norm f_{\infty} = \max_{x \in X}\abs{f(x)}$
 %
 

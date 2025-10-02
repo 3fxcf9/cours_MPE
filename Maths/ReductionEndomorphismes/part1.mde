@@ -100,13 +100,13 @@ $$
   $$
     E = \bigoplus_{\lambda \in \sp f}\ker (f-\lambda \id_{E})^{n(\lambda)} = \bigoplus_{\lambda \in \sp f}F_{\lambda}(f)
   $$
-  donc
+  or
   $$
     \forall  \lambda \in \sp f, \ker (f-\lambda \id_{E})^{n(\lambda)} \subset F_{\lambda}(f)
   $$
   d’où
   $$
-    n = \sum_{\lambda \in \sp f}\dim (\ker (f-\lambda \id_{E}))^{n(\lambda)} \leq \sum_{\lambda \in \sp f}\dim F_{\lambda}(f) = n
+    n = \sum_{\lambda \in \sp f}\dim \left(\ker (f-\lambda \id_{E})^{n(\lambda)}\right) \leq \sum_{\lambda \in \sp f}\dim F_{\lambda}(f) = n
   $$
   Il y a donc nécessairement égalité, à savoir
   $$
@@ -120,7 +120,7 @@ $$
   $$
     \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}}
   $$
-  avec $T_{i} = \mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{i}}$.
+  avec $T_{i} = \mtx{\lambda_{i} & &*\\&\ddots&\\0&&\lambda_{i}}$.
 %
 
 %proof
@@ -192,7 +192,7 @@ $$
 $$
 $e \in \ker \big((A-\lambda_{i} I_{n})^{k+1}\big) \setminus \ker \big((A-\lambda_{i})^{k}\big)$. Alors $(A-\lambda_{i} I)(e) \in \ker  \big((A-\lambda I)^{k}\big)$
 $$
-  Ae = \lambda_{i} e + u \quad\text{avec} u \in \ker \big((A-\lambda_{i} I)^{k}\big)
+  Ae = \lambda_{i} e + u \quad\text{avec } u \in \ker \big((A-\lambda_{i} I)^{k}\big)
 $$
 Soient $\lambda \in \sp A$ et $(e_{1}, \ldots, e_{p})$ base de $E_{\lambda}(A)$. Complétons-la en une base de $\ker \big((A-\lambda I)^{2}\big)$: $(e_{1}, \ldots, e_{p}, e_{p+1}, \ldots, e_{q})$. On itère le processus pour obtenir une base $(e_{1}, \ldots, e_{m_{i}})$ de $F_{\lambda}(A)$, dans laquelle
 $$
@@ -231,7 +231,7 @@ $$
   On a $(3) \implies (4) \implies (1) \implies (2)$.
   - Supposons $f$ trigonalisable. Soit $\mathscr B$ une base de $E$ telle que
     $$
-      \mat_{\mathscr B}(f) = \mtx{\lambda_{1} & \cdots & *\\&\ddots&\\0&&\lambda_{n}}
+      \mat_{\mathscr B}(f) = \mtx{\lambda_{1} &  & *\\&\ddots&\\0&&\lambda_{n}}
     $$
     Alors $\chi_{f} = \prod_{i=1}^{n}(X-\lambda_{i})$ est scindé dans $\K[X]$ et est un polynôme annulateur de $f$ (théorème de Cayley-Hamilton).
 %
@@ -267,7 +267,7 @@ $$
          &= (X-3)(X+1)\vmtx{1&2\\1&X+3}
        \end{align*}
      $$
-     $\chi_{A} = (X-3)(X+1)^{2}$ est scindé dans $\M_{3}(\R)$ donc $A$ est trigonalisable dans $\M_{3}(\R)$. Il existe  donc $(a,b,c) \in \R^{3}$ tel que $A\sembl \mtx{3&a&b\\0&-1&0\\0&0&-1}$. Mieux (TSC): il existe $\alpha \in \R$ tel que $A\sembl \arrmtx{c|c}{3&\arr{cc}{0&0}\\\arr{c}{0\\0}&\arr{cc}{-1&\alpha\\0&-1}}$.
+     $\chi_{A} = (X-3)(X+1)^{2}$ est scindé dans $\M_{3}(\R)$ donc $A$ est trigonalisable dans $\M_{3}(\R)$. Il existe  donc $(a,b,c) \in \R^{3}$ tel que $A\sembl \mtx{3&a&b\\0&-1&0\\0&0&-1}$. Mieux (TSC): il existe $\alpha \in \R$ tel que $A\sembl \arrmtx{c|c}{3&\arr{cc}{0&0}\\\hline\arr{c}{0\\0}&\arr{cc}{-1&\alpha\\0&-1}}$.
 
      En effet, $\dim E_{3}(A) = 1$ donc $E_{3}(A)=\R \mtx{1\\0\\0}$.
      $$
@@ -307,7 +307,7 @@ $$
      $$
   6. Soit $A \in \M_{2}(\C)$ telle que $A\notin \Vect\left\{I_{2}\right\}$ et $\chi_{A} = (X-\lambda)^{2}$ avec $\lambda \in \C$. $\chi_{A}$ est scindé dans $\C[X]$ donc $A$ est trigonalisable. Il existe donc $\alpha \in \C$ et une base $(e_{1}, e_{2}) $ de $\C$ tels que
      $$
-       \mat_{(e_{1}, e_{3})}(f_{A}) = \mtx{\lambda&a\\0\\\lambda}
+       \mat_{(e_{1}, e_{2})}(f_{A}) = \mtx{\lambda&a\\0&\lambda}
      $$
      donc $f_{A}\ne \lambda \id_{\C^{2}}$ donc $a \in \C^{*}$, d’où $\mat_{(ae_{1}, e_{2})}(f) = \mtx{\lambda&1\\0&\lambda}$.
 
@@ -320,7 +320,7 @@ $$
      $$
        A_{k}\arrowlim{k \to +\infty}B = \big(b_{i,j}\big)_{\substack{1 \leq i \leq n\\1 \leq j \leq n}} \overset{\text{def}}\iff \forall (i,j) \in \icc{1,n}^{2}, a_{i,j}(k) \arrowlim{k \to +\infty}b_{i,j}
      $$
-     Toute matrice de $\M_{n}(\C)$ est la limite d’une seuite de matrices possétant toutes $n$ valeurs propres distinctes.
+     Toute matrice de $\M_{n}(\C)$ est la limite d’une seuite de matrices possédant toutes $n$ valeurs propres distinctes.
      %proof
        Soit $A \in \M_{n}(\C)$. Comme $\chi_{A}$ est scindé dans $\C[X]$, $A$ est trigonalisable. Posons
        $$
@@ -393,7 +393,7 @@ $$
     $$
     d’où $\sp f = \{\lambda_{1}, \ldots, \lambda_{n}\} \ne\emptyset$. Soit $\lambda_{i_{1}}, \ldots, \lambda_{i_{r}}$ les valeurs propres distinctes de $f$ avec $1 \leq i_{1} < \cdots < i_{r} \leq n$ et $n \in \N^{*}$. Pour $k \in \icc{1,r}$, on note
     $$
-      I_{k} = \{j \in \icc{1,n} \mid \lambda_{j} = \lambda_{i_{k}}\} \quad\text{et}\quad \mathscr  B_{k} = (e_{j})_{j \in \I_{k}}
+      I_{k} = \{j \in \icc{1,n} \mid \lambda_{j} = \lambda_{i_{k}}\} \quad\text{et}\quad \mathscr  B_{k} = (e_{j})_{j \in I_{k}}
     $$
     Alors
     $$
@@ -670,7 +670,7 @@ $$
 
 %offprog
   %prop
-    Soit $(A,B) \in \big(M_{n}(\K)\big)^{2}$.
+    Soit $(A,B) \in \big(\M_{n}(\K)\big)^{2}$.
     1. $$
          \begin{cases}AB = BA\\A \text{ et } B \text{ trigonalisables}\end{cases} \implies \exists P \in \GL_{n}(\K): \begin{cases}P^{-1}AP \in \T_{n}^{+}(\K)\\ P^{-1}BP \in \T_{n}^{+}(\K)\end{cases}
        $$
@@ -735,7 +735,7 @@ $$
     donc $N_{1} N_{2} = 0_{2}$
   %
 
-  %thm Décomposition de Dumford
+  %thm Décomposition de Dunford
     Soit $A \in \M_{n}(\K)$ avec $\chi_{A}$ scindé dans $\K[X]$. Il existe un unique couple $(D, N)$ de $\M_{n}(\K)^{2}$ vérifiant
     1. $A = D+N$  2. $D$ est diagonalisable  3. $N$ nilpotente  4. $DN = ND$
   %
@@ -787,7 +787,7 @@ $$
   %
 
   %eg
-    $A = \mtx{1&a\\0&2}, B = \mtx{1&a&0\\0&1&b\\0&0&1}, C = \mtx{1&a&0\\0&2&b\\0&0&1}$. $\chi_{A} = (X-1)(X-2)$, $\chi_{B} = (X-1)^{3}$ et $\chi_{C} = (X-1)^{2}(X-2)$ sont scindés dans $\R[X]$ donc ces matrices possèdent une décomposition de Dumford.
+    $A = \mtx{1&a\\0&2}, B = \mtx{1&a&0\\0&1&b\\0&0&1}, C = \mtx{1&a&0\\0&2&b\\0&0&1}$. $\chi_{A} = (X-1)(X-2)$, $\chi_{B} = (X-1)^{3}$ et $\chi_{C} = (X-1)^{2}(X-2)$ sont scindés dans $\R[X]$ donc ces matrices possèdent une décomposition de Dunford.
     - $A = A+0_{2}$
     - $B = I_{3} + \mtx{0&a&0\\0&0&b\\0&0&0}$
     - $\rg (C-I_{3}) = \begin{cases}1&\text{si }a=0\\ 2&\text{si }ab\ne 0\\1&\text{si }a\ne 0 \text{ et } b=0\end{cases}$

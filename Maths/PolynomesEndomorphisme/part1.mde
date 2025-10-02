@@ -1120,7 +1120,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
      i.e.
      $$
-       (A- \lambda I_{n}) \notin GL_{n}(\K)
+       (A- \lambda I_{n}) \notin \GL_{n}(\K)
      $$
      i.e.
      $$
@@ -1161,7 +1161,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
        \lambda \in \sp_{\K}(A) \iff  \det (A - \lambda I_{n}) = 0 \iff  \vmtx{\lambda_{1} &  & *\\ & \ddots & \\0 & & \lambda_{n}}_{(n)} = \prod_{i=1}^{n}(\lambda_{i} - \lambda) = 0
      $$
      $\sp_{\K}(\lambda I_{n}) = \{\lambda\}$. $\sp_{\K}(\diag(\lambda_{1}, \ldots, \lambda_{n})) = \{\cdot 1, \ldots, \lambda_{n}\}$
-  3. Soit $ea \in \M_{n}(\K)$. Posons
+  3. Soit $A \in \M_{n}(\K)$. Posons
      $$
        \varphi: \applic{\M_{n}(\K)}{\M_{m}(\K)}{M}{AM}
      $$
@@ -1198,7 +1198,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
   7. Si $A\sembl A'$, alors $\sp_{\K}(A) = \sp_{\K}(A')$.
      %offprog
-       Mieux: si $A = U \times  A' \times U^{-1}$ avec $eu \in \GL_{n}(\K)$, alors pour tout $\lambda \in \sp_{\K}(A) = \sp_{\K}(A')$,
+       Mieux: si $A = U \times  A' \times U^{-1}$ avec $U \in \GL_{n}(\K)$, alors pour tout $\lambda \in \sp_{\K}(A) = \sp_{\K}(A')$,
        $$
          E_{\lambda}(A) = U \times  E_{\lambda}(A')
        $$
@@ -1425,15 +1425,16 @@ $$
          \chi_{f} = \arrvmtx{c|c}{XI-\mat_{\mathscr B_{F}}(f_{|F}) & -C \\\hline 0 & XI-D} = \det (XI - mat_{\mathscr  B_{F}}(f_{|F})) \times \det (XI - D) = \chi_{f_{|F}} \times \chi_{D}
        $$
        donc $\chi_{f_{\F}}\mid \chi_{f}$ dans $\K[X]$.
-  2. $E = \bigoplus_{i=1}^{n}F_{i}$ avec $F_{i}$ non nul et $f$-stable. Soient $\mathscr B_{1} \cap \cdots \cap \mathscr B_{n}$ une base adaptée à cette somme directe. On a
-     $$
-       \mat_{\mathscr B_{1} \cup \cdots \cup \mathscr B_{n}}(f) = \arrmtx{c|c|c}{\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& \mat_{\mathscr B_{n}}(f_{|F_{n}})}
-     $$
-     donc
-     $$
-       \chi_{f} = \arrvmtx{c|c|c}{XI-\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& XI-\mat_{\mathscr B_{n}}(f_{|F_{n}})}
-     $$
-
+  %offprog
+    2. $E = \bigoplus_{i=1}^{n}F_{i}$ avec $F_{i}$ non nul et $f$-stable. Soient $\mathscr B_{1} \cap \cdots \cap \mathscr B_{n}$ une base adaptée à cette somme directe. On a
+       $$
+         \mat_{\mathscr B_{1} \cup \cdots \cup \mathscr B_{n}}(f) = \arrmtx{c|c|c}{\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& \mat_{\mathscr B_{n}}(f_{|F_{n}})}
+       $$
+       donc
+       $$
+         \chi_{f} = \arrvmtx{c|c|c}{XI-\mat_{\mathscr B}(f_{|F_{1}}) & &0\\\hline &\ddots&\\\hline0&& XI-\mat_{\mathscr B_{n}}(f_{|F_{n}})}
+       $$
+  %
 %
 
 %def Proposition-définition
@@ -1640,7 +1641,7 @@ $$
   2. %lemma
        Soit $(A,B) \in (\M_{n}(\Z))^{2}$ avec $\det A \land \det B = 1$.
        $$
-         \exists (U,V) \in (M_{n}(\Z))^{2}: UA + VB = I_{n}
+         \exists (U,V) \in (\M_{n}(\Z))^{2}: UA + VB = I_{n}
        $$
      %
      %proof
@@ -1714,7 +1715,7 @@ $$
          avec $\alpha_{i} \geq \beta_{i}$, pour tout $i \in \icc{1,r}$.
   %
   2. Soit $A \in \M_{n}(\K)$. Les propositions suivantes sont équivalentes~:
-     1. $A$ est nilpotente  2. $\exists k \in \icc{1,n}: \underbrace{\pi_{A} = X^{k}}_{\iff \chi_{A} = tx^{n}}$  3. $A^{n} = 0_{n}$
+     1. $A$ est nilpotente  2. $\exists k \in \icc{1,n}: \underbrace{\pi_{A} = X^{k}}_{\iff \chi_{A} = X^{n}}$  3. $A^{n} = 0_{n}$
   3. Pour $f \in \L(E)$ avec $\dim E = n \in \N^{*}$. On a
      $$
        \pi_{f} \text{ scindé dans } \K[X] \iff  \chi_{f} \text{ scindé dans } \K[X]
