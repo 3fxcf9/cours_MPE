@@ -533,7 +533,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      On a aussi
      $$
        \begin{align*}
-         A \text{ nilpotente} &\iff f_{A}: \applic{M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{AX} \text{ nilpotent}\\
+         A \text{ nilpotente} &\iff f_{A}: \applic{\M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{AX} \text{ nilpotent}\\
          &\iff f_{A}^{n} = 0_{\L(E)}
        \end{align*}
      $$
@@ -549,7 +549,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
        P(A) = \sum_{k=0}^{d}a_{k}\diag(A_{1}^{k}, \ldots, A_{r}^{k}) = \diag (P(A_{1}), \ldots, P(A_{n}))
      $$
-     et
+     d’où
      $$
        \begin{align*}
          P(A) = 0_{n} &\iff P(A_{1}) = 0, \ldots, P(A_{1})=0\\
@@ -681,7 +681,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
     $$
     donc $\forall j \in \icc{1,p}, \alpha_{j} = 0_{L}$.
   %
-  %lemma Conséquences
+  %cor Conséquences
     - si $A \in \M_{n}(\R)$, alors $\pi_{A,\R} = \pi_{A, \C} \in \R[X]$
     - si $A \in \M_{n}(\Q)$, alors $\pi_{A,\Q} = \pi_{A,\R} = \pi_{A,\C} \in \Q[X]$
   %
@@ -871,7 +871,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
 %
 
 %rem
-  1. $0 \in \sp f \iff f \text{ injectif}$ et $0 \in \sp f \iff f \text{ non injectif}$
+  1. $0 \notin \sp f \iff f \text{ injectif}$ et $0 \in \sp f \iff f \text{ non injectif}$
   2. Pour $\lambda \in \K$, on a $\sp(\lambda \id_{E}) = \{\lambda\}$
   3. %callout
        Si $\lambda \in \sp f$, alors $E_{\lambda}$ est stable par $f$.
@@ -889,7 +889,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
      $$
        \varphi: \applic{E}{E}{f}{f'}
      $$
-     est un endomorphisme du $C$-espace vectoriel $E$. Soit $(\lambda, f) \in \C \times E \setminus \{0\}$ tel que((« Équation aux éléments propres »))
+     est un endomorphisme du $\C$-espace vectoriel $E$. Soit $(\lambda, f) \in \C \times E \setminus \{0\}$ tel que((« Équation aux éléments propres »))
      $$
        \varphi(f) = \lambda f
      $$

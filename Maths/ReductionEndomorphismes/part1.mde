@@ -492,3 +492,325 @@ $$
          A \sembl \mtx{\lambda&1\\0&\lambda} \sembl B
        $$
 %
+
+%prop
+  Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$. Il y a équivalence entre
+  1. $f$ est diagonalisable
+  2. $\chi_{f}$ est scindé dans $\K[X]$ et pour tout $\lambda \in \sp f$, $\dim  E_{\lambda}(f) = m(\lambda)$, i.e.
+     $$
+       \forall \lambda \in \sp f, E_{\lambda}(f) = F_{\lambda}(f)
+     $$
+  3. $\pi_{f}$ est scindé à racines simples dans $\K[X]$ (on dit que $\pi_{f}$ est *simplement scindé*)
+  4. Il existe un polynôme annulateur simplement scindé dans $\K[X]$
+%
+
+%proof
+  - Supposons $f$ diagonalisable. Alors $f$ est trigonalisable donc $\chi_{f}$ est scindé dans $\K[X]$, d’où $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Or $\chi_{f}$ est scindé donc $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Ainsi,
+    $$
+      \forall \forall  \in \sp f, E_{\lambda}(f) \subset F_{\lambda}(f)
+    $$
+    d’où
+    $$
+      \forall \lambda \in \sp (f), E_{\lambda}(f) = F_{\lambda}(f)
+    $$
+    d’où $\forall \lambda \in \sp (f), \dim E_{\lambda}=m(\lambda)$
+  - Supposons 2. $\pi_{f}\mid \chi_{f} = \prod_{\lambda \in \sp f}(X-\lambda)^{m(\lambda)}$ donc $\pi_{f}$ est scindé dans $\K[X]$. Alors
+    $$
+      \forall \lambda \in \sp f, \dim \big(\ker (f-\lambda \id)^{1}\big) = m(\lambda) = \dim  \big(\ker (f-\lambda \id)^{m(\lambda)}\big)
+    $$
+    Donc
+    $$
+      \pi_{f} = \prod_{\lambda \in \sp f}(X-\lambda)^{1}
+    $$
+    est simplement scindé.
+  - $\pi_{f}$ est un polynôme annulateur de $f$ donc la troisième implication est vraie.
+  - Supposons 4. Soit $P = \prod_{i=1}^{d}(X-\alpha_{i})$ un polynôme annulateur de $f$ simplement scindé dans $\K[X]$. $\pi_{f}$ divise $P$ et $\deg \pi_{f} \geq 1$ donc il existe $r \in \N^{*}$ et $1 \leq  i_{1} < \cdots < i_{r} \leq  d$ tels que
+    $$
+      \pi_{f} = \prod_{k=1}^{r}(X-\alpha_{i_{k}})
+    $$
+    donc $\sp f = \{\alpha_{i_{1}}, \ldots, \alpha_{i_{r}}\}\ne\emptyset$, et (LDN):
+    $$
+      E = \ker  \pi_{f}(f) = \bigoplus_{k=1}^{r}\ker (f-\alpha_{i_{k}}\id _{E}) = \bigoplus_{k=1}^{r}E_{\alpha_{i_{k}}}(f)
+    $$
+%
+
+%eg
+  1. $A = \mtx{2&0&1-a\\-1&1&a-1\\a-1&0&2a} \in \M_{3}(\R)$ avec $a \in \R$. Étudions la trigonalisabilité / diagonalisabilité de $A$.
+     $$
+       \begin{align*}
+         \chi_{A} (X) &= \vmtx{X-2&0&a-1\\1&X-1&1-a\\1-a&0&X-2a}\\
+         &= (X-1)\vmtx{X-2&a-1\\1-a&X-2a}\\
+         &= (X-1)\vmtx{X-a-1&a-1\\1+a-X&X-2a}\\
+         &= (X-1)(X-a+1)\vmtx{1&a-1\\-1&X-2a}\\
+         &= (X-1)(X-a-1) \vmtx{1&a-1\\0&X-a-1}\\
+         &= (X-1)(X-a-1)^{2}
+       \end{align*}
+     $$
+     $\chi_{A}$ est scindé dans $\R[X]$ donc $A$ est trigonalisable dans $\M_{3}(\R)$ et
+     $$
+       \sp A=\{1,a+1\}
+     $$
+     - si $a=0$, $1$ est une valeur propre triple de $A$. Si $A$ est diagonalisable, alors $A\sembl I_{3}$, i.e. $A=I_{3}$ or $A\ne I_{3}$. Ainsi $A$ n’est pas diagonalisable.
+     - si $a\ne 0$, $A$ possède deux valeurs propres: 1 (simple) et $a+1$ (double). Alors $\dim E_{1}(A) = 1$ et $E_{1}(A) = \R \mtx{0\\1\\0}$ donc $A$ est diagonalisable si et seulement si $\dim E_{1+a}(A) = 2$, soit si et seulement si $\rg \big(A-(1+a)I_{3}\big)=1$. Or
+       $$
+         A-(1+a)I_{3} = \mtx{1-a&0&1-a\\-1&-a&a-1\\a-1&0&a-1}
+       $$
+       donc $A$ est diagonalisable si et seulement si $a=1$.
+
+     Dans ce cas, il existe $P \in \GL_{3}(\R)$ tel que $A = PDP^{-1}$ avec $D = \mtx{2&0&0\\0&2&0\\0&0&1}$.
+     $$
+       A-2I_{3} = \mtx{0&0&0\\-1&-1&0\\0&0&0}
+     $$
+     donc
+     $$
+       E_{2}(A) = \ker (A-2I_{3}) = \Vect\left\{\mtx{0\\0\\1}, \mtx{1\\-1\\0}\right\}
+     $$
+     Ainsi,
+     $$
+       P = \mtx{0&1&0\\0&-1&1\\1&0&0}
+     $$
+     convient.
+
+     ++Si $a=1$, trouver $\R \in \M_{3}(\R)$ avec $\R^{2} = A$ où $A = \mtx{2&0&0\\-1&1&0\\0&0&2} = PDP^{-1}$++
+
+     - *Analyse :* Soit $R \in \M_{3}(\R)$ avec $\R^{2} = A$. $R \times A = A \times R = R^{3}$ donc $[R,A] = 0_{3}$, d’où $E_{1}(A)$ et $E_{2}(A)$ sont stables par $R$. Il existe donc $\R' \in \M_{2}(\R)$ et $\alpha \in \R$ tels que
+       $$
+         R = P \arrmtx{c|c}{R'&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&\alpha}P^{-1}
+       $$
+       or $R^{2} = A = PDP^{-1}$ donc $\arrmtx{c|c}{R'^{2}&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&\alpha^{2}}$ donc $\begin{cases}R'^{1} = 2I_{2}\\\alpha^{2} = 1\end{cases}$ donc $X2-2$ est annulateur de $R'$ donc $\pi_{R'} \in \{X-\sqrt{2}, X+\sqrt{2}, X^{2}-2\}$.
+       - $\pi_{R'} = X-\sqrt{2} \iff R' = \sqrt{2}I_{2}$
+       - $\pi_{R'} = X+\sqrt{2} \iff R' = -\sqrt{2}I_{2}$
+       - Si $\pi_{R'} = X^{2}-2 = (X-\sqrt{2})(X+\sqrt{2})$, alors $\pi_{R'}$ est simplement scindé dans $\R[X]$ donc $R'$ est diagonalisable. Il existe donc $Q \in \GL_{2}(\R)$ tel que
+         $$
+           R' = Q \mtx{\sqrt{2}&0\\0&-\sqrt{2}} Q^{-1}
+         $$
+     - *Synthèse :*
+       $$
+         \begin{align*}
+           R^{2} = A &\iff P \arrmtx{c|c}{R'^{2}&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&\alpha^{2}}P^{-1} = PDP^{-1}\\
+           &\iff \arrmtx{c|c}{Q(2I_{2})Q^{-1}&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&1}=D
+         \end{align*}
+       $$
+       - Premier cas:
+         $$
+           \left[P\arrmtx{c|c}{\sqrt{2}I_{2}&\\\hline&\pm 1}P^{-1}\right]^{2} = PDP^{-1} = A
+         $$
+       - Deuxième cas: identique
+     Ainsi,
+     $$
+       \mathscr S = \left\{P\arrmtx{c|c}{\arr{cc}{\varepsilon \sqrt{2}&0\\0&\varepsilon' \sqrt{2}}&\arr{c}{0\\0}\\\hline\arr{cc}{0&0}&\varepsilon''}P^{-1} | (\varepsilon, \varepsilon', \varepsilon'') \in \{1,-1\}^{3}\right\} \cup \left\{P\arrmtx{c|c}{Q \mtx{\sqrt{2}&0\\0&-\sqrt{2}}Q^{-1}&\arr{c}{0\\0}\\\hline\arr{cc}{0&0}&\varepsilon}P^{-1} | Q \in \GL_{2}(\R), \varepsilon \in \{1,-1\}\right\}
+     $$
+  2. Soit $M \in \M_{n}(\R)$ avec $M^{2} = I_{n}$. Montrons que $n$ est pair et
+     $$
+       M\sembl \arrmtx{c|c|c}{\arr{cc}{0&-1\\1&0}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{0&-1\\1&0}}
+     $$
+     $X^{2}+1$ est un polynôme annulateur de $M$ et $X^{2}+1 = (X+i)(X-i)$ est simplement scindé dans $\C[X]$. Donc $M$ est diagonalisable dans $\M_{n}(\C)$ et $\sp_{\C} M \subset \{i,-i\}$. Or $\chi_{M} (X) \in \R[X]$ donc
+     $$
+       \exists  d \in \N^{*}: \chi_{M}(X) = (X-i)^{d}(X+i)^{d}
+     $$
+     donc $2d = n$: $n$ est pair.
+
+     Alors,
+     $$
+       M\sembl \arrmtx{c|c|c}{\arr{cc}{i&0\\0&-i}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{i&0\\0&-i}}_{(n) = (2d)}
+     $$
+     or $\chi_{\mtx{0&-1\\1&0}} = X^{2}+1 = (X-i)(X+i)$ donc $\mtx{0&-1\\1&0}$ possède deux valeurs propres simples et distinctes donc est diagonalisable:
+     $$
+       \exists P \in \GL_{2}(\C): \mtx{0&-1\\1&0} = P \mtx{i&0\\0&-i}P^{-1}
+     $$
+     d’où
+     $$
+       \arrmtx{c|c|c}{P&&\\\hline&\ddots&\\\hline 0&&P}\arrmtx{c|c|c}{\arr{cc}{i&\\&-i}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{i&\\&-i}}\arrmtx{c|c|c}{P^{-1}&&\\\hline&\ddots&\\\hline 0&&P^{-1}} = \arrmtx{c|c|c}{\arr{cc}{0&-1\\1&0}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{0&-1\\1&0}}
+     $$
+     donc
+     $$
+       \underbrace{M}_{\M_{n}(\R)}\underset{\M_{n}(\C)}\sembl \arrmtx{c|c|c}{\arr{cc}{0&-1\\1&0}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{0&-1\\1&0}} \in \M_{n}(\R)
+     $$
+     donc il existe $P \in \GL_{n}(\R)$ tel que
+     $$
+       M = P\arrmtx{c|c|c}{\arr{cc}{0&-1\\1&0}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{0&-1\\1&0}}P^{-1}
+     $$
+     Réciproquement,
+     $$
+       \left[P \arrmtx{c|c|c}{\arr{cc}{0&-1\\1&0}&&0\\\hline &\ddots&\\\hline0&&\arr{cc}{0&-1\\1&0}} P^{-1}\right]^{2} = P \arrmtx{c|c|c}{-I_{2}&&\\\hline &\ddots&\\\hline &&-I_{2}}P^{-1} = -I_{n}
+     $$
+  3. Soit $A \in \GL_{n}(\C)$ vérifiant $\exists N \in \N^{*}: A^{N}$ est diagonalisable.
+
+     $\pi_{A^{N}}$ est donc simplement scindé dans $\C[X]$.
+     $$
+       \pi_{A^{N}} = \prod_{\lambda \in \sp_{\C}(A^{N})}(X-\lambda)
+     $$
+     d’où
+     $$
+       0_{n} = \prod_{\lambda \in \sp_{\C}(A^{N})}(A^{N} - \lambda I_{n})
+     $$
+     Donc $P = \prod_{\lambda \in \sp_{\C}(A^{N})}(X^{N} - \lambda)$ est un polynôme annulateur de $A$. Comme $A \in \GL_{n}(\C)$, on a $A^{N} \in GL_{n}(\C)$ (car $(GL_{n}(\C), \times )$ est un groupe) donc $\sp(A^{N}) \subset \C^{*}$. Pour $\lambda \in \sp(A^{N}), X^{N}-\lambda$ est simplement scindé dans $\C[X]$ et pour $\lambda\ne\mu$, on a $(X^{N} - \lambda) \land (X^{N} - \mu)=1$. Ainsi, $P$ est simplement scindé dans $\C[X]$ et $P(A) = 0_{n}$ donc $A$ est diagonalisble. Donc $Q(A)$ est diagonalisable, car si
+     $$
+       A = P \mtx{\lambda_{1} &&0\\&\ddots&\\0&&\lambda_{n}}P^{-1}
+     $$
+     alors
+     $$
+       Q(A) = P \mtx{\tilde{Q}(\lambda_{1})&&0\\&\ddots&\\0&&\tilde{Q}(\lambda_{n})}P^{-1}
+     $$
+%
+
+%prop
+  Soit $f \in \L(E)$. Si $f$ est diagonalisable et $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors $f_{|F}\in \L(F)$ est diagonalisable.
+%
+
+%proof
+  $\pi_{f_{|F}}$ divise $\pi_{f}$ et $\pi_{f}$ est simplement scindé dans $\C[X]$, donc $\pi_{f_{|F}}$ est aussi simplement scindé dans $\C[X]$ donc $f_{|F}$ est diagonalisable
+%
+
+## Coréduction
+
+%callout Attention
+  $\mtx{0&0\\1&0}$ et $\mtx{0&-1\\0&0}$ sont nilpotentes donc trigonalisables (et même triangulaires) dans $\M_{2}(\R)$. Cependant, $\mtx{0&0\\1&0}+\mtx{0&-1\\0&0} = \mtx{0&-1\\1&0}$ n’est pas triangularisable dans $\M_{2}(\R)$.
+%
+
+%offprog
+  %prop
+    Soit $(A,B) \in \big(M_{n}(\K)\big)^{2}$.
+    1. $$
+         \begin{cases}AB = BA\\A \text{ et } B \text{ trigonalisables}\end{cases} \implies \exists P \in \GL_{n}(\K): \begin{cases}P^{-1}AP \in \T_{n}^{+}(\K)\\ P^{-1}BP \in \T_{n}^{+}(\K)\end{cases}
+       $$
+       Si tel est le cas, $A$ et $B$ sont *cotriangularisables*.
+    2. $$
+         \begin{cases}AB=BA\\A \text{ et } B \text{ diagonalisables}\end{cases} \implies \exists P \in \GL_{n}(\K): \begin{cases}P^{-1}AP \text{ diagonale}\\P^{-1}BP \text{ diagonale}\end{cases}
+       $$
+       Si tel est le cas, $A$ et $B$ sont *codiagonalisables*.
+  %
+
+  %proof
+    1. Soient $f$ et $g$ des endomorphismes triangularisables tels que $[f,g] = 0_{\L(E)}$.
+       $f$ est triangularisable donc $\sp f \ne \emptyset$. Pour $\lambda \in \sp f$, on a $E_{\lambda}(f)$ stable par $g$. Comme $g$ est trigonalisable, $g_{|E_{\lambda}(f)}$ est trigonalisable donc $\sp \big(g_{|E_{\lambda}(f)}\big) \ne\emptyset$. Soit $\mu \in \sp \big(g_{|E_{\lambda}(f)}\big)$. Il exist $x \in E_{\lambda}(f) \setminus \{0\}$ tel que
+       $$
+         g(x) = \mu x \quad\text{et}\quad f(x) = \lambda x
+       $$
+       $x$ est un vecteur propre commun à $f$ et $g$. La suite est identique à l’exercice 6 du TD.
+    2. Soient $(f,g) \in \L(E)^{2}$ diagonalisables tels que $[f,g] = 0_{\L(E)}$. $f$ est diagonalisables donc $\sp f \ne\emptyset$ et $E = \oplus_{\lambda \in \sp f}E_{\lambda}(f)$
+       Soit $\lambda \in \sp f$. Comme $[f,g] = 0_{\L(E)}$, $E_{\lambda}(f)$ est stable par $g$. Comme $g$ est diagonalisable, $g_{|E_{\lambda}(f)}$ est diagonalisable. Soit $\mathscr B_{\lambda}$ une base de $E_{\lambda}(f)$ formée de vecteurs propres de $g_{|E_{\lambda}(f)}$ donc de $g$.
+
+       Posons $\mathscr B = \bigcup_{\lambda \in \sp f}\mathscr B_{\lambda}$. Comme $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$, $\mathscr B$ est une base de $E$ formée de vecteurs propres de $g$; ce sont des vecteurs propres de $f$.
+       $$
+         \mat_{\mathscr B}f = \mtx{\lambda_{1}&&0\\&\ddots&\\0&&\lambda_{n}} \quad\text{et}\quad \mat_{\mathscr  B}g = \mtx{\mu{1}&&0\\&\ddots&\\0&&\mu{n}}
+       $$
+       A noter que la réciproque de 2 est vraie: si $P^{-1}AP = D$ et $P^{-1}BP = D'$ sont diagonales, comme $DD' = D' D$, on a
+       $$
+         P^{-1} AB P = P^{-1} BAP
+       $$
+       donc $AB = BA$.
+  %
+
+  %cor
+    Soit $(f,g) \in \L(E)^{2}$. Si $[f,g] = 0_{\L(E)}$ et $f$ et $g$ trigonalisables (resp. diagonalisables), alors $f+g$, $\lambda f+\mu g$ et $f\circ g$ sont trigonalisables (resp. diagonalisables).
+  %
+
+  %proof
+    Il existe une base $\mathscr B$ de $E$ telle que
+    $$
+      \mat_{\mathscr B}f = \mtx{\lambda_{1} & &* \scriptsize\text{(resp. 0)}\\&\ddots&\\0&&\lambda_{n}}
+    $$
+    et
+    $$
+      \mat_{\mathscr B}g = \mtx{\mu_{1} & &*' \scriptsize\text{(resp. 0)}\\&\ddots&\\0&&\mu_{n}}
+    $$
+    D’où
+    $$
+      \mat_{\mathscr B}(\lambda f + \mu g) = \mtx{\lambda \lambda_{1} + \mu \mu_{1} & &*'' \scriptsize\text{(resp. 0)}\\&\ddots&\\0&&\lambda \lambda_{n} + \mu \mu_{n}}
+    $$
+    et
+      $$
+      \mat_{\mathscr B}(f\circ g) = \mtx{\lambda_{1} \mu_{1} & &*''' \scriptsize\text{(resp. 0)}\\&\ddots&\\0&&\lambda_{n}\mu_{n}}
+    $$
+  %
+
+  %rem
+    Soient $(N_{1}, N_{2}) \in \M_{2}(\K)^{2}$ nilpotentes et telles que $[N_{1}, N_{2}] = 0_{2}$. Que peut-on dire de $(N_{1} N_{2})$ ?
+
+    Il existe $P \in \GL_{2}(\K)$ et $(a,b) \in \K^{2}$ tels que
+    $$
+      N_{1} = P \mtx{0&a\\0&0}P^{-1} \quad\text{et}\quad N_{2} = P \mtx{0&b\\0&0}P^{-1}
+    $$
+    donc $N_{1} N_{2} = 0_{2}$
+  %
+
+  %thm Décomposition de Dumford
+    Soit $A \in \M_{n}(\K)$ avec $\chi_{A}$ scindé dans $\K[X]$. Il existe un unique couple $(D, N)$ de $\M_{n}(\K)^{2}$ vérifiant
+    1. $A = D+N$  2. $D$ est diagonalisable  3. $N$ nilpotente  4. $DN = ND$
+  %
+
+  %proof
+    - ++Existence :++ Le théorème spectral carastéristique donne, comme $\chi_{A} = \prod_{i=1}^{r}(X-\lambda_{i})^{m_{i}}$, l’existence de $P \in \GL_{n}(\K)$ tel que
+      $$
+        A = P \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}} P^{-1}
+      $$
+      avec $T_{i} = \mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{i}} = \lambda_{i} I_{n_{i}} + \underbrace{N_{i}}_{\text{nilpotent}}$. Alors $A = D+N$ où
+      $$
+        D = P\arrmtx{c|c|c}{\lambda_{1}I_{n_{1}}&&0\\\hline&\ddots&\\\hline0&&\lambda_{1} I_{n_{1}}}P^{-1}
+      $$
+      et
+      $$
+        N = P\arrmtx{c|c|c}{N_{1}&&0\\\hline&\ddots&\\\hline0&&N_{r}}P^{-1}
+      $$
+      et
+      $$
+        DN = ND = P\arrmtx{c|c|c}{\lambda_{1}N_{1}&&0\\\hline&\ddots&\\\hline0&&\lambda_{r}N_{r}}P^{-1}
+      $$
+    - ++Unicité :++ Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Posons $f = d+\nu$ où $d$ est diagonalisable et $\nu$ nilpotent avec $d\circ \nu = \nu\circ d$. On a $E = \bigoplus_{\lambda \in \sp f}F_{\lambda}(f)$.
+      $$
+        f\circ d = (d+\nu)\circ d = d^{2}+\nu\circ d = d^{2} + d\circ \nu = d\circ f
+      $$
+      Comme $[f,d] = 0_{\L(E)}$, pour tout $\lambda \in \sp f$, on a
+      $$
+        \big[(f-\lambda \id_{E})^{m(\lambda)}\delta\big] = 0_{\L(E)}
+      $$
+      De même, $[f,\nu] = 0_{\L(E)}$ donc
+      $$
+        \big[(f-\lambda \id_{E})^{m(\lambda)}, \nu\big] = 0_{\L(E)}
+      $$
+      Donc $\ker (f - \lambda \id_{E})^{m(\lambda)} = F_{\lambda}(f)$ est stable par $d$ et $\nu$ (et par $f$).
+
+      Posons $f_{\lambda} = f_{|F_{\lambda}(f)}$, $d_{\lambda} = d_{|F_{\lambda}(f)}$ et $\nu_{\lambda} = \nu_{|F_{\lambda}(f)}$. $d_{\lambda}$ est alors diagonalisable et
+      $$
+        \underbrace{d_{\lambda} - \lambda \id_{\lambda}}_{\text{diagonalisable}} = \underbrace{f_{\lambda}-\lambda \id_{\lambda}}_{\text{nilpotent}} - \underbrace{\nu_{\lambda}}_{\text{nilpotent}}
+      $$
+      En effet,
+      $$
+        (f_{\lambda} - \lambda \id_{\lambda})^{m(\lambda)} = (f-\lambda \id_{E})^{m(\lambda)}_{|F_{\lambda}(f)} = 0_{\L(F_{\lambda})}
+      $$
+      De plus, $f_{\lambda} - \lambda \id_{\lambda}$ et $\nu_{\lambda}$ commutent donc $f_{\lambda} - \lambda \id_{\lambda} - \nu_{\lambda}$ est nilpotent. Ainsi, $d_{\lambda} - \lambda \id_{\lambda} = 0_{\L(F_{\lambda}(f))}$ donc $d_{\lambda} = \lambda \id_{\lambda}$ donc
+      $$
+        d = \sum_{\lambda \in \sp f}\lambda \underbrace{p_{\lambda}}_{\text{proj. spectral}} \in \K[f]
+      $$
+      où $p_{\lambda}$ est la projection sur $F_{\lambda}(f)$ parallèlement à $\bigoplus_{\substack{\mu \in \sp f\\\mu \ne \lambda}}F_{\mu}(f)$. $d$ est donc unique et $\nu = f-d$ est aussi unique.
+  %
+
+  %eg
+    $A = \mtx{1&a\\0&2}, B = \mtx{1&a&0\\0&1&b\\0&0&1}, C = \mtx{1&a&0\\0&2&b\\0&0&1}$. $\chi_{A} = (X-1)(X-2)$, $\chi_{B} = (X-1)^{3}$ et $\chi_{C} = (X-1)^{2}(X-2)$ sont scindés dans $\R[X]$ donc ces matrices possèdent une décomposition de Dumford.
+    - $A = A+0_{2}$
+    - $B = I_{3} + \mtx{0&a&0\\0&0&b\\0&0&0}$
+    - $\rg (C-I_{3}) = \begin{cases}1&\text{si }a=0\\ 2&\text{si }ab\ne 0\\1&\text{si }a\ne 0 \text{ et } b=0\end{cases}$
+      - si $ab = 0$, $C = C+0_{3}$
+      - si $ab\ne 0$, alors $\dim  E_{2}(C) = 1\ne 2$. On a $\R^{3} = F_{1}(C) \oplus \underbrace{F_{2}(C)}_{E_{2}(C)}$
+      $$
+        \begin{cases}x + &ay& &= 2x\\&2y+&bz &= 2y\\&&z&=2z\end{cases} \iff \begin{cases}x &= ay\\z&=0\end{cases}
+      $$
+      Notons $(e_{1}, e_{2}, e_{3})$ la base canonique de $\R^{3}$. On a $E_{2}(C) = \Vect\left\{a e_{1} + e_{2}\right\} = F_{2}(C)$
+      $$
+        D e_{2} = D(e_{2} + a e_{1} - a e_{1}) = 2(e_{2} + a e_{1}) - a e_{1} = 2 e_{2} + a e_{1}
+      $$
+      et $D e_{1} = e_{1}$.
+      $$
+        (C-I)^{2} = \mtx{0&a&ab\\0&1&b\\0&0&0}
+      $$
+      $F_{1}(C) = \Vect\left\{e_{1}, be_{2} + e_{3}\right\}$
+      $$
+        D e_{3} = D(e_{3} - b e_{2} - b e_{2}) = e_{3} - b e_{2} + b(2 e_{2} + a e_{1}) = e_{3} + b e_{2} + ab e_{1}
+      $$
+      Ainsi,
+      $$
+        D = \mtx{1&a&ab\\0&2&b\\0&0&1} \quad\text{et}\quad N = \mtx{0&0&-ab\\0&0&0\\0&0&0}
+      $$
+  %
+%

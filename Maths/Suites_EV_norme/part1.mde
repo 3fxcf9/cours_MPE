@@ -1,0 +1,259 @@
+# Suites dans un espace vectoriel normé
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
+
+%thm Théorème de Bolzano-Weierstrass dans $\K^n$
+  Soit $(u(k))_{k \in \N}$ une suite de $\K^{n}$. Posons
+  $$
+    \forall k \in \N, u(k) =\big(u_{1}(k), \ldots, u_{n}(k)\big)
+  $$
+  Si chaque suite $(u_{p}(k))_{p \in \N}$ (à valeurs dans $\K$) est bornée, alors il existe $\varphi: \N \longrightarrow  \N$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n})\in \K^{n}$ tels que
+  $$
+    \begin{cases}u_{1}(\varphi(k)) \arrowlim{k\to+\infty}\lambda_{1}\\\vdots\\u_{n}(\varphi(k)) \arrowlim{k\to +\infty}\lambda_{n}\end{cases}
+  $$
+%
+
+%proof
+  Notons $\prop(n)$ l’énoncié ci-dessus.
+  - Pour $n=1$, le résultat est connu
+  - Supposons $\prop(n)$ vraie pour $n$ fixé dans $\N^{*}$. Soit $\big((u(k))\big)_{k \in \N} \in (\K^{n+1})^{\N}$ où chaque suite $\big(u_{p}(k)\big)_{k \in \N}$ avec $p \in \icc{1,n+1}$ est bornée. D’après $\prop(n)$, il existe $\varphi:\N \longrightarrow \N$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+  $$
+    u_{1}(\varphi(k))\arrowlim{k\to+\infty}\lambda_{1}, \ldots, u_{n}(\varphi(k)) \arrowlim{k\to +\infty}\lambda_{n}
+  $$
+  La suite $\big(u_{n+1}(\varphi(k))\big)_{k \in \N}$ est bornée à valeurs dans $\K$, donc il existe $\psi:\N \longrightarrow \N$ strictement croissante et $\lambda_{n+1} \in \K$ tels que
+  $$
+    u_{n+1}(\varphi(\psi(k))) \arrowlim{k\to +\infty}\lambda_{n+1}
+  $$
+  $\varphi' = \varphi\circ \psi: \N \longrightarrow \N$ est strictement croissante pour tout $p \in \icc{1,n+1}$, donc $\prop(n+1)$ est vraie.
+%
+
+## Normes sur un $\K$-espace vectoriel
+
+%def
+  Soit $E$ un $\K$-espace vectoriel. On appelle *norme sur $E$* toute application $N: E\longrightarrow \R_{+}$ vérifiant
+  - $\forall x \in E, N(x) \in \R_{+}$ et $N(x)=0 \implies x=0_{E}$ *(axiome de séparation)*
+  - $\forall (\lambda, x) \in \K \times E, N(\lambda x) = \abs{\lambda}N(x)$ *(axiome d’homogénéité positive)*
+  - $\forall (x,y) \in E^{2}, N(x+y)\leq N(x) + N(y)$ *(inégalité triangulaire)*
+  On dit alors que $(E,N)$ est un $\K$-espace vectoriel normé (*e.v.n*)
+%
+
+%rem
+  1. L’axiome d’homogénéité positive implique $N(0_{E}) = N(0_{\K} \cdot 0_{E}) = \abs{0_{\K}} \times N(0_{E}) = 0$
+  2. Les deux premiers axiomes impliquent
+     $$
+       \forall x \in E, 0=N(x-x)\leq N(x) + N(-x) = 2N(x)
+     $$
+     donc $\forall x \in E, N(x) \in \R_{+}$.
+  3. Un vecteur $x$ d’un $\K$-espace vectoriel normé $(E,N)$ est dit *unitaire* si $N(x) = 1$.
+
+     Si $x \in E \setminus \{0\}$, alors $x' = \frac{x}{N(x)}$ est unitaire.
+  4. $\forall x \in E, N(-x) = N(x)$ si $\K=\C$, alors
+     $$
+       \forall x \in E, \forall \theta \in \R, N(e^{i \theta}x) = \abs{e^{i \theta}}N(x) = N(x)
+     $$
+%
+
+%prop Inégalité triangulaire renversée
+  Si $(E,N)$ est un $\K$-espace vectoriel normé, alors pour tout $(x,y) \in E^{2}$,
+  $$
+    \abs{N(x) - N(y)} \leq N(x\pm y)
+  $$
+%
+
+%proof
+  Soit $(x,y) \in E^{2}$.
+  $$
+    N(x) = N(x-y+y) \leq N(x-y)+N(y)
+  $$
+  d’où $N(x) - N(y) \leq N(x-y)$. On a donc aussi
+  $$
+    N(y) - N(x) \leq N(y-x) = N(x-y)
+  $$
+  d’où $\abs{N(x) - N(y)} \leq N(x-y)$. Ainsi,
+  $$
+    \abs{N(x) - N(y)} = \abs{N(x) - N(-y)} \leq N(x-(-y)) = N(x+y)
+  $$
+%
+
+%callout Exemples fondamentaux à connaître
+  %eg Exemples fondamentaux
+    1. Normes sur le $\K$-espace vectoriel $\K$.
+       - *Analyse :* Soit $N:\K \longrightarrow \R_{+}$ une norme sur $\K$. On a
+         $$
+           \forall x \in \K, N(x) = N(x \cdot 1) = \abs{x}N(1)
+         $$
+         or $1\ne 0$ donc $N(1) > 0$.
+       - *Synthèse :* Soit $\alpha > 0$. Posons
+         $$
+           N_{\alpha}: \applic{\K}{\R_{+}}{z}{\alpha \abs{z}}
+         $$
+         - On a bien $N_{\alpha} \geq 0$ et pour $z \in \K$, on a
+           $$
+             N_{\alpha}(z) = 0 \implies \abs{z} = 0 \implies z = 0
+           $$
+         - Soit $(\lambda, z) \in \K \times \K$.
+           $$
+             N_{\alpha}(\lambda z) = \alpha \abs{\lambda z} = \abs{\lambda}(\alpha \abs{z}) = \abs{\lambda}N_{\alpha}(z)
+           $$
+         - Soit $(z,zy) \in \K^{2}$. $N_{\alpha}(z+zy) = \alpha \abs{z+z'}$ or $\abs{z+z'} \leq  \abs{z} + \abs{z'}$ et comme $\alpha \geq 0$,
+           $$
+             \alpha \abs{z+z'}\leq \alpha \abs{z} + \alpha \abs{z'}
+           $$
+           i.e. $N_{\alpha}(z+z') \leq N_{\alpha}(z) + N_{\alpha}(zy)$
+
+        Les normes sur $\K$ sont $N_{\alpha} : z \longmapsto  \alpha \abs{z}$ avec $\alpha \in \R_{+}^{*}$.
+    2. %prop
+         Si $(E_{1},N_{1}), \ldots, (E_{p},N_{p})$ sont des $\K$-espaces vectoriels normés avec $p \geq 2$, alors $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$ est un $\K$-espace vectoriel normé avec pour tous $(x_{1}, \ldots, x_{p}) \in E_{1} \times  \cdots \times E_{p}$,
+         $$
+           N_{\infty}\big((x_{1}, \ldots, x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(x_{i})
+         $$
+         $N_{\infty}$ est appelé norme-produit.
+       %
+       %proof
+         - $N_{\infty} \geq 0$
+         - $$
+             \begin{align*}
+               N_{\infty}(x) = 0 &\implies  \forall i \in \icc{1,p}, N_{i}(x_{i}) = 0\\
+               &\implies \forall i \in \icc{1,p}, x_{i} = 0_{E_{i}}
+             \end{align*}
+           $$
+         - $$
+             \begin{align*}
+               N_{\infty}(\lambda \cdot x) &= N_{\infty} \big((\lambda x_{1}, \ldots, \lambda x_{p})\big) = \max_{i \in \icc{1,p}}N_{i}(\lambda x_{i})\\
+               &= \max_{i \in \icc{1,p}} \big( \abs{\lambda}N_{i}(x_{i})\big)\\
+               &= \abs{\lambda}\max_{i \in \icc{1,p}}N_{i}(x_{i})\\
+               &= \abs{\lambda}N_{\infty}(x)
+             \end{align*}
+           $$
+         - $N_{\infty}(x+y) = \max_{i \in \icc{1,p}} N_{i}(x_{i} + y_{i})$
+           $$
+             \forall i \in \icc{1,p}, N_{i}(x_{i}+y_{i}) \leq  N_{i}(x_{i}) + N_{i}(y_{i}) \leq N_{\infty}(x) + N_{\infty}(y)
+           $$
+           donc $N_{\infty}(x+y) \leq  N_{\infty}(x) + N_{\infty}(y)$
+       %
+  %
+%
+
+
+%prop
+  Si $x = (x_{1}, \ldots, x_{n})\in \K^{n}$, alors on pose
+  $$
+    \norm{x}_{1} = \sum_{i=1}^{n}\abs{x_{i}} \quad\text{et}\quad \norm{x}_{2} = \left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{\frac{1}{2}}
+  $$
+  et $\norm{x}_{\infty} = \max_{i\in\icc{1,n}} \abs{x_{i}}$. Alors $\norm{\cdot }_{1}, \norm{\cdot }_{2}$ et $\norm{\cdot }_{\infty}$ sont des normes sur $\K^{n}$ appelées *normes usuelles*.
+%
+
+%proof
+  - $\norm{\cdot }_{\infty}$ est une norme produit sur $\K \times  \cdots \times \K = \K^{n}$
+  - $\norm{\cdot }_{1} \leq 0$ et $\norm{\cdot }_{2} \geq 0$ or $\forall i \in \icc{1,n}, \begin{cases}\abs{x_{i}}\geq 0\\\abs{x_{i}}^{2} \geq 0\end{cases}$ donc
+    $$
+      \norm{x}_{1} = 0 \implies  \forall i \in \icc{1,n}, \abs{x_{i}} = 0 \implies  \forall i \in \icc{1,n}, x_{i} = 0
+    $$
+    $$
+      \norm{x}_{2} = 0 \implies  \forall i \in \icc{1,n}, \abs{x_{i}}^{2} = 0 \implies  \forall i \in \icc{1,n}, x_{i} = 0
+    $$
+    donc $\norm{x}_{1} = 0 \implies x = 0$ et $\norm{x}_{2} = 0 \implies x=0$.
+  - $\norm{\lambda x}_{1} = \sum_{i=1}^{n} \abs{\lambda x_{i}} = \abs{\lambda}\cdot \sum_{i=1}^{n}\abs{x_{i}} = \abs{\lambda} \cdot  \norm{x}_{1}$
+    $$
+      \norm{\lambda x}_{2} = \left(\sum_{i=1}^{n}\abs{\lambda x_{i}}^{2}\right)^{1/2} = \left( \abs{\lambda}^{2} \sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{1/2} = \abs{\lambda}\cdot \norm{x}_{2}
+    $$
+  - $\norm{x+y}_{1} = \sum_{i=1}^{n}\abs{x_{i} + y_{i}} \leq  \sum_{i=1}^{n}\abs{x_{i}} + \abs{y_{i}} \leq  \sum_{i=1}^{n}\abs{x_{i}} + \sum_{i=1}^{n}\abs{y_{i}}$ donc $\norm{x+y}_{1} \leq \norm{x}_{1} + \norm{y}_{1}$.
+  - $\norm{x+y}_{2} = \left(\sum_{i=1}^{n}\abs{x_{i} + y_{i}}^{2}\right)^{1/2} \leq  \left(\sum_{i=1}^{n} \big( \abs{x_{i}} + \abs{y_{i}}\big)^{2}\right) \leq \left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{1/2} + \underbrace{\left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{1/2}}_{\norm{x}_{2}} + \underbrace{\left(\sum_{i=1}^{n}\abs{y_{i}}^{2}\right)^{1/2}}_{=\norm{y}_{2}}$ (Cauchy-Schwarz dans $\K^{n}$)
+%
+
+%prop
+  Si $(E, \scalar \cdot \cdot )$ est un espace préhilbertien réel, alors
+  $$
+    \applic{E}{\R_{+}}{x}{\norm x = \sqrt{\scalar x x}}
+  $$
+  est une norme sur $E$ appelée norme euclidienne associée au produit scalaire $\scalar \cdot  \cdot $.
+%
+
+%proof
+  $\forall x \in E, \scalar x x \geq 0$ don $\norm \cdot $ existe.
+  - $\scalar x x = 0 \implies  x = 0$
+  - $\norm{\lambda x} = \sqrt{\scalar {\lambda x}{\lambda x}} = \sqrt{\lambda^{2} \scalar x x} = \abs{\lambda} \cdot \norm x$
+%
+
+%prop Inégalité de Cauchy-Schwarz
+  $$
+    \forall (x,y) \in E^{2}, \abs{\scalar xy} \leq  \norm x \cdot \norm y
+  $$
+%
+
+%proof
+  $$
+    \norm{x+y}^{2} = \scalar{x+y}{x+y} = \norm{x}^{2} + 2 \scalar x y + \norm{y}^{2} \leq  \norm{x}^{2} + 2\norm x \cdot \norm y + \norm y^{2} = (\norm x + \norm y)^{2}
+  $$
+  $t \longmapsto \sqrt{t}$ est croissante sur $\R_{+}$ et $\norm \cdot \geq 0$. $\norm{x+y} \leq  \norm x + \norm y$.:w
+%
+
+%lemma
+  Soit $X$ un ensemble non vide.
+  $$
+    \mathscr B = \big\{f \in \Func(X,\K) \mid \exists M \in \R_{+}: \forall x \in X, \abs{f(x)} \leq M\big\}
+  $$
+  Pour $f \in \mathscr B(X,\K)$, on pose $\norm {f}_{\infty,X} = \sup_{x \in X}\abs{f(x)}$. Alors $\big(\mathscr B(X\K), \norm \cdot _{\infty,X}\big)$ est un $\K$-espace vectoriel normé.
+%
+
+%proof
+  $X \longmapsto  0_{\K}$ est bornée. Soit $(f,g) \in (\mathscr B(tx,\K))^{2}$. Soit $(\lambda, \mu) \in \K^{2}$.
+  $$
+    \exists (M,M') \in (\R_{+})^{2}: \forall x \in X, \begin{cases}\abs{f(x)} \leq M \\ \abs{g(x)} \leq M\end{cases}
+  $$
+  Donc
+  $$
+    \begin{align*}
+      \forall x \in X, \abs{(\lambda f+\mu g)(x)} &= \abs{\lambda \cdot  f(x) + \mu \cdot g(x)}\\
+      & \leq  \abs{\lambda}\cdot \abs{f(x)} + \abs{\mu} \cdot \abs{g(x)}\\
+      &\leq  \abs{\lambda}M + \abs{\mu}M'
+    \end{align*}
+  $$
+  donc $\lambda f + \mu g \in \mathscr B(X,\K)$. Ainsi, $\mathscr   B(X,\K)$ est un sous-espace vectoriel de $(\Func(tx,\K), +, \cdot )$.
+  - Si $f \in \mathscr B(X,\K)$, alors $\big\{\abs{f(x)} \mid x \in X\big\}$ est une partie non vide et majorée de $\R_{+}$, donc elle admet une borne supérieure, donc $\norm f_{\infty,X}$ est correctement définie et $\norm \cdot _{\infty, X}$.
+  - $\norm f_{\infty,X} = 0 \implies  \forall x \in X, \abs{f(x)} \leq 0 \implies \forall x \in X, f(x) = 0 \implies f = \tilde{0}$.
+  - Soit $\lambda \in \R$. Soit $f \in \mathscr B(tx,\K)$. Alors
+    $$
+      \norm{\lambda f}_{\infty, X} = \sum_{x \in X}\big( \abs{\lambda} \cdot \abs{f(x)}\big) = \abs{\lambda}\sup_{x \in X}\abs{f(x)} = \abs{\lambda}\cdot  \norm f_{\infty,X}
+    $$
+  - Soit $(f,g) \in \mathscr B(X,\K)^{2}$.
+    $$
+      \forall x \in X, \abs{(f+g)(x)} \leq  \norm f_{\infty,X} + \norm g_{\infty,X}
+    $$
+    d’où $\norm{f+g}_{\infty,X} \leq  \norm{f}_{\infty,X} + \norm{g}_{\infty,X}$.
+%
+
+%lemma
+  Si $F$ est un sous-espace vectoriel d’un $\K$-espace vectoriel normé $(E,N)$, alors
+  $$
+    N_{F}: \applic{F}{\R_{+}}{x}{N(x)}
+  $$
+  est une norme sur $F$ appelée norme induite.
+%
+
+%lemma
+  $\Cont([a,b],\K)$ peut être muni de 3 normes usuelles.
+  - $f \longmapsto  \norm f_{1} = \int_{a}^{b}\abs{f}$
+  - $f \longmapsto  \norm f_{2} = \left(\int_{a}^{b}\abs{f}^{2}\right)^{1/2}$
+  - $f \longmapsto \norm f_{\infty} = \max_{x \in X}\abs{f(x)}$
+%
+
+%proof
+  - $\norm f_{\infty,\cc{a,b}} = \sup_{x \in \cc{a,b}}\abs{f(x)} = \max_{x \in  \cc{a,b}}\abs{f(x)}$
+  - $\norm f_{1} = 0 \implies  \forall t \in \cc{a,b}, \abs{f(t)} = 0 \implies  f=\tilde{0}$ car $\abs{f}$ est continue et positive.
+  - $\norm{\lambda f}_{1} = \int_{a}^{b}\abs{\lambda}\cdot \abs{f} = \abs{\lambda} \cdot  \norm{f}_{1}$
+  - $\abs{f+g}\leq  \abs{f} + \abs{g}$ par croissance de $f \longmapsto  \int_{a}^{b}f$ car $a \leq b$. On a $\norm{f+g}_{1} \leq  \abs{f}_{1} + \norm g_{1}$.
+  - $\Cont(\cc{a,b}, \R)$
+    $$
+      (f,g) \longmapsto \scalar f g = \int_{a}^{b}f(t)g(t)\dd t
+    $$
+    est un produit scalaire donc
+    $$
+      f \longmapsto  \norm{f}_{2} = \left(\int_{a}^{b}f(t)^{2} \dd t\right)^{1/2}
+    $$
+    est une norme euslidienne.
+  - $\Cont(\cc{a,b}, \C)$.
+    $$
+      \norm{f+g}_{2} = \left(\int_{a}^{b}\abs{f+g}^{2}\right)^{1/2} \leq \left(\int_{a}^{b}\left(\abs{f} + \abs{g}\right)^{2}\right)^{1/2} \leq  \left(\int_{a}^{b}\abs{f}^{2}\right)^{1/2} + \left(\int_{a}^{b}\abs{g}^{2}\right)^{1/2}
+    $$
+%
