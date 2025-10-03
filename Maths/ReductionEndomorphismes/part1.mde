@@ -40,25 +40,27 @@ $$
        \big[(f-\lambda \id_{E})^{m(\lambda)}, f\big]
      $$
      est stable par $f$.
+
+
   4. Soit $\lambda \in \sp f$. Posons $m = m(\lambda)$. On a
      $$
-       \chi_{f} = (X-\lambda)^{m}Q \quad\text{et}\quad Q \land (X-\lambda) = 1
+      \chi_{f} = (X-\lambda)^{m}Q \quad\text{et}\quad Q \land (X-\lambda) = 1
      $$
-     d’où (LDN):
+     d’où, d’après le lemme de décomposition des noyaux,
      $$
-       E = F_{\lambda}(f)\oplus \ker (Q(f))
+      E = F_{\lambda}(f)\oplus \ker (Q(f))
      $$
-     Posons $g = f_{|F_{\lambda}(f)}$ et $h = f_{|\ker (Q(f))}$. On a $\boxed{\chi_{f} = \chi_{g} \times \chi_{h} \quad (\star)}$.
+     Posons $g = f_{|F_{\lambda}(f)}$ et $h = f_{|\ker (Q(f))}$. On a $\chi_{f} = \chi_{g} \times \chi_{h} \quad (\star)$.
      $$
-       (X-\lambda)^{m}(g) = (f-\lambda \id_{E})^{m}_{|F_{\lambda}(f)}
+      (X-\lambda)^{m}(g) = (f-\lambda \id_{E})^{m}_{|F_{\lambda}(f)} = 0_{\L(E)}
      $$
      donc $\pi_{g}\mid (X-\lambda)^{m}$ donc $\sp g = \{\lambda\}$. Or $\chi_{g} \mid \chi_{f}$ et $\chi_{f}$ est scindé dans $\K[X]$ donc $\chi_{g}$ l’est aussi. Ainsi, $\chi_{g} = (X-\lambda)^{\dim F_{\lambda}(f)}$.
 
-     De même, $Q(h) = Q(f)_{|\ker Q(f)} = 0_{\L(Q(f))}$ donc $\sp h \subset Z_{\K}(Q)$. Or $\tilde{Q}(\lambda)\ne 0$ donc $\lambda \in \sp h$ donc $(X-\lambda)\land \chi_{h}=1$.
+     De plus, $Q(h) = Q(f_{|\ker Q(f)}) = 0_{\L(Q(f))}$ donc $\sp h \subset Z_{\K}(Q)$. Or $\tilde{Q}(\lambda)\ne 0$ donc $\lambda \notin \sp h$ donc $(X-\lambda)\land \chi_{h}=1$. Ainsi,  $(\star)$ donne
      $$
-       (\star) \iff \begin{cases}(X-\lambda)^{m}Q = (X-\lambda)^{\dim  F_{\lambda}(f)} \times \chi_{h}\\ \chi_{h} \land (X-\lambda) = 1\end{cases}
+      \begin{cases}(X-\lambda)^{m}Q = \chi_{f} = \chi_{g} \times \chi_{h} = (X-\lambda)^{\dim  F_{\lambda}(f)} \times \chi_{h}\\ \chi_{h} \land (X-\lambda) = 1\end{cases}
      $$
-     d’où $\dim F_{\lambda}(f) = m$.
+     d’où $\boxed{\dim F_{\lambda}(f) = m}$.
 %
 
 %rem
@@ -457,7 +459,7 @@ $$
 %eg
   1. $A = \mtx{0&\cdots&\cdots&0&-1\\1&\ddots&&\vdots&-1\\0&\ddots&\ddots&\vdots&\vdots\\\vdots&\ddots&\ddots&0&\vdots\\0&\cdots&0&1&-1} \in \M_{n}(\C)$.
      $$
-       \chi_{A} = X^{n} + X^{n-1} + \cdots + 1 = \frac{1-X^{n+1}}{1-X} = \prod_{\omega \in \U_{n+1}\setminus \{1\}}
+       \chi_{A} = X^{n} + X^{n-1} + \cdots + 1 = \frac{1-X^{n+1}}{1-X} = \prod_{\omega \in \U_{n+1}\setminus \{1\}}(X-\omega)
      $$
      $A$ possède $n$ valeurs propres distinctes dans $\C$ donc $A$ est diagonalisable et
      $$
@@ -507,7 +509,7 @@ $$
 %proof
   - Supposons $f$ diagonalisable. Alors $f$ est trigonalisable donc $\chi_{f}$ est scindé dans $\K[X]$, d’où $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Or $\chi_{f}$ est scindé donc $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Ainsi,
     $$
-      \forall \forall  \in \sp f, E_{\lambda}(f) \subset F_{\lambda}(f)
+      \forall \lambda  \in \sp f, E_{\lambda}(f) \subset F_{\lambda}(f)
     $$
     d’où
     $$
@@ -671,14 +673,13 @@ $$
 %offprog
   %prop
     Soit $(A,B) \in \big(\M_{n}(\K)\big)^{2}$.
-    1. $$
-         \begin{cases}AB = BA\\A \text{ et } B \text{ trigonalisables}\end{cases} \implies \exists P \in \GL_{n}(\K): \begin{cases}P^{-1}AP \in \T_{n}^{+}(\K)\\ P^{-1}BP \in \T_{n}^{+}(\K)\end{cases}
-       $$
-       Si tel est le cas, $A$ et $B$ sont *cotriangularisables*.
-    2. $$
-         \begin{cases}AB=BA\\A \text{ et } B \text{ diagonalisables}\end{cases} \implies \exists P \in \GL_{n}(\K): \begin{cases}P^{-1}AP \text{ diagonale}\\P^{-1}BP \text{ diagonale}\end{cases}
-       $$
-       Si tel est le cas, $A$ et $B$ sont *codiagonalisables*.
+    1. Si $A$ et $B$ sont deux matrices **trigonalisables qui commutent**, alors il existe une matrice inversible $P$ telle que $P^{-1} AP$ et $P^{-1} BP$ soient triangulaires supérieures.
+
+       On dit que $A$ et $B$ sont *cotriangularisables*.
+
+    2. Si $A$ et $B$ sont deux matrices **diagonalisables qui commutent**, alors il existe une matrice inversible $P$ telle que $P^{-1} AP$ et $P^{-1} BP$ soient diagonales.
+
+       On dit que $A$ et $B$ sont *codiagonalisables*.
   %
 
   %proof

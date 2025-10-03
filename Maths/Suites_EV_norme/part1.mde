@@ -191,7 +191,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   $$
     \mathscr B = \big\{f \in \Func(X,\K) \mid \exists M \in \R_{+}: \forall x \in X, \abs{f(x)} \leq M\big\}
   $$
-  Pour $f \in \mathscr B(X,\K)$, on pose $\norm {f}_{\infty,X} = \sup_{x \in X}\abs{f(x)}$. Alors $\big(\mathscr B(X\K), \norm \cdot _{\infty,X}\big)$ est un $\K$-espace vectoriel normé.
+  Pour $f \in \mathscr B(X,\K)$, on pose $\norm {f}_{\infty,X} = \sup_{x \in X}\abs{f(x)}$. Alors $\big(\mathscr B(X,\K), \norm \cdot _{\infty,X}\big)$ est un $\K$-espace vectoriel normé.
 %
 
 %proof
@@ -233,7 +233,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   $\Cont([a,b],\K)$ peut être muni de 3 normes usuelles.
   - $f \longmapsto  \norm f_{1} = \displaystyle\int_{a}^{b}\abs{f}$
   - $f \longmapsto  \norm f_{2} = \left(\displaystyle\int_{a}^{b}\abs{f}^{2}\right)^{1/2}$
-  - $f \longmapsto \norm f_{\infty} = \max_{x \in X}\abs{f(x)}$
+  - $f \longmapsto \norm f_{\infty} = \displaystyle\max_{x \in X}\abs{f(x)}$
 %
 
 %proof
