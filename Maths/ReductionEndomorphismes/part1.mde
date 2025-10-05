@@ -118,7 +118,7 @@ $$
 %
 
 %thm Théorème spectral caractéristique
-  Soit $A \in \M_{n}(\K)$ telle que $\chi_{A}$ soit scindé dans $\K[X]$. Notons $\lambda_{1}, \ldots, \lambda_{n}$ les valeurs propres distinctes de $A$ de multiplicités respectives $m_{1}, \ldots, m_{r}$ ($r \in \N^{*}$). Alors $A$ est semblable à une matrice diagonale par blocs du type
+  Soit $A \in \M_{n}(\K)$ telle que $\chi_{A}$ soit scindé dans $\K[X]$. Notons $\lambda_{1}, \ldots, \lambda_{r}$ les valeurs propres distinctes de $A$ de multiplicités respectives $m_{1}, \ldots, m_{r}$ ($r \in \N^{*}$). Alors $A$ est semblable à une matrice diagonale par blocs du type
   $$
     \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}}
   $$
@@ -326,11 +326,11 @@ $$
      %proof
        Soit $A \in \M_{n}(\C)$. Comme $\chi_{A}$ est scindé dans $\C[X]$, $A$ est trigonalisable. Posons
        $$
-         A = \prod_{i=1}^{r}(X-\lambda_{i})^{m_{i}}
+         \chi_{A} = \prod_{i=1}^{r}(X-\lambda_{i})^{m_{i}}
        $$
        avec $\lambda_{1}, \ldots, \lambda_{n}$ valeurs propres distinctes de $A$, et $(m_{1}, \ldots, m_{r}) \in (\N^{*})^{r}$ ($r \in \N^{*}$). Il existe $P \in \GL_{n}(\C)$ tel que
        $$
-         A = P \arrmtx{c|c|c}{I_{1}&&0\\\hline&\ddots&\\\hline0&&I_{n}} P^{-1}
+         A = P \arrmtx{c|c|c}{T_{1}&&0\\\hline&\ddots&\\\hline0&&T_{r}} P^{-1}
        $$
        avec $T_{i} = \mtx{\lambda_{i}&&*\\&\ddots&\\0&&\lambda_{i}} \in \M_{m_{i}}(\C)$.
        - si $r=1$, alors $\chi_{A} = (X-\lambda_{1})^{n}$.
@@ -345,7 +345,7 @@ $$
          $$
            \sp A_{k} = \left\{\lambda_{1} + \frac{1}{k}, \ldots, \lambda_{1} + \frac{n}{k}\right\}
          $$
-         donc $\forall k \in \N^{*}, \abs{\sp(A_{k})} = n$ et $\lim_{k\to +\infty}A_{k} = A+0_{n} = 1$
+         donc $\forall k \in \N^{*}, \abs{\sp(A_{k})} = n$ et $\lim_{k\to +\infty}A_{k} = A+0_{n} = A$
        - si $r \geq 2$, soit $d = \min_{1 \leq  i < j \leq r} \abs{\lambda_{i} - \lambda_{j}}$.
          $$
            \forall k \in \N^{*}, A_{k} = A+P \mtx{1/k&&&0\\&2/k&&\\&&\ddots&\\0&&&n/k} P^{-1} = P \arrmtx{c|c|c}{T'_{1}&&\\\hline&\ddots&\\\hline0&&T'_{r}} P^{-1}
@@ -507,20 +507,20 @@ $$
 %
 
 %proof
-  - Supposons $f$ diagonalisable. Alors $f$ est trigonalisable donc $\chi_{f}$ est scindé dans $\K[X]$, d’où $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Or $\chi_{f}$ est scindé donc $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Ainsi,
+  - Supposons $f$ diagonalisable. Alors $f$ est trigonalisable donc $\chi_{f}$ est scindé dans $\K[X]$, d’où $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. Par ailleurs, $\chi_{f}$ est scindé donc $E = \bigoplus_{\lambda \in \sp f}F_{\lambda}(f)$. Or,
     $$
       \forall \lambda  \in \sp f, E_{\lambda}(f) \subset F_{\lambda}(f)
     $$
-    d’où
+    donc
     $$
       \forall \lambda \in \sp (f), E_{\lambda}(f) = F_{\lambda}(f)
     $$
     d’où $\forall \lambda \in \sp (f), \dim E_{\lambda}=m(\lambda)$
   - Supposons 2. $\pi_{f}\mid \chi_{f} = \prod_{\lambda \in \sp f}(X-\lambda)^{m(\lambda)}$ donc $\pi_{f}$ est scindé dans $\K[X]$. Alors
     $$
-      \forall \lambda \in \sp f, \dim \big(\ker (f-\lambda \id)^{1}\big) = m(\lambda) = \dim  \big(\ker (f-\lambda \id)^{m(\lambda)}\big)
+      \forall \lambda \in \sp f, \dim \big(\ker (f-\lambda \id)^{1}\big) = \dim  \big(\ker (f-\lambda \id)^{m(\lambda)}\big) = m(\lambda)
     $$
-    Donc
+    Donc, la suite des noyaux des itérés de $f-\lambda \id$ stationne à partir du premier rang, d’où comme $\pi_{f}$ est minimal,
     $$
       \pi_{f} = \prod_{\lambda \in \sp f}(X-\lambda)^{1}
     $$
@@ -764,7 +764,7 @@ $$
       $$
       Comme $[f,d] = 0_{\L(E)}$, pour tout $\lambda \in \sp f$, on a
       $$
-        \big[(f-\lambda \id_{E})^{m(\lambda)}\delta\big] = 0_{\L(E)}
+        \big[(f-\lambda \id_{E})^{m(\lambda)}, d\big] = 0_{\L(E)}
       $$
       De même, $[f,\nu] = 0_{\L(E)}$ donc
       $$
