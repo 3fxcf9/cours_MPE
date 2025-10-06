@@ -255,3 +255,412 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
       \norm{f+g}_{2} = \left(\int_{a}^{b}\abs{f+g}^{2}\right)^{1/2} \leq \left(\int_{a}^{b}\left(\abs{f} + \abs{g}\right)^{2}\right)^{1/2} \leq  \left(\int_{a}^{b}\abs{f}^{2}\right)^{1/2} + \left(\int_{a}^{b}\abs{g}^{2}\right)^{1/2}
     $$
 %
+
+%offprog
+  %prop Transfert de norme
+    Soit $f:E \longrightarrow F$ un isomorphisme de $\K$-espace vectoriels. Si $N'$ est une norme sur $F$, alors
+    $$
+      N: \applic{E}{\R_{+}}{x}{N'(\varphi(x))}
+    $$
+    est une norme.
+  %
+
+  %proof
+    - $N \geq 0$ car $N' \geq 0$
+    - Soient $x \in E$ tel que $N(x) = 0$, i.e. $N'(f(x)) = 0$. Comme $N'$ est une norme sur $F$, alors $f(x) = 0_{F}$, d’où, comme $f$ est un isomorphisme, $x=0$.
+    - Soient $(\lambda, x) \in \K \times E$.
+      $$
+        N(\lambda x) = N'(f(\lambda x)) = N'(\lambda f(x)) = \abs{\lambda}\cdot  N'(f(x)) = \abs{\lambda}N(x)
+      $$
+    - Soit $(x,y) \in E^{2}$.
+      $$
+        N(x+y) = N'(f(x+y)) = N'(f(x) + f(y)) \leq  N'(f(x)) + N'(f(y)) = N(x) + N(y)
+      $$
+  %
+%
+
+%eg
+  1. L’isomorphisme
+     $$
+       \applic{\M_{n}(\K)}{\K^{(n^{2})}}{(a_{ij})_{1 \leq  i,j \leq n}}{(a_{1,1}, a_{1,2}, \ldots, a_{n,n})}
+     $$
+     permet d’obtenir des normes sur $\M_{n}(\K)$ par transport de normes usuelles sur $\K^{(n^{2})}$: pour tout $A \in \M_{n}(\K)$,
+     - $N_{1}(A) = \sum_{(i,j) \in \icc{1,n}^{2}}\abs{a_{i,j}}$
+     - $N_{2}(A) = \left(\sum_{(i,j) \in \icc{1,n}^{2}}\abs{a_{i,j}}^{2}\right)^{\frac{1}{2}}$
+     - $N_{\infty}(A) = \max_{(i,j) \in \icc{1,n}^{2}}\abs{a_{i,j}}$
+  2. Si $E$ est un $\K$-espace vectoriel de dimension finie $n \in \N^{*}$ de base $\mathscr B=(e_{1}, \ldots, e_{n})$, alors l’isomorphisme
+     $$
+       \applic{E}{\K^{n}}{x = \sum_{i=1}^{n}x_{i}e_{i}}{(x_{1}, \ldots, x_{n})}
+     $$
+     permet le transport de normes usuelles pour obtenir des normes sur $E$: pour tout $x \in E$,
+     - $N_{1,\mathscr B}(x) = \sum_{i=1}^{n}\abs{x_{i}}$
+     - $N_{2,\mathscr B}(x) = \left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{\frac{1}{2}}$
+     - $N_{\infty,\mathscr B}(x) = \max_{i \in \icc{1,n}}\abs{x_{i}}$
+  3. L’application
+     $$
+       \applic{\M_{n}(\K)}{\big(\M_{n}(\K)\big)^{n} \simeq (\K^{n})^{n}}{A = \arrmtx{c}{L_{1}\\\hline \vdots \\\hline L_{n}}}{(L_{1}, \ldots, L_{n})}
+     $$
+     est un isomorphisme. On transporte la norme produit $N_{\infty}$ sur $(\K^{n}, \norm{\cdot }_{1})$: pour tout $A \in \M_{n}(\K)$,
+     - $\norm A_{L} = \max_{i \in \icc{1,n}}\norm {L_{i}}_{1}$
+     - $\norm A_{L} = \max_{i \in \icc{1,n}} \sum_{j=1}^{n}\abs{a_{i,j}}$
+     $$
+       \applic{\M_{n}(\K)}{(\M_{n}(\K), \norm{\cdot }_{L})}{A}{A\transp}
+     $$
+     est un isomorphisme donc par transport de $\norm{\cdot }_{L}$ on a une autre norme: pour tout $A \in \M_{n}(\K)$,
+     $$
+       \norm{A}_{C} = \norm{A\transp}_{L} = \max_{j \in \icc{1,n}}\sum_{i=1}^{n}\abs{a_{i,j}} = \max_{j \in \icc{1,n}}\sum_{i=1}^{n}\abs{a_{i,j}} = \max(\norm{C_{1}}_{1}, \ldots, \norm{C_{n}}_{n})
+     $$
+%
+
+%offprog
+  %def
+    Soit $X$ un ensemble non vide. On appelle *distance* sur $X$ toute application $\delta: X^{2} \longrightarrow \R^{2}$ vérifiant
+    1. $\forall (x,y) \in X^{2}, \delta(x,y) \geq 0$
+    2. $\forall (x,y) \in X^{2}, \delta(x,y) \in \delta(y,x)$
+    3. $\forall (x,y) \in X^{2}, \delta(x,y) = 0 \iff  x =y$
+    4. $\forall (x,y,z) \in X^{3}, \delta(x,y) \leq  \delta(x,y) + \delta(y,z)$
+    On dit alors que $(X, \delta)$ est un *espace métrique*.
+  %
+
+  %eg
+    Pour un ensemble $X$ non vide, on pose
+    $$
+      \delta: \applic{X^{2}}{\R}{(x,y)}{\begin{cases}1 & \text{si } x\ne y\\ 0 & \text{sinon}\end{cases}}
+    $$
+    - $\delta \geq 0$
+    - $\delta$ est symétrique
+    - $\delta(x,y) = 0 \iff  x=y$
+    - Pour $(x,y,z) \in X^{3}$, on a
+      - $x = z \implies \delta(x,y) = 0 \leq  \delta(x,y) + \delta(y,z)$
+      - $x\ne z \implies  \delta(x,z) = 1 \leq  \delta(x,y) + \delta(y,z) \in \{1+0,1+1\}$
+  %
+%
+
+
+%prop
+  Soit $(E,N)$ un $\K$-espace vectoriel normé. L’application
+  $$
+    d: \applic{E^{2}}{\R}{(x,y)}{d(x,y) = N(x-y)}
+  $$
+  est une distance sur $E$, applic distance associée à la norme $N$ de $E$.
+%
+
+%proof
+  - $\forall (x,y) \in E^{2}, d(x,y) = N(x-y)  \geq 0$
+  - $\forall (x,y) \in E^{2}, d(y,x) = N(y-x) = N(x-y) = d(x,y)$
+  - $\forall (x,y) \in E, d(x,y) = 0 \iff  N(x-y) = 0 \iff  x-y = 0_{E}$
+  - Soit $(x,y,z) \in E^{3}$
+    $$
+      d(x,y) = N(x-y) = N((x-y) + (y-z)) \leq  N(x-y) + N(y-z) = d(x,y) + d(y,z)
+    $$
+%
+
+%offprog
+  %def
+    Si $A$ est une partie non vide d’un espaace métrique $(X,\delta)$, alors pour $x \in X$,
+    $$
+      \delta(x,A) = \inf_{a \in A}\delta(x,a)
+    $$
+    Si $A$ et $B$ sont deux parties non vides de $(X,\delta)$, alors on pose
+    $$
+      \delta(A,B) = \inf_{(a,b) \in A \times B} \delta(a,b)
+    $$
+  %
+%
+
+%eg
+  $\R$ est muni de la norme $\abs{\cdot }$. Pour $x \in \R$, on a:
+  - $d(x, \Z) = \min \big(x - \lfloor x\rfloor, \lceil x \rceil -x\big)$.
+  - $d(x,\Q) = d(x,\R \setminus  \Q) = 0$
+%
+
+%def
+  Soit $(E,N)$ un espace vectoriel normé (resp. $(X,\delta)$ espace métrique). Soit $(a,r) \in E \times \R_{+}$. On a
+  $$
+    B_{N} (a,r) = \{x \in E \mid d(x,a) < r\} = \{x \in E \mid N(x-a) < r\}
+  $$
+  pour un espace métrique
+  $$
+    B_{\delta}(a,r) = \{x \in X \mid \delta(x,a) < r\}
+  $$
+  On a aussi
+  $$
+    B'_{N} = \{x \in E \mid d(x,a) \leq r\}
+  $$
+  et
+  $$
+    S_{n}(a,r) = \{x \in E \mid d(x,a) = r\}
+  $$
+  Sont appelées boules ouvertes, boules fermées, sphere de centre $a$ et de rayon $r$.
+%
+
+%callout Terminologie
+  On appelle $B_{N}(0_{E},1)$ la boule unité de $(E,N)$ et $S_{N}(0_{E},1)$ la sphère unité de $(E,N)$
+%
+
+%eg
+  %rfig Exemples de boules
+      @[./figures/exemples-de-boules_optimized.svg]
+  %
+  1. Dans $\R^{2}$, considéronsles boules unités fermées suivantes:
+     - $B'_{\norm{\cdot }_{2}}(0_{\R^{2}}, 1) = \{(x,y) \in \R^{2} \mid x^{2} + y^{2} \leq 1\}$
+     - $B'_{\norm{\cdot }_{1} }(0_{\R^{2}}, 1) = \{(x,y) \in \R^{2} \mid \abs{x} + \abs{y} \leq 1\}$
+     - $B'_{\norm{\cdot }_{\infty}}(0_{\R^{2}, 1}) = \{(x,y) \in \R^{2} \mid \abs{x} \leq  1 \text{ et } \abs{y} \leq 1\} = [-1,1]^{2}$
+     On a
+     $$
+       B_{1}'(0,1) \subset B_{2}'(0_{1}) \subset B'_{\infty}(0_{1})
+     $$
+  2. Cela vient de
+     $$
+       \norm{\cdot }_{\infty}  \leq \norm{\cdot }_{2} \leq \norm{\cdot }_{1}
+     $$
+     dans $\K^{n}$. En effet, pour $x =(x_{1}, \ldots, x_{n}) \in \K^{n}$,
+     $$
+       \big(\norm x_{1}\big)^{2} = \left(\sum_{i=1}^{n}\abs{x_{i}}\right)^{2} = \sum_{i=1}^{n}\abs{x_{i}}^{2} + 2 \sum_{1 \leq  i < j \leq n} \abs{x_{i} x_{j}} \geq  \sum_{i=1}^{n}\abs{x_{i}}^{2} \geq  \abs{x_{i_{0}}}^{2}
+     $$
+     donc
+     $$
+       \norm x_{1}^{2} \geq  \}\lor m x_{2}^{2}  \geq  \norm x_{\infty}^{2}
+     $$
+     Par croissance de $t \longmapsto \sqrt{t}$ sur $\R_{+}$ et par positivité des normes, on a pour tout $x \in \forall K^{n}$,
+     $$
+       \norm x_{1} \geq  \norm x_{2} \geq \}\lor m x_{\infty}
+     $$
+  3. $(E_{1} \times  \cdots \times  E_{p}, N_{\infty}) = (E_{1},N_{1}) \times \cdots (E_{p},N_{p})$. Soit $a  (a_{1}, \ldots, a_{p}) \in E_{1} \times  \cdots \times  E_{p}$. Soit $r \in \R_{+}$.
+     $$
+       \begin{align*}
+         B_{n_{\infty}}(a,r) &= \{(x_{1}, \ldots, x_{p}) \in E_{1} \times  \cdots \times E_{p} \mid N_{\infty}(x-a) < r\}\\
+         &= \{(x_{1}, \ldots, x_{p}) \in E_{1} \times  \cdots \times  E_{p}\mid \forall i \in \icc{1,p}, N_{i}(x_{i}-a_{i} < r)\}\\
+         &= B_{N_{1}}(a_{1}\rho)  \times  \cdots \times  B_{N_{p}}(a_{p}, r)
+       \end{align*}
+     $$
+     ((polyboule))
+  4. %def
+       Une partie $A$ d’un $\K$-espace vectoriel normé $(E,N)$ est dite bornée si il existe $r \in \R_{+}^{*}$ tel que $A \subset B_{N}'(0_{E}, r)$.
+     %
+     - Toute boule (ouverte ou fermée) est bornée: pour $a \in E$ et $r \in \R_{+}$, on a
+       $$
+         x \in B_{N}(a,r)\implies  N(x) \leq  N(x-a) + N(a) < r+N(a)
+       $$
+       donc $B_{N}(a,r) \subset B_{N}'(0_{E}, r+N(a))$
+     - Si $A_{i}$ est une partie bornée de $(E_{i}, N_{i})$ (pour tout $i \in \icc{1,p}$), alors $A_{1} \times  \cdots \times  A_{p}$ est une partie bornée de $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$. En effet, il existe $(r_{1}, \ldots, r_{p}) \in (\R_{+})^{p}$ tels que
+       $$
+         \forall i \in \icc{1,p}, A_{i} \subset  B_{N}'(0_{E}, x_{i}) \subset B_{N}'(0_{E}, r_{1} + \cdots + r_{p})
+       $$
+       d’où
+       $$
+         A_{1} \times  \cdots \times  A_{p} \subset \prod_{i=1}^{p}B_{N}'(0_{E_{i}}, r_{1} + \cdots + r_{p})  = \B'_{\infty}(0_{E_{1} \times \cdots \times E_{p}}, r_{1} + \cdots + r_{p})
+       $$
+%
+
+%def
+  Une partie $A$ d’un $\R$-espace vectoriel $E$ est dite convexe si
+  $$
+    \forall (x,y) \in A^{2}, \forall  \lambda \in \cc{0,1}, \lambda \cdot x + (1-\lambda)\cdot y  \in A
+  $$
+  ce qui revient à dire
+  $$
+    \forall (x,y) \in A^{2}, \cc{x,y} \subset A
+  $$
+  où
+  $$
+    \begin{align*}
+      \cc{x,y} &\coloneqq \{\lambda \cdot  x + (1-\lambda)\cdot y \mid \lambda \in \cc{0,1}\}\\
+        &= \{x + \lambda (x-y) \mid \lambda \in \cc{0,1}\}
+    \end{align*}
+  $$
+%
+
+%eg
+  1. %def
+       On appelle intervalle de $\R$ toute partie convexe de $\R$
+     %
+     $I \in \Part(\R)$ est un intervalle si et seulement si $I$ est une partie convexe de $\R$, donc si et seulement si
+     $$
+       \forall (x,y) \in I^{2}, [x \leq  y \leq  y \implies  z \in I]
+     $$
+  2. Si $E$ est convexe, alors $E \setminus \{0_{E}\}$ n’est pas convexe (si $E\ne\{0_{E}\}$). En effet, pour $x \in E \setminus \{0\}$, $-x \in E \setminus \{0_{E}\}$ et $0_{E} \in \cc{-x,x}$.
+  3. Si $A_{1}, \ldots, A_{n}$ sont des parties convexes de $te_{1}, \ldots, E_{n}$, alors $A_{1}, \times  \cdots \times  A_{n}$ est une partie convexe de $E_{1} \times  \cdots \times  E_{n}$.
+
+     Soit $\big((a_{1}, \ldots, a_{n}), (b_{1}, \ldots, b_{n})\big) \in (A_{1} \times  \cdots \times  A_{n})^{2}$. Soit $\lambda \in \cc{0,1}$.
+     $$
+       \lambda \cdot (a_{1}, \ldots, a_{n}) + (1-\lambda)(b_{1}, \ldots, b_{n}) = (\lambda \cdot  a_{1} + (1-\lambda)\cdot b_{1}, \ldots, \lambda \cdot a_{n} + (1-\lambda)\cdot b_{n})
+     $$
+     Comme $A_{i}$ est convexe pour tout $i \in \icc{1,n}$, alors on a
+     $$
+       \forall i \in \icc{1,n}, \lambda \cdot a_{i} + (1-\lambda) \cdot  b_{i} \in A_{i}
+     $$
+%
+
+%prop
+  Toute boule (ouverte ou fermée) d’un $\K$-espace vectoriel $(te,N)$ est une partie convexe de $E$.
+%
+
+%proof
+  Soit $(a,r) \in E \times \R_{+}^{*}$. Soit $(x,y) \in  \big(B_{N}(a,r)\big)^{2}$. Soit $\lambda \in \cc{0,1}$.
+  $$
+    \begin{align*}
+      d(\lambda x + (1-\lambda)y, a) &= N(\lambda x + (1-\lambda)y - a)\\
+        &= N(\lambda (x-a) + (1-\lambda)(y-a))\\
+        \scriptsize \text{(ineq. triangulaire)} &\leq  N(\lambda (x-a)) + N((1-\lambda)(y-a))\\
+        \scriptsize \text{(homogénéité pos.)} &\leq \abs{\lambda} d(x,a) + \abs{1-\lambda}d(y,a)\\
+        &\leq \lambda r + (1-\lambda)r = r
+    \end{align*}
+  $$
+  $\lambda < 1$ ou $1-\lambda < 1$ donc $\lambda d(x,a) < \lambda r$ ou $(1-\lambda)d(y,a) < (1-\lambda)r$, d’où
+  $$
+    \forall  \lambda \in \cc{0,1}, d(\lambda x + (1-\lambda)y, a) < r
+  $$
+  Donc $\forall  (x,y) \in B_{N}(a,r), \cc{x,y} \subset B_{N}(a,r)$
+%
+
+## Comparaison des normes
+
+%def
+  Soient $N$ et $N'$ deux normes sur un même $\K$-espace vectoriel normé $E$.
+  - On dit que $N$ est dominée par $N'$ si il existe un réel $\alpha > 0$ tel que
+    $$
+      \forall x \in E, N(x) \leq  \alpha N'(x)
+    $$
+  - On dit que $N$ et $N'$ sont équivalentes si il existe deux réels $\alpha > 0$ et $\beta > 0$ tels que
+    $$
+      \forall x \in E, \alpha N(x) \leq  N'(x) \leq  \beta N(x)
+    $$
+    C’est une relation d’équivalence sur les normes. On peut noter $N \sim N'$.
+%
+
+%proof
+  Prouvons que l’équivalence de deux normes est une ralation d’équivalence.
+  - $N\sim N$ pour $\alpha = \beta = 1$
+  - $\begin{cases}\alpha N \leq  N' \leq  \beta N\\\alpha > 0 , \beta> 0\end{cases} \implies  \frac{1}{\beta}N' \leq  N \leq  \frac{1}{\alpha}N'$ avec $\frac{1}{\beta} > 0$ et $\frac{1}{\alpha} > 0$.
+  - $\begin{cases}\alpha N \leq  N' \leq  \beta N\\\gamma N' \leq  N'' \leq  \delta N'\\ \alpha > 0, \beta > 0, \gamma > 0, \delta > 0\end{cases} \implies  \alpha \gamma N \leq  N'' \leq  \beta \delta N$ avec $\alpha \gamma > 0$ et $\beta \delta > 0$.
+%
+
+%eg
+  1. Toutes les normes sur $\K$ sont équivalentes (elles sont toutes du type $x \longmapsto \alpha \abs{x}$).
+  2. Les trois normes usuelles sur $\K^{n}$ sont équivalentes. On a vu
+     $$
+       \norm{\cdot }_{\infty} \leq  \norm{\cdot }_{2} \leq \norm{\cdot }_{1} \leq  \sqrt{n}\norm x_{2} \leq  n \norm x_{\infty}
+     $$
+     Soit $x \in (x_{1}, \ldots, x_{n}) \in \K^{n}$.
+     $$
+       \norm x_{1} = \sum_{i=1}^{n}\abs{x_{i}} = \sum_{i=1}^{n}\abs{x_{i}} \times  1 \leq \left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{1/2} \times  \left(\sum_{i=1}^{n}1^{2}\right) = \sqrt{n}\norm x_{2}
+     $$
+     De plus,
+     $$
+       \norm x_{2}^{2} = \sum_{i=1}^{n}\abs{x_{i}}^{2} \leq  \sum_{i=1}^{n}\norm x_{\infty}^{2} = n\norm x_{\infty}^{2}
+     $$
+     Par croissance de $t \longmapsto  \sqrt{t}$ sur $\R_{+}$, on a
+     $$
+       \}\lor m x_{2} \leq  \sqrt{n}\}\lor m x_{\infty}
+     $$
+  3. Normes usuelles sur $\Cont(\cc{0,1}, \K)$.
+     $$
+       \norm f_{1} = \int_{0}^{1}\abs{f} = \int_{0}^{1}\abs{f} \times 1  \leq  \left(\int_{0}^{1}\abs{f}^{2}\right)^{\frac{1}{2}}\left(\int_{0}^{1}1^{2}\right)\frac{1}{2}
+     $$
+     d’où $\norm f_{1} \leq  \norm f_{2}$ et
+     $$
+       \int_{0}^{1}\abs{f}^{2} \leq  \int_{0}^{1}\norm f^{2}_{\infty, \cc{0,1}} = \norm f^{2}_{\infty, \cc{0,1}}
+     $$
+     d’où $\norm f_{2} \leq  \norm f_{\infty,\cc{0,1}}$, donc
+     $$
+       \norm \cdot _{1} \leq  \norm \cdot _{2} \leq  \norm \cdot _{\infty} \quad\text{sur } \Cont(\cc{0,1},\K)
+     $$
+%
+
+%rem
+  Soient $N$ et $N'$ deux normes sur un $\K$-espace vectoriel $E$. Pour montrer que $N$ est dominée par $N'$, il suffit (et il faut) trouver une suite $(x_{n})_{n \in \N}$ à valeurs dans $E \setminus \{0\}$ telle que la suite réelle positive
+  $$
+    \left(\frac{N(x_{n})}{N'(x_{n})}\right)_{n \in \N}
+  $$
+  ne soit pas majorée.
+%
+
+%proof
+  - $$
+      \begin{align*}
+        N \text{ non dominée par } N' &\iff  \left\{\frac{N(x)}{N'(x)}\mid x \in E \setminus \{0\}\right\} \text{ non majorée}\\
+            &\implies  \forall k \in \N, \exists  x_{k} \in E \setminus \{0\}: \frac{N(x_{k})}{N'(x_{k})}>k
+      \end{align*}
+    $$
+    donc $\left(\frac{N(x_{k})}{N'(x_{k})}\right)_{k \in \N}$.
+  - $$
+      \begin{align*}
+        N \text{ dominée par } N' &\implies \exists \alpha > 0: \forall x \in E \setminus \{0\}, N(x) \leq  \alpha N'(x)\\
+        &\implies  \forall (x_{k})_{k \in \N} \in (E \setminus \{0\})^\N, \left(\frac{N(x_{k})}{N'(x_{k})}_{k \in \\N}\right) \text{ est majorée}
+      \end{align*}
+    $$
+%
+
+%eg
+  $f_{n}: t \longmapsto  t^{n} \in \Cont(\cc{0,1},\R)$. Alors pour tout $n \in \N$,
+  - $\norm {f_{n}}_{1} = \int_{0}^{1}t^{n} \dd t = \frac{1}{n+1}$
+  - $\norm{f_{n}}_{2} = \left(\int_{0}^{1}t^{2n}\dd t\right)^{\frac{1}{2}} = \frac{1}{\sqrt{2n+1}}$
+  - $\norm{f_{n}}_{\infty} = 1$
+  $$
+    \frac{\norm{f_{n}}_{2}}{\norm{f_{n}}_{1}} = \frac{n+1}{\sqrt{2n+1}} \ev{n\to +\infty} \sqrt{\frac{n}{2}} \arrowlim{n\to +\infty}+\infty
+  $$
+  donc $\norm\cdot _{2} \not\sim \norm\cdot_{1}$
+  $$
+    \frac{\norm{f_{n}}_{2}}{\norm{f_{n}}_{2}} = \sqrt{2n+1}\arrowlim{n\to+\infty}+\infty
+  $$
+  donc $\norm\cdot_{\infty}\not\sim\norm\cdot _{2}$.
+  $$
+    \frac{\norm{f_{n}}_{\infty}}{\norm{f_{n}}_{1}} = n+1 \arrowlim{n\to+\infty}+\infty
+  $$
+  donc $\norm\cdot_{\infty}\not\sim\norm\cdot_{1}$.
+%
+
+%prop
+  Toutes les normes sur $\K^{n}$ sont équivalentes.
+%
+
+%proof
+   Soit $N$ une norme sur $\K^{n}$. Montrons que $N\sim \norm \cdot _{\infty}$. Soit $(e_{1}, \ldots, e_{n})$ la base canonique de $\K^{n}$.
+   - Soit $x = (x_{1}, \ldots, x_{n}) \in \K^{n}$.
+     $$
+       N(x) = n \left(\sum_{i=1}^{n}x_{i}e_{i}\right) = \sum_{i=1}^{n}\abs{x_{i}}N(e_{i})
+     $$
+     or $\forall i \in \icc{1,n}, \abs{x_{i}}\leq  \norm x_{\infty}$ et $N(e_{i})>0$, d’où
+     $$
+       \forall i \in \icc{1,n}, \abs{x_{i}}N(e_{i})\leq  \norm x_{\infty}N(e_{i})
+     $$
+     d’où
+     $$
+       \forall n \in \K^{n}, N(x) \leq  \alpha\norm x_{\infty}
+     $$
+     avec $\alpha = \sum_{i=1}^{n}N(e_{i})>0$.
+   - Montrons qu’il existe $\beta >0$ tel que $\forall x \in \K^{n}, \norm x_{\infty} \leq  \beta N(x)$. Supposons $\forall  \beta > 0, \exists x \in \K^{n}: \norm x_{\infty}> \beta N(x)$. Alors
+     $$
+       \forall k \in \N^{*}, \exists x_{k} \in \K^{n}: \norm{x_{k}} > kN(x_{k}) \quad (\star)
+     $$
+     donc
+     $$
+       \forall k \in \N^{*}, x_{k} \ne 0_{\K^{n}}
+     $$
+     et on pose pour tout $k \in \N^{*}, mmy_{k} = \frac{x_{k}}{\norm{x_{k}}_{\infty}}$, d’où
+     $$
+       \forall k \in \N^{*}, \begin{cases}\norm{y_{k}}_{\infty} = 1\\N(y_{k})<\frac{1}{k}\end{cases}
+     $$
+     Notons $y_{k} = y(k) = (y_{1}(k), \ldots, y_{n}(k))$.
+     $$
+       \forall  p \in \icc{1,n}, \forall k \in \N^{*}, \norm{y_{k}}_{\infty} = 1 \geq  \abs{y_{p}(k)}
+     $$
+     donc $\big(y_{1}(k)\big)_{k \in \N}, \ldots, \big((y_{p}(k))_{k \in \N}\big)$ sont bornées. D’après le théorème de Bolsano-Weierstrass, il existe $\varphi: \N^{*} \longrightarrow  \N^{*}$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+     $$
+       \begin{cases}y_{1}(\varphi(k)) \longrightarrow y_{1}\\\vdots\\ y_{n}(\varphi(k)) \longrightarrow  \lambda_{n}\end{cases}
+     $$
+     Posons $\lambda = (\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$
+     $$
+       \abs{\norm{y(k)}_{\infty} - \norm \lambda_{\infty}} \leq  \norm{y(k) - \lambda}_{\infty} \leq  \sum_{p=1}^{n}\abs{y_{p}(k) - \lambda_{p}} \arrowlim{k\to +\infty}0
+     $$
+     donc $\norm \lambda_{\infty} = \lim_{k\to +\infty} \norm{y(k)}_{\infty} = 1$. Or
+     $$
+       \begin{align*}
+         N(\lambda) &\leq N(\lambda - y(\varphi(k))) + N(y(\varphi(k)))\\
+         & \leq  \alpha \norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{\varphi(k)}\\
+         & \leq  \alpha\norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{k} \arrowlim{k\to+\infty} 0
+       \end{align*}
+     $$
+     donc $N(\lambda) = 0$, i.e. $\lambda = (0,\ldots, 0)$ ce qui contredit $\norm \lambda_{\infty} = 1 > 0$.
+%
