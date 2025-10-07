@@ -318,7 +318,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     1. $\forall (x,y) \in X^{2}, \delta(x,y) \geq 0$
     2. $\forall (x,y) \in X^{2}, \delta(x,y) \in \delta(y,x)$
     3. $\forall (x,y) \in X^{2}, \delta(x,y) = 0 \iff  x =y$
-    4. $\forall (x,y,z) \in X^{3}, \delta(x,y) \leq  \delta(x,y) + \delta(y,z)$
+    4. $\forall (x,y,z) \in X^{3}, \delta(x,z) \leq  \delta(x,y) + \delta(y,z)$
     On dit alors que $(X, \delta)$ est un *espace métrique*.
   %
 
@@ -357,7 +357,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 %offprog
   %def
-    Si $A$ est une partie non vide d’un espaace métrique $(X,\delta)$, alors pour $x \in X$,
+    Si $A$ est une partie non vide d’un espace métrique $(X,\delta)$, alors pour $x \in X$,
     $$
       \delta(x,A) = \inf_{a \in A}\delta(x,a)
     $$
@@ -493,7 +493,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %prop
-  Toute boule (ouverte ou fermée) d’un $\K$-espace vectoriel $(te,N)$ est une partie convexe de $E$.
+  Toute boule (ouverte ou fermée) d’un $\K$-espace vectoriel $(E,N)$ est une partie convexe de $E$.
 %
 
 %proof
@@ -569,7 +569,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %rem
-  Soient $N$ et $N'$ deux normes sur un $\K$-espace vectoriel $E$. Pour montrer que $N$ est dominée par $N'$, il suffit (et il faut) trouver une suite $(x_{n})_{n \in \N}$ à valeurs dans $E \setminus \{0\}$ telle que la suite réelle positive
+  Soient $N$ et $N'$ deux normes sur un $\K$-espace vectoriel $E$. Pour montrer que $N$ n’est pas dominée par $N'$, il suffit (et il faut) trouver une suite $(x_{n})_{n \in \N}$ à valeurs dans $E \setminus \{0\}$ telle que la suite réelle positive
   $$
     \left(\frac{N(x_{n})}{N'(x_{n})}\right)_{n \in \N}
   $$
@@ -583,7 +583,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
             &\implies  \forall k \in \N, \exists  x_{k} \in E \setminus \{0\}: \frac{N(x_{k})}{N'(x_{k})}>k
       \end{align*}
     $$
-    donc $\left(\frac{N(x_{k})}{N'(x_{k})}\right)_{k \in \N}$.
+    donc $\left(\frac{N(x_{k})}{N'(x_{k})}\right)_{k \in \N}$ n’est pas majorée.
   - $$
       \begin{align*}
         N \text{ dominée par } N' &\implies \exists \alpha > 0: \forall x \in E \setminus \{0\}, N(x) \leq  \alpha N'(x)\\
@@ -616,51 +616,415 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %proof
-   Soit $N$ une norme sur $\K^{n}$. Montrons que $N\sim \norm \cdot _{\infty}$. Soit $(e_{1}, \ldots, e_{n})$ la base canonique de $\K^{n}$.
-   - Soit $x = (x_{1}, \ldots, x_{n}) \in \K^{n}$.
+  Soit $N$ une norme sur $\K^{n}$. Montrons que $N\sim \norm \cdot _{\infty}$. Soit $(e_{1}, \ldots, e_{n})$ la base canonique de $\K^{n}$.
+  - Soit $x = (x_{1}, \ldots, x_{n}) \in \K^{n}$.
+    $$
+      N(x) = n \left(\sum_{i=1}^{n}x_{i}e_{i}\right) = \sum_{i=1}^{n}\abs{x_{i}}N(e_{i})
+    $$
+    or $\forall i \in \icc{1,n}, \abs{x_{i}}\leq  \norm x_{\infty}$ et $N(e_{i})>0$, d’où
+    $$
+      \forall i \in \icc{1,n}, \abs{x_{i}}N(e_{i})\leq  \norm x_{\infty}N(e_{i})
+    $$
+    d’où
+    $$
+      \forall n \in \K^{n}, N(x) \leq  \alpha\norm x_{\infty}
+    $$
+    avec $\alpha = \sum_{i=1}^{n}N(e_{i})>0$.
+  - Montrons qu’il existe $\beta >0$ tel que $\forall x \in \K^{n}, \norm x_{\infty} \leq  \beta N(x)$. Supposons $\forall  \beta > 0, \exists x \in \K^{n}: \norm x_{\infty}> \beta N(x)$. Alors
+    $$
+      \forall k \in \N^{*}, \exists x_{k} \in \K^{n}: \norm{x_{k}} > kN(x_{k}) \quad (\star)
+    $$
+    donc
+    $$
+      \forall k \in \N^{*}, x_{k} \ne 0_{\K^{n}}
+    $$
+    et on pose pour tout $k \in \N^{*}, mmy_{k} = \frac{x_{k}}{\norm{x_{k}}_{\infty}}$, d’où
+    $$
+      \forall k \in \N^{*}, \begin{cases}\norm{y_{k}}_{\infty} = 1\\N(y_{k})<\frac{1}{k}\end{cases}
+    $$
+    Notons $y_{k} = y(k) = (y_{1}(k), \ldots, y_{n}(k))$.
+    $$
+      \forall  p \in \icc{1,n}, \forall k \in \N^{*}, \norm{y_{k}}_{\infty} = 1 \geq  \abs{y_{p}(k)}
+    $$
+    donc $\big(y_{1}(k)\big)_{k \in \N}, \ldots, \big((y_{p}(k))_{k \in \N}\big)$ sont bornées. D’après le théorème de Bolsano-Weierstrass, il existe $\varphi: \N^{*} \longrightarrow  \N^{*}$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+    $$
+      \begin{cases}y_{1}(\varphi(k)) \longrightarrow y_{1}\\\vdots\\ y_{n}(\varphi(k)) \longrightarrow  \lambda_{n}\end{cases}
+    $$
+    Posons $\lambda = (\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$
+    $$
+      \abs{\norm{y(k)}_{\infty} - \norm \lambda_{\infty}} \leq  \norm{y(k) - \lambda}_{\infty} \leq  \sum_{p=1}^{n}\abs{y_{p}(k) - \lambda_{p}} \arrowlim{k\to +\infty}0
+    $$
+    donc $\norm \lambda_{\infty} = \lim_{k\to +\infty} \norm{y(k)}_{\infty} = 1$. Or
+    $$
+      \begin{align*}
+        N(\lambda) &\leq N(\lambda - y(\varphi(k))) + N(y(\varphi(k)))\\
+        & \leq  \alpha \norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{\varphi(k)}\\
+        & \leq  \alpha\norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{k} \arrowlim{k\to+\infty} 0
+      \end{align*}
+    $$
+    donc $N(\lambda) = 0$, i.e. $\lambda = (0,\ldots, 0)$ ce qui contredit $\norm \lambda_{\infty} = 1 > 0$.
+%
+
+%thm
+  Toutes les normes sur un $\K$-espace vectoriel $E$ de dimension finie sont équivalentes.
+%
+
+%proof
+  Soit $(e_{1}, \ldots, e_{n})$ une base d’un $\K$-espace vectoriel de dimension finie non nulle $E$. Soient $N$ et $N'$ deux normes sur $E$. L’application
+  $$
+    \varphi: \applic{\K^{n}}{E}{(x_{1}, \ldots, x_{n})}{\sum_{i=1}^{n}x_{i}e_{i}}
+  $$
+  est un isomorphisme de $\K$-espaces vectoriels. Par transport de normes,
+  $$
+    (x_{1}, \ldots, x_{n}) \longmapsto  N(\varphi(x)) \quad\text{et}\quad (x_{1}, \ldots, x_{n}) \longmapsto N'(\varphi (x))
+  $$
+  sont des normes sur $\K^{n}$. Elles sont donc équivalentes, i.e. il existe $\alpha > 0$ et $\beta > 0$ tels que
+  $$
+    \forall (x_{1}, \ldots, x_{n}) \in \K^{n}, \alpha N(\varphi(x)) \leq  N'(\varphi(x)) \leq \beta N(\varphi(x))
+  $$
+  donc pour tout $x \in E$,
+  $$
+    \alpha N(u) \leq  N'(u) \leq  \beta N(u)
+  $$
+  donc $N\sim N'$.
+%
+
+%offprog
+  %rem
+    On a même l’équivalence suivante: un $\K$-espace vectoriel est de dimension finie si et seulement si toutes les normes sur cet espace sont équivalentes.
+  %
+%
+
+%eg
+  Sur $E = \Cont(\cc{0,1}, \R)$, $\norm\cdot_{1}$ et $\norm\cdot_{\infty}$ ne sont pas équivalentes. Cependant, pour $F = \R_{n}[X]$, $\norm\cdot_{1}$ et $\norm\cdot_{\infty}$ le sont.
+  Autrement dit, il existe $\lambda_{n} \in \R_{+}^{*}$ tel que
+  $$
+    \forall P \in \R_{n}[X], \underbrace{\max_{t \in \cc{0,1}}\abs{\tilde{P}(t)}}_{=\norm{\tilde{P}}_{\infty, \cc{0,1}}}\leq  \lambda_{n}\underbrace{\int_{0}^{1}\abs{\tilde{P}(t)}\dd t}_{=\norm{\tilde{P}}_{1}}
+  $$
+%
+
+%def
+  Soit $(A,+, \times, \cdot)$  une $\K$-algèbre unitaire. Une norme sur $A$ est appelée sous-multiplicative si
+  $$
+    \forall (a,b) \in A^{2}, N(a \times b) \leq  N(a) \times N(b)
+  $$
+%
+
+%rem
+  Si $N$ est une norme sous-multiplicative sur la $\K$-algèbre $A$, alors
+  $$
+    \forall k \in \boldsymbol{\N^{\color{red}*\color{reset}}}, \forall a \in A, N(a^{k}) \leq  N(a^{k})
+  $$
+  $N(a_{0}) = N(1_{\K})$ et $N(a)^{0} = 1$. On a $N(1_{\K}) = N(1_{A}^{2})\leq  N(1_{A})^{2}$ d’où comme $1_{A} \ne 0_{A}$, on a $1 \leq  N(1_{A})$.
+%
+
+%eg
+  1. Pour $A \in \M_{n}(\K)$, on pose
      $$
-       N(x) = n \left(\sum_{i=1}^{n}x_{i}e_{i}\right) = \sum_{i=1}^{n}\abs{x_{i}}N(e_{i})
+       \norm A_{\infty} = \max_{(i,j) \in \icc{1,n}}\abs{a_{i,j}}
      $$
-     or $\forall i \in \icc{1,n}, \abs{x_{i}}\leq  \norm x_{\infty}$ et $N(e_{i})>0$, d’où
+     - Pour $H = \mtx{1 & \cdots & 1\\\vdots & \ddots & \vdots\\1& \cdots&1}_{(n)}$ vérifiant $H^{2} = nH$, d’où
+       $$
+         H_{\infty}(H^{2}) = nH_{\infty}(H) = n >\underbrace{ H_{\infty}(H)^{2}}_{=1 \text{ pour } n \geq 2}
+       $$
+       $N_{\infty}$ n’est pas sous-multiplicative.
+     - Posons $N = n N_{\infty}$, c’est une norme sur $\M_{n}(\K)$. Soient $(A,B) \in \big(\M_{n}(\C)\big)^{2}$. $A \times B = (c_{i,j})_{1 \leq  i,j \leq n}$ avec
+       $$
+         \forall (i,j) \in \icc{1,n}^{2}, c_{i,j} = \sum_{k=1}^{n}a_{ik}b_{kj}
+       $$
+       d’où
+       $$
+         \forall (i,j) \in \icc{1,n}^{2}, \abs{c_{ij}} \leq \sum_{k=1}^{n} \abs{a_{ik}}\abs{b_{kj}} \leq  \sum_{k=1}^{n} N_{\infty}(A) \times N_{\infty}(B)
+       $$
+       d’où
+       $$
+         N_{\infty}(C) \leq  n N_{\infty}(A) N_{\infty}(B)
+       $$
+       soit
+       $$
+         N(AB) \leq  N(A)N(B)
+       $$
+       donc $N$ est une norme sous-multiplicative sur la $\K$-algèbre $\M_{n}(\K)$.
+  2. Soit $\nu$ une norme quelconque sur $\M_{n}(\K)$. Il existe nécessairement $k > 0$ tel que
      $$
-       \forall i \in \icc{1,n}, \abs{x_{i}}N(e_{i})\leq  \norm x_{\infty}N(e_{i})
+       \forall (A,B) \in \M_{n}(\K)^{2}, \nu(A \times B) \leq  k\nu(A) \nu(B)
      $$
-     d’où
+     Comme $\M_{n}(\K)$ est un $\K$-espace vectoriel de dimension finie (égale à $n^{2}$), les normes $\nu$ et $N$ (ci-dessus) sont équivalentes. Il existe donc deux réels $\alpha > 0$ et $\beta > 0$ tels que
      $$
-       \forall n \in \K^{n}, N(x) \leq  \alpha\norm x_{\infty}
+       \alpha N \leq  \nu \leq  \beta N
      $$
-     avec $\alpha = \sum_{i=1}^{n}N(e_{i})>0$.
-   - Montrons qu’il existe $\beta >0$ tel que $\forall x \in \K^{n}, \norm x_{\infty} \leq  \beta N(x)$. Supposons $\forall  \beta > 0, \exists x \in \K^{n}: \norm x_{\infty}> \beta N(x)$. Alors
+     D’où pour $(A,B) \in \M_{n}(\K)^{2}$, on a
      $$
-       \forall k \in \N^{*}, \exists x_{k} \in \K^{n}: \norm{x_{k}} > kN(x_{k}) \quad (\star)
+       \nu(A \times B) \leq  \beta N(A \times B) \leq  \beta N(A)N(B) \leq  \frac{\beta}{\alpha^{2}} \nu(A) \nu(B)
      $$
-     donc
+     on prend $k = \frac{\beta}{\alpha^{2}}$.
+%
+
+## Suites
+
+%def
+  Soit $(E,\norm\cdot)$ un $\K$-espace vectoriel normé. Soit $(x_{n})_{n \in \N}$ une suite dont les élément sont dans $E$.
+  1. On dit que la suite $(x_{n})_{n \in \N}$ est bornée dans $(E,\norm\cdot)$ si la partie $\{x_{n} \mid n \in \N\}$ est bornée dans $(E,\norm\cdot)$, i.e
      $$
-       \forall k \in \N^{*}, x_{k} \ne 0_{\K^{n}}
+       \exists r > 0 : \{x_{n} \mid n \in \N\} \subset B_{\norm\cdot}' (0_{E}, r)
      $$
-     et on pose pour tout $k \in \N^{*}, mmy_{k} = \frac{x_{k}}{\norm{x_{k}}_{\infty}}$, d’où
+     i.e
      $$
-       \forall k \in \N^{*}, \begin{cases}\norm{y_{k}}_{\infty} = 1\\N(y_{k})<\frac{1}{k}\end{cases}
+       \exists r > 0: \forall n \in \N, \norm{x_{n}} \leq  r
      $$
-     Notons $y_{k} = y(k) = (y_{1}(k), \ldots, y_{n}(k))$.
+  2. On dit que la suite $(x_{n})_{n \in \N}$ est convergente si il existe $\ell \in E$ tel que $\lim_{n \to +\infty}\norm{x_{n} - \ell} = 0$, i.e.
      $$
-       \forall  p \in \icc{1,n}, \forall k \in \N^{*}, \norm{y_{k}}_{\infty} = 1 \geq  \abs{y_{p}(k)}
+       \forall \varphi > 0, \exists N \in \N, \norm{x_{n} - \ell} < \varepsilon
      $$
-     donc $\big(y_{1}(k)\big)_{k \in \N}, \ldots, \big((y_{p}(k))_{k \in \N}\big)$ sont bornées. D’après le théorème de Bolsano-Weierstrass, il existe $\varphi: \N^{*} \longrightarrow  \N^{*}$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+     Si tel est le cas, alors $\ell$ est unique et est appelée limite de $(x_{n})_{n \in \N}$ dans $(E,\norm\cdot)$ et on note $\lim_{n\to+\infty} x_{n} = \ell$ ou plus précisément
      $$
-       \begin{cases}y_{1}(\varphi(k)) \longrightarrow y_{1}\\\vdots\\ y_{n}(\varphi(k)) \longrightarrow  \lambda_{n}\end{cases}
+       x_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell
      $$
-     Posons $\lambda = (\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$
+%
+
+%proof
+  Preuve de l’unicité: supposons $x_{n}\xrightarrow[n\to+\infty]{\norm\cdot}\ell$ et $x_{n}\xrightarrow[n\to+\infty]{\norm\cdot}\ell'$ avec $\ell\ne\ell'$. Soit $\varepsilon = \frac{d(\ell, \ell')}{2}>0$.
+  $$
+    \exists (N,N') \in \N^{2}: \begin{cases}\forall n \in \N, x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)\\ \forall n \geq  N', x_{n} \in B_{\norm\cdot}(\ell', \varepsilon)\end{cases}
+  $$
+  d’où
+  $$
+    \forall  n \geq  \max(N,N'), x_{n} \in B(\ell, \varepsilon) \cap B(\ell', \varepsilon) = \emptyset
+  $$
+  En effet, supposons l’intersection des deux boules non vide, et prenons $a$ dans cet intersection. Alors $d (\ell, \ell') \leq  d (\ell, a) + d(a, \ell') < 2 \varepsilon = d(\ell, \ell')$.
+%
+
+%prop
+  Toute suite convergente d’un $\K$-espace vectoriel est bornée.
+%
+
+%proof
+  Soit $(x_{n})_{n \in \N}$ une suite convergente de limite $\ell \in E$.
+  $$
+    \exists N \in \N: \forall n \geq  N, x_{n} \in B_{\norm\cdot}'(\ell, 1) \subset B_{\norm\cdot}(0_{E}, \norm\ell + 1)
+  $$
+  donc $(x_{n})_{n \geq  N}$ est une suite bornée donc $(x_{n})_{n \geq  N}$ est aussi bornée.
+%
+
+%eg
+  $E = \Cont(\cc{0,1}, \R)$ muni de $\norm\cdot_{1}$ et $\norrm\cdot_{\infty}$. Considérons $f: t \longmapsto  t^{n}$.
+  - $\forall n \in \N, \norm{f_{n}}_{1} = \underbrace{\frac{1}{n+1}}_{\arrowlim{n \to+\infty}0} = \norm{f_{n} - [0]}_{1}$ donc
+    $$
+      f_{n} \xrightarrow[n\to+\infty]{\norm\cdot_{1}}[0]
+    $$
+  - $\forall n \in \N, \norm{f_{n}}_{\infty} = 1$. Supposons qu’il existe $g \in E$ tel que $f_{n} \xrightarrow[n\to+\infty]{\norm\cdot_{\infty}}g$. On a
+    $$
+      \forall n \in \N, \norm{f_{n} - g}_{1} \leq  \norm{f_{n} - g}_{\infty} \arrowlim{n\to +\infty} 0
+    $$
+    donc $f_{n} \xrightarrow[n\to+\infty]{\norm\cdot_{1}}g$.
+  Par unicité de la limite de $(f_{n})_{n \in \N}$ dans $(E, \norm\cdot_{1})$, on a $g = [0]$, or
+  $$
+    \norm{f_{n} - [0]}_{\infty} = \}\lor m{f_{n}}_{1} = 1 \not\arrowlim{n\to+\infty}0
+  $$
+  Donc la suite $(f_{n})_{n \in \N}$ n’est pas convergente dans $(E,\norm{\cdot}_{\infty})$ elle est divergente.
+%
+
+%def
+  Une suite $(x_{n})_{n \in \N}$ une suite à valeurs dans un $\K$-espace vectoriel normé $(E,\norm\cdot)$ est dite divergente si elle n’est pas convergente, i.e.
+  $$
+    \forall \ell \in E, \exists  \varepsilon > 0: \forall N \in \N, \exists n \geq  N: \}\lor m{x_{n} - \ell} > \varepsilon
+  $$
+%
+
+%prop
+  Soient $N$ et $N'$ deux normes équivalentes sur un $\K$-espace vectoriel $E$. Soit $(x_{n})_{n \in \N} \in E^{\N}$. On a
+  1. $(x_{n})_{n \in \N}$ bornée dans $(E,N)$ si et seulement si $(x_{n})_{n \in \N}$ est bornée dans $(E,N')$
+  2. Soit $\ell \in E$.
      $$
-       \abs{\norm{y(k)}_{\infty} - \norm \lambda_{\infty}} \leq  \norm{y(k) - \lambda}_{\infty} \leq  \sum_{p=1}^{n}\abs{y_{p}(k) - \lambda_{p}} \arrowlim{k\to +\infty}0
+       x_{n} \xrightarrow[n \to+\infty]{N} \ell \iff x_{n} \xrightarrow[n\to +\infty]{N'}
      $$
-     donc $\norm \lambda_{\infty} = \lim_{k\to +\infty} \norm{y(k)}_{\infty} = 1$. Or
+%
+
+%proof
+  Il existe des réels $\alpha>0$ et $\beta>0$ tels que
+  $$
+    \alpha N \leq  N' \leq  \beta N
+  $$
+  d’où pour $r > 0$,
+  $$
+    \big[\forall n \in \N, N(x_{n})\leq  r\big] \implies  \big[\forall n \in \N, N(x_{n})\leq  \frac{r}{\alpha}\big]
+  $$
+  et pour tout $n \in \N$,
+  $$
+    \alpha N(x_{n} - \ell) \leq  N'(x_{n} - \ell) \leq  \beta N(x_{n} - \ell)
+  $$
+  d’où
+  $$
+    \big[N(x_{n}-\ell) \arrowlim{n \to+\infty}0\big] \iff  \big[N'(x_{n} - \ell)\arrowlim{n\to+\infty}0\big]
+  $$
+%
+
+%prop
+  Soit $(E,\norm\cdot)$ un $\K$-espace vectoriel normé.
+  1. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$. Soit $\ell \in E$. **Si** $x_{n}\xrightarrow[n\to+\infty]{\norm\cdot} \ell$, **alors** $\norm{x_{n}} \arrowlim{n \to+\infty} \norm\ell$.
+
+    La réciproque n’a pas de sens sauf dans le cas $\ell = 0$.
+  2. Si $x_{n} \xrightarrow[n\to+\infty]{\norm\cdot} \ell\ne 0_{E}$, alors
+     $$
+       \exists  N \in \N: \forall n \geq N, \norm{x_{n}} \geq  \frac{\norm\ell}{2}>0
+     $$
+  3. Si $x_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell$, $y_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell'$ et $(\lambda, \mu) \in \K^{2}$, alors
+     $$
+       \lambda \cdot x_{n} + \mu \cdot  y_{n} \xrightarrow[n\to+\infty]{\norm\cdot} \lambda \cdot  \ell + \mu \cdot \ell'
+     $$
+  4. Si $E$ est une $\K$-algèbre et si $\norm\cdot$ est sous-multiplicative, alors
+     $$
+       \begin{cases}x_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell\\y_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell'\end{cases} \implies x_{n} \times y_{n} \xrightarrow[n\to+\infty]{\norm\cdot}\ell \times \ell'
+     $$
+%
+
+%proof
+  1. $\abs{\norm{x_{n}} - \norm\ell} \leq  \norm{x_{n} - \ell} \arrowlim{n\to+\infty}0$.
+  2. Si $x_{n} \xrightarrow[n\to+\infty]{\norm\cdot} \ell$, alors $\norm{x_{n}} \xrightarrow[n\to+\infty]{\norm\cdot} \norm\ell> 0$. Donc
+     $$
+       \exists N \in  \N: \forall n \geq  N, \norm{x_{n}} \geq  \frac{\norm\ell}{2} > 0
+     $$
+  3. $\norm{\lambda \cdot  x_{n} + \mu \cdot  y_{n} - (\lambda \cdot  \ell + \mu \cdot  \ell')} = \norm{\lambda \cdot  (x_{n} - \ell) + \mu \cdot  (y_{n} - \ell')} \leq  \abs{\lambda}\cdot  \norm{x_{n} - \ell} + \abs{\mu} \cdot \norm{y_{n} - \ell} \arrowlim{n\to+\infty} 0$
+  4. $\norm{x_{n} \times  y_{n} - \ell \times  \ell'} = \norm{(x_{n} - \ell)\times y_{n} + \ell \times (y_{n} - \ell')} \leq \norm{y_{n}} \cdot  \norm{x_{n} - \ell} + \norm\ell  \times  \norm{y_{n} - \ell'}$ par sous-multiplicativité.
+%
+
+%prop
+  1. Soient $(E_{1}, \nu_{1}), \ldots, (e_{p}, \nu_{p})$ des $\K$-espaces vectoriels normés. Soit $N_{\infty}$ la norme produit sur $E_{1} \times \cdots \times  E_{p} = E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$. Posons
+     $$
+       (x_{n})_{n \in \N} = \big(x(n)\big)_{n \in \N} = \big((x_{1}(n), \ldots, x_{p}(n))\big)_{n \in \N}
+     $$
+     1. $(x_{n})_{n \in \N}$ est bornée dans $(E,N_{\infty})$ si et seulement si pour tout $i \in \icc{1,p}$, $(x_{i}(n))_{n \in \N}$ est bornée dans $(E_{i}, \nu)$.
+     2. Soit $\ell = (\ell_{1}, \ldots, \ell_{p}) \in E_{1} \times  \cdots \times  E_{p}$
+        $$
+          x(n) \xrightarrow[n\to+\infty]{E_{\infty}} \ell \iff  \forall i \in \icc{1,p}, x_{i}(n) \xrightarrow[n \to+\infty]{\nu_{i}}\ell_{i}
+        $$
+  2. Soit $(E,N)$ un $\K$-espace vectoriel normé de dimension finie $P \in \N^{*}$. Soit $(x(n))_{n \in \N}$ une suite d’ééments de $E$. Soit $(e_{1}, \ldots, e_{p})$ une base de $E$. Posons pour tout $n \in \N$,
+     $$
+       x(n) = \sum_{i=1}^{n}x_{i}(n)e_{i}
+     $$
+     avec $(x_{1}(n), \ldots, x_{p}(n)) \in \K^{p}$.
+     1. $(x(n))_{n \in \N}$ est bornée dns $E$ si et seulement si pour tout $i \in \icc{1,p}$, $(x_{i}(n))_{n \in \N}$ est bornée dans $\K$.
+     2. Soit $\ell \in E$. Posons $\ell = \sum_{i=1}^{p}\ell_{i} e_{i}$ avec $(\ell_{1}, \ldots, \ell_{p}) \in \K^{p}$.
+        $$
+          x(n) \xrightarrow[n\to+\infty]{(N)}\ell \iff  \forall i \in \icc{1,p}, x_{i}(n) \xrightarrow[n\to+\infty]{\ell_{i}}
+        $$
+%
+
+%proof
+  1. 1. $\forall i \in \icc{1,p}, \forall n \in N, \nu_{i}(x_{i}(n)) \leq N_{\infty}(x(n)) \leq  \sum_{i=1}^{p}\nu_{i}(x_{i}(n))$.
+     2. $\forall i \in \icc{1,p}, \forall n \in \N, \nu_{i}(x_{i}(n) - \ell_{i}) \leq  N_{\infty}(x(n) - \ell) \leq  \sum_{i=1}^{p}\nu_{i}(x_{i}(n) - \ell_{i})$.
+  2. Comme $E$ est de dimension finie, on a $N\sim N_{\infty, B}$ avec
+     $$
+       N_{\infty, B} \left(\sum_{i=1}^{p}u_{i} e_{i}\right) = \max_{i \in \icc{1,p}}\abs{u_{i}}
+     $$
+     1. $\forall i \in \icc{1,p}, \forall n \in \N, \abs{x_{i}(n)} \leq  N_{\infty, B}(x(n)) \leq  \sum_{i=1}^{p}\abs{x_{i}(n)}$
+     2. $\forall i \in \icc{1,p}, \forall n \in \N, \abs{x_{i}(n) - \ell_{i}} \leq  N_{\infty, B}(x(n)-\ell) \leq  \sum_{i=1}^{p}\abs{x_{i}(n) - \ell_{i}}$
+%
+
+%eg
+  1. Soit $(\lambda_{1}, \lambda_{2}) \in \C^{*} \times \C$. La suite $\left( \left(\lambda_{1}^{n}, \left( \frac{\lambda_{2}}{\lambda_{1}}\right)^{n}\right)\right)_{n \in \N}$ est-elle convergente ?
+
+     La suite $\left( \left(\lambda_{1}^{n}, \left( \frac{\lambda_{2}}{\lambda_{1}}\right)^{n}\right)\right)_{n \in \N}$ est convergente dans $\C^{2}$ si et seulement si les suites $(\lambda_{1}^{n})$ et $\left( \left(\frac{\lambda_{2}}{\lambda_{1}}\right)^{n}\right)$ convergent dans $\C$, donc si et seulement si
+     $$
+       \begin{cases}\abs{\lambda_{1}}< 1 \text{ ou } \lambda_{1} = 1\\ \abs{\frac{\lambda_{2}}{\lambda_{1}} < 1} \text{ ou } \frac{\lambda_{2}}{\lambda_{1}} = 1\end{cases}
+     $$
+     soit, si et seulement si une des conditions suivante est vraie
+     ~ $\lambda_{1} = \lambda_{2}$ et $\abs{\lambda_{1}}< 1$  ~ $\lambda_{1} = \lambda_{2} = 1$  ~ $\abs{\lambda_{2}} < \abs{\lambda_{1}} < 1$  ~ $\abs{\lambda_{2}} <  1$ et $\lambda_{1} = 1$
+  2. Soit $(A_{k})_{k \in \N}$ une suite d’éléments de $\M_{n}(\K)$. Soit $B \in \M_{n}(\K)$.
+     $$
+       A_{k} \arrowlim{k \to+\infty} B \iff  \forall (i,j) \in \icc{1,n}^{2}, a_{i,j}(k) \arrowlim{k\to+\infty}b_{i,j}
+     $$
+     en utlisant la base canonique de $\M_{n}(\K)$.
+%
+
+%def
+  Soit $(E,\norm\cdot)$ un $\K$-espace vectoriel normé. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$.
+  1. On appelle suite extraite de $(x_{n})_{n \in \N}$ toute suite $(y_{n})_{n \in \N}$ pour laquelle il existe $\varphi: \N \longrightarrow  \N$ strictement croissante telle que
+     $$
+       \forall n  \in \N, y_{n} = x_{\varphi(n)}
+     $$
+  2. On appelle valeur d’adhérence de $(x_{n})_{n \in \N}$ la limite d’une suite extraite convergente. Noto $\adh (x_{n})_{n \in \N}$ l’ensemble des valeurs d’adhérence de la suite $(x_{p})_{n \in \N}$.
+     $$
+       l \in \adh (x_{n})_{n \in \N} \iff  \exists \varphi: \N \longrightarrow \N \text{ str. croissante}: x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm\cdot} \ell
+     $$
      $$
        \begin{align*}
-         N(\lambda) &\leq N(\lambda - y(\varphi(k))) + N(y(\varphi(k)))\\
-         & \leq  \alpha \norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{\varphi(k)}\\
-         & \leq  \alpha\norm{\lambda - y(\varphi(k))}_{\infty} + \frac{1}{k} \arrowlim{k\to+\infty} 0
+         l \in \ath (x_{n})_{n \in \N} &\iff  \forall \varepsilon > 0, \{n \in \N \mid x_{n} \in B_{\norm{\cdot}}(\ell, \varepsilon)\} \text{ est infini}\\
+         &\iff \forall  \varepsilon > 0, \forall  N \in \N, \exists n \geq  N: x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)
        \end{align*}
      $$
-     donc $N(\lambda) = 0$, i.e. $\lambda = (0,\ldots, 0)$ ce qui contredit $\norm \lambda_{\infty} = 1 > 0$.
+%
+
+%proof
+  - Soit $\ell \in \ath (x_{n})_{n \in \N}$. Soit $\varphi: \N \longrightarrow  \N$ strictement croissante telle que $x_{\varphi(n)} \arrowlim{n\to+\infty}\ell$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \in \N, x_{\varphi(n)} \in B_{\norm\cdot}(\ell, \varepsilon)$ donc
+    $$
+      \{n \in \N\mid x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)\} \supset \varphi(\ico{N,+\infty})
+    $$
+    donc $\{n \in \N\mid x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)\}$ est un ensemble infini.
+  - Supposons que pour tout $\varepsilon > 0$, l’ensemble $\{n \in \N \mid x_{n} \in B(\ell, \varepsilon)\}$ soit infini. Il n’est donc pas majoré, d’où
+    $$
+      \forall N \in \N, \exists  n \geq  N: x_{n} \in B(\ell, \varepsilon)
+    $$
+    - $\varepsilon = 1$. $N = 0$.
+      $$
+        \exists x_{0} \geq 0: x_{x_{0}} \in B(\ell, 1)
+      $$
+    - $\varepsilon = \frac{1}{2}$: $N = x_{0} + 1$. $\exists  x_{1} > x_{0}: x_{x_{1}} \in B(\ell, \frac{1}{2})$.
+    - Pour $k \in \N$,
+      $$
+        x_{k+1} = \min\left\{i \in \N \mid i > n_{k} \text{ et } x_{i} \in B\left(\ell, \frac{1}{2^{k+1}}\right)\right\}
+      $$
+      $(x_{n_{k}})_{k \in \N}$ est alors une suite extraite de $(x_{n})_{n \in \N}$ et
+      $$
+        \forall k \in \N, \norm{x_{n_{k}} - \ell} < \frac{1}{2_{k}} \arrowlim{k\to+\infty} 0
+      $$
+      donc $x_{n_{k}} \arrowlim{k\to+\infty}\ell$, d’où $l \in \ath (x_{n})_{n \in \N}$.
+%
+
+%eg
+  1. Soit $(x_{n})_{n \in \N}$ une suite $q$-périodique d’éléments de $E$ ($q \in \N^{*}$). Alors
+     $$
+       \ath (x_{n})_{n \in \N} = \{x_{0}, x_{1}, \ldots, x_{q-1}\}
+     $$
+     En effet, si $\ell\notin\{x_{0}, \ldots, x_{q-1}\}$, posons $d = \min_{1 \in \icc{0,q-1}} d(\ell, x_{i})$.
+     $$
+       B(\ell, d) \cap  \{x_{n} \mid  n \in \N\} = \emptyset
+     $$
+  2. Si $x_{n} \xrightarrow[n \to+\infty]{\norm\cdot}\ell$, alors $\adh (x_{n})_{n \in \N} = \{\ell\}$.
+     %lemma
+       Si une suite possède au moins deux valeurs d’adhérence distinctes, alors elle est divergente.
+     %
+     %callout Attention
+       Considérons la suite $u_{n} = n(1 + (-1)^{n})$.
+       - $$
+           \forall n \in \N, u_{2n+1} = 0 \arrowlim{n\to+\infty}0
+         $$
+         donc $0 \in \ath (u_{n})_{n \in \N}$.
+         $$
+           \forall  n \in \N, u_{2n} = 2n \arrowlim{n\to+\infty} +\infty
+         $$
+       - Soit $\ell \in \adh (u_{n})_{n \in \N}$. Il existe $\varphi: \N \longrightarrow  \N$ strictement croissante telle que $u_{\varphi(n)} \arrowlim{n\to+\infty}\ell$. $\varphi(\N)$ est une partie infinie de $\N$ donc $\varphi(\N) \cap (2\N)$ ou $\varphi(\N) \cap (2\N + 1)$ est infini.
+         - Si $\varphi(\N) \cap (2\N+1)$ est infini, alors $u_{\varphi(n)} \arrowlim{n\to+\infty} 0$ donc $\ell=0$.
+         - Si $\varphi(\N) \cap (2\N)$ est infini, alors $u_{\varphi(n)} \arrowlim{n\to+\infty} +\infty$ donc $\ell = +\infty \notin\R$. Donc $\adh (u_{n})_{n \in \N} = \{0\}$ et $(u_{n})_{n \in \N}$ ne converge pas vers 0.
+     %
+  3. Valeurs d’adhérence de $\big(z_{n} = e^{2in \pi \alpha}\big)_{n \in \N}$ avec $\alpha \in \R$.
+     - Si $\alpha \in \Q$, écrivons $\alpha = \frac{p}{q}$ avec $(p,q) \in \Z \times \N^{*}$ tels que $p \land  q = 1$.
+       $$
+         \forall n \in \N, z_{n} = e^{2in \frac{p}{q}\pi}
+       $$
+       On a pour tout $n \in \N$,
+       $$
+         z_{n+q} = e^{2i n \frac{p}{q}\pi} \times e^{2i p \pi} = z_{n}
+       $$
+       Donc $\adh (z_{n})_{n \in \N} = \{z_{0}, z_{1}, \ldots, z_{q-1}\}$.
+       $$
+         \begin{align*}
+           z_{k} = z_{k'} &\iff e^{2i k \frac{p}{q}\pi} = e^{2ik' \frac{p}{q}\pi} \\&\iff  k \frac{p}{q} - k' \frac{p}{q} \in \Z \\&\iff  q\mid (k-k')p\\&\iff q\mid (k-k') \\&\implies k=k' \quad\text{si }\quad  (k,k') \in \icc{0,q-1}
+         \end{align*}
+       $$
+     - $\alpha \notin \Q$. Soit $\varphi: \N \longrightarrow  \N$ strictement croissante. Si $z_{\varphi(n)} \arrowlim{n\to +\infty}\ell$, alors $\abs{z_{\varphi(n)}} \arrowlim{n\to+\infty}\abs{\ell}$ donc $\abs{\ell} = 1$. Ainsi,
+       $$
+         \adh (z_{n})_{n \in \N} \subset \U
+       $$
+
 %
