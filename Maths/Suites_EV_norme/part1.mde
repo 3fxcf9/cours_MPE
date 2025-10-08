@@ -256,6 +256,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     $$
 %
 
+### Distances
 %offprog
   %prop Transfert de norme
     Soit $f:E \longrightarrow F$ un isomorphisme de $\K$-espace vectoriels. Si $N'$ est une norme sur $F$, alors
@@ -370,7 +371,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 %eg
   $\R$ est muni de la norme $\abs{\cdot }$. Pour $x \in \R$, on a:
-  - $d(x, \Z) = \min \big(x - \lfloor x\rfloor, \lceil x \rceil -x\big)$.
+  - $d(x, \Z) = \min \big(x - \lfloor x\rfloor, \ceil x -x\big)$.
   - $d(x,\Q) = d(x,\R \setminus  \Q) = 0$
 %
 
@@ -420,11 +421,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      $$
      donc
      $$
-       \norm x_{1}^{2} \geq  \}\lor m x_{2}^{2}  \geq  \norm x_{\infty}^{2}
+       \norm x_{1}^{2} \geq  \norm x_{2}^{2}  \geq  \norm x_{\infty}^{2}
      $$
      Par croissance de $t \longmapsto \sqrt{t}$ sur $\R_{+}$ et par positivité des normes, on a pour tout $x \in \forall K^{n}$,
      $$
-       \norm x_{1} \geq  \norm x_{2} \geq \}\lor m x_{\infty}
+       \norm x_{1} \geq  \norm x_{2} \geq \norm x_{\infty}
      $$
   3. $(E_{1} \times  \cdots \times  E_{p}, N_{\infty}) = (E_{1},N_{1}) \times \cdots (E_{p},N_{p})$. Soit $a  (a_{1}, \ldots, a_{p}) \in E_{1} \times  \cdots \times  E_{p}$. Soit $r \in \R_{+}$.
      $$
@@ -552,7 +553,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      $$
      Par croissance de $t \longmapsto  \sqrt{t}$ sur $\R_{+}$, on a
      $$
-       \}\lor m x_{2} \leq  \sqrt{n}\}\lor m x_{\infty}
+       \norm x_{2} \leq  \sqrt{n}\norm x_{\infty}
      $$
   3. Normes usuelles sur $\Cont(\cc{0,1}, \K)$.
      $$
@@ -713,9 +714,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %rem
   Si $N$ est une norme sous-multiplicative sur la $\K$-algèbre $A$, alors
   $$
-    \forall k \in \boldsymbol{\N^{\color{red}*\color{reset}}}, \forall a \in A, N(a^{k}) \leq  N(a^{k})
+    \forall k \in \boldsymbol{\N^{\color{red}*\color{reset}}}, \forall a \in A, N(a^{k}) \leq  N(a)^{k}
   $$
-  $N(a_{0}) = N(1_{\K})$ et $N(a)^{0} = 1$. On a $N(1_{\K}) = N(1_{A}^{2})\leq  N(1_{A})^{2}$ d’où comme $1_{A} \ne 0_{A}$, on a $1 \leq  N(1_{A})$.
+  $N(a^{0}) = N(1_{\K})$ et $N(a)^{0} = 1$. On a $N(1_{\K}) = N(1_{A}^{2})\leq  N(1_{A})^{2}$ d’où comme $1_{A} \ne 0_{A}$, on a $1 \leq  N(1_{A})$.
 %
 
 %eg
@@ -774,7 +775,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      $$
   2. On dit que la suite $(x_{n})_{n \in \N}$ est convergente si il existe $\ell \in E$ tel que $\lim_{n \to +\infty}\norm{x_{n} - \ell} = 0$, i.e.
      $$
-       \forall \varphi > 0, \exists N \in \N, \norm{x_{n} - \ell} < \varepsilon
+       \forall \varepsilon > 0, \exists N \in \N, \norm{x_{n} - \ell} < \varepsilon
      $$
      Si tel est le cas, alors $\ell$ est unique et est appelée limite de $(x_{n})_{n \in \N}$ dans $(E,\norm\cdot)$ et on note $\lim_{n\to+\infty} x_{n} = \ell$ ou plus précisément
      $$
@@ -807,7 +808,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %eg
-  $E = \Cont(\cc{0,1}, \R)$ muni de $\norm\cdot_{1}$ et $\norrm\cdot_{\infty}$. Considérons $f: t \longmapsto  t^{n}$.
+  $E = \Cont(\cc{0,1}, \R)$ muni de $\norm\cdot_{1}$ et $\norm\cdot_{\infty}$. Considérons $f: t \longmapsto  t^{n}$.
   - $\forall n \in \N, \norm{f_{n}}_{1} = \underbrace{\frac{1}{n+1}}_{\arrowlim{n \to+\infty}0} = \norm{f_{n} - [0]}_{1}$ donc
     $$
       f_{n} \xrightarrow[n\to+\infty]{\norm\cdot_{1}}[0]
@@ -819,7 +820,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     donc $f_{n} \xrightarrow[n\to+\infty]{\norm\cdot_{1}}g$.
   Par unicité de la limite de $(f_{n})_{n \in \N}$ dans $(E, \norm\cdot_{1})$, on a $g = [0]$, or
   $$
-    \norm{f_{n} - [0]}_{\infty} = \}\lor m{f_{n}}_{1} = 1 \not\arrowlim{n\to+\infty}0
+    \norm{f_{n} - [0]}_{\infty} = \norm{f_{n}}_{1} = 1 \cancel{\arrowlim{n\to+\infty}}0
   $$
   Donc la suite $(f_{n})_{n \in \N}$ n’est pas convergente dans $(E,\norm{\cdot}_{\infty})$ elle est divergente.
 %
@@ -827,7 +828,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %def
   Une suite $(x_{n})_{n \in \N}$ une suite à valeurs dans un $\K$-espace vectoriel normé $(E,\norm\cdot)$ est dite divergente si elle n’est pas convergente, i.e.
   $$
-    \forall \ell \in E, \exists  \varepsilon > 0: \forall N \in \N, \exists n \geq  N: \}\lor m{x_{n} - \ell} > \varepsilon
+    \forall \ell \in E, \exists  \varepsilon > 0: \forall N \in \N, \exists n \geq  N: \norm{x_{n} - \ell} > \varepsilon
   $$
 %
 
@@ -836,7 +837,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   1. $(x_{n})_{n \in \N}$ bornée dans $(E,N)$ si et seulement si $(x_{n})_{n \in \N}$ est bornée dans $(E,N')$
   2. Soit $\ell \in E$.
      $$
-       x_{n} \xrightarrow[n \to+\infty]{N} \ell \iff x_{n} \xrightarrow[n\to +\infty]{N'}
+       x_{n} \xrightarrow[n \to+\infty]{N} \ell \iff x_{n} \xrightarrow[n\to +\infty]{N'}\ell
      $$
 %
 
@@ -889,7 +890,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %prop
-  1. Soient $(E_{1}, \nu_{1}), \ldots, (e_{p}, \nu_{p})$ des $\K$-espaces vectoriels normés. Soit $N_{\infty}$ la norme produit sur $E_{1} \times \cdots \times  E_{p} = E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$. Posons
+  1. Soient $(E_{1}, \nu_{1}), \ldots, (E_{p}, \nu_{p})$ des $\K$-espaces vectoriels normés. Soit $N_{\infty}$ la norme produit sur $E_{1} \times \cdots \times  E_{p} = E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$. Posons
      $$
        (x_{n})_{n \in \N} = \big(x(n)\big)_{n \in \N} = \big((x_{1}(n), \ldots, x_{p}(n))\big)_{n \in \N}
      $$
@@ -906,7 +907,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      1. $(x(n))_{n \in \N}$ est bornée dns $E$ si et seulement si pour tout $i \in \icc{1,p}$, $(x_{i}(n))_{n \in \N}$ est bornée dans $\K$.
      2. Soit $\ell \in E$. Posons $\ell = \sum_{i=1}^{p}\ell_{i} e_{i}$ avec $(\ell_{1}, \ldots, \ell_{p}) \in \K^{p}$.
         $$
-          x(n) \xrightarrow[n\to+\infty]{(N)}\ell \iff  \forall i \in \icc{1,p}, x_{i}(n) \xrightarrow[n\to+\infty]{\ell_{i}}
+          x(n) \xrightarrow[n\to+\infty]{(N)}\ell \iff  \forall i \in \icc{1,p}, x_{i}(n) \xrightarrow[n\to+\infty]{}\ell_{i}
         $$
 %
 
@@ -943,20 +944,20 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      $$
        \forall n  \in \N, y_{n} = x_{\varphi(n)}
      $$
-  2. On appelle valeur d’adhérence de $(x_{n})_{n \in \N}$ la limite d’une suite extraite convergente. Noto $\adh (x_{n})_{n \in \N}$ l’ensemble des valeurs d’adhérence de la suite $(x_{p})_{n \in \N}$.
+  2. On appelle valeur d’adhérence de $(x_{n})_{n \in \N}$ la limite d’une suite extraite convergente. Notons $\adh (x_{n})_{n \in \N}$ l’ensemble des valeurs d’adhérence de la suite $(x_{p})_{n \in \N}$.
      $$
        l \in \adh (x_{n})_{n \in \N} \iff  \exists \varphi: \N \longrightarrow \N \text{ str. croissante}: x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm\cdot} \ell
      $$
      $$
        \begin{align*}
-         l \in \ath (x_{n})_{n \in \N} &\iff  \forall \varepsilon > 0, \{n \in \N \mid x_{n} \in B_{\norm{\cdot}}(\ell, \varepsilon)\} \text{ est infini}\\
+         l \in \adh (x_{n})_{n \in \N} &\iff  \forall \varepsilon > 0, \{n \in \N \mid x_{n} \in B_{\norm{\cdot}}(\ell, \varepsilon)\} \text{ est infini}\\
          &\iff \forall  \varepsilon > 0, \forall  N \in \N, \exists n \geq  N: x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)
        \end{align*}
      $$
 %
 
 %proof
-  - Soit $\ell \in \ath (x_{n})_{n \in \N}$. Soit $\varphi: \N \longrightarrow  \N$ strictement croissante telle que $x_{\varphi(n)} \arrowlim{n\to+\infty}\ell$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \in \N, x_{\varphi(n)} \in B_{\norm\cdot}(\ell, \varepsilon)$ donc
+  - Soit $\ell \in \adh (x_{n})_{n \in \N}$. Soit $\varphi: \N \longrightarrow  \N$ strictement croissante telle que $x_{\varphi(n)} \arrowlim{n\to+\infty}\ell$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \in \N, x_{\varphi(n)} \in B_{\norm\cdot}(\ell, \varepsilon)$ donc
     $$
       \{n \in \N\mid x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)\} \supset \varphi(\ico{N,+\infty})
     $$
@@ -978,13 +979,13 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
       $$
         \forall k \in \N, \norm{x_{n_{k}} - \ell} < \frac{1}{2_{k}} \arrowlim{k\to+\infty} 0
       $$
-      donc $x_{n_{k}} \arrowlim{k\to+\infty}\ell$, d’où $l \in \ath (x_{n})_{n \in \N}$.
+      donc $x_{n_{k}} \arrowlim{k\to+\infty}\ell$, d’où $l \in \adh (x_{n})_{n \in \N}$.
 %
 
 %eg
   1. Soit $(x_{n})_{n \in \N}$ une suite $q$-périodique d’éléments de $E$ ($q \in \N^{*}$). Alors
      $$
-       \ath (x_{n})_{n \in \N} = \{x_{0}, x_{1}, \ldots, x_{q-1}\}
+       \adh (x_{n})_{n \in \N} = \{x_{0}, x_{1}, \ldots, x_{q-1}\}
      $$
      En effet, si $\ell\notin\{x_{0}, \ldots, x_{q-1}\}$, posons $d = \min_{1 \in \icc{0,q-1}} d(\ell, x_{i})$.
      $$
@@ -999,7 +1000,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
        - $$
            \forall n \in \N, u_{2n+1} = 0 \arrowlim{n\to+\infty}0
          $$
-         donc $0 \in \ath (u_{n})_{n \in \N}$.
+         donc $0 \in \adh (u_{n})_{n \in \N}$.
          $$
            \forall  n \in \N, u_{2n} = 2n \arrowlim{n\to+\infty} +\infty
          $$
@@ -1008,6 +1009,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
          - Si $\varphi(\N) \cap (2\N)$ est infini, alors $u_{\varphi(n)} \arrowlim{n\to+\infty} +\infty$ donc $\ell = +\infty \notin\R$. Donc $\adh (u_{n})_{n \in \N} = \{0\}$ et $(u_{n})_{n \in \N}$ ne converge pas vers 0.
      %
   3. Valeurs d’adhérence de $\big(z_{n} = e^{2in \pi \alpha}\big)_{n \in \N}$ avec $\alpha \in \R$.
+     - Si $(z_{n})_{n}$ converge vers $\ell$, alors $z^{n+1} = z \times z^{n}$ donc en passant à la limite, $\ell = z \times \ell$ d’où $z = 1$.
      - Si $\alpha \in \Q$, écrivons $\alpha = \frac{p}{q}$ avec $(p,q) \in \Z \times \N^{*}$ tels que $p \land  q = 1$.
        $$
          \forall n \in \N, z_{n} = e^{2in \frac{p}{q}\pi}
@@ -1026,5 +1028,175 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
        $$
          \adh (z_{n})_{n \in \N} \subset \U
        $$
+       - Montrons que $1 \in \adh(z_{n})_{n \in \N}$: Il faut montrer que pour tout $\varepsilon > 0$, l’ensemble $\{n \in \N \mid \abs{e^{2i n \pi \alpha}-1} < \varepsilon\}$ est un ensemble infini.
+         %fig 1 est valeur d’adhérence
+             @[./figures/1-est-valeur-d’adhérence_optimized.svg]
+         %
+         $D_{n}$: disque (ouvert) de centre $e^{i n \frac{\varepsilon}{2}}$ passant par $e^{i (n +1)\frac{\varepsilon}{2}}$. Soit $\varepsilon \in \oo{0, \pi}$. Alors $\in  \frac{\varepsilon}{2} > 2 \pi \iff n > \frac{4 \pi}{\varepsilon}$. On a donc $\U \subset \bigcup_{n \in \icc{0, \ceil{\frac{4 \pi}{\varepsilon}}}} D_n$. Considérons l’application
+         $$
+           f: n \longmapsto  e^{2i n \pi \alpha}
+         $$
+         On a
+         $$
+           f(n) = f(n') \iff  (n-n')\alpha \in \Z \underset{\alpha \notin \Q}\implies  n = n'
+         $$
+         donc $f$ est injective donc l’ensemble $\{e^{2i n \pi \alpha} \mid n \in \N\}$ est un ensemble infini de $\U$. Le principe des tiroirs donne alors l’existence de $n_{0} \in \icc{0,\ceil {\frac{4 \pi}{\varepsilon}}}$ tel que
+         $$
+           \left\{ e^{2i n \pi \alpha} \mid n \in \N\right\} \cap  D_{n_{0}}
+         $$
+         soit infini. Nécessairement, $A = \left\{n \in \N \mid e^{2i n \pi \alpha} \in D_{n_{0}}\right\}$ est un ensemble infini. Soit $N \in \N$ tel que $e^{2i N \pi \alpha} \in D_{n_{0}}$. Alors
+         $$
+           A' = \left\{n \in \N \mid  \abs{e^{2in \pi \alpha} - e^{2i N \pi \alpha}} < \mathrm{diam} D_{n_{0}}\right\}
+         $$
+         est infini et $A \subset   A'$.
+         $$
+           \mathrm{rayon} D_{n_{0}} = \abs{e^{i \frac{\varepsilon}{2}} - 1} = \abs{2i \sin \frac{\varepsilon}{4}} \leq 2 \frac{\varepsilon}{4} = \frac{\varepsilon}{2}
+         $$
+         donc
+         $$
+           A' \subset  A'' = \left\{n \in \N \mid \abs{e^{2in \pi \alpha} - e^{2iN \pi \alpha}} < \varepsilon\right\}
+         $$
+         est infini. Or
+         $$
+           A'' = \left\{ n \in \N \mid \abs{e^{2i (n-N) \pi \alpha} - 1} < \varepsilon\right\}
+         $$
+         donc
+         $$
+           A''' = \left\{ n \geq  N \mid \abs{e^{2i \pi(n-N)\alpha} - 1} < \varepsilon\right\}
+         $$
+         est infini, d’où
+         $$
+           A^{(4)} = \left\{n \in \N \mid \abs{e^{2in \pi \alpha} - 1} < \varepsilon\right\}
+         $$
+         est infini. Ainsi, $1 \in \adh (z_{n})_{n \in \N}$.
+       - Montrons que $\adh (z_{n})_{n \in \N} = \U$: $G = \alpha \Z + \Z$ est un sous-groupe de $(\R,+)$.
+         $$
+           G = x \Z \implies  \begin{cases}\alpha \in x\Z \\ 1 \in  x\Z\end{cases} \implies  \frac{\alpha}{1} \in \Q
+         $$
+         donc $G$ est un sous-groupe dense de $(\R,+)$. Soient $\varepsilon > 0$ et $u  \in \U$.
+         $$
+           \left\{ n \in \N \mid \abs{e^{2in \pi \alpha} - u} < 1\right\}
+         $$
+         est un ensemble infini. Posons $u = e^{2 i \pi \theta}$ avec $\theta \in \co{0,1}$. Alors
+         $$
+           \alpha \Z + \Z \subset  \oo{\theta - \varepsilon , \theta + \varepsilon}
+         $$
+         est infini. On montre ci-dessous que $\alpha \N + \Z$ est dense dans $\R$. Alors
+         $$
+           (\alpha\N + \Z) \cap  \oo{\theta - \varepsilon, \theta+ \varepsilon}
+         $$
+         est infini. Soit $(p,q) \in \N \times \Z$ tel que $\abs{\alpha p + q - \theta} < \varepsilon$. Alors
+         $$
+           \begin{align*}
+             \underbrace{\abs{e^{2i \pi(\alpha p + q)} - e^{2i \pi \theta}}}_{= \abs{e^{2i \pi p \alpha} - u}} &= \abs{e^{2i \pi \theta} \left( e^{2i \pi (\alpha p + q - \theta)} - 1\right)} \\
+             &= \abs{e^{2i \pi (\alpha p + q - \theta)} -1} \\
+             &= \abs{-2 i \sin \pi(\alpha p + q - \theta)} \\
+             &\leq  2 \pi \abs{\alpha p + q - \theta}\\
+             &< 2 \pi \varepsilon
+           \end{align*}
+         $$
+         Or
+         $$
+           e^{2i \pi \alpha p} = e^{2i \pi \alpha p'} \iff  \alpha(p-p') \in \Z \implies  p=p'
+         $$
+         donc pour $p \in \N$ donné,
+         $$
+           \left\{ p \alpha\right\} + \Z \cap  \oo{\theta - \varepsilon, \theta + \varepsilon}
+         $$
+         est fini donc si $A \subset \N$ est fini,
+         $$
+           \bigcup_{p \in A} \{p \alpha\} + \Z \cap  \oo{\theta- \varepsilon, \theta + \varepsilon}
+         $$
+         est fini. Donc
+         $$
+           B = \left\{p \in \N \mid \exists q \in \Z: \alpha p + q \in  \oo{\theta - \varepsilon, \theta + \varepsilon}\right\}
+         $$
+         est infini. On a
+         $$
+           p \in B \implies  \abs{e^{2i \pi p \alpha} - u} < 2 \pi \varepsilon
+         $$
+         donc
+         $$
+           \left\{ p \in \N \mid \abs{e^{2i \pi p \alpha} - u} < 2 \pi \varepsilon\right\}
+         $$
+         est infini donc $u$ est une valeur d’adhérence de $(z_{n})_{n \in \N}$.
+       - %lemma
+           L’ensemble $\alpha \N + \Z$ est dense dans $\R$
+         %
+         %proof
+           Montrons que pour tous réels $u < v$, que
+           $$
+             \alpha \N + \Z  \cap  \oo{u,v} \ne \emptyset
+           $$
+           si $\alpha \notin\Q$. On sait que $\alpha\Z + \Z \cup  \oo{u,v}$ est un ensemble infini.
+           - si $0 \in \oo{u,v}$.
+             $$
+               0 = \alpha \times  0 + 0 \in \alpha \N + \Z \cap  \oo{u,v}
+             $$
+           - si $u \geq  0$. Posons $d = v - u$. Il suffit de montrer que $\alpha\N + \Z \cap \oo{0,d}\ne\emptyset$. En effet, si $x \in (\alpha \N + \Z) \cap  \oo{0,d}$, on pose $k = \floor{\frac{u}{x}}\in \N$ et on a
+             $$
+               kx \leq  u < \underbrace{(k+1)x}_{\in  \alpha\N+\Z} = kx + x < u+d = v
+             $$
+             Montrons donc que $\alpha\N + \Z \cap  \oo{0,d}\ne\emptyset$. $\alpha\Z + \Z \cap  \oo{0,d}$ est infini. Supposons $\alpha\N + \Z \cap  \oo{0,d} = \emptyset \quad (\star)$. Alors, tous les éléments de cet ensemble sont du type $\alpha p + q$ avec $p < 0$ et $q \in \Z$. Soit $y  = \alpha p + q \in \oo{0,d}$ avec $p < 0$ et $q \in \Z$. L’ensemble $\alpha\Z + \Z \cap  \oo{0,y}$ est infini et $\alpha\N + \Z \cap  \oo{0,d} = \emptyset$. Or
+             $$
+               \left(\bigcup_{p' \in \icc{0,p}}\{p' \alpha\} + \Z\right) \cap \oo{0,y}
+             $$
+             est fini donc il existe $p'' \leq  p$ et $q'' \in \Z$ tel que $y'' = p'' \alpha + q''' \in \oo{0,y}\subset \oo{0,d}$. Alors
+             $$
+               y - y'' = (p-p'')\alpha + q - q''
+             $$
+             or $p'' \leq  p$ donc $p - p'' \in \N$. $y'' \in \oo{0,y} \subset \oo{0,d}$ et $y \in \oo{0,d}$ donc $y - y'' \in \oo{0,d}$ — contradiction avec $(\star)$.
+           - si $v \leq  0$. $\alpha \notin \Q \iff  (\alpha) \notin \Q$. L’ensemble $(-\alpha)\N + \Z \cap \oo{-v,-u}$ est infini d’où $\underbrace{\alpha\N - \Z}_{\alpha\N + \Z} \cap  \oo{u,v}$ est infini.
+             $$
+               \adh \left( \left(e^{in \alpha}\right)_n \in \N\right) = \U \iff  \frac{\alpha}{2 \pi} \notin \Q
+             $$
+         %
+%
 
+%thm Théorème de Bolzano-Weierstrass en dimension finie
+  Si $E$ est un $\K$-esppace vectoriel normé de **dimension finie**, alors toute suite bornée possède une valeur d’adhérence.
+%
+
+%proof
+  Si $N$ est la norme sur $E$ et $\mathscr B = (e_{1}, \ldots, e_{p})$ une base de $E$, alors $N \sim N_{\infty,\mathscr B}$. Soit $(x_{n})_{n \in \N}$ une suite bornée dans $(E,N)$ et donc dans $(E,N_{\infty, \mathscr B})$, i.e.
+  $$
+    \exists M \in \R_{+}: \forall n \in \N, N_{\infty,\mathscr B}(x(n)) \leq M
+  $$
+  Donc en notant pour tout $n \in \N$,
+  $$
+    x(n) = \sum_{i=1}^{p}x_{i}(n)e_{i}
+  $$
+  on a
+  $$
+    \forall n \in \N, \forall i \in \icc{1,p}, \abs{x_{i}(n)} \leq  N_{\infty, \mathscr B}(x(n))
+  $$
+  Donc $(x_{1}(n))_{n \in \N}, \ldots, (x_{p}(n))_{n \in \N}$ sont des suites scalaires bornées, donc (BW dans $\K^{p}$), il existe $\varphi: \N \longrightarrow  \N$ strictement croissante et $(\ell_{1}, \ldots, \ell_{p}) \in \K^{p}$ tels que
+  $$
+    \begin{cases}x_{1}(\varphi(n)) \arrowlim{n\to+\infty}\ell_{1}\\\vdots\\x_{p}(\varphi(n)) \arrowlim{n\to+\infty}\ell_{p}\end{cases}
+  $$
+  d’où
+  $$
+    x(\varphi(n)) = \sum_{i=1}^{p}x_{i}(\varphi(n)) e_{i} \rightarrow  \sum_{i=1}^{p}\ell_{i} e_{i}
+  $$
+%
+
+%prop
+  Si $E$ est un $\K$-espace vectoriel normé de **dimension finie**, alors toute suite bornée possédanst une seule valeur d’adhérence est convergenre.
+%
+
+%proof
+  Soit $E$ un $\K$-espace vectoriel normé de dimension fini. Soit $(x_{n})_{n \in \N}$ une suite bornée de $E$ possédant $\ell$ comme unique valeur d’adhérence. Supposons que $(x_{n})_{n \in \N}$ ne tende pas vers $\ell$, i.e.
+  $$
+    \exists \varepsilon > 0: \forall  N \in \N, \exists n \geq N: \norm{x_{n} - \ell} \geq \varepsilon
+  $$
+  - $N = 0$: $\exists  n_{0} \in \N: \norm{x_{n_{0}} - \ell} \geq  \varepsilon$ (prenons $n_{0} = \min\{n \in \N \mid \norm{x_{n} - \ell} \geq \varepsilon\}$)
+  - $N = n_{0}+1$
+    $$
+      n_{1} = \min\{x \geq  n_{0} + 1 \mid \norm{x_{n} - \ell} \geq  \varepsilon\}
+    $$
+    et
+    $$
+      n_{k+1} = \min\{x \geq n_{k} + 1 \mid \norm{x_{n}-\ell} \geq \varepsilon\}
+    $$
+    Alors $(x_{n_{k}})_{k \in \N}$ est une suite extraite de $(x_{n})_{n \in \N}$ avec $\forall k \in \N, \norm{x_{n_{k}} - \ell} \geq  \varepsilon$. Or $(x_{n_{k}})_{k \in \N}$ est bornée à valeurs ddans $E$ de dimension finie. Elle possède donc une valeur d’adhérence qui est aussi une valeur d’adhérence de $(x_{n})_{n \in \N}$. C’est donc $\ell$. On a $x_{n_{\varphi(k)}} \arrowlim{n \to+\infty}\ell$ et $\forall  k \in \N, \norm{x_{n_{\varphi(k)}} - \ell} \geq  \varepsilon$ — contradiction.
 %
