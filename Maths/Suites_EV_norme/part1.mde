@@ -946,11 +946,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
      $$
   2. On appelle valeur d’adhérence de $(x_{n})_{n \in \N}$ la limite d’une suite extraite convergente. Notons $\adh (x_{n})_{n \in \N}$ l’ensemble des valeurs d’adhérence de la suite $(x_{p})_{n \in \N}$.
      $$
-       l \in \adh (x_{n})_{n \in \N} \iff  \exists \varphi: \N \longrightarrow \N \text{ str. croissante}: x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm\cdot} \ell
+       \ell \in \adh (x_{n})_{n \in \N} \iff  \exists \varphi: \N \longrightarrow \N \text{ str. croissante}: x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm\cdot} \ell
      $$
      $$
        \begin{align*}
-         l \in \adh (x_{n})_{n \in \N} &\iff  \forall \varepsilon > 0, \{n \in \N \mid x_{n} \in B_{\norm{\cdot}}(\ell, \varepsilon)\} \text{ est infini}\\
+         \ell \in \adh (x_{n})_{n \in \N} &\iff  \forall \varepsilon > 0, \{n \in \N \mid x_{n} \in B_{\norm{\cdot}}(\ell, \varepsilon)\} \text{ est infini}\\
          &\iff \forall  \varepsilon > 0, \forall  N \in \N, \exists n \geq  N: x_{n} \in B_{\norm\cdot}(\ell, \varepsilon)
        \end{align*}
      $$
@@ -1032,7 +1032,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
          %fig 1 est valeur d’adhérence
              @[./figures/1-est-valeur-d’adhérence_optimized.svg]
          %
-         $D_{n}$: disque (ouvert) de centre $e^{i n \frac{\varepsilon}{2}}$ passant par $e^{i (n +1)\frac{\varepsilon}{2}}$. Soit $\varepsilon \in \oo{0, \pi}$. Alors $\in  \frac{\varepsilon}{2} > 2 \pi \iff n > \frac{4 \pi}{\varepsilon}$. On a donc $\U \subset \bigcup_{n \in \icc{0, \ceil{\frac{4 \pi}{\varepsilon}}}} D_n$. Considérons l’application
+         $D_{n}$: disque (ouvert) de centre $e^{i n \frac{\varepsilon}{2}}$ passant par $e^{i (n +1)\frac{\varepsilon}{2}}$. Soit $\varepsilon \in \oo{0, \pi}$. Alors $n  \frac{\varepsilon}{2} > 2 \pi \iff n > \frac{4 \pi}{\varepsilon}$. On a donc $\U \subset \bigcup_{n \in \icc{0, \ceil{\frac{4 \pi}{\varepsilon}}}} D_n$. Considérons l’application
          $$
            f: n \longmapsto  e^{2i n \pi \alpha}
          $$
@@ -1154,7 +1154,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %thm Théorème de Bolzano-Weierstrass en dimension finie
-  Si $E$ est un $\K$-esppace vectoriel normé de **dimension finie**, alors toute suite bornée possède une valeur d’adhérence.
+  Si $E$ est un $\K$-espace vectoriel normé de **dimension finie**, alors toute suite bornée possède une valeur d’adhérence.
 %
 
 %proof
@@ -1181,7 +1181,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %
 
 %prop
-  Si $E$ est un $\K$-espace vectoriel normé de **dimension finie**, alors toute suite bornée possédanst une seule valeur d’adhérence est convergenre.
+  Si $E$ est un $\K$-espace vectoriel normé de **dimension finie**, alors toute suite bornée possédant une seule valeur d’adhérence est convergente.
 %
 
 %proof
