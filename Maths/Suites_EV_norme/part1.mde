@@ -620,7 +620,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   Soit $N$ une norme sur $\K^{n}$. Montrons que $N\sim \norm \cdot _{\infty}$. Soit $(e_{1}, \ldots, e_{n})$ la base canonique de $\K^{n}$.
   - Soit $x = (x_{1}, \ldots, x_{n}) \in \K^{n}$.
     $$
-      N(x) = n \left(\sum_{i=1}^{n}x_{i}e_{i}\right) = \sum_{i=1}^{n}\abs{x_{i}}N(e_{i})
+      N(x) = N \left(\sum_{i=1}^{n}x_{i}e_{i}\right) = \sum_{i=1}^{n}\abs{x_{i}}N(e_{i})
     $$
     or $\forall i \in \icc{1,n}, \abs{x_{i}}\leq  \norm x_{\infty}$ et $N(e_{i})>0$, d’où
     $$
@@ -639,7 +639,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     $$
       \forall k \in \N^{*}, x_{k} \ne 0_{\K^{n}}
     $$
-    et on pose pour tout $k \in \N^{*}, mmy_{k} = \frac{x_{k}}{\norm{x_{k}}_{\infty}}$, d’où
+    et on pose pour tout $k \in \N^{*}, y_{k} = \frac{x_{k}}{\norm{x_{k}}_{\infty}}$, d’où
     $$
       \forall k \in \N^{*}, \begin{cases}\norm{y_{k}}_{\infty} = 1\\N(y_{k})<\frac{1}{k}\end{cases}
     $$
@@ -647,15 +647,15 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     $$
       \forall  p \in \icc{1,n}, \forall k \in \N^{*}, \norm{y_{k}}_{\infty} = 1 \geq  \abs{y_{p}(k)}
     $$
-    donc $\big(y_{1}(k)\big)_{k \in \N}, \ldots, \big((y_{p}(k))_{k \in \N}\big)$ sont bornées. D’après le théorème de Bolsano-Weierstrass, il existe $\varphi: \N^{*} \longrightarrow  \N^{*}$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
+    donc $\big(y_{1}(k)\big)_{k \in \N}, \ldots, \big((y_{n}(k))_{k \in \N}\big)$ sont bornées. D’après le théorème de Bolsano-Weierstrass, il existe $\varphi: \N^{*} \longrightarrow  \N^{*}$ strictement croissante et $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
     $$
-      \begin{cases}y_{1}(\varphi(k)) \longrightarrow y_{1}\\\vdots\\ y_{n}(\varphi(k)) \longrightarrow  \lambda_{n}\end{cases}
+      \begin{cases}y_{1}(\varphi(k)) \longrightarrow \lambda_{1}\\\vdots\\ y_{n}(\varphi(k)) \longrightarrow  \lambda_{n}\end{cases}
     $$
     Posons $\lambda = (\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$
     $$
-      \abs{\norm{y(k)}_{\infty} - \norm \lambda_{\infty}} \leq  \norm{y(k) - \lambda}_{\infty} \leq  \sum_{p=1}^{n}\abs{y_{p}(k) - \lambda_{p}} \arrowlim{k\to +\infty}0
+      \abs{\norm{y(\varphi(k))}_{\infty} - \norm \lambda_{\infty}} \leq  \norm{y(\varphi(k)) - \lambda}_{\infty} \leq  \sum_{p=1}^{n}\abs{y_{p}(\varphi(k)) - \lambda_{p}} \arrowlim{k\to +\infty}0
     $$
-    donc $\norm \lambda_{\infty} = \lim_{k\to +\infty} \norm{y(k)}_{\infty} = 1$. Or
+    donc $\norm \lambda_{\infty} = \lim_{k\to +\infty} \norm{y(\varphi(k))}_{\infty} = 1$. Or
     $$
       \begin{align*}
         N(\lambda) &\leq N(\lambda - y(\varphi(k))) + N(y(\varphi(k)))\\
@@ -968,18 +968,18 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
     $$
     - $\varepsilon = 1$. $N = 0$.
       $$
-        \exists x_{0} \geq 0: x_{x_{0}} \in B(\ell, 1)
+        \exists n_{0} \geq 0: x_{n_{0}} \in B(\ell, 1)
       $$
-    - $\varepsilon = \frac{1}{2}$: $N = x_{0} + 1$. $\exists  x_{1} > x_{0}: x_{x_{1}} \in B(\ell, \frac{1}{2})$.
+    - $\varepsilon = \frac{1}{2}$: $N = n_{0} + 1$. $\exists  n_{1} > n_{0}: x_{n_{1}} \in B(\ell, \frac{1}{2})$.
     - Pour $k \in \N$,
       $$
-        x_{k+1} = \min\left\{i \in \N \mid i > n_{k} \text{ et } x_{i} \in B\left(\ell, \frac{1}{2^{k+1}}\right)\right\}
+        n_{k+1} = \min\left\{i \in \N \mid i > n_{k} \text{ et } n_{i} \in B\left(\ell, \frac{1}{2^{k+1}}\right)\right\}
       $$
       $(x_{n_{k}})_{k \in \N}$ est alors une suite extraite de $(x_{n})_{n \in \N}$ et
       $$
-        \forall k \in \N, \norm{x_{n_{k}} - \ell} < \frac{1}{2_{k}} \arrowlim{k\to+\infty} 0
+        \forall k \in \N, \norm{x_{n_{k}} - \ell} < \frac{1}{2^{k}} \arrowlim{k\to+\infty} 0
       $$
-      donc $x_{n_{k}} \arrowlim{k\to+\infty}\ell$, d’où $l \in \adh (x_{n})_{n \in \N}$.
+      donc $x_{n_{k}} \arrowlim{k\to+\infty}\ell$, d’où $\ell \in \adh (x_{n})_{n \in \N}$.
 %
 
 %eg
@@ -1192,11 +1192,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   - $N = 0$: $\exists  n_{0} \in \N: \norm{x_{n_{0}} - \ell} \geq  \varepsilon$ (prenons $n_{0} = \min\{n \in \N \mid \norm{x_{n} - \ell} \geq \varepsilon\}$)
   - $N = n_{0}+1$
     $$
-      n_{1} = \min\{x \geq  n_{0} + 1 \mid \norm{x_{n} - \ell} \geq  \varepsilon\}
+      n_{1} = \min\{n \geq  n_{0} + 1 \mid \norm{x_{n} - \ell} \geq  \varepsilon\}
     $$
     et
     $$
-      n_{k+1} = \min\{x \geq n_{k} + 1 \mid \norm{x_{n}-\ell} \geq \varepsilon\}
+      n_{k+1} = \min\{n \geq n_{k} + 1 \mid \norm{x_{n}-\ell} \geq \varepsilon\}
     $$
-    Alors $(x_{n_{k}})_{k \in \N}$ est une suite extraite de $(x_{n})_{n \in \N}$ avec $\forall k \in \N, \norm{x_{n_{k}} - \ell} \geq  \varepsilon$. Or $(x_{n_{k}})_{k \in \N}$ est bornée à valeurs ddans $E$ de dimension finie. Elle possède donc une valeur d’adhérence qui est aussi une valeur d’adhérence de $(x_{n})_{n \in \N}$. C’est donc $\ell$. On a $x_{n_{\varphi(k)}} \arrowlim{n \to+\infty}\ell$ et $\forall  k \in \N, \norm{x_{n_{\varphi(k)}} - \ell} \geq  \varepsilon$ — contradiction.
+    Alors $(x_{n_{k}})_{k \in \N}$ est une suite extraite de $(x_{n})_{n \in \N}$ avec $\forall k \in \N, \norm{x_{n_{k}} - \ell} \geq  \varepsilon$. Or $(x_{n_{k}})_{k \in \N}$ est bornée à valeurs dans $E$ de dimension finie. Elle possède donc une valeur d’adhérence qui est aussi une valeur d’adhérence de $(x_{n})_{n \in \N}$. C’est donc $\ell$. On a $x_{n_{\varphi(k)}} \arrowlim{n \to+\infty}\ell$ et $\forall  k \in \N, \norm{x_{n_{\varphi(k)}} - \ell} \geq  \varepsilon$ — contradiction.
 %
