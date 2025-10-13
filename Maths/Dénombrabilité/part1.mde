@@ -3,13 +3,13 @@
 ## Ensembles dénombrables
 
 %def
-  1. Deux ensembles $E$ et $F$ sont dits *équipotents* si il existe une bijection de $E$ dans $F$. On note $E \simeq F$.
-  2. Un ensemble $E$ est dit *fini* s’il est vide ou s’il existe $n \in \N^{*}$ tel que $E\simeq \icc{1,n}$. On note $\#E = n$.
+  1. Deux ensembles $E$ et $F$ sont dits *équipotents* si il existe une bijection de $E$ dans $F$. On note $E \approx F$.
+  2. Un ensemble $E$ est dit *fini* s’il est vide ou s’il existe $n \in \N^{*}$ tel que $E\approx \icc{1,n}$. On note $\#E = n$.
   3. Un ensemble $E$ est dit infini si il n’est pas fini.
 %
 
 %eg
-  1. Si $E$ est un ensemble, alors $\Part(E) \simeq \{0,1\}^{E}$.
+  1. Si $E$ est un ensemble, alors $\Part(E) \approx \{0,1\}^{E}$.
      En effet, l’application
      $$
        \alpha: \applic{\Part (E)}{\{0,1\}^{E}}{A}{\chi_{A} = \mathbf{1}_{A}: \applic{E}{\{0,1\}}{x}{\begin{cases}1 & \text{si } x \in A\\ 0 & \text{sinon}\end{cases}}}
@@ -24,9 +24,9 @@
        \#\left\{p \in \P \where p \leq x\right\} \usim{x \to +\infty} \frac{x}{\ln x}
      $$
      (grand théorème des nombres premiers)
-  3. Tout ensemble $E$ équipotent à l’une de sS parties strictes est infini.
+  3. Tout ensemble $E$ équipotent à l’une de ses parties strictes est infini.
      %proof
-       Soit $F$ une partie stricte de $E$ idempotent à $E$. Si $E$ est fini, alors $F$ aussi or $F \simeq E$ donc $\abs{F} = \abs{E}$ et $F \subset E$, donc $F \subset E$ exclu.
+       Soit $F$ une partie stricte de $E$ idempotent à $E$. Si $E$ est fini, alors $F$ aussi or $F \approx E$ donc $\abs{F} = \abs{E}$ et $F \subset E$, donc $F \subset E$ exclu.
      %
      %eg
        L’application $\applic{\N}{\N^{*}}{n}{n+1}$ est une bijection de $\N$ dans $\N^{*}$ qui est une partie stricte de $\N$, donc $\N$ est infini.
@@ -51,7 +51,7 @@
   1. Toute partie $A$ de $\N$ est au plus dénombrable.
      - $A$ est finie si $A$ est majorée (dans $(\N, \leq)$)
      - $A$ est dénombrable sinon
-  2. Toute partiie d’un ensemble dénombrable est au plus dénombrable.
+  2. Toute partie d’un ensemble dénombrable est au plus dénombrable.
 %
 
 %proof
@@ -62,7 +62,7 @@
        $$
        - $\gamma$ est correctement définie: si $p \in A$, alors $p \in A \cap \icc{0,p}$ donc $\#(A \cap \icc{0,p}) \geq 1$ donc $\gamma$ est à valeurs dans $\N^{*}$.
        - Soit $p_{1} = \min A$. Alors $\gamma(p_{1}) = \#A \cap \icc{0,p} = \#\{p_{1}\} =1$ donc $1 \in \gamma(A)$.
-       - Soit $n \in \gamma(A)$. Il existe $p \in A$ tel que $n = \#A \cap  \icc{0,p}$. Comme $A$ n’est pas majorée, $A \subset \icc{0,p}$ n’est pas vide. Soit $q = \min (A \setminus \icc{0,p})$.
+       - Soit $n \in \gamma(A)$. Il existe $p \in A$ tel que $n = \#A \cap  \icc{0,p}$. Comme $A$ n’est pas majorée, $A \setminus \icc{0,p}$ n’est pas vide. Soit $q = \min (A \setminus \icc{0,p})$.
          $$
            \gamma(q) = \# (A \cap  \icc{0,q}) = \#(A \cap  \icc{0,p}) \uplus \{q\} = \gamma(p) + 1 = n+1
          $$
@@ -75,7 +75,7 @@
        Ainsi, $\gamma$ est bijective, or $\N^{*}$ est en bijection avec $\N$ donc $A$ est en bijection avec $\N$. $\big(\gamma^{-1}(\{n\})\big)_{n \in \N}$ est alors la suite strictement croissante des éléments de $A$.
   2. Supposons $E$ dénombrable. Soit $F \in \Part(E)$.
      $$
-       \arr{ccc}{E & \xrightarrow[f]{\simeq} & \N\\ \cup && \cup \\ F& \xrightarrow[f_{|F}]{\simeq} & f(F)}
+       \arr{ccc}{E & \xrightarrow[f]{\approx} & \N\\ \cup && \cup \\ F& \xrightarrow[f_{|F}]{\approx} & f(F)}
      $$
      $f(F)$ est fini ou dénombrable.
 %
@@ -85,7 +85,7 @@
 %prop
   $E$ et $F$ désignent des ensembles.
   1. Si $f: E \hookrightarrow F$ est une injection et $F$ est dénombrable, alors $E$ est au plus dénombrable.
-  2. Si $F E \longrightarrow  F$ est une surjection et $E$ est dénombrable, alors $F$ est au plus dénombrable.
+  2. Si $f: E \longrightarrow  F$ est une surjection et $E$ est dénombrable, alors $F$ est au plus dénombrable.
   3. $E$ est au plus dénombrable si et seulement si il existe une injection de $E$ dans $\N$.
 %
 
@@ -106,8 +106,8 @@
   3. - Si $E \hookrightarrow \N$, alors $E$ est au plus dénombrable d’après 1.
      - Soit $E$ au plus dénombrable.
        - Si $E = \emptyset$, alors $E \subset \N$
-       - Si $E \xrightarrow[f]{\simeq} \icc{1,p}$ pour $n \in \N^{*}$, alors $E \xrightarrow[f]\N$ est injective.
-       - Si $E\simeq \N$, alors $E$ est en bijection avec $\N$.
+       - Si $E \xrightarrow[f]{\approx} \icc{1,p}$ pour $n \in \N^{*}$, alors $E \xrightarrow[f]\N$ est injective.
+       - Si $E\approx \N$, alors $E$ est en bijection avec $\N$.
 %
 
 %prop
@@ -119,7 +119,7 @@
      $$
        f: \applic{\N^{k}}{\N}{(\alpha_{1}, \ldots, \alpha_{k})}{\prod_{i=1}^{k}p_{i}^{\alpha_{i}}}
      $$
-     est une injection (unicité de la décomposition en facteurs premiers), donc $\N^{k}$ est au plus dénombrable. Or $\N^{k}$ contient l’ensemble infini $\N \times \{0\}^{k-1} \simeq \N$ donc $\N^{k}$ est infini, d’où $\N^{k}$ est dénombrable.
+     est une injection (unicité de la décomposition en facteurs premiers), donc $\N^{k}$ est au plus dénombrable. Or $\N^{k}$ contient l’ensemble infini $\N \times \{0\}^{k-1} \approx \N$ donc $\N^{k}$ est infini, d’où $\N^{k}$ est dénombrable.
   2. L’application
      $$
        g: \applic{\N^{2}}{\Z}{(a,b)}{a-b}
@@ -127,19 +127,246 @@
      est surjective. or $\N^{2}$ est dénombrable donc $\Z$ est au plus dénombrable. Il est infini car contient $\N$ donc $\Z$ est au plus dénombrable.
   3. L’application
      $$
-       h: \applic{\N^{3}}{\Q}{(a,b,c)}{\frac{a+b}{c+1}}
+       h: \applic{\N^{3}}{\Q}{(a,b,c)}{\frac{a-b}{c+1}}
      $$
      est surjective. Or $\N^{3}$ est dénombrable donc $\Q$ est dénomblable. Étant infini, $\Q$ est dénombrable.
 %
 
 %prop
-  Tout produt cartésien fini d’ensembles dénombrables est un ensemble dénombrable.
+  Tout produit cartésien fini d’ensembles dénombrables est un ensemble dénombrable.
 %
 
 %proof
   Soit $I$ un ensemble fini et $(E_{i})_{i \in I}$ une famille d’ensembles dénombrables. Pour chaque $i \in I$, il existe $f_{i}: E \longrightarrow  \N$ bijective.
   $$
-    g:\applic{\prod_{i \in I}E_{i}}{\N^{I}\simeq \N^{\abs{I}}}{(x_{i})_{i \in I}}{(f_{i}(x_{i}))_{i \in I}}
+    g:\applic{\prod_{i \in I}E_{i}}{\N^{I}\approx \N^{\abs{I}}}{(x_{i})_{i \in I}}{(f_{i}(x_{i}))_{i \in I}}
   $$
   $g$ est bijective.
+%
+
+%offprog
+  %axiome Axiome du choix (version forte)
+    Pour tout ensemble non vide $X$, il existe une application (dite fonction choix)
+    $$
+      f: \Part(X) \longrightarrow X
+    $$
+    tel que
+    $$
+      \forall \omega \in \Part(X)\setminus \{0\}, f(\omega) \in \omega
+    $$
+  %
+
+  %eg
+    Pour $X = \N$,
+    $$
+      f: \applic{\Part (X)}{X}{\omega}{\begin{cases}\min \omega & \text{si } \omega\ne\emptyset\\ 0 & \text{sinon}\end{cases}}
+    $$
+  %
+
+  %eg
+    La preuve du résultat suivant nécessite l’axiome du choix (dénombrable):
+
+    $f: \R \longrightarrow \R$ est continue en $a \in \R$ si et seulement si pour toute suite réelle $(x_{n})$ tendant vers $a$, $(f(x_{n}))_{n \in \N}$ tend vers $f(a)$.
+
+    %proof
+      - Supposons $f: \R \longrightarrow \R$ continue en $a$. Soit $(x_{n})_{n \in \N}$ tendant vers $a$. Soit $\varepsilon > 0$. Il existe $\delta > 0$ tel que
+        $$
+          \begin{cases}x \in \R\\ \abs{x-a} < \delta\end{cases} \implies \abs{f(x) - f(a)} < \varepsilon
+        $$
+        Il existe $N \in \N$ tel que $\forall n \geq N, \abs{x_{n}-a} < \delta$, d’où
+        $$
+          \forall n \geq N, \abs{f(x_{n}) - f(a)} < \varepsilon
+        $$
+      - Supposons $f$ discontinue en $a$.
+        $$
+          \exists  \varepsilon > 0: \forall  \delta > 0, \exists  x \in \R: \begin{cases}\abs{x-a} < \delta \\ \abs{f(x) - f(a)}  \geq \varepsilon\end{cases}
+        $$
+        Soit $\varphi: \Part(\R) \longrightarrow \R$ une fonction choix. Posons
+        $$
+          \forall  \delta > 0, x(\delta) = \varphi \big(\big\{x \in \R \where \abs{x-a} < \delta \text{ et } \abs{f(x) - f(a)} \geq \varepsilon\big\}\big)
+        $$
+        Considérons la suite $\left(x \big(\frac{1}{n}\big)\right)_{n \in \N^{*}}$. On a
+        $$
+          \forall n \in \N^{*}, \begin{cases}\abs{x \frac{1}{n} - a} < \frac{1}{n}\\ \abs{f(x \frac{1}{x}) - f(a)} \geq  \varepsilon\end{cases}
+        $$
+        donc
+        $$
+          \begin{cases}x \frac{1}{n} \arrowlim{n\to+\infty}a\\ f(x \frac{1}{n}) \cancel{\arrowlim{n\to+\infty}}f(a)\end{cases}
+        $$
+    %
+  %
+%
+
+
+%prop
+  Soit $(A_{d})_{d \in D}$ une famille de parties au plus dénombrables d’un ensemble $E$ indexée par un ensemble $D$ au plus dénombrable. Alors $\bigcup_{d \in D}A_{d}$ est une partie au plus dénombrable de $E$.
+%
+
+%proof
+  Soit $\varphi : D \hookrightarrow \N$ une injection. Soit $D' = \varphi(D) \subset \N$. Alors
+  $$
+    \bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}\underbrace{A_{\varphi^{-1}(\{d'\})}}_{=B_{d'}}
+  $$
+  Posons $X = \Func(E,\N)$. Soit $f: \Part(X) \longrightarrow X$ une fonction choix. Pour $d \in D'$, on pose
+  $$
+    f_{d'} = f \big(\underbrace{\big\{\varphi \in \Func(E,\N) \where \varphi_{|B_{d'}} \text{ injective}\big\}}_{\ne\emptyset \text{ car } B_{d'} \text{ s’injecte dans }\N}\big)
+  $$
+  Donc l’application
+  $$
+    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'}(x)(x))}
+  $$
+  avec $d'(x) = \min\{d' \in D' \where  \in B_{d'}\}$ est une injection. En effet, pour $(x,y) \in \bigcup_{d' \in D'}B_{d'}$ si $(d'(x), f_{d'(x)}(x)) = (d'(y) , f_{d'(y)}(y))$, alors
+  $$
+    \begin{cases}d'(x) = d'(y)\\ f_{d'(x)}(x) = f_{d'(x)}(y)\end{cases}
+  $$
+  donc $y \in B_{d'(x)} = B_{d'(y)}$. Or $f_{d'(x)}$ est injective sur $B_{d'(x)}$ donc $x = y$.
+  Or $N^{2}$ est dénombrable donc $\bigcup_{d \in D}A_{d}$ est au plus dénombrable.
+%
+
+%eg
+  1. Dénombrabilité de $\Z[X]$.
+     - ++Première méthode.++ $\Z[X] \in \bigcup_{n \in \N}\Z_{n}[X]$.
+       $$
+         \applic{\Z^{n+1}}{\Z_{n}[X]}{(a_{0}, a_{1}, \ldots, a_{n})}{a_{0} + a_{1} X + \cdots + a_{n}X^{n}}
+       $$
+       est une bijection, or $\Z^{n+1}$ est nénombrable donc $\Z_{n}[X]$ aussi.
+     - ++Deuxième méthode (sans axiome du choix).++ L’application
+       $$
+         \applic{\Z[X]}{\N}{P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{0}}{\varepsilon(a_{0}) [a_{0}]_{2}\varepsilon(a_{1})[a_{1}]_{2}} \cdots \varepsilon(a_{n}) [\abs{a_{n}}]_{2}
+       $$
+       avec $\varepsilon(a) = \begin{cases}2 &\text{si } a > 0\\ 3 &\text{sinon}\end{cases}$ est une injection. Or $\N$ est dénombrable donc $\Z[X]$ est infini (il contient $\Z$), donc $\Z[X]$ est dénombrable.
+     - ++Troisième méthode.++ Soit $(p_{n})_{n \in \N}$ la suite croissante des nombres premiers. L’application
+       $$
+         \applic{\Z[X]}{\Q}{p = \sum_{n \in \N}a_{n}X^{n}}{\prod_{n \in \N}p_{n}^{\mathrm{coeff}(P,X^{n})}}
+       $$
+       est une injection, donc $\Q$ étant dénombrable, $\Z[X]$ est au plus dénombrable, or $\Z[X]$ est infini donc il est dénombrable.
+  2. $\mathbf{A} = \big\{x \in \R \where \exists P \in \Z[X] \setminus \{0\}: \tilde{P}(x) = 0\big\}$ est l’ensemble des nombres algébriques réels.
+     - si $(p,q) \in \Z \times \N^{*}$, alors $\frac{p}{q}$ est racine de $qX - p \in \Z[X]$ donc $\Q \subset \mathbf{A}$.
+     - de plus, $\forall n \in \N^{*}, \forall p \in \N, \sqrt[n]{p} \in \mathbf{A}$ ($X^{n} - p \in \Z[X]$ a pour racine $\sqrt[n]{p}$).
+     $$
+       A = \bigcup_{P \in \Z[X] \setminus \{0\}}\big(\tilde{P}^{-1}(\{0\}) \cap \R\big)
+     $$
+     or $\Z[X] \setminus \{0\}$ est dénombrable et
+     $$
+       \forall P \in \Z[X] \setminus \{0\}, \big(P^{-1}(\{0\}) \cap \R\big) \text{ est fini}
+     $$
+     donc $\mathbf{A}$ est au plus dénombrable, or $\mathbf{A}$ est infini car contient $\Q$ donc $\mathbf{A}$ est dénombrable.
+%
+
+%prop
+  Soit $(z_{a})_{a \in A} \in \C^{A}$ une famille de nombres comploxes indexée par un ensemble $A$ non vide. Si $(z_{a})_{a \in A} \in \ell^{1}(A)$, alors le support $S = \{a \in A \where z_{a} \ne 0\}$ de la famille est au plus dénombrable.
+%
+
+%proof
+  Soit $z \in \ell^{1}(A)$. Posons pour $n \in \N^{*}$, $S_{n} = \left\{a \in A \where \abs{z_{a}} \geq \frac{1}{n}\right\}$. On a $S = \bigcup_{n \in \N^{*}}S_{n}$. Soit $n \in \N^{*}$ fixé. Si $a \in S_{n}$, alors $\abs{z_{a}} \geq \frac{1}{n}$ et $(z_{a})_{a \in S_{n}} \in \ell^{1}(S_{n})$ donc
+  $$
+    \left(\frac{1}{n}\right)_{n \in S_{n}} \in \ell^{1}(S_{n})
+  $$
+  donc $S_{n}$ est fini pour tout $n \in \N^{*}$ et $\N^{*}$ est dénombrable. Ainsi, $S = \bigcup_{n \in \N^{*}}S_{n}$ est au plus dénombrable.
+  $$
+    \left(\frac{1}{x^{2}}\right)_{x \in \co{1, +\infty}}\notin \ell^{1}(\co{1, +\infty})
+  $$
+  car $\co{1, +\infty}$ n’est pas dénombrable et $\supp \left(\left( \frac{1}{x^{2}}\right)_{x \in \co{1,+\infty}}\right) = \co{1,+\infty}$.
+%
+
+## Parties infinies non dénombrables
+
+%offprog
+  %prop
+    Soit $E$ un ensemble (non vide). Il n’existe pas de bijection entre $E$ et $\Part(E)$.
+  %
+
+  %proof
+    Soit
+    $$
+      f: \applic{E}{\{0,1\}^{E}}{e}{(f_{e}: E \longrightarrow \{0,1\})}
+    $$
+    une bijection. Soit((« argment diagonal de Cantor »))
+    $$
+      g: \applic{E}{\{0,1\}}{e}{1-f_{e}(e) \in \{0,1\}}
+    $$
+    Soit $e \in E$.
+    $$
+      g(e) = 1-f_{e}(e) \ne f_{e}(e)
+    $$
+    donc $g\ne f_{e}$ donc $g\notin\{f_{e} \where e \in E\}$ donc $f_{e}$ n’est pas surjective.
+  %
+
+  %rem
+    1. Il existe toujours une injection de $E$ dans $\Part (E)$(($\applic{E}{\Part(E)}{e}{\{e\}}$)) donc d’après le *théorème de Cantor-Bernstein*, il n’existe pas d’injection de $\Part (E)$ dans $E$.
+    2. $\N \not\approx \Part(\N)$ donc $\Part(\N)$ est un ensemble infini non dénombrable ($\Part(\N)$ contient tous les singletons $\{n\}$ avec $n \in \N$).
+  %
+%
+
+%thm Théorème de Cantor
+  1. $\R$ est un ensemble infini non dénombrable
+  %offprog
+    2. $\R$ est équipotent a tout intervalle de longueur non nulle
+  %
+%
+
+%proof
+  1. Soit
+     $$
+       f: \applic{\{0,1\}^{\N}}{\R}{(x_{n})_{n \in \N}}{\sum_{n=0}^{+\infty}\frac{x_{n}}{3^{n}}}
+     $$
+     - Pour $(x_{n})_{n \in \N} \in \{0,1\}^{n}$,
+       $$
+         \forall n \in \N, 0 \leq  \frac{x_{n}}{3^{n}} \leq \frac{1}{3^{n}}
+       $$
+       or $\left(\frac{1}{3^{n}}\right)_{n \in \N} \in \ell^{1}(\N)$ car $0 \leq \frac{1}{3} < 1$ donc $\left( \frac{x_{n}}{3_{n}}\right)_{n \in \N} \in \ell^{1}(\N)$.
+     - Montrons l’injectivité de $f$. Soit $(x,y) \in \{0,1\}^{\N}$ avec $x\ne y$. Soit $n_{0} = \min\{n \in \N \where x_{n} \ne y_{n}\}$.
+       $$
+         f(x) - f(y) = \frac{x_{n_{0}} - y_{n_{0}}}{3^{n_{0}}} + \sum_{n = n_{0}+1}^{+\infty}\frac{x_{n} - y_{n}}{3^{n}}
+       $$
+       On a $\abs{\frac{x_{n_{0}} - y_{n_{0}}}{3^{n_{0}}}} = \frac{1}{3^{n_{0}}}$ et par absolue convergence, on a
+       $$
+         \abs{\sum_{n \in \ico{n_{0}+1, +\infty}} \frac{x_{n} - y_{n}}{3^{n}}} \leq  \sum_{n \in \ico{n_{0}+1, +\infty}} \frac{\abs{x_{n} - y_{n}}}{3^{n}}
+       $$
+       d’où
+       $$
+         \abs{\sum_{n = n_{0}+1}^{+\infty} \frac{x_{n} - y_{n}}{3^{n}}} \leq  \sum_{n = n_{0}+1}^{+\infty}\frac{1}{3^{n}} = \frac{1}{3^{n_{0}+1}} \times \frac{1}{1-\frac{1}{3}} = \frac{1}{2 \cdot 3^{n_{0}}}
+       $$
+       donc $f(x) - f(y) \ne 0$, donc $f$ est injective.
+     - Si $\R$ est au plus dénombrable, alors $\{0,1\}^{\N} \approx \Part(\N)$ est au plus dénombrable, ce qui est faux donc $\R$ n’est pas au plus dénombrable. Ainsi, $\R$ est au plus dénombrable.
+  %offprog
+    2. %def
+         - Si $I$ est un intervalle non vide, alors $\long(I) = \lambda(I) = \sup I - \inf I$.
+         - $\long\emptyset = 0$
+       %
+       $\R \approx \oo{-1,1}$ car $x \longmapsto \th x$ est une bijection, donc $\R\approx \oo{0,1}$ avec la bijection $x \longmapsto \frac{1+\th x}{2}$. Par ailleurs, $\R \approx \oc{0,1}$ avec la bijection
+       $$
+         \applic{\R}{\oc{0,1}}{x}{\begin{cases}\frac{1}{n+1} & \text{si }x = \frac{1}{n} \\ x & \text{si } x \in \oc{0,1}\setminus \{\frac{1}{n} \where n \in \N^{*}\}\end{cases}}
+       $$
+       Mais on a aussi deux injection
+       $$
+         \applic{\oc{0,1}}{\cc{0,1}}{x}{x} \quad\text{et}\quad \applic{\cc{0,1}}{\oc{0,1}}{x}{1-\frac{x}{2}}
+       $$
+       donc d’après le théorème de Cantor-Bernstein, on a $\oc{0,1} \approx \cc{0,1}$.
+
+       De plus,
+       $$
+         \applic{(0,1)}{(a,b)}{t}{ta + (1-t)b}
+       $$
+       donc $\R \approx (a,b)$ avec $a < b$ deux réels.
+
+       De plus,
+       $$
+         \applic{\oo{a,+\infty}}{\oo{-\infty,-a}}{x}{-x} \quad\text{;}\quad \applic{\oo{0,+\infty}}{\oo{a,+\infty}}{x}{x+a} \quad\text{et}\quad \applic{\oo{0,+\infty}}{\oo{0,1}}{x}{e^{-x}}
+       $$
+       sont des bijections. ==TODO: CLEAN==
+
+       ++Autre méthode++: Soit $I$ un intervalle quelconque (non vide et différent d’un singleton). Soient $(a,b) \in I^{2}$ tels que $a < b$. Alors
+       $$
+         \applic{\cc{a,b}}{I}{x}{x} \quad\text{et}\quad \applic{I}{\R \approx \cc{a,b}}{x}{x}
+       $$
+       sont des injections, donc d’après le théorème de Cantor-Bernstein, $\R \approx \cc{a,b}$.
+  %
+
+%
+
+%eg
+  1. $\R \setminus \Q$ est infini non dénombrable. En effet, $\Q$ est dénombrable et $\Q \cup (\R \setminus \Q)$ n’est pas dénombrable.
+  2. $\mathbf{A}$ est dénombrable. Comme $\R$ ne l’est pas, $\mathbf{T} = \R \setminus \mathbf{A}$ est un ensemble non dénombrable appelé *ensemble des nombres transcendants*.
+     ~ $\pi \in \mathbf{T}$  ~ $e \in \mathbf{T}$  ~ $\{\pi+e , \pi \times e\} \cap \mathbf{T} \ne\emptyset$  ~ $e^{\pi} \in \mathbf{T}$  ~ $2^{\sqrt{2}} \in \mathbf{T}$  ~ $\ln 2 \in \mathbf{T}$  ~ $0,12345678910111213… \in \mathbf{T}$((nombre de Malher))
 %
