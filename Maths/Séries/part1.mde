@@ -1,0 +1,292 @@
+# Compléments sur les séries
+
+## Séries à valeurs dans un espace vectoriel normé
+
+Dans cette partie, $\K$ représente $\R$ ou $\C$, $(E,\norm \cdot )$ est un $\K$-espace vectoriel normé et $n$ un entier naturel.
+
+Soit l’application
+$$
+  \varphi: \applic{\ico{n_{0},+\infty}}{\big(E^{\ico{n_{0}, +\infty}}\big)^{2}}{(u_{n})_{n \geq  n_{0}}}{\big((u_{n})_{n \geq  n_{0}}, (S_{n})_{n \geq n_{0}}\big)}
+$$
+avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une application linéaire injective. $\img \varphi$ est appelé espace vectoriel des séries à valeurs dans $E$. Pour $u \in E^{\ico{n_{0},+\infty}}$, $\varepsilon(u)$ est noté $\sum_{n \geq n_{0}} u_{n}$ ou encore $\sum u_{n}$.
+
+%def
+  $\sum_{n \geq  n_{0}}u_{n}$ est dite convergente dans $(E,\norm \cdot )$ si la suite des sommes partielles $(S_{n})_{n \geq  n_{0}}$ est convergente. Si tel est le cas, on pose $\sum_{n=n_{0}}^{+\infty}u_{n} = \lim_{n\to+\infty} S_{n} \in E$. Ce vecteur est appelé *norme de la série*.
+%
+
+%rem
+  1. $\sum_{n \geq  n_{0}}u_{n}$ et $\sum_{n \geq  n_{0}+k}$ ont la même nature pour $k \in \N$.
+  2. %callout
+       Si $\sum_{n \geq n_{0}}u_{n}$ est convergente, alors $S_{n} - S_{n-1} = u_{n} \xrightarrow[n\to+\infty]{\norm\cdot}0_{E}$.
+     %
+  3. Si $\sum_{n \geq n_{0}}u_{n}$ est convergente, alors on pose $R_{n} = \sum_{k=n+1}^{+\infty}u_{k} \in E$ pour $n \geq  n_{0}+1$. $R_{n}$ est appelé *reste d’ordre $n$* de la série.
+  4. %lemma
+       $\sum_{n \geq n_{0}}(u_{n+1}-u_{n})$ converge si et seulement si $(u_{n})_{n \geq n_{0}}$ converge.
+     %
+     %proof
+       $S_{n} = \sum_{k=n_{0}}^{n}(u_{k+1}-u_{k}) = u_{n+1} - u_{n_{0}}$ donc $(S_{n})_{n \geq n_{0}}$ converge si et seulement si $(u_{n+1} - u_{n_{0}})_{n \geq n_{0}}$ converge, donc si et seulement si $(u_{n})_{n \geq n_{0}}$ converge.
+     %
+  5. L’ensemble des séries convergentes à valeurs dans $E$ est un sous-espace vectoriel du $\K$-espace vectoriel des séries à valeurs dans $E$.
+     Ainsi, si $\sum_{n \geq n_{0}}u_{n}$ et $\sum_{n \geq n_{0}}v_{n}$ convergent, alors pour tous $(\lambda, \mu) \in \K^{2}$,
+     $$
+       \sum_{n = n_{0}}^{+\infty}\lambda u_{n} + \mu v_{n} = \lambda \sum_{n=n_{0}}^{+\infty}u_{n} + \mu \sum_{n=n_{0}}^{+\infty}v_{n}
+     $$
+  6. Deux normes équivalentes sur $E$ donnent la même nature pour une série donnée.
+     %callout
+       En particulier, en dimension finie, la nature d’une série ne dépend pas de la norme choisie sur $E$.
+     %
+%
+
+%prop
+  Soit $E$ un $\K$-espace vectoriel normé de dimension finie $p \in \N^{*}$. Soit $(e_{1}, \ldots, e_{p})$ une base de $E$. Soit $(u_{n})_{n \in \N} \in E^{\N}$. Posons pour tout $n \in \N$, $u_{n} = u(n) = \sum_{i=1}^{p}u_{i}(n)e_{i}$. Alors la série $\sum_{n \geq 0}u(n)$ est convergente si et seulement si les $p$ séries $\sum_{n \geq 0}u_{i}(n)$ à valeurs dans $\K$ sont convergentes.
+  En cas de convergence, on a
+  $$
+    \sum_{n=0}^{+\infty}u_{n} = \sum_{i=1}^{p}\left(\sum_{n=0}^{+\infty}u_{i}(n)\right)e_{i}
+  $$
+%
+
+%proof
+  $$
+    S_{n} = \sum_{k=0}^{n}u(k) = \sum_{k=0}^{n}\left(\sum_{i=1}^{p}u_{i}(k)e_{i}\right) = \sum_{i=1}^{p}\left(\sum_{k=0}^{n}u_{i}(k)\right)e_{i}
+  $$
+  Alors la suite $(S_{n})_{n \geq 0}$ est convergente dans $E$ si et seulement si les $p$ suites scalaires $\left(\sum_{k=0}^{n}u_{i}(k)\right)_{n \geq 0}$ sont convergentes.
+  En cas de convergence, on a
+  $$
+    \lim_{n\to+\infty}S_{n} = \sum_{i=1}^{p}\left(\lim_{n\to+\infty}\sum_{k=0}^{n}u_{i}(k)\right)e_{i}
+  $$
+%
+
+%eg
+  1. Si $(u_{n})_{n \in \N}$ est une suite à valeurs complexes, $(1,i)$ est une $\R$-base de $\C$ donc en posant pour tout $n \in \N$, $u_{n} = \Re(u_{n})+ i\Im(u_{n})$, on a convergence de $\sum_{n \geq 0}u_{n}$ si et seulement si il y a convergence de $\sum_{n \geq 0}\Re(u_{n})$ et de $\sum_{n \geq 0}\Im(u_{n})$, et en cas de convergence,
+     $$
+       \sum_{n=0}^{+\infty}u_{n} = \sum_{n=0}^{+\infty}\Re(u_{n}) + i \sum_{n=0}^{+\infty}\Im(u_{n})
+     $$
+  2. Posons $A = \mtx{\lambda&1&&0\\&\ddots&\ddots&\\&&\ddots& 1\\0&&&\lambda} \in \M_{n}(\C)$ et $\lambda \in \C$. Étudions la nature de $\sum_{n \geq 0}A^{n}$.
+     - Si $\sum_{n \geq 0}A^{n}$ converge, alors $A^{n} \arrowlim{n\to+\infty}0_{d}$ donc $\abs{\lambda} < 1$. Supposons donc $\abs{\lambda} < 1$.
+     - $A = \lambda I_{d} + N$. Pour tout $n \geq d$, on a
+       $$
+         A^{n} = (\lambda I_{d} + N)^{n} = \lambda^{n} I_{d} + \binom{n}{1}\lambda^{n-1}N + \cdots + \binom{n}{d-1}\lambda^{n-(d-1)}N^{d-1}
+       $$
+       La famille $(I_{d}, N, \ldots, N^{d-1})$ est libre dans $\M_{d}(\C)$; on la complète en une base de $\M_{d}(\C)$. Alors $\sum_{n \geq d} A^{n}$ converge si et seulement si les séries coordonnées $\sum_{n \geq d} \lambda^{n}, \sum_{n \geq d}\binom{n}{1}\lambda^{n-1}, \ldots, \sum_{n \geq d}\binom{n}{d-1}\lambda^{n-(d-1)}$ convergent. Soient $k \in \icc{0,d-1}$ et $\lambda \in \C^{*}$. Étudions la convergence de la série $\sum_{n \geq k}\binom{n}{k}\lambda^{n-k}$.
+       $$
+         \abs{\binom{n}{k}\lambda^{n-k}} \usim{n\to+\infty} \frac{1}{\abs{\lambda}^{k}} \frac{n^{k}}{k!}\abs{\lambda}^{n}
+       $$
+       Soit $r = \frac{\abs{\lambda} + 1}{2} \in \oo{\abs{\lambda}, 1}$.
+       $$
+         n^{k} \abs{\lambda}^{n} \ueq{n\to+\infty} o(r^{n})
+       $$
+       car $n^{k} \left(\frac{\abs{\lambda}}{r}\right)^{n} \arrowlim{n\to+\infty}0$ car $0 \leq \frac{\abs{\lambda}}{r} < 1$. Or $\sum_{n \geq 0}r^{n}$ converge (car $0 \leq  r < 1$), doonc $\sum_{n \geq 0}n^{k} \lambda^{n}$ est absolument convergente, d’où $\sum_{n \geq k}\binom{n}{k}\lambda^{n-k}$ est absolument convergente à laveurs dans $\C$, donc convergente. Ainsi
+       $$
+         \sum_{n \geq 0} \text{ convergente} \iff  \abs{\lambda} < 1
+       $$
+       et pour $\abs{\lambda} < 1$, on a
+       $$
+         \sum_{n=0}^{+\infty} = \sum_{k=0}^{d-1} \left(\sum_{n=k}^{+\infty}\binom{n}{k}\lambda^{n-k}\right)N^{k}
+       $$
+%
+
+%def
+  Soit $(u_{n})_{n \in \N}$ une suite à valeurs dans $(E,\norm \cdot )$. On dit que la série $\sum_{n \geq 0}u_{n}$ est *absolument convergente* si la série à termes positifs $\sum_{n \geq 0}\norm{u_{n}}$ est convergente.
+%
+
+%callout Attention
+  Dans $\R[X]$, on pose, pour $(a_{k})_{k \in \N}$ une suite réelle,(($\sum_{k \in \N}a_{k} X^{k}$ est un polynôme, $\norm{\sum_{k \in \N}a_{k} X^{k}}$ est donc bien définie.))
+  $$
+    \norm{\sum_{k \in \N}a_{k} X^{k}} = \sum_{k \in \N} \abs{a_{k}}
+  $$
+  Considérons la série $S = \sum_{n \geq 0}\frac{X^{n}}{(n+1)^{2}}$. Alors, la série
+  $$
+    \sum_{n \geq 0}\norm{\frac{X^{n}}{(n+1)^{2}}} = \sum_{n \geq 0}\frac{1}{(n+1)^{2}}
+  $$
+  converge, donc $S$ est absolument convergente. Supposons que $S$ est convergente. Notons $P = \sum_{k=0}^{d}a_{k}X^{k}$ la somme de la série. Pour $n \geq d+1$,
+  $$
+    \begin{align*}
+      \norm{S_{n} - P} &= \norm{\sum_{k=0}^{n}\frac{X^{k}}{(k+1)^{2}} - \sum_{k=0}^{d}a_{k}X^{k}}\\
+       &= \sum_{k=0}^{d}\abs{\frac{1}{(k+1)^{2}} - a_{k}} + \sum_{k=d+1}^{n}\frac{1}{(k+1)^{2}} \geq \frac{1}{(d+2)^{2}}
+    \end{align*}
+  $$
+  donc
+  $$
+    \forall n \geq d+1, \norm{S_{n} - P} \geq  \frac{1}{(d+2)^{2}}.
+  $$
+  Par passage à limite, on a
+  $$
+    0 \geq \frac{1}{(d+2)^{2}}
+  $$
+  donc $\sum_{n \geq 0}\frac{X^{n}}{(n+1)^{2}}$ est une série **absolument convergente mais divergente**.
+%
+
+%prop
+  1. Si $N$ et $N'$ sont deux normes équivalentes sur un $\K$-espace vectoriel $E$ et si $(u_{n})_{n \in \N} \in E^{\N}$, alors les séries $\sum N(u_{n})$ et $\sum N'(u_{n})$ ont la même nature.
+  2. Si $E$ est un $\K$-espace vectoriel normé de ++dimension finie++, alors ++toute série à valeurs dans $E$ absolument convergente est convergente.
+     %offprog
+       On dit qu’un espace vectoriel normé de dimension finie est un *espace de Banach* (ou un espace vectoriel normé *complet*).((Anecdote: M. Schwarz racontait à ses étudianst qu’un jour, il voulait prendre le bus pour la station « Banach » à Varsovie mais celui-ci était complet.))
+     %
+%
+
+%proof
+  1. Il existe $\alpha > 0$ et $\beta > 0$ tels que
+     $$
+       \alpha N \leq  N' \leq  \beta N
+     $$
+     donc
+     $$
+       N'(u_{n}) \ueq{n\to+\infty} O(N(u_{n})) \quad\text{et}\quad N(u_{n}) \ueq{n\to+\infty} O(N'(u_{n}))
+     $$
+  2. Soit $E$ un $\K$-espace vectoriel normé de dimension finie $p \in \N^{*}$. Notons-en $\mathscr B = (e_{1}, \ldots, e_{p})$ une base. Soit $(u_{n})_{n \in \N} \in E^{\N}$ et supposons $\sum_{n \geq 0}u_{n}$ absolument convergente, i.e. $\sum_{n \geq 0}N_{\infty,\mathscr B}(u_{n})$ convergente ($N_{\infty, \mathscr B} = \max_{i \in \icc{1,p}} \abs{x_{i}}$). Soit $x = \sum_{i=1}^{p}x_{i}e_{i}$. Notons pour $n \in \N$, $u_{n} = u(n) = \sum_{i=1}^{p}u_{i}(n)e_{i}$. On a alors
+     $$
+       \forall i \in \icc{1,p}, \forall n \in \N, \abs{u_{i}(n)} \leq  N_{\infty, \mathscr B}(u(n))
+     $$
+     donc $\sum_{n \geq 0} \abs{u_{i}(n)}$ converge pour tout $i \in \icc{1,p}$. Or $\K$ est $\K$-espace vectoriel normé complet donc $\sum_{n \geq 0}u_{i}(n)$ converge pour tout $i \in \icc{1,p}$, donc $\sum_{n \geq 0}u(n)$ converge dans $E$.
+%
+
+%eg
+  *Exemple classique:* Soit $(A,+, \times , \cdot )$ une $\K$-algèbre munie d’une norme $\norm \cdot $ sous-multiplicative. Soit $u \in A$ tel que $\norm u < 1$. Étiduons la série $\sum_{k \geq 0}u^{k}$.
+  ---
+  On a par sous-multiplicité $\forall k \in \N^{*}, \norm{u^{k}} \leq  \norm{u}^{k}$ et $\sum_{k \geq 0} \norm{u}^{k}$ converge car $\norm u \in \co{0,1}$, donc la série $\sum_{k \geq 0}u^{k}$ est absolument convergente. Comme $A$ est de dimension finie, la série $\sum_{k \geq 0}^{u^{k}}$ est convergente.
+  $$
+    (1_{A} - u) \times \sum_{k=0}^{n}u^{k} = \sum_{k=0}^{n}u^{k} - u^{k+1} = \sum_{k=0}^{n}u^{k} \times (1_{A} - u)
+  $$
+  or
+  $$
+    \sum_{k=0}^{n}u^{k} - u^{k+1} = 1_{A} - u^{n+1} \arrowlim{n\to+\infty} 1_{A} - 0_{A} = 1_{A}
+  $$
+  d’où
+  $$
+    (1_{A} - u) \times  \sum_{k=0}^{+\infty} u^{k} = 1_{A} = \left(\sum_{k=0}^{+\infty}u^{k}\right) \times (1_{A} - u)
+  $$
+  d’où $1_{A} - u \in A^{\times}$ et
+  $$
+    \boxed{\sum_{k=0}^{+\infty}u^{k} = (1_{A} - u)^{-1} \quad\text{pour } \begin{cases}\norm u < 1\\ \norm\cdot \text{ sous-multiplicative}\end{cases}}
+  $$
+%
+
+%recall
+  $$
+    \forall  z \in \C, e^{z} = \sum_{n=0}^{+\infty}\frac{z^{n}}{n!}
+  $$
+  d’où
+  $$
+    \forall x \in \R, e^{x} = \sum_{n=0}^{+\infty}\frac{x^{n}}{n!} = \sum_{n \in \N}\frac{x^{2n}}{(2n)!} + \sum_{n \in \N}\frac{x^{2n+1}}{(2n+1)!}
+  $$
+  or
+  $$
+    x \longmapsto \sum_{n \in \N} \frac{x^{2n}}{(2n)!}
+  $$
+  est paire (et donc égale à $\ch$) et
+  $$
+    x \longmapsto \sum_{n \in \N} \frac{x^{2n+1}}{(2n+1)!}
+  $$
+  est impaire (et donc égale à $\sh$). Ainsi, pour tout $x \in \R$,
+  $$
+    \boxed{\ch x = \sum_{n=0}^{+\infty}\frac{x^{2n}}{(2n)!}} \quad\text{et}\quad \sh x = \sum_{n=0}^{+\infty}\frac{x^{2n+1}}{(2n+1)!}
+  $$
+%
+
+%def Proposition-définition
+  1. Soit $d \in \N^{*}$. Soit $A \in \M_{d}(\K)$ ($\M_{d}(\K)$ est normé). La série $\sum_{n \geq 0}\frac{A^{n}}{n!}$ est absolument convergente, donc convergente (car $\dim_{\K} \M_{d}(\K) = d^{2} < +\infty$). On appelle *exponentielle de $A$* la matrice
+     $$
+       \exp(A) = \sum_{n=0}^{+\infty}\frac{A^{n}}{n!}
+     $$
+  2. Soit $E$ un $\K$-espace vectoriel de dimension $d \in \N^{*}$. Si $\L(E)$ est normé et $u \in \L(E)$, alors la série $\sum_{n \geq 0} \frac{u^{n}}{n!}$ est absolument convergente dans $\L(E)$ donc convergente (car $\dim_{\K}\L(E) = d^{2} < +\infty$). On appelle *exponentielle de $u$* l’endomorphisme
+     $$
+       \exp(u) = \sum_{n=0}^{+\infty}\frac{u^{n}}{n!} \in \L(E)
+     $$
+%
+
+%proof
+  1. Soit $\norm\cdot$ une norme sous-multiplicative sur $\M_{d}(\K)$((Elle existe: par exemple $A \longmapsto d\max_{1 \leq  i,j \leq d}\abs{a_{i,j}}$.)). On a
+     $$
+       \forall  n \in \N^{*}, \norm{\frac{A^{n}}{n!}} = \frac{1}{n!} \norm{A^{n}} \leq \frac{\norm{A}^{n}}{n!}
+     $$
+     or $\sum_{n \geq 0}\frac{\norm{A}^{n}}{n!}$ est une série convergente (de somme $e^{\norm{A}}$) donc $\sum_{n \geq 0}\norm{\frac{A^{n}}{n!}}$ est convergente.
+  2. Soit $\mathscr B$ une base de $E$. Soit $\norm \cdot $ une norme sous-multiplicative sur $\M_{d}(\K)$. Par transport de norme via l’isomorphisme
+     $$
+       \applic{\L(E)}{\M_{d}(\K)}{u}{\mat_{\mathscr B}(u)}
+     $$
+     $N: u \longmapsto  N(u) = \norm{\mat_{\mathscr B}(u)}$ est une norme sous-multiplicative sur $\L(E)$. Soit $(u,v) \in \big(\L(E)\big)^{2}$:
+     $$
+       \begin{align*}
+         N(u\circ v) &= \norm{\mat_{\B}(u\circ v)} = \norm{\mat_{\mathscr   B} u \times \mat_{\mathscr B}v}\\
+         & \leq \norm{\mat_{\mathscr B}(u)} \times  \norm{\mat_{\mathscr B}v} = N(u)\times N(v)
+       \end{align*}
+     $$
+     On a donc
+     $$
+       \forall n \in \N^{*}, N \left(\frac{u^{n}}{n!}\right) \leq \frac{N(u)^{n}}{n!}
+     $$
+     d’où l’absolue convergence de la série $\sum_{n \geq 0}\frac{u^{n}}{n!}$.
+%
+
+%prop
+  1. $\exp(0_{d}) = I_{d}$ donc $\forall \lambda \in \K, \exp(\lambda I_{d}) = e^{\lambda}I_{d}$ d’où
+     $$
+       \forall (\lambda_{1}, \ldots, \lambda_{d}) \in \K^{d}, \exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})
+     $$
+  2. Pour $(A,B) \in \M_{d}(\K)^{2}$, on a
+     $$
+       AB = BA \implies  \exp(A+B) = \exp A \times \exp B = \exp B \times \exp A
+     $$
+  3. $\forall A \in \M_{d}(\K), \exp(A) \in \GL_{d}(\K)$ et pour $A \in \M_{d}(\K)$, on a
+     $$
+       \exp(A)^{-1} = \exp(-A)
+     $$
+
+  Ce qui s’adapte pour les endomorphismes~:
+  1. $\exp(0_{\L(E)}) = \id_{E}$ et
+     $$
+       \forall  \lambda \in \K, \exp(\lambda \id _{E}) = e^{\lambda}\id _{E}
+     $$
+  2. Pour $(u,v) \in \L(E)^{2}$, on a
+     $$
+       [u,v] = 0_{\L(E)} \implies  \exp(u+v) = \exp(u)\circ \exp(v) = \exp(v)\circ \exp(u)
+     $$
+  3. $\forall u \in \L(E), \exp u \in \GL(E)$ et pour $u \in \L(E)$,
+     $$
+       \exp(u)^{-1} = \exp(-u)
+     $$
+%
+
+%proof
+  1. $\exp(0_{d}) = \sum_{n=0}^{+\infty}\frac{0_{d}^{n}}{n!} = \frac{0_{d}^{0}}{0!} + 0_{d} = I_{d}$ donc
+     $$
+       \sum_{n=0}^{N}\frac{\diag(\lambda_{1}, \ldots, \lambda_{d})}{n!} = \diag \left(\sum_{n=0}^{N}\frac{\lambda_{1}^{n}}{n!}, \ldots, \sum_{n=0}^{N}\frac{\lambda_{d}^{n}}{n!}\right) \arrowlim{N \to+\infty} \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})
+     $$
+     donc $\exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})$ d’où $\exp(\lambda\pm d) = e^{\lambda} I_{d}$.
+  2. ==v. TD==
+  3. On a $I_{d} = \exp(0_{d}) = \exp(A-A)$. $[A,-A] = 0_{d}$ donc $I_{d} = \exp(A) \times \exp(-A)$. Alors, $\exp(A) \in \GL_{d}(\K)$ et $\exp(A)^{-1} = \exp(-A)$.
+%
+
+%eg
+  1. Soit $U = \mtx{1}_{(d)} \in \M_{d}(\K)$((Matrice Attila (matrice de Huns) )). $U^{2} = dU$; $U^{3} = dU^{2} = d^{2}U$, etc. donc
+     $$
+       \forall k \in \N, U^{k+1} = d^{k}U
+     $$
+     d’où
+     $$
+       \exp(U) = \sum_{k=0}^{+\infty}\frac{U^{k}}{k!} = I_{d} + \sum_{k=0}^{+\infty} \frac{U^{k+1}}{(k+1)!}
+     $$
+     Posons la somme partielle
+     $$
+       S_{N} = \sum_{k=0}^{N}\frac{d^{k}U}{(k+1)!} = \left(\sum_{k=0}^{N}\frac{d^{k}}{(k+1)!}\right)U \arrowlim{N\to+\infty} \left(\sum_{k=0}^{+\infty}\frac{d^{k}}{(k+1)!}\right)U = \frac{1}{d}(e^{d} - 1)U
+     $$
+  2. Considérons $A = \mtx{0&0\\1&0}$ et $B = \mtx{0&1\\0&0}$. On a $A^{2} = B^{2} = 0_{2}$.
+     $$
+       \exp(A) = I+A = \mtx{1&0\\1&1} \quad\text{et}\quad \exp(B) = I+B = \mtx{1&1\\0&1}
+     $$
+     $A+B = \mtx{0&1\\1&0}$ donc $(A+B)^{2} = I_{2}$ d’où
+     $$
+       \forall k \in \N, \begin{cases}(A+B)^{2k} &= I_{2}\\ (A+B)^{2k+1} &= A+B\end{cases}
+     $$
+     d’où
+     $$
+       \begin{align*}
+         \exp(A+B) &= \sum_{k=0}^{+\infty}\frac{(A+B)^{k}}{k!}\\
+         &= \lim_{N\to+\infty} \left(\sum_{k=0}^{N}\frac{I_{2}}{(2k)!} + \sum_{k=0}^{N}\frac{A+B}{(2k+1)!}\right)\\
+         &= \ch(1)I_{2} + \sh(1)(A+B)\\
+         &= \mtx{\ch 1 & \sh 1\\\sh 1 & \ch 1}\\
+         &\ne \exp A \times \exp B = \mtx{1&1\\1&2}
+       \end{align*}
+     $$
+
+%

@@ -146,11 +146,7 @@
 
 %offprog
   %axiome Axiome du choix (version forte)
-    Pour tout ensemble non vide $X$, il existe une application (dite fonction choix)
-    $$
-      f: \Part(X) \longrightarrow X
-    $$
-    tel que
+    Pour tout ensemble non vide $X$, il existe une application (dite fonction choix) $f: \Part(X) \longrightarrow X$ telle que
     $$
       \forall \omega \in \Part(X)\setminus \{0\}, f(\omega) \in \omega
     $$
@@ -207,15 +203,15 @@
   $$
     \bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}\underbrace{A_{\varphi^{-1}(\{d'\})}}_{=B_{d'}}
   $$
-  Posons $X = \Func(E,\N)$. Soit $f: \Part(X) \longrightarrow X$ une fonction choix. Pour $d \in D'$, on pose
+  Posons $X = \Func(E,\N)$. Soit $f: \Part(X) \longrightarrow X$ une fonction choix. Pour $d' \in D'$, on pose
   $$
     f_{d'} = f \big(\underbrace{\big\{\varphi \in \Func(E,\N) \where \varphi_{|B_{d'}} \text{ injective}\big\}}_{\ne\emptyset \text{ car } B_{d'} \text{ s’injecte dans }\N}\big)
   $$
   Donc l’application
   $$
-    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'}(x)(x))}
+    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'}(x))}
   $$
-  avec $d'(x) = \min\{d' \in D' \where  \in B_{d'}\}$ est une injection. En effet, pour $(x,y) \in \bigcup_{d' \in D'}B_{d'}$ si $(d'(x), f_{d'(x)}(x)) = (d'(y) , f_{d'(y)}(y))$, alors
+  avec $d'(x) = \min\{d' \in D' \where x \in B_{d'}\}$ est une injection. En effet, pour $(x,y) \in \bigcup_{d' \in D'}B_{d'}$ si $(d'(x), f_{d'(x)}(x)) = (d'(y) , f_{d'(y)}(y))$, alors
   $$
     \begin{cases}d'(x) = d'(y)\\ f_{d'(x)}(x) = f_{d'(x)}(y)\end{cases}
   $$
@@ -229,15 +225,15 @@
        $$
          \applic{\Z^{n+1}}{\Z_{n}[X]}{(a_{0}, a_{1}, \ldots, a_{n})}{a_{0} + a_{1} X + \cdots + a_{n}X^{n}}
        $$
-       est une bijection, or $\Z^{n+1}$ est nénombrable donc $\Z_{n}[X]$ aussi.
+       est une bijection, or $\Z^{n+1}$ est dénombrable donc $\Z_{n}[X]$ aussi.
      - ++Deuxième méthode (sans axiome du choix).++ L’application
        $$
-         \applic{\Z[X]}{\N}{P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{0}}{\varepsilon(a_{0}) [a_{0}]_{2}\varepsilon(a_{1})[a_{1}]_{2}} \cdots \varepsilon(a_{n}) [\abs{a_{n}}]_{2}
+         \applic{\Z[X]}{\N}{P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{0}}{\varepsilon(a_{0}) [a_{0}]_{2}\varepsilon(a_{1})[\abs{a_{2}}]_{2} \cdots \varepsilon(a_{n}) [\abs{a_{n}}]_{2}}
        $$
        avec $\varepsilon(a) = \begin{cases}2 &\text{si } a > 0\\ 3 &\text{sinon}\end{cases}$ est une injection. Or $\N$ est dénombrable donc $\Z[X]$ est infini (il contient $\Z$), donc $\Z[X]$ est dénombrable.
      - ++Troisième méthode.++ Soit $(p_{n})_{n \in \N}$ la suite croissante des nombres premiers. L’application
        $$
-         \applic{\Z[X]}{\Q}{p = \sum_{n \in \N}a_{n}X^{n}}{\prod_{n \in \N}p_{n}^{\mathrm{coeff}(P,X^{n})}}
+         \applic{\Z[X]}{\Q}{p = \sum_{n \in \N}a_{n}X^{n}}{\prod_{n \in \N}p_{n}^{a_{n}}}
        $$
        est une injection, donc $\Q$ étant dénombrable, $\Z[X]$ est au plus dénombrable, or $\Z[X]$ est infini donc il est dénombrable.
   2. $\mathbf{A} = \big\{x \in \R \where \exists P \in \Z[X] \setminus \{0\}: \tilde{P}(x) = 0\big\}$ est l’ensemble des nombres algébriques réels.
@@ -254,7 +250,7 @@
 %
 
 %prop
-  Soit $(z_{a})_{a \in A} \in \C^{A}$ une famille de nombres comploxes indexée par un ensemble $A$ non vide. Si $(z_{a})_{a \in A} \in \ell^{1}(A)$, alors le support $S = \{a \in A \where z_{a} \ne 0\}$ de la famille est au plus dénombrable.
+  Soit $(z_{a})_{a \in A} \in \C^{A}$ une famille de nombres complexes indexée par un ensemble $A$ non vide. Si $(z_{a})_{a \in A} \in \ell^{1}(A)$, alors le support $S = \{a \in A \where z_{a} \ne 0\}$ de la famille est au plus dénombrable.
 %
 
 %proof
@@ -263,6 +259,9 @@
     \left(\frac{1}{n}\right)_{n \in S_{n}} \in \ell^{1}(S_{n})
   $$
   donc $S_{n}$ est fini pour tout $n \in \N^{*}$ et $\N^{*}$ est dénombrable. Ainsi, $S = \bigcup_{n \in \N^{*}}S_{n}$ est au plus dénombrable.
+%
+
+%eg
   $$
     \left(\frac{1}{x^{2}}\right)_{x \in \co{1, +\infty}}\notin \ell^{1}(\co{1, +\infty})
   $$
