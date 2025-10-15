@@ -118,10 +118,15 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 
 %prop
   1. Si $N$ et $N'$ sont deux normes équivalentes sur un $\K$-espace vectoriel $E$ et si $(u_{n})_{n \in \N} \in E^{\N}$, alors les séries $\sum N(u_{n})$ et $\sum N'(u_{n})$ ont la même nature.
-  2. Si $E$ est un $\K$-espace vectoriel normé de ++dimension finie++, alors ++toute série à valeurs dans $E$ absolument convergente est convergente.
+  2. Si $E$ est un $\K$-espace vectoriel normé de ++dimension finie++, alors ++toute série à valeurs dans $E$ absolument convergente est convergente++.
      %offprog
        On dit qu’un espace vectoriel normé de dimension finie est un *espace de Banach* (ou un espace vectoriel normé *complet*).((Anecdote: M. Schwarz racontait à ses étudianst qu’un jour, il voulait prendre le bus pour la station « Banach » à Varsovie mais celui-ci était complet.))
      %
+  3. Si $\dim E < +\infty$ et $\sum_{k \in \N}\norm{u_{k}} < +\infty$, alors $\sum_{k \in \N}u_{k}$ converge, et de plus
+     $$
+       \norm{\sum_{k=0}^{+\infty}u_{k}} \leq  \sum_{k=0}^{+\infty}\norm{u_{k}}
+     $$
+     si convergence absolue en dimension finie.
 %
 
 %proof
@@ -138,6 +143,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        \forall i \in \icc{1,p}, \forall n \in \N, \abs{u_{i}(n)} \leq  N_{\infty, \mathscr B}(u(n))
      $$
      donc $\sum_{n \geq 0} \abs{u_{i}(n)}$ converge pour tout $i \in \icc{1,p}$. Or $\K$ est $\K$-espace vectoriel normé complet donc $\sum_{n \geq 0}u_{i}(n)$ converge pour tout $i \in \icc{1,p}$, donc $\sum_{n \geq 0}u(n)$ converge dans $E$.
+  3. $\norm{\sum_{k=0}^{N}u_{k}} \leq \sum_{k=0}^{N}\norm{u_{k}}$ puis passage à la limite.
 %
 
 %eg
@@ -253,7 +259,108 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        \sum_{n=0}^{N}\frac{\diag(\lambda_{1}, \ldots, \lambda_{d})}{n!} = \diag \left(\sum_{n=0}^{N}\frac{\lambda_{1}^{n}}{n!}, \ldots, \sum_{n=0}^{N}\frac{\lambda_{d}^{n}}{n!}\right) \arrowlim{N \to+\infty} \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})
      $$
      donc $\exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})$ d’où $\exp(\lambda\pm d) = e^{\lambda} I_{d}$.
-  2. ==v. TD==
+  2. %fold Preuve faite en exercice
+       **++Exercice 2++**
+
+       1. Soit $x \in \R$. Déterminer la limite $\lim_{p\to+\infty}\left(1+\frac{x}{p}\right)^{p}$.
+
+          ---
+
+          $1+\frac{x}{p} \arrowlim{p\to+\infty}1$ donc
+          $$
+            \exists N \in \N: \forall p \geq  N, 1+\frac{x}{p} > 0
+          $$
+          donc
+          $$
+            \begin{align*}
+              \forall p \geq N, \left(1+\frac{x}{p}\right)^{p} &= e^{p\ln \left(1 + \frac{x}{p}\right)}\\
+              &\ueq{+\infty} e^{p \left(\frac{x}{p} + o \left(\frac{1}{p}\right)\right)}\\
+              &\ueq{+\infty} e^{x}e^{o(1)} \arrowlim{p\to+\infty}e^{x}
+            \end{align*}
+          $$
+          par continuité de $\exp$ en 0:
+          $$
+            \boxed{\left(1+\frac{x}{p}\right)^{p} \arrowlim{p\to+\infty} e^{x}} \quad\text{et}\quad \boxed{\left(1+\frac{x}{p}\right)^{-p} \arrowlim{p\to+\infty} e^{-x}}
+          $$
+       2. Montrer que $A \longmapsto \norm A_{L} = \max_{i \in \icc{1,n}}\sum_{j=1}^{n}\abs{a_{i,j}}$ est une norme sous-multiplicative sur $\M_{n}(\K)$.
+
+          ---
+
+          Il s’agit bien d’une norme. Montrons qu’elle est sous-multiplicative: soient $(A,B) \in \M_{n}(\K)^{2}$. $C = AB = \mtx{c}_{1 \leq i,j \leq n}$.
+          $$
+            c_{i,j} = \sum_{k=1}^{n}a_{i,k}b_{k,j}
+          $$
+          donc
+          $$
+            \abs{c_{i,j}} \leq \sum_{k=1}^{n}\abs{a_{i,k}}\abs{b_{k,j}}
+          $$
+          Soit $i \in \icc{1,n}$.
+          $$
+            \begin{align*}
+              \sum_{j=1}^{n} \abs{c_{i,j}} &\leq  \sum_{j=1}^{n}\left(\sum_{k=1}^{n}\abs{a_{i,k}}\abs{b_{k,j}}\right)\\
+              &\leq \sum_{k=1}^{n}\left( \sum_{j=1}^{n}\cdots\right)
+            \end{align*}
+          $$
+          Ainsi
+          $$
+            \begin{align*}
+              \sum_{j=1}^{n}\abs{a_{i,j}} &\leq \sum_{k=1}^{n}\abs{a_{i,k}}\left(\sum_{j=1}^{n}\abs{b_{k,j}}\right)\\
+              &\leq \sum_{k=1}^{n}\abs{a_{i,k}}\norm{B}_{L} = \norm{B}_{L} \sum_{k=1}^{n}\abs{a_{i,k}}\\
+              &\leq \norm{A}_{L} \norm{B}_{L}
+            \end{align*}
+          $$
+          donc $\norm{AB}_{L} \leq  \norm{A}_{L} \norm{B}_{L}$. De plus, $\norm{I_{n}} = 1$ donc
+          $$
+            \forall k \in \N, \norm{A^{k}}_{L} \leq \norm{A}_{L}^{k}
+          $$
+       3. Soit $A \in \M_{n}(\K)$. En majorant $\norm{\exp(A) - \left(I_{n} + \frac{1}{p}A\right)^{p}}_{L}$, montrer que $\exp(A) = \lim_{p\to+\infty} \left(I_{n} + \frac{1}{p}A\right)^{p}$.
+
+          ---
+
+          $$
+            \exp(A) - \left(I_{n} + \frac{1}{p}A\right)^{p} = \sum_{k=1}^{p}\left(\frac{1}{k}- \binom{p}{k}\frac{1}{p_{k}}\right)A^{k} + \sum_{k=p+1}^{+\infty}\frac{A^{k}}{k!}
+          $$
+          donc
+          $$
+            \begin{align*}
+              \norm{\exp(A) - \left(I_{n} + \frac{1}{p}A\right)^{p}} &\leq  \sum_{k=0}^{p}\underbrace{\abs{\frac{1}{k!} - \binom{p}{k}\frac{1}{p^{k}}}}_{= \frac{1}{k!} - \frac{1}{p^{k}} \frac{p(p-1) \cdots (p-k+1)}{k!}\geq 0}\norm{A}^{k} + \underbrace{\sum_{k=p+1}^{+\infty}\frac{\norm{A}_{L}^{k}}{k!}}_{\text{par absolue convergence de } \sum_{k \geq 0}\frac{A^{k}}{k!}}\\
+              &\leq \sum_{k=1}^{p} \left(\frac{1}{k!} - \binom{p}{k} \frac{1}{p^{k}}\right)\norm{A}^{k} + \sum_{k=p+1}^{+\infty}\frac{\norm{N}^{k}}{k!}\\
+              &\leq e^{\norm{A}} - \left(1 + \frac{\norm{A}}{p}\right)^{p} \arrowlim{p\to+\infty}0
+            \end{align*}
+          $$
+          donc $\left(I_{n} + \frac{1}{p}A\right)^{p} \arrowlim{p\to+\infty}e^{A}$.
+
+       **++Exercice 3++**
+
+       Soient $(A,B) \in \M_{n}(\K)^{2}$ telles que $AB = BA$. En considérant la différence
+       $$
+         \left(I_{n} + \frac{1}{p}(A+B) + \frac{1}{p^{2}}AB\right)^{p} - \left(I_{n} + \frac{1}{p}(A+B)\right)^{p}
+       $$
+       démontrer que $\exp(A+B) = \exp(A)\times \exp(B)$.
+
+       ---
+
+       Notons $C_{p}$ le produit ci-dessus.
+       $$
+         C_{p} = \sum_{k=0}^{p-1}\binom{p}{k}\left(I_{n} + \frac{1}{p}(A+B)\right)^{k}\left(\frac{1}{p^{2}}AB\right)^{p-k}
+       $$
+       donc
+       $$
+         \norm{C_{p}}_{L} \leq \sum_{k=0}^{p-1}\binom{p}{k}\left(1+\frac{1}{p}\norm{A}_{L}\norm{B}_{L}\right)^{k} \left(\frac{1}{p^{2}}\norm{A}_{L}\norm{B}_{L}\right)^{p-k} = \left(1 + \frac{\alpha}{p} + \frac{\beta}{p^{2}}\right)^{p} - \left(1 + \frac{\alpha}{p}\right)^{p}
+       $$
+       avec $\alpha = \norm{A}_{L}+\norm{B}_{L} \geq$ et $\beta = \norm{A}_{L}\norm{B}_{L} \geq 0$. Ainsi
+       $$
+         \left(1 + \frac{\alpha}{p} + \frac{\beta}{p^{2}}\right)^{p} = e^{p\ln \left(1 + \frac{\alpha}{p} + \frac{\beta}{p^{2}}\right)} = e^{p \left(\frac{\alpha}{p} + o \left(\frac{1}{p}\right)\right)} = e^{\alpha + o(1)} \arrowlim{p\to+\infty}e^{\alpha}
+       $$
+       donc
+       $$
+         C_{p} \arrowlim{p\to+\infty}0_{n} = e^{A}e^{B} - e^{A+B}
+       $$
+       car $[A,B] = 0_{n}$ donc
+       $$
+         C_{p} = \left(I_{n} + \frac{A}{p}\right)^{p} \left(I_{n} + \frac{B}{p}\right)^{p} - \left(I_{n} + \frac{A+B}{p}\right)^{p}
+       $$
+     %
   3. On a $I_{d} = \exp(0_{d}) = \exp(A-A)$. $[A,-A] = 0_{d}$ donc $I_{d} = \exp(A) \times \exp(-A)$. Alors, $\exp(A) \in \GL_{d}(\K)$ et $\exp(A)^{-1} = \exp(-A)$.
 %
 
@@ -289,4 +396,343 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        \end{align*}
      $$
 
+%
+
+%offprog
+  %prop
+    Soient $(A,B) \in \M_{d}(\K)^{2}$.
+    1. Si $A$ et $B$ sont semblables, alors $e^{A}$ et $e^{B}$ le sont aussi (avec les mêmes matrices de passage)
+    2. Si $\chi_{A} = \prod_{i=1}^{d}(X-\lambda_{i})$, alors $\chi_{e^{A}} = \prod_{i=1}^{d}(X-e^{\lambda_{i}})$.
+    3. Si $A$ est diagonalisable, alors $e^{A}$ l’est aussi.
+    4. $\det (e^{A}) = e^{\tr A}$.
+  %
+
+  %rem
+    En particulier pour $A \in \M_{d}(\R)$, on a $\det e^{A} > 0$.
+    $$
+      \exp: \M_{d}(\R) \longrightarrow \GL^{+}_{d}(\R)
+    $$
+    ($\GL^{+}_{d}(\R) \subset \{A \in \M_{d}(\R) \where \det A > 0\}$)
+  %
+
+  %proof
+    1. $A = PBP^{-1} \implies  \forall Q \in \K[X], Q(A) = PQ(B)P^{-1}$ donc
+       $$
+         \forall N \in \N, \sum_{n=0}^{N}\frac{A^{n}}{n!} = P \left(\sum_{n=0}^{N}\frac{B^{n}}{n!}\right)P^{-1}
+       $$
+       donc par passage à la limite, on a
+       $$
+         \exp(A) = P\exp(B)P^{-1}
+       $$
+    2. Si $\chi_{A} = \prod_{i=1}^{d}(X-\lambda_{i})$ dans $\K[X]$, alors $\chi_{A}$ est scindé dans $\K[X]$ donc $A$ est trigonalisable:
+       $$
+         A = P \underbrace{\mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{d}}}_{\coloneqq P}P^{-1}
+       $$
+       d’où $\exp(A) = P \exp(T)P^{-1}$.
+       $$
+         \begin{align*}
+           \exp(T) &= \sum_{n=0}^{+\infty}\frac{T^{n}}{n!}\\
+            &=\sum_{n=0}^{+\infty}\frac{1}{n!}\mtx{\lambda_{1} & &*\\&\ddots&\\0&&\lambda_{d}}\\
+            &=\mtx{\sum_{n=0}^{+\infty}\frac{\lambda_{i}^{n}}{n!} & &*'\\&\ddots&\\0&& \sum_{n=0}^{+\infty} \frac{\lambda_{d}^{n}}{n!}}\\
+            &= \mtx{e^{\lambda_{1}} &&*'\\&\ddots&\\0&& e^{\lambda_{d}}}
+         \end{align*}
+       $$
+       donc
+       $$
+         \chi_{e^{A}} = \chi_{e^{T}} = \prod_{i=1}^{d}(X-e^{\lambda_{i}})
+       $$
+    3. Si $A = P\diag(\lambda_{1}, \ldots, \lambda_{d})P^{-1}$, alors
+       $$
+         \exp A = P \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})P^{-1}
+       $$
+    4. Soit $A \in \M_{n}(\K) \subset \M_{n}(\C)$. Si $\chi_{A} = \prod_{i=1}^{d}(X-\lambda_{i})$ dans $\C[X]$, alors $\chi_{e^{A}} = \prod_{i=1}^{d}(X- e^{\lambda_{i}})$, d’où
+       $$
+         \det (\exp A) = \prod_{i=1}^{d}e^{\lambda_{i}} = e^{\sum_{i=1}^{d}\lambda_{i}}
+       $$
+       Ainsi, $\det (e^{A}) = e^{\tr A}$.
+  %
+%
+
+## Séries numériques usuelles
+
+%thm Séreis de Riemann
+  Paur $\alpha \in \R$, la série
+  $$
+    \sum_{n \geq 1}\frac{1}{n^{\alpha}}
+  $$
+  converge si et seulement si $\alpha > 1$.
+%
+
+%cor
+  Pour $(u_{n})_{n \in \N}$ une suite complexe,
+  - si $\alpha > 1$ et si $u_{n} = O \left(\frac{1}{p^{\alpha}}\right)$, alors $\sum_{n \geq 0}\abs{u_{n}}$ converge
+  - si $\alpha < 1$ et $\frac{1}{n^{\alpha}} = O(u_{n})$, alors $\sum_{n \geq 0}\abs{u_{n}}$ diverge.
+%
+
+%offprog
+  %thm Séries de Bertrand
+    Pour $(\alpha, \beta) \in \R^{2}$, la série
+    $$
+      \sum_{n \geq 2}\frac{a}{n^{\alpha} \big(\ln n\big)^{\beta}}
+    $$
+    converge st et seulement si $\alpha > 1$ ou $\begin{cases}\alpha=1\\ \beta > 1\end{cases}$.
+  %
+  %proof
+    - si $\alpha < 0$,
+      $$
+        \frac{1}{n^{\alpha}(\ln n)^{\beta}} = \frac{n^{-\alpha}}{(\ln n)^{\beta}}\arrowlim{n\to+\infty}+\infty
+      $$
+      donc la série est grossièrement divergente.
+    - si $\alpha \in \co{0,1}$,
+      $$
+        n\frac{1}{n^{\alpha}(\ln n)^{\beta}} = \frac{n^{1-\alpha}}{(\ln n)^{\beta}}\arrowlim{n\to+\infty} +\infty
+      $$
+      donc
+      $$
+        \frac{1}{n} = O \left(\frac{1}{n^{\alpha}(\ln n)^{\beta}}\right)
+      $$
+      donc la série $\sum_{n \geq 2}\frac{1}{n^{\alpha}(\ln n)^{\beta}}$ diverge.
+    - si $\alpha > 1$, soit $\gamma \in \oo{1,\alpha}$.
+      $$
+        n^{\gamma} \frac{1}{n^{\alpha}(\ln n)^{\beta}} = \frac{1}{n^{\alpha-\gamma}(\ln n)\beta} \arrowlim{n\to+\infty} 0
+      $$
+      donc
+      $$
+        0 \leq  \frac{1}{n^{\alpha}(\ln n)^{\beta}} = o \left(\frac{1}{n^{\gamma}}\right)
+      $$
+      et $\gamma > 1$ donc $\sum_{n \geq 2}\frac{1}{n^{\alpha}(\ln n)^{\beta}}$ converge.
+    - si $\alpha = \beta = 1$, la série est $\sum_{n \geq 2} \frac{1}{n\ln n}$. Il existe donc pour $n \geq 2$, $c_{n} \in \oo{\ln n, \ln(n+1)}$.
+      $$
+        \ln \big(\ln(n+1)\big) - \ln \big(\ln n\big) = \frac{1}{c_{n}} \big(\ln(n+1) - \ln n\big)
+      $$
+      donc
+      $$
+        \ln n < c_{n} < \ln (n+1)
+      $$
+      donc $c_{n} \sim \ln n$ d’où
+      $$
+        \ln(n+1) - \ln n = \ln \left(1 + \frac{1}{n}\right) \sim \frac{1}{n}
+      $$
+      d’où
+      $$
+        \frac{1}{n\ln n} \sim \ln \big(\ln (n+1)\big) - \ln(\ln n)
+      $$
+      donc $\ln(\ln n) \arrowlim{n\to+\infty}+\infty$. Ainsi,
+      $$
+        \sum\ln \big(\ln(n+1)\big) - \ln(\ln n)
+      $$
+      diverge, donc $\sum \frac{1}{n\ln n}$ diverge.
+    - Si $\alpha = 1$ et $\beta \ne 1$, considérons
+      $$
+        f: x \longmapsto  \frac{1}{(\ln x)\gamma} = (\ln x)^{-\gamma}
+      $$
+      sa dérivée est
+      $$
+        f':x \longmapsto \frac{-\gamma}{x}(\ln x)^{-\gamma-1}
+      $$
+      Pour tout $n \geq 2$, il existe $c_{n} \in \oo{n, n+1}$ tel que
+      $$
+        f(n+1) - f(n) \oeq{TAF} (n+1-n)f'(c_{n}) = -\frac{\gamma}{n(\ln c_{n})^{\gamma + 1}}
+      $$
+      Donc
+      $$
+        \frac{1}{\big(\ln(n+1)\big)^{\gamma}} - \frac{1}{(\ln n)^{\gamma}} \usim{n\to+\infty} - \frac{\gamma}{n(\ln n)^{\gamma+1}}
+      $$
+      donc
+      $$
+        \underbrace{\frac{\beta-1}{n(\ln n)^{\beta}}}_{\geq 0} \sim \frac{1}{(\ln n)^{\beta-1}} - \frac{1}{\big(\ln(n+1)\big)^{\beta-1}}
+      $$
+      Comme $\beta-1 \ne 0$, les séries $\sum_{n \geq 2}\frac{1}{n(\ln n)^{\beta}}$ et $\sum_{n \geq 2} \frac{1}{\big((\ln(n+1))^{\beta-1}\big)} - \frac{1}{(\ln n)^{\beta-1}}$ ont la même nature. Or
+      $$
+        \frac{1}{(\ln n)^{\beta-1}} \arrowlim{} \begin{cases}0 & \text{si } \beta>1\\+\infty & \text{si } \beta<1\end{cases}
+      $$
+      donc $\sum \frac{1}{n(\ln n)^{\beta}}$ converge pour $\beta > 1$.
+  %
+%
+
+
+## Règle d’Alembert
+
+%thm
+  Soit $\sum_{n \geq 0}a_{n}$ une série à termes réels strictement positifs. Supposons
+  $$
+    \frac{a_{n+1}}{a_{n}} \arrowlim{n\to+\infty}\ell \in \bar{\R_{+}}
+  $$
+  Alors
+  - si $\ell > 1$ ou $\ell = 1^{+}$, alors $\sum_{n \geq 0}a_{n}$ est divergente grossièrement.
+  - si $\ell \in  \co{0,1}$, alors $\sum_{n \geq 0}a_{n}$ est convergente.
+  - sinon, on ne peut conclure directement.
+%
+
+%proof
+  - Si $\ell > 1$ ou $\ell = 1^{+}$, il existe $N \in \N$ tel que $\forall n \geq N, \frac{a_{n+1}}{a_{n}}  \geq 1$. Alors
+    $$
+      \forall n \geq  N, a_{n+1}\geq a_{n} \geq a_{N}
+    $$
+    donc $(a_{n})_{n \geq N}$ est croissante et $a_{N} > 0$, d’où $(a_{n})$ ne tend pas vers 0: la série diverge grossièrement.
+  - Supposons $\ell \in \co{0,1}$. Soit $q \in  \oo{\ell, 1}$.
+    $$
+      \exists N \in \N: \forall  n \geq N, 0 < \frac{a_{n+1}}{a_{n}} \leq q
+    $$
+    d’où
+    $$
+      \forall n \geq N, 0 \leq \prod_{k=N}^{n}\frac{a_{k+1}}{a_{k}} \leq q^{n-(N-1)}
+    $$
+    donc
+    $$
+      \forall  n \geq N, \frac{a_{n+1}}{a_{n}} \leq q^{n-(N-1)}
+    $$
+    Alors,
+    $$
+      \forall n \geq N, 0 \leq a_{n+1} \leq \frac{a_{N}}{q^{N-1}}q^{n}
+    $$
+    or $\sum_{n \geq 0}q^{n}$ converge car $0 \leq q < 1$, donc $\sum_{n \geq 0}a_{n}$ converge.
+  - - Considérons la suite définie pour $n \in \N^{*}$ par $a_{n} = \frac{1}{n}$. Alors
+      $$
+        \frac{a_{n+1}}{a_{n}} = \frac{n}{n+1} \arrowlim{n\to+\infty}1^{-}
+      $$
+      et $\sum_{n \geq 1}a_{n}$ diverge.
+    - La suite définie par $a_{n} = \frac{1}{n^{2}}$ vérifie
+      $$
+        \frac{a_{n+1}}{a_{n}} = \frac{n^{2}}{(n+1)^{2}} \arrowlim{n\to+\infty}1^{-}
+      $$
+      et $\sum_{n \geq 1} a_{n}$ converge.
+%
+
+%eg
+  1. Soient $\alpha \in \R$ et $q \in \oo{0,1}$. Étudions la série $\sum_{n \geq 1}n^{\alpha}q^{n}$.
+     - ++Première méthode++.
+       $$
+         n^{2} \times n^{\alpha}q^{n} = n^{\alpha+2}q^{n} \arrowlim{n\to+\infty}0
+       $$
+       donc $n^{\alpha}q^{n} = u \left(\frac{1}{n^{2}}\right)$, ainsi $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
+     - ++Deuxième méthode++. Soit $r \in \oo{q,1}$.
+       $$
+         n^{\alpha}\frac{q^{n}}{r^{n}} = n^{\alpha} \left(\frac{q}{r}\right)^{n} \arrowlim{n\to+\infty}0
+       $$
+       car $\frac{q}{n} < 1$. Qlors $n^{\alpha}q^{n} = o(r^{n})$ et $\sum r^{n}$ converge car $0 \leq r < 1$. Ainsi la série $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
+     - ++Troisième méthode++: régle de d’Alembert. Pour tout $n \geq 1$, $n^{\alpha}q^{n} > 0$ donc
+       $$
+         \frac{(n+1)^{\alpha}q{n+1}}{n^{\alpha}q^{n}} = \left(1+\frac{1}{n}\right)^{\alpha}q \arrowlim{n\to+\infty}q < 1
+       $$
+       donc $\sum_{n \geq 1}n^{\alpha}q^{n}$ est convergente.
+  2. Nature de la série $\sum_{n \geq 1}\frac{2^{n} n!}{n^{n}}$.
+     - ++Première méthode: formule de stirling++.
+       %lemma Formule de Stirling
+         $$
+           n! \usim{n\to+\infty}\sqrt{2n \pi}\left(\frac{n}{e}\right)^{n}
+         $$
+       %
+       On a
+       $$
+         \frac{2^{n}n!}{n^{n}} \usim{n\to+\infty}2^{n} \frac{\sqrt{2n \pi}}{n^{n}}\left(\frac{n}{e}\right)^{n}
+       $$
+       donc
+       $$
+         \frac{2^{n} n!}{n^{n}} \sim \sqrt{2 \pi} n^{1/2} \left(\frac{2}{e}\right)^{n}
+       $$
+       et $0 < \frac{2}{e} < 1$. Or $\sum_{n \geq 1}n^{1/2}\left(\frac{2}{e}\right)^{n}$ converge donc par comparaison de séries à termes positifs, $\sum_{n \geq 1}\frac{2^{n}n!}{n^{n}}$ est convergente.
+    - ++Deuxième méthode: régle de d’Alembert++.
+      $$
+        \forall n \in \N^{*}, u_{n} = \frac{2^{n} n!}{n^{n}} > 0
+      $$
+      donc
+      $$
+        \begin{align*}
+          \frac{u_{n+1}}{u_{n}} &= \frac{2^{n+1}(n+1)!}{(n+1)^{n+1}} \times \frac{n^{n}}{2^{n} n!}\\
+          &= 2 \left(\frac{n}{n+1}\right)^{n}\\
+          &=2 \left(\frac{n+1}{n}\right)^{-n}\\
+          &= 2 \left(1+\frac{1}{n}\right)^{-n}\\
+        \end{align*}
+      $$
+      donc $\frac{u_{n+1}}{u_{n}} \arrowlim{n\to+\infty}\frac{2}{e} < 1$, donc $\sum_{n \geq 1}u_{n}$ converge.
+%
+
+## Sommation de relations de comparaison
+
+%prop
+  Soit $(u_{n})_{n \in \N}$ une suite complexe. Soit $(a_{n})_{n \in \N}$ une suite réelle de signe constant à partir d’un certain rang.
+  - si $\sum_{n \geq 0}a_{n}$((Série de référence de signe constant à partir d’un certain rang.)) converge.
+    - Si $u_{n} = O(a_{n})$ (resp. $u_{n} = o(a_{n})$), alors $(u_{n})$ est sommable et
+      $$
+        \sum_{k=n}^{+\infty}u_{k} = O \left(\sum_{k=n}^{+\infty}a_{k}\right) \:\left( \text{resp. } o \left(\sum_{k=n}^{+\infty}a_{k}\right)\right)
+      $$
+    - Si $u_{n}\sim \lambda a_{n}$ pour $\lambda \in \C^{*}$, alors $(u_{n})_{n \in \N}$ est sommable et
+      $$
+        \sum_{k=n}^{+\infty}u_{k} \usim{n\to+\infty} \lambda \sum_{k=n}^{+\infty}a_{k}
+      $$
+  - si la série de référence diverge,
+    - si $u_{n} = O(a_{n})$ (resp. $u_{n} = o(a_{n})$), alors on ne peut rien dire sur la nature de $\sum u_{n}$. Par contre, on a
+      $$
+        \sum_{k=0}^{n}u_{k} \ueq{n\to+\infty} O \left(\sum_{k=0}^{n}a_{k}\right) \: \left(\text{resp. }o \left(\sum_{k=0}^{n}a_{k}\right)\right)
+      $$
+    - si $a_{n} \sim \lambda a_{n}$ pour $\lambda \in \C^{*}$, alors $\sum_{n \geq 0}u_{n}$ diverge et
+      $$
+        \sum_{k=0}^{n}u_{k} \sim \lambda \sum_{k=0}^{n}a_{k}
+      $$
+%
+
+%proof
+  - Si $(a_{n})$ est de signe constant à partir d’un certain rang, $u_{n} = O(a_{n})$ et $\sum a_{n}$ **converge**, alors
+    $$
+      \exists M \in \R_{+}: \exists n_{0} \in \N: \begin{cases}\forall n \geq n_{0}, \abs{u_{n}}\leq M \abs{a_{n}}\\ (a_{n})_{n \geq  n_{0}} \text{ est de signe constant}\end{cases}
+    $$
+    donc $\sum_{n \geq 0}\abs{u_{n}}$ converge car $\forall n \geq n_{0}, \abs{a_{n}} = a_{n}$ ou $\forall n \geq n_{0}, \abs{a_{n}} = -a_{n}$, donc $\sum_{n \geq 0}u_{n}$ converge, et pour $n \geq n_{0}$,
+    $$
+      \abs{\sum_{k=n}^{+\infty}u_{k}} \leq  \sum_{k=n}^{+\infty}\abs{u_{k}} \leq M \sum_{k=n}^{+\infty}\abs{a_{k}} = M \abs{\sum_{k=n}^{+\infty}a_{k}}
+    $$
+  - Supposons $u_{n} \sim \lambda a_{n}$ pour $\lambda \in \C^{*}$. Alors $\abs{a_{n}} \sim \abs{\lambda} \abs{a_{n}}$ donc $\sum_{n \geq 0} \abs{a_{n}}$ converge.
+    $$
+      \frac{u_{n}}{\lambda} \sim a_{n} \quad\text{i.e.}\quad \frac{u_{n}}{\lambda}\sim a_{n} + o(a_{n})
+    $$
+    i.e. $\frac{u_{n}}{\lambda} - a_{n} = o(a_{n})$. Ainsi
+    $$
+      \sum_{k=n}^{+\infty}\left(\frac{u_{k}}{\lambda}-a_{k}\right) = o \left( \sum_{k=n}^{+\infty}a_{k}\right)
+    $$
+    i.e.
+    $$
+      \frac{1}{\lambda}\sum_{k=n}^{+\infty}u_{k} - \sum_{k=n}^{+\infty}a_{k} = o \left(\sum_{k=n}^{+\infty}a_{k}\right)
+    $$
+    donc
+    $$
+      \frac{1}{\lambda}\sum_{k=n}^{+\infty}u_{k} \usim{n\to+\infty} \sum_{k=n}^{+\infty}a_{k}
+    $$
+  - Si $(a_{n})$ est de signe constant à partir d’un certain rang, $u_{n} = O(a_{n})$ et $\sum a_{n}$ **diverge**, alors
+    $$
+      \exists M \in \R_{+}: \exists n_{0} \in \N: \begin{cases}\forall n \geq n_{0}, \abs{u_{n}}\leq M \abs{a_{n}}\\ (a_{n})_{n \geq  n_{0}} \text{ est de signe constant}\end{cases}
+    $$
+    donc pour $n \geq n_{0}$,
+    $$
+      \abs{\sum_{k=n}^{+\infty}u_{k}} \leq  \sum_{k=n}^{+\infty}\abs{u_{k}} \leq M \sum_{k=n}^{+\infty}\abs{a_{k}} = M \abs{\sum_{k=n}^{+\infty}a_{k}}
+    $$
+    d’où
+    $$
+      \forall  n \geq n_{0}, \abs{\sum_{k=n_{0}}^{n}u_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k}  \sum_{k=0}^{n_{0}-1}a_{k}} \leq M \left(\abs{\sum_{k=0}^{n}a_{k}} + \abs{\sum_{k=0}^{n_{0}-1}}\right)
+    $$
+    or $\abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty$. Ainsi, il existe $n_{1} \geq n_{0}$ tel que
+    $$
+      \forall n \geq n_{1}, \abs{\sum_{k=0}^{n_{0}-1}a_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k}}
+    $$
+    et
+    $$
+      \abs{\sum_{k=0}^{n_{0}-1}u_{k}} \leq \abs{\sum_{k=0}^{n}a_{k}}
+    $$
+    d’où
+    $$
+      \forall n \geq n_{1}, \abs{\sum_{k=0}^{n}u_{k}} \leq  \abs{\sum_{k=0}^{n_{0}-1}u_{k}} + 2M \abs{\sum_{k=0}^{n}a_{k}} \leq 3M \abs{\sum_{k=0}^{n}u_{k}}
+    $$
+  - $\frac{1}{n} = O \left(\frac{1}{n}\right)$, $\frac{1}{n^{2}} = O \left(\frac{1}{n}\right)$ et $\sum \frac{1}{n}$ diverge, pourtant $\sum \frac{1}{n}$ diverge alors que $\sum \frac{1}{n^{2}}$ converge.
+    - si $u_{n} \usim{n\to+\infty} \lambda a_{n}$, alors $\frac{u_{n}}{\lambda} - a_{n} = o(a_{n})$ donc $\sum_{k=0}^{n}\frac{u_{k}}{\lambda} - \sum_{k=0}^{n}a_{k} = o \left(\sum_{k=0}^{n}a_{k}\right)$. D’où
+      $$
+        \sum_{k=0}^{n}\frac{u_{k}}{\lambda} \sim \sum_{k=0}^{n}a_{k}
+      $$
+      donc
+      $$
+        \sum_{k=0}^{n}u_{k}\usim{n\to+\infty} \lambda \sum_{k=0}^{n}a_{k}
+      $$
+      D’où
+      $$
+        \abs{\sum_{k=0}^{n}u_{k}} \usim{n\to +\infty}\abs{\lambda} \abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty
+      $$
+      Nécessairement, $\sum_{k \geq 0} u_{k}$ est divergente.
 %
