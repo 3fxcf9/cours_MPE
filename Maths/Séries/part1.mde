@@ -8,10 +8,10 @@ Soit l’application
 $$
   \varphi: \applic{\ico{n_{0},+\infty}}{\big(E^{\ico{n_{0}, +\infty}}\big)^{2}}{(u_{n})_{n \geq  n_{0}}}{\big((u_{n})_{n \geq  n_{0}}, (S_{n})_{n \geq n_{0}}\big)}
 $$
-avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une application linéaire injective. $\img \varphi$ est appelé espace vectoriel des séries à valeurs dans $E$. Pour $u \in E^{\ico{n_{0},+\infty}}$, $\varepsilon(u)$ est noté $\sum_{n \geq n_{0}} u_{n}$ ou encore $\sum u_{n}$.
+avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une application linéaire injective. $\img \varphi$ est appelé espace vectoriel des séries à valeurs dans $E$. Pour $u \in E^{\ico{n_{0},+\infty}}$, $\varphi(u)$ est noté $\sum_{n \geq n_{0}} u_{n}$ ou encore $\sum u_{n}$.
 
 %def
-  $\sum_{n \geq  n_{0}}u_{n}$ est dite convergente dans $(E,\norm \cdot )$ si la suite des sommes partielles $(S_{n})_{n \geq  n_{0}}$ est convergente. Si tel est le cas, on pose $\sum_{n=n_{0}}^{+\infty}u_{n} = \lim_{n\to+\infty} S_{n} \in E$. Ce vecteur est appelé *norme de la série*.
+  $\sum_{n \geq  n_{0}}u_{n}$ est dite convergente dans $(E,\norm \cdot )$ si la suite des sommes partielles $(S_{n})_{n \geq  n_{0}}$ est convergente. Si tel est le cas, on pose $\sum_{n=n_{0}}^{+\infty}u_{n} = \lim_{n\to+\infty} S_{n} \in E$. Ce vecteur est appelé *somme de la série*.
 %
 
 %rem
@@ -148,7 +148,9 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 
 %eg
   *Exemple classique:* Soit $(A,+, \times , \cdot )$ une $\K$-algèbre munie d’une norme $\norm \cdot $ sous-multiplicative. Soit $u \in A$ tel que $\norm u < 1$. Étiduons la série $\sum_{k \geq 0}u^{k}$.
+
   ---
+
   On a par sous-multiplicité $\forall k \in \N^{*}, \norm{u^{k}} \leq  \norm{u}^{k}$ et $\sum_{k \geq 0} \norm{u}^{k}$ converge car $\norm u \in \co{0,1}$, donc la série $\sum_{k \geq 0}u^{k}$ est absolument convergente. Comme $A$ est de dimension finie, la série $\sum_{k \geq 0}^{u^{k}}$ est convergente.
   $$
     (1_{A} - u) \times \sum_{k=0}^{n}u^{k} = \sum_{k=0}^{n}u^{k} - u^{k+1} = \sum_{k=0}^{n}u^{k} \times (1_{A} - u)
@@ -524,7 +526,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
       diverge, donc $\sum \frac{1}{n\ln n}$ diverge.
     - Si $\alpha = 1$ et $\beta \ne 1$, considérons
       $$
-        f: x \longmapsto  \frac{1}{(\ln x)\gamma} = (\ln x)^{-\gamma}
+        f: x \longmapsto  \frac{1}{(\ln x)^\gamma} = (\ln x)^{-\gamma}
       $$
       sa dérivée est
       $$
@@ -721,18 +723,305 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
     $$
       \forall n \geq n_{1}, \abs{\sum_{k=0}^{n}u_{k}} \leq  \abs{\sum_{k=0}^{n_{0}-1}u_{k}} + 2M \abs{\sum_{k=0}^{n}a_{k}} \leq 3M \abs{\sum_{k=0}^{n}u_{k}}
     $$
-  - $\frac{1}{n} = O \left(\frac{1}{n}\right)$, $\frac{1}{n^{2}} = O \left(\frac{1}{n}\right)$ et $\sum \frac{1}{n}$ diverge, pourtant $\sum \frac{1}{n}$ diverge alors que $\sum \frac{1}{n^{2}}$ converge.
-    - si $u_{n} \usim{n\to+\infty} \lambda a_{n}$, alors $\frac{u_{n}}{\lambda} - a_{n} = o(a_{n})$ donc $\sum_{k=0}^{n}\frac{u_{k}}{\lambda} - \sum_{k=0}^{n}a_{k} = o \left(\sum_{k=0}^{n}a_{k}\right)$. D’où
+    - $\frac{1}{n} = O \left(\frac{1}{n}\right)$, $\frac{1}{n^{2}} = O \left(\frac{1}{n}\right)$ et $\sum \frac{1}{n}$ diverge, pourtant $\sum \frac{1}{n}$ diverge alors que $\sum \frac{1}{n^{2}}$ converge.
+  - si $u_{n} \usim{n\to+\infty} \lambda a_{n}$, alors $\frac{u_{n}}{\lambda} - a_{n} = o(a_{n})$ donc $\sum_{k=0}^{n}\frac{u_{k}}{\lambda} - \sum_{k=0}^{n}a_{k} = o \left(\sum_{k=0}^{n}a_{k}\right)$. D’où
+    $$
+      \sum_{k=0}^{n}\frac{u_{k}}{\lambda} \sim \sum_{k=0}^{n}a_{k}
+    $$
+    donc
+    $$
+      \sum_{k=0}^{n}u_{k}\usim{n\to+\infty} \lambda \sum_{k=0}^{n}a_{k}
+    $$
+    D’où
+    $$
+      \abs{\sum_{k=0}^{n}u_{k}} \usim{n\to +\infty}\abs{\lambda} \abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty
+    $$
+    Nécessairement, $\sum_{k \geq 0} u_{k}$ est divergente.
+%
+
+%eg
+  1. $\sum_{k \geq 1}\frac{1}{k^{2}}$ est convergente.
+     $$
+       \frac{1}{k^{2}} \usim{k\to+\infty} \frac{1}{k(k+1)}
+     $$
+     $\sum \frac{1}{k^{2}}$ est une série convergente à termes positifs, donc
+     $$
+       \sum_{k=n}^{+\infty}\frac{1}{k^{2}} \sim \sum_{k=n}^{+\infty}\frac{1}{k(k+1)} = \sum_{k=n}^{+\infty} \left(\frac{1}{k} - \frac{1}{k+1}\right)
+     $$
+     Or
+     $$
+       \sum_{k=n}^{N}\left(\frac{1}{k} - \frac{1}{k+1}\right) = \frac{1}{n} - \frac{1}{N+1} \arrowlim{N \to+\infty} \frac{1}{n}
+     $$
+     donc
+     $$
+       \boxed{\sum_{k=n}^{+\infty}\frac{1}{k^{2}}\usim{n\to+\infty}\frac{1}{n}}
+     $$
+  2. $\sum_{n \geq 1}\frac{1}{k^{3}}$ est convergente.
+     $$
+       0 < \frac{1}{k^{3}} \usim{k\to+\infty} \frac{1}{k(k+1)(k+2)}
+     $$
+     donc
+     $$
+       \sum_{k=n}^{+\infty}\frac{1}{k^{3}}\sim \sum_{k=n}^{+\infty}\frac{1}{k(k+1)(k+2)}
+     $$
+     On effectue la décomposition en éléments simples :
+     $$
+       \frac{1}{X(X+1)(X+2)} = \frac{1/2}{X} - \frac{1}{X+1} + \frac{1/2}{X+2}
+     $$
+     On a alors
+     $$
+       \sum_{k=n}^{+\infty}\frac{1}{k^{3}} \sim \frac{1}{2} \left(\sum_{k=n}^{+\infty}\frac{1}{k} - \frac{2}{k+1} + \frac{1}{k+2}\right)
+     $$
+     Or
+     $$
+       \sum_{k=n}^{N} \left(\frac{1}{k} - \frac{1}{k+1}\right) + \sum_{k=n}^{N}\frac{1}{k+2} - \frac{1}{k+1} = \frac{1}{n} - \frac{1}{N+1} + \frac{1}{N+2} - \frac{1}{n+1} \arrowlim{N\to+\infty} \frac{1}{n} - \frac{1}{n+1} = \frac{1}{n(n+1)}
+     $$
+     donc
+     $$
+       \sum_{k=n}^{+\infty}\frac{1}{k^{3}} \sim \frac{1}{2n(n+1)} \sim \frac{1}{2n^{2}}
+     $$
+%
+
+%thm Théorème de Cesaro
+  - Soit $(u_{n})_{n \in \N}$ une suite complexe. Si $u_{n} \arrowlim{n\to+\infty}\ell \in \C$, alors
+    $$
+      \frac{u_{1} + \cdots + u_{n}}{n} \arrowlim{n\to+\infty}\ell
+    $$
+  - Si $(u_{n})_{n \in \N}$ est une suite réelle telle que $u_{n} \arrowlim{n\to+\infty} \varepsilon \infty$ avec $\varepsilon = \pm 1$, alors
+    $$
+      \frac{u_{1} + \cdots + u_{n}}{n} \arrowlim{n\to+\infty} \varepsilon \infty
+    $$
+%
+
+%proof
+  - - Supposons $\ell \in \C^{*}$. $u_{n} \sim \ell = \ell \cdot 1$, et $\sum_{n \geq 0}1$ est une série divergente de signe constant, donc
       $$
-        \sum_{k=0}^{n}\frac{u_{k}}{\lambda} \sim \sum_{k=0}^{n}a_{k}
+        \sum_{k=1}^{n}u_{k} \usim{n\to+\infty} \ell \cdot  \sum_{k=1}^{n}1
+      $$
+      d’où $u_{1} + \cdots + u_{n} \usim{n\to+\infty} n\ell$ donc
+      $$
+        \frac{u_{1} + \cdots + u_{n}}{n} \usim{n\to+\infty} \ell
+      $$
+    - si $\ell = 0$, $u_{n} = o(1)$ et $\sum_{n \geq 0}1$ est une série divergente à termes positifs, donc
+      $$
+        \sum_{k=1}^{n} u_{k} \ueq{n\to+\infty} O \left(\sum_{k=1}^{n}1\right) = o(n)
       $$
       donc
       $$
-        \sum_{k=0}^{n}u_{k}\usim{n\to+\infty} \lambda \sum_{k=0}^{n}a_{k}
+        \frac{u_{1} + \cdots + u_{n}}{n} = o(1)
       $$
-      D’où
+  - Soit $(u_{n})_{n \in \N}$ une suite réelle divengente. Alors,
+    $$
+      \exists  n_{0} \in \N: \forall n \geq n_{0}, u_{n} > 0
+    $$
+    donc $\frac{1}{u_{n}} \arrowlim{n\to+\infty}0^{+}$ donc
+    $$
+      \frac{\frac{1}{u_{n_{0}}} + \cdots + \frac{1}{u_{n}}}{n-(n_{0}-1)} \arrowlim 0^{+}
+    $$
+    Or
+    $$
+      0 \leq  \sqrt[n-(n_{0}-1)]{\frac{1}{u_{n_{0}}} \times \cdots \times  \frac{1}{u_{n}}} \overset{\text{IAG}}\leq \frac{\frac{1}{u_{n_{0}}} + \cdots + \frac{1}{u_{n}}}{n-(n_{0}-1)}
+    $$
+    donc
+    $$
+      \underbrace{\frac{n(n_{0}-1)}{\frac{1}{u_{n_{0}}} + \cdots + \frac{1}{u_{n}}}}_{\arrowlim{}+\infty} \leq  \sqrt[n-(n_{0}-1)]{u_{n_{0}} \times  \cdots \times  u_{n}} \underset{\text{IAG}}\leq  \underbrace{\frac{u_{n_{0}} + \cdots + u_{n}}{n-(n_{0}-1)}}_{\coloneqq q_{n}}
+    $$
+    d’où
+    $$
+      \frac{u_{1} + \cdots + u_{n}}{n} = \frac{u_{1} + \cdots + u_{n_{0}-1}}{n} + q_{n} \times \frac{n - (n_{0}-1)}{n} \arrowlim{n\to+\infty}0 + (+\infty) \times 1
+    $$
+%
+
+%rem
+  Si sur un parcours, l’aller se fait à la vitesse $v_{A}$ et le retour à la vitesse $v_{B}$, alors la vitesse moyenne sur le parcours est la **moyenne harmonique** des vitesses. En effet,
+  $$
+    v = \frac{2d}{t_{A} + t_{B}} = \frac{2d}{\frac{d}{v_{A}} + \frac{d}{v_{B}}} = \frac{2}{\frac{1}{v_{A}} + \frac{1}{v_{B}}}
+  $$
+%
+
+%offprog
+  ## Transformations d’Abel
+
+  1. ++Première transformation d’Abel.++
+     Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Le but est d’étudier $\sum_{k=n}^{p}a_{k}b_{k}$. On pose, pour $n \in \N$,
+     $$
+       B_{n} = \sum_{k=0}^{n}b_{k} \quad\text{et}\quad B_{-1} = 0
+     $$
+     Alors
+     $$
+       \forall k \in \N, b_{k} = B_{k} - B_{k-1}
+     $$
+     d’où
+     $$
+       \begin{align*}
+         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(B_{k} - B_{k-1})\\
+         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n}^{p}a_{k}B_{k-1}\\
+         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n-1}^{p-1}a_{k-1}B_{k}\\
+         &= a_{p}B_{p} - a_{n} B_{n-1} - \sum_{k=n}^{p-1}(a_{k-1}-a_{k})B_{k}
+       \end{align*}
+     $$
+     pour $n < p$.
+     %rem
+       Il s’agit d’une intégration par parties discrète.
+     %
+  2. ++Deuxième transformation d’Abel++. Supposons $\sum_{n \geq 0}b_{n}$ convergente. On pose pour $n \in \N \cup \{-1\}$,
+     $$
+       R_{n} = \sum_{k=n+1}^{+\infty}b_{k}
+     $$
+     On a alors $\forall k \in \N, b_{k} = R_{k-1} - R_{k}$, d’où
+     $$
+       \begin{align*}
+         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(R_{k-1}-R_{k})\\
+         &= \sum_{k=n}^{p}a_{k} R_{k-1} - \sum_{k=n}^{p}a_{k} R_{k}\\
+         &= \sum_{k=n-1}^{p-1}a_{k+1}R_{k} - \sum_{k=n}^{p}a_{k} R_{k}\\
+         &= a_{n} R_{n-1} - a_{p}R_{p} + \sum_{k=n}^{p-1}(a_{k+1} - a_{k}) R_{k}
+       \end{align*}
+     $$
+%
+
+%eg
+  Donner un équivalent *simple* de $S_{n} = \sum_{k=1}^{k}2^{k}\ln(k)$. On réalise une transformation d’Abel : posons pour $n \in \N$ la suite définie par $U_{-1} = 0$ et
+  $$
+    U_{n} = \sum_{k=0}^{n}2^{k} = \frac{1-2^{n+1}}{1-2} = 2^{n+1}-1
+  $$
+  Alors
+  $$
+    \begin{align*}
+      \sum_{k=1}^{n}2^{k}\ln k &= \sum_{k=1}^{n}(U_{k} - U_{k-1})\ln k\\
+      &= \sum_{k=1}^{n}U_{k}\ln k - \sum_{k=1}^{n}U_{k-1}\ln k\\
+      &= \sum_{k=1}^{n}U_{k}\ln k - \sum_{k=0}^{n-1}U_{k}\ln(k+1)\\
+      &= U_{n}\ln n - U_{0}\ln 1 - \sum_{k=1}^{n-1}U_{k}(\ln(k+1) - \ln k)\\
+      &= (2^{n+1}-1)\ln n - \sum_{k=1}^{n-1}(2^{k+1}-1)\ln \left(1 + \frac{1}{k}\right)
+    \end{align*}
+  $$
+  or la série $\sum_{k \geq 1}2^{k}\ln k$ diverge, $2^{k}\ln k \geq 0$ pour $k \in \N^{*}$ et
+  $$
+    (2^{k+1}-1)\ln \left(1 + \frac{1}{k}\right) \ueq{k\to+\infty} o(2^{k}\ln k)
+  $$
+  donc
+  $$
+    \sum_{k=1}^{n-1}(2^{k+1}-1)\ln \left(1+\frac{1}{k}\right) \ueq{n\to+\infty} \left(\sum_{k=1}^{n-1}2^{k}\ln k\right)
+  $$
+  d’où
+  $$
+    S_{n-1} + 2^{n}\ln n \ueq{k\to+\infty} (2^{n+1}-1)\ln n + o(S_{n-1})
+  $$
+  d’où
+  $$
+    S_{n-1} \ueq{n\to+\infty} (2^{n+1} - 2^{n} - 1)\ln n + o(S_{n-1}) \ueq{n\to+\infty} (2^{n} - 1)\ln n + o(S_{n-1})
+  $$
+  d’où
+  $$
+    S_{n-1} \usim{n\to+\infty} (2^{n} - 1)\ln n \usim{n\to+\infty} 2^{n}\ln n
+  $$
+  donc $S_{n} \usim{n\to+\infty} 2^{n+1}\ln(n+1)$. Ainsi, $S_{n} \usim{n\to+\infty} 2^{n+1}\ln n$.
+%
+
+%offprog
+  %prop Règle d’Abel
+    Soit $(\varepsilon_{n})_{n \in \N}$ une suite réelle décroissante tendant vers 0. Soit $(z_{n})_{n \in \N}$ une suite à valeurs dans un **espace vectoriel normé complet** vérifiant
+    $$
+      \exists M \in \R_{+}: \forall n \in \N, \norm{\sum_{k=0}^{n}z_{k}} \leq M
+    $$
+    %rem
+      Cela n’assure en rien la convergence de $\sum_{k \geq 0}z_{k}$.
+    %
+    Alors $\sum_{n \geq 0}\varepsilon_{n}z_{n}$ est convergente et
+    $$
+      \forall n \in \N, \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k}z_{k}} \leq 2M \varepsilon_{n+1}
+    $$
+  %
+
+  %proof
+    Posons pour $n \in \N$
+    $$
+      Z_{-1} = 0 \quad\text{et}\quad Z_{n} = \sum_{k=0}^{n}z_{k}
+    $$
+    Soit $n \in \N^{*}$.
+    $$
+      \begin{align*}
+        \sum_{k=0}^{n}\varepsilon_{k}z_{k} &= \sum_{k=0}^{n}\varepsilon_{k}(Z_{k} - Z_{k-1})\\
+        &= \sum_{k=0}^{n}\varepsilon_{k}Z_{k} - \sum_{k=-1}^{n-1}\varepsilon_{k+1}Z_{k}\\
+        &= \varepsilon_{n}Z_{n} - \varepsilon_{0} Z_{-1} - \sum_{k=0}^{n-1}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}\\
+        &= \varepsilon_{n}Z_{n} - \sum_{k=0}^{n-1}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}
+      \end{align*}
+    $$
+    or
+    - $\forall n \in \N^{*}, \norm{\varepsilon_{n}Z_{n}} \leq M \arrowlim{n\to+\infty}0$ donc $\varepsilon_{n}Z_{n} \arrowlim{n\to+\infty}0_{\C}$
+    - $\norm{(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}} \leq  M(\varepsilon_{k} - \varepsilon_{k+1})$ et ce majorant est terme général d’une série téléscopique convergente car $(\varepsilon_{k})_{k \in \N}$ converge.
+    ainsi, $\sum_{k \geq 0}(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}$ est absolument convergente donc convergente ($E$ est complet). Alors
+    $$
+      \sum_{k=0}^{n}\varepsilon_{k} z_{k} \arrowlim{n\to+\infty} 0 - \sum_{k=0}^{+\infty}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k} \in E
+    $$
+    donc $\sum_{k \geq 0}\varepsilon_{k} z_{k}$ est convergente et
+    $$
+      \sum_{k=0}^{+\infty}\varepsilon_{k} z_{k} = \sum_{k=0}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})Z_{k}
+    $$
+    Soit $p \geq n+1$.
+    $$
+      \sum_{k=n+1}^{p}\varepsilon_{k} z_{k} = \varepsilon_{p}Z_{p} - \varepsilon_{n+1}Z_{n} - \sum_{k=n+1}^{p-1}(\varepsilon_{k+1}-\varepsilon_{k})Z_{k}
+    $$
+    On fait tendre $p$ vers $+\infty$ :
+    $$
+      \sum_{k=n+1}^{+\infty}\varepsilon_{k}z_{k} = -\varepsilon_{n+1}Z_{n+1} + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})Z_{k}
+    $$
+    d’où, par absolue convergence de $\sum_{(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}}$,
+    $$
+      \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k} z_{k}} \leq  \varepsilon_{n+1} M + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M
+    $$
+    Or
+    $$
+      \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M = M \lim_{N\to+\infty} \left(\sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})\right) = M\lim_{N\to+\infty}(\varepsilon_{n+1} - \varepsilon_{N+1}) = M \varepsilon_{n+1}
+    $$
+    d’où
+    $$
+      \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k} z_{k}} \leq  2M \varepsilon_{n+1}
+    $$
+  %
+%
+
+%rem
+  Soit $(\varepsilon_{n})_{n \in \N}$ une suite décroissante tendant vers 0. La suite $(z_{n})$ définie pour $n \in \N$ par $z_{n} = (-1)^{n}$ vérifie
+  $$
+    \forall n \in \N, \abs{\sum_{k=0}^{n}z_{k}} \leq 1
+  $$
+  donc d’après la règle d’Abel, les séries $\sum_{n \geq 0}(-1)^{n} \varepsilon_{n}$ et $\sum_{n \geq 0}(-1)^{n+1}\varepsilon_{n}$ convergent: on retrouve le résultat du théorème des séries alternées.
+  Cependant, ce théorème donne une meilleure majoration du reste :
+  $$
+    \forall n \in \N, \abs{\sum_{k=n+1}^{+\infty}(-1)^{k} \varepsilon_{k}} \leq \varepsilon_{n+1}
+  $$
+%
+
+%eg
+  Étudions la nature de la série $\sum_{n \geq 1}\frac{e^{in \theta}}{n^{\alpha}}$ avec $(\theta, \alpha) \in \R^{2}$.
+  - Si $\alpha \leq 0$.
+    $$
+      \abs{\frac{e^{in \theta}}{n^{\alpha}}} = n^{-\alpha} \arrowlim{n\to+\infty} \begin{cases}+\infty & \text{si } \alpha<0\\ 1 & \text{si } \alpha=0\end{cases}
+    $$
+    donc $\left(\frac{e^{in \theta}}{n^{\alpha}}\right)_{n \in \N}$ ne tend pas vers 0: on a divergence grossière de la série.
+  - Si $\alpha > 1$.
+    $$
+      \forall n \in \N^{*}, \abs{\frac{e^{in \theta}}{n^{\alpha}}} = \frac{1}{n^{\alpha}}
+    $$
+    or $\sum_{n \geq 1}\frac{1}{n^{\alpha}}$ converge ($\alpha > 1$) donc $\sum_{n \geq 1} \frac{e^{in \theta}}{n^{\alpha}}$ converge absolument. Étant à valeurs complexes, celle-ci converge.
+
+  %offprog
+    - si $\alpha \in \oc{0,1}$, la série $\sum_{n \geq 1}\frac{e^{in \theta}}{n^{\alpha}}$ ne converge pas absolument. $\left(\frac{1}{n^{\alpha}}\right)_{n \in \N^{*}}$ est une suite décroissante tendant vers 0. Pour $e^{i \theta}\ne 1$,
       $$
-        \abs{\sum_{k=0}^{n}u_{k}} \usim{n\to +\infty}\abs{\lambda} \abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty
+        \sum_{k=1}^{n}e^{ik \theta} = \sum_{k=1}^{n}(e^{i \theta})^{k} = e^{i \theta} \frac{1 - (e^{i \theta})^{n}}{1 - e^{i \theta}}
       $$
-      Nécessairement, $\sum_{k \geq 0} u_{k}$ est divergente.
+      donc pour $\theta \notin 2 \pi\Z$,
+      $$
+        \sum_{k=1}^{n}e^{ik \theta} = e^{i \theta} \frac{-2i \sin \left(\frac{n \theta}{2}\right)}{-2i \sin \left(\frac{\theta}{2}\right)}
+      $$
+      Ainsi,
+      $$
+        \forall  \theta \notin 2 \pi \Z, \forall n \in \N^{*}, \abs{\sum_{k=1}^{n}e^{ik \theta}} \leq \frac{1}{\abs{\sin \frac{\theta}{2}}}
+      $$
+      On peut donc appliquer la règle d’Abel: la série $\sum_{n \geq 1}\frac{e^{in \theta}}{n^{\alpha}}$ converge pour $\theta \notin 2 \pi\Z$ et si $\theta \in 2 \pi\Z$, la série $\sum_{n \geq 1}\frac{e^{in \theta}}{n^{\alpha}} = \sum_{n \geq 1}\frac{1}{n^{\alpha}}$ diverge pour $\alpha \in \oc{0,1}$.
+  %
+  On a donc finalement
+  $$
+    \sum_{n \geq 1}\frac{e^{in \theta}}{n^{\alpha}} \text{convergente} \iff \begin{cases}\alpha > 0\\ \theta \notin 2 \pi\Z\end{cases} \text{ ou } \alpha > 1
+  $$
 %

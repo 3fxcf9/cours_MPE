@@ -1,0 +1,204 @@
+# Semaine 6
+
+## Réunion d’ensembles dénombrables
+
+%prop
+  Soit $(A_{d})_{d \in D}$ une famille de parties au plus dénombrables d’un ensemble $E$ indexée par un ensemble $D$ au plus dénombrable. Alors $\bigcup_{d \in D}A_{d}$ est une partie au plus dénombrable de $E$.
+%
+
+%proof
+  Soit $\varphi : D \hookrightarrow \N$ une injection. Soit $D' = \varphi(D) \subset \N$. Alors
+  $$
+    \bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}\underbrace{A_{\varphi^{-1}(\{d'\})}}_{=B_{d'}}
+  $$
+  Posons $X = \Func(E,\N)$. Soit $f: \Part(X) \longrightarrow X$ une fonction choix. Pour $d' \in D'$, on pose
+  $$
+    f_{d'} = f \big(\underbrace{\big\{\varphi \in \Func(E,\N) \where \varphi_{|B_{d'}} \text{ injective}\big\}}_{\ne\emptyset \text{ car } B_{d'} \text{ s’injecte dans }\N}\big)
+  $$
+  Donc l’application
+  $$
+    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'}(x))}
+  $$
+  avec $d'(x) = \min\{d' \in D' \where x \in B_{d'}\}$ est une injection. En effet, pour $(x,y) \in \bigcup_{d' \in D'}B_{d'}$ si $(d'(x), f_{d'(x)}(x)) = (d'(y) , f_{d'(y)}(y))$, alors
+  $$
+    \begin{cases}d'(x) = d'(y)\\ f_{d'(x)}(x) = f_{d'(x)}(y)\end{cases}
+  $$
+  donc $y \in B_{d'(x)} = B_{d'(y)}$. Or $f_{d'(x)}$ est injective sur $B_{d'(x)}$ donc $x = y$.
+  Or $N^{2}$ est dénombrable donc $\bigcup_{d \in D}A_{d}$ est au plus dénombrable.
+%
+
+## $\R$ n’est pas dénombrable
+
+%proof
+  $$
+    f: \applic{\{0,1\}^{\N}}{\R}{(x_{n})_{n \in \N}}{\sum_{n=0}^{+\infty}\frac{x_{n}}{3^{n}}}
+  $$
+  - Pour $(x_{n})_{n \in \N} \in \{0,1\}^{n}$,
+    $$
+      \forall n \in \N, 0 \leq  \frac{x_{n}}{3^{n}} \leq \frac{1}{3^{n}}
+    $$
+    or $\left(\frac{1}{3^{n}}\right)_{n \in \N} \in \ell^{1}(\N)$ car $0 \leq \frac{1}{3} < 1$ donc $\left( \frac{x_{n}}{3_{n}}\right)_{n \in \N} \in \ell^{1}(\N)$.
+  - Montrons l’injectivité de $f$. Soit $(x,y) \in \{0,1\}^{\N}$ avec $x\ne y$. Soit $n_{0} = \min\{n \in \N \where x_{n} \ne y_{n}\}$.
+    $$
+      f(x) - f(y) = \frac{x_{n_{0}} - y_{n_{0}}}{3^{n_{0}}} + \sum_{n = n_{0}+1}^{+\infty}\frac{x_{n} - y_{n}}{3^{n}}
+    $$
+    On a $\abs{\frac{x_{n_{0}} - y_{n_{0}}}{3^{n_{0}}}} = \frac{1}{3^{n_{0}}}$ et par absolue convergence, on a
+    $$
+      \abs{\sum_{n \in \ico{n_{0}+1, +\infty}} \frac{x_{n} - y_{n}}{3^{n}}} \leq  \sum_{n \in \ico{n_{0}+1, +\infty}} \frac{\abs{x_{n} - y_{n}}}{3^{n}}
+    $$
+    d’où
+    $$
+      \abs{\sum_{n = n_{0}+1}^{+\infty} \frac{x_{n} - y_{n}}{3^{n}}} \leq  \sum_{n = n_{0}+1}^{+\infty}\frac{1}{3^{n}} = \frac{1}{3^{n_{0}+1}} \times \frac{1}{1-\frac{1}{3}} = \frac{1}{2 \cdot 3^{n_{0}}}
+    $$
+    donc $f(x) - f(y) \ne 0$, donc $f$ est injective.
+  - Si $\R$ est au plus dénombrable, alors $\{0,1\}^{\N} \approx \Part(\N)$ est au plus dénombrable, ce qui est faux donc $\R$ n’est pas au plus dénombrable. Ainsi, $\R$ est au plus dénombrable.
+%
+
+## Étude d’une série
+
+Étudions la nature de la série $\displaystyle\sum_{n \geq 2}\frac{1}{n (\ln n)^{\beta}}$. Considérons pour cela l’application
+$$
+  f: x \longmapsto  \frac{1}{(\ln x)^\gamma} = (\ln x)^{-\gamma}
+$$
+dont la dérivée est
+$$
+  f':x \longmapsto \frac{-\gamma}{x}(\ln x)^{-\gamma-1}
+$$
+Pour tout $n \geq 2$, il existe $c_{n} \in \oo{n, n+1}$ tel que
+$$
+  f(n+1) - f(n) \oeq{TAF} (n+1-n)f'(c_{n}) = -\frac{\gamma}{n(\ln c_{n})^{\gamma + 1}}
+$$
+Donc
+$$
+  \frac{1}{\big(\ln(n+1)\big)^{\gamma}} - \frac{1}{(\ln n)^{\gamma}} \usim{n\to+\infty} - \frac{\gamma}{n(\ln n)^{\gamma+1}}
+$$
+donc
+$$
+  \underbrace{\frac{\beta-1}{n(\ln n)^{\beta}}}_{\geq 0} \sim \frac{1}{(\ln n)^{\beta-1}} - \frac{1}{\big(\ln(n+1)\big)^{\beta-1}}
+$$
+Comme $\beta-1 \ne 0$, les séries $\sum_{n \geq 2}\frac{1}{n(\ln n)^{\beta}}$ et $\sum_{n \geq 2} \frac{1}{\big((\ln(n+1))^{\beta-1}\big)} - \frac{1}{(\ln n)^{\beta-1}}$ ont la même nature. Or
+$$
+  \frac{1}{(\ln n)^{\beta-1}} \arrowlim{} \begin{cases}0 & \text{si } \beta>1\\+\infty & \text{si } \beta<1\end{cases}
+$$
+donc $\sum \frac{1}{n(\ln n)^{\beta}}$ converge pour $\beta > 1$.
+
+## Règle d’Alembert
+
+%thm
+  Soit $\sum_{n \geq 0}a_{n}$ une série à termes réels strictement positifs. Supposons
+  $$
+    \frac{a_{n+1}}{a_{n}} \arrowlim{n\to+\infty}\ell \in \bar{\R_{+}}
+  $$
+  Alors
+  - si $\ell > 1$ ou $\ell = 1^{+}$, alors $\sum_{n \geq 0}a_{n}$ est divergente grossièrement.
+  - si $\ell \in  \co{0,1}$, alors $\sum_{n \geq 0}a_{n}$ est convergente.
+  - sinon, on ne peut conclure directement.
+%
+
+%proof
+  - Si $\ell > 1$ ou $\ell = 1^{+}$, il existe $N \in \N$ tel que $\forall n \geq N, \frac{a_{n+1}}{a_{n}}  \geq 1$. Alors
+    $$
+      \forall n \geq  N, a_{n+1}\geq a_{n} \geq a_{N}
+    $$
+    donc $(a_{n})_{n \geq N}$ est croissante et $a_{N} > 0$, d’où $(a_{n})$ ne tend pas vers 0: la série diverge grossièrement.
+  - Supposons $\ell \in \co{0,1}$. Soit $q \in  \oo{\ell, 1}$.
+    $$
+      \exists N \in \N: \forall  n \geq N, 0 < \frac{a_{n+1}}{a_{n}} \leq q
+    $$
+    d’où
+    $$
+      \forall n \geq N, 0 \leq \prod_{k=N}^{n}\frac{a_{k+1}}{a_{k}} \leq q^{n-(N-1)}
+    $$
+    donc
+    $$
+      \forall  n \geq N, \frac{a_{n+1}}{a_{n}} \leq q^{n-(N-1)}
+    $$
+    Alors,
+    $$
+      \forall n \geq N, 0 \leq a_{n+1} \leq \frac{a_{N}}{q^{N-1}}q^{n}
+    $$
+    or $\sum_{n \geq 0}q^{n}$ converge car $0 \leq q < 1$, donc $\sum_{n \geq 0}a_{n}$ converge.
+  - - Considérons la suite définie pour $n \in \N^{*}$ par $a_{n} = \frac{1}{n}$. Alors
+      $$
+        \frac{a_{n+1}}{a_{n}} = \frac{n}{n+1} \arrowlim{n\to+\infty}1^{-}
+      $$
+      et $\sum_{n \geq 1}a_{n}$ diverge.
+    - La suite définie par $a_{n} = \frac{1}{n^{2}}$ vérifie
+      $$
+        \frac{a_{n+1}}{a_{n}} = \frac{n^{2}}{(n+1)^{2}} \arrowlim{n\to+\infty}1^{-}
+      $$
+      et $\sum_{n \geq 1} a_{n}$ converge.
+%
+
+## Sommation d’une relations de comparaison
+
+Si $(a_{n})$ est de signe constant à partir d’un certain rang, $u_{n} = O(a_{n})$ et $\sum a_{n}$ **diverge**, alors on ne peut rien dire sur la nature de $\sum u_{n}$. En effet,
+- $\frac{1}{n} = O \left(\frac{1}{n}\right)$, $\frac{1}{n^{2}} = O \left(\frac{1}{n}\right)$ et $\sum \frac{1}{n}$ diverge, pourtant $\sum \frac{1}{n}$ diverge alors que $\sum \frac{1}{n^{2}}$ converge.
+Par contre,
+$$
+  \exists M \in \R_{+}: \exists n_{0} \in \N: \begin{cases}\forall n \geq n_{0}, \abs{u_{n}}\leq M \abs{a_{n}}\\ (a_{n})_{n \geq  n_{0}} \text{ est de signe constant}\end{cases}
+$$
+donc pour $n \geq n_{0}$,
+$$
+  \abs{\sum_{k=n}^{+\infty}u_{k}} \leq  \sum_{k=n}^{+\infty}\abs{u_{k}} \leq M \sum_{k=n}^{+\infty}\abs{a_{k}} = M \abs{\sum_{k=n}^{+\infty}a_{k}}
+$$
+d’où
+$$
+  \forall  n \geq n_{0}, \abs{\sum_{k=n_{0}}^{n}u_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k}  \sum_{k=0}^{n_{0}-1}a_{k}} \leq M \left(\abs{\sum_{k=0}^{n}a_{k}} + \abs{\sum_{k=0}^{n_{0}-1}}\right)
+$$
+or $\abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty$. Ainsi, il existe $n_{1} \geq n_{0}$ tel que
+$$
+  \forall n \geq n_{1}, \abs{\sum_{k=0}^{n_{0}-1}a_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k}}
+$$
+et
+$$
+  \abs{\sum_{k=0}^{n_{0}-1}u_{k}} \leq \abs{\sum_{k=0}^{n}a_{k}}
+$$
+d’où
+$$
+  \forall n \geq n_{1}, \abs{\sum_{k=0}^{n}u_{k}} \leq  \abs{\sum_{k=0}^{n_{0}-1}u_{k}} + 2M \abs{\sum_{k=0}^{n}a_{k}} \leq 3M \abs{\sum_{k=0}^{n}u_{k}}
+$$
+Ainsi,
+$$
+  \sum_{k=0}^{n}u_{k} \ueq{n\to+\infty} O \left(\sum_{k=0}^{n}a_{k}\right)
+$$
+
+%offprog
+  ## Transformations d’Abel
+
+  1. ++Première transformation d’Abel.++
+     Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Le but est d’étudier $\sum_{k=n}^{p}a_{k}b_{k}$. On pose, pour $n \in \N$,
+     $$
+       B_{n} = \sum_{k=0}^{n}b_{k} \quad\text{et}\quad B_{-1} = 0
+     $$
+     Alors
+     $$
+       \forall k \in \N, b_{k} = B_{k} - B_{k-1}
+     $$
+     d’où
+     $$
+       \begin{align*}
+         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(B_{k} - B_{k-1})\\
+         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n}^{p}a_{k}B_{k-1}\\
+         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n-1}^{p-1}a_{k-1}B_{k}\\
+         &= a_{p}B_{p} - a_{n} B_{n-1} - \sum_{k=n}^{p-1}(a_{k-1}-a_{k})B_{k}
+       \end{align*}
+     $$
+     pour $n < p$.
+     %rem
+       Il s’agit d’une intégration par parties discrète.
+     %
+  2. ++Deuxième transformation d’Abel++. Supposons $\sum_{n \geq 0}b_{n}$ convergente. On pose pour $n \in \N \cup \{-1\}$,
+     $$
+       R_{n} = \sum_{k=n+1}^{+\infty}b_{k}
+     $$
+     On a alors $\forall k \in \N, b_{k} = R_{k-1} - R_{k}$, d’où
+     $$
+       \begin{align*}
+         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(R_{k-1}-R_{k})\\
+         &= \sum_{k=n}^{p}a_{k} R_{k-1} - \sum_{k=n}^{p}a_{k} R_{k}\\
+         &= \sum_{k=n-1}^{p-1}a_{k+1}R_{k} - \sum_{k=n}^{p}a_{k} R_{k}\\
+         &= a_{n} R_{n-1} - a_{p}R_{p} + \sum_{k=n}^{p-1}(a_{k+1} - a_{k}) R_{k}
+       \end{align*}
+     $$
+%
