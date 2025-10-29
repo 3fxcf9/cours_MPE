@@ -75,9 +75,9 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        $$
          n^{k} \abs{\lambda}^{n} \ueq{n\to+\infty} o(r^{n})
        $$
-       car $n^{k} \left(\frac{\abs{\lambda}}{r}\right)^{n} \arrowlim{n\to+\infty}0$ car $0 \leq \frac{\abs{\lambda}}{r} < 1$. Or $\sum_{n \geq 0}r^{n}$ converge (car $0 \leq  r < 1$), doonc $\sum_{n \geq 0}n^{k} \lambda^{n}$ est absolument convergente, d’où $\sum_{n \geq k}\binom{n}{k}\lambda^{n-k}$ est absolument convergente à laveurs dans $\C$, donc convergente. Ainsi
+       car $n^{k} \left(\frac{\abs{\lambda}}{r}\right)^{n} \arrowlim{n\to+\infty}0$ car $0 \leq \frac{\abs{\lambda}}{r} < 1$. Or $\sum_{n \geq 0}r^{n}$ converge (car $0 \leq  r < 1$), donc $\sum_{n \geq 0}n^{k} \lambda^{n}$ est absolument convergente, d’où $\sum_{n \geq k}\binom{n}{k}\lambda^{n-k}$ est absolument convergente à laveurs dans $\C$, donc convergente. Ainsi
        $$
-         \sum_{n \geq 0} \text{ convergente} \iff  \abs{\lambda} < 1
+         \sum_{n \geq 0} A^{n} \text{ convergente} \iff  \abs{\lambda} < 1
        $$
        et pour $\abs{\lambda} < 1$, on a
        $$
@@ -126,7 +126,6 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
      $$
        \norm{\sum_{k=0}^{+\infty}u_{k}} \leq  \sum_{k=0}^{+\infty}\norm{u_{k}}
      $$
-     si convergence absolue en dimension finie.
 %
 
 %proof
@@ -151,9 +150,9 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 
   ---
 
-  On a par sous-multiplicité $\forall k \in \N^{*}, \norm{u^{k}} \leq  \norm{u}^{k}$ et $\sum_{k \geq 0} \norm{u}^{k}$ converge car $\norm u \in \co{0,1}$, donc la série $\sum_{k \geq 0}u^{k}$ est absolument convergente. Comme $A$ est de dimension finie, la série $\sum_{k \geq 0}^{u^{k}}$ est convergente.
+  On a par sous-multiplicité $\forall k \in \N^{*}, \norm{u^{k}} \leq  \norm{u}^{k}$ et $\sum_{k \geq 0} \norm{u}^{k}$ converge car $\norm u \in \co{0,1}$, donc la série $\sum_{k \geq 0}u^{k}$ est absolument convergente. Comme $A$ est de dimension finie, la série $\sum_{k \geq 0}u^{k}$ est convergente.
   $$
-    (1_{A} - u) \times \sum_{k=0}^{n}u^{k} = \sum_{k=0}^{n}u^{k} - u^{k+1} = \sum_{k=0}^{n}u^{k} \times (1_{A} - u)
+    (1_{A} - u) \times \sum_{k=0}^{n}u^{k} = \sum_{k=0}^{n}(u^{k} - u^{k+1}) = \sum_{k=0}^{n}u^{k} \times (1_{A} - u)
   $$
   or
   $$
@@ -163,7 +162,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
   $$
     (1_{A} - u) \times  \sum_{k=0}^{+\infty} u^{k} = 1_{A} = \left(\sum_{k=0}^{+\infty}u^{k}\right) \times (1_{A} - u)
   $$
-  d’où $1_{A} - u \in A^{\times}$ et
+  ainsi $1_{A} - u \in A^{\times}$ et
   $$
     \boxed{\sum_{k=0}^{+\infty}u^{k} = (1_{A} - u)^{-1} \quad\text{pour } \begin{cases}\norm u < 1\\ \norm\cdot \text{ sous-multiplicative}\end{cases}}
   $$
@@ -227,7 +226,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 %
 
 %prop
-  1. $\exp(0_{d}) = I_{d}$ donc $\forall \lambda \in \K, \exp(\lambda I_{d}) = e^{\lambda}I_{d}$ d’où
+  1. $\exp(0_{d}) = I_{d}$ et $\forall \lambda \in \K, \exp(\lambda I_{d}) = e^{\lambda}I_{d}$ soit
      $$
        \forall (\lambda_{1}, \ldots, \lambda_{d}) \in \K^{d}, \exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})
      $$
@@ -260,7 +259,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
      $$
        \sum_{n=0}^{N}\frac{\diag(\lambda_{1}, \ldots, \lambda_{d})}{n!} = \diag \left(\sum_{n=0}^{N}\frac{\lambda_{1}^{n}}{n!}, \ldots, \sum_{n=0}^{N}\frac{\lambda_{d}^{n}}{n!}\right) \arrowlim{N \to+\infty} \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})
      $$
-     donc $\exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})$ d’où $\exp(\lambda\pm d) = e^{\lambda} I_{d}$.
+     donc $\exp(\diag(\lambda_{1}, \ldots, \lambda_{d})) = \diag(e^{\lambda_{1}}, \ldots, e^{\lambda_{d}})$ d’où $\exp(\lambda I_{d}) = e^{\lambda} I_{d}$.
   2. %fold Preuve faite en exercice
        **++Exercice 2++**
 
@@ -414,7 +413,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
     $$
       \exp: \M_{d}(\R) \longrightarrow \GL^{+}_{d}(\R)
     $$
-    ($\GL^{+}_{d}(\R) \subset \{A \in \M_{d}(\R) \where \det A > 0\}$)
+    ($\GL^{+}_{d}(\R) = \{A \in \M_{d}(\R) \where \det A > 0\}$)
   %
 
   %proof
@@ -553,7 +552,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 %
 
 
-## Règle d’Alembert
+## Règle de d’Alembert
 
 %thm
   Soit $\sum_{n \geq 0}a_{n}$ une série à termes réels strictement positifs. Supposons
@@ -607,12 +606,12 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        $$
          n^{2} \times n^{\alpha}q^{n} = n^{\alpha+2}q^{n} \arrowlim{n\to+\infty}0
        $$
-       donc $n^{\alpha}q^{n} = u \left(\frac{1}{n^{2}}\right)$, ainsi $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
+       donc $n^{\alpha}q^{n} = o \left(\frac{1}{n^{2}}\right)$, ainsi $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
      - ++Deuxième méthode++. Soit $r \in \oo{q,1}$.
        $$
          n^{\alpha}\frac{q^{n}}{r^{n}} = n^{\alpha} \left(\frac{q}{r}\right)^{n} \arrowlim{n\to+\infty}0
        $$
-       car $\frac{q}{n} < 1$. Qlors $n^{\alpha}q^{n} = o(r^{n})$ et $\sum r^{n}$ converge car $0 \leq r < 1$. Ainsi la série $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
+       car $\frac{q}{n} < 1$. Alors $n^{\alpha}q^{n} = o(r^{n})$ et $\sum r^{n}$ converge car $0 \leq r < 1$. Ainsi la série $\sum_{n \geq 1}n^{\alpha}q^{n}$ converge.
      - ++Troisième méthode++: régle de d’Alembert. Pour tout $n \geq 1$, $n^{\alpha}q^{n} > 0$ donc
        $$
          \frac{(n+1)^{\alpha}q{n+1}}{n^{\alpha}q^{n}} = \left(1+\frac{1}{n}\right)^{\alpha}q \arrowlim{n\to+\infty}q < 1
@@ -804,7 +803,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
       $$
     - si $\ell = 0$, $u_{n} = o(1)$ et $\sum_{n \geq 0}1$ est une série divergente à termes positifs, donc
       $$
-        \sum_{k=1}^{n} u_{k} \ueq{n\to+\infty} O \left(\sum_{k=1}^{n}1\right) = o(n)
+        \sum_{k=1}^{n} u_{k} \ueq{n\to+\infty} o \left(\sum_{k=1}^{n}1\right) = o(n)
       $$
       donc
       $$
@@ -856,7 +855,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
        \begin{align*}
          \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(B_{k} - B_{k-1})\\
          &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n}^{p}a_{k}B_{k-1}\\
-         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n-1}^{p-1}a_{k-1}B_{k}\\
+         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n-1}^{p-1}a_{k+1}B_{k}\\
          &= a_{p}B_{p} - a_{n} B_{n-1} - \sum_{k=n}^{p-1}(a_{k-1}-a_{k})B_{k}
        \end{align*}
      $$

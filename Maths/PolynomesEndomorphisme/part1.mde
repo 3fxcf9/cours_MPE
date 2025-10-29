@@ -1143,9 +1143,9 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
        E_{3}(A): \begin{cases}
          -2x + y + z &= 0\\
          x - 2y + z &= 0\\
-         (x+y-2z &= 0) & \tiny\text{somme des autres lignes}
+         (x+y-2z &= 0) \quad \tiny\text{somme des autres lignes}
        \end{cases} \iff \begin{cases}
-         -2x + y + z &= 0 \\ 3x - 3y &= 0 & \tiny L_{2} - L_{1}
+         -2x + y + z &= 0 \\ 3x - 3y &= 0 \quad \scriptsize L_{2} - L_{1}
        \end{cases}
      $$
      si bien que
