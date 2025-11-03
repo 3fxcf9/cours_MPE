@@ -164,41 +164,66 @@ $$
 $$
 
 %offprog
-  ## Transformations d’Abel
+  ## Règle d’Abel
 
-  1. ++Première transformation d’Abel.++
-     Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Le but est d’étudier $\sum_{k=n}^{p}a_{k}b_{k}$. On pose, pour $n \in \N$,
-     $$
-       B_{n} = \sum_{k=0}^{n}b_{k} \quad\text{et}\quad B_{-1} = 0
-     $$
-     Alors
-     $$
-       \forall k \in \N, b_{k} = B_{k} - B_{k-1}
-     $$
-     d’où
-     $$
-       \begin{align*}
-         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(B_{k} - B_{k-1})\\
-         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n}^{p}a_{k}B_{k-1}\\
-         &= \sum_{k=n}^{p}a_{k}B_{k} - \sum_{k=n-1}^{p-1}a_{k-1}B_{k}\\
-         &= a_{p}B_{p} - a_{n} B_{n-1} - \sum_{k=n}^{p-1}(a_{k-1}-a_{k})B_{k}
-       \end{align*}
-     $$
-     pour $n < p$.
-     %rem
-       Il s’agit d’une intégration par parties discrète.
-     %
-  2. ++Deuxième transformation d’Abel++. Supposons $\sum_{n \geq 0}b_{n}$ convergente. On pose pour $n \in \N \cup \{-1\}$,
-     $$
-       R_{n} = \sum_{k=n+1}^{+\infty}b_{k}
-     $$
-     On a alors $\forall k \in \N, b_{k} = R_{k-1} - R_{k}$, d’où
-     $$
-       \begin{align*}
-         \sum_{k=n}^{p}a_{k}b_{k} &= \sum_{k=n}^{p}a_{k}(R_{k-1}-R_{k})\\
-         &= \sum_{k=n}^{p}a_{k} R_{k-1} - \sum_{k=n}^{p}a_{k} R_{k}\\
-         &= \sum_{k=n-1}^{p-1}a_{k+1}R_{k} - \sum_{k=n}^{p}a_{k} R_{k}\\
-         &= a_{n} R_{n-1} - a_{p}R_{p} + \sum_{k=n}^{p-1}(a_{k+1} - a_{k}) R_{k}
-       \end{align*}
-     $$
+  %prop Règle d’Abel
+    Soit $(\varepsilon_{n})_{n \in \N}$ une suite réelle décroissante tendant vers 0. Soit $(z_{n})_{n \in \N}$ une suite à valeurs dans un **espace vectoriel normé complet** vérifiant
+    $$
+      \exists M \in \R_{+}: \forall n \in \N, \norm{\sum_{k=0}^{n}z_{k}} \leq M
+    $$
+    %rem
+      Cela n’assure en rien la convergence de $\sum_{k \geq 0}z_{k}$.
+    %
+    Alors $\sum_{n \geq 0}\varepsilon_{n}z_{n}$ est convergente et
+    $$
+      \forall n \in \N, \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k}z_{k}} \leq 2M \varepsilon_{n+1}
+    $$
+  %
+
+  %proof
+    Posons pour $n \in \N$
+    $$
+      Z_{-1} = 0 \quad\text{et}\quad Z_{n} = \sum_{k=0}^{n}z_{k}
+    $$
+    Soit $n \in \N^{*}$.
+    $$
+      \begin{align*}
+        \sum_{k=0}^{n}\varepsilon_{k}z_{k} &= \sum_{k=0}^{n}\varepsilon_{k}(Z_{k} - Z_{k-1})\\
+        &= \sum_{k=0}^{n}\varepsilon_{k}Z_{k} - \sum_{k=-1}^{n-1}\varepsilon_{k+1}Z_{k}\\
+        &= \varepsilon_{n}Z_{n} - \varepsilon_{0} Z_{-1} - \sum_{k=0}^{n-1}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}\\
+        &= \varepsilon_{n}Z_{n} - \sum_{k=0}^{n-1}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}
+      \end{align*}
+    $$
+    or
+    - $\forall n \in \N^{*}, \norm{\varepsilon_{n}Z_{n}} \leq M \arrowlim{n\to+\infty}0$ donc $\varepsilon_{n}Z_{n} \arrowlim{n\to+\infty}0_{\C}$
+    - $\norm{(\varepsilon_{k+1} - \varepsilon_{k})Z_{k}} \leq  M(\varepsilon_{k} - \varepsilon_{k+1})$ et ce majorant est terme général d’une série téléscopique convergente car $(\varepsilon_{k})_{k \in \N}$ converge.
+    ainsi, $\sum_{k \geq 0}(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}$ est absolument convergente donc convergente ($E$ est complet). Alors
+    $$
+      \sum_{k=0}^{n}\varepsilon_{k} z_{k} \arrowlim{n\to+\infty} 0 - \sum_{k=0}^{+\infty}(\varepsilon_{k+1} - \varepsilon_{k})Z_{k} \in E
+    $$
+    donc $\sum_{k \geq 0}\varepsilon_{k} z_{k}$ est convergente et
+    $$
+      \sum_{k=0}^{+\infty}\varepsilon_{k} z_{k} = \sum_{k=0}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})Z_{k}
+    $$
+    Soit $p \geq n+1$.
+    $$
+      \sum_{k=n+1}^{p}\varepsilon_{k} z_{k} = \varepsilon_{p}Z_{p} - \varepsilon_{n+1}Z_{n} - \sum_{k=n+1}^{p-1}(\varepsilon_{k+1}-\varepsilon_{k})Z_{k}
+    $$
+    On fait tendre $p$ vers $+\infty$ :
+    $$
+      \sum_{k=n+1}^{+\infty}\varepsilon_{k}z_{k} = -\varepsilon_{n+1}Z_{n+1} + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})Z_{k}
+    $$
+    d’où, par absolue convergence de $\sum_{(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}}$,
+    $$
+      \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k} z_{k}} \leq  \varepsilon_{n+1} M + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M
+    $$
+    Or
+    $$
+      \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M = M \lim_{N\to+\infty} \left(\sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})\right) = M\lim_{N\to+\infty}(\varepsilon_{n+1} - \varepsilon_{N+1}) = M \varepsilon_{n+1}
+    $$
+    d’où
+    $$
+      \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k} z_{k}} \leq  2M \varepsilon_{n+1}
+    $$
+  %
 %
