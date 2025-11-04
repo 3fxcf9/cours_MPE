@@ -1,0 +1,105 @@
+# Intégrales généralisées
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
+
+## Rappels
+
+- Si $f \in \Cont_{m}(\cc{a,b}, \K)$ avec $a < b$ deux réels, alors $f$ est bornée mais les bornes de $f$ (si $\K = \R$) et celles de $\abs{f}$ (si $\K = \C$) ne sont pas nécessairement atteintes.
+- Si $f \in \Cont_{m}(\cc{a,b}, \K)$, alors $x \longmapsto \int_{a}^{x}f$ est continue sur $\cc{a,b}$ mais pas nécessairement dérivable.
+- Si $I$ est un intervalle quelconque de $\R$, alors $f: I \longrightarrow \K$ est dite continue par morceaux si pour tout segment $S \subset I$ distinct d’un singleton, $f_{|S} \in \Cont_{m}(S,\K)$.
+  Par exemple, la fonction $f: x \longmapsto x - \floor x = \{x\}$ est continue par morceaux sur $\R$.((Une fonction est continue par morceaux sur un intervalle si elle ne possède qu’un nombre fini de points de discontinuité de première espèce (points où la fonction admet des limites finies à droite et à gauche).))
+- Attention:
+  $$
+    f:\applic{\cc{0,1}}{\R}{x}{\begin{cases}1 & \text{si } x = 0\\x &\text{si } x \in \oc{0,1}\end{cases}}
+  $$
+  est continue par morceaux sur $\cc{0,1}$. L’application
+  $$
+    g: \applic{\R_{+}^{*}}{\R}{x}{\frac{1}{x}}
+  $$
+  est continue sur $\R_{+}^{*}$, mais
+  $$
+    g\circ f: \applic{\cc{0,1}}{\R}{x}{\begin{cases}1\\ \frac{1}{x}\end{cases}}
+  $$
+  n’est pas continue par morceaux sur $\cc{0,1}$ car non bornée sur $\cc{0,1}$.
+
+%proof
+  - Il exisiste une subdivision $(a_{0}, a_{1}, \ldots, a_{n})$ de $\cc{a,b}$ telle que pour tout $i \in \cc{0,n-1}$, $f_{|\oo{a_{i}, a_{i+1}}}$ se prolonge en une fonction continue sur $\cc{a_{i}, a_{i+1}}$ notée $f_{i}$. Alors,
+    $$
+      \forall x \in \cc{a,b}, \abs{f(x)} \geq \max\{M_{0}, \ldots, M_{n-1}, \abs{f(a_{0})}, \ldots, \abs{f(a_{n})}\}
+    $$
+    avec $\forall i \in \icc{0,n-1}, M_{i} = \max_{\cc{a_{i}, b_{i}}} \abs{f_{i}}$.
+    ==DESSIN==
+    Les bornes ne sont pas forcément atteintes, par exemple pour la fonction $f \in \Cont_{m}(\cc{0,1},\R)$ définie pour tout $x \in \cc{0,1}$ par
+    $$
+      f(x) = \begin{cases}x &\text{si } x \in \oo{0,1}\\\frac{1}{2} &\text{sinon}\end{cases}
+    $$
+    on a
+    $$
+      \sup f = 1 \notin f(\cc{0,1}) \quad\text{et}\quad \inf f = 0 \notin f(\cc{0,1})
+    $$
+  - Soit $(x,x') \in \cc{a,b}^{2}$.
+    $$
+      \abs{F(x) - F(x')} = \abs{\int_{x}^{x'}f} \leq \sup_{\cc{a,b}}\abs{f} \times  \abs{x' - x}
+    $$
+    $F$ est lipschitzienne sur $\cc{a,b}$ donc continue sur $\cc{a,b}$ donc
+    $$
+      \int_{a}^{x}f \arrowlim{x \xrightarrow{<}b}\int_{a}^{b}f
+    $$
+  - $(\Cont_{m}(I,\K), +, \times , \cdot )$ est une sous-$\K$-algèbre de $\Func(I,\K)$.
+%
+
+## Intégrales sur un intervalle semi-ouvert
+
+Soient $-\infty \leq b' < a < b \leq +\infty$.
+1. Soit $f: \co{a,b} \longrightarrow  \K$ une application continue par morceaux. On dit que $f$ est d’intégrale convergente sur $\co{a,b}$ si $x \longmapsto \int_{a}^{x}f$ possède une limite finie en $b^{-}$. On pose alors
+   $$
+     \int_{\co{a,b}} = \lim_{a\xrightarrow{<}b}\int_{a}^{x}f
+   $$
+   ou encore
+   $$
+     \int_{a}^{\boxed{b}}f = \lim_{x\xrightarrow[<] b}\int_{a}^{x}f
+   $$
+2. Soit $g: \oc{b', a} \longrightarrow \K$ une application continue par morceaux. On dit que $g$ est d’intégrale convergente sur $\oc{b', a}$ si $x \longmapsto \int_{x}^{a}g$ possède une limite dasn $\K$ en $(b')^{+}$. On pose alors
+   $$
+     \int_{\oc{b', a}}g = \lim_{x\xrightarrow{>}b'}\int_{x}^{a}g
+   $$
+   ou encore
+   $$
+     \int_{b'}^{\boxed{a}}g = \lim_{x\xrightarrow{>}b'}\int_{x}^{a}g
+   $$
+3. Une intégrale est dite divergente si elle n’est pas convergente.
+
+%rem
+  1. Dans la situation 1, il y a deux cas:
+     - si $b < +\infty$, alors l’intervalle $\co{a,b}$ est semi-ouvert borné.
+     - si $b = +\infty$, alors l’intervalle $\co{a,b}$ est une demi-droite fermée non bornée.
+  2. Soit $f \in \Cont_{m}(\cc{a,b}, \K)$ avec $a < b$ deux réels. Alors
+     $$
+       \int_{a}^{x}f \arrowlim{x \xrightarrow{<} b} \int_{a}^{b}f
+     $$
+     i.e.
+     $$
+       \int_{a}^{x}f_{|\co{a,b}} \arrowlim{x\xrightarrow{<}b} \int_{a}^{b}f \in \K
+     $$
+     donc $\int_{\co{a,b}}f_{|\co{a,b}}$ est une intégrale convergente et
+     $$
+       \int_{a}^{\boxed{b}}f_{|\co{a,b}} = \int_{\co{a,b}}f_{|\co{a,b}} = \int_{a}^{b}f
+     $$
+     De même, $\int_{a}^{\boxed{b}}f_{|\oc{a,b}}$ est convergente et
+     $$
+       \int_{a}^{\boxed{b}}f_{|\oc{a,b}} = \int_{a}^{b}f
+     $$
+  3. Si $f: \co{a,b} \longrightarrow \K$ est une application continue possèdant une limite $\ell$ finie en $b^{-}$, alors pour
+     $$
+       \tilde{f}: \applic{\cc{a,b}}{\K}{x}{\begin{cases}f(x) &\text{si } x \in \co{a,b}\\ \ell &\text{si }x = b\end{cases}}
+     $$
+     $\int_{\co{a,b}}f$ converge et $\int_{a}^{\boxed{b}}f = \int_{a}^{b}\tilde{f}$. En effet, $\tilde{f} \in \Cont(\cc{a,b})$ et
+     $$
+       \int_{\co{a,b}}f = \int_{\co{a,b}}\tilde{f}_{|\co{a,b}} = \int_{a}^{b}\tilde{f}
+     $$
+     ou encore
+     $$
+       \int_{a}^{b}f = \lim_{x\xrightarrow{<}b}\int_{a}^{x}f
+     $$
+     ==DESSIN==
+%
