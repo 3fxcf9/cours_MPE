@@ -57,7 +57,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
    $$
    ou encore
    $$
-     \int_{a}^{\boxed{b}}f = \lim_{x\xrightarrow[<] b}\int_{a}^{x}f
+     \int_{a}^{\mangl{b}}f = \lim_{x\xrightarrow[<] b}\int_{a}^{x}f
    $$
 2. Soit $g: \oc{b', a} \longrightarrow \K$ une application continue par morceaux. On dit que $g$ est d’intégrale convergente sur $\oc{b', a}$ si $x \longmapsto \int_{x}^{a}g$ possède une limite dasn $\K$ en $(b')^{+}$. On pose alors
    $$
@@ -65,7 +65,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
    $$
    ou encore
    $$
-     \int_{b'}^{\boxed{a}}g = \lim_{x\xrightarrow{>}b'}\int_{x}^{a}g
+     \int_{b'}^{\mangl{a}}g = \lim_{x\xrightarrow{>}b'}\int_{x}^{a}g
    $$
 3. Une intégrale est dite divergente si elle n’est pas convergente.
 
@@ -83,17 +83,17 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
      $$
      donc $\int_{\co{a,b}}f_{|\co{a,b}}$ est une intégrale convergente et
      $$
-       \int_{a}^{\boxed{b}}f_{|\co{a,b}} = \int_{\co{a,b}}f_{|\co{a,b}} = \int_{a}^{b}f
+       \int_{a}^{\mangl{b}}f_{|\co{a,b}} = \int_{\co{a,b}}f_{|\co{a,b}} = \int_{a}^{b}f
      $$
-     De même, $\int_{a}^{\boxed{b}}f_{|\oc{a,b}}$ est convergente et
+     De même, $\int_{a}^{\mangl{b}}f_{|\oc{a,b}}$ est convergente et
      $$
-       \int_{a}^{\boxed{b}}f_{|\oc{a,b}} = \int_{a}^{b}f
+       \int_{a}^{\mangl{b}}f_{|\oc{a,b}} = \int_{a}^{b}f
      $$
   3. Si $f: \co{a,b} \longrightarrow \K$ est une application continue possèdant une limite $\ell$ finie en $b^{-}$, alors pour
      $$
        \tilde{f}: \applic{\cc{a,b}}{\K}{x}{\begin{cases}f(x) &\text{si } x \in \co{a,b}\\ \ell &\text{si }x = b\end{cases}}
      $$
-     $\int_{\co{a,b}}f$ converge et $\int_{a}^{\boxed{b}}f = \int_{a}^{b}\tilde{f}$. En effet, $\tilde{f} \in \Cont(\cc{a,b})$ et
+     $\int_{\co{a,b}}f$ converge et $\int_{a}^{\mangl{b}}f = \int_{a}^{b}\tilde{f}$. En effet, $\tilde{f} \in \Cont(\cc{a,b})$ et
      $$
        \int_{\co{a,b}}f = \int_{\co{a,b}}\tilde{f}_{|\co{a,b}} = \int_{a}^{b}\tilde{f}
      $$
@@ -102,4 +102,349 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        \int_{a}^{b}f = \lim_{x\xrightarrow{<}b}\int_{a}^{x}f
      $$
      ==DESSIN==
+  4. Soit $f \in \Cont_{m}(\co{a,b}, \C)$. $f = \Re f + i\Im f$ donc $x \longmapsto \int_{a}^{x}f = \int_{a}^{x}\Re f + i \int_{a}^{x}\Im f$ admet une limite dans $\C$ en $b^{-}$ si et seulement si $x \longmapsto \int_{a}^{x}\Re f$ et $x \longmapsto \int_{a}^{x}\Im f$ ont des limites en $b^{-}$ dans $\R$:
+     $$
+       \int_{a}^{\mangl{b}}f \text{ converge} \iff \int_{a}^{\mangl{b}}\Re f  \text{ et } \int_{a}^{\mangl{b}}\Im f \text{ converge}
+     $$
+     et en cas de convergence,
+     $$
+       \int_{a}^{\mangl{b}}f = \int_{a}^{\mangl{b}}\Re f + i \int_{a}^{\mangl{b}}\Im f
+     $$
+%
+
+### Exemples de référence
+%eg
+  1. $\int_{\mangl{0}}^{1}\ln t \dd t$ est une intégrale convergente
+  2. Pour $\alpha \in \R$, on a
+     $$
+       \int_{1}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}} \text{ convergente} \iff \alpha > 1
+     $$
+     et
+     $$
+       \int_{\mangl{0}}^{1}\frac{\dd t}{t^{\alpha}} \text{ convergente} \iff \alpha < 1
+     $$
+  3. Pour $\alpha \in \R$, on a
+     $$
+       \int_{0}^{\mangl{+\infty}}e^{-\alpha t}\dd t \text{ convergente} \iff  \alpha > 0
+     $$
+%
+
+%proof
+  1. $\ln: \oc{0,1} \longrightarrow \R$ est continue sur $\oc{0,1}$. Soit $\varepsilon \in \oc{0,1}$.
+     $$
+       \int_{\varepsilon}^{1}\ln t \dd t = [t\ln t - t]_{\varepsilon}^{1} = \underbrace{-1-\varepsilon \ln \varepsilon + \varepsilon}_{\arrowlim{\varepsilon \to 0^{+}}-1 \in \R}
+     $$
+  2. $\applic{\co{1,+\infty}}{\R}{t}{\frac{1}{t^{\alpha}}}$ est continue.
+     - si $\alpha = 1$, soit $\alpha \in \co{1,+\infty}$.
+       $$
+         \int_{1}^{x}\frac{\dd t}{t} = \ln x \arrowlim{x\to+\infty} +\infty
+       $$
+     - si $\alpha \neq 1$, soit $x \in \co{1,+\infty}$.
+       $$
+         \int_{1}^{x}t^{-\alpha}\dd t = \left[\frac{t^{-\alpha+1}}{-\alpha+1}\right]_{1}^{x} = \frac{x^{1-\alpha}-1}{1-\alpha} \arrowlim{x\to+\infty}\begin{cases}+\infty & \text{si }1-\alpha > 0\\ \frac{1}{\alpha-1} & \text{si }1-\alpha < 0\end{cases}
+       $$
+     donc $\int_{1}^{+\infty}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $1-\alpha < 0$, i.e. $\alpha > 1$, et dans ce cas, l’intégrale vaut $\frac{1}{\alpha-1}$.
+     ==FIG 1B==
+     $\applic{\oc{0,1}}{\R}{t}{\frac{1}{t^{\alpha}}}$ est continue sur $\oc{0,1}$.
+     - si $\alpha = 1$, soit $\varepsilon \in \oc{0,1}$.
+       $$
+         \int_{\varepsilon}^{1}\frac{\dd t}{t} = -\ln \varepsilon \arrowlim{\varepsilon \to 0^{+}} +\infty
+       $$
+     - si $\alpha \ne 1$, soit $\varepsilon \in \oc{0,1}$.
+       $$
+         \int_{\varepsilon}^{1}t^{-\alpha}\dd t = \left[\frac{t^{-\alpha+1}}{-\alpha + 1}\right]_{\varepsilon}^{1} = \frac{1-\varepsilon^{1-\alpha}}{1-\alpha}\arrowlim{\varepsilon\to 0^{+}} \begin{cases}\frac{1}{1-\alpha} & \text{si }1-\alpha > 0\\ +\infty & \text{si }1-\alpha < 0\end{cases}
+       $$
+     donc $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{\alpha}}\dd t$ converge si et seulement si $1-\alpha > 0$.
+  3. $\applic{\R_{+}}{\R}{t}{e^{-\alpha t}}$ est continue sur $\R_{+}$.
+     - si $\alpha = 0$, soit $x \in \R_{+}$.
+       $$
+         \int_{0}^{x}1 \dd t = x \arrowlim{x\to+\infty}+\infty
+       $$
+     - si $\alpha \ne 0$, soit $x \in \R_{+}$.
+       $$
+         \int_{0}^{x}e^{-\alpha t} \dd t = \left[\frac{e^{-\alpha t}}{-\alpha}\right]_{0}^{x} = \frac{1-e^{-\alpha x}}{\alpha} \arrowlim{x\to+\infty}\begin{cases}\frac{1}{\alpha}&\text{si } \alpha > 0\\ +\infty&\text{si }\alpha < 0\end{cases}
+       $$
+       donc $\int_{\R_{+}}e^{-\alpha t}\dd t$ converge si et seulement si $\alpha > 0$, et dans ce cas, l’intégrale vaut $\frac{1}{\alpha}$.
+%
+
+%eg
+  Étudions la nature de $\int_{0}^{\mangl{+\infty}}e^{-\lambda t}\dd t$ avec $\lambda \in \C$.
+  - si $\lambda \in \C \setminus \R$, posons $\lambda = a+ib$ avec $(a,b) \in \R \times \R^{*}$. La fonction
+    $$
+      t \longmapsto e^{-\lambda t} = e^{-(a+ib)t} = (e^{-a t}e^{-ibt})
+    $$
+    est continue sur $\R_{+}$. Soit $x \in \R_{+}$.
+    $$
+      \int_{0}^{x}e^{-\lambda t}\dd t = \left[\frac{e^{-\lambda t}}{-\lambda}\right]_{0}^{x} = \frac{1-e^{-\lambda x}}{\lambda} = \frac{1}{\lambda} - \frac{e^{-\lambda x}}{\lambda}
+    $$
+    or
+    $$
+      \abs{\frac{e^{-\lambda x}}{\lambda}} = \frac{e^{-a x}}{\abs{\lambda}} \arrowlim{x\to+\infty} \begin{cases}0&\text{si }a > 0\\+\infty&\text{si }a < 0\\ \frac{1}{\abs{\lambda}}&\text{si }a = 0\end{cases}
+    $$
+    donc
+    - si $a = \Re \lambda > 0$, $\int_{0}^{+\infty}e^{-\lambda t}\dd t$ converge (de valeur $\frac{1}{\lambda}$)
+    - si $a = \Re \lambda < 0$, $\int_{0}^{+\infty}e^{-\lambda t}\dd t$ diverge
+    - si $a = \Re \lambda = 0$,
+      $$
+        \int_{0}^{x}e^{-\lambda t}\dd t = \int_{0}^{x}e^{-ibt}\dd t = \frac{1-e^{-ibx}}{ib} = F(x)
+      $$
+      donc
+      $$
+        F \left(\frac{n \pi}{\abs{b}}\right) = \frac{1}{ib}\left(1-e^{-in \pi}\right) = \frac{1+(-1)^{n+1}}{ib}
+      $$
+      n’a pas de limite quand $n$ tend vers $+\infty$.
+    Ainsi, pour $\lambda \in \C$, on a
+    $$
+      \int_{0}^{+\infty}e^{-\lambda t}\dd t \text{ convergente} \iff  \Re \lambda > 0
+    $$
+%
+
+%eg
+  Soit $f: \co{a,+ifff} \longrightarrow  \K$ continue par morceaux avec $\int_{a}^{+\infty}f$ convergente. Si $f$ possède une limite $\ell \in \K$ en $+\infty$, alors $\ell = 0$.
+
+  ---
+
+  - Supposons $\K = \R$.
+    - Supposons $\ell > 0$. Alors $\lim_{+\infty}f = \ell$ donc $\exists A \geq a: \forall x \geq A, f(x) \geq \frac{\ell}{2}$, d’où pour $x \geq A$,
+      $$
+        \int_{a}^{x}f = \int_{a}^{A}f + \int_{A}^{f}x
+      $$
+      soit
+      $$
+        \int_{a}^{x}f \geq \underbrace{\int_{a}^{A}f + \frac{\ell}{2}(x-A)}_{\arrowlim{x\to+\infty}+\infty}
+      $$
+      d’où $\int_{a}^{x}f \arrowlim{x\to+\infty}+\infty$, ce qui contredit la convergence de $\int_{0}^{+\infty}f$.
+    - Supposons $\ell < 0$. Alors $\lim_{+\infty}(-f) = -\ell > 0$ donc $\int_{a}^{x}(-f) \arrowlim{x\to+\infty}+\infty$ donc $\int_{a}^{x}f \arrowlim{x\to+\infty}-\infty$ ce qui est impossible.
+    Ainsi, $\ell=0$.
+  - Si $\K = \C$, alors
+    $$
+      \lim_{+\infty}f = \ell \iff  \begin{cases}\lim_{+\infty}\Re f = \Re\ell\\\lim_{+\infty}\Im f = \Im f\end{cases}
+    $$
+    donc
+    $$
+      \begin{cases}\int_{a}^{+\infty}f \text{ converge}\\\lim_{+\infty} f = \ell\end{cases} \iff \begin{cases}\int_{a}^{+\infty}\Re f \text{ et } \int_{a}^{+\infty}\Im f \text{ convergent} \\ \lim_{+\infty}f = \ell\end{cases} \implies  \Re \ell = Im\ell = 0
+    $$
+%
+
+### Suite du cours
+
+%prop
+  Soient $-\infty \leq b' < a < b \leq +\infty$.
+  1. Soit $f: \co{a,b} \longrightarrow \K$ continue par morceaux. Soient $c \in \oo{a,b}$ et $\lambda \in \K^{*}$.
+     $$
+       \int_{a}^{\mangl{b}}b \text{ et } \int_{a}^{\mangl{b}}f \text{ ont la même nature}
+     $$
+     et
+     $$
+       \int_{a}^{\mangl{b}}f \text{ et } \int_{a}^{\mangl{b}}\lambda f \text{ ont la même nature}
+     $$
+     En cas de convergence, on a
+     $$
+       \int_{a}^{\mangl{b}}f = \int_{a}^{c}f + \int_{c}^{\mangl{b}}f \quad\text{et}\quad \int_{a}^{\mangl{b}}\lambda f = \lambda \int_{a}^{\mangl{b}}f
+     $$
+  2. Résultats analogues pour $g: \oc{b'\alpha} \longrightarrow \K$ continue par morceaux et $c \in \oo{b'\alpha}$ et $\lambda \in \K^{*}$ :
+     $$
+       \int_{\mangl{b'}}^{a}f, \: \int_{\mangl{b'}}^{c}f \text{ et } \int_{\mangl{b'}}^{a}\lambda f
+     $$
+     ont la même nature.
+%
+
+%proof
+  1. Soit $x \in \co{a,b}$.
+     $$
+       \int_{a}^{x}f = \int_{a}^{c}f + \int_{c}^{x}f
+     $$
+     donc $x \longmapsto  \int_{a}^{x}f$ et $x \longmapsto  \int_{c}^{x}f$ possède une limite fini « en même temps » en $b^{-}$ et par passage à la limite, on a
+     $$
+       \int_{a}^{\mangl{b}}f = \int_{a}^{c}f + \int_{c}^{\mangl{b}}f
+     $$
+     et
+     $$
+       \int_{a}^{x}\lambda f = \lambda \int_{a}^{x}f \quad\text{et}\quad \int_{a}^{x}f = \frac{1}{\lambda}\int_{a}^{x}\lambda f
+     $$
+%
+
+%eg
+  Considérons $f_{\alpha}: \applic{\R_{+}}{\R}{t}{\min \{1,\frac{1}{t^{\alpha}}\}}$. Étudions la nature de $\int_{\R_{+}} f_{\alpha}$.
+  ==FIG 2B==
+  $f_{\alpha} \in \Cont(\R_{+})$ et
+  $$
+    \int_{0}^{+\infty}f_{\alpha} \text{ convergente} \iff  \frac{1}{+\infty}f_{\alpha}\text{ convergente} \iff  \frac{1}{+\infty}\frac{\dd t}{t^{\alpha}}\text{ convergente} \iff  \alpha > 1
+  $$
+  et pour $\alpha > 1$, on a
+  $$
+    \int_{0}^{+\infty}f_{\alpha} = \int_{0}^{1}f_{\alpha} + \int_{1}^{+\infty}f_{\alpha} = 1 + \left[\frac{t^{\alpha+1}}{-\alpha + 1}\right]_{1}^{+\infty} = 1+\frac{1}{\alpha-1}
+  $$
+  Ainsi,
+  $$
+    \int_{0}^{+\infty}f_{\alpha} = \frac{\alpha}{\alpha-1}
+  $$
+%
+
+%prop
+  Soient $f$ et $g$ deux fonctions de $\co{a,b}$ dans $\K$ avec $-\infty < 0 < b < +\infty$.
+  Si $(f \times g)$ admet une limite finie en $b^{-}$, alors $\int_{a}^{\mangl{b}}fg'$ et $\int_{a}^{\mangl{b}}f^{g}$ ont la même nature, et((==À ne jamais écrire directement. Voir ci-dessous.))
+  $$
+    \int_{a}^{\mangl{b}fg'} = \underbrace{\lim_{b^{-}}(fg) - (fg)(a)}_{= « [fg]_{a}^{\mangl{\tiny b}} »} - \int_{a}^{\mangl{b}}f^{g}
+  $$x
+  On écrit l’intégration par partie pour $\int_{a}^{x}fg'$ puis on fait tendre si possible $x$ vers $b^{-}$.
+%
+
+%proof
+  Soit $x \in \co{a,b}$.
+  $$
+    \int_{a}^{x}fg' = [fg]_{a}^{x} - \int_{a}^{x}f^{g} = f(x)g(x) - f(a)g(a) - \int_{a}^{x}f^{g}
+  $$
+%
+
+%eg
+  Étudions la nature de l’intégrale $\int_{1}^{+\infty}\frac{\arctan t}{t^{2}}\dd t$.
+
+  ---
+
+  La fonction $t \longmapsto  \frac{\arctan t}{t^{2}}$ est continue sur $\co{1,+\infty}$. Soit $x \in \co{1,+\infty}$.
+  $$
+    \int_{1}^{x}\frac{\arctan t}{t^{2}}\dd t = \left[-\frac{\arctan t}{t}\right]_{1}^{x} - \int_{1}^{x}- \frac{1}{t(1+t^{2})}
+  $$
+  car $t \longmapsto  -\frac{1}{t}$ et $t \longmapsto  \arctan t$ sont de classe $\Cont^{1}$ sur $\co{1,+\infty}$.
+  $$
+    \int_{1}^{x}\frac{\arctan t}{t^{2}}\dd t = \underbrace{-\frac{\arctan x}{x} + \frac{\pi}{4}}_{\arrowlim{x\to+\infty}\frac{\pi}{4}} + \int_{1}^{x}\frac{\dd t}{t(1+t^{2})}
+  $$
+  Par ailleurs, dans $\R(T)$ :
+  $$
+    \frac{1}{T(1+T^{2})} = \frac{\alpha}{T} + \frac{\beta T + \gamma}{1+T^{2}}
+  $$
+  En multipliant par $T$ et en évaluant en 0, on trouve $\alpha=1$, et en multipliant par $1+T^{2}$ puis en évaluant en $i$, on trouve $\frac{1}{i} = 0 + \beta i + \gamma$, donc $\beta = -1$ et $\gamma = 0$. Ainsi,
+  $$
+    \int_{1}^{x}\frac{\dd t}{t(1+t^{2})} = \int_{1}^{x}\left(\frac{1}{t}-\frac{1}{1+t^{2}}\right)\dd t = \left[\ln t - \frac{1}{2}\ln(1+t^{2})\right]_{1}^{x} = \left[\ln \left(\frac{t}{\sqrt{1+t^{2}}}\right)\right]_{1}^{x} = \ln \left(\frac{x}{\sqrt{1+x^{2}}}\right)-\ln \left(\frac{1}{\sqrt{2}}\right) \arrowlim{x\to+\infty}\ln \sqrt{2} = \frac{1}{2}\ln 2 \in \R
+  $$
+  donc $\int_{1}^{+\infty}\frac{\arctan t}{t^{2}}\dd t$ est convergente et
+  $$
+    \int_{1}^{+\infty}\frac{\arctan t}{t^{2}}\dd t = \frac{\pi}{4} + \frac{1}{2}\ln 2
+  $$
+%
+
+## Intégration sur un intervalle ouvert
+
+%def
+  Soit $(a,b) \in \bar{\R}^{2}$ avec $a < b$. Soit $f: \oo{a,b} \longrightarrow  \K$ continue par morceaux.
+  On dit que l’intégrale de $f$ sur $\oo{a,b}$ est convergente si il existe $c \in \oo{a,b}$ tel que $\int_{\mangl{a}}^{c}f$ et $\int_{c}^{\mangl{b}}f$ sont convergentes. Si tel est le cas, on pose
+  $$
+    \int_{\mangl{a}}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{\mangl{b}}f
+  $$
+  Cette notion de convergence et la valeur l’intégrale qui en découle ne dépend pas du réel $c$ pris pour tester les convergences des intégrales.
+%
+
+%proof
+  Supposons qu’il existe $c \in \oo{a,b}$ tel que $\int_{\mangl{a}}^{c}f$ et $\int_{c}^{\mangl{b}}f$ convergent. Alors pour tout $d \in \oo{a,b}$, les deux intégrales $\int_{\mangl{a}}^{d}f$ et $\int_{d}^{\mangl{b}}f$ convergent aussi (selon la première proposition du cours), et
+  $$
+    \int_{\mangl{a}}^{d}f = \int_{d}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{d}f + \int_{c}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{\mangl{b}}f
+  $$
+%
+
+%eg
+  1. Étudions la nature de $\int_{\mangl{0}}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$.
+
+     ---
+
+     La fonction $t \longmapsto  \frac{1}{t^{\alpha}}$ est continue sur $\oo{0,+\infty}$ donc les
+     - $\int_{1}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $\alpha > 1$
+     - $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $\alpha < 1$
+     donc $\int_{\mangl{0}}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$ est divergente.
+  2. Étudions la limite de $\int_{\R}\sin$.
+
+     ---
+
+     $\int_{0}^{x}\sin t \dd t = [-\cos t]_{0}^{x} = 1-\cos x$ n’a pas de limite en $+\infty$ donc $\int_{0}^{\mangl{+\infty}}\sin$ est divergente donc $\int_{\R}\sin$ est divergente.
+
+     %callout Attention !
+       $\int_{-x}^{x}\sin t \dd t = 0 \arrowlim{x\to+\infty}0$.
+
+       %offprog
+         On a pour $f: \oo{a,b} \longrightarrow \K$ continue par morceaux
+         $$
+           \int_{\oo{a,b}}f \text{ convergente} \iff \begin{cases}\forall x \in \oo{a,b}, \int_{a}^{\mangl{b}}f \text{ convergente}\\ \lim_{x\to a}\int_{x}^{\mangl{b}}f \in \K\end{cases}
+         $$
+         et en cas de convergence, on a
+         $$
+           \int_{\mangl{a}}^{\mangl{b}}f = \lim_{x\to a}\int_{x}^{\mangl{b}} = \lim_{x\to a}\left[\lim_{y\to b} \int_{x}^{y}f\right]
+         $$
+
+         %proof
+           - Supposons $\int_{\oo{a,b}}f$ convergente. On a pour tout $x \in \oo{a,b}$ la convergence de $\int_{x}^{\mangl{b}}f$. Soit $x \in \oo{a,b}$ et $c \in \oo{a,c}$.
+             $$
+               \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f \arrowlim{x\to a} \int_{\oc{a,c}}f + \int_{c}^{\mangl{b}}f \in \K
+             $$c
+           - Supposons $\int_{a}^{\mangl{b}}f$ convergente pour tout $x \in \oo{a,b}$, et $\lim_{x\to a^{+}}\int_{a}^{\mangl{b}}f \in \K$. Alors, pour tout $c \in \oo{a,b}$, $\int_{c}^{\mangl{b}}f$ converge. Soit $x \in \oo{a,b}$.
+             $$
+               \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f
+             $$
+             d’où
+             $$
+               \int_{x}^{c}f = \int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \arrowlim{x\to a^{+}} \lim_{x\to a^{+}}\int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \in \K
+             $$
+             donc $\int_{\mangl{a}}^{c}f$ converge, donc $\int_{\oo{a,b}}f$ converge.
+           - En cas de convergence, on a
+             $$
+               \int_{\mangl{a}}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f\right) + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f + \int_{c}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\int_{x}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\lim_{y\to b}\int_{x}^{y}f\right)
+             $$
+         %
+       %
+     %
+%
+
+%eg
+  Nature et calcul de $\int_{0}^{1}\frac{\ln(1-x^{2})}{x^{2}}\dd x$.
+
+  ---
+
+  La fonction $f: \applic{\oo{0,1}}{\R}{x}{\frac{\le(1-x^{2})}{x^{2}}}$ est continue sur $\oo{0,1}$. En effet,
+  $$
+    f(x) \usim{x\to 0^{+}} \frac{-x^{2}}{x^{2}} = -1
+  $$
+  donc $\lim_{x\to 0^{+}}f(x) = -1$ donc $f$ est prolongeable par continuité sur $\co{0,1}$.
+  Soit $0 < \varepsilon < x < 1$.
+  $$
+    \int_{\varepsilon}^{x}\frac{\ln(1-t^{2})}{t^{2}}\dd t = \left[- \frac{\ln(1-t^{2})}{t}\right]_{\varepsilon}^{x} - \int_{c}^{x}\frac{2t}{t(1-t^{2})}\dd t = -\frac{\ln(1-x^{2})}{x} + \frac{\ln(1-\varepsilon^{2})}{\varepsilon} - \int_{\varepsilon}^{x}\frac{2}{1-t^{2}}\dd t
+  $$
+  or $\int_{\varepsilon}^{x}\frac{2 \dd t}{1-t^{2}} = \int_{\varepsilon}^{x}\left(\frac{1}{1-t} + \frac{1}{1+t}\right)$ donc
+  $$
+    \int_{\varepsilon}^{x}\frac{\ln(1-t^{2})}{t^{2}}\dd t = -\frac{\ln(1-x^{2})}{x} + \frac{\ln(1-\varepsilon^{2})}{\varepsilon} - \left[\ln \abs{1+t} - \ln \abs{1-t}\right] = -\frac{\ln(1-x^{2})}{x} + \frac{\ln(1-\varepsilon^{2})}{\varepsilon} - \ln \abs{\frac{1+x}{1-x}} + \ln \abs{\frac{1+\varepsilon}{1-\varepsilon}}
+  $$
+  donc en passant à la limite sur $\varepsilon$ en 0 :
+  $$
+    \int_{0}^{x}\frac{\ln(1-t^{2})}{t^{2}}\dd t = -\frac{\ln(1-x^{2})}{x} - \ln \abs{\frac{1+x}{1-x}}
+  $$
+  d’où en utilisant $\frac{\ln(1-\varepsilon^{2})}{\varepsilon}\usim{\varepsilon\to 0}\frac{-\varepsilon^{2}}{\varepsilon} = -\varepsilon$,
+  $$
+    \begin{align*}
+      \int_{0}^{x}\frac{\ln(1-t^{2})}{t^{2}}\dd t &= -\frac{\ln(1+x)}{x} - \ln(1+x) - \frac{\ln(1-x)}{x} + \ln(1-x)\\
+      &=-(1+\frac{1}{x})\ln(1+x) + \ln(1-x)(1-\frac{1}{x})\\
+      &=- \left(1+\frac{1}{x}\right)\ln(1+x) - \frac{(1-x)\ln(1-x)}{x}
+    \end{align*}
+  $$
+  d’où
+  $$
+    \int_{0}^{x}\frac{\ln(1-t^{2})}{t^{2}}\dd t \arrowlim{x\to 1} -2\ln 2
+  $$
+  donc $\int_{0}^{1}\frac{\ln(1-x^{2})}{x^{2}}\dd x$ est convergente et
+  $$
+    \int_{0}^{1}\frac{\ln(1-x^{2})}{x^{2}}\dd x = -2\ln 2
+  $$
+%
+
+%prop
+  Soit $a \in \R_{+}^{*} \cup \{+\infty\}$. Soit $f: \oo{-a,a} \longrightarrow \K$ continue par morceaux.
+  Si $f$ est paire (resp. impaire), alors $\int_{\oo{-a,a}}f$ est convergente si et seulement si $\int_{0}^{\mangl{a}}f$ l’est également et dans ce cas,
+  $$
+    \int_{\oo{-a,a}}f = 2\int_{0}^{\mangl{a}}f \left(\text{resp. } 0\right)
+  $$
+%
+
+%proof
+  Soit $\varepsilon \in \{-1,1\}$. Supposons que pour tout $x \in \oo{-a,a}$, $f(-x) = \varepsilon f(x)$ et $\int_{0}^{\mangl{a}}f$ est convergente. Soit $x \in \oc{-a,0}$.
+  $$
+    \int_{x}^{0}f(t)\dd t = \ueq{t = -u} \int_{-x}^{0}f(-u)(-\dd u) = \varepsilon \int_{0}^{-x}f(u)\dd u \arrowlim{x\to (-a)^{+}}\varepsilon \int_{0}^{\mangl{a}}f
+  $$
+  donc $\int_{-a}^{0}f$ est convergente (de valeur $\varepsilon \int_{0}^{\mangl{a}}f$) donc $\int_{\mangl{-a}}^{\mangl{a}}f$ est convergente et $\int_{-a}^{a}f = (1+\varepsilon)\int_{0}^{\mangl{a}}f$.
 %
