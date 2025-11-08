@@ -17,7 +17,7 @@
   $$
   Donc l’application
   $$
-    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'}(x))}
+    \applic{\bigcup_{d \in D}A_{d} = \bigcup_{d' \in D'}B_{d'}}{\N^{2}}{x}{(d'(x), f_{d'(x)}(x))}
   $$
   avec $d'(x) = \min\{d' \in D' \where x \in B_{d'}\}$ est une injection. En effet, pour $(x,y) \in \bigcup_{d' \in D'}B_{d'}$ si $(d'(x), f_{d'(x)}(x)) = (d'(y) , f_{d'(y)}(y))$, alors
   $$
@@ -144,7 +144,7 @@ $$
 $$
 d’où
 $$
-  \forall  n \geq n_{0}, \abs{\sum_{k=n_{0}}^{n}u_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k}  \sum_{k=0}^{n_{0}-1}a_{k}} \leq M \left(\abs{\sum_{k=0}^{n}a_{k}} + \abs{\sum_{k=0}^{n_{0}-1}}\right)
+  \forall  n \geq n_{0}, \abs{\sum_{k=n_{0}}^{n}u_{k}} \leq M \abs{\sum_{k=0}^{n}a_{k} + \sum_{k=0}^{n_{0}-1}a_{k}} \leq M \left(\abs{\sum_{k=0}^{n}a_{k}} + \abs{\sum_{k=0}^{n_{0}-1}}\right)
 $$
 or $\abs{\sum_{k=0}^{n}a_{k}} \arrowlim{n\to+\infty}+\infty$. Ainsi, il existe $n_{1} \geq n_{0}$ tel que
 $$
@@ -213,13 +213,13 @@ $$
     $$
       \sum_{k=n+1}^{+\infty}\varepsilon_{k}z_{k} = -\varepsilon_{n+1}Z_{n+1} + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})Z_{k}
     $$
-    d’où, par absolue convergence de $\sum_{(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}}$,
+    d’où, par absolue convergence de $\sum{(\varepsilon_{k+1} - \varepsilon_{k})Z_{n}}$,
     $$
       \abs{\sum_{k=n+1}^{+\infty}\varepsilon_{k} z_{k}} \leq  \varepsilon_{n+1} M + \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M
     $$
     Or
     $$
-      \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M = M \lim_{N\to+\infty} \left(\sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})\right) = M\lim_{N\to+\infty}(\varepsilon_{n+1} - \varepsilon_{N+1}) = M \varepsilon_{n+1}
+      \sum_{k=n+1}^{+\infty}(\varepsilon_{k} - \varepsilon_{k+1})M = M \lim_{N\to+\infty} \left(\sum_{k=n+1}^{N}(\varepsilon_{k} - \varepsilon_{k+1})\right) = M\lim_{N\to+\infty}(\varepsilon_{N} - \varepsilon_{n+1}) = M \varepsilon_{n+1}
     $$
     d’où
     $$
