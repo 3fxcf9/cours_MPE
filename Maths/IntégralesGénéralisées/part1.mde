@@ -879,7 +879,9 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     ~ $\displaystyle \int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}}$  ~ $\displaystyle\int_{\mangl{0}}^{e}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$
     ~
     On a
-    $\frac{1}{x^{\alpha}(\ln x)^{\beta}}\usim{x\to 1}\frac{1}{\left(\ln(x-1+1)\right)^{\beta}}\usim{x\to 1}\frac{1}{(x-1)^{\beta}}$
+    $$
+      \frac{1}{x^{\alpha}(\ln x)^{\beta}}\usim{x\to 1}\frac{1}{\left(\ln(x-1+1)\right)^{\beta}}\usim{x\to 1}\frac{1}{(x-1)^{\beta}}
+    $$
     Le changement de variables $u = \frac{1}{x}$ (donc $\dd x = -\frac{\dd u}{u^{2}}$) permet de montrer que $\int_{x}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}}$ a la même nature que $\int_{\mangl{0}}^{\frac{1}{e}}\frac{\frac{\dd u}{u^{2}}}{u^{-\alpha}\left(\ln \left(\frac{1}{u}\right)\right)^{\beta}} = \int_{\mangl{0}}^{\frac{1}{e}}\frac{\dd u}{u^{2-\alpha}\abs{\ln u}^{\beta}}$. Il suffit donc d’étudier la première intégrale.
     ~
     La fonction $f: x \longmapsto  \frac{1}{x^{\alpha}(\ln x)^{\beta}}$ est continue et positive sur $\co{e,+\infty}$.
@@ -952,24 +954,6 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     S_{n+1} \leq f(n_{0}) + \int_{n_{0}}^{n+1}f
   $$
   Si la suite $\big(\int_{n_{0}}^{n_{0}}f\big)$ est majorée, alors la suite $(S_{n})_{n \geq n_{0}}$ l’est également, donc la série $\sum_{k \geq n_{0}}f(k)$ converge.
-
-  - Traitons le cas de la divergence :
-    $$
-      \forall n \geq n_{0}, S_{n+1}-f(n_{0}) \leq \int_{n_{0}}^{n+1}f \leq S_{n+1}-f(n+1)
-    $$
-    or $S_{n+1} \arrowlim{n\to+\infty}+\infty$ et $f(n+1) \arrowlim{n\to+\infty}\ell \in \R_{+}$ donc
-    $$
-      S_{n+1} - f(n+1) \usim{+\infty} S_{n+1} \usim{n\to+\infty}S_{n+1} - f(n_{0})
-    $$
-    donc $\int_{n_{0}}^{n+1}f \usim{n\to+inff} S_{n+1}$.
-  - Traitons le cas de la convergence :
-    $$
-      \forall n \geq n_{0}, \sum_{k=n+1}^{+\infty}f(k) \leq \int_{n}^{+\infty}f \leq \sum_{k=n}^{+\infty}f(k)
-    $$
-    donc $R_{n} \leq \int_{n}^{+\infty}f$ d’où
-    $$
-      \int_{n+1}^{+\infty}f \leq \sum_{k=n+1}^{+\infty}f(k) = R_{n}
-    $$
 %
 
 %callout Attention
