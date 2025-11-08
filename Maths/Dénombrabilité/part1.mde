@@ -288,7 +288,7 @@
     $$
       g(e) = 1-f_{e}(e) \ne f_{e}(e)
     $$
-    donc $g\ne f_{e}$ donc $g\notin\{f_{e} \where e \in E\}$ donc $f_{e}$ n’est pas surjective.
+    donc $g\ne f_{e}$ donc $g\notin\{f_{e} \where e \in E\}$ donc $f$ n’est pas surjective.
   %
 
   %rem

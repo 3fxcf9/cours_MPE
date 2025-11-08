@@ -28,7 +28,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
       \forall x \in \cc{a,b}, \abs{f(x)} \geq \max\{M_{0}, \ldots, M_{n-1}, \abs{f(a_{0})}, \ldots, \abs{f(a_{n})}\}
     $$
     avec $\forall i \in \icc{0,n-1}, M_{i} = \max_{\cc{a_{i}, b_{i}}} \abs{f_{i}}$.
-    ==DESSIN==
+    ==FIG==
     Les bornes ne sont pas forcément atteintes, par exemple pour la fonction $f \in \Cont_{m}(\cc{0,1},\R)$ définie pour tout $x \in \cc{0,1}$ par
     $$
       f(x) = \begin{cases}x &\text{si } x \in \oo{0,1}\\\frac{1}{2} &\text{sinon}\end{cases}
@@ -114,7 +114,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 
 ### Exemples de référence
 %eg
-  1. $\int_{\mangl{0}}^{1}\ln t \dd t$ est une intégrale convergente
+  1. $\displaystyle\int_{\mangl{0}}^{1}\ln t \dd t$ est une intégrale convergente
   2. Pour $\alpha \in \R$, on a
      $$
        \int_{1}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}} \text{ convergente} \iff \alpha > 1
@@ -144,8 +144,8 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
          \int_{1}^{x}t^{-\alpha}\dd t = \left[\frac{t^{-\alpha+1}}{-\alpha+1}\right]_{1}^{x} = \frac{x^{1-\alpha}-1}{1-\alpha} \arrowlim{x\to+\infty}\begin{cases}+\infty & \text{si }1-\alpha > 0\\ \frac{1}{\alpha-1} & \text{si }1-\alpha < 0\end{cases}
        $$
      donc $\int_{1}^{+\infty}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $1-\alpha < 0$, i.e. $\alpha > 1$, et dans ce cas, l’intégrale vaut $\frac{1}{\alpha-1}$.
-     ==FIG 1B==
-     $\applic{\oc{0,1}}{\R}{t}{\frac{1}{t^{\alpha}}}$ est continue sur $\oc{0,1}$.
+
+     La fonction $\applic{\oc{0,1}}{\R}{t}{\frac{1}{t^{\alpha}}}$ est continue sur $\oc{0,1}$.
      - si $\alpha = 1$, soit $\varepsilon \in \oc{0,1}$.
        $$
          \int_{\varepsilon}^{1}\frac{\dd t}{t} = -\ln \varepsilon \arrowlim{\varepsilon \to 0^{+}} +\infty
@@ -155,7 +155,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
          \int_{\varepsilon}^{1}t^{-\alpha}\dd t = \left[\frac{t^{-\alpha+1}}{-\alpha + 1}\right]_{\varepsilon}^{1} = \frac{1-\varepsilon^{1-\alpha}}{1-\alpha}\arrowlim{\varepsilon\to 0^{+}} \begin{cases}\frac{1}{1-\alpha} & \text{si }1-\alpha > 0\\ +\infty & \text{si }1-\alpha < 0\end{cases}
        $$
      donc $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{\alpha}}\dd t$ converge si et seulement si $1-\alpha > 0$.
-  3. $\applic{\R_{+}}{\R}{t}{e^{-\alpha t}}$ est continue sur $\R_{+}$.
+  3. La fonction $\applic{\R_{+}}{\R}{t}{e^{-\alpha t}}$ est continue sur $\R_{+}$.
      - si $\alpha = 0$, soit $x \in \R_{+}$.
        $$
          \int_{0}^{x}1 \dd t = x \arrowlim{x\to+\infty}+\infty
@@ -200,7 +200,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 %
 
 %eg
-  Soit $f: \co{a,+ifff} \longrightarrow  \K$ continue par morceaux avec $\int_{a}^{+\infty}f$ convergente. Si $f$ possède une limite $\ell \in \K$ en $+\infty$, alors $\ell = 0$.
+  Soit $f: \co{a,+\infty} \longrightarrow  \K$ continue par morceaux avec $\int_{a}^{+\infty}f$ convergente. Si $f$ possède une limite $\ell \in \K$ en $+\infty$, alors $\ell = 0$.
 
   ~~~
 
@@ -232,7 +232,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
   Soient $-\infty \leq b' < a < b \leq +\infty$.
   1. Soit $f: \co{a,b} \longrightarrow \K$ continue par morceaux. Soient $c \in \oo{a,b}$ et $\lambda \in \K^{*}$.
      $$
-       \int_{a}^{\mangl{b}}b \text{ et } \int_{a}^{\mangl{b}}f \text{ ont la même nature}
+       \int_{a}^{\mangl{b}}f \text{ et } \int_{c}^{\mangl{b}}f \text{ ont la même nature}
      $$
      et
      $$
@@ -242,7 +242,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
      $$
        \int_{a}^{\mangl{b}}f = \int_{a}^{c}f + \int_{c}^{\mangl{b}}f \quad\text{et}\quad \int_{a}^{\mangl{b}}\lambda f = \lambda \int_{a}^{\mangl{b}}f
      $$
-  2. Résultats analogues pour $g: \oc{b'\alpha} \longrightarrow \K$ continue par morceaux et $c \in \oo{b'\alpha}$ et $\lambda \in \K^{*}$ :
+  2. Résultats analogues pour $g: \oc{b', a} \longrightarrow \K$ continue par morceaux et $c \in \oo{b'\alpha}$ et $\lambda \in \K^{*}$ :
      $$
        \int_{\mangl{b'}}^{a}f, \: \int_{\mangl{b'}}^{c}f \text{ et } \int_{\mangl{b'}}^{a}\lambda f
      $$
@@ -266,7 +266,11 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 
 %eg
   Considérons $f_{\alpha}: \applic{\R_{+}}{\R}{t}{\min \{1,\frac{1}{t^{\alpha}}\}}$. Étudions la nature de $\int_{\R_{+}} f_{\alpha}$.
-  ==FIG 2B==
+
+  %fig Allure de $f^{\alpha}$ en fonction de $\alpha$
+    @[./figures/allure_f_alpha_optimized.svg]
+  %
+
   $f_{\alpha} \in \Cont(\R_{+})$ et
   $$
     \int_{0}^{+\infty}f_{\alpha} \text{ convergente} \iff  \frac{1}{+\infty}f_{\alpha}\text{ convergente} \iff  \frac{1}{+\infty}\frac{\dd t}{t^{\alpha}}\text{ convergente} \iff  \alpha > 1
@@ -282,11 +286,11 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 %
 
 %prop
-  Soient $f$ et $g$ deux fonctions de $\co{a,b}$ dans $\K$ avec $-\infty < 0 < b < +\infty$.
-  Si $(f \times g)$ admet une limite finie en $b^{-}$, alors $\int_{a}^{\mangl{b}}fg'$ et $\int_{a}^{\mangl{b}}f^{g}$ ont la même nature, et((==À ne jamais écrire directement. Voir ci-dessous.))
+  Soient $f$ et $g$ deux fonctions de $\co{a,b}$ dans $\K$ avec $-\infty < a < b < +\infty$.
+  Si $(f \times g)$ admet une limite finie en $b^{-}$, alors $\int_{a}^{\mangl{b}}fg'$ et $\int_{a}^{\mangl{b}}f'g$ ont la même nature, et((++À ne jamais écrire directement++. Voir ci-dessous.))
   $$
-    \int_{a}^{\mangl{b}fg'} = \underbrace{\lim_{b^{-}}(fg) - (fg)(a)}_{= « [fg]_{a}^{\mangl{\tiny b}} »} - \int_{a}^{\mangl{b}}f^{g}
-  $$x
+    \int_{a}^{\mangl{b}}fg' = \underbrace{\lim_{b^{-}}(fg) - (fg)(a)}_{= « [fg]_{a}^{\mangl{\tiny b}} »} - \int_{a}^{\mangl{b}}f^{g}
+  $$
   On écrit l’intégration par partie pour $\int_{a}^{x}fg'$ puis on fait tendre si possible $x$ vers $b^{-}$.
 %
 
@@ -343,7 +347,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 %
 
 %eg
-  1. Étudions la nature de $\int_{\mangl{0}}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$.
+  1. Étudions la nature de $\displaystyle\int_{\mangl{0}}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$.
 
      ~~~
 
@@ -351,16 +355,20 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
      - $\int_{1}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $\alpha > 1$
      - $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{\alpha}}$ converge si et seulement si $\alpha < 1$
      donc $\int_{\mangl{0}}^{\mangl{+\infty}}\frac{\dd t}{t^{\alpha}}$ est divergente.
-  2. Étudions la limite de $\int_{\R}\sin$.
+  2. Étudions la limite de $\displaystyle\int_{\R}\sin$.
 
      ~~~
 
      $\int_{0}^{x}\sin t \dd t = [-\cos t]_{0}^{x} = 1-\cos x$ n’a pas de limite en $+\infty$ donc $\int_{0}^{\mangl{+\infty}}\sin$ est divergente donc $\int_{\R}\sin$ est divergente.
 
      %callout Attention !
-       $\int_{-x}^{x}\sin t \dd t = 0 \arrowlim{x\to+\infty}0$.
+       $$
+         \int_{-x}^{x}\sin t \dd t = 0 \arrowlim{x\to+\infty}0
+       $$
+     %
 
-       %offprog
+     %offprog
+       %def Reformuation de la définition précédente
          On a pour $f: \oo{a,b} \longrightarrow \K$ continue par morceaux
          $$
            \int_{\oo{a,b}}f \text{ convergente} \iff \begin{cases}\forall x \in \oo{a,b}, \int_{a}^{\mangl{b}}f \text{ convergente}\\ \lim_{x\to a}\int_{x}^{\mangl{b}}f \in \K\end{cases}
@@ -369,36 +377,36 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
          $$
            \int_{\mangl{a}}^{\mangl{b}}f = \lim_{x\to a}\int_{x}^{\mangl{b}} = \lim_{x\to a}\left[\lim_{y\to b} \int_{x}^{y}f\right]
          $$
+       %
 
-         %proof
-           - Supposons $\int_{\oo{a,b}}f$ convergente. On a pour tout $x \in \oo{a,b}$ la convergence de $\int_{x}^{\mangl{b}}f$. Soit $x \in \oo{a,b}$ et $c \in \oo{a,c}$.
-             $$
-               \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f \arrowlim{x\to a} \int_{\oc{a,c}}f + \int_{c}^{\mangl{b}}f \in \K
-             $$c
-           - Supposons $\int_{a}^{\mangl{b}}f$ convergente pour tout $x \in \oo{a,b}$, et $\lim_{x\to a^{+}}\int_{a}^{\mangl{b}}f \in \K$. Alors, pour tout $c \in \oo{a,b}$, $\int_{c}^{\mangl{b}}f$ converge. Soit $x \in \oo{a,b}$.
-             $$
-               \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f
-             $$
-             d’où
-             $$
-               \int_{x}^{c}f = \int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \arrowlim{x\to a^{+}} \lim_{x\to a^{+}}\int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \in \K
-             $$
-             donc $\int_{\mangl{a}}^{c}f$ converge, donc $\int_{\oo{a,b}}f$ converge.
-           - En cas de convergence, on a
-             $$
-               \int_{\mangl{a}}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f\right) + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f + \int_{c}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\int_{x}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\lim_{y\to b}\int_{x}^{y}f\right)
-             $$
-         %
+       %proof
+         - Supposons $\int_{\oo{a,b}}f$ convergente. On a pour tout $x \in \oo{a,b}$ la convergence de $\int_{x}^{\mangl{b}}f$. Soit $x \in \oo{a,b}$ et $c \in \oo{a,c}$.
+           $$
+             \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f \arrowlim{x\to a} \int_{\oc{a,c}}f + \int_{c}^{\mangl{b}}f \in \K
+           $$c
+         - Supposons $\int_{a}^{\mangl{b}}f$ convergente pour tout $x \in \oo{a,b}$, et $\lim_{x\to a^{+}}\int_{a}^{\mangl{b}}f \in \K$. Alors, pour tout $c \in \oo{a,b}$, $\int_{c}^{\mangl{b}}f$ converge. Soit $x \in \oo{a,b}$.
+           $$
+             \int_{x}^{\mangl{b}}f = \int_{x}^{c}f + \int_{c}^{\mangl{b}}f
+           $$
+           d’où
+           $$
+             \int_{x}^{c}f = \int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \arrowlim{x\to a^{+}} \lim_{x\to a^{+}}\int_{x}^{\mangl{b}}f - \int_{c}^{\mangl{b}}f \in \K
+           $$
+           donc $\int_{\mangl{a}}^{c}f$ converge, donc $\int_{\oo{a,b}}f$ converge.
+         - En cas de convergence, on a
+           $$
+             \int_{\mangl{a}}^{\mangl{b}}f = \int_{\mangl{a}}^{c}f + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f\right) + \int_{c}^{\mangl{b}}f = \lim_{x\to a}\left(\int_{x}^{c}f + \int_{c}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\int_{x}^{\mangl{b}}f\right) = \lim_{x\to a}\left(\lim_{y\to b}\int_{x}^{y}f\right)
+           $$
        %
      %
 %
 
 %eg
-  Nature et calcul de $\int_{0}^{1}\frac{\ln(1-x^{2})}{x^{2}}\dd x$.
+  Nature et calcul de $\displaystyle\int_{0}^{1}\frac{\ln(1-x^{2})}{x^{2}}\dd x$.
 
   ~~~
 
-  La fonction $f: \applic{\oo{0,1}}{\R}{x}{\frac{\le(1-x^{2})}{x^{2}}}$ est continue sur $\oo{0,1}$. En effet,
+  La fonction $f: \applic{\oo{0,1}}{\R}{x}{\frac{\ln(1-x^{2})}{x^{2}}}$ est continue sur $\oo{0,1}$. En effet,
   $$
     f(x) \usim{x\to 0^{+}} \frac{-x^{2}}{x^{2}} = -1
   $$
@@ -450,7 +458,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 %
 
 %eg
-  Nature de $\int_{-\infty}^{+\infty}\frac{\dd x}{1+x^{2}}$.
+  Nature de $\displaystyle\int_{-\infty}^{+\infty}\frac{\dd x}{1+x^{2}}$.
 
   ~~~
 
@@ -475,13 +483,13 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 
 %prop
   Soit $I$ un intervalle de $\R$ de longueur non nulle. Soient $f$ et $g$ deux fonctions continues par morceaux sur $I$.
-  1. Si $\int_{I}f$ converge, alors $\int_{I}\bar{f}$ converge et $\int_{I}\bar{f} = \bar{\int_{I}f}$
-  2. Si $\int_{I}f$ et $\int_{I}g$ convergent, alors pour uot $(\lambda, \mu)\in \K^{2}$, $\int_{I}\lambda f + \mu g$ converge et
+  1. Si $\displaystyle\int_{I}f$ converge, alors $\displaystyle\int_{I}\bar{f}$ converge et $\displaystyle\int_{I}\bar{f} = \bar{\int_{I}f}$
+  2. Si $\displaystyle\int_{I}f$ et $\displaystyle\int_{I}g$ convergent, alors pour tous $(\lambda, \mu)\in \K^{2}$, $\displaystyle\int_{I}\lambda f + \mu g$ converge et
      $$
        \int_{I} \lambda f + \mu g = \lambda \int_{I}f + \mu \int_{I} g
      $$
-  3. Si $\int_{I}f$ et $\int_{I}g$ sont de natures différentes, alors $\int_{I}(f+g)$ diverge.
-  4. Si $\K = \R$, et si $f \leq  g$ sur $I$ et $\int_{I}f$ et $\int_{I}g$ convergent, alors
+  3. Si $\displaystyle\int_{I}f$ et $\displaystyle\int_{I}g$ sont de natures différentes, alors $\displaystyle\int_{I}(f+g)$ diverge.
+  4. Si $\K = \R$, et si $f \leq  g$ sur $I$ et $\displaystyle\int_{I}f$ et $\displaystyle\int_{I}g$ convergent, alors
      $$
        \int_{I}f \leq \int_{I} g
      $$
@@ -536,7 +544,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 
 %thm Généralisation du théorème fondamental de l’analyse
   Considérons les « réels » $-\infty \leq  b' < a < b \leq +\infty$.
-  1. Soit $f: \oc{a,b} \longrightarrow  \K$ continue. Alors
+  1. Soit $f: \co{a,b} \longrightarrow  \K$ continue. Alors
      - La fonction
        $$
          F:x \longmapsto \int_{a}^{x}f(t)\dd t
@@ -544,7 +552,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        est de classe $\Cont^{1}$ sur $\co{a,b}$ et $F' = f$. $F$ est la primitive de $f$ qui s’annule en $a$.
      - Supposons $\int_{a}^{\mangl b}f$ convergente.
        $$
-         Q: x \longmapsto \int_{x}^{\mangl{b}}f
+         G: x \longmapsto \int_{x}^{\mangl{b}}f
        $$
        est de classe $\Cont^{1}$ sur $\co{a,b}$ et $G'=-f$. $G$ est la primitive de $-f$ de limite nulle en $b^{-}$.
   2. Soit $g: \oc{b', a} \longrightarrow  \K$ **continue**. Alors
@@ -555,7 +563,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        est de classe $\Cont^{1}$ sur $\oc{b', a}$ et $F' = -g(x)$.
      - Supposons l’intégrale $\int_{\mangl{b'}}^{a}g$ convergente. Alors la fonction
        $$
-         G: x \longmapsto \int_{\mangl{b'}}^{x}g(t)\dd t
+         G': x \longmapsto \int_{\mangl{b'}}^{x}g(t)\dd t
        $$
        est de classe $\Cont^{1}$ sur $\oc{b', a}$ et $G' = g$. $G$ est la primitive de $g$ sur $\oc{b', a}$ de limite nulle en $(b')^{+}$.
 %
@@ -632,7 +640,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
   %offprog
     ++Cas où $f: \oo{\alpha, \beta} \longrightarrow \K$ est continue par morceaux.++ Soient $\alpha < x < y < \beta$. $f_{|\cc{x,y}}\in \Cont_{m}(\cc{x,y},\K)$. Soit $(a_{0}, a_{1}, \ldots, a_{n})$ une subdivision de $\cc{x,y}$ adaptée à $f$. Pour $k \in \icc{0,n}$, $f_{k}$ est le prolongement continue de $f_{|\oo{a_{k}, a_{k+1}}}$.
     $$
-      \tag{(*)} \int_{x}^{y}f = \sum_{k=0}^{n-1}\int_{a_{k}}^{a_{k+1}}f = \sum_{k=0}^{n-1}\int_{\cc{a_{k}, a_{k+1}}}f_{k} = \sum_{k=0}^{n-1}\int_{\varphi^{-1}(a_{k})}^{\varphi^{-1}(a_{k+1})}f_{k}(\varphi(t))\varphi'(t)\dd t
+      \tag{$\star$} \int_{x}^{y}f = \sum_{k=0}^{n-1}\int_{a_{k}}^{a_{k+1}}f = \sum_{k=0}^{n-1}\int_{\cc{a_{k}, a_{k+1}}}f_{k} = \sum_{k=0}^{n-1}\int_{\varphi^{-1}(a_{k})}^{\varphi^{-1}(a_{k+1})}f_{k}(\varphi(t))\varphi'(t)\dd t
     $$
     - Si $\varphi$ est strictement croissante, alors $f\circ \varphi$ est continue par morceaux sur l’ouvert $\oo{a,b}$ et $(\varphi^{-1}(a_{0}), \ldots, \varphi^{-1}(a_{n}))$ est une subdivision adaptée à $f\circ \varphi$ sur $\cc{\varphi^{-1}(x), \varphi^{-1}(y)}$ et
     $$
@@ -640,7 +648,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     $$
     se prolonge par continuité en $f_{k}\circ \varphi$. Ainsi,
     $$
-      (*) \implies \int_{x}^{y}f = \int_{\varphi^{-1}(x)}^{\varphi^{-1}(y)}(f\circ \varphi)\varphi'
+      (\star) \implies \int_{x}^{y}f = \int_{\varphi^{-1}(x)}^{\varphi^{-1}(y)}(f\circ \varphi)\varphi'
     $$
   %
 %
@@ -684,7 +692,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
   Soit $-\infty \leq  b' < a < b \leq +\infty$.
   1. Soit $f: \co{a,b} \longrightarrow  \R_{+}$ continue par morceaux positive.
      $$
-       \int_{a}^{\mangl{b}f}
+       \int_{a}^{\mangl{b}}f
      $$
      converge si et seulement si $x \longmapsto  \int_{a}^{x}f$ est majorée sur $\co{a,b}$.
   2. Soit $g: \oc{b', a}\longrightarrow \R_{+}$ continue par morceaux positive. Alors $\int_{\mangl{b'}}^{a}g$ converge si et seulement si $x \longmapsto \int_{x}^{a}g$ est majorée sur $\oc{b', a}$.
@@ -696,7 +704,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        a \leq  x \leq  y < b \implies  F(y) = F(a) + \int_{x}^{y}f \geq F(x)
      $$
      Donc $F$ possède une limite dans $\R_{+}$ si et seulement si $F$ est majorée.
-  2. $G: \longmapsto  \int_{x}^{a}g$ est décroissante, en effet
+  2. $G: x \longmapsto  \int_{x}^{a}g$ est décroissante, en effet
      $$
        b' < x < y \leq a \implies G(x) = \int_{x}^{y}g + \int_{y}^{a}g = G(y) + \int_{y}^{a}g \geq G(y)
      $$
@@ -726,7 +734,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        \int_{0}^{+\infty}f = \frac{\pi^{3}}{12}
      $$
      et ++$f$ n’a pas de limite en $+\infty$++.
-  2. Si $f: I \longrightarrow  \R_{+}$ est **continue par morceaux et majorée** (donc bornée car positive) et si $ei$ est un **intervalle borné**, alors $\int_{I}f$ est convergente.
+  2. Si $f: I \longrightarrow  \R_{+}$ est **continue par morceaux et majorée** (donc bornée car positive) et si $I$ est un **intervalle borné**, alors $\int_{I}f$ est convergente.
      %proof
        Soit $c \in I$.
        $$
@@ -755,7 +763,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
        \int_{I}f \text{ divergente} \implies \int_{I}g \text{ divergente}
      $$
   2. Si $f\usim{b-}b$ et $f$ et $g$ sont positives au voisinage de $b^{-}$, alors $\int_{I}f$ et $\int_{I}g$ ont la même nature.
-  3. Si $h: ei \longrightarrow  \R_{+}$ est continue par morceaux, positive et si $\int_{I}h$ est convergente, alors $\int_{I} h \geq 0$.
+  3. Si $h: I \longrightarrow  \R_{+}$ est continue par morceaux, positive et si $\int_{I}h$ est convergente, alors $\int_{I} h \geq 0$.
      De plus, si $h$ est continue, alors $\int_{I}h = 0 \implies  h = \tilde{0}$.
 %
 
@@ -850,4 +858,258 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
 %proof
   1. - $f(t) \ueq{+\infty} o \left( \frac{1}{t^{\alpha}}\right)$ et $f > 0, \frac{1}{t^{\alpha}}>0$ et $\alpha > 1$ donc $\int_{1}^{+\infty}\frac{\dd t}{t^{\alpha}}$ converge, donc $\int_{a}^{+\infty}f$ converge.
      - $\exists k > 0: \forall t \geq c, t^{\alpha}f(t) \geq K$, i.e. $f(t) \geq \frac{k}{t^{\alpha}}$. Donc $\frac{1}{t^{\alpha}} = \ueq{+\infty}O(f)$. Or $\alpha < 1$ donc $\int_{1}^{+\infty}\frac{\dd t}{t^{\alpha}}$ diverge, donc $\int_{1}^{+\infty}f$ diverge.
+%
+
+%eg
+  - $\int_{0}^{+\infty}e^{-t^{2}}\dd t$
+    ~
+    La fonction $t \longmapsto e^{-t^{2}}$ est continue et positive sur $\R_{+}$, et $t^{2}e^{-t^{2}} \arrowlim{t\to+\infty}0$ donc
+    ~ $e^{-t^{2}} \ueq{+\infty}o \left(\frac{1}{t^{2}}\right)$  ~ $\int_{1}^{\mangl{+\infty}}\frac{1}{t^{2}}\dd t$ converge  ~ $\frac{1}{t^{2}} > 0$  ~ $e^{-t^{2}} > 0$
+    donc $\int_{1}^{+\infty}e^{-t^{2}}\dd t$ converge, donc $\int_{0}^{+\infty}e^{-t^{2}}\dd t$ est convergente et $\int_{0}^{+\infty}e^{-t^{2}}\dd t = \frac{\sqrt{\pi}}{2}$.
+  - $\int_{\mangl{1}}^{\mangl{+\infty}}\frac{\ln x}{x \sqrt{x^{2}-1}}$
+    ~
+    La fonction $f: x \longmapsto \frac{\ln x}{x \sqrt{x^{2}-1}}$ est continue et positive sur $\oo{1,+\infty}$.
+    $$
+      f(x) \usim{x\to 1^{+}} \frac{\ln(x-1+1)}{1 \sqrt{2} \sqrt{x-1}}\usim{x\to 1^{+}}\frac{x-1}{\sqrt{2} \sqrt{x-1}} = \frac{\sqrt{x-1}}{\sqrt{2}} \arrowlim{x\to 1}0
+    $$
+    donc $f$ est prolongeable par continuité sur $\co{1,+\infty}$.
+    ~ $f(x) \usim{+\infty}\frac{\ln x}{x^{2}}$  ~ $x^{\frac{3}{2}}f(x) \usim{+\infty}\frac{\ln x}{\sqrt{x}} \arrowlim{x\to+\infty}0$  ~ $x^{\frac{3}{2}} > 1$ donc $\int_{2}^{+\infty}f(x)\dd x$ converge
+    donc $\int_{1}^{+\infty}\frac{\ln x}{x \sqrt{x^{2}-1}}\dd x$ converge.
+  - *Intégrales de Bertrand.* Il y en a deux types:
+    ~ $\displaystyle \int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}}$  ~ $\displaystyle\int_{\mangl{0}}^{e}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$
+    ~
+    On a
+    $\frac{1}{x^{\alpha}(\ln x)^{\beta}}\usim{x\to 1}\frac{1}{\left(\ln(x-1+1)\right)^{\beta}}\usim{x\to 1}\frac{1}{(x-1)^{\beta}}$
+    Le changement de variables $u = \frac{1}{x}$ (donc $\dd x = -\frac{\dd u}{u^{2}}$) permet de montrer que $\int_{x}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}}$ a la même nature que $\int_{\mangl{0}}^{\frac{1}{e}}\frac{\frac{\dd u}{u^{2}}}{u^{-\alpha}\left(\ln \left(\frac{1}{u}\right)\right)^{\beta}} = \int_{\mangl{0}}^{\frac{1}{e}}\frac{\dd u}{u^{2-\alpha}\abs{\ln u}^{\beta}}$. Il suffit donc d’étudier la première intégrale.
+    ~
+    La fonction $f: x \longmapsto  \frac{1}{x^{\alpha}(\ln x)^{\beta}}$ est continue et positive sur $\co{e,+\infty}$.
+    - Si $\alpha=1$, $\int_{e}^{+\infty}\frac{1}{x(\ln x)^{\beta}}$ a la même nature que $\int_{1}^{+\infty}\frac{\dd u}{u^{\beta}}$ (obtenue après le changement de variable $u = \ln x$ ; $\dd u = \frac{\dd x}{x}$), et celle-ci converge si et seulement si $\beta > 1$.
+    - Si $\alpha > 1$, posons $\alpha' = \frac{1+\alpha}{2}$.
+      $$
+        x^{\alpha'}f(x) = \frac{1}{x^{\alpha-\alpha'}(\ln x)^{\beta}} \arrowlim{x\to+\infty}0
+      $$
+      or $\alpha' > 1$ et $f > 0$ donc $\int_{e}^{+\infty}f(x)\dd x$ converge.
+    - Si $\alpha < 1$, posons $\alpha' = \frac{\alpha+1}{2} \in \oo{\alpha,1}$.
+      $$
+        x^{\alpha'}f(x) = \frac{x^{\alpha'-\alpha}}{(\ln x)^{\beta}}\arrowlim{x\to+\infty}+\infty
+      $$
+      or $\alpha' < 1$ et $f > 0$ donc $\int_{e}^{+\infty}f(x)\dd x$ est divergente.
+    Ainsi,
+    $$
+      \boxed{\int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}} \text{ converge} \iff \alpha > 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
+    $$
+    ~
+    $\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$ a la même nature que $\int_{0}^{+\infty}\frac{\dd x}{x^{2-\alpha}(\ln x)^{\beta}}$, donc $\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$ converge si et seulement si
+    $$
+      2-\alpha > 1 \text{ ou } \begin{cases}2-\alpha =1\\\beta > 1\end{cases}
+    $$
+    Ainsi,
+    $$
+      \boxed{\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}} \text{ converge} \iff \alpha < 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
+    $$
+%
+
+%offprog
+  %prop Comparaison série-intégrale
+    Soit $f: \co{n_{0},+\infty} \longrightarrow \R_{+}$ positive, décroissante et continue par morceaux ($n_{0} \in \N$). Alors la série et l’intégrale
+    $$
+      \sum_{n \geq n_{0}}f(n) \quad\text{et}\quad \int_{n_{0}}^{+\infty}f
+    $$
+    ont la même nature. En cas de divergence, on a
+    $$
+      \sum_{k=n_{0}}^{n}f(k) \usim{n\to+\infty} \int_{n_{0}}^{n}f
+    $$
+    et en cas de convergence, on a
+    $$
+      \int_{n+1}^{+\infty}f \leq R_{n} \leq \int_{n}^{+\infty}f
+    $$
+    avec $R_{n} = \sum_{n+1}^{+\infty}f(k)$.
+  %
+%
+
+%proof
+  ==FIG6c==
+  Par décroissance de $f$,
+  $$
+    \forall k \in \ico{n_{0},+\infty}, \forall t \in \cc{k,k+1}, f(k+1) \leq  f(t) \leq f(k)
+  $$
+  d’où
+  $$
+    \forall k \geq n_{0}, f(k+1) < \int_{k}^{k+1}f \leq f(k)
+  $$
+  d’où pour $n \geq n_{0}$,
+  $$
+    \underbrace{\sum_{k=n_{0}}^{n}f(k+1)}_{=S_{n+1}-f(n_{0})} \leq \int_{n_{0}}^{n+1}f \leq \underbrace{\sum_{k=n_{0}}^{n}f(k)}_{=S_{n}}
+  $$
+  Comme $f \geq 0$, l’intégrale $\int_{n_{0}}^{+\infty}f$ converge si et seulement si la fonction $x \longmapsto \int_{n_{0}}^{x}f$ est majorée sur $\co{n_{0},+\infty}$, donc si et seulement si la limite de $x \longmapsto \int_{n_{0}}^{x}$ est finie, donc si et seulement si la limite de la suite $\left(\int_{n_{0}}^{n}f\right)_{n \geq n_{0}}$ est finie, donc si et seulement si cette suite est majorée.
+  Si $\sum_{k \geq n_{0}}f(k)$ est convergente, alors $(S_{n})_{n \geq n_{0}}$ est majorée, d’où
+  $$
+    \forall n \geq n_{0}, \int_{n_{0}}^{n+1}f \leq \sum_{k=n_{0}}^{+\infty}f(k)
+  $$
+  donc $\int_{n_{0}}^{+\infty} f$ converge.
+  Comme pour $n \geq n_{0}$,
+  $$
+    S_{n+1} \leq f(n_{0}) + \int_{n_{0}}^{n+1}f
+  $$
+  Si la suite $\big(\int_{n_{0}}^{n_{0}}f\big)$ est majorée, alors la suite $(S_{n})_{n \geq n_{0}}$ l’est également, donc la série $\sum_{k \geq n_{0}}f(k)$ converge.
+
+  - Traitons le cas de la divergence :
+    $$
+      \forall n \geq n_{0}, S_{n+1}-f(n_{0}) \leq \int_{n_{0}}^{n+1}f \leq S_{n+1}-f(n+1)
+    $$
+    or $S_{n+1} \arrowlim{n\to+\infty}+\infty$ et $f(n+1) \arrowlim{n\to+\infty}\ell \in \R_{+}$ donc
+    $$
+      S_{n+1} - f(n+1) \usim{+\infty} S_{n+1} \usim{n\to+\infty}S_{n+1} - f(n_{0})
+    $$
+    donc $\int_{n_{0}}^{n+1}f \usim{n\to+inff} S_{n+1}$.
+  - Traitons le cas de la convergence :
+    $$
+      \forall n \geq n_{0}, \sum_{k=n+1}^{+\infty}f(k) \leq \int_{n}^{+\infty}f \leq \sum_{k=n}^{+\infty}f(k)
+    $$
+    donc $R_{n} \leq \int_{n}^{+\infty}f$ d’où
+    $$
+      \int_{n+1}^{+\infty}f \leq \sum_{k=n+1}^{+\infty}f(k) = R_{n}
+    $$
+%
+
+%callout Attention
+  Soit $q \in \oo{0,1}$. $\sum_{n \geq 0}q^{n}$ est convergente. $f: x \longmapsto  q^{x} = e^{x\ln q}$ où $\ln q < 0$ est décroissante sur $\R_{+}$, donc $\int_{0}^{+\infty}q^{x}\dd x = \int_{0}^{+\infty}e^{x\ln q}$ est convergente.
+  $$
+    R_{n} = \sum_{k=n+1}^{+\infty}q^{k} = \frac{q^{n+1}}{1-q}
+  $$
+  et
+  $$
+    \int_{n}^{+\infty}q^{x}\dd x = \left[\frac{e^{x\ln q}}{\ln q}\right]_{n}^{+\infty} = -\frac{q^{n}}{\ln q}
+  $$
+  Par convexité de la fonction $\ln$,
+  $$
+    \forall x > 0, \begin{cases}\ln x \leq x-1 \\ \ln x = x-1 \iff x=1\end{cases}
+  $$
+  donc pour $0 < q < 1$, $\frac{\ln(\frac{1}{q})}{\frac{1}{q} - 1} < 1$
+%
+
+%offprog
+  %eg
+    - Étudions la série $\sum_{k \geq 2}\frac{1}{k\ln k}$: la fonction $x \longmapsto  \frac{1}{x\ln x}$ est positive, continue et décroissante sur $\co{2,+\infty}$, et les fonction $x \longmapsto  x$ et $x \longmapsto  \ln x$ sont positives sur ce même intervalle, donc la série $\sum_{k \geq 2}\frac{1}{k\ln k}$ a la même nature que l’intégrale $\int_{2}^{+\infty}\frac{\dd x}{x\ln x} = \int_{2}^{+\infty}\frac{\dd (\ln x)}{\ln x}$, et
+      $$
+        \int_{2}^{X}\frac{\dd x}{x\ln x} = \ln(\ln X) - \ln(\ln 2) \arrowlim{X\to+\infty}+\infty
+      $$
+      donc il y a divergence et on a
+      $$
+        \sum_{k=2}^{n}\frac{1}{k\ln k}\usim{n\to+\infty}\int_{2}^{n}\frac{\dd x}{x\ln x} = \ln(\ln x) - \ln(\ln 2) \usim{+\infty} \ln(\ln n)
+      $$
+    - Étudions la série $\sum_{k \geq 3}\frac{1}{k\ln(k)\ln(\ln k)}$: les fonctions $x \longmapsto x$, $x \longmapsto \ln x$ et $x \longmapsto  \ln(\ln x)$ sont croissantes et positives sur $\co{3,+\infty}$ donc la fonctoin $f: x \longmapsto  \frac{1}{x\ln (x) \ln(\ln x)}$ est décroissante et positve sur ce même intervalle. La série étudiée à donc la même nature que $\int_{3}^{+\infty}\frac{\dd x}{x\ln (x)\ln(\ln x)}$.
+      $$
+        \frac{\dd }{\dd x}\left(\ln(\ln(\ln x))\right) = \frac{\frac{\dd }{\dd x}\left(\ln(\ln x)\right)}{\ln(\ln x)} = \frac{1}{x\ln (x)\ln(\ln x)}
+      $$
+      Pour $X > 0$, on a
+      $$
+        \int_{3}^{X}\frac{\dd x}{x\ln (x)\ln(\ln x)} = \ln(\ln(\ln X)) - \ln(\ln(\ln 3)) \arrowlim{X\to+\infty}+\infty
+      $$
+      Il y a donc divergence, et
+      $$
+        \sum_{k \geq 3}\frac{1}{k\ln(k)\ln(\ln k)} \usim{n\to+\infty} \ln(\ln(\ln n))
+      $$
+    - Trouvons un équivalent de $\sum_{k=}^{n}\frac{1}{k^{\alpha}}$ avec $0 \leq  \alpha < 1$.
+      ~
+      La fonction $x \longmapsto  \frac{1}{x^{\alpha}}$ est positive et décroissante sur $\co{1,+\infty}$ et $\int_{1}^{+\infty}\frac{\dd x}{x^{\alpha}}$ diverge, donc
+      $$
+        \sum_{k=1}^{n}\frac{1}{k^{\alpha}} \usim{n\to+\infty}\int_{1}^{n}x^{-\alpha}\dd x = \left[\frac{x^{-\alpha+1}}{-\alpha+1}\right]_{1}^{n} = \sum_{n^{1-\alpha}-1}^{1-\alpha} \sum \frac{n^{1-\alpha}}{1-\alpha}
+      $$
+    - Si $\alpha > 1$,
+      $$
+        \int_{n+1}^{+\infty}x^{\alpha}\dd x \leq \sum_{k=n}^{+\infty}\frac{1}{k^{\alpha}} \leq \int_{n}^{+\infty}x^{-\alpha}\dd x
+      $$
+      et
+      $$
+        \frac{x^{1-\alpha}}{\alpha-1} \usim{n\to+\infty} \frac{(n+1)^{1-\alpha}-0}{\alpha-1} \leq \sum_{k=n}^{+\infty}\frac{1}{k^{\alpha}} \leq \frac{n^{1-\alpha} - 0}{\alpha-1}
+      $$
+      donc
+      $$
+        \sum_{k=n}^{+\infty}\frac{1}{k^{\alpha}} \sim \frac{1}{(\alpha-1)n^{\alpha-1}}
+      $$
+  %
+%
+
+## Intégrales absolument convergentes
+
+Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
+
+%def Fonctions intégrable
+  Soit $f: I \longrightarrow \K$ une fonction continue par morceaux. Si $\int_{I}\abs{f}$ converge, alors on dit :
+  - que l’intégrale $\int_{I}f$ est *absolument convergente*
+  - que la fonction $f$ est *intégrable sur $I$*, que l’on note $f \in \L^{1}(I,\K)$
+  On a alors
+  $$
+    \L^{1}(I,\K) = \{f \in \Cont_{m}(I,\K) \where \sum_{I}\abs{f} \text{ converge}\}
+  $$
+%
+
+%eg
+  - Considérons la fonction $x \longmapsto  \frac{e^{ix}}{x^{\alpha}}$ avec $\alpha$ un réel. Cette fonction est continue sur $\co{1,+\infty}$, et
+    $$
+      f \in \L^{1}(\co{1,+\infty},\C) \iff \int_{1}^{+\infty}\abs{\frac{e^{ix}}{x^{\alpha}}}\dd x = \int_{1}^{+\infty}\frac{\dd x}{x^{\alpha}} \text{ converge} \iff \alpha > 1
+    $$
+  - $\int_{0}^{+\infty}\frac{\abs{\sin x}}{x}\dd x$.
+    $$
+      \int_{0}^{(n+1)\pi}\frac{\abs{\sin x}x}{\dd x} = \sum_{k=0}^{n}\int_{k \pi}^{(n+1)\pi}\frac{\abs{\sin x}}{x}\dd x = \sum_{k=0}^{n}\int_{0}^{\pi}\frac{\sin u}{u+k \pi}\dd u \geq \sum_{k=0}^{n}\frac{1}{(k+1)\pi}\int_{0}^{\pi}\sin u \dd u \arrowlim{n\to+\infty}+\infty
+    $$
+    donc $\int_{0}^{+\infty}\frac{\abs{\sin x}}{x} \L^{1}(\oo{0,+\infty})$.
+%
+
+%prop
+  Soit $f: I \longrightarrow  \K$ une fonction continue par morceaux sur un intervalle $I$. Si $\int_{I}\abs{f}$ est convergente, alors $\int_{I}f$ est convergente et
+  $$
+    \abs{\int_{I}f} \leq \int_{I}\abs{f}
+  $$
+%
+
+%proof
+  - Supposons $\K = \R$. Pour tout réel $x$, on pose $f^{+}(x) = \max\{f(x),0\}\geq 0$ et $f^{-}(x) = \max\{-f(x),0\} \geq 0$. Ce sont deux fonctions continues par morceaux sur $I$.
+    ==FIG6d==
+    On a $0 \leq  f+ \leq  \abs{f}$ et $0 \leq  f^{-} \leq \abs{f}$, or $\int_{I}\abs{f}$ est convergente, donc $\int_{I}f^{+}$ et $\int_{I}f^{-}$ convergent également. Ainsi,
+    $$
+      \int_{I}f = \int_{I}(f^{+}-f^{-})
+    $$
+    converge.
+  - Supposons $\K = \C$. On a $f = \Re f + i \cdot \Im f$ et on a $\abs{\Re f} \leq  \abs{f}$((le premier $\abs{\cdot}$ est une valeur absolue et le second un module)) et $\abs{\Im f} \leq  \abs{f}$, donc $\int_{I} \abs{\Re f}$ et $\int_{I} \abs{\Im f}$ convergent.
+    D’après le premier cas, $\int_{I}\Re f$ et $\int_{I}\Im f$ sont convergentes, d’où
+    $$
+      \int_{I}f = \int_{I}(\Re f + i \cdot  \Im f)
+    $$
+    converge.
+%
+
+%eg
+  - Considérons l’intégrale $\sum_{0}^{+\infty}\sin t e^{-t}$. La fonction $t \longmapsto \sin t e^{-t}$ est continue sur $\R$ et de signe variable. On a
+    $$
+      \forall t \in \R_{+}, \abs{\sin t e^{-t}} \leq e^{-t}
+    $$
+    et $\int_{0}^{+\infty}e^{-t}\dd t$ est convergente donc $\int_{0}^{+\infty}\abs{\sin t e^{-t}}\dd t$ est convergente, d’où $\int_{0}^{+\infty}\sin t e^{-t}$ converge.
+%
+
+%prop
+  Soient $f$ et $g$ deux fonctions de l’intervalle $\co{a,b}$ ($a < b \leq +\infty$) dans $\K$ continues par morceaux.
+  - Si $f(x) \ueq{x\to b^{-}}O(g(x))$, alors
+    $$
+      g \in \L^{1}(\co{a,b})  \implies f \in \L^{1}(\co{a,b})
+    $$
+    en en contraposant,
+    $$
+      f \notin \L^{1}(\co{a,b}) \implies  g\notin\L^{1}(\co{a,b})
+    $$
+  - Si $f(x) \usim{x\to b^{-}}g(x)$, alors
+    $$
+      f \in \L^{1}(\co{a,b}) \iff g \in \L^{1}(\co{a,b})
+    $$
+%
+
+%proof
+  $$
+    f(x) \ueq{x \to b^{-}}O(g(x)) \iff  \abs{f(x)} \ueq{x \to b^{-}}O(\abs{g(x)})
+  $$
+  et
+  $$
+    f(x) \usim{x\to b^{-}}g(x) \implies  \underbrace{\abs{f(x)}}_{\geq 0} \usim{x\to b^{-}}\underbrace{\abs{g(x)}}_{\geq 0}
+  $$
 %
