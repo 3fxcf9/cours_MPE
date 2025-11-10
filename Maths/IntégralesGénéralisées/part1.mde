@@ -954,6 +954,24 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     S_{n+1} \leq f(n_{0}) + \int_{n_{0}}^{n+1}f
   $$
   Si la suite $\big(\int_{n_{0}}^{n_{0}}f\big)$ est majorée, alors la suite $(S_{n})_{n \geq n_{0}}$ l’est également, donc la série $\sum_{k \geq n_{0}}f(k)$ converge.
+
+  - Traitons le cas de la divergence :
+    $$
+      \forall n \geq n_{0}, S_{n+1}-f(n_{0}) \leq \int_{n_{0}}^{n+1}f \leq S_{n+1}-f(n+1)
+    $$
+    or $S_{n+1} \arrowlim{n\to+\infty}+\infty$ et $f(n+1) \arrowlim{n\to+\infty}\ell \in \R_{+}$ donc
+    $$
+      S_{n+1} - f(n+1) \usim{+\infty} S_{n+1} \usim{n\to+\infty}S_{n+1} - f(n_{0})
+    $$
+    donc $\int_{n_{0}}^{n+1}f \usim{n\to+inff} S_{n+1}$.
+  - Traitons le cas de la convergence :
+    $$
+      \forall n \geq n_{0}, \sum_{k=n+1}^{+\infty}f(k) \leq \int_{n}^{+\infty}f \leq \sum_{k=n}^{+\infty}f(k)
+    $$
+    donc $R_{n} \leq \int_{n}^{+\infty}f$ d’où
+    $$
+      \int_{n+1}^{+\infty}f \leq \sum_{k=n+1}^{+\infty}f(k) = R_{n}
+    $$
 %
 
 %callout Attention
@@ -1096,4 +1114,289 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
   $$
     f(x) \usim{x\to b^{-}}g(x) \implies  \underbrace{\abs{f(x)}}_{\geq 0} \usim{x\to b^{-}}\underbrace{\abs{g(x)}}_{\geq 0}
   $$
+%
+
+%eg
+  - Pour $\alpha > 1$, on a $\frac{\sin x}{x^{\alpha}} \ueq{+\infty} O \left(\frac{1}{x^{\alpha}}\right)$, or la fonction $x \longmapsto \frac{1}{x^{\alpha}}$ est intégrable sur $\co{1,+\infty}$, d’où $x \longmapsto \frac{\sin x}{x^{\alpha}}$ est intégrable sur le même intervalle. Ainsi, $\int_{1}^{+\infty}\frac{\sin x}{^{x^{\alpha}}}\dd x$ est absolument convergente donc convergente.
+  - Étudions l’existence et la valeur éventuelle de $\displaystyle\int_{-\infty}^{+\infty}\frac{\dd t}{1+(t+i \alpha)^{2}}$ avec $\alpha \in \R$.
+    ~
+    Étudions la fonction $t \longmapsto \frac{1}{1+(t+i \alpha)^{2}}$. Alors
+    $$
+      (t+i \alpha)^{2} = -1 \iff t+i \alpha \in \{i,-i\} \iff \begin{cases}t=0\\\alpha=1\end{cases} \text{ ou }\begin{cases}t=0\\\alpha=-1\end{cases}
+    $$
+    - Si $\alpha \in \R\{1,-1\}$. La fonction $f: \longmapsto \frac{1}{1+(t+i \alpha)^{2}}$ est continue sur $\R$ à valeurs complexes. On a $f(t) \usim{\pm \infty}\frac{1}{t^{2}}$ or $t \longmapsto \frac{1}{t^{2}}\in \L^{1}(\co{1,+\infty})$ et $t \longmapsto \frac{1}{t^{2}} \in \L^{1}(\oc{-\infty,-1})$, donc $f$ est sommable sur $\co{1,+\infty}$ et $\oc{-\infty,-1}$ d’où $f$ est sommable sur $\R$: l’intérale converge.
+
+      Posons $I = \int_{\R} f \in \C$. On a $I = \lim_{X\to+\infty}\int_{-X}^{X}\frac{\dd t}{1+(t+i \alpha)^{2}}$. Soit $X > 0$. Pour $\alpha +1 > 0$ et $\alpha-1 < 0$
+      $$
+        \begin{align*}
+          \int_{-X}^{X}\frac{\dd t}{1+(t+i \alpha)^{2}} &= \int_{-X}^{X}\frac{\dd t}{(t+i \alpha+i)(t+i \alpha-i)}\\
+          &= \frac{1}{2i}\int_{-X}^{X}\left(-\frac{1}{t+i(\alpha+1)}+\frac{1}{t+i(\alpha-1)}\right)\dd t\\
+          &= \frac{1}{2i}\int_{-X}^{X}\frac{t-i(\alpha-1)}{t^{2}+(\alpha-1)^{2}}\dd t - \frac{1}{2i}\int_{-X}^{X}\frac{t-i(\alpha+1)}{t^{2}+(\alpha+1)^{2}}\dd t\\
+          &= \frac{1}{2i} \left[\frac{1}{2}\ln(t^{2}+(\alpha-1)^{2}) - i\arctan \left(\frac{t}{\alpha-1}\right)\right]_{-X}^{X} - \frac{1}{2i} \left[\frac{1}{2}\ln(t^{2}+(\alpha+1)^{2}) - i \arctan \left(\frac{t}{\alpha+1}\right)\right]_{-X}^{X}\\
+          &= \underbrace{\left[\frac{1}{4i}\ln \left(\frac{t^{2}+(\alpha-1)^{2}}{t^{2}+(\alpha+1)^{2}}\right)\right]_{-X}^{X}}_{=0} + \underbrace{\frac{1}{2} \left[\arctan \frac{t}{\alpha+1} - \arctan \frac{t}{\alpha-1}\right]_{-X}^{X}}_{\arrowlim{X\to+\infty} \begin{cases}0 & \text{si } \alpha+1 > 0 \text{ et } \alpha-1 > 0\\ \pi & \text{si} \alpha+1 < 0 \text{ et } \alpha-1 <  0\end{cases}}
+        \end{align*}
+      $$
+      avec le résultat suivant (++à retenir !++) :
+      %callout
+        $$
+          \int \frac{\dd u}{u^{2}+a^{2}} = \frac{1}{a^{2}}\int \frac{\dd u}{\left(\frac{u}{a}\right)^{2}+1} = \frac{1}{a}\int \frac{\dd  \left(\frac{u}{a}\right)}{\left(\frac{u}{a}\right)^{2} + 1} = \frac{1}{a}\arctan \left(\frac{u}{a}\right)
+        $$
+      %
+      Ainsi,
+      $$
+        \int_{\R}f = \begin{cases}0 &\text{si}\abs{\alpha}>1\\ \pi \text{si } \abs{\alpha < 1}\end{cases}
+      $$
+    - Si $\alpha \in \{1,-1\}$, alors $f(-)\usim{\pm \infty}\frac{1}{t^{2}}$ donc $f$ est sommable sur $\co{1,+\infty}$ et $\oc{-\infty,-1}$. De plus,
+      $$
+        f(t) = \frac{1}{1-\alpha^{2} + t^{2} + 2i \alpha t} = \frac{1}{t^{2} + 2i \alpha t}
+      $$
+      d’où $f(t)\usim{0^{+}}\frac{1}{2i \alpha t}$ or $t \longmapsto  \frac{1}{2i \alpha t}$ n’est pas sommable sur $\co{0,1}$ donc $f$ n’est pas sommable sur $\oc{0,1}$ d’où $\int_{\R}\abs{f}$ diverge.
+
+      Soit $\varepsilon \in \co{0,1}$.
+      $$
+        \begin{align*}
+          \int_{ \varepsilon}^{1}f(t)\dd t &= \int_{\varepsilon}^{1}\frac{\dd t}{t(t+2i \alpha)} = \frac{1}{2i \alpha}\int_{\varepsilon}^{1}\left(\frac{1}{t}-\frac{1}{t+2i \alpha}\right)\dd t\\
+          &= \int_{\varepsilon}^{1}f(t)\dd t = \frac{1}{2i \alpha}\left(-\ln \varepsilon - \int_{\varepsilon}^{1}\frac{t-2i \alpha}{t^{2}+4 \alpha^{2}}\dd t\right)\\
+          &= -\frac{1}{2i \alpha}\left(\ln \varepsilon\right) + \left[\frac{1}{2}\ln(t^{2}+4 \alpha^{2}) - \frac{2i \alpha}{2 \alpha}\arctan \frac{t}{2 \alpha}\right]_{\varepsilon}^{1}\\
+          &= -\frac{1}{2i \alpha}\left(\ln \varepsilon + \frac{1}{2}\ln(1+4 \alpha^{2}) - \frac{1}{2}\ln(\varepsilon^{2} + 4 \alpha^{2}) -i\arctan \frac{1}{2 \alpha} + i \arctan \frac{\varepsilon}{2 \alpha}\right)
+        \end{align*}
+      $$
+      donc
+      $$
+        \abs{\int_{\varepsilon}^{1}f(t)\dd t} \arrowlim{\varepsilon \to 0^{+}} +\infty
+      $$
+      donc $\int_{\boxed{0}}^{1}f$ converge.
+    Ainsi, $\int_{\R}f$ existe si et seulement si $\alpha \in \R \setminus \{1,-1\}$.
+%
+
+%prop
+  Soit $I$ un intervalle réel de longueur non nulle.
+  1. $\L^{1}(I,\K)$ est un sous-espace vectoriel de $\Cont_{m}(I,\K)$
+  2. Si $f \in \L^{1}(I,\K) \cap \Cont(I,\K)$ et $\int_{I}\abs{f} = 0$, alors $f$ est nulle
+  3. - $\L^{2}(I,\K) = \left\{f \in \Cont_{m}(I,\K)\where f^{2} \in \L^{1}(I,\K)\right\}$
+     - $\L^{2}(I,\K)$ est un sous-espace vectoriel de $\Cont_{m}(I,\K)$.
+     - Si $(f,g) \in \L^{1}(I,\K)^{2}$, alors $f \times g \in \L^{1}(\K)$ et on a
+       $$
+         \abs{\int_{I}fg} \leq \left(\int_{I}\abs{f}]2\right)^{\frac{1}{2}} \left(\int_{I} \abs{g}^{2}\right)^{\frac{1}{2}}
+       $$
+       C’est l’inégalité de Cauchy-Schwarz)
+%
+
+%proof
+  1. - $\tilde{0} \in \L^{2}(I,\K)$ donc $\L^{1}(I,\K)$ est une partie non vide du $\K$-espace vectoriel $(\Cont_{m}(I,\K), +, \cdot )$
+     - Soit $(f,g) \in \L^{1}(I,\K)^{2}$. Soit $(\alpha, \beta) \in \K^{2}$.
+       $$
+         0 \leq \abs{\alpha f + \beta g} \leq  \abs{\alpha} \cdot  \abs{f} + \abs{\beta}\cdot \abs{g}
+       $$
+       or $\int_{I}\abs{f}$ et $\int_{I}\abs{g}$ sont convergentes, donc $\int_{I}\abs{\alpha}\cdot \abs{f} + \abs{\beta}\abs{g}$ est convergente, d’où $\int_{I} \abs{\alpha f+\beta g}$ est convergente.
+  2. $\abs{f} \in \L^{1}(I,\R_{+}) \cap\Cont(I)$ donc
+     $$
+       \int_{I} \abs{f} = 0 \implies \abs{f} = \tilde{0} \implies  f = \tilde{0}
+     $$
+  3. - Soit $(f,g) \in \L^{2}(I,\K)^{2}$.
+       $$
+         \abs{fg} \leq  \frac{\abs{f}^{2} + \abs{g^{2}}}{2} \in \L^{1}(I,\R_{+})
+       $$
+       donc $fg \in \L^{1}(I,\K)$.
+     - $\tilde{0} \in \L^{2}(I,\K)$ donc $\L^{2}(I,\K)$ est une partie non vide de $\Cont_{m}(I,\K)$. Soit $(f,g) \in \L^{2}(E,\K)^{2}$. Soit $(\alpha, \beta) \in \K^{2}$.
+       $$
+         (\alpha f + \beta g)^{2} = \alpha^{2} f^{2} + 2 \alpha \beta f g + \beta^{2}g^{2}
+       $$
+       Comme $\L^{1}(I,\K)$ est stable par combinaison linéaire, on a $(\alpha f + \beta g)^{2} \in \L^{1}(I,\K)$, i.e. $(\alpha f + \beta g) \in \L^{2}(I,\K)$.
+       %rem
+         - $x \longmapsto \frac{1}{x} \in \L^{2}( \co{1,\\infty})$ et $x \longmapsto  \frac{1}{x} \notin \L^{1}( \co{1,+\infty})$
+         - $x \longmapsto  \frac{1}{\sqrt{x}} \in \L^{1}(\oc{0,1})$ ot $x \longmapsto  \frac{1}{\sqrt{x}} \notin \L^{2}(\oc{0,1})$
+       %
+       Soit $(f,g) \in \L^{2}(I,\K)^{2}$. Soit $(x,y) \in I^{2}$ avec $x < y$.
+       $$
+         \abs{\int_{\cc{x,y}}fg} \leq  \int_{\cc{x,y}}\abs{fg} = \int_{\cc{x,y}}\abs{f} \times \abs{g} \leq  \left(\int_{x}^{y}\abs{f}^{2}\right)^{\frac{1}{2}} \left(\int_{x}^{y}\abs{g}^{2}\right)^{\frac{1}{2}}
+       $$
+       On fait alors tendre $x$ vers $\inf I$ et $y$ vers $\sup I$ :
+       $$
+         \abs{\int_{I}fg} \leq  \left(\int_{I}\abs{f}^{2}\right)^{\frac{1}{2}}\left(\int_{I}\abs{g}^{2}\right)^{\frac{1}{2}}
+       $$
+%
+
+## Estimation d’intégrales
+
+### Intégration des relations de comparaison
+
+%prop
+  Soient $-\infty < a < b \leq +\infty$. Soient $f : \co{a,b} \longrightarrow \K$ continue par morceaux et $\varphi: \co{a,b} \longrightarrow \R_{+}$ continue par morceaux et positive.
+  %offprog
+    $\varphi$ peut être à valeurs dasn $\R$ de signe constant au voisinage de $b$.
+  %
+  - Si $\int_{a}^{\boxed{b}}\varphi$ converge,
+    - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors $f \in \L^{1}(\co{a,b},\K)$ et
+      $$
+        \int_{x}^{\boxed{b}}f \ueq{x\to b}O \left(\int_{x}^{\boxed{b}}\varphi\right) \left(\text{resp. } o \left(\int_{x}^{\boxed{b}}\varphi\right), \text{resp. } \usim{b} \lambda \int_{x}^{\boxed{b}}\varphi\right)
+      $$
+  - Si $\int_{a}^{\boxed{b}}\varphi$ divergente.
+    - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors
+      $$
+        \int_{a}^{x}f \ueq{b}O \left(\int_{a}^{x}\varphi\right) \: \left(\text{resp. } o \left(\int_{a}^{x}\varphi\right), \text{resp. } \usim{b} \lambda \int_{a}^{x}\varphi\right)
+      $$
+      on ne peut rien dire de la convergence de $\int_{a}^{\boxed{b}}f$ sauf dans le cas $f\usim{b} \lambda \varphi$ dans lequel $\int_{a}^{\boxed{b}}f$ est nécessiairement divergente.
+%
+
+%proof
+  - Comme $\varphi$ est de signe constant au voisinage de $b$, on a
+    $$
+      \int_{a}^{\boxed{b}}\varphi \text{ convergente} \iff \int_{a}^{\boxed{b}}\abs{\varphi} \text{ convergente} \iff \varphi \in \L^{1}(\co{a,b},\R)
+    $$
+    or $f \ueq{b} O(\varphi)$ ou $f \ueq b o(\varphi)$ ou $\frac{f}{\lambda} \usim b \varphi$, donc $f \in \L^{1}(\co{a,b}, \R)$ ou $\frac{f}{\lambda} \in \L^{1}(\co{a,b}, \R)$, i.e. $f \in \L^{1}(\co{a,b},\R)$.
+
+    - Traitons le cas où $f$ est dominée ou négligeable devant $\varphi$:
+      $$
+        \exists M \in \R_{+}: \exists c \in \co{a,b}: \begin{cases}\forall x \in \co{c,b}, \abs{f(x)} \leq  M \abs{\varphi(x)}\\ \varphi \text{ est de signe constant sur } \co{c,b}\end{cases}
+      $$
+      donc
+      $$
+        \forall x \in \co{c,b}, \abs{\int_{x}^{\boxed{b}}f} \leq  \int_{x}^{\vec{v}}\abs{f} \leq  M \int_{x}^{\boxed{b}}\abs{\varphi} = M \abs{\int_{x}^{\boxed{b}}\varphi}
+      $$
+      Si $f$ est négligeable devant $\varphi$, on remplace « $\exists M \in \R_{+}$ » par « $\forall  \varepsilon > 0$ » ci-dessus.
+    - Si $f \usim b \lambda \varphi$ avec $\lambda \in \K^{*}$, $\frac{f}{\lambda} \usim b \varphi$, i.e. $\frac{f}{\lambda} - \varphi \ueq b o(\varphi)$ d’où
+      $$
+        \int_{x}^{\boxed{b}}\frac{f}{\varphi} - \varphi \ueq b o \left(\int_{x}^{b}\varphi\right)
+      $$
+      i.e.
+      $$
+        \int_{x}^{\boxed{b}}\frac{f}{\lambda} - \int_{x}^{\boxed{b}}\varphi \ueq b o \left(\int_{x}^{\boxed{b}}\varphi\right)
+      $$
+      i.e.
+      $$
+        \int_{x}^{\boxed{b}}\frac{f}{\lambda} \usim b \int_{x}^{\boxed{b}}\varphi
+      $$
+      i.e.
+      $$
+        \int_{x}^{\boxed{b}}f \usim b \lambda \int_{x}^{b}\varphi
+      $$
+  - Si $\int_{a}^{\boxed{b}}\varphi$ est divergente avec $\varphi$ de signe constant au voisinage de $b$, il existe $d \in \co{a,b}$ del que $\varphi_{|\co{d,b}}$ soit de signe constant. Par divergence de l’intégrale,
+    $$
+      \abs{\int_{d}^{x}\varphi} \arrowlim{x\xrightarrow{<} b}+\infty
+    $$
+    - Supposons $f$ dominnée ou négligeable devant $\varphi$.
+      $$
+        \exists  M \in \R_{+}, \exists c \in \co{a,b}: \begin{cases}\forall x \in \co{c,b}, \abs{f(x)} \leq  M \abs{\varphi(x)}\\ c \geq d\end{cases}
+      $$
+      Soit $x \in \co{c', b}$.
+      $$
+        \abs{\int_{a}^{x}f} \leq \abs{\int_{a}^{c}f} + \int_{a}^{x}\abs{f} \leq \abs{\int_{a}^{c}f} + M \underbrace{\int_{c}^{x}\abs{\varphi}}_{=\abs{\int_{c}^{x}\varphi}} \leq \underbrace{\abs{\int_{a}^{e}f} + M \abs{\int_{a}^{c}\varphi}}_{=o \left(\int_{a}^{x}\varphi\right)} + M \abs{\int_{a}^{x}\varphi}
+      $$
+      donc
+      $$
+        \exists  c' \in \co{c,b}: \forall x \in \co{c', b}, \abs{\int_{a}^{x}f} \leq  2M \abs{\int_{a}^{x}\varphi}
+      $$
+      Si $f$ est négligeable devant $\varphi$, on remplace « $ \exists M \in \R_{+}$ » par « $\forall  \varepsilon > 0$ » et « $M$ » par « $\varepsilon$ » ci-dessus.
+    - Si $f\usim b \lambda \varphi$ avec $\lambda \in \K^{*}$, alors $\frac{f}{\lambda} - \varphi \ueq b o(\varphi)$, donc
+      $$
+        \int_{a}^{x}\frac{f}{\lambda} - \int_{a}^{x}\varphi \ueq f o \left(\int_{a}^{x}\varphi\right)
+      $$
+      donc
+      $$
+        \int_{a}^{x}f \usim b \lambda \int_{a}^{x}\varphi
+      $$
+      d’où
+      $$
+        \abs{\int_{a}^{x}f} \usim b \abs{\lambda}\abs{\int_{a}^{x}\varphi} \arrowlim{x\to b}+\infty
+      $$
+      donc $x \longmapsto \int_{a}^{x}f$ n’a pas de limite donc $\int_{a}^{\boxed{b}}f$ diverge.
+%
+
+%eg
+  1. Soit $f: \co{a,+\infty} \longrightarrow \begin{cases}\R\\\C\end{cases}$ continue par morceaux. Si $f$ possède une limite $\lambda \in \begin{cases}\R \cup \{+\infty,-\infty\}\end{cases}$, alors $\int_{a}^{+\infty}f$ diverge.
+    ~
+    - si $\lambda \in \K^{*}$, alors $f(x) \usim{+\infty} \lambda = \lambda 1$ et $\int_{a}^{+\infty}1$ divergente avec $a \geq 0$ donc $\int_{a}^{+\infty}f$ diverge.
+    - si $\lim_{+\infty}f = +\infty$, alors il existe $A \geq 0$ tel que $x \geq 1 \implies f(x)\geq 1$ et $\int_{a}^{+\infty}1$ diverge donc $\int_{1}^{+\infty}f$ diverge.
+    - si $\lim_{+\infty}f = -\infty$, alors $\lim_{+\infty}(-f) = +\infty$ donc $\int_{a}^{+\infty}-f$ diverge donc $\int_{a}^{+\infty}f$ diverge.
+  2. Considérons la fonction $f: x \longmapsto  \int_{a}^{x}\frac{\th t}{t}\dd t$. La fonction
+     $$
+       \varphi: t \longmapsto  \begin{cases}\frac{\th t}{t} & \text{ si }t\ne 0\\1 &\text{si }t=0\end{cases}
+     $$
+     est continue sur $\R$. $f$ se prolonge en une fonction $\tilde{f} \in \Cont^{1}(\R)$ avec $\tilde{f}:x \longmapsto \int_{0}^{x}\varphi$. On a
+     $$
+       \forall x \in \R^{*}, f'(x) = \varphi(x)
+     $$
+     Comme $\varphi$ est paire, $f$ est impaire. En effet,
+     $$
+       f(-x) = \int_{0}^{-x}\varphi (t)\dd t \ueq{u = -t}\int_{0}^{x} \varphi (u)(\dd u) = -f(x)
+     $$
+     - Étudions $f$ est $+\infty$.
+       ~ $\frac{\th t}{t} \usim{t\to+\infty}\frac{1}{t}$  ~ $\frac{1}{t} > 0$  ~ $\int_{1}^{+\infty}\frac{\dd t}{t}$ diverge
+       donc $\int_{1}^{x}\frac{\th t}{t}\dd t \usim{x\to+\infty} \int_{1}^{x}\frac{\dd t}{t} = \ln x$. Or
+       $$
+         \forall x \in \R^{*}, f(x) = \underbrace{\int_{0}^{1}\frac{\th t}{t}\dd t}_{\in \R} + \int_{1}^{x}\frac{\th t}{t}\dd t
+       $$
+       donc
+       $$
+         \int_{0}^{1}\frac{\th t}{t}\dd t \ueq{+\infty}o(\ln x)
+       $$
+       car $\ln x \arrowlim{x\to+\infty}+\infty$. Ainsi,
+       $$
+         f(x) \usim{+\infty}\ln x
+       $$
+  3. Considérons la fonction $g: x \longmapsto \int_{x}^{+\infty}\frac{\cos t}{t^{2}}\dd t$. On a $\frac{\cos t}{t^{2}}\ueq{+\infty}O \left(\frac{1}{t^{2}}\right)$ donc $t \longmapsto \frac{\cos t}{t^{2}} \in \L^{1}(\co{1,+\infty})$ pour tout $x > 0$. $g$ est donc définie sur $\oo{0,+\infty}$. Étudions son comportement à ses bornes.
+     - En $0^{+}$:
+       ~ $\frac{\cos t}{t^{2}}\usim{t\to 0}\frac{1}{t^{2}}$  ~ $\frac{1}{t^{2}} > 0$  ~ $\int_{0}^{1}\frac{\dd t}{t^{2}}$ diverge
+       donc
+       $$
+         \int_{x}^{1}\frac{\cos t}{t^{2}}\dd t \usim{x\to 0^{+}} \int_{x}^{1}\frac{\dd t}{t^{2}} = \left[- \frac{1}{t}\right]_{x}^{1} = \frac{1}{x}-1 \usim{x\to 0^{+}} \frac{1}{x}
+       $$
+       donc
+       $$
+         g(x) = \int_{x}^{1}\frac{\cos t}{t^{2}}\dd t + \underbrace{\int_{1}^{+\infty}\frac{\cos t}{t^{2}}\dd t}_{\in \R}
+       $$
+       or $\frac{1}{x} \arrowlim{x\to 0^{+}}+\infty$ donc
+       $$
+         \int_{1}^{+\infty}\frac{\cos t}{t^{2}} \ueq{0^{+}} o \left(\frac{1}{x}\right)
+       $$
+       d’où $g(x) \usim{0^{+}} \frac{1}{x}$.
+     - En $+\infty$: on a
+       $$
+         \int_{x}^{X}\frac{\cos t}{t^{2}}\dd t = \left[\frac{\sin t}{t^{2}}\right]_{x}^{X} + \int_{x}^{X}\frac{2\sin t}{t^{3}}\dd t
+       $$
+       donc
+       $$
+         g(x) = - \frac{\sin x}{x^{2}} + 2 \int_{x}^{+\infty}\frac{\sin t}{t^{3}}\dd t
+       $$
+       or
+       ~ $\frac{\sin t}{t^{3}} \ueq{+\infty} O \left(\frac{1}{t^{3}}\right)$  ~ $\frac{1}{t^{3}} > 0$  ~ $\int_{1}^{+\infty}\frac{\dd t}{t^{3}}$ converge
+       donc
+       $$
+         \int_{x}^{+\infty}\frac{\sin t}{t^{3}}\dd t \ueq{+\infty} O \left(\int_{x}^{+\infty}\frac{\dd t}{t^{3}}\right) \ueq{+\infty} O \left(\frac{1}{x^{2}}\right)
+       $$
+       soit
+       $$
+         g(x) \ueq{+\infty} - \frac{\sin x}{x^{2}} + O \left(\frac{1}{x^{2}}\right) \ueq{+\infty} \left(\frac{1}{x^{2}}\right)
+       $$
+       donc
+       $$
+         \int_{x}^{X}\frac{\sin t}{t^{3}}\dd t = \left[- \frac{\cos t}{t^{3}}\right]_{x}^{X} - \int_{x}^{X}\frac{3 \cos t}{t^{4}}\dd t
+       $$
+       soit
+       $$
+         g(x) = - \frac{\sin X}{x^{3}} + 2 \frac{\cos x}{x^{3}} - 6 \int_{x}^{+\infty}\frac{\cos t}{t^{4}}\dd t
+       $$
+       soit
+       $$
+         g(x) \ueq{+\infty} - \frac{\sin x}{x^{2}} + 2 \frac{\cos x}{x^{3}} + O \left(\frac{1}{x^{3}}\right) \ueq{+\infty} O \left(\frac{1}{x^{3}}\right)
+       $$
+  3. Considérons $: x \longmapsto \int_{x}^{+\infty}e^{-t^{3}}\dd t$.
+     $$
+       \int_{x}^{X}e^{-t^{2}}\dd t = \int_{x}^{X}\frac{-2t}{-2t}e^{-t^{2}}\dd t = \left[\frac{e^{-t^{2}}}{-2t}\right]_{x}^{X} - \int_{x}^{X}\frac{e^{-t^{2}}}{2t^{2}}\dd t
+     $$
+     donc
+     $$
+       \int_{x}^{+\infty}e^{-t^{2}}\dd t = \frac{e^{-x^{2}}}{2x} - \frac{1}{2}\int_{x}^{+\infty}\frac{e^{-t^{2}}}{t^{2}}\dd t
+     $$
+     or
+     ~ $\frac{e^{-t^{2}}}{t^{2}} \ueq{+\infty} o(e^{-t^{2}})$  ~ $e^{-t^{2}} \geq 0$  ~ $\int_{1}^{+\infty}e^{-t^{2}}\dd t$ converge
+     donc
+     $$
+       \int_{x}^{+\infty}\frac{e^{-t^{2}}}{t^{2}} \ueq{+\infty} o \left(\int_{x}^{+\infty}e^{-t^{2}}\dd t\right)
+     $$
+     Ainsi
+     $$
+       \int_{x}^{+\infty}e^{-t^{2}}\dd t \usim{x\to +\infty} \frac{e^{-x^{2}}}{2x}
+     $$
 %
