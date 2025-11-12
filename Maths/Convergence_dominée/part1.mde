@@ -1,0 +1,232 @@
+# Convergence dominée
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
+
+## Convergence simple d’une suite de fonction
+
+%def
+  Soit $X$ un ensemble non vide. Soit $(E,\norm \cdot )$ un $\K$-espace vectoriel normé. Soit $(f_{n})_{n \in \N}$ une suite de fonction de $X$ dans $E$.
+
+  On dit que la suite de fonction $(f_{n})_{n \in \N}$ *converge simplement* sur $X$ si pour tout $x \in X$, la suite vectorielle $(f_{n}(x))_{n \in \N}$ converge dans $(E, \norm \cdot )$.
+
+  Si on pose $\forall x \in X, f(x) = \lim_{n\to+\infty}(f_{n}(x))$, alors $f$ est appelée *limite simple* de $(f_{n})_{n \in \N}$, et on note: $f_{n} \arrowlim{n\to+\infty}f$ simplement sur $X$. On note aussi $f_{n} \sarrowlim{n\to+\infty}f$ sur $X$.
+%
+
+Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
+
+%eg
+  - Pour $n \in \N$, on pose
+    $$
+      f_{n}: \applic{\cc{0,1}}{\R}{x}{x^{n}}
+    $$
+    ==FIG9.1==
+    Pour tout $n \in \N$, $f_{n}(1) = 1 \arrowlim{n\to+\infty}1$. Soit $x \in \co{0,1}$. Alors $f_{n}(x) = x^{n} \arrowlim{n\to+\infty}0$ donc
+    $$
+      f_{n} \sarrowlim{n\to+\infty} \left[f:x \longmapsto \begin{cases}1 &\text{si } x=1\\0& \text{si }x \in \co{0,1}\end{cases}\right] \text{ sur } \cc{0,1}
+    $$
+    %rem
+      $\forall n \in \N, f_{n} \in \Cont(\cc{0,1})$ mais $f$ n’est pas continue en $1$.
+    %
+  - Considérons, pour tout $n \in \N^{*}$ la fonction
+    $$
+      g_{n}: \applic{\cc{0,1}}{\R}{x}{\begin{cases}1 \text{si }x \in \left\{\frac{1}{k} \where k \in \icc{1,n}\right\}\\ 0&\text{sinon}\end{cases}}
+    $$
+    Pour tout $n \in \N^{*}$, la fonction $g_{n}$ est une fonction en escalier sur $\cc{0,1}$. Soit $x \in \cc{0,1}$.
+    - si $x \notin \left[\frac{1}{k} \where k \in \N^{*}\right]$, alors
+      $$
+        \forall n \in \N^{*}, g_{n}(x) = 0 \arrowlim{n\to+\infty}0
+      $$
+    - sinon, il existe $N \in \N^{*}$ tel que $x = \frac{1}{N}$, donc
+      $$
+        \forall n \geq N, g_{n}(x) = 1 \arrowlim{n\to+\infty}1
+      $$
+      donc
+      $$
+        g_{n} \sarrowlim{n\to+\infty} \left[g: x \longmapsto \begin{cases}1 &\text{si }x \in \left\{\frac{1}{k} \where k \in \N^{*}\right\}\\0&\text{sinon}\end{cases}\right]
+      $$
+      et $g$ n’est pas continue par morceaux sur $\cc{0,1}$.
+  - Considérons, pour $n \in \N$, la suite de fonctions
+    $$
+      h_{n}: \applic{\cc{0,1}}{\R}{x}{n^{2} x^{n}(1-x)}
+    $$
+    Soit $x \in \cc{0,1}$.
+    - si $x=1$, alors $h_{n}(1) = 0 \arrowlim{n\to+\infty}0$.
+    - si $x \in \co{0,1}$, alors $n^{2} x^{n} \arrowlim{n\to+\infty}0$. En effet, en notant $u_{n} = n^{2} x^{n}$,
+      $$
+        \frac{u_{n+1}}{u_{n}} = \left(\frac{n+1}{n}\right)^{2}x \arrowlim x < 1
+      $$
+      donc $\sum u_{n}$ converge donc $u_{n} \arrowlim 0$. Ainsi,
+      $$
+        h_{n} \sarrowlim{n\to+\infty} \tilde{0} \text{ sur }\cc{0,1}
+      $$
+      De plus,
+      $$
+        \int_{0}^{1}h_{n} = n^{2} \left[\frac{x^{n+1}}{n+1} - \frac{x^{n+2}}{n+2}\right]_{0}^{1} = n \left(\frac{1}{n+1} - \frac{1}{n+2}\right) = \frac{n^{2}}{(n+1)(n+2)}\arrowlim{n\to+\infty}1
+      $$
+      donc
+      $$
+        \lim_{n\to+\infty}\int_{0}^{1}h_{n} = 1 \neq \int_{0}^{1}\lim_{n\to+\infty}(h_{n}(x))\dd x
+      $$
+%
+
+## Théorème de convergence dominée (de Lebesgue)
+
+%thm Théorème de convergence dominée
+  Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur un intervalle réel $I$ de longueur non nulle (à valeurs dans $\K$). Si
+  - $(f_{n})$ converge simplement vers $f$ continue par morceaux sur $I$((En réalité, l’hypothèse de continuité par morceaux de $f$ est inutile.))
+  - Il existe $\varphi \in \L^{1}(I,\R_{+})$ et $n_{0} \in \N$ tels que
+    $$
+      \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi
+    $$
+    ($\varphi$ est appelée *chapeau intégrable*).
+  alors
+  - $\forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)$
+  - $f \in \L^{1}(I,\K)$
+  - $\displaystyle \lim_{n\to+\infty}\int_{I}f_{n} = \int_{I}f$
+%
+
+%proof
+  *Il suffit d’utiliser la version particulière suivante :*
+  %thm Théomème de convergence majorée positive
+    Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur le segment $\cc{a,b}$ à valeurs dans $\R_{+}$. Si
+    - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
+    - $\exists n_{0} \in \N, \exists M \in \R_{+}: \forall n \geq n_{0}, 0 \leq f_{n} \leq M$
+    alors
+    $$
+      \int_{a}^{b}f_{n} \arrowlim{n\to+\infty} 0
+    $$
+  %
+  *en effet :*
+  - On a
+    ~ $\forall n \geq n_{0}, \abs{f_{n}} \leq \varphi$  ~ $\varphi \in \L^{1}(I,\R_{+})$
+    donc
+    $$
+      \forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)
+    $$
+  - Soit $x \in I$. On a
+    $$
+      \forall xn\geq n_{0}, \abs{f_{n}(x)} \leq  \varphi(x)
+    $$
+    On fait tendre $n$ vers $+\infty$ et on a
+    $$
+      \forall x \in I, \abs{f(x)} \leq \varphi(x)
+    $$
+    donc $f \in \L^{1}(I,\K)$.
+  - Soit $\varepsilon > 0$. $\varphi$ est intégrable sur $I$ donc il existe $a < b$ deux points de $I$ tels que
+    $$
+      \abs{\int_{I}\varphi - \int_{\cc{a,b}}\varphi} < \varepsilon
+    $$
+    Soit $n \geq n_{0}$. $f_{n} - f \in \L^{1}(I,\K)$ et
+    $$
+      \abs{\int_{I} f_{n}-f} \leq  \int_{I} \abs{f_{n} - f} = \int_{\cc{a,b}}\abs{f_{n} - f} + \int_{I \setminus \cc{a,b}}\abs{f_{n} - f}
+    $$
+    or
+    $$
+      \forall n \geq n_{0}, \abs{f_{n} - f} \leq \abs{f_{n}} + \abs{f} \leq 2 \varphi
+    $$
+    donc pour $n \geq n_{0}$,
+    $$
+      \int_{I \setminus \cc{a,b}}\abs{f_{n}-f} \leq  \int_{I \setminus \cc{a,b}} 2 \varphi \leq 2 \varepsilon
+    $$
+  - $(\abs{f_{n} - f})_{n \in \N}$ est une suite de fonction continues par morceaux sur $\cc{a,b}$ et
+    $$
+      \abs{f_{n} - f} \sarrowlim{n\to+\infty}\tilde{0} \text{ sur }\cc{a,b}
+    $$
+    Or
+    $$
+      \forall n \geq n_{0}, 0 \leq  \abs{f_{n} - f} \leq 2 \varphi \leq 2 \norm{\varphi}_{\infty, \cc{a,b}}
+    $$
+    d’où, d’après le *théorème de convergence majorée positive*,
+    $$
+      \int_{\cc{a,b}}\abs{f_{n} - f} \arrowlim{n \to+\infty}0
+    $$
+    Il existe donc $N \in \N$ avec $n \geq n_{0}$ tel que
+    $$
+      \forall n \geq N, \int_{\cc{a,b}}\abs{f_{n} - f} \leq \varepsilon
+    $$
+    donc
+    $$
+      \forall n \geq N, \abs{\int_{I}f_{n} - \int_{I}f} = \abs{\int_{I}(f_{n}-f)} \leq 3 \varepsilon
+    $$
+    Ainsi, $\int_{I} f_{n} \arrowlim{n\to+\infty} \int_{I} f$.
+%
+
+%eg
+  - Limite de $\left(\int_{0}^{1}\ln(2+x^{n})\dd x\right)_{n \in \N}$.
+    ~
+    Posons pour tout $n \in \N$
+    $$
+      f_{n} : \applic{\cc{0,1}}{\R}{x}{\ln(2+x^{n})}
+    $$
+    Alors
+    - $$\displaystyle f_{n}(x) \arrowlim{n\to+\infty} \begin{cases}\ln 3 \if x=1\\ \ln 2 \if x \in \co{0,1}\end{cases}$$
+      ($f$ est en escalier sur $\cc{0,1}$).
+    - $\displaystyle \forall n \in \N, \forall x \in \cc{0,1}, \abs{f(x)} \leq \ln(2+1) = \ln 3$ et $x \longmapsto \ln 3$ est intégrable sur $\cc{0,1}$.
+    Ainsi, selon le *théorème de convergence dominée*,
+    $$
+      \lim_{n\to+\infty} \int_{\cc{0,1}}f_{n} = \int_{\cc{0,1}}f = \int_{0}^{1}\ln 2
+    $$
+    soit
+    $$
+      \lim_{n\to+\infty} \int_{0}^{1} \ln(2+x^{n})\dd x = \ln 2
+    $$
+  - Limite de $\left(\int_{0}^{+\infty}\frac{\dd x}{1+x^{2}}\right)_{n \in \N}$.
+    ~
+    Posons pour tout $n \in \N$
+    $$
+      g_{n}: \applic{\R_{+}}{\R}{x}{\frac{1}{1+x^{2}}}
+    $$
+    Alors
+    - $g_{n}(x) \arrowlim{n\to+\infty} \begin{cases}0 \if x > 1\\ \frac{1}{3} \if x=1\\ \frac{1}{1+x^{2}} \if 0 \leq x < 1\end{cases}$
+      donc
+      $$
+        g_{n} \sarrowlim{n\to+\infty} \left[g: x \longmapsto \begin{cases}\frac{1}{1+x^{2}} \if 0 \leq  x < 1\\ \frac{1}{3} \if x=1\\0 \if x > 1\end{cases}\right]
+      $$
+      ==FIG==
+    - $\forall n \in \N, \forall x \in \R_{+}, \abs{g_{n}(x)} \leq \frac{1}{1+x^{2}}$ et $x \longmapsto  \frac{1}{1+x^{2}}$ est intégrable sur $\R_{+}$.
+    Ainsi, d’après le *théorème de convergence dominée*,
+    $$
+      \lim_{n\to+\infty} \int_{0}^{+\infty}g_{n} = \int_{0}^{+\infty}g = \int_{\cc{0,1}} = \int_{\cc{0,1}}g = \int_{0}^{1}\frac{\dd x}{1+x^{2}} = \left[\arctan x\right]_{0}^{1}
+    $$
+    donc
+    $$
+      \lim_{n\to+\infty} \int_{0}^{+\infty}\frac{\dd x}{1+x^{2}+x^{n}} = \frac{\pi}{4}
+    $$
+  - Limite de $\left(\int_{0}^{n}\left(1+ \frac{x}{n}\right)^{n}e^{-2x}\dd x\right)_{n \in \N}$.
+    ~
+    On a
+    $$
+      \int_{0}^{n}\left(1+ \frac{x}{n}\right)^{n}e^{-2x}\dd x = \int_{0}^{+\infty}\left(1+\frac{x}{n}\right)^{n}e^{-2x} \1_{\cc{0,1}}\dd x
+    $$
+    Pour tout $n \in \N$,
+    $$
+      h_{n} : \applic{\R_{+}}{\R}{x}{\begin{cases}\left(1+\frac{x}{n}\right)^{n}e^{-2x} \if x \in \cc{0,n}\\ 0 \if x > n\end{cases}}
+    $$
+    donc $h_{n}$ est continue par morceaux sur $\R_{+}$.
+    - *Convergence simple.* Soit $x \in \R_{+}$.
+      $$
+        \forall n \geq  \floor x + 1, g_{n}(x) = \left(1+\frac{x}{n}\right)^{n} e^{-2x} \arrowlim{n\to+\infty}e^{x}e^{-2x} = e^{-x}
+      $$
+      donc $(g_{n})$ converge simplement vers $\frac{1}{\exp}$.
+    - *Domination*. Soit $x \in \cc{0,n}$.
+      $$
+        \left(1+\frac{x}{n}\right)^{n} = e^{x\ln \left(1+\frac{x}{n}\right)} \leq e^{n \left(\frac{x}{n}\right)} = e^{x}
+      $$
+      or $\forall x > 0, \ln x \leq x-1$ donc
+      $$
+        \forall x \in \cc{0,n}, 0 \leq  g_{n}(x) \leq  e^{x}e^{-2x} = e^{-x}
+      $$
+      soit $\forall x > n, g_{n}(x) = 0 \leq e^{-x}$. Alors
+      $$
+        \forall n \in \N^{*}, \abs{g_{n}} = g_{n} \leq \underbrace{\frac{1}{\exp}}_{\text{indépendant de } n}
+      $$
+      et $\frac{1}{\exp}$ est intégrable sur $\R_{+}$.
+    Le *théorème de convergence dominée* permet alors de conclure que
+    $$
+      \lim_{n\to+\infty}\int_{\R_{+}} h_{n} = \int_{\R_{+}}e^{-x}\dd x = \left[-e^{-x}\right]_{0}^{+\infty} = 1
+    $$
+    d’où
+    $$
+      \int_{0}^{n}\left(1+\frac{x}{n}\right)e^{-2x}\dd x \arrowlim{n\to+\infty}1
+    $$
+%
