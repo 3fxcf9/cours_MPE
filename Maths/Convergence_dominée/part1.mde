@@ -230,3 +230,347 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       \int_{0}^{n}\left(1+\frac{x}{n}\right)e^{-2x}\dd x \arrowlim{n\to+\infty}1
     $$
 %
+
+%thm Théorème de convergence dominée (étendu aux familles de fonctions)
+  Soit $(f_{\lambda}: I \longrightarrow \K)_{\cdot  \in J}$ une famille d’applications continues par morceaux indexée par un intervalle $J$ de longueur non nulle. Soit $\alpha \in \cc{\inf J, \sup J}$. Si
+  - pour tout $t \in I$, on a $f_{\lambda}(t) \arrowlim{\lambda \to \alpha}f(t)$ avec $f \in \Cont_{m}(I,\K)$
+    $$
+      « f_{\lambda} \sarrowlim{\lambda \to \alpha}f »
+    $$
+  - il existe $\varphi \in \L^{1}(I,\R_{+})$ tel que pour tout $\lambda \in J$ voisin de $\alpha$((si $\alpha \in \cc{\inf J, \sup J} \cap \R$, alors il existe $V = \oo{\alpha - \delta, \alpha+\delta}$ avec $\delta > 0$ tel que $\forall \lambda \in V \cap  J, \abs{f_{\lambda}} \leq \varphi$; si $\alpha = \sup J = +\infty$, alors il existe $V = \co{A,+\infty}$ avec $A > 0$ tel que $\forall  \lambda \in \co{A,+\infty}\cap J, \abs{f_{\lambda}} \leq \varphi$; et si $\alpha = \inf J = -\infty$, il existe $V = \oc{-\infty,B}$ avec $B < 0$ tel que $\forall \lambda \in \oc{-\infty, B}\cap J, \abs{f_{\lambda}} \leq \varphi$)), on a
+    $$
+      \abs{f_{\lambda}} \leq \varphi
+    $$
+  alors,
+  - pour tout $\lambda$ voisin de $\alpha$, $f_{\lambda} \in \L^{1}(I,\K)$
+  - $f \in \L^{1}(I,\K)$
+  - $\lim_{\lambda \to \alpha}\int_{I}f_{\lambda} = \int_{I}f$
+%
+
+%proof
+  Notons $V$ un voisinage de $\alpha$ satisfaisant les hypothèses. On a
+  - $\forall \lambda \in V \cap J, \abs{f_{\lambda}} \leq \varphi$ et $\varphi \in \L^{1}(I,\R_{+})$ donc $\forall \lambda \in V \cap J, f_{\lambda} \in \L^{1}(I,\K)$.
+  - $\forall  \lambda \in V \cap J, \forall t \in I, \abs{f_{\lambda}(t)} \leq  \varphi(t)$. On fait tendre $\lambda$ vers $\alpha$ et on a
+    $$
+      \forall t \in I, \abs{f(t)} \leq \varphi(t)
+    $$
+    or $\varphi \in \L^{1}(I,\R_{+})$ donc $f \in \L^{1}(I,\K)$
+  Soit $(\lambda_{n})_{n \in \N}$ une suite d’éléments de $J$ de limite $\alpha$. Posons
+  $$
+    g_{n}: \applic{I}{\K}{t}{f_{\lambda_{n}}(t)}
+  $$
+  On a
+  - $\forall n \in \N, g_{n} \in \C_{m}(I,\K)$
+  - $\exists n_{0} \in \N: \forall n \geq n_{0}, \lambda_{n} \in V \cap J$ donc
+    $$
+      \forall n \geq n_{0}, \abs{f_{\lambda_{n}}} = \abs{g_{n}} \leq \varphi
+    $$
+  - Soit $t \in I$. Comme $\lambda_{n} \arrowlim{n\to+\infty}\alpha$, alors $f_{\lambda_{n}}(t) \arrowlim{n\to+\infty}f(t)$ donc $(g_{n})$ converge simplement vers $f$ sur $I$
+  donc d’après le théorème de convergence dominée appliqué à la suite $(g_{n})_{n \in \N}$, on a $\lim_{n\to+\infty}\int_{I} g_{n} = \int_{I} f$, i.e.
+  $$
+    \lim_{n\to+\infty}\int_{I}f_{\lambda_{n}} = \int_{I}f
+  $$
+  La caractérisation séquentielle d’une limite permet alors d’écrire
+  $$
+    \lim_{\lambda\to \alpha}\int_{I} f_{\lambda} = \int_{I} f
+  $$
+%
+
+%eg
+  - Si $f: \R_{+} \longrightarrow \K$ est continue par morceaux avec $\lim_{+\infty}f = \lambda \in \K$, alors
+    $$
+      \lim_{x\to+\infty} \frac{1}{x}\int_{0}^{x}f = \lambda
+    $$
+    - *Première méthode (double détente) :* Soit $\varepsilon > 0$. Il existe $A > 0$ tel que
+      $$
+        \forall x \geq A, \abs{f(x) - \lambda} < \varepsilon
+      $$
+      Soit $x \geq A$.
+      $$
+        \abs{ \left(\frac{1}{x} \int_{0}^{x}f\right) - \lambda} = \abs{\frac{1}{x}\int_{0}^{x}(f-\lambda)}  \leq \frac{1}{x} \abs{\int_{0}^{A}f-\lambda} + \frac{1}{x} \int_{A}^{x}\abs{f-\lambda} \leq \frac{1}{x}\abs{\int_{0}^{A}(f-\lambda)} + \frac{x-A}{x}\varepsilon
+      $$
+      Or $\frac{1}{x}\abs{\int_{0}^{A}f-\lambda} \arrowlim{x\to+\infty}0$ donc il existe $A' \geq A$ tel que
+      $$
+        \forall  x \geq A', \frac{1}{x}\abs{\int_{0}^{A}(f-\lambda)} < \varepsilon
+      $$
+      d’où pour tout $x \geq A'$,
+      $$
+        \abs{\frac{1}{x}\int_{0}^{x}f - \lambda} < \varepsilon + \varepsilon = 2 \varepsilon
+      $$
+      d’où $\frac{1}{x}\int_{0}^{x}f \arrowlim{x\to+\infty}\lambda$
+    - *Seconde méthode (théomème de convergence dominée) :*
+      $$
+        \frac{1}{x}\int_{0}^{x}f(t)\dd t \ueq{t = ux} \frac{1}{x} \int_{0}^{1}f(ux) = \int_{0}^{1}f(ux)\dd u
+      $$
+      - La fonction $u \longmapsto f(ux)$ continue par morceaux sur $\cc{0,1}$ convergen simplement vers
+        $$
+          u \longmapsto \begin{cases}\lambda \if u \in \oc{0,1}\\ f(0)\if u=0\end{cases} \in \Cont_{m}(\cc{0,1})
+        $$
+      - $\forall x \in \R_{+}^{*}, \forall \underline{u \in \cc{0,1}}, \abs{f(ux) \leq \norm f_{\infty,\R_{+}}}$
+      - *Montrons l’existence de $\norm f_{\infty,\R_{+}}$* : il existe $A > 0$ tel que $\forall x \in \co{A,+\infty}, \abs{f(x) - \lambda} \leq 1$ donc
+        $$
+          \forall x \in \co{A,+\infty}, \abs{f(x)} \leq 1 + \abs{\lambda}
+        $$
+        $f_{|\cc{0,A}}$ est continue par morceaux sur $\cc{0,A}$ et $\cc{0,A}$ est un segment donc
+        $$
+          \forall x \in \cc{0,A}, \abs{f(x)} \leq  \norm f_{\infty,\cc{0,A}}
+        $$
+        d’où
+        $$
+          \forall x \in \R_{+}, \abs{f(x)} \leq \max \{1+ \abs{\lambda}, \norm f_{\infty,\cc{0,A}}\}
+        $$
+      or $u \longmapsto \norm f_{\infty,\R_{+}}$ est continue sur $\cc{0,1}$ donc intégrable sur ce segment, donc *théorème de convergence dominée* donne
+      $$
+        \frac{1}{x} \int_{0}^{x}f(t)\dd t \arrowlim{x\to+\infty} \int_{0}^{1}\lambda = \lambda
+      $$
+%
+
+On utilise souvent le *théorème de convergence dominée* pour obtenir des équivalents d’intégrales du type
+$$
+  I(x) = \int_{I}f_{x}(t)\dd t
+$$
+lorsque $x$ tend vers $\sup J$ ou $\inf J$. Le cas fréquent est $f_{x}(t) \arrowlim{x\to \sup J / \inf J} 0$. On effectue alors souvent un changement de variables avant d’appliquer le théorème pour se ramener à une limite non nulle.
+
+%eg
+  Cherchons un développement asymptotique à l’ordre $1$ en $\frac{1}{n}$ de
+  $$
+    u_{n} = \int_{0}^{1}\frac{\dd t}{1+t^{n}}
+  $$
+  ~
+  Posons
+  $$
+    f_{n}: \applic{\cc{0,1}}{\R}{t}{\frac{1}{1+t^{n}}} \in \Cont(\cc{0,1})
+  $$
+  $(f_{n})$ converge simplement vers la fonction
+  $$
+    t \longmapsto \begin{cases}1 \if t \in \co{0,1}\\ \frac{1}{2} \if t=1\end{cases}
+  $$
+  - $(f_{n})$ converge simplement vers $\tilde{1}$ sur $\co{0,1}$
+  - $\forall n \in \N, \abs{f_{n}} \leq 1$ et $\tilde{1} \in \L^{1}(\co{0,1})$
+  donc le *théorème de convergence dominée* donne
+  $$
+    \lim_{n\to+\infty}u_{n} = \int_{\co{0,1}}\tilde{1} = 1
+  $$
+  De plus,
+  $$
+    1-u_{n} = \int_{0}^{1}\frac{t^{n}}{1+t^{n}}\dd t
+  $$
+  dont l’intégrande converge simplement vers la fonction nulle sur $\co{0,1}$.
+  $$
+    1-u_{n} \ueq{x=t^{n}} \int_{0}^{1}\frac{x}{1+x}\frac{1}{n}x^{\frac{1}{n}-1}\dd x = \frac{1}{n}\int_{0}^{1}\frac{x^{\frac{1}{n}}}{1+x}\dd x
+  $$
+  La fonction
+  $$
+    g_{n}: \applic{\cc{0,1}}{\R}{x}{\frac{x^{\frac{1}{n}}}{1+x} = \frac{e^{\frac{1}{n}\ln x}}{1+x}}
+  $$
+  est continue sur $\cc{0,1}$, et $(g_{n})$ converge simplement vers
+  $$
+    x \longmapsto \begin{cases}0 \if x=0\\\frac{1}{1+x}\if x \in \oc{0,1}\end{cases}
+  $$
+  donc pour tout $n \in \N^{*}$,
+  $$
+    \forall x \in \oc{0,1}, 0 \leq  g_{n}(x) \leq  \frac{1}{1+x}
+  $$
+  et $x \longmapsto  \frac{1}{1+x}$ est intégrable sur $\oc{0,1}$ donc le *théorème de convergence dominée* donne
+  $$
+    \int_{\oc{0,1}}g_{n} \arrowlim{n\to+\infty}\int_{\oc{0,1}}\frac{\dd x}{1+x} = \left[\ln(1+x)\right]_{0}^{1} = \ln 2
+  $$
+  d’où $1-u_{n} \usim{n\to+\infty}\frac{\ln 2}{n}$ soit
+  $$
+    u_{n} \ueq{n\to+\infty} 1- \frac{\ln 2}{n}+o \left(\frac{1}{x}\right)
+  $$
+%
+
+%eg
+  Trouvons un équivalent de la fonction $f: x \longmapsto \int_{0}^{+\infty}\frac{e^{-xt}}{1+t}\dd t$ en $+\infty$. (on montre (difficilement) $f(x) \usim{0+}-\ln x$)
+  ~
+  $f$ est définie sur $\R_{+}^{*}$.
+  $$
+    \left[t \longmapsto \frac{e^{-xt}}{1+t}\right] \arrowlim{x\to+\infty} \tilde{0} \sur \oo{0,+\infty}
+  $$
+  donc pour tout $x \geq 1$,
+  $$
+    \forall t \in \R_{+}^{*}, \abs{\frac{e^{-xt}}{1+t}} \leq e^{-t}
+  $$
+  et $t \longmapsto  e^{-t} \in \L^{1}(\oo{0,+\infty})$, donc le *théorème de convergence dominée* donne
+  $$
+    \lim_{x\to+\infty}f(x) = \int_{0}^{+\infty}\tilde{0} = 0
+  $$
+  donc $f(x) \usim{+\infty}\frac{1}{x}$.
+  %rem
+    Il y a plus rapide :
+    $$
+      \forall x > 0,  0 \leq f(x) \leq \int_{0}^{+\infty}e^{-xt}\dd t = \frac{1}{x} \arrowlim{x\to+\infty}0
+    $$
+    Soit $x > 0$.
+    $$
+      f(x) \ueq{u = xt} \int_{0}^{+\infty}\frac{e^{-u}}{1+\frac{u}{x}}\frac{\dd u}{x} = \frac{1}{x} \int_{0}^{+\infty}\frac{e^{-u}}{1+\frac{u}{x}}
+    $$
+    et $\left[u \longmapsto \frac{e^{-u}}{1+\frac{u}{x}}\right]$ converge simplement vers $u \longmapsto e^{-u}$ sur $\co{0,+\infty}$.
+    $$
+      \forall x \in \R_{+}^{*}, \forall u \in \R_{+}, \abs{\frac{e^{-u}}{1+\frac{u}{x}}} \leq e^{-u}
+    $$
+    et $u \longmapsto e^{-u}$ est intégrable sur $\R_{+}$ donc le *théorème de convergence dominée* donne
+    $$
+      \int_{0}^{+\infty}\frac{e^{-u}}{1+\frac{u}{x}} \arrowlim{x\to+\infty} \int_{0}^{+\infty}e^{-u}\dd u = 1
+    $$
+  %
+%
+
+## Théorème de continuité d’une intégrale à paramètres
+
+On s’intéresse à la continuité d’une fonction du type
+$$
+  x \longmapsto  g(x) = \int_{I}f(x,t)\dd t
+$$
+
+%eg
+  Cosidérons la fonction définie par
+  $$
+    g(x) = \int_{0}^{+\infty}\frac{x}{1+(xt)^{2}}\dd t = \left[\arctan(xt)\right]_{0}^{+\infty}
+  $$
+  Alors $g(0) = 0$, et pour tout $x \in \R^{*}$,
+  $$
+    g(x) = \begin{cases}\frac{\pi}{2} \if x>0\\ -\frac{\pi}{2} \if x < 0\end{cases}
+  $$
+  donc $g$ n’est pas continue sur $\R$.
+%
+
+%thm
+  Soit $\D$ un intervalle réel de longueur non nulle. Soit
+  $$
+    f: \applic{\D \times I}{\K}{(x,t)}{f(x,t)}
+  $$
+  une application de deux variables réelles. Si
+  - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\D$
+  - pour tout $x \in \D$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
+  - une des deux hypothèse de domination ci-dessous est vraie
+    - *domination locale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall (x,t) \in \D \times I, \abs{f(x,t)} \leq \varphi(t)
+      $$
+    - *domination locale :* pour tout segment $S \subset \D$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall x \in S, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{S}(t)
+      $$
+  alors la fonction
+  $$
+    g: x \longmapsto \int_{I} f(x,t)\dd t
+  $$
+  est définie et continue sur $\D$.
+%
+
+%proof
+  Supposons les deux premières hypothèses ainsi que l’hypothèse de *domination locale* vérifiées. Soit $x \in \D$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall t \in I, \abs{f(x,t)} \leq \varphi_{S}(t)
+  $$
+  Comme $\varphi_{S} \in \L^{1}(I,\R+)$, on a $t \longmapsto f(x,t) \in \L^{1}(I,\K)$ (car $t \longmapsto f(x,t)$ est continue par morceaux sur $I$), donc
+  $$
+    g: x \longmapsto  \int_{I} f(x,t)\dd t
+  $$
+  est bien définie sur $\D$. Soit $\alpha \in \D$. Soit $(x_{n})_{n \in \N}$ une suite de $\D$ qui converge vers $\alpha$. La suite $(x_{n})_{n \in \N}$ est alors bornée donc il existe un segment $S \subset \D$ contenant $\alpha$ et tous les termes de $(x_{n})$.
+  $$
+    \left[t \longmapsto  f(x_{n}, t)\right] \sarrowlim{n\to+\infty} \left[t \longmapsto f(\alpha,t)\right] \sur I
+  $$
+  car pour $t$ fixé dans $I$, la fonction $x \longmapsto  f(x,t)$ est continue en $\alpha$. D’après l’hypothèse de *domination locale*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall n \in \N, \forall t \in I, \abs{f(x_{n}, t)} \leq \varphi_{S}(t)
+  $$
+  donc le *théorème de convergence dominée* donne
+  $$
+    \int_{I} f(x_{n}\tau)\dd t = g(x_{n}) \arrowlim{n\to+\infty} \int_{I} f(\alpha,t)\dd t = g(\alpha)
+  $$
+  ainsi, $g$ est continue en $\alpha$ (caractérisation séquentielle).
+%
+
+%eg
+  - Considérons la fonction définie par
+    $$
+      F(x) = \int_{0}^{+\infty}\frac{e^{-xt^{2}}}{1+t^{2}}\dd t
+    $$
+    - si $x < 0$, alors $\frac{e^{-xt^{2}}}{1+t^{2}}\arrowlim{t\to+\infty}+\infty$ donc l’intégrale diverge.
+    - Posons
+      $$
+        f: \applic{\R_{+}\times \R_{+}}{\R}{(x,t)}{\frac{e^{-xt^{2}}}{1+t^{2}}}
+      $$
+      - pour tout réel positif $t$, l’application $x \longmapsto f(x,t)$ est ++continue++ sur $\R_{+}$.
+      - (pour tout réel positif $x$, l’application $t \longmapsto  f(x,t)$ est continue par morceaux sur $\R_{+}$)
+      - $\forall (x,t) \in (\R_{+})^{2}, \abs{f(x,t)} = f(x,t) \leq \frac{1}{1+t^{2}}$ et $t \longmapsto \frac{1}{1+t^{2}}$ est intégrable sur $\L^{1}(\R_{+})$
+      donc $F$ est continue sur $\R_{+}$.
+  - Considérons l’application
+    $$
+      G: x \longmapsto \int_{0}^{+\infty}e^{-xt}\frac{\sh t}{t}\dd t
+    $$
+    Pour $x \in \R$, l’application $t \longmapsto e^{-xt}\frac{\sh t}{t}$ est continue et positive sur $\R_{+}^{*}$ et
+    ~ $\lim_{t\to 0+} \left(e^{-xt}\frac{\sh t}{t}\right) = 1$  ~ $e^{-xt}\frac{\sh t}{t}\sim e^{-xt}\frac{e^{t}}{2t} = \frac{e^{-(x-1)t}}{2t}$  ~ $\frac{e^{-(x-1)t}}{2t} \ueq{t\to+\infty} O (e^{-(x-1)t})$
+    Si $x-1 > 0$, i.e $x > 1$, alors $G$ est définie en $x$ et pour $x-1 \leq 0$,
+    $$
+      \frac{1}{t} \ueq{+\infty}O \left(\frac{e^{-(x-1)t}}{2t}\right)
+    $$
+    i.e.
+    $$
+      e^{(x-1)t} \ueq{+\infty}O(1)
+    $$
+    $G$ n’est pas définie en 0 mais sur $\D = \oo{1,+\infty}$. Posons
+    $$
+      g: \applic{\D \times \oc{0,+\infty}}{\R}{(x,t)}{e^{-xt}\frac{\sh t}{t}}
+    $$
+    - pour $t > 0$, $x \longmapsto g(x,t) \in \Cont(\D)$
+    - (pour $x \in \D$, $t \longmapsto g(x,t) \in \Cont_{m}(\oo{1,+\infty})$)
+    - Soit $\cc{a,b}\in \D$ un segment avec $1 < a < b$.
+      $$
+        \forall x \in \cc{a,b}, \underline{\forall t \in \oo{0,+\infty}}, \abs{g(x,t)} = g(x,t) \leq e^{-xt}\frac{\sh t}{t}
+      $$
+      et $t \longmapsto  e^{-xt}\frac{\sh t}{t} \in \L^{1}(\oo{0,+\infty}, \R_{+})$ car $a > 1$.
+    Ainsi, $G$ est continue sur $\D$.
+  - Considérons la fonction Gamma d’Euler
+    $$
+      \Gamma: x \longmapsto \int_{0}^{+\infty}t^{x-1}e^{-t}\dd t
+    $$
+    La fonction $t \longmapsto t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}$ est continue et positive sur $\color{yellow}\oo{0,+\infty}\color{reset}$ pour tout $x$ réel.
+    ~ $t^{x-1}e^{-t} \usim{t\to 0^{+}} \frac{1}{t^{1-x}}$  ~ $\int_{\boxed{0}}^{1}\frac{\dd t}{t^{1-x}}$ converge si et seulement si $x > 0$  ~ $t^{2} \cdot t^{x-1}e^{-t} = t^{x+1}e^{-t} \arrowlim{t\to+\infty}0$
+    donc $t^{x-1}e^{-t} \ueq{+\infty}o \left(\frac{1}{t}\right)$ et $\int_{1}^{+\infty}\frac{\dd t}{t^{2}}$ converge.
+    $\Gamma$ est donc définie sur $\D = \oo{0,+\infty}$.
+
+    $$
+      \Gamma(1) = \int_{0}^{+\infty}e^{-t}\dd t = \left[-e^{-t}\right]_{0}^{+\infty} = 1
+    $$
+    Soit $n \in \N^{*}$. Soit $0 < \varepsilon < X < 0$.
+    $$
+      \int_{\varepsilon}^{X}t^{(n+1)-1}e^{-t}\dd t = \int_{\varepsilon}^{X}t^{n}e^{-t}\dd t = \underbrace{\left[-t^{n}e^{-t}\right]_{\varepsilon}^{X}}_{\underbrace{X^{n} e^{-X}}_{\arrowlim{X\to+\infty}0} + \underbrace{\varepsilon^{n}e^{-\varepsilon}}_{\arrowlim{\varepsilon\to 0}0}} - \int_{\varepsilon}^{X}-n t^{n-1} e^{-t}\dd t
+    $$
+    d’où, en passant à la limite sur $\varepsilon$ en $0^{+}$ et sur $X$ en $+\infty$, on obtient la relation de récurrence
+    $$
+      \begin{cases}\Gamma(1)=1\\
+      \forall n \in \N^{*}, \Gamma(n+1) = n \Gamma(n)
+      \end{cases}
+    $$
+    d’où, avec la convention $0! = 1$,
+    $$
+      \forall n \in \N, \Gamma(n+1) = n!
+    $$
+    - *Continuité de $\Gamma$ sur $\D = \oo{0,+\infty}$.* Posons
+      $$
+        g: \applic{\D \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
+      $$
+      - pour tout $t$ dans $\oo{0,+\infty}$, $x \longmapsto  g(x,t)$ est continue sur $\D$.
+      - Soit $\cc{a,b} \subset \D$ un segment quelconque (avec $0 < a < b$). $a \leq  x \leq  b$ et $t \in \oc{0,1}$ donc
+        $$
+          (a-1)\ln t \geq (x-1)\ln t \geq (b-1)\ln t
+        $$
+        et $a \leq  x \leq  b$ et $t \in \co{1,+\infty}$ donc
+        $$
+          (a-1)\ln t \leq (x-1)\ln t \leq (b-1)\ln t
+        $$
+
+        Donc pour tout $x \in \cc{a,b}$,
+        $$
+          t^{x-1} \leq  \begin{cases}t^{a-1}\if t \in \oc{0,1}\\ t^{b-1} \if t \in \co{1,+\infty}\end{cases} \leq t^{a-1} + t^{b-1}
+        $$
+        d’où
+        $$
+          \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})
+        $$
+        et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\D = \oo{0,+\infty}$.
+%
