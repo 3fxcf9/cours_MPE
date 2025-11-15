@@ -1,0 +1,182 @@
+# Semaine 8
+
+## Toute intégrale absolment convergente est convergente
+
+%prop
+  Soit $f: I \longrightarrow  \K$ une fonction continue par morceaux sur un intervalle $I$. Si $\int_{I}\abs{f}$ est convergente, alors $\int_{I}f$ est convergente.
+%
+
+%proof
+  - Supposons $\K = \R$. Pour tout réel $x$, on pose $f^{+}(x) = \max\{f(x),0\}\geq 0$ et $f^{-}(x) = \max\{-f(x),0\} \geq 0$. Ce sont deux fonctions continues par morceaux sur $I$.
+    ==FIG6d==
+    On a $0 \leq  f^{+} \leq  \abs{f}$ et $0 \leq  f^{-} \leq \abs{f}$, or $\int_{I}\abs{f}$ est convergente, donc $\int_{I}f^{+}$ et $\int_{I}f^{-}$ convergent également. Ainsi,
+    $$
+      \int_{I}f = \int_{I}(f^{+}-f^{-})
+    $$
+    converge.
+  - Supposons $\K = \C$. On a $f = \Re f + i \cdot \Im f$ et on a $\abs{\Re f} \leq  \abs{f}$((le premier $\abs{\cdot}$ est une valeur absolue et le second un module)) et $\abs{\Im f} \leq  \abs{f}$, donc $\int_{I} \abs{\Re f}$ et $\int_{I} \abs{\Im f}$ convergent.
+    D’après le premier cas, $\int_{I}\Re f$ et $\int_{I}\Im f$ sont convergentes, d’où
+    $$
+      \int_{I}f = \int_{I}(\Re f + i \cdot  \Im f)
+    $$
+    converge.
+%
+
+## Intégration d’une relation de comparaison
+
+%prop
+  Soient $-\infty < a < b \leq +\infty$. Soient $f : \co{a,b} \longrightarrow \K$ continue par morceaux et $\varphi: \co{a,b} \longrightarrow \R_{+}$ continue par morceaux et positive. Si $\int_{a}^{\boxed{b}}\varphi$ diverge et $f \ueq{b} O(\varphi)$ alors on ne peut rien dire de la convergente de $\int_{a}^{\boxed{b}}$ mais
+    $$
+      \int_{a}^{x}f \ueq{b}O \left(\int_{a}^{x}\varphi\right)
+    $$
+%
+
+%proof
+  - Comme $\int_{a}^{\boxed{b}}\varphi$ est divergente avec $\varphi$ de signe constant au voisinage de $b$, il existe $d \in \co{a,b}$ del que $\varphi_{|\co{d,b}}$ soit de signe constant. Par divergence de l’intégrale,
+    $$
+      \abs{\int_{d}^{x}\varphi} \arrowlim{x\xrightarrow{<} b}+\infty
+    $$
+    $f$ étant dominnée par $\varphi$,
+    $$
+      \exists  M \in \R_{+}, \exists c \in \co{a,b}: \begin{cases}\forall x \in \co{c,b}, \abs{f(x)} \leq  M \abs{\varphi(x)}\\ c \geq d\end{cases}
+    $$
+    Soit $x \in \co{c', b}$.
+    $$
+      \abs{\int_{a}^{x}f} \leq \abs{\int_{a}^{c}f} + \int_{a}^{x}\abs{f} \leq \abs{\int_{a}^{c}f} + M \underbrace{\int_{c}^{x}\abs{\varphi}}_{=\abs{\int_{c}^{x}\varphi}} \leq \underbrace{\abs{\int_{a}^{e}f} + M \abs{\int_{a}^{c}\varphi}}_{=o \left(\int_{a}^{x}\varphi\right)} + M \abs{\int_{a}^{x}\varphi}
+    $$
+    donc
+    $$
+      \exists  c' \in \co{c,b}: \forall x \in \co{c', b}, \abs{\int_{a}^{x}f} \leq  2M \abs{\int_{a}^{x}\varphi}
+    $$
+%
+
+## Théorème de convergence dominée
+
+%thm Théorème de convergence dominée
+  Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur un intervalle réel $I$ de longueur non nulle (à valeurs dans $\K$). Si
+  - $(f_{n})$ converge simplement vers $f$ continue par morceaux sur $I$((En réalité, l’hypothèse de continuité par morceaux de $f$ est inutile.))
+  - Il existe $\varphi \in \L^{1}(I,\R_{+})$ et $n_{0} \in \N$ tels que
+    $$
+      \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi
+    $$
+    ($\varphi$ est appelée *chapeau intégrable*).
+  alors
+  - $\forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)$
+  - $f \in \L^{1}(I,\K)$
+  - $\displaystyle \lim_{n\to+\infty}\int_{I}f_{n} = \int_{I}f$
+%
+
+%proof
+  *On admet la version particulière suivante :*
+  %thm Théorème de convergence majorée positive
+    Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur le segment $\cc{a,b}$ à valeurs dans $\R_{+}$. Si
+    - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
+    - $\exists n_{0} \in \N, \exists M \in \R_{+}: \forall n \geq n_{0}, 0 \leq f_{n} \leq M$
+    alors
+    $$
+      \int_{a}^{b}f_{n} \arrowlim{n\to+\infty} 0
+    $$
+  %
+  - On a
+    ~ $\forall n \geq n_{0}, \abs{f_{n}} \leq \varphi$  ~ $\varphi \in \L^{1}(I,\R_{+})$
+    donc
+    $$
+      \forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)
+    $$
+  - Soit $x \in I$. On a
+    $$
+      \forall xn\geq n_{0}, \abs{f_{n}(x)} \leq  \varphi(x)
+    $$
+    On fait tendre $n$ vers $+\infty$ et on a
+    $$
+      \forall x \in I, \abs{f(x)} \leq \varphi(x)
+    $$
+    donc $f \in \L^{1}(I,\K)$.
+  - Soit $\varepsilon > 0$. $\varphi$ est intégrable sur $I$ donc il existe $a < b$ deux points de $I$ tels que
+    $$
+      \abs{\int_{I}\varphi - \int_{\cc{a,b}}\varphi} < \varepsilon
+    $$
+    Soit $n \geq n_{0}$. $f_{n} - f \in \L^{1}(I,\K)$ et
+    $$
+      \abs{\int_{I} f_{n}-f} \leq  \int_{I} \abs{f_{n} - f} = \int_{\cc{a,b}}\abs{f_{n} - f} + \int_{I \setminus \cc{a,b}}\abs{f_{n} - f}
+    $$
+    or
+    $$
+      \forall n \geq n_{0}, \abs{f_{n} - f} \leq \abs{f_{n}} + \abs{f} \leq 2 \varphi
+    $$
+    donc pour $n \geq n_{0}$,
+    $$
+      \int_{I \setminus \cc{a,b}}\abs{f_{n}-f} \leq  \int_{I \setminus \cc{a,b}} 2 \varphi \leq 2 \varepsilon
+    $$
+  - $(\abs{f_{n} - f})_{n \in \N}$ est une suite de fonction continues par morceaux sur $\cc{a,b}$ et
+    $$
+      \abs{f_{n} - f} \sarrowlim{n\to+\infty}\tilde{0} \text{ sur }\cc{a,b}
+    $$
+    Or
+    $$
+      \forall n \geq n_{0}, 0 \leq  \abs{f_{n} - f} \leq 2 \varphi \leq 2 \norm{\varphi}_{\infty, \cc{a,b}}
+    $$
+    d’où, d’après le *théorème de convergence majorée positive*,
+    $$
+      \int_{\cc{a,b}}\abs{f_{n} - f} \arrowlim{n \to+\infty}0
+    $$
+    Il existe donc $N \in \N$ avec $n \geq n_{0}$ tel que
+    $$
+      \forall n \geq N, \int_{\cc{a,b}}\abs{f_{n} - f} \leq \varepsilon
+    $$
+    donc
+    $$
+      \forall n \geq N, \abs{\int_{I}f_{n} - \int_{I}f} = \abs{\int_{I}(f_{n}-f)} \leq 3 \varepsilon
+    $$
+    Ainsi, $\int_{I} f_{n} \arrowlim{n\to+\infty} \int_{I} f$.
+%
+
+## Continuité d’une intégrale à paramètre
+
+%thm
+  Soit $\Def$ un intervalle réel de longueur non nulle. Soit
+  $$
+    f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
+  $$
+  une application de deux variables réelles. Si
+  - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\Def$
+  - pour tout $x \in \Def$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
+  - une des deux hypothèse de domination ci-dessous est vraie
+    - *domination locale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall (x,t) \in \Def \times I, \abs{f(x,t)} \leq \varphi(t)
+      $$
+    - *domination locale :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall x \in S, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{S}(t)
+      $$
+  alors la fonction
+  $$
+    g: x \longmapsto \int_{I} f(x,t)\dd t
+  $$
+  est définie et continue sur $\Def$.
+%
+
+%proof
+  Supposons les deux premières hypothèses ainsi que l’hypothèse de *domination locale* vérifiées. Soit $x \in \Def$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall t \in I, \abs{f(x,t)} \leq \varphi_{S}(t)
+  $$
+  Comme $\varphi_{S} \in \L^{1}(I,\R+)$, on a $t \longmapsto f(x,t) \in \L^{1}(I,\K)$ (car $t \longmapsto f(x,t)$ est continue par morceaux sur $I$), donc
+  $$
+    g: x \longmapsto  \int_{I} f(x,t)\dd t
+  $$
+  est bien définie sur $\Def$. Soit $\alpha \in \Def$. Soit $(x_{n})_{n \in \N}$ une suite de $\Def$ qui converge vers $\alpha$. La suite $(x_{n})_{n \in \N}$ est alors bornée donc il existe un segment $S \subset \Def$ contenant $\alpha$ et tous les termes de $(x_{n})$.
+  $$
+    \left[t \longmapsto  f(x_{n}, t)\right] \sarrowlim{n\to+\infty} \left[t \longmapsto f(\alpha,t)\right] \sur I
+  $$
+  car pour $t$ fixé dans $I$, la fonction $x \longmapsto  f(x,t)$ est continue en $\alpha$. D’après l’hypothèse de *domination locale*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall n \in \N, \forall t \in I, \abs{f(x_{n}, t)} \leq \varphi_{S}(t)
+  $$
+  donc le *théorème de convergence dominée* donne
+  $$
+    \int_{I} f(x_{n}\tau)\dd t = g(x_{n}) \arrowlim{n\to+\infty} \int_{I} f(\alpha,t)\dd t = g(\alpha)
+  $$
+  ainsi, $g$ est continue en $\alpha$ (caractérisation séquentielle).
+%

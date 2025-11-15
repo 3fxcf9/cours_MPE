@@ -1073,7 +1073,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
 %proof
   - Supposons $\K = \R$. Pour tout réel $x$, on pose $f^{+}(x) = \max\{f(x),0\}\geq 0$ et $f^{-}(x) = \max\{-f(x),0\} \geq 0$. Ce sont deux fonctions continues par morceaux sur $I$.
     ==FIG6d==
-    On a $0 \leq  f+ \leq  \abs{f}$ et $0 \leq  f^{-} \leq \abs{f}$, or $\int_{I}\abs{f}$ est convergente, donc $\int_{I}f^{+}$ et $\int_{I}f^{-}$ convergent également. Ainsi,
+    On a $0 \leq  f^{+} \leq  \abs{f}$ et $0 \leq  f^{-} \leq \abs{f}$, or $\int_{I}\abs{f}$ est convergente, donc $\int_{I}f^{+}$ et $\int_{I}f^{-}$ convergent également. Ainsi,
     $$
       \int_{I}f = \int_{I}(f^{+}-f^{-})
     $$
@@ -1235,7 +1235,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
       $$
         \int_{x}^{\boxed{b}}f \ueq{x\to b}O \left(\int_{x}^{\boxed{b}}\varphi\right) \left(\text{resp. } o \left(\int_{x}^{\boxed{b}}\varphi\right), \text{resp. } \usim{b} \lambda \int_{x}^{\boxed{b}}\varphi\right)
       $$
-  - Si $\int_{a}^{\boxed{b}}\varphi$ divergente.
+  - Si $\int_{a}^{\boxed{b}}\varphi$ diverge.
     - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors
       $$
         \int_{a}^{x}f \ueq{b}O \left(\int_{a}^{x}\varphi\right) \: \left(\text{resp. } o \left(\int_{a}^{x}\varphi\right), \text{resp. } \usim{b} \lambda \int_{a}^{x}\varphi\right)

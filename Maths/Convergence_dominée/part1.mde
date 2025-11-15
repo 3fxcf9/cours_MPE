@@ -87,7 +87,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
 
 %proof
   *Il suffit d’utiliser la version particulière suivante :*
-  %thm Théomème de convergence majorée positive
+  %thm Théorème de convergence majorée positive
     Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur le segment $\cc{a,b}$ à valeurs dans $\R_{+}$. Si
     - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
     - $\exists n_{0} \in \N, \exists M \in \R_{+}: \forall n \geq n_{0}, 0 \leq f_{n} \leq M$
@@ -298,7 +298,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
         \abs{\frac{1}{x}\int_{0}^{x}f - \lambda} < \varepsilon + \varepsilon = 2 \varepsilon
       $$
       d’où $\frac{1}{x}\int_{0}^{x}f \arrowlim{x\to+\infty}\lambda$
-    - *Seconde méthode (théomème de convergence dominée) :*
+    - *Seconde méthode (théorème de convergence dominée) :*
       $$
         \frac{1}{x}\int_{0}^{x}f(t)\dd t \ueq{t = ux} \frac{1}{x} \int_{0}^{1}f(ux) = \int_{0}^{1}f(ux)\dd u
       $$
@@ -437,19 +437,19 @@ $$
 %
 
 %thm
-  Soit $\D$ un intervalle réel de longueur non nulle. Soit
+  Soit $\Def$ un intervalle réel de longueur non nulle. Soit
   $$
-    f: \applic{\D \times I}{\K}{(x,t)}{f(x,t)}
+    f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
   $$
   une application de deux variables réelles. Si
-  - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\D$
-  - pour tout $x \in \D$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
+  - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\Def$
+  - pour tout $x \in \Def$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
   - une des deux hypothèse de domination ci-dessous est vraie
     - *domination locale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
       $$
-        \forall (x,t) \in \D \times I, \abs{f(x,t)} \leq \varphi(t)
+        \forall (x,t) \in \Def \times I, \abs{f(x,t)} \leq \varphi(t)
       $$
-    - *domination locale :* pour tout segment $S \subset \D$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+    - *domination locale :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall x \in S, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{S}(t)
       $$
@@ -457,11 +457,11 @@ $$
   $$
     g: x \longmapsto \int_{I} f(x,t)\dd t
   $$
-  est définie et continue sur $\D$.
+  est définie et continue sur $\Def$.
 %
 
 %proof
-  Supposons les deux premières hypothèses ainsi que l’hypothèse de *domination locale* vérifiées. Soit $x \in \D$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
+  Supposons les deux premières hypothèses ainsi que l’hypothèse de *domination locale* vérifiées. Soit $x \in \Def$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
   $$
     \forall t \in I, \abs{f(x,t)} \leq \varphi_{S}(t)
   $$
@@ -469,7 +469,7 @@ $$
   $$
     g: x \longmapsto  \int_{I} f(x,t)\dd t
   $$
-  est bien définie sur $\D$. Soit $\alpha \in \D$. Soit $(x_{n})_{n \in \N}$ une suite de $\D$ qui converge vers $\alpha$. La suite $(x_{n})_{n \in \N}$ est alors bornée donc il existe un segment $S \subset \D$ contenant $\alpha$ et tous les termes de $(x_{n})$.
+  est bien définie sur $\Def$. Soit $\alpha \in \Def$. Soit $(x_{n})_{n \in \N}$ une suite de $\Def$ qui converge vers $\alpha$. La suite $(x_{n})_{n \in \N}$ est alors bornée donc il existe un segment $S \subset \Def$ contenant $\alpha$ et tous les termes de $(x_{n})$.
   $$
     \left[t \longmapsto  f(x_{n}, t)\right] \sarrowlim{n\to+\infty} \left[t \longmapsto f(\alpha,t)\right] \sur I
   $$
@@ -512,18 +512,18 @@ $$
     $$
       e^{(x-1)t} \ueq{+\infty}O(1)
     $$
-    $G$ n’est pas définie en 0 mais sur $\D = \oo{1,+\infty}$. Posons
+    $G$ n’est pas définie en 0 mais sur $\Def = \oo{1,+\infty}$. Posons
     $$
-      g: \applic{\D \times \oc{0,+\infty}}{\R}{(x,t)}{e^{-xt}\frac{\sh t}{t}}
+      g: \applic{\Def \times \oc{0,+\infty}}{\R}{(x,t)}{e^{-xt}\frac{\sh t}{t}}
     $$
-    - pour $t > 0$, $x \longmapsto g(x,t) \in \Cont(\D)$
-    - (pour $x \in \D$, $t \longmapsto g(x,t) \in \Cont_{m}(\oo{1,+\infty})$)
-    - Soit $\cc{a,b}\in \D$ un segment avec $1 < a < b$.
+    - pour $t > 0$, $x \longmapsto g(x,t) \in \Cont(\Def)$
+    - (pour $x \in \Def$, $t \longmapsto g(x,t) \in \Cont_{m}(\oo{1,+\infty})$)
+    - Soit $\cc{a,b}\in \Def$ un segment avec $1 < a < b$.
       $$
         \forall x \in \cc{a,b}, \underline{\forall t \in \oo{0,+\infty}}, \abs{g(x,t)} = g(x,t) \leq e^{-xt}\frac{\sh t}{t}
       $$
       et $t \longmapsto  e^{-xt}\frac{\sh t}{t} \in \L^{1}(\oo{0,+\infty}, \R_{+})$ car $a > 1$.
-    Ainsi, $G$ est continue sur $\D$.
+    Ainsi, $G$ est continue sur $\Def$.
   - Considérons la fonction Gamma d’Euler
     $$
       \Gamma: x \longmapsto \int_{0}^{+\infty}t^{x-1}e^{-t}\dd t
@@ -531,7 +531,7 @@ $$
     La fonction $t \longmapsto t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}$ est continue et positive sur $\color{yellow}\oo{0,+\infty}\color{reset}$ pour tout $x$ réel.
     ~ $t^{x-1}e^{-t} \usim{t\to 0^{+}} \frac{1}{t^{1-x}}$  ~ $\int_{\boxed{0}}^{1}\frac{\dd t}{t^{1-x}}$ converge si et seulement si $x > 0$  ~ $t^{2} \cdot t^{x-1}e^{-t} = t^{x+1}e^{-t} \arrowlim{t\to+\infty}0$
     donc $t^{x-1}e^{-t} \ueq{+\infty}o \left(\frac{1}{t}\right)$ et $\int_{1}^{+\infty}\frac{\dd t}{t^{2}}$ converge.
-    $\Gamma$ est donc définie sur $\D = \oo{0,+\infty}$.
+    $\Gamma$ est donc définie sur $\Def = \oo{0,+\infty}$.
 
     $$
       \Gamma(1) = \int_{0}^{+\infty}e^{-t}\dd t = \left[-e^{-t}\right]_{0}^{+\infty} = 1
@@ -550,12 +550,12 @@ $$
     $$
       \forall n \in \N, \Gamma(n+1) = n!
     $$
-    - *Continuité de $\Gamma$ sur $\D = \oo{0,+\infty}$.* Posons
+    - *Continuité de $\Gamma$ sur $\Def = \oo{0,+\infty}$.* Posons
       $$
-        g: \applic{\D \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
+        g: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
       $$
-      - pour tout $t$ dans $\oo{0,+\infty}$, $x \longmapsto  g(x,t)$ est continue sur $\D$.
-      - Soit $\cc{a,b} \subset \D$ un segment quelconque (avec $0 < a < b$). $a \leq  x \leq  b$ et $t \in \oc{0,1}$ donc
+      - pour tout $t$ dans $\oo{0,+\infty}$, $x \longmapsto  g(x,t)$ est continue sur $\Def$.
+      - Soit $\cc{a,b} \subset \Def$ un segment quelconque (avec $0 < a < b$). $a \leq  x \leq  b$ et $t \in \oc{0,1}$ donc
         $$
           (a-1)\ln t \geq (x-1)\ln t \geq (b-1)\ln t
         $$
@@ -572,5 +572,5 @@ $$
         $$
           \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})
         $$
-        et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\D = \oo{0,+\infty}$.
+        et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\Def = \oo{0,+\infty}$.
 %
