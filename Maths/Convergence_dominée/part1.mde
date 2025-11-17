@@ -53,9 +53,9 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     - si $x=1$, alors $h_{n}(1) = 0 \arrowlim{n\to+\infty}0$.
     - si $x \in \co{0,1}$, alors $n^{2} x^{n} \arrowlim{n\to+\infty}0$. En effet, en notant $u_{n} = n^{2} x^{n}$,
       $$
-        \frac{u_{n+1}}{u_{n}} = \left(\frac{n+1}{n}\right)^{2}x \arrowlim x < 1
+        \frac{u_{n+1}}{u_{n}} = \left(\frac{n+1}{n}\right)^{2}x \arrowlim{} x < 1
       $$
-      donc $\sum u_{n}$ converge donc $u_{n} \arrowlim 0$. Ainsi,
+      donc $\sum u_{n}$ converge donc $u_{n} \arrowlim{} 0$. Ainsi,
       $$
         h_{n} \sarrowlim{n\to+\infty} \tilde{0} \text{ sur }\cc{0,1}
       $$
@@ -76,7 +76,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
   - $(f_{n})$ converge simplement vers $f$ continue par morceaux sur $I$((En réalité, l’hypothèse de continuité par morceaux de $f$ est inutile.))
   - Il existe $\varphi \in \L^{1}(I,\R_{+})$ et $n_{0} \in \N$ tels que
     $$
-      \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi
+      \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi \sur I
     $$
     ($\varphi$ est appelée *chapeau intégrable*).
   alors
@@ -196,7 +196,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     ~
     On a
     $$
-      \int_{0}^{n}\left(1+ \frac{x}{n}\right)^{n}e^{-2x}\dd x = \int_{0}^{+\infty}\left(1+\frac{x}{n}\right)^{n}e^{-2x} \1_{\cc{0,1}}\dd x
+      \int_{0}^{n}\left(1+ \frac{x}{n}\right)^{n}e^{-2x}\dd x = \int_{0}^{+\infty}\underbrace{\left(1+\frac{x}{n}\right)^{n}e^{-2x} \1_{\cc{0,1}}}_{h_{n}(x)}\dd x
     $$
     Pour tout $n \in \N$,
     $$
@@ -212,7 +212,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       $$
         \left(1+\frac{x}{n}\right)^{n} = e^{x\ln \left(1+\frac{x}{n}\right)} \leq e^{n \left(\frac{x}{n}\right)} = e^{x}
       $$
-      or $\forall x > 0, \ln x \leq x-1$ donc
+      car $\forall x > 0, \ln x \leq x-1$. Alors,
       $$
         \forall x \in \cc{0,n}, 0 \leq  g_{n}(x) \leq  e^{x}e^{-2x} = e^{-x}
       $$
@@ -232,7 +232,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
 %
 
 %thm Théorème de convergence dominée (étendu aux familles de fonctions)
-  Soit $(f_{\lambda}: I \longrightarrow \K)_{\cdot  \in J}$ une famille d’applications continues par morceaux indexée par un intervalle $J$ de longueur non nulle. Soit $\alpha \in \cc{\inf J, \sup J}$. Si
+  Soit $(f_{\lambda}: I \longrightarrow \K)_{\lambda  \in J}$ une famille d’applications continues par morceaux indexée par un intervalle $J$ de longueur non nulle. Soit $\alpha \in \cc{\inf J, \sup J}$. Si
   - pour tout $t \in I$, on a $f_{\lambda}(t) \arrowlim{\lambda \to \alpha}f(t)$ avec $f \in \Cont_{m}(I,\K)$
     $$
       « f_{\lambda} \sarrowlim{\lambda \to \alpha}f »
@@ -244,7 +244,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
   alors,
   - pour tout $\lambda$ voisin de $\alpha$, $f_{\lambda} \in \L^{1}(I,\K)$
   - $f \in \L^{1}(I,\K)$
-  - $\lim_{\lambda \to \alpha}\int_{I}f_{\lambda} = \int_{I}f$
+  - $\displaystyle\lim_{\lambda \to \alpha}\int_{I}f_{\lambda} = \int_{I}f$
 %
 
 %proof
@@ -302,11 +302,11 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       $$
         \frac{1}{x}\int_{0}^{x}f(t)\dd t \ueq{t = ux} \frac{1}{x} \int_{0}^{1}f(ux) = \int_{0}^{1}f(ux)\dd u
       $$
-      - La fonction $u \longmapsto f(ux)$ continue par morceaux sur $\cc{0,1}$ convergen simplement vers
+      - La fonction $u \longmapsto f(ux)$ continue par morceaux sur $\cc{0,1}$ converge simplement vers
         $$
           u \longmapsto \begin{cases}\lambda \if u \in \oc{0,1}\\ f(0)\if u=0\end{cases} \in \Cont_{m}(\cc{0,1})
         $$
-      - $\forall x \in \R_{+}^{*}, \forall \underline{u \in \cc{0,1}}, \abs{f(ux) \leq \norm f_{\infty,\R_{+}}}$
+      - $\forall x \in \R_{+}^{*}, \forall \underline{u \in \cc{0,1}}, \abs{f(ux)} \leq \norm f_{\infty,\R_{+}}$
       - *Montrons l’existence de $\norm f_{\infty,\R_{+}}$* : il existe $A > 0$ tel que $\forall x \in \co{A,+\infty}, \abs{f(x) - \lambda} \leq 1$ donc
         $$
           \forall x \in \co{A,+\infty}, \abs{f(x)} \leq 1 + \abs{\lambda}
@@ -445,7 +445,7 @@ $$
   - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\Def$
   - pour tout $x \in \Def$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
   - une des deux hypothèse de domination ci-dessous est vraie
-    - *domination locale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+    - *domination globale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall (x,t) \in \Def \times I, \abs{f(x,t)} \leq \varphi(t)
       $$
@@ -573,4 +573,262 @@ $$
           \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})
         $$
         et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\Def = \oo{0,+\infty}$.
+%
+
+## Dérivation d’une intégrale à paramètre
+
+%thm
+  Soient $\Def$ et $I$ deux intervalles de $\R$, tous deux de longueur non nulle. Soit
+  $$
+    f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
+  $$
+  une application de deux variables réelles telle que :
+  - pour tout $t$ fixé dans $I$, $t \longmapsto f(x,t)$ est de classe $\Cont^{1}$ sur $\Def$.
+  - pour tout $x$ fixé dans $\Def$, les deux applications $t \longmapsto f(x,t)$ et $t \longmapsto \pdv{f}{x}(x,t) = \partial_{1}f(x,t)$ sont intégrables sur $I$.
+  - une des deux conditions ci-dessous est vérifiée
+    - *majoration globale*: il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall (x,t) \in \Def \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
+      $$
+    - *majoration locale*: pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
+      $$
+        \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
+      $$
+  Alors,
+  $$
+    g: \applic{\Def}{\K}{x}{\int_{I}}f(x,t)\dd t
+  $$
+  est bien définie, de clsase $\C^{1}$ sur $\Def$ et
+  $$
+    \forall x \in \Def, g'(x) = \int_{I}\pdv{fx}{x}(x,t)\dd t
+  $$
+%
+
+%proof
+  La seconde hypothèse donne l’existence de $g$ définie sur $\Def$, tout comme l’existence de $h: \applic{\Def}{\K}{x}{\int_{I}\pdv{f}{x}(x,t)}\dd t$. On veut montrer que $g' = h$.
+  Soit $\alpha \in \Def$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $\Def \setminus \{\alpha\}$ qui converge vers $\alpha$. Montrons
+  $$
+    \int_{I}\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\dd t = \frac{g(x_{n}) - g(\alpha)}{x_{n} - \alpha} \arrowlim{n\to+\infty}h(\alpha)
+  $$
+  On a, comme $u \longmapsto f(u,t)$ est dérivable en $\alpha$ et de dérivée valant $\pdv{f}{x}(\alpha, t)$ :
+  $$
+    \left[t \longmapsto \frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\right] \sarrowlim{n\to+\infty} \left[t \longmapsto \pdv{f}{x}(\alpha, t)\right] \sur I
+  $$
+  Soit $S$ un segment de $\Def$ contenant $\alpha$ et tout élément de $(x_{n})$. Supposons l’hypothèse de *majoration locale*. Il existe donc $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall (x,t) \in S \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi_{S}(t)
+  $$
+  Soit $t \in I$ fixé. La fonction $u \longmapsto f(u,t)$ est de classe $\C^{1}$ sur $S$ donc
+  $$
+    \forall (u,v) \in S^{2}, \abs{f(u, t) - f(v, t)} \oleq{IAF} \norm{\pdv{f}{x}(x, t)} \times \abs{u-v} \leq \varphi_{S}(t) \times  \abs{u-v}
+  $$
+  d’où $\varphi_{S} \in \L^{1}(I,\R_{+})$ et
+  $$
+    \forall x \in \N, \abs{\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}} \leq \varphi_{S}(t)
+  $$
+  donc d’après le *théorème de convergence dominée*, on a
+  $$
+    \lim_{n\to+\infty}\int_{I}\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\dd t = \int_{I} \pdv{f}{x}(\alpha, t)\dd t
+  $$
+  i.e.
+  $$
+    \frac{g(x_{n}) - g(\alpha)}{x_{n} - \alpha} \arrowlim{n\to+\infty}h(\alpha)
+  $$
+  or la suite $(x_{n})$ est quelconque donc $g$ est dérivable et
+  $$
+    g'(\alpha) = h(\alpha) = \int_{I} \pdv{f}{x}(\alpha, t)\dd t
+  $$
+  - Traitons à présent la continuité de $g'$:
+    - pour tout $t$ fixé dans $I$, la fonction $x \longmapsto \pdv{f}{x}(x,t)$ est continue sur $\Def$
+    - pour tout $x \in \Def$, la fonction $t \longmapsto \pdv{f}{x}(x,t)$ est continue par morceaux
+    - l’hypothèse de *domination* est vérifiée
+    donc le *théorème de continuité d’intégrale à paramètre* donne $g' \in \Cont(\Def)$.
+%
+
+%eg
+  - Soit $g: x \longmapsto \int_{0}^{+\infty}\frac{e^{-t}-e^{-xt}}{t}\dd t$. On a
+    $$
+      \frac{e^{-t}-e^{-xt}}{t} = \frac{(1-t+o(t)) - (1-xt+o(t))}{t} \ueq{0} x - 1 + o(1) \arrowlim{t\to 0+}x-1
+    $$
+    Posons
+    $$
+      f: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{\frac{e^{-t}-e^{-xt}}{t}}
+    $$
+    Alors
+    $$
+      \forall t \geq 1, 0 \leq  \frac{e^{-t}}{t} \leq e^{-t}
+    $$
+    donc $t \longmapsto \frac{e^{-t}}{t} \in \L^{1}(\co{1,+\infty})$ donc
+    $$
+      \int_{1}^{+\infty}f(x,t)\dd t \text{ convergente} \iff \int_{1}^{+\infty}\frac{e^{-xt}t}{\dd t} \text{ converge}
+    $$
+    or $\int_{1}^{+\infty}\frac{1}{t}\dd t$ diverge et $\frac{e^{-xt}}{t} \arrowlim{t\to+\infty}+\infty$ si $x < 0$, donc $\int_{1}^{+\infty}\frac{e^{-xt}}{t}\dd t$ diverge, et pour $x > 0$, on a $\frac{e^{-xt}}{t} \ueq{+\infty}(e^{-xt})$.
+    $g$ est donc définie sur $\Def = \oo{0,+\infty}$.
+    - Pour tout $t \in \oo{0,+\infty}$, la fonction $x \longmapsto \frac{e^{-t}-e^{-xt}}{t}$ est de classe $\C^{1}$ sur $\Def$.
+    - Soit $x \in \D$
+      ~ $t \longmapsto  f(x,t) \in \L^{1}(\oo{0,+\infty})$  ~ $t \longmapsto  \pdv{f}{x}(x,t) = e^{-xt} \in \L^{1}(\oo{0,+\infty})$
+    - Soit $\cc{a,b} \subset \Def$, i.e. $0 < a < b$. On a
+      $$
+        \forall x \in \cc{a,b}, \underline{\forall t \in \oo{0,+\infty}}, \abs{\pdv{f}{x}(x,t)} \leq  e^{-at}
+      $$
+      et $t \longmapsto e^{-at} \in \L^{1}(\oo{0,+\infty}, \R_{+})$.
+    Ainsi, $g \in \C^{1}(\Def)$ et
+    $$
+      \forall x \in \Def, g'(x) = \int_{0}^{+\infty}e^{-xt}\dd t = \left[-\frac{e^{-xt}}{x}\right]_{0}^{+\infty}\frac{1}{x}
+    $$
+    donc il existe $k \in \R$ tel que
+    $$
+      \forall x \in \Def, g(x) = \ln x + k
+    $$
+    or $g(1) = 0 = \ln 1 + k = k$ donc pour tout $x > 0$,
+    $$
+      \int_{0}^{+\infty}\frac{e^{-t}-e^{-xt}}{t}\dd t = \ln x
+    $$
+  - Considérons la fonction
+    $$
+      F: \applic{\R_{+}}{\R}{x}{\int_{0}^{+\infty}\frac{e^{-xt^{2}}}{1+t^{2}}}
+    $$
+    On a vu: $F \in \Cont(\R_{+})$. Soit
+    $$
+      f: \applic{\R_{+}^{*}}{\R}{(x,t)}{\frac{e^{-xt^{2}}}{1+t^{2}}}
+    $$
+    - Pour $t$ fixé dans $\R_{+}$,, $x \longmapsto  f(x,t)$ est de classe $\Cont^{1}$ sur $\R_{+}^{*}$.
+    - Soit $x \in \R_{+}^{*}$. Comme $\abs{\frac{e^{-xt}}{1+t^{2}}} \leq \frac{1}{1+t^{2}}$ donc $t \longmapsto f(x,t) \in \L^{1}(\R_{+})$, d’où
+      $$
+        t \longmapsto \abs{\pdv{f}{x}(x,t)} = \abs{\frac{-t^{2} e^{-xt^{2}}}{1+t^{2}}} \leq e^{-xt^{2}}
+      $$
+      et $t \longmapsto e^{-xt^{2}}$ est intégrable sur $\R_{+}$.
+    - Soit $\cc{a,b} \subset \R_{+}^{*}$, i.e. $0 < a < b$. On a
+      $$
+        \forall x \in \cc{a,b}, \forall t \in \R_{+}, \abs{\pdv{f}{x}(x,t)} \leq e^{-at^{2}}
+      $$
+      et $t \longmapsto e^{-at^{2}}$ est intégrable sur $\R_{+}$ donc $F_{:\R_{+}^{*}}$ est de classe $\C^{1}$ sur $\R_{+}^{*}$ et
+      $$
+        \forall x > 0, F'(x) = \int_{0}^{+\infty}\frac{-t^{2} e^{-xt^{2}}}{1+t^{2}}\dd t
+      $$
+      d’où pour tout $x > 0$,
+      $$
+        F(x) - F'(x) = \int_{0}^{+\infty}\frac{(1+t^{2})e^{-xt^{2}}}{1+t^{2}}\dd t = \int_{0}^{+\infty}e^{-xt^{2}}\dd t \ueq{u = \sqrt{x}t} es \int_{0}^{+\infty}e^{-u^{2}}\frac{\dd u}{\sqrt{x}}
+      $$
+      donc
+      $$
+        \forall x > 0, F'(x) - F(x) = -\frac{1}{2}\sqrt{\frac{\pi}{x}} \arrowlim{x\to 0+}-\infty
+      $$
+      or $F$ est continue en 0 donc $F$ n’est pas dérivable en 0.
+      Résolvons l’équation homogène associée à l’équation ci-dessus :
+      $$
+        y' -y = 0 \iff y' = y \iff \exists \lambda \in \R: \forall x \in \R, y(x) = \lambda e^{x}
+      $$
+      Utilisons la méthode de la variation de la constante pour trouver une solution particulière :
+      $$
+        \begin{align*}
+          y' - y = -\frac{1}{2}\sqrt{\frac{\pi}{x}}  &\iff  \begin{cases}y(x) = \lambda(x)e^{x}\\ \lambda'(x) e^{x} + \lambda(x) e^{x} - \lambda(x) e^{x} = - \frac{1}{2}\sqrt{\frac{\pi}{x}}\end{cases}\\
+          &\iff \begin{cases}y(x) = \lambda(x) e^{x}\\ \lambda'(x) = - \frac{1}{2}\sqrt{\frac{\pi}{x}}\end{cases}
+        \end{align*}
+      $$
+      donc
+      $$
+        \lambda'(x) = -\frac{1}{2}\sqrt{\frac{\pi}{x}}e^{-x} = \frac{1}{2}\dv{}{x}\left(\int_{x}^{+\infty}\sqrt{\frac{\pi}{t}}e^{-t}\dd t\right)
+      $$
+      i.e. il existe $k \in \R$ tel que
+      $$
+        \forall x > 0, \lambda(x) = \frac{1}{2}\int_{x}^{+\infty}\sqrt{\frac{\pi}{t}e^{-t}\dd t}+k
+      $$
+      i.e. il existe $k \in \R$ tel que
+      $$
+        \forall x > 0, F(x) = k e^{x} + \frac{1}{2}e^{x} \int_{x}^{+\infty}\sqrt{\frac{\pi}{t}}e^{-t}\dd t
+      $$
+      or $F$ est continue en 0 donc
+      $$
+        \underbrace{\int_{0}^{+\infty}\frac{\dd t}{1+t^{2}}}_{=\frac{\pi}{2}} = F(0) = \lim_{x\to+\infty}F(x) = k+\frac{1}{2}\int_{0}^{+\infty}\frac{\sqrt{\pi}}{\sqrt{t}}e^{-t}\dd t
+      $$
+      or
+      $$
+        \int_{0}^{+\infty}\frac{e^{-t}}{\sqrt{t}}\dd t \ueq{t = u^{2}} \int_{0}^{+\infty}\frac{e^{-u^{2}}}{u}2u \dd u = \sqrt{\pi}
+      $$
+      et $\frac{\pi}{2} = k + \frac{1}{2}\sqrt{\pi} \times \sqrt{\pi}$ donc $k = 0$. Ainsi,
+      $$
+        \forall x > 0, F(x) = \frac{\sqrt{\pi}}{2} e^{x}\int_{x}^{+\infty}\frac{e^{-t}}{\sqrt{t}}\dd t
+      $$
+      soit
+      $$
+        \forall x \geq 0, F(x) = \sqrt{\pi}e^{x}\int_{\sqrt{x}}^{+\infty}e^{-u^{2}}\dd u
+      $$
+%
+
+%thm
+  Soit $f: \Def \times I \longrightarrow \K$. Soit $n \in \N^{*}$. Si
+  - *hypothèse (1n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\C^{n}$ sur $\Def$.
+  - *hypothèse (2n) :* pour tout $x \in \Def$,
+    $$
+      \left(t \longmapsto f(x,t), t \longmapsto \pdv{f}{x}(x,t), \ldots, t \longmapsto \pdvN{f}{x}{n}(x,t)\right) \in \L^{1}(I)^{n}
+    $$
+  - *hypothèse (3n) :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+    $$
+      \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n}(x,t)} \leq \varphi_{S}(t)
+    $$
+  alors
+  $$
+    g: \applic{\Def}{\K}{x}{\int_{I}f(x,t)\dd t}
+  $$
+  est définie et de classe $\C^{n}$ sur $\Def$. De plus,
+  $$
+    \forall k \in \icc{0,n}, \forall x \in \Def, g^{(k)}(x) = \int_{I}\pdvN{f}{x}{k}(x,t)\dd t
+  $$
+%
+
+%proof
+  - Si $n=1$, c’est le théorème précédent
+  - Supposons le résultat vrai à l’ordre $n \in \N^{*}$ et supposons les trois hypothèses *1(n+1)*, *2(n+1)* et *3(n+1)*.
+    Soit $S$ un segment inclus dans $\Def$. D’après l’hypothèse *3(n+1)*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+    $$
+      \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n+1}(x,t)} \leq \varphi_{S}(t)
+    $$
+    Soit $(x,a) \in S^{2}$. Soit $t \in I$ fixé. On a
+    $$
+      \pdvN{f}{x}{n}(x,t) = \pdvN{f}{x}{n}(a,t) + \int_{a}^{x}\pdvN{f}{x}{n+1}(u,t)\dd u
+    $$
+    car
+    $$
+      F(x) = F(a) + \int_{a}^{x}F'(u)\dd u
+    $$
+    appliqué pour $F: x \longmapsto  \pdvN{f}{x}{n}(x,t)$ de classe $\Cont^{1}$ sur $S$. Ainsi,
+    $$
+      \begin{align*}
+        \forall x \in S, \abs{\pdvN{f}{x}{n}(x,t)} &\leq \abs{\pdvN{f}{x}{n}(a,t)}+\abs{\int_{a}^{x}\abs{\pdvN{f}{x}{n+1}(u,t)}}\\
+        &\leq \abs{\pdvN{f}{x}{n}(a,t)} + \abs{x-a}\times \varphi_{S}(t)
+      \end{align*}
+    $$
+    d’où
+    $$
+      \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n}(x,t)} \leq  \psi_{S}(t)
+    $$
+    avec
+    $$
+      \tau_{S}:t \longmapsto \abs{\pdvN{f}{x}{n}(a,t)} + \text{long}(S) \times \varphi_{S}(t) \in \L^{1}(I,\R)
+    $$
+    On a donc l’hypothèse *3(n)*. Ains,
+    $$
+      g: \applic{\Def}{\K}{x}{\int_{I} f(x,t)\dd t}
+    $$
+    est au moins de classe $\Cont^{n}$ sur $\Def$, et
+    $$
+      \forall k \in \icc{0,n}, \forall x >0, g^{(k)}(x) = \int_{I} \pdvN{f}{x}{k}(x,t)\dd t
+    $$
+    donc
+    $$
+      g^{(n)}: x \longmapsto \int_{I} \pdvN{f}{x}{n}(x,t)\dd t
+    $$
+
+    On a
+    - pour tout $t \in I$, l’application $x \longmapsto \pdvN{f}{x}{n}(x,t)$ est de classe $\C^{1}$ sur $\Def$
+    - pour tout $x \in \Def$, les applications $t \longmapsto \pdvN{f}{x}{n}(x,t)$ et $t \longmapsto \pdv{}{x}\left(\pdvN{f}{x}{n}(x,t)\right) = \pdvN{f}{x}{n+1}(x,t)$ sont intégrables sur $I$ (voir *3(n+1)*).
+    - pour tout segment $S$ dans $\Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
+      $$
+        \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)} \leq \varphi_{S}(t)
+      $$
+      donc $g^{(n)}$ est de classe $\Cont^{1}$ sur $\Def$, i.e. $g \in \C^{n+1}(\Def)$ et
+      $$
+        g^{(n+1)} = (g^{n})': x \longmapsto  \int_{I} \pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)\dd t = \int_{I} \pdvN{f}{x}{n+1}(x,t)\dd t
+      $$
 %
