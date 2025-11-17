@@ -598,7 +598,7 @@ $$
   $$
     g: \applic{\Def}{\K}{x}{\int_{I}}f(x,t)\dd t
   $$
-  est bien définie, de clsase $\C^{1}$ sur $\Def$ et
+  est bien définie, de classe $\Cont^{1}$ sur $\Def$ et
   $$
     \forall x \in \Def, g'(x) = \int_{I}\pdv{fx}{x}(x,t)\dd t
   $$
@@ -618,7 +618,7 @@ $$
   $$
     \forall (x,t) \in S \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi_{S}(t)
   $$
-  Soit $t \in I$ fixé. La fonction $u \longmapsto f(u,t)$ est de classe $\C^{1}$ sur $S$ donc
+  Soit $t \in I$ fixé. La fonction $u \longmapsto f(u,t)$ est de classe $\Cont^{1}$ sur $S$ donc
   $$
     \forall (u,v) \in S^{2}, \abs{f(u, t) - f(v, t)} \oleq{IAF} \norm{\pdv{f}{x}(x, t)} \times \abs{u-v} \leq \varphi_{S}(t) \times  \abs{u-v}
   $$
@@ -664,7 +664,7 @@ $$
     $$
     or $\int_{1}^{+\infty}\frac{1}{t}\dd t$ diverge et $\frac{e^{-xt}}{t} \arrowlim{t\to+\infty}+\infty$ si $x < 0$, donc $\int_{1}^{+\infty}\frac{e^{-xt}}{t}\dd t$ diverge, et pour $x > 0$, on a $\frac{e^{-xt}}{t} \ueq{+\infty}(e^{-xt})$.
     $g$ est donc définie sur $\Def = \oo{0,+\infty}$.
-    - Pour tout $t \in \oo{0,+\infty}$, la fonction $x \longmapsto \frac{e^{-t}-e^{-xt}}{t}$ est de classe $\C^{1}$ sur $\Def$.
+    - Pour tout $t \in \oo{0,+\infty}$, la fonction $x \longmapsto \frac{e^{-t}-e^{-xt}}{t}$ est de classe $\Cont^{1}$ sur $\Def$.
     - Soit $x \in \D$
       ~ $t \longmapsto  f(x,t) \in \L^{1}(\oo{0,+\infty})$  ~ $t \longmapsto  \pdv{f}{x}(x,t) = e^{-xt} \in \L^{1}(\oo{0,+\infty})$
     - Soit $\cc{a,b} \subset \Def$, i.e. $0 < a < b$. On a
@@ -672,7 +672,7 @@ $$
         \forall x \in \cc{a,b}, \underline{\forall t \in \oo{0,+\infty}}, \abs{\pdv{f}{x}(x,t)} \leq  e^{-at}
       $$
       et $t \longmapsto e^{-at} \in \L^{1}(\oo{0,+\infty}, \R_{+})$.
-    Ainsi, $g \in \C^{1}(\Def)$ et
+    Ainsi, $g \in \Cont^{1}(\Def)$ et
     $$
       \forall x \in \Def, g'(x) = \int_{0}^{+\infty}e^{-xt}\dd t = \left[-\frac{e^{-xt}}{x}\right]_{0}^{+\infty}\frac{1}{x}
     $$
@@ -702,7 +702,7 @@ $$
       $$
         \forall x \in \cc{a,b}, \forall t \in \R_{+}, \abs{\pdv{f}{x}(x,t)} \leq e^{-at^{2}}
       $$
-      et $t \longmapsto e^{-at^{2}}$ est intégrable sur $\R_{+}$ donc $F_{:\R_{+}^{*}}$ est de classe $\C^{1}$ sur $\R_{+}^{*}$ et
+      et $t \longmapsto e^{-at^{2}}$ est intégrable sur $\R_{+}$ donc $F_{:\R_{+}^{*}}$ est de classe $\Cont^{1}$ sur $\R_{+}^{*}$ et
       $$
         \forall x > 0, F'(x) = \int_{0}^{+\infty}\frac{-t^{2} e^{-xt^{2}}}{1+t^{2}}\dd t
       $$
@@ -758,7 +758,7 @@ $$
 
 %thm
   Soit $f: \Def \times I \longrightarrow \K$. Soit $n \in \N^{*}$. Si
-  - *hypothèse (1n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\C^{n}$ sur $\Def$.
+  - *hypothèse (1n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
   - *hypothèse (2n) :* pour tout $x \in \Def$,
     $$
       \left(t \longmapsto f(x,t), t \longmapsto \pdv{f}{x}(x,t), \ldots, t \longmapsto \pdvN{f}{x}{n}(x,t)\right) \in \L^{1}(I)^{n}
@@ -771,7 +771,7 @@ $$
   $$
     g: \applic{\Def}{\K}{x}{\int_{I}f(x,t)\dd t}
   $$
-  est définie et de classe $\C^{n}$ sur $\Def$. De plus,
+  est définie et de classe $\Cont^{n}$ sur $\Def$. De plus,
   $$
     \forall k \in \icc{0,n}, \forall x \in \Def, g^{(k)}(x) = \int_{I}\pdvN{f}{x}{k}(x,t)\dd t
   $$
@@ -821,13 +821,13 @@ $$
     $$
 
     On a
-    - pour tout $t \in I$, l’application $x \longmapsto \pdvN{f}{x}{n}(x,t)$ est de classe $\C^{1}$ sur $\Def$
+    - pour tout $t \in I$, l’application $x \longmapsto \pdvN{f}{x}{n}(x,t)$ est de classe $\Cont^{1}$ sur $\Def$
     - pour tout $x \in \Def$, les applications $t \longmapsto \pdvN{f}{x}{n}(x,t)$ et $t \longmapsto \pdv{}{x}\left(\pdvN{f}{x}{n}(x,t)\right) = \pdvN{f}{x}{n+1}(x,t)$ sont intégrables sur $I$ (voir *3(n+1)*).
     - pour tout segment $S$ dans $\Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
       $$
         \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)} \leq \varphi_{S}(t)
       $$
-      donc $g^{(n)}$ est de classe $\Cont^{1}$ sur $\Def$, i.e. $g \in \C^{n+1}(\Def)$ et
+      donc $g^{(n)}$ est de classe $\Cont^{1}$ sur $\Def$, i.e. $g \in \Cont^{n+1}(\Def)$ et
       $$
         g^{(n+1)} = (g^{n})': x \longmapsto  \int_{I} \pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)\dd t = \int_{I} \pdvN{f}{x}{n+1}(x,t)\dd t
       $$
