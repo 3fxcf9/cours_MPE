@@ -902,7 +902,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
       or $\alpha' < 1$ et $f > 0$ donc $\int_{e}^{+\infty}f(x)\dd x$ est divergente.
     Ainsi,
     $$
-      \boxed{\int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}} \text{ converge} \iff \alpha > 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
+      \mangl{\int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}} \text{ converge} \iff \alpha > 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
     $$
     ~
     $\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$ a la même nature que $\int_{0}^{+\infty}\frac{\dd x}{x^{2-\alpha}(\ln x)^{\beta}}$, donc $\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$ converge si et seulement si
@@ -911,7 +911,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     $$
     Ainsi,
     $$
-      \boxed{\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}} \text{ converge} \iff \alpha < 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
+      \mangl{\int_{0}^{\frac{1}{e}}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}} \text{ converge} \iff \alpha < 1 \text{ ou } \begin{cases}\alpha=1\\\beta > 1\end{cases}}
     $$
 %
 
@@ -1169,7 +1169,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
       $$
         \abs{\int_{\varepsilon}^{1}f(t)\dd t} \arrowlim{\varepsilon \to 0^{+}} +\infty
       $$
-      donc $\int_{\boxed{0}}^{1}f$ converge.
+      donc $\int_{\mangl{0}}^{1}f$ converge.
     Ainsi, $\int_{\R}f$ existe si et seulement si $\alpha \in \R \setminus \{1,-1\}$.
 %
 
@@ -1230,23 +1230,23 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
   %offprog
     $\varphi$ peut être à valeurs dasn $\R$ de signe constant au voisinage de $b$.
   %
-  - Si $\int_{a}^{\boxed{b}}\varphi$ converge,
+  - Si $\int_{a}^{\mangl{b}}\varphi$ converge,
     - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors $f \in \L^{1}(\co{a,b},\K)$ et
       $$
-        \int_{x}^{\boxed{b}}f \ueq{x\to b}O \left(\int_{x}^{\boxed{b}}\varphi\right) \left(\text{resp. } o \left(\int_{x}^{\boxed{b}}\varphi\right), \text{resp. } \usim{b} \lambda \int_{x}^{\boxed{b}}\varphi\right)
+        \int_{x}^{\mangl{b}}f \ueq{x\to b}O \left(\int_{x}^{\mangl{b}}\varphi\right) \left(\text{resp. } o \left(\int_{x}^{\mangl{b}}\varphi\right), \text{resp. } \usim{b} \lambda \int_{x}^{\mangl{b}}\varphi\right)
       $$
-  - Si $\int_{a}^{\boxed{b}}\varphi$ diverge.
+  - Si $\int_{a}^{\mangl{b}}\varphi$ diverge.
     - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors
       $$
         \int_{a}^{x}f \ueq{b}O \left(\int_{a}^{x}\varphi\right) \: \left(\text{resp. } o \left(\int_{a}^{x}\varphi\right), \text{resp. } \usim{b} \lambda \int_{a}^{x}\varphi\right)
       $$
-      on ne peut rien dire de la convergence de $\int_{a}^{\boxed{b}}f$ sauf dans le cas $f\usim{b} \lambda \varphi$ dans lequel $\int_{a}^{\boxed{b}}f$ est nécessiairement divergente.
+      on ne peut rien dire de la convergence de $\int_{a}^{\mangl{b}}f$ sauf dans le cas $f\usim{b} \lambda \varphi$ dans lequel $\int_{a}^{\mangl{b}}f$ est nécessiairement divergente.
 %
 
 %proof
   - Comme $\varphi$ est de signe constant au voisinage de $b$, on a
     $$
-      \int_{a}^{\boxed{b}}\varphi \text{ convergente} \iff \int_{a}^{\boxed{b}}\abs{\varphi} \text{ convergente} \iff \varphi \in \L^{1}(\co{a,b},\R)
+      \int_{a}^{\mangl{b}}\varphi \text{ convergente} \iff \int_{a}^{\mangl{b}}\abs{\varphi} \text{ convergente} \iff \varphi \in \L^{1}(\co{a,b},\R)
     $$
     or $f \ueq{b} O(\varphi)$ ou $f \ueq b o(\varphi)$ ou $\frac{f}{\lambda} \usim b \varphi$, donc $f \in \L^{1}(\co{a,b}, \R)$ ou $\frac{f}{\lambda} \in \L^{1}(\co{a,b}, \R)$, i.e. $f \in \L^{1}(\co{a,b},\R)$.
 
@@ -1256,26 +1256,26 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
       $$
       donc
       $$
-        \forall x \in \co{c,b}, \abs{\int_{x}^{\boxed{b}}f} \leq  \int_{x}^{\vec{v}}\abs{f} \leq  M \int_{x}^{\boxed{b}}\abs{\varphi} = M \abs{\int_{x}^{\boxed{b}}\varphi}
+        \forall x \in \co{c,b}, \abs{\int_{x}^{\mangl{b}}f} \leq  \int_{x}^{\vec{v}}\abs{f} \leq  M \int_{x}^{\mangl{b}}\abs{\varphi} = M \abs{\int_{x}^{\mangl{b}}\varphi}
       $$
       Si $f$ est négligeable devant $\varphi$, on remplace « $\exists M \in \R_{+}$ » par « $\forall  \varepsilon > 0$ » ci-dessus.
     - Si $f \usim b \lambda \varphi$ avec $\lambda \in \K^{*}$, $\frac{f}{\lambda} \usim b \varphi$, i.e. $\frac{f}{\lambda} - \varphi \ueq b o(\varphi)$ d’où
       $$
-        \int_{x}^{\boxed{b}}\frac{f}{\varphi} - \varphi \ueq b o \left(\int_{x}^{b}\varphi\right)
+        \int_{x}^{\mangl{b}}\frac{f}{\varphi} - \varphi \ueq b o \left(\int_{x}^{b}\varphi\right)
       $$
       i.e.
       $$
-        \int_{x}^{\boxed{b}}\frac{f}{\lambda} - \int_{x}^{\boxed{b}}\varphi \ueq b o \left(\int_{x}^{\boxed{b}}\varphi\right)
+        \int_{x}^{\mangl{b}}\frac{f}{\lambda} - \int_{x}^{\mangl{b}}\varphi \ueq b o \left(\int_{x}^{\mangl{b}}\varphi\right)
       $$
       i.e.
       $$
-        \int_{x}^{\boxed{b}}\frac{f}{\lambda} \usim b \int_{x}^{\boxed{b}}\varphi
+        \int_{x}^{\mangl{b}}\frac{f}{\lambda} \usim b \int_{x}^{\mangl{b}}\varphi
       $$
       i.e.
       $$
-        \int_{x}^{\boxed{b}}f \usim b \lambda \int_{x}^{b}\varphi
+        \int_{x}^{\mangl{b}}f \usim b \lambda \int_{x}^{b}\varphi
       $$
-  - Si $\int_{a}^{\boxed{b}}\varphi$ est divergente avec $\varphi$ de signe constant au voisinage de $b$, il existe $d \in \co{a,b}$ del que $\varphi_{|\co{d,b}}$ soit de signe constant. Par divergence de l’intégrale,
+  - Si $\int_{a}^{\mangl{b}}\varphi$ est divergente avec $\varphi$ de signe constant au voisinage de $b$, il existe $d \in \co{a,b}$ del que $\varphi_{|\co{d,b}}$ soit de signe constant. Par divergence de l’intégrale,
     $$
       \abs{\int_{d}^{x}\varphi} \arrowlim{x\xrightarrow{<} b}+\infty
     $$
@@ -1304,7 +1304,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
       $$
         \abs{\int_{a}^{x}f} \usim b \abs{\lambda}\abs{\int_{a}^{x}\varphi} \arrowlim{x\to b}+\infty
       $$
-      donc $x \longmapsto \int_{a}^{x}f$ n’a pas de limite donc $\int_{a}^{\boxed{b}}f$ diverge.
+      donc $x \longmapsto \int_{a}^{x}f$ n’a pas de limite donc $\int_{a}^{\mangl{b}}f$ diverge.
 %
 
 %eg

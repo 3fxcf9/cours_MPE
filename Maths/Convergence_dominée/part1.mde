@@ -529,7 +529,7 @@ $$
       \Gamma: x \longmapsto \int_{0}^{+\infty}t^{x-1}e^{-t}\dd t
     $$
     La fonction $t \longmapsto t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}$ est continue et positive sur $\color{yellow}\oo{0,+\infty}\color{reset}$ pour tout $x$ réel.
-    ~ $t^{x-1}e^{-t} \usim{t\to 0^{+}} \frac{1}{t^{1-x}}$  ~ $\int_{\boxed{0}}^{1}\frac{\dd t}{t^{1-x}}$ converge si et seulement si $x > 0$  ~ $t^{2} \cdot t^{x-1}e^{-t} = t^{x+1}e^{-t} \arrowlim{t\to+\infty}0$
+    ~ $t^{x-1}e^{-t} \usim{t\to 0^{+}} \frac{1}{t^{1-x}}$  ~ $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{1-x}}$ converge si et seulement si $x > 0$  ~ $t^{2} \cdot t^{x-1}e^{-t} = t^{x+1}e^{-t} \arrowlim{t\to+\infty}0$
     donc $t^{x-1}e^{-t} \ueq{+\infty}o \left(\frac{1}{t}\right)$ et $\int_{1}^{+\infty}\frac{\dd t}{t^{2}}$ converge.
     $\Gamma$ est donc définie sur $\Def = \oo{0,+\infty}$.
 
