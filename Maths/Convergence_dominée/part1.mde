@@ -2,12 +2,12 @@
 
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
-## Convergence simple d’une suite de fonction
+## Convergence simple d’une suite de fonctions
 
 %def
-  Soit $X$ un ensemble non vide. Soit $(E,\norm \cdot )$ un $\K$-espace vectoriel normé. Soit $(f_{n})_{n \in \N}$ une suite de fonction de $X$ dans $E$.
+  Soit $X$ un ensemble non vide. Soit $(E,\norm \cdot )$ un $\K$-espace vectoriel normé. Soit $(f_{n})_{n \in \N}$ une suite de fonctions de $X$ dans $E$.
 
-  On dit que la suite de fonction $(f_{n})_{n \in \N}$ *converge simplement* sur $X$ si pour tout $x \in X$, la suite vectorielle $(f_{n}(x))_{n \in \N}$ converge dans $(E, \norm \cdot )$.
+  On dit que la suite de fonctions $(f_{n})_{n \in \N}$ *converge simplement* sur $X$ si pour tout $x \in X$, la suite vectorielle $(f_{n}(x))_{n \in \N}$ converge dans $(E, \norm \cdot )$.
 
   Si on pose $\forall x \in X, f(x) = \lim_{n\to+\infty}(f_{n}(x))$, alors $f$ est appelée *limite simple* de $(f_{n})_{n \in \N}$, et on note: $f_{n} \arrowlim{n\to+\infty}f$ simplement sur $X$. On note aussi $f_{n} \sarrowlim{n\to+\infty}f$ sur $X$.
 %
@@ -29,7 +29,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     %
   - Considérons, pour tout $n \in \N^{*}$ la fonction
     $$
-      g_{n}: \applic{\cc{0,1}}{\R}{x}{\begin{cases}1 \text{si }x \in \left\{\frac{1}{k} \where k \in \icc{1,n}\right\}\\ 0&\text{sinon}\end{cases}}
+      g_{n}: \applic{\cc{0,1}}{\R}{x}{\begin{cases}1 \if x \in \left\{\frac{1}{k} \where k \in \icc{1,n}\right\}\\ 0&\text{sinon}\end{cases}}
     $$
     Pour tout $n \in \N^{*}$, la fonction $g_{n}$ est une fonction en escalier sur $\cc{0,1}$. Soit $x \in \cc{0,1}$.
     - si $x \notin \left[\frac{1}{k} \where k \in \N^{*}\right]$, alors
@@ -88,7 +88,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
 %proof
   *Il suffit d’utiliser la version particulière suivante :*
   %thm Théorème de convergence majorée positive
-    Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur le segment $\cc{a,b}$ à valeurs dans $\R_{+}$. Si
+    Soit $(f_{n})_{n \in \N}$ une suite de fonctions positives continues par morceaux sur le segment $\cc{a,b}$. Si
     - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
     - $\exists n_{0} \in \N, \exists M \in \R_{+}: \forall n \geq n_{0}, 0 \leq f_{n} \leq M$
     alors
@@ -105,7 +105,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     $$
   - Soit $x \in I$. On a
     $$
-      \forall xn\geq n_{0}, \abs{f_{n}(x)} \leq  \varphi(x)
+      \forall n\geq n_{0}, \abs{f_{n}(x)} \leq  \varphi(x)
     $$
     On fait tendre $n$ vers $+\infty$ et on a
     $$
@@ -140,7 +140,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     $$
       \int_{\cc{a,b}}\abs{f_{n} - f} \arrowlim{n \to+\infty}0
     $$
-    Il existe donc $N \in \N$ avec $n \geq n_{0}$ tel que
+    Il existe donc $N \in \N$ avec $N \geq n_{0}$ tel que
     $$
       \forall n \geq N, \int_{\cc{a,b}}\abs{f_{n} - f} \leq \varepsilon
     $$
@@ -425,7 +425,7 @@ $$
 $$
 
 %eg
-  Cosidérons la fonction définie par
+  Considérons la fonction définie par
   $$
     g(x) = \int_{0}^{+\infty}\frac{x}{1+(xt)^{2}}\dd t = \left[\arctan(xt)\right]_{0}^{+\infty}
   $$
@@ -444,7 +444,7 @@ $$
   une application de deux variables réelles. Si
   - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\Def$
   - pour tout $x \in \Def$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
-  - une des deux hypothèse de domination ci-dessous est vraie
+  - une des deux hypothèses de domination ci-dessous est vraie
     - *domination globale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall (x,t) \in \Def \times I, \abs{f(x,t)} \leq \varphi(t)
@@ -596,11 +596,11 @@ $$
       $$
   Alors,
   $$
-    g: \applic{\Def}{\K}{x}{\int_{I}}f(x,t)\dd t
+    g: \applic{\Def}{\K}{x}{\int_{I}f(x,t)\dd t}
   $$
   est bien définie, de classe $\Cont^{1}$ sur $\Def$ et
   $$
-    \forall x \in \Def, g'(x) = \int_{I}\pdv{fx}{x}(x,t)\dd t
+    \forall x \in \Def, g'(x) = \int_{I}\pdv{f}{x}(x,t)\dd t
   $$
 %
 
@@ -758,12 +758,12 @@ $$
 
 %thm
   Soit $f: \Def \times I \longrightarrow \K$. Soit $n \in \N^{*}$. Si
-  - *hypothèse (1n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
-  - *hypothèse (2n) :* pour tout $x \in \Def$,
+  - *hypothèse (1|n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
+  - *hypothèse (2|n) :* pour tout $x \in \Def$,
     $$
       \left(t \longmapsto f(x,t), t \longmapsto \pdv{f}{x}(x,t), \ldots, t \longmapsto \pdvN{f}{x}{n}(x,t)\right) \in \L^{1}(I)^{n}
     $$
-  - *hypothèse (3n) :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  - *hypothèse (3|n) :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
     $$
       \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n}(x,t)} \leq \varphi_{S}(t)
     $$
@@ -779,8 +779,8 @@ $$
 
 %proof
   - Si $n=1$, c’est le théorème précédent
-  - Supposons le résultat vrai à l’ordre $n \in \N^{*}$ et supposons les trois hypothèses *1(n+1)*, *2(n+1)* et *3(n+1)*.
-    Soit $S$ un segment inclus dans $\Def$. D’après l’hypothèse *3(n+1)*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  - Supposons le résultat vrai à l’ordre $n \in \N^{*}$ et supposons les trois hypothèses *(1|n+1)*, *(2|n+1)* et *(3|n+1)*.
+    Soit $S$ un segment inclus dans $\Def$. D’après l’hypothèse *(3|n+1)*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
     $$
       \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n+1}(x,t)} \leq \varphi_{S}(t)
     $$
@@ -807,7 +807,7 @@ $$
     $$
       \tau_{S}:t \longmapsto \abs{\pdvN{f}{x}{n}(a,t)} + \text{long}(S) \times \varphi_{S}(t) \in \L^{1}(I,\R)
     $$
-    On a donc l’hypothèse *3(n)*. Ains,
+    On a donc l’hypothèse *(3|n)*. Ains,
     $$
       g: \applic{\Def}{\K}{x}{\int_{I} f(x,t)\dd t}
     $$
@@ -831,4 +831,87 @@ $$
       $$
         g^{(n+1)} = (g^{n})': x \longmapsto  \int_{I} \pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)\dd t = \int_{I} \pdvN{f}{x}{n+1}(x,t)\dd t
       $$
+%
+
+%eg
+  Reprenons la fonction
+  $$
+    \Gamma: \applic{\oo{0,+\infty}}{\R}{x}{\int_{0}^{+\infty}t^{x-1}e^{-t}\dd t}
+  $$
+  On sait que $\Gamma$ est continue. Montrons qu’elle est dans $\Cont^{\infty}(\oo{0,+\infty}) = \bigcap_{n \in \N}\Cont^{n}(\oo{0,+\infty})$.
+~
+  Soit $n \in \N^{*}$. Consitérons
+  $$
+    f: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t}= e^{(x-1)\ln t} e^{-t}}
+  $$
+  - Pour $t$ fixé dans $\oo{0,+\infty}$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
+  - Pour $x$ fixé dans $\D$ et $k \in \icc{0,n}$, on a
+    $$
+      t \longmapsto \pdvN{f}{x}{k} (x,t) = (\ln t)^{k}t^{x-1}e^{-t}
+    $$
+    or
+    $$
+      \pdvN{f}{x}{k}(x,t)\usim{t\to 0^{+}}\frac{(\ln t)^{k}}{t^{1-x}} \ueq{t\to 0^{+}}o \left(\frac{1}{t^{1-\frac{x}{2}}}\right)
+    $$
+    or $\int_{0}^{1}\frac{\dd t}{t^{1-\frac{x}{2}}}$ converge car $1-\frac{x}{2} < 1$, donc
+    $$
+      t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oc{0,1}) \quad\text{et}\quad \pdvN{f}{x}{k}(x,t) \ueq{t\to 0^{+}}o \left(\frac{1}{t^{2}}\right)
+    $$
+    et de même, $t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\co{1,+\infty})$. Ainsi,
+    $$
+      \forall k \in \icc{0,n}, t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oo{0,+\infty})
+    $$
+  - Soient $0 < a < b$ deux réels.
+    $$
+      \forall x \in \cc{a,b}, \underline{\forall t > 0}, \abs{\pdvN{f}{x}{n}(x,t)} \leq \abs{\ln t}^{n} (t^{a-1}+t^{b-1})e^{-t}
+    $$
+    et la fonction
+    $$
+      t \longmapsto \abs{\ln t}^{n} (t^{a-1} + t^{b-1})e^{-t} = \abs{\ln t}^{n} t^{a-1}e^{-t} + \abs{\ln t}^{n}t^{b-1}e^{-t}
+    $$
+    est intégrable sur $\oo{0,+\infty}$ (voir plus haut).
+  Ainsi, $\Gamma \in \Cont^{n}(\oo{0,+\infty})$, et cela pour tout $n \in \N^{*}$, donc $\Gamma \in \Cont^{\infty}(\oo{0,+\infty})$ et de plus,
+  $$
+    \forall n \in \N, \forall x > 0, \Gamma^{(n)}(x) = \int_{0}^{+\infty}(\ln t)^{n} t^{x-1} e^{-t}\dd t
+  $$
+  d’où
+  $$
+    \forall x > 0, \Gamma'(x) = \int_{0}^{+\infty}\ln t t^{x-1} e^{-t}\dd t
+  $$
+  et
+  $$
+    \forall x > 0, \Gamma''(x) f \int_{0}^{+\infty}(\ln t)^{2} t^{x-1}e^{-t}\dd t > 0
+  $$
+  donc $\Gamma'$ est strictement croissante sur $\oo{0,+\infty}$, i.e. $\Gamma$ est convexe sur cet intervalle.
+  Or, $\forall n \in \N^{*}, \Gamma(n) = (n-1)!$ donc $\Gamma(1) = 0! = 1 = 1! = \Gamma(2)$ et $\Gamma \in \Cont(\cc{1,2})$ et $\Gamma$ est dérivable sur $\oo{1,2}$ donc d’après le *théorème de Rolle*, il existe $c \in \oo{1,2}$ tel que $\Gamma'(c) = 0$. On en déduit le tableau de variations de $\Gamma$:
+  ==FIG TABVAR==
+  $\lim_{+\infty}\Gamma$ et $\lim_{0^{-}}\Gamma$ existent dans $\bar{\R_{+}}$ d’après le *théorème de la limite monotone*, donc
+  $$
+    \lim_{+\infty}\Gamma = \lim_{n\to+\infty}\Gamma(n) = \lim_{n\to+\infty}(n-1)! = +\infty
+  $$
+  et
+  $$
+    \forall x > 0, \Gamma(x) \geq \int_{0}^{1}t^{x-1}e^{-t}\dd t \geq \frac{1}{e}\int_{0}^{1}t^{x-1}\dd t = \frac{1}{e} \left[\frac{t^{x}}{x}\right]_{0}^{1}
+  $$
+  donc $\forall x > 0, \Gamma(x) \geq \frac{1}{ex}\arrowlim{x\to 0^{+}}+\infty$. On a, après calcul approché d’intégrales $c \simeq 1,46$ et $\Gamma(c) \simeq 0,88$ à $10^{-2}$ près. Aussi,
+  $$
+    \Gamma(\frac{1}{2}) = \int_{0}^{+\infty}\frac{e^{-t}}{\sqrt{t}}\dd t \ueq{t = u^{2}} \int_{0}^{+\infty}\frac{e^{-u^{2}}}{u}2u \dd u = \sqrt{\pi}
+  $$
+  - On peut obtenir une équation fonctionnelle satisfaite par $\Gamma$ : Soient $0 < \varepsilon < X$. Soit $x > 0$.
+    $$
+      \int_{\varepsilon}^{X}t^{(x+1)-1}e^{-t}\dd t = \int_{\varepsilon}^{X}t^{x} e^{-t}\dd t = \underbrace{\left[-t^{x} e^{-t}\right]_{\varepsilon}^{X}}_{\underbrace{-X^{x} e^{-X}}_{\arrowlim{X\to+\infty}0} + \underbrace{\varepsilon^{x} e^{-\varepsilon}}_{\arrowlim{\varepsilon\to 0}0}} + x \int_{\varepsilon}^{X}t^{x-1}e^{-t}\dd t
+    $$
+    d’où
+    $$
+      \forall x > 0, \Gamma(x+1) = x \Gamma(x)
+    $$
+    en faisant tendre $x$ vers $0^{+}$, on a pan continuité de $\Gamma$ en 1
+    $$
+      \Gamma(x) \usim{0^{+}}\frac{1}{x}
+    $$
+  - Nature des branches infinies de $\Gamma$ :
+    $$
+      \frac{\Gamma(x)}{x} = \frac{(x-1)\Gamma(x-1)}{x} = \frac{x-1}{x}\Gamma(x) \arrowlim{x\to+\infty}+\infty
+    $$
+    donc la courbe de $\Gamma$ présente au voisinage de $+\infty$ une branche parabolique de direction asymototique $(Oy)$.
 %

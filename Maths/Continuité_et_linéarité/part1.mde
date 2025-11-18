@@ -1,0 +1,274 @@
+# Continuité et linéarité
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\cdot_{F})$ sont deux $\K$-espaces vectoriels normés, et la boule $B_{\norm\cdot_{E}}(a, \delta)$ sera notée $B_{E}(a, \delta)$ ou encore $B(a, \delta)$.
+
+## Continuité
+
+%def
+  Soit $A$ une partie non vide de $(E,\norm{\cdot}_{E})$. Soit $f: A \longrightarrow F$ une application.
+  - Soit $k \in \R_{+}^{*}$. $f$ est dite *$k$-lipschitzienne sur $A$* si
+    $$
+      \forall (x,y)\in A^{2}, \norm{f(x) - f(y)}_{F} \leq k \norm{x-y}_{E}
+    $$
+  - $f$ est dite uniformément continue sur $A$ si
+    $$
+      \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}(x,y)\in A^{2}\\ \norm{x-y}_{E} < \delta\end{cases} \implies \norm{f(x) - f(y)}_{F} < \varepsilon
+    $$
+    %offprog
+      ce qui équivaut à : pour toute suites $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ d’éléments de $A$, on a
+      $$
+        \left[x'_{n}-x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot }_{E}}0_{E}\right] \implies f(x'_{n}) - f(x_{n}) \xrightarrow[n\to+\infty]{\norm{\cdot }_{F}}0_{F}
+      $$
+    %
+  - $f$ est dite *continue en $a \in A$* si
+    $$
+      \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-a}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(a)}_{F} \leq \varepsilon
+    $$
+    i.e.
+    $$
+      \forall \varepsilon > 0, \exists \delta > 0, f(A \cap B_{E}(a, \delta)) \subset B_{F}(f(a), \varepsilon)
+    $$
+    ou encore : pour toute suite $(x_{n})_{n \in \N}$ d’éléments de $A$ et de limite $a$, la suite $(f(x_{n}))_{n \in \N}$ converge vers $f(a)$.
+  - $f$ est dite *continue sur $A$* si elle est continue en tout point de $A$.
+%
+
+%proof
+  *(Preuve de la caractérisation séquentielle de l’uniforme continuité).*
+  - Supposons $f$ uniformément continue sur $A$. Soient $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ deux suites d’éléments de $A$ avec $x'_{n} - x_{n} \arrowlim{n\to+\infty}0_{E}$. Soit $\varepsilon > 0$. Il existe $\delta > 0$ tel que
+    $$
+      \begin{cases}(x,y) \in A^{2}\\\norm{x-y}_{E} < \delta\end{cases} \implies \norm{f(x) - f(y)}_{F} < \varepsilon
+    $$
+    Il existe $N \in \N$ tel que $\forall n \geq N, \norm{x^{n} - x_{n}}_{E} < \delta$ d’où
+    $$
+      \forall n \geq N, \norm{f(x'_{n}) - f(x_{n})}_{F} < \varepsilon
+    $$
+    donc $f(x'^{n}) - f(x_{n}) \arrowlim{n\to+\infty} 0_{F}$.
+  - Supposons $f$ non uniformément continue sur $A$.
+    $$
+      \exists \varepsilon > 0: \forall \delta > 0, \exists (x,y) \in A^{2}: \begin{cases}\norm{x-y}_{E} < \delta \\ \norm{f(x) - f(y)}_{F} \geq \varepsilon\end{cases}
+    $$
+    Alors
+    $$
+      \forall n \in \N^{*}, \exists (x_{n}, x'_{n}) \in A^{2}: \begin{cases}\norm{x_{n} - x'_{n}}_{E} < \frac{1}{n}\\ \norm{f(x_{n}) - f(x'_{n})} \geq \varepsilon\end{cases}
+    $$
+    donc $x'_{n} - x_{n} \arrowlim{\in \to+\infty}0_{E}$ mais la suite $\big(f(x'_{n}) - f(x_{n})\big)_{n \in \N}$ ne converge pas vers $0_{F}$.
+%
+
+%rem
+  1. Ces notions dépendent des normes choisies
+  2. En remplaçant les normes par des normes équivalentes, les notions sont conservées.
+  3. $$
+       f \text{ est } k-\text{lipschitzienne sur } A \implies f \text{ uniformément continue sur } A \implies f \text{ continue sur } A
+     $$
+     %proof
+       - Supposons $f$ k-lipschitzienne sur $A$. Soit $\varepsilon > 0$. Posons $\delta = \frac{\varepsilon}{k}$. Pour $(x,y) \in A^{2}$ tels que $\norm{x-y}_{E} < \delta$, on a
+         $$
+           \norm{f(x) - f(y)}_{F} \leq k \norm{x-y}_{E} < \varepsilon
+         $$
+         donc $f$ est uniformément continue sur $A$.
+       - Supposons $f$ uniformément continue sur $A$. Soient $\varepsilon > 0$ et $a \in A$. Il existe $\delta > 0$ tel que
+         $$
+           \begin{cases}(x,y) \in A^{2}\\ \norm{x-y}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(y)}_{F} < \varepsilon
+         $$
+         d’où
+         $$
+           \begin{cases}x \in A\\\norm{x-a}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(a)}_{F} < \varepsilon
+         $$
+     %
+%
+
+%eg
+  - Considérons la fonction
+    $$
+      f: \applic{\C^{*}}{\C}{z}{\frac{1}{z}}
+    $$
+    $\C$ étant muni du module pour norme. Soit $z_{0} \in \C^{*}$.
+    $$
+      \abs{f(z) - f(z_{0})} = \abs{\frac{1}{z} - \frac{1}{z_{0}}} = \frac{\abs{z - z_{0}}}{\abs{z} \cdot \abs{z_{0}}}
+    $$
+    ==FIG C1==
+    Soit $z \in B(z_{0}, \frac{\abs{z_{0}}}{2})$. Alors $\abs{z} \geq \frac{\abs{z_{0}}}{2}$ d’où
+    $$
+      \abs{f(z) - f(z_{0})} \leq  \frac{2}{\abs{z_{0}}^{2}}\abs{z - z_{0}}
+    $$
+    Soit $\varepsilon > 0$. Posons $\delta = \frac{\abs{z_{0}}^{2}}{4}\varepsilon > 0$.
+    $$
+      \begin{cases}\abs{z - z_{0}} < \delta\\ \abs{z - z_{0}} < \frac{\abs{z_{0}}}{2}\end{cases} \iff z \in B \left(z_{0}, \min \left(\delta, \frac{\abs{z_{0}}}{2}\right)\right) \implies  \abs{f(z) - f(z_{0})} \leq \frac{\varepsilon}{2} < \varepsilon
+    $$
+    donc $f$ est continue en tout point de $\C^{*}$.
+  - Considérons la fonction carré
+    $$
+      g: \applic{\R}{\R}{x}{x^{2}}
+    $$
+    Posons les suites définies pour tout $n \in \N^{*}$ par $\begin{cases}x_{n} = n\\ x'_{n} = n+\frac{1}{n}\end{cases}$. Alors, $x'_{n} - x_{n} = \frac{1}{n}\arrowlim{n\to+\infty}0$ mais
+    $$
+      f(x'_{n}) - f(x_{n}) = 2 + \frac{1}{n^{2}} \arrowlim{n\to+\infty}2 \ne 0
+    $$
+    Ainsi $g$ n’est pas uniformément continue sur $\R$.
+  - Consdérons la fonction $\ln : \oo{0,+\infty} \longrightarrow \R$. Posons pour tout $n \in \N^{*}$, $x_{n} = \frac{1}{n^{2}}$ et $x'_{n} = \frac{1}{n^{2}}+\frac{1}{n}$. Alors $xu_{n} - x_{n} = \frac{1}{n} \arrowlim{n\to+\infty}0$ mais
+    $$
+      \ln x'_{n} - \ln x_{n} = \ln \left(\frac{x'_{n}}{x_{n}}\right) = \ln(1+n) \arrowlim{n\to+\infty}+\infty
+    $$
+    donc $\ln$ n’est pas uniformément continue sur $\oo{0,+\infty}$.
+  - La fonction $\applic{E}{\R}{x}{\norm{x}_{E}}$ est 1-lipschitzienne (donc continue sur $E$) car
+    $$
+      \forall (x,y) \in E^{2}, \abs{\norm{x}_{E} - \norm{y}_{E}} \leq 1 \cdot \norm{x-y}_{E}
+    $$
+%
+
+%prop
+  Soit $A$ une partie non vide de $(E,\norm{\cdot }_{E})$. Alors l’application
+  $$
+    \applic{E}{\R}{x}{d(x,A)}
+  $$
+  est 1-k-lipschitzienne, avec
+  $$
+    d(x,A) = \inf_{a \in A} d(x,a) = \inf_{a \in A}\norm{x-a}
+  $$
+%
+
+%proof
+  Soient $(x,y) \in A^{2}$. Ne pas écrire
+  $$
+    \cancel{\abs{d(x,A) - d(y,A)}} \leq \norm{x-y}
+  $$
+  On a
+  $$
+    \forall a \in A, d(x,a) \leq d(x,y) + d(y,a)
+  $$
+  donc
+  $$
+    \forall a \in A, d(x,A) \leq d(x,a) \leq d(x,y) + d(y,a)
+  $$
+  d’où
+  $$
+    \forall a \in A, d(x,A) - d(x,y) \leq d(y,a)
+  $$
+  donc $d(x,A) - d(x,y)$ est un minorant de l’ensemble $\{d(y,a) \where a \in A\}$ et $d(y,A)$ est le plus grand des minorants de cet ensemble, donc
+  $$
+    d(x,A) - d(x,y) \leq d(y,A)
+  $$
+  d’où
+  $$
+    d(x,A) - d(y,A) \leq d(x,y)
+  $$
+  et on a aussi
+  $$
+    d(y,A) - d(x,A) \leq d(y,x) = d(x,y)
+  $$
+  d’où
+  $$
+    \abs{d(x,A) - d(y,A)} \leq d(x,y)
+  $$
+%
+
+%property
+  Soient $A$ et $B$ des parties respectives de $E$ et $F$ non vides, $(G,\norm{\cdot}_{G})$ un $\K$-espace vectoriel normé et $a$ un élément de $A$.
+  - Si $f:A \longrightarrow F$ et $g: A \longrightarrow F$ sont continues en a, alors
+    - $\lambda f + \mu g$ est continue en $a$ pour tous $(\lambda, \mu) \in \K^{2}$
+    - $f \times g$ est continue en $a$ si $F$ est une $\K$-algèbre et $\norm{\cdot}_{F}$ est sous-multiplicative.
+  - Si $f: A \longrightarrow F$ est continue en $a$ telle que $f(A) \subset B$ et $g: B \longrightarrow G$ est continue en $f(a)$, alors $g\circ f: A \longrightarrow G$ est continue en $a$.
+  - Supposons $E$ de dimension finie $p \in \N^{*}$. Soit $\B = (e_{1}, \ldots, e_{p})$ une base de $E$. Alors
+    - l’application
+      $$
+        \pi_{i} : \applic{E}{\K}{x = \sum_{k=1}^{p}x_{k}e_{k}}{x_{i}}
+      $$
+      est continue sur $E$.
+    - Soit $P \in \K[X_{1}, \ldots, X_{p}]$. L’application
+      $$
+        f: \applic{E}{\K}{x = \sum_{k=1}^{p}x_{k}e_{k}}{\tilde{P}(x_{1}, \ldots, x_{k})}
+      $$
+      est continue sur $E$. Il s’agit de l’*application polynomiale en les coordonnées dans une base*.
+  - Soit
+    $$
+      f: \applic{A}{(E_{1} \times  \cdots \times  E_{q}, N_{\infty})}{x}{(f_{1}(x), \ldots, f_{q}(x))}
+    $$
+    est continue en $a$ si et seulement si pour tout $i \in \icc{1,q}$, la fonction $f_{i}$ est continue en $a$.
+  - Soit $F$ de dimension finie $q \in \N^{*}$ dont une base est $(\varepsilon_{1}, \ldots, \varepsilon_{q})$. La fonction
+    $$
+      f: \applic{A}{F}{x}{\sum_{i=1}^{q}f_{i}(x)\varepsilon_{i}}
+    $$
+    est continue en $a$ si et seulement si pour tout $i \in \icc{1,q}$, $f_{i}$ est continue en $a$.
+%
+
+%proof
+  - Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$ telle que $x_{n} \arrowlim{n\to+\infty}a$. Alors
+    $$
+      (\lambda f + \mu g)(x_{n}) \defeq \lambda f(x_{n}) + \mu g(x_{n}) \arrowlim{n\to+\infty}\lambda f(a) + \mu g(a) \defeq (\lambda f + \mu g)(a)
+    $$
+    et
+    $$
+      (f \times g)(x_{n}) = f(x_{n}) \times  g(x_{n}) \arrowlim{n\to+\infty} f(a)\times g(a) = (f \times  g)(a)
+    $$
+  - Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$ telle que $x_{n} \arrowlim{n\to+\infty}a$. Alors
+    $$
+      (g\circ f) (x_{n}) = g(\underbrace{f(x_{n})}_{=y_{n} \arrowlim{n\to+\infty}f(a)}) \arrowlim{n\to+\infty} g(f(a)) = (g\circ f)(a)
+    $$
+    par continiuté de $f$ et $g$ respectivement en $a$ et $f(a)$.
+  - Soit $(x,y) \in E^{2}$. Posons $x = \sum_{k=1}^{p}x_{k}e_{k}$ et $y = \sum_{k=1}^{p}y_{k}e_{k}$ avec $x_{1}, \ldots, x_{p}, y_{1}, \ldots, y_{p}$ scalaires.
+    $$
+      \abs{\pi_{i}(x) - \pi_{i}(y)} \leq N_{\infty, \B}(x-y)
+    $$
+    donc $x_{i}$ est 1-lipschitzienne sur $(E,\N_{\infty, \B})$, donc continue.
+    - Posons $P = \sum_{(i_{1}, \ldots, i_{p}) \in A} a_{i_{1}, \ldots, i_{p}}X_{1}^{i_{1}} \cdots X_{p}^{i_{p}}$ avec $A$ une partie finie de  $\N^{p}$
+      $$
+        f: x\longmapsto  \sum_{(i_{1}, \ldots, i_{p}) \in A}a_{i_{1}, \ldots i_{p}}x_{1}^{i_{1}}\cdots x_{p}^{i_{p}}
+      $$
+      donc
+      $$
+        f = \sum_{(i_{1}, \ldots, i_{p}) \in A} a_{i_{1}, \ldots, i_{p}}\pi_{1}^{i_{1}}\times \cdots \times \pi_{p}^{i_{p}}
+      $$
+      donc $f$ est continue sur $E$ comme produit et conbinaison linéaire d’application $\pi_{i}$ à valeurs dans $\K$ continues sur $E$.
+  - Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$.
+    $$
+      \left[(f(x_{n}))_{n \in \N} = (f_{1}(x_{n}), \ldots, f_{q}(x_{n})) \xrightarrow[n\to+\infty]{N_{\infty}} f(a)\right] \iff \forall i \in \icc{1,q}, f_{i}(x_{n}) \arrowlim{n\to+\infty}f_{i}(a)
+    $$
+  - On a
+    $$
+      (f(x_{n}))_{n \in \N} = \left(\sum_{i=1}^{q}f_{i}(x_{n})\varepsilon_{i}\right)_{n \in \N}\arrowlim{n\to+\infty}f(a) = \sum_{i=1}^{q}f_{i}(a)\varepsilon_{i}
+    $$
+    si et seulement si
+    $$
+      \forall i \in \icc{1,q}, f_{i}(x_{n})\arrowlim{n\to+\infty}f_{i}(a)
+    $$
+%
+
+%eg
+  - Le déterminant
+    $$
+      \det : \applic{\M_{n}(\K)}{\K}{A}{\det A = \sum_{\sigma \in S_{n}}\varepsilon(\sigma)a_{\sigma(1),1} \cdots a_{\sigma(n)\nu}}
+    $$
+    est une application polynomiale en les coordonnées dans la base canonique de $\M_{n}(\K)$ donc $\det  \in \Cont(\M_{n}(\K), \K)$.
+  - Considérons la fonction
+    $$
+      I: \applic{\GL_{n}(\K)}{\M_{n}(\K)}{A}{A^{-1} = \frac{1}{\det A}(\com A\transp)}
+    $$
+
+    %prop Continuité d’une fonction rationnelle en les coordonnées dans une base
+      Soient $(P,A) \in \K[X_{1}, \ldots, X_{p}]$ avec $Q\neq 0$. Soit $E$ de dimension $p$ dont une base est $(e_{1}, \ldots, e_{p})$. Posons
+      $$
+        \Omega = \left\{x = \sum_{k=1}^{p}e_{k}e_{k} \in E \where \tilde{Q}(x_{1}, \ldots, x_{p})\ne 0\right\}
+      $$
+      Alors
+      $$
+        g: \applic{\Omega}{\K}{x = \sum_{k=1}^{p}x_{k}e_{k}}{\frac{\tilde{P}(x_{1}, \ldots, x_{p})}{\tilde{Q}(x_{1}, \ldots, x_{p})}}
+      $$
+      est continue sur $\Omega$.
+    %
+
+    %proof
+      La fonction $\applic{\Omega}{\K}{x}{\tilde{Q}(x_{1}, \ldots, x_{p})}$ est continue comme restriction à $\Omega$ d’une fonction continue et à valeurs dans $\K^{*}$ où $t \longmapsto  \frac{1}{t}$ est continue. Donc $\applic{\Omega}{\K}{x}{\frac{1}{\tilde{Q}(x_{1}, \ldots, x_{p})}}$ l’est aussi. Par produit, on a $g \in \Cont(\Omega,\K)$.
+    %
+
+    $A \longmapsto  (I(A))_{i,lj} = \frac{1}{\det A}(\com A)_{j_{i}}$ est une fonction rationnelle en les coordonnées de la base canonique donc est continue sur
+    $$
+      \Omega = \left\{A \in \M_{n}(\K) \where \det A \ne 0\right\} = \GL_{n}(\K)
+    $$
+    donc $I \in \Cont(\GL_{n}(\K))$
+%
+
+%def
+  Soient $A$ et $B$ deux parties respectives de $E$ et $F$ non vides. Soit $f: A \longrightarrow B$. On dit que $f$ est un homéomorphisme si
+  ~  $f: A \longrightarrow B$ est bijective  ~ $f: A \longrightarrow F$ et $f^{-1}: B \longrightarrow E$ sont continues
+
+%

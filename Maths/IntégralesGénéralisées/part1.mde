@@ -1181,9 +1181,9 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
      - $\L^{2}(I,\K)$ est un sous-espace vectoriel de $\Cont_{m}(I,\K)$.
      - Si $(f,g) \in \L^{1}(I,\K)^{2}$, alors $f \times g \in \L^{1}(\K)$ et on a
        $$
-         \abs{\int_{I}fg} \leq \left(\int_{I}\abs{f}]2\right)^{\frac{1}{2}} \left(\int_{I} \abs{g}^{2}\right)^{\frac{1}{2}}
+         \abs{\int_{I}fg} \leq \left(\int_{I}\abs{f}^2\right)^{\frac{1}{2}} \left(\int_{I} \abs{g}^{2}\right)^{\frac{1}{2}}
        $$
-       C’est l’inégalité de Cauchy-Schwarz)
+       (c’est l’inégalité de Cauchy-Schwarz)
 %
 
 %proof
@@ -1228,7 +1228,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
 %prop
   Soient $-\infty < a < b \leq +\infty$. Soient $f : \co{a,b} \longrightarrow \K$ continue par morceaux et $\varphi: \co{a,b} \longrightarrow \R_{+}$ continue par morceaux et positive.
   %offprog
-    $\varphi$ peut être à valeurs dasn $\R$ de signe constant au voisinage de $b$.
+    $\varphi$ peut être à valeurs dans $\R$ de signe constant au voisinage de $b$.
   %
   - Si $\int_{a}^{\mangl{b}}\varphi$ converge,
     - Si $f \ueq{b} O(\varphi)$ (resp. $f \ueq{b} o(\varphi)$, resp. $f\usim{b} \lambda \varphi$ pour $\lambda \in \K^{*}$), alors $f \in \L^{1}(\co{a,b},\K)$ et
