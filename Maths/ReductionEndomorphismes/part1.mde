@@ -1,5 +1,7 @@
 # Réductions des endomorphismes en dimension finie
 
+:date 29/09/2025
+
 Dans ce chapitre, $(\K, +, \times )$ est un corps et $E$ désigne un $\K$-espace vectoriel de dimension finie $n \in \N^{*}$.
 
 ## Cas $\chi_{f}$ scindé dans $\K[X]$

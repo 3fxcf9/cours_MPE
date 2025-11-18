@@ -1,5 +1,7 @@
 # Polynômes d’un endomorphisme
 
+:date 17/09/2025
+
 Dans ce chapitre, $\K$ désigne un sous-corps de $\C$ (voire un corps quelconque), $E$ est un $\K$-espace vectoriel (et rapidement, $E \neq \{0_{E}\}$).
 
 %notation

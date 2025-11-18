@@ -1,5 +1,7 @@
 # Continuité et linéarité
 
+:date 18/11/2025
+
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\cdot_{F})$ sont deux $\K$-espaces vectoriels normés, et la boule $B_{\norm\cdot_{E}}(a, \delta)$ sera notée $B_{E}(a, \delta)$ ou encore $B(a, \delta)$.
 
 ## Continuité
@@ -15,7 +17,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
       \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}(x,y)\in A^{2}\\ \norm{x-y}_{E} < \delta\end{cases} \implies \norm{f(x) - f(y)}_{F} < \varepsilon
     $$
     %offprog
-      ce qui équivaut à : pour toute suites $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ d’éléments de $A$, on a
+      ce qui équivaut à : pour toutes suites $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ d’éléments de $A$, on a
       $$
         \left[x'_{n}-x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot }_{E}}0_{E}\right] \implies f(x'_{n}) - f(x_{n}) \xrightarrow[n\to+\infty]{\norm{\cdot }_{F}}0_{F}
       $$
@@ -121,7 +123,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
   $$
     \applic{E}{\R}{x}{d(x,A)}
   $$
-  est 1-k-lipschitzienne, avec
+  est 1-lipschitzienne, avec
   $$
     d(x,A) = \inf_{a \in A} d(x,a) = \inf_{a \in A}\norm{x-a}
   $$
@@ -156,7 +158,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
   $$
     d(y,A) - d(x,A) \leq d(y,x) = d(x,y)
   $$
-  d’où
+  Ainsi,
   $$
     \abs{d(x,A) - d(y,A)} \leq d(x,y)
   $$

@@ -1,5 +1,7 @@
 # Convergence dominée
 
+:date 12/11/2025
+
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 ## Convergence simple d’une suite de fonctions
@@ -255,25 +257,25 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       \forall t \in I, \abs{f(t)} \leq \varphi(t)
     $$
     or $\varphi \in \L^{1}(I,\R_{+})$ donc $f \in \L^{1}(I,\K)$
-  Soit $(\lambda_{n})_{n \in \N}$ une suite d’éléments de $J$ de limite $\alpha$. Posons
-  $$
-    g_{n}: \applic{I}{\K}{t}{f_{\lambda_{n}}(t)}
-  $$
-  On a
-  - $\forall n \in \N, g_{n} \in \C_{m}(I,\K)$
-  - $\exists n_{0} \in \N: \forall n \geq n_{0}, \lambda_{n} \in V \cap J$ donc
+  - Soit $(\lambda_{n})_{n \in \N}$ une suite d’éléments de $J$ de limite $\alpha$. Posons
     $$
-      \forall n \geq n_{0}, \abs{f_{\lambda_{n}}} = \abs{g_{n}} \leq \varphi
+      g_{n}: \applic{I}{\K}{t}{f_{\lambda_{n}}(t)}
     $$
-  - Soit $t \in I$. Comme $\lambda_{n} \arrowlim{n\to+\infty}\alpha$, alors $f_{\lambda_{n}}(t) \arrowlim{n\to+\infty}f(t)$ donc $(g_{n})$ converge simplement vers $f$ sur $I$
-  donc d’après le théorème de convergence dominée appliqué à la suite $(g_{n})_{n \in \N}$, on a $\lim_{n\to+\infty}\int_{I} g_{n} = \int_{I} f$, i.e.
-  $$
-    \lim_{n\to+\infty}\int_{I}f_{\lambda_{n}} = \int_{I}f
-  $$
-  La caractérisation séquentielle d’une limite permet alors d’écrire
-  $$
-    \lim_{\lambda\to \alpha}\int_{I} f_{\lambda} = \int_{I} f
-  $$
+    On a
+    - $\forall n \in \N, g_{n} \in \Cont_{m}(I,\K)$
+    - $\exists n_{0} \in \N: \forall n \geq n_{0}, \lambda_{n} \in V \cap J$ donc
+      $$
+        \forall n \geq n_{0}, \abs{f_{\lambda_{n}}} = \abs{g_{n}} \leq \varphi
+      $$
+    - Soit $t \in I$. Comme $\lambda_{n} \arrowlim{n\to+\infty}\alpha$, alors $f_{\lambda_{n}}(t) \arrowlim{n\to+\infty}f(t)$ donc $(g_{n})$ converge simplement vers $f$ sur $I$
+    donc d’après le théorème de convergence dominée appliqué à la suite $(g_{n})_{n \in \N}$, on a $\lim_{n\to+\infty}\int_{I} g_{n} = \int_{I} f$, i.e.
+    $$
+      \lim_{n\to+\infty}\int_{I}f_{\lambda_{n}} = \int_{I}f
+    $$
+    La caractérisation séquentielle d’une limite permet alors d’écrire
+    $$
+      \lim_{\lambda\to \alpha}\int_{I} f_{\lambda} = \int_{I} f
+    $$
 %
 
 %eg
@@ -496,14 +498,14 @@ $$
       $$
       - pour tout réel positif $t$, l’application $x \longmapsto f(x,t)$ est ++continue++ sur $\R_{+}$.
       - (pour tout réel positif $x$, l’application $t \longmapsto  f(x,t)$ est continue par morceaux sur $\R_{+}$)
-      - $\forall (x,t) \in (\R_{+})^{2}, \abs{f(x,t)} = f(x,t) \leq \frac{1}{1+t^{2}}$ et $t \longmapsto \frac{1}{1+t^{2}}$ est intégrable sur $\L^{1}(\R_{+})$
+      - $\forall (x,t) \in (\R_{+})^{2}, \abs{f(x,t)} = f(x,t) \leq \frac{1}{1+t^{2}}$ et $t \longmapsto \frac{1}{1+t^{2}}$ est intégrable sur $\R_{+}$
       donc $F$ est continue sur $\R_{+}$.
   - Considérons l’application
     $$
       G: x \longmapsto \int_{0}^{+\infty}e^{-xt}\frac{\sh t}{t}\dd t
     $$
     Pour $x \in \R$, l’application $t \longmapsto e^{-xt}\frac{\sh t}{t}$ est continue et positive sur $\R_{+}^{*}$ et
-    ~ $\lim_{t\to 0+} \left(e^{-xt}\frac{\sh t}{t}\right) = 1$  ~ $e^{-xt}\frac{\sh t}{t}\sim e^{-xt}\frac{e^{t}}{2t} = \frac{e^{-(x-1)t}}{2t}$  ~ $\frac{e^{-(x-1)t}}{2t} \ueq{t\to+\infty} O (e^{-(x-1)t})$
+    ~ $\lim_{t\to 0^{+}} \left(e^{-xt}\frac{\sh t}{t}\right) = 1$  ~ $e^{-xt}\frac{\sh t}{t}\sim e^{-xt}\frac{e^{t}}{2t} = \frac{e^{-(x-1)t}}{2t}$  ~ $\frac{e^{-(x-1)t}}{2t} \ueq{t\to+\infty} O (e^{-(x-1)t})$
     Si $x-1 > 0$, i.e $x > 1$, alors $G$ est définie en $x$ et pour $x-1 \leq 0$,
     $$
       \frac{1}{t} \ueq{+\infty}O \left(\frac{e^{-(x-1)t}}{2t}\right)
@@ -583,7 +585,7 @@ $$
     f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
   $$
   une application de deux variables réelles telle que :
-  - pour tout $t$ fixé dans $I$, $t \longmapsto f(x,t)$ est de classe $\Cont^{1}$ sur $\Def$.
+  - pour tout $t$ fixé dans $I$, $x \longmapsto f(x,t)$ est de classe $\Cont^{1}$ sur $\Def$.
   - pour tout $x$ fixé dans $\Def$, les deux applications $t \longmapsto f(x,t)$ et $t \longmapsto \pdv{f}{x}(x,t) = \partial_{1}f(x,t)$ sont intégrables sur $I$.
   - une des deux conditions ci-dessous est vérifiée
     - *majoration globale*: il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
@@ -839,8 +841,8 @@ $$
     \Gamma: \applic{\oo{0,+\infty}}{\R}{x}{\int_{0}^{+\infty}t^{x-1}e^{-t}\dd t}
   $$
   On sait que $\Gamma$ est continue. Montrons qu’elle est dans $\Cont^{\infty}(\oo{0,+\infty}) = \bigcap_{n \in \N}\Cont^{n}(\oo{0,+\infty})$.
-~
-  Soit $n \in \N^{*}$. Consitérons
+  ~
+  Soit $n \in \N^{*}$. Considérons
   $$
     f: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t}= e^{(x-1)\ln t} e^{-t}}
   $$
