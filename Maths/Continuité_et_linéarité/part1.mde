@@ -269,8 +269,285 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
     donc $I \in \Cont(\GL_{n}(\K))$
 %
 
-%def
-  Soient $A$ et $B$ deux parties respectives de $E$ et $F$ non vides. Soit $f: A \longrightarrow B$. On dit que $f$ est un homéomorphisme si
-  ~  $f: A \longrightarrow B$ est bijective  ~ $f: A \longrightarrow F$ et $f^{-1}: B \longrightarrow E$ sont continues
+%offprog
+  %def
+    Soient $A$ et $B$ deux parties respectives de $E$ et $F$ non vides. Soit $f: A \longrightarrow B$. On dit que $f$ est un homéomorphisme si
+    ~  $f: A \longrightarrow B$ est bijective  ~ $f: A \longrightarrow F$ et $f^{-1}: B \longrightarrow E$ sont continues((La continuité d’une fonction dans une partie n’a pas été définie, d’où les espaces d’arrivée.))
+  %
 
+  %eg
+    - Soit $a \in E$. Les applications
+      $$
+        \applic{\GL_{n}(\K)}{\GL_{n}(\K)}{A}{A^{-1}} \quad\text{et}\quad \applic{E}{E}{x}{x+a}
+      $$
+      sont des homéomorphismes.
+  %
+%
+
+## Applications linéaires
+
+Soit $f \in \L(E,F)$. Soit $a \in E$. Alors
+$$
+  \forall x \in E, \norm{f(x) - f(a)}_{F} = \norm{f(x-a)}_{F} = \norm{f(x-a) - f(0_{E})}_{F}
+$$
+donc
+$$
+  \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in E\\ \norm{x-a}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(a)}_{F} < \varepsilon
+$$
+si et seulement si
+$$
+  \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}h \in E\\ \norm{h} < \delta\end{cases} \implies \norm{f(h) - f(0_{E})}_{F} < \varepsilon
+$$
+Pour $f \in E \longrightarrow F$ linéaire, il y a donc équivalence entre la continuité en un point $a$ et la continuité en $0_{E}$.
+Il y a mieux:
+%prop
+  Pour $f \in \L(E,F)$, il y a équivalence entre
+  1. $f$ est continue sur $E$
+  2. $f$ est continue en au moins un point de $E$
+  3. $f$ est continue en $0_{E}$
+  4. $f$ est bornée en $B_{E}'(0_{E},1)$
+  5. $f$ est bornée sur $S(0_{E},1)$((sphére unité))
+  6. $\exists c \in \R_{+}, \forall x \in E, \norm{f(x)}_{F} \leq c \norm{x}_{E}$
+  7. $f$ est lipschitzienne sur $E$
+  8. $f$ est uniformément continue sur $E$
+%
+
+%proof
+  On a facilement $1 \implies 2 \implies 3$.
+  - Supposons (3), i.e $f \in \L(E,F)$ est continue en $0_{E}$. Prenons $\varepsilon=1$. Il existe $\delta > 0$ tel que
+    $$
+      f(\underbrace{E \cap B_{E}(0_{E}, \delta)}_{B(0_{E}, \delta)}) \subset B_{F}(\underbrace{f(0_{E})}_{0_{F}},1)
+    $$
+    Soit $x \in B_{E}'(0_{E},1)$.
+    $$
+      \norm{\frac{\delta}{2}x}_{E} = \frac{\delta}{2}\norm{x}_{E} \leq \frac{\delta}{2} < \delta
+    $$
+    donc $\norm{f \left(\frac{\delta}{2}x\right)}_{F} < 1$. Par linéarité de $f$, on a $\norm{\frac{\delta}{2}f(x)}_{F} < 1$, i.e. $\frac{\delta}{2}\norm{f(x)}_{F} < 1$. Ainsi,
+    $$
+      \forall x \in B'(0_{E},1), \norm{f(x)}_{F} \leq \frac{2}{\delta}
+    $$
+    donc $f$ est bornée sur $B_{E}'(0_{E},1)$.
+  - La quatrième implication est immédiate car $S(0_{E},1) \subset B'(0_{E},1)$.
+  - Supposons (5), i.e. $f \in \L(E,F)$ est bornée sur $S(0_{E},1)$. Il existe $c \in \R_{+}$ tel que
+    $$
+      \forall u \in S(0_{E},1), \norm{f(u)}_{F} \leq c
+    $$
+    Soit $x \in E \setminus \{0\}$. On a $\frac{x}{\norm{x}_{E}} \in S(0_{E},1)$ donc
+    $$
+      \norm{f \left(\frac{x}{\norm{x}_{E}}\right)}_{F} \leq c
+    $$
+    d’où par linéarité,
+    $$
+      \norm{f(x)}_{F} \leq c \norm{x}_{E}
+    $$
+    L’inégalité est encore vraie pour $x = 0_{E}$ car $f(0_{E}) = 0_{F}$.
+  - Supposons (6), i.e.
+    $$
+      \exists c \in \R_{+}: \forall x \in E, \norm{f(x)}_{F} \leq c \norm{x}_{E}
+    $$
+    Soit $(x,y) \in E^{2}$.
+    $$
+      \norm{f(x) - f(y)}_{F} = \norm{f(x-y)}_{F} \leq c \norm{x-y}_{E}
+    $$
+    donc $f$ est $c$-lipschitzienne.
+  - On a déjà montré les implications $7 \implies 8 \implies 1$.
+%
+
+%prop
+  Si $E$ est un $\K$-espace vectoriel normé de **dimension finie**, alors toute application **linéaire** au départ de $E$ (et à valeurs dans un espace vectoriel normé) est continue sur $E$.
+%
+
+%proof
+  - Si $E = \{0_{E}\}$, alors le résultat est immédiat
+  - Supposons $E \ne\{0_{E}\}$. Soit $\B = (e_{1}, \ldots, e_{p})$ une base de $E$. Soit $x \in E$. Posons $x = \sum_{k=1}^{p}x_{k}e_{k}$ avec $(x_{1}, \ldots, x_{p}) \in \K^{p}$.
+    $$
+      \norm{f(x)}_{F} = \norm{\sum_{k=1}^{p}x_{k}f(e_{k})}_{F} \leq \sum_{k=1}^{p}\abs{x_{k}}\norm{f(e_{k})} \leq \underbrace{\max_{1 \leq k \leq p} \norm{f(e_{k})}}_{\in \R_{+}} \underbrace{\sum_{k=1}^{p}\abs{x_{k}}}_{N_{1,B}(x)}
+    $$
+    donc $f$ est continue sur $E$ (par la *caractérisation de la continuité des applications linéaires*).
+%
+
+%eg
+  %callout À savoir refaire
+    - Munissons $\M_{n}(\K)$ d’une norme.
+      $$
+        \forall A \in \M_{n}(\K), \exp(A) = \sum_{k=0}^{+\infty}\frac{A^{k}}{k!}
+      $$
+      L’application $\applic{\M_{n}(\K)}{\M_{n}(\K)}{B}{B\transp}$ est linéaire et définie sur un $\K$-espace vectoriel normé de dimension finie. Elle est donc continue. D’où
+      $$
+        (\exp A)\transp = \left(\lim_{N\to+\infty}\sum_{k=0}^{N}\frac{A^{k}}{k!}\right) = \lim_{n\to+\infty} \left(\sum_{k=0}^{N}\frac{A^{k}}{k!}\right)\transp
+      $$
+      par continuité de la transposition. Ainsi
+      $$
+        (\exp A)\transp = \lim_{N\to+\infty} \sum_{k=0}^{N}\frac{(A\transp)^{k}}{k!}
+      $$
+      par linéarité de la transposition, et en utilisant $(AB)\transp = B\transp A\transp$. Ainsi $(\exp A)\transp = \exp(A\transp)$.
+  %
+  - Notons $\ell^{\infty} = B(\N,\K)$ l’ensemble des suites bornées à valeurs dans $\K$.
+    $$
+      f: \applic{\ell^{\infty}}{\ell^{\infty}}{u}{(u_{n+1}-u_{n})_{n \in \N}}
+    $$
+    Soit $u \in \ell^{\infty}$. Il existe $M \in \R_{+}$ tel que $\forall n \in \N, \abs{u_{n}} \leq M$. D’où
+    $$
+      \forall n \in \N, \abs{u_{n+1}-u_{n}}\leq 2M
+    $$
+    donc $f(u) \in \ell^{\infty}$.
+    - Munissons $\ell^{\infty}$ de la norme((définie pour les fonctions de $X$ dans $\K$ dans le chapitre sur les normes.))
+      $$
+        u \longmapsto \norm{u}_{\infty} = \sup_{n \in \N} \abs{u_{n}}
+      $$
+      Soit $(u,v) \in (\ell^{\infty})^{2}$. Soit $(\lambda, \mu) \in \K^{2}$.
+      $$
+        \begin{align*}
+          f(\lambda u + \mu n) &= \left((\lambda u + \mu v)_{n+1} - (\lambda u + \mu v)_{n}\right)_{n \in \N}\\
+          &= (\lambda u_{n+1} + \mu v_{n+1} - \lambda u_{n} - \mu v_{n})_{n \in \N}\\
+          &= \lambda \cdot (u_{n+1} - u_{n})_{n \in \N} + \mu \cdot (v_{n+1} - v_{n})_{n \in \N}\\
+          &= \lambda \cdot f(u) + \mu \cdot f(v)
+        \end{align*}
+      $$
+      donc $f$ est linéaire.
+      Soit $u \in \ell^{\infty}$.
+      $$
+        \forall n \in \N, \abs{u_{n+1} - u_{n}} \leq \abs{u_{n+1}} + \abs{u_{n}} \leq 2 \norm{u}_{\infty}
+      $$
+      donc
+      $$
+        \forall u \in \ell^{\infty}, \norm{f(u)}_{\infty} \leq 2 \norm{u}_{\infty}
+      $$
+      donc $f$ est un endomorphimse continue de $(\ell^{\infty}, \norm{\cdot }_{\infty})$.
+  - Considérons l’application linéaire dérivation
+    $$
+      g: \applic{\R[X]}{\R[X]}{P}{P'}
+    $$
+    - Munissons $\R[X]$ de la norme $\norm{\cdot}$.
+      $$
+        \norm{\sum_{k \in \N}a_{k}X^{k}} = \sum_{k \in \N}\abs{a_{k}}
+      $$
+      avec $(a_{k})_{k \in \N}$ une suite réelle presque nulle.
+      $$
+        \forall n \in \N, \begin{cases}\norm{X^{n}} = 1\\ \norm{g(X^{n})} = n \arrowlim{n\to+\infty}+\infty\end{cases}
+      $$
+      $g$ n’est pas bornée sur $S(0, 1)$, donc n’est pas continue.
+    - Munissons $\R[X]$ de la norme
+      $$
+        P \longmapsto N(P) = \left(\sum_{k=0}^{+\infty}P^{(k)}(0)^{2}\right)^{\frac{1}{2}}
+      $$
+      ($N$ est la norme euclidienne associée au produit scalaire).
+      $$
+        (P,Q) \longmapsto \scalar{P}{Q} = \sum_{k \in \N}P^{(k)}(0)Q^{(k)}(0)
+      $$
+      Alors
+      $$
+        N(g(P)) = N(P') = \left(\sum_{k=0}^{+\infty}\left(P^{(k+1)}(0)\right)^{2}\right)^{\frac{1}{2}} \leq \left(\sum_{k=0}^{+\infty}P^{(k)}(0)^{2}\right)\frac{1}{2}
+      $$
+      donc
+      $$
+        \forall P \in \R[X], N(g(P)) \leq 1 \cdot N(P)
+      $$
+      donc $g$ est un endomorphisme continue de $(\R[X],N)$.
+%
+
+%def Définition et proposition
+  Pour $E \ne \{0_{E}\}$,
+  1. $\L_{c}(E,F) = \{f \in \L(E,F) \where f \text{ continue eur } E\}$ est un sous-espace vectoriel de $(\L(E,F), +, \cdot )$.
+  2. Pour $f \in \L_{c}(E,F)$, on pose
+     $$
+       |\hspace{-0.1em}|\hspace{-0.1em}|f|\hspace{-0.1em}|\hspace{-0.1em}| = \opnorm{f} = \sup_{x \in S(0_{E},1)}\norm{f(x)}_{F}
+     $$
+  3. $f \longmapsto  \opnorm{f}$ est une norme sur $\L_{c}(C,F)$ appelée *norme subordonnée* (ou *norme d’opérateur*) (aux normes $\norm{\cdot}_{E}$ et $\norm{\cdot}_{F}$).
+  4. On a
+     $$
+       \forall f \in \L_{c}(E,F), \opnorm{f} = \sup_{x \in E \setminus \{0\}} \frac{\norm{f(x)}_{F}}{\norm{x}_{E}}
+     $$
+%
+
+%proof
+  2. Soit $f \in \L_{c}(E,F)$. $\left\{\norm{f(x)}_{F} \where x \in S(0_{E},1)\right\}$ est une partie non vide et majorée (caractérisation de la continuité d’une application linéaire), donc $\opnorm{f} = \sup_{x \in \S(0_{E},1)} \norm{f(x)}$ est un réel positif bien défini.
+  3. - $\opnorm{\cdot} \geq 0$
+     - Soit $f \in \L_{c}(E,F)$ avec $\opnorm f = 0$. Alors
+       $$
+         \forall x \in S(0_{E},1), f(x) = 0_{F}
+       $$
+       Soit $x \in E \setminus \{0\}$.
+       $$
+         f \left(\frac{x}{\norm{x}_{E}}\right) = 0_{F} = \frac{f(x)}{\norm{x}_{E}}
+       $$
+       Donc $\forall x \in E \setminus \{0_{E}\}, f(x) = 0_{F}$ et $f(0_{E}) = 0_{F}$ donc $f = 0_{\L(E,F)}$.
+     - Soit $(\lambda, f) \in \K \times \L_{c}(E,F)$.
+       $$
+         \opnorm{\lambda f} = \sup_{\norm{x}_{E} = 1} \norm{(\lambda f)(x)}_{F} = \sup_{\norm{x}_{E} = 1}\left(\abs{\lambda} \cdot  \norm{f(x)}_{F}\right) = \abs{\lambda}\cdot \sup_{\norm{x}_{E}=1} \norm{f(x)_{F}}
+       $$
+       car $\abs{\lambda} \geq 0$.
+     - Soit $(f, g) \in \L_{c}(E,F)^{2}$. Soit $x \in S(0_{E},1)$.
+       $$
+         \norm{(f+g)(x)}_{F} = \norm{f(x) + g(x)}_{F} \leq \norm{f(x)}_{F} + \norm{g(x)}_{F} \leq \opnorm{f} + \opnorm{g}
+       $$
+       donc
+       $$
+         \opnorm{f+g} \leq \opnorm f + \opnorm g
+       $$
+     - $S(0_{E},1) = \left\{\frac{x}{\norm{x}_{E}}\where x \in E \setminus \{0_{E}\}\right\}$ donc pour $f \in \L_{c}(E,F)$, on a
+       $$
+         \opform f = \sup_{x \in E \setminus \{0\}}\norm{f \left(\frac{x}{\norm{x}_{E}}\right)}_{F} = \sup_{x \in E \setminus \{0\}} \frac{\norm{f(x)}_{F}}{\norm{x}_{E}}
+       $$
+%
+
+%method
+  ++Calcul de $\opnorm{f}$ pour $f \in \L_{c}(E,F)$.++ On utilise les trois points suivants :
+  1. $\forall x \in E, \norm{f(x)}_{F} \leq \opnorm{f}\times \norm{x}_{E}$ *(inégalité fondamentale)*
+  2. $\opnorm{f} = \min \left\{k \in \R_{+}\where \forall x \in E, \norm{f(x)}_{F} \leq k \norm{x}_{E}\right\}$
+  3. $\begin{cases}k \in \R_{+}\\ g \in \L(E,F) \\ \forall x \in E, \norm{g(x)}_{F} \leq k \norm{x}_{E}\end{cases} \implies \begin{cases}g \in \L_{c}(E,F) \\ \opnorm{g} \leq k\end{cases}$
+%
+
+%eg
+  - Munissons $\ell^{\infty}$ de la norme infinie, et considérons
+    $$
+      f: \applic{\ell^{\infty}}{\ell^{\infty}}{u}{(u_{n+1} - u_{n})_{n \in \N}}
+    $$
+    Pour tout $x \in \ell^{\infty}$, $\norm{f(u)}_{\infty} \leq 2 \norm{u}_{\infty}$ donc $f \in \L_{c}((\ell^{\infty}, \norm{\cdot}_{\infty}))$ et $\opnorm{f} \leq 2$. La suite définie pour tout $n \in \N$ par $u_{n} = (-1)^{n}$ est bornée, et
+    $$
+      f(u) = \left((-1)^{n+1} + (-1)^{n+1}\right)_{n \in \N} = -2u
+    $$
+    donc $\norm{f(u)}_{\infty} = 2 \norm{u}_{\infty}$, d’où
+    $$
+      \frac{\norm{f(u)}_{\infty}}{\norm{u}_{\infty}} = 2 \leq  \opnorm{f}
+    $$
+    donc $\opnorm{f} =2$.
+  - L’application
+    $$
+      \varphi: \applic{\K[X]}{\K}{P}{\tilde{P}(\frac{1}{2})}
+    $$
+    est linéaire. Munissons $\K[X]$ de la norme
+    $$
+      P = \sum_{k \in \N}a_{k}X^{k} \longmapsto  \norm{P} = \max_{k \in \N} \abs{a_{k}}
+    $$
+    Soit $P = \sum_{k=0}^{d}a_{k} X^{k}$ avec $d \in \N$.
+    $$
+      \abs{\varphi(P)} = \abs{\sum_{k=0}^{d}a_{k} \left(\frac{1}{2}\right)^{k}} \leq \sum_{k=0}^{d}\abs{a_{k}}\left(\frac{1}{2}\right)^{k} \leq \norm{P} \times \sum_{k=0}^{d}\left(\frac{1}{2}\right)^{k} \leq \norm{P} \sum_{k=0}^{+\infty}\left(\frac{1}{2}\right)^{k}
+    $$
+    donc $\forall P \in \R[X], \abs{\varphi(P)} \leq 2 \norm{P}$, donc $\varphi \in \L_{c} \left((\K[X], N), \K\right)$ et $\opnorm{\varphi} \leq 2$. Considérons pour tout $n \in \N$, le polynôme $P_{n} = \sum_{k=0}^{n}X^{k}$. Alors
+    $$
+      \frac{\abs{\varphi(P_{n})}}{\norm{P_{n}}} = \sum_{k=0}^{n}\left(\frac{1}{2}\right)^{k} = \frac{1- \left(\frac{1}{2}\right)^{n+1}}{1-\frac{1}{2}}
+    $$
+    On a donc
+    $$
+      \forall n \in \N, 2-\frac{1}{2^{n}} \leq \opnorm{\varphi}\leq 2
+    $$
+    or $2-\frac{1}{2^{n}} \arrowlim{n\to+\infty}2$ donc $\opnorm{\varphi} = 2$.
+%
+
+%prop
+  1. Pour tous $(f,g) \in \L_{c}(E,F) \times \L_{c}(F,G)$,
+     $$
+       \opnorm{g\circ f} \leq \opnorm{g} \times \opnorm{f}
+     $$
+  2. $(\L_{c}(E), +, \circ, \cdot )$ est une $\K$-algèbre et la norme $\applic{\L_{c}(E)}{\R_{+}}{f}{\opnorm{f}}$ est sous-multiplicative et $\opnorm{\id_{E}} = 1$((Propriété assez rare pour une norme sous-multiplicative.)).
+%
+
+%proof
+  1. Pour tout $x \in E$,
+     $$
+       \norm{(g\circ f)(x)}_{G} = \norm{g(f(x))}_{G} \leq \opnorm{g} \norm{f(x)}_{F} \leq \opnorm{g} \times \opnorm{f} \times \norm{x}_{E}
+     $$
+     d’où $\opnorm{g\cir f} \leq \opnorm{g} \times \opnorm{f}$.
+  2. $\norm{\id _{E}} = \sup_{\norm{x}_{E} = 1} \norm{\id (x)} = \sup_{\norm{x}_{E} = 1}\norm{x}_{E} = 1$
 %
