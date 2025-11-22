@@ -1287,7 +1287,7 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
       $$
       Soit $x \in \co{c', b}$.
       $$
-        \abs{\int_{a}^{x}f} \leq \abs{\int_{a}^{c}f} + \int_{a}^{x}\abs{f} \leq \abs{\int_{a}^{c}f} + M \underbrace{\int_{c}^{x}\abs{\varphi}}_{=\abs{\int_{c}^{x}\varphi}} \leq \underbrace{\abs{\int_{a}^{e}f} + M \abs{\int_{a}^{c}\varphi}}_{=o \left(\int_{a}^{x}\varphi\right)} + M \abs{\int_{a}^{x}\varphi}
+        \abs{\int_{a}^{x}f} \leq \abs{\int_{a}^{c}f} + \int_{c}^{x}\abs{f} \leq \abs{\int_{a}^{c}f} + M \underbrace{\int_{c}^{x}\abs{\varphi}}_{=\abs{\int_{c}^{x}\varphi}} \leq \underbrace{\abs{\int_{a}^{c}f} + M \abs{\int_{a}^{c}\varphi}}_{=o \left(\int_{a}^{x}\varphi\right)} + M \abs{\int_{a}^{x}\varphi}
       $$
       donc
       $$

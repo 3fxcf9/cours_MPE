@@ -1,0 +1,304 @@
+# Semaine 9
+
+## Dérivation d’une intégrale à paramètre
+
+%thm Dérivation d’une intégrale à paramètre
+  Soient $\Def$ et $I$ deux intervalles de $\R$, tous deux de longueur non nulle. Soit
+  $$
+    f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
+  $$
+  une application de deux variables réelles telle que :
+  - pour tout $t$ fixé dans $I$, $x \longmapsto f(x,t)$ est de classe $\Cont^{1}$ sur $\Def$.
+  - pour tout $x$ fixé dans $\Def$, les deux applications $t \longmapsto f(x,t)$ et $t \longmapsto \pdv{f}{x}(x,t) = \partial_{1}f(x,t)$ sont intégrables sur $I$.
+  - une des deux conditions ci-dessous est vérifiée
+    - *majoration globale*: il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+      $$
+        \forall (x,t) \in \Def \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
+      $$
+    - *majoration locale*: pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
+      $$
+        \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
+      $$
+  Alors,
+  $$
+    g: \applic{\Def}{\K}{x}{\int_{I}f(x,t)\dd t}
+  $$
+  est bien définie, de classe $\Cont^{1}$ sur $\Def$ et
+  $$
+    \forall x \in \Def, g'(x) = \int_{I}\pdv{f}{x}(x,t)\dd t
+  $$
+%
+
+%proof
+  La seconde hypothèse donne l’existence de $g$ définie sur $\Def$, tout comme l’existence de $h: \applic{\Def}{\K}{x}{\int_{I}\pdv{f}{x}(x,t)}\dd t$. On veut montrer que $g' = h$.
+  Soit $\alpha \in \Def$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $\Def \setminus \{\alpha\}$ qui converge vers $\alpha$. Montrons
+  $$
+    \int_{I}\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\dd t = \frac{g(x_{n}) - g(\alpha)}{x_{n} - \alpha} \arrowlim{n\to+\infty}h(\alpha)
+  $$
+  On a, comme $u \longmapsto f(u,t)$ est dérivable en $\alpha$ et de dérivée valant $\pdv{f}{x}(\alpha, t)$ :
+  $$
+    \left[t \longmapsto \frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\right] \sarrowlim{n\to+\infty} \left[t \longmapsto \pdv{f}{x}(\alpha, t)\right] \sur I
+  $$
+  Soit $S$ un segment de $\Def$ contenant $\alpha$ et tout élément de $(x_{n})$. Supposons l’hypothèse de *majoration locale*. Il existe donc $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  $$
+    \forall (x,t) \in S \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi_{S}(t)
+  $$
+  Soit $t \in I$ fixé. La fonction $u \longmapsto f(u,t)$ est de classe $\Cont^{1}$ sur $S$ donc
+  $$
+    \forall (u,v) \in S^{2}, \abs{f(u, t) - f(v, t)} \oleq{IAF} \norm{\pdv{f}{x}(x, t)} \times \abs{u-v} \leq \varphi_{S}(t) \times  \abs{u-v}
+  $$
+  d’où $\varphi_{S} \in \L^{1}(I,\R_{+})$ et
+  $$
+    \forall x \in \N, \abs{\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}} \leq \varphi_{S}(t)
+  $$
+  donc d’après le *théorème de convergence dominée*, on a
+  $$
+    \lim_{n\to+\infty}\int_{I}\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\dd t = \int_{I} \pdv{f}{x}(\alpha, t)\dd t
+  $$
+  i.e.
+  $$
+    \frac{g(x_{n}) - g(\alpha)}{x_{n} - \alpha} \arrowlim{n\to+\infty}h(\alpha)
+  $$
+  or la suite $(x_{n})$ est quelconque donc $g$ est dérivable et
+  $$
+    g'(\alpha) = h(\alpha) = \int_{I} \pdv{f}{x}(\alpha, t)\dd t
+  $$
+  - Traitons à présent la continuité de $g'$:
+    - pour tout $t$ fixé dans $I$, la fonction $x \longmapsto \pdv{f}{x}(x,t)$ est continue sur $\Def$
+    - pour tout $x \in \Def$, la fonction $t \longmapsto \pdv{f}{x}(x,t)$ est continue par morceaux
+    - l’hypothèse de *domination* est vérifiée
+    donc le *théorème de continuité d’intégrale à paramètre* donne $g' \in \Cont(\Def)$.
+%
+
+## Étude détaillée de la fonction Gamma d’Euler
+
+Considérons la fonction Gamma d’Euler
+$$
+  \Gamma: x \longmapsto \int_{0}^{+\infty}t^{x-1}e^{-t}\dd t
+$$
+- *Définition* : La fonction $t \longmapsto t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}$ est continue et positive sur $\color{yellow}\oo{0,+\infty}\color{reset}$ pour tout $x$ réel.
+  ~ $t^{x-1}e^{-t} \usim{t\to 0^{+}} \frac{1}{t^{1-x}}$  ~ $\int_{\mangl{0}}^{1}\frac{\dd t}{t^{1-x}}$ converge si et seulement si $x > 0$
+  et
+  $$
+    t^{2} \cdot t^{x-1}e^{-t} = t^{x+1}e^{-t} \arrowlim{t\to+\infty}0
+  $$
+  donc $t^{x-1}e^{-t} \ueq{+\infty}o \left(\frac{1}{t}\right)$ et $\int_{1}^{+\infty}\frac{\dd t}{t^{2}}$ converge.
+  $\Gamma$ est donc définie sur $\Def = \oo{0,+\infty}$.
+- *Lien avec la fonction factorielle*.
+  $$
+    \Gamma(1) = \int_{0}^{+\infty}e^{-t}\dd t = \left[-e^{-t}\right]_{0}^{+\infty} = 1
+  $$
+  Soit $n \in \N^{*}$. Soit $0 < \varepsilon < X < 0$.
+  $$
+    \int_{\varepsilon}^{X}t^{(n+1)-1}e^{-t}\dd t = \int_{\varepsilon}^{X}t^{n}e^{-t}\dd t = \underbrace{\left[-t^{n}e^{-t}\right]_{\varepsilon}^{X}}_{\underbrace{X^{n} e^{-X}}_{\arrowlim{X\to+\infty}0} + \underbrace{\varepsilon^{n}e^{-\varepsilon}}_{\arrowlim{\varepsilon\to 0}0}} - \int_{\varepsilon}^{X}-n t^{n-1} e^{-t}\dd t
+  $$
+  d’où, en passant à la limite sur $\varepsilon$ en $0^{+}$ et sur $X$ en $+\infty$, on obtient la relation de récurrence
+  $$
+    \begin{cases}\Gamma(1)=1\\
+    \forall n \in \N^{*}, \Gamma(n+1) = n \Gamma(n)
+    \end{cases}
+  $$
+  d’où, avec la convention $0! = 1$,
+  $$
+    \forall n \in \N, \Gamma(n+1) = n!
+  $$
+- *Continuité de $\Gamma$ sur $\Def = \oo{0,+\infty}$.* Posons
+  $$
+    g: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
+  $$
+  - pour tout $t$ dans $\oo{0,+\infty}$, $x \longmapsto  g(x,t)$ est continue sur $\Def$.
+  - Soit $\cc{a,b} \subset \Def$ un segment quelconque (avec $0 < a < b$). $a \leq  x \leq  b$ et $t \in \oc{0,1}$ donc
+    $$
+      (a-1)\ln t \geq (x-1)\ln t \geq (b-1)\ln t
+    $$
+    et $a \leq  x \leq  b$ et $t \in \co{1,+\infty}$ donc
+    $$
+      (a-1)\ln t \leq (x-1)\ln t \leq (b-1)\ln t
+    $$
+
+    Donc pour tout $x \in \cc{a,b}$,
+    $$
+      t^{x-1} \leq  \begin{cases}t^{a-1}\if t \in \oc{0,1}\\ t^{b-1} \if t \in \co{1,+\infty}\end{cases} \leq t^{a-1} + t^{b-1}
+    $$
+    d’où
+    $$
+      \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})
+    $$
+      et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\Def = \oo{0,+\infty}$.
+- *Caractère $\Cont^{\infty}$* : Montrons que la fonction $\Gamma$ est dans $\Cont^{\infty}(\oo{0,+\infty}) = \bigcap_{n \in \N}\Cont^{n}(\oo{0,+\infty})$. Soit $n \in \N^{*}$. Considérons
+  $$
+    f: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t}= e^{(x-1)\ln t} e^{-t}}
+  $$
+  - Pour $t$ fixé dans $\oo{0,+\infty}$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
+  - Pour $x$ fixé dans $\D$ et $k \in \icc{0,n}$, on a
+    $$
+      t \longmapsto \pdvN{f}{x}{k} (x,t) = (\ln t)^{k}t^{x-1}e^{-t}
+    $$
+    or
+    $$
+      \pdvN{f}{x}{k}(x,t)\usim{t\to 0^{+}}\frac{(\ln t)^{k}}{t^{1-x}} \ueq{t\to 0^{+}}o \left(\frac{1}{t^{1-\frac{x}{2}}}\right)
+    $$
+    or $\int_{0}^{1}\frac{\dd t}{t^{1-\frac{x}{2}}}$ converge car $1-\frac{x}{2} < 1$, donc
+    $$
+      t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oc{0,1}) \quad\text{et}\quad \pdvN{f}{x}{k}(x,t) \ueq{t\to 0^{+}}o \left(\frac{1}{t^{2}}\right)
+    $$
+    et de même, $t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\co{1,+\infty})$. Ainsi,
+    $$
+      \forall k \in \icc{0,n}, t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oo{0,+\infty})
+    $$
+  - Soient $0 < a < b$ deux réels.
+    $$
+      \forall x \in \cc{a,b}, \underline{\forall t > 0}, \abs{\pdvN{f}{x}{n}(x,t)} \leq \abs{\ln t}^{n} (t^{a-1}+t^{b-1})e^{-t}
+    $$
+    et la fonction
+    $$
+      t \longmapsto \abs{\ln t}^{n} (t^{a-1} + t^{b-1})e^{-t} = \abs{\ln t}^{n} t^{a-1}e^{-t} + \abs{\ln t}^{n}t^{b-1}e^{-t}
+    $$
+    est intégrable sur $\oo{0,+\infty}$ (voir plus haut).
+  Ainsi, $\Gamma \in \Cont^{n}(\oo{0,+\infty})$, et cela pour tout $n \in \N^{*}$, donc $\Gamma \in \Cont^{\infty}(\oo{0,+\infty})$.
+- *Variations, monotonie et convexité*.
+  $$
+    \forall n \in \N, \forall x > 0, \Gamma^{(n)}(x) = \int_{0}^{+\infty}(\ln t)^{n} t^{x-1} e^{-t}\dd t
+  $$
+  d’où
+  $$
+    \forall x > 0, \Gamma'(x) = \int_{0}^{+\infty}\ln t t^{x-1} e^{-t}\dd t
+  $$
+  et
+  $$
+    \forall x > 0, \Gamma''(x) f \int_{0}^{+\infty}(\ln t)^{2} t^{x-1}e^{-t}\dd t > 0
+  $$
+  donc $\Gamma'$ est strictement croissante sur $\oo{0,+\infty}$, i.e. $\Gamma$ est convexe sur cet intervalle.
+  Or, $\forall n \in \N^{*}, \Gamma(n) = (n-1)!$ donc $\Gamma(1) = 0! = 1 = 1! = \Gamma(2)$ et $\Gamma \in \Cont(\cc{1,2})$ et $\Gamma$ est dérivable sur $\oo{1,2}$ donc d’après le *théorème de Rolle*, il existe $c \in \oo{1,2}$ tel que $\Gamma'(c) = 0$. On en déduit le tableau de variations de $\Gamma$:
+
+  %fig Tableau de variations de la fonction Gamma
+    @[./figures/gamma-tabvar_optimized.svg]
+  %
+
+  $\lim_{+\infty}\Gamma$ et $\lim_{0^{-}}\Gamma$ existent dans $\bar{\R_{+}}$ d’après le *théorème de la limite monotone*, donc
+  $$
+    \lim_{+\infty}\Gamma = \lim_{n\to+\infty}\Gamma(n) = \lim_{n\to+\infty}(n-1)! = +\infty
+  $$
+  et
+  $$
+    \forall x > 0, \Gamma(x) \geq \int_{0}^{1}t^{x-1}e^{-t}\dd t \geq \frac{1}{e}\int_{0}^{1}t^{x-1}\dd t = \frac{1}{e} \left[\frac{t^{x}}{x}\right]_{0}^{1}
+  $$
+  donc $\forall x > 0, \Gamma(x) \geq \frac{1}{ex}\arrowlim{x\to 0^{+}}+\infty$.
+- On a, après calcul approché d’intégrales $c \simeq 1,46$ et $\Gamma(c) \simeq 0,88$ à $10^{-2}$ près. Aussi,
+  $$
+    \Gamma(\frac{1}{2}) = \int_{0}^{+\infty}\frac{e^{-t}}{\sqrt{t}}\dd t \ueq{t = u^{2}} \int_{0}^{+\infty}\frac{e^{-u^{2}}}{u}2u \dd u = \sqrt{\pi}
+  $$
+- *Équation fonctionnelle satisfaite par $\Gamma$* : Soient $0 < \varepsilon < X$. Soit $x > 0$.
+  $$
+    \int_{\varepsilon}^{X}t^{(x+1)-1}e^{-t}\dd t = \int_{\varepsilon}^{X}t^{x} e^{-t}\dd t = \underbrace{\left[-t^{x} e^{-t}\right]_{\varepsilon}^{X}}_{\underbrace{-X^{x} e^{-X}}_{\arrowlim{X\to+\infty}0} + \underbrace{\varepsilon^{x} e^{-\varepsilon}}_{\arrowlim{\varepsilon\to 0}0}} + x \int_{\varepsilon}^{X}t^{x-1}e^{-t}\dd t
+  $$
+  d’où
+  $$
+    \forall x > 0, \Gamma(x+1) = x \Gamma(x)
+  $$
+  en faisant tendre $x$ vers $0^{+}$, on a pan continuité de $\Gamma$ en 1
+  $$
+    \Gamma(x) \usim{0^{+}}\frac{1}{x}
+  $$
+- *Nature des branches infinies de $\Gamma$*.
+  $$
+    \frac{\Gamma(x)}{x} = \frac{(x-1)\Gamma(x-1)}{x} = \frac{x-1}{x}\Gamma(x) \arrowlim{x\to+\infty}+\infty
+  $$
+  donc la courbe de $\Gamma$ présente au voisinage de $+\infty$ une branche parabolique de direction asymototique $(Oy)$.
+
+## Caractérisation de la continuité d’une application linéaire
+
+%prop Caractérisation de la continuité d’une application linéaire
+  Pour $f \in \L(E,F)$, il y a équivalence entre
+  1. $f$ est continue sur $E$
+  2. $f$ est continue en au moins un point de $E$
+  3. $f$ est continue en $0_{E}$
+  4. $f$ est bornée en $B_{E}'(0_{E},1)$
+  5. $f$ est bornée sur $S(0_{E},1)$((sphére unité))
+  6. $\exists c \in \R_{+}, \forall x \in E, \norm{f(x)}_{F} \leq c \norm{x}_{E}$
+  7. $f$ est lipschitzienne sur $E$
+  8. $f$ est uniformément continue sur $E$
+%
+
+%proof
+  - On a facilement $1 \implies 2 \implies 3$.
+  - Supposons (3), i.e $f \in \L(E,F)$ est continue en $0_{E}$. Prenons $\varepsilon=1$. Il existe $\delta > 0$ tel que
+    $$
+      f(\underbrace{E \cap B_{E}(0_{E}, \delta)}_{B(0_{E}, \delta)}) \subset B_{F}(\underbrace{f(0_{E})}_{0_{F}},1)
+    $$
+    Soit $x \in B_{E}'(0_{E},1)$.
+    $$
+      \norm{\frac{\delta}{2}x}_{E} = \frac{\delta}{2}\norm{x}_{E} \leq \frac{\delta}{2} < \delta
+    $$
+    donc $\norm{f \left(\frac{\delta}{2}x\right)}_{F} < 1$. Par linéarité de $f$, on a $\norm{\frac{\delta}{2}f(x)}_{F} < 1$, i.e. $\frac{\delta}{2}\norm{f(x)}_{F} < 1$. Ainsi,
+    $$
+      \forall x \in B'(0_{E},1), \norm{f(x)}_{F} \leq \frac{2}{\delta}
+    $$
+    donc $f$ est bornée sur $B_{E}'(0_{E},1)$.
+  - La quatrième implication est immédiate car $S(0_{E},1) \subset B'(0_{E},1)$.
+  - Supposons (5), i.e. $f \in \L(E,F)$ est bornée sur $S(0_{E},1)$. Il existe $c \in \R_{+}$ tel que
+    $$
+      \forall u \in S(0_{E},1), \norm{f(u)}_{F} \leq c
+    $$
+    Soit $x \in E \setminus \{0\}$. On a $\frac{x}{\norm{x}_{E}} \in S(0_{E},1)$ donc
+    $$
+      \norm{f \left(\frac{x}{\norm{x}_{E}}\right)}_{F} \leq c
+    $$
+    d’où par linéarité,
+    $$
+      \norm{f(x)}_{F} \leq c \norm{x}_{E}
+    $$
+    L’inégalité est encore vraie pour $x = 0_{E}$ car $f(0_{E}) = 0_{F}$.
+  - Supposons (6), i.e.
+    $$
+      \exists c \in \R_{+}: \forall x \in E, \norm{f(x)}_{F} \leq c \norm{x}_{E}
+    $$
+    Soit $(x,y) \in E^{2}$.
+    $$
+      \norm{f(x) - f(y)}_{F} = \norm{f(x-y)}_{F} \leq c \norm{x-y}_{E}
+    $$
+    donc $f$ est $c$-lipschitzienne.
+  - Supposons (7), i.e. $f$ est $k$-lipschitzienne sur $E$. Soit $\varepsilon > 0$. Posons $\delta = \frac{\varepsilon}{k}$. Pour $(x,y) \in A^{2}$ tels que $\norm{x-y}_{E} < \delta$, on a
+    $$
+      \norm{f(x) - f(y)}_{F} \leq k \norm{x-y}_{E} < \varepsilon
+    $$
+    donc $f$ est uniformément continue sur $E$.
+  - Supposons (8), i.e. $f$ est uniformément continue sur $E$. Soient $\varepsilon > 0$ et $a \in E$. Il existe $\delta > 0$ tel que
+    $$
+      \begin{cases}(x,y) \in E^{2}\\ \norm{x-y}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(y)}_{F} < \varepsilon
+    $$
+    d’où
+    $$
+      \begin{cases}x \in E\\\norm{x-a}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(a)}_{F} < \varepsilon
+    $$
+    donc $f$ est continue.
+%
+
+
+## Détermination de la norme matricielle subordonnée à la norme 1 sur l’espace des vecteurs colonnes
+
+Munissons $\M_{n,1}(\K)$ de la norme définie par
+$$
+  \norm{\mtx{x_{1}\\\vdots\\x_{n}}}_{1} = \sum_{i=1}^{n}\abs{x_{i}}
+$$
+Posons, pour tout $A \in \M_{n}(\K)$,
+$$
+  \norm{A} = \sup_{X\ne 0} \frac{\norm{AX}_{1}}{\norm{X}_{1}}
+$$
+Soit $X = \mtx{x_{1}\\\vdots\\x_{n}}\in \M_{n,1}(\K) \setminus \{0\}$.
+$$
+  \norm{AX}_{1} = \sum_{i=1}^{n} \abs{(AX)_{i}} = \sum_{i=1}^{n}\abs{\sum_{j=1}^{n}a_{ij}x_{j}}
+$$
+donc
+$$
+  \norm{AX}_{1} \leq \sum_{i=1}^{n} \left(\sum_{j=1}^{n}\abs{a_{ij}}\abs{x_{j}}\right) = \sum_{j=1}^{n}\abs{x_{j}} \left(\sum_{i=1}^{n}\abs{a_{ij}}\right) \leq \sum_{j=1}^{n}\abs{x_{j}} \norm{A}_{c}
+$$
+avec $\norm{\cdot}_{c}$ la norme colonne. Ainsi, $\forall X \in \M_{n,1}(\K), \norm{AX}_{1} \leq \norm{A}_{c} \cdot \norm{X}_{1}$ donc $\norm{A} \leq \norm{A}_{c}$. Soit $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\K)$. Il existe $j \in \icc{1,n}$ tel que $\norm{A}_{c} = \sum_{i=1}^{n}\abs{a_{ij}}$, or
+$$
+  \norm{AE_{j}}_{1} = \norm{c_{j}}_{1} = \norm{A}_{c} \quad\text{et}\quad \norm{E_{j}}_{1} = 1
+$$
+donc
+$$
+  \frac{\norm{AE_{j}}_{1}}{\norm{E_{j}}_{1}} = \norm{A}_{c} \leq \norm{A}
+$$
+d’où $\norm{A} = \norm{A}_{c}$ pour tout $A \in \M_{n}(\K)$.

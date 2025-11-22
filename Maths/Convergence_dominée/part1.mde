@@ -579,7 +579,7 @@ $$
 
 ## Dérivation d’une intégrale à paramètre
 
-%thm
+%thm Dérivation d’une intégrale à paramètre
   Soient $\Def$ et $I$ deux intervalles de $\R$, tous deux de longueur non nulle. Soit
   $$
     f: \applic{\Def \times I}{\K}{(x,t)}{f(x,t)}
@@ -886,7 +886,11 @@ $$
   $$
   donc $\Gamma'$ est strictement croissante sur $\oo{0,+\infty}$, i.e. $\Gamma$ est convexe sur cet intervalle.
   Or, $\forall n \in \N^{*}, \Gamma(n) = (n-1)!$ donc $\Gamma(1) = 0! = 1 = 1! = \Gamma(2)$ et $\Gamma \in \Cont(\cc{1,2})$ et $\Gamma$ est dérivable sur $\oo{1,2}$ donc d’après le *théorème de Rolle*, il existe $c \in \oo{1,2}$ tel que $\Gamma'(c) = 0$. On en déduit le tableau de variations de $\Gamma$:
-  ==FIG TABVAR==
+
+  %fig Tableau de variations de la fonction Gamma
+    @[./figures/gamma-tabvar_optimized.svg]
+  %
+
   $\lim_{+\infty}\Gamma$ et $\lim_{0^{-}}\Gamma$ existent dans $\bar{\R_{+}}$ d’après le *théorème de la limite monotone*, donc
   $$
     \lim_{+\infty}\Gamma = \lim_{n\to+\infty}\Gamma(n) = \lim_{n\to+\infty}(n-1)! = +\infty
