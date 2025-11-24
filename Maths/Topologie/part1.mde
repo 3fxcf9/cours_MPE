@@ -1,0 +1,148 @@
+# Éléments de topologie
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$-espace vectoriel normé.
+
+## Parties fermées
+
+%eg
+  Considérons l’ensemble $A = \left\{\frac{1}{p} + \frac{1}{q} \where (p,q) \in (\N^{*})^{2}\right\} \subset \R$.
+  $$
+    \forall n \in \N^{*}, x_{n} = \frac{1}{2n} + \frac{1}{2n} = \frac{1}{n} \in \A
+  $$
+  or $x_{n} \arrowlim{n\to+\infty}0 \notin A$. On dit que $A$ n’est pas une partie fermée de $(\R, \abs{\cdot})$.
+%
+
+%def
+  Une partie $F$ d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$ est dite *fermée dans $(te, \norm{\cdot})$* si toute suite converegnte d’éléments de $F$ a sa limite dans $F$.
+%
+
+%rem
+  Si $E$ est muni de deux normes $\norm{\cdot}$ et $\norm{\cdot}'$ équivalentes, alors $F$ est fermée dans $(E, \norm{\cdot})$ si et seulement si $F$ est fermée dans $(E, \norm{\cdot}')$.
+%
+
+%proof
+  Supposons $F$ fermée dans $(E, \norm{\cdot})$. Soit $(x_{n}) \in \N$ une suite convergente (au sens de $\norm{\cdot}'$) d’éléments de $F$, dont nous noterons la limite $\ell \in E$. Comme les normes $\norm{\cdot}$ et $\norm{\cdot}'$ sont équivalentes, la suite $(x_{n})$ converge aussi au sens de la norme $\norm{\cdot}$. Or $\forall n \in \N, x_{n} \in F$ et $F$ fermée dans $(E, \norm{\cdot})$, donc $\ell \in F$. Ainsi, $F$ est fermée dans $(E, \norm{\cdot}')$.
+%
+
+%eg
+  - Les ensembles $\emptyset$, $E$ et $\{x_{0}\}$ sont des parties fermées.
+  - **Toute sphère ou boule fermée est une parte fermée de $E$**.
+    ~
+    Soit $(x_{n}) \in \N \in B'(a,r)^{\N}$ avec $x_{n}\xrightarrow[n\to+\infty]{\norm{\cdot}}\ell \in E$. On a
+    $$
+      \forall n \in \N, \norm{x_{n}-a} \leq r \tag{\star}
+    $$
+    or $x_{n} - a \xrightarrow[n\to+\infty]{\norm{\cdot}}\ell-a$ d’où $\norm{x_{n}-a}\arrowlim{n\to+\infty}\norm{\ell -a}$. Ainsi, $(\star) \implies \norm{\ell-a} \leq r$ donc $\ell \in B'(a,r)$.
+  - Tout intervalle fermé de $\R$ borné ou non borné est une partie fermée de $\R$.
+    ~ $\emptyset$  ~ $\R$  ~ $\cc{a,b}$  ~ $\co{a,+\infty}$  ~ $\oc{-\infty, a}$
+    sont des parties fermées de $\R$.
+    ~
+    Soit $(x_{n})$ une suite d’éléments de $\co{a,+\infty}$ avec $x_{n} \arrowlim{n\to+\infty}\ell \in \R$. On a $\forall n \in \N, x_{n} \geq a$, d’où par passage à la limite, on a $\ell \geq a$, i.e. $l \in \co{a,+\infty}$.
+%
+
+%prop
+  1. Toute intersection de parties fermées de $E$ est une partie fermée de $E$.
+  2. Une réunion ++finie++ de parties fermées de $E$ est une partie fermée de $E$.
+  3. Si $F_{1}, \ldots, P_{p}$ sont des parties fermées respectivement de $(E_{1}, \nu_{1}), \ldots, (E_{p}, \nu_{p})$u, alors $F_{1} \times  \cdots F_{p}$ est une partie fermée de $(E_{1} \times  \cdots \times E_{p}, N_{\infty})$.
+%
+
+%proof
+  1. Soit $(F_{i})_{i \in \I}$ une famille de parties femées de $E$ indexée par un ensemble $I$. ($\bigcap_{i \in \emptyset} F_{i} = E$ est une partie fermée). Soit $tf \in \bigcap_{i \in I} F_{i}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $F$ avec $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}}\ell \in E$. On a
+     $$
+       \forall i \in I, \begin{cases}(x_{n})_{n \in \N} F_{i}^{\N}\\ F_{i} \text{ fermée}\end{cases}
+     $$
+     donc $\forall i \in I, \ell \in F_{i}$ donc $\ell \in F$.
+  2. Soient $F_{1}, \ldots, F_{p}$ des parties finies de $(E, \norm{\cdot})$. Posons $F = F_{1} \cup \cdots \cup F_{p}$. Soit $(x_{n})$ une suite d’éléments de $F$ telle que $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}} \ell \in E$.
+     $$
+       \N = \bigcup_{i \in \icc{1,p}}\{n \in \N \where x_{n} \in F_{i}\}
+     $$
+     $\N$ est infini donc il existe $i \in \icc{1,p}$ tel que $\{x \in \N \where x_{n} \in F_{i}\}$ est une partie infinie de $\N$ donc dénombrable. Il existe alors $\varphi: \N \longrightarrow \N$ strictement croissante telle que $\forall n \in \N, x_{\varphi(n)} \in F_{i}$. Or
+     ~ $x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm{\cdot}} \ell$  ~ $\forall n \in \N, x_{\varphi(n)} \in F_{i}$  ~ $F_{i}$ bornée
+     donc $\ell \in F_{i}$. Ainsi, $\ell \in F$. Si $p=0$, on a $\bigcup_{i \in \emptyset}F_{i} = \emptyset$ est une partie fermée.
+  3. Soit $(x(n))_{n \in \N} = \Bbig(\big(x_{1}(n), \ldots, x_{p}(n)\big)\Big)_{n \in \N}$ une suite d’éléments de $F_{1} \times  \cdots \times  F_{p}$ avec $x(n) \xrightarrow[n\to+\infty]{N_{\infty}} (\ell_{1}, \ldots, \ell_{p})$. Alors, pour tout $i \in \icc{1,p}$,
+     ~ $x_{i}(n) \xrightarrow[n\to+\infty]{\nu_{i}}\ell_{i}$  ~ $\forall n \in \N, x_{i}(n) \in F_{i}$  ~ $F_{i}$ est fermée
+     donc $\forall i \in \icc{1,p}, \ell_{i} \in F_{i}$ donc $(\ell_{1}, \ldots, \ell_{p}) \in F_{1} \times  \cdots \times F_{p}$.
+%
+
+%eg
+  - Toute partie finie d’un $\K$-espace vectoriel normé est une partie fermée de cet espace vectoriel.
+  - $\bigcup_{n \in \N^{*}} \underbrace{\co{\frac{1}{n}, +\infty}}_{\text{partie fermée}} = \oo{0,+\infty}$ mais $\oo{0,+\infty}$ n’est par fermée (par exemple, $\forall n \in \N, \frac{1}{n} \in \oo{0,+\infty}$ et $\frac{1}{n} \arrowlim{n\to +\infty}0 \notin \oo{0,+\infty}$).
+  - Considérons les applications
+    $$
+      f: \applic{\R}{\R}{x}{\frac{x}{3}} \quad\text{et}\quad g: \applic{\R}{\R}{x}{\frac{2}{3} + \frac{x}{3}}
+    $$
+    Soit $F_{0} = \cc{0,1}$ et
+    $$
+      \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
+    $$
+    ==FIG POUSSIERE CANTOR==
+    $F_{n}$ est la réunion de $2^{n}$ intervalles fermés; c’est donc une partie fermée. $K = \bigcap_{n \in \N}F_{n}$ est une partie fermée; on l’appelle l’*ensemble triadique de Cantor*.
+  - Si $A_{1}, \ldots, A_{p}$ sont des parties respectives non vides de $E_{1}, \ldots, E_{p}$, alors $A_{1} \times  \cdots \times A_{p}$ est une partie fermée de $(E_{1}, \ldots, E_{p}, N_{\infty})$ si et seulement si pour tout $i \in \icc{1,p}$, $A_{i}$ est fermée dans $(E_{i}, \nu_{i})$.
+    %proof
+      - *sens direct* Supposons $A_{1} \times \cdots \times A_{p}$ fermée. Soit $i \in \icc{1,p}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A_{i}$ avec $x_{n} \xrightarrow[n\to+\infty]{\nu_{i}}\ell \in E_{i}$. Soit $(a_{1}, \ldots, a_{p}) \in A_{1} \times  \cdots \times A_{p}\ne\emptyset$.
+        $$
+          (a_{1}, \ldots, a_{i-1}, x_{n}, a_{i+1}, \ldots, a_{n}) \xrightarrow[n\to+\infty]{N_{\infty}} (a_{1}, \ldots, a_{i-1}, \ell, a_{i+1}, \cdots, a_{n})
+        $$
+        or $\forall n \in \N, (a_{1}, \ldots, a_{i-1}, x_{n}, a_{i+1}, \ldots, a_{n}) \in A_{1} \times  \cdots \times A_{p}$ et $A_{1} \times  \cdots \times A_{p}$ est un fermé donc
+        $$
+          (a_{1}, \ldots, a_{i-1}, \ell, a_{i+1}, \ldots, a_{n}) \in A_{1} \times  \cdots \times A_{p}
+        $$
+        donc $\ell \in A_{i}$.
+    %
+%
+
+%def Définition et proposition
+  Soit $A$ une partie d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$. On note $\bar{A}$ la plus petite partie fermée contenant $A$.
+  1. $\bar{A}$ est l’intersection de toutes les parties fermées de $E$ contenant $A$.
+  2. $\bar{A} = \left\{x \in E \where \forall r > 0, B(x,r) \cap A \ne \emptyset\right\}$
+  $\bar{A}$ est appelée adhérence (ou fermeture, ou ensemble des points adhérents) de $A$.
+%
+
+%proof
+  Prouvons le second point. Posons $F = \left\{x \in E \where \forall r > 0, B(x,r) \cap A \ne\emptyset\right\}$==RFIG==
+  - Si $F$ est une partie fermée de $E$. Soit $(x_{n})$ une suite d’éléments de $F$ telle que $x_{n} \arrowlim{n\to+\infty}\ell \in E$. Soit $r > 0$. Montrons $B(\ell, r) \cap A\ne\emptyset$. Il existe $N \in \N$ tel que $x_{N} \in B(\ell, r)$.==FIG== On a alors $B(x_{N}, d) \subset B(\ell, r)$ avec $d = r - d(x_{N},\ell) > 0$. Donc
+    $$
+      B(x_{N}\delta) \cap A \subset B(\ell, r) \cap A
+    $$
+    or $x_{N} \in F$ donc $B(x_{N}\delta)\cap A \ne\emptyset$ donc $B(\ell,r) \cap A\ne\emptyset$.
+  - Soit $B$ une partie de $E$ fermée contenant $A$. Montrons $F \subset B$. Soit $x \in F$. Alors, $\forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap A\ne\emptyset$. Il existe donc une suite $(a_{n})$ d’éléments de $A$ telle que $\forall n \in \N, \norm{x-a_{n}} < \frac{1}{n+1}$, donc
+    ~ $a_{n} \arrowlim{n\to+\infty}x$  ~ $\forall \in \N, a_{n} \in A \subset B$  ~ $B$ est fermée
+    donc $x \in B$.
+  - $A \subset F$: $\forall a \in A$, $\forall r > 0$, $a \in B(a,r) \cap A$ donc $B(a,r) \cap A \ne\emptyset$.
+%
+
+%property
+  1. Pour $x \in E$, on a
+     $$
+       x \in \bar{A} \iff \exists (a_{n})_{n \in \N} \in A^{\N}: a_{n}\xrightarrow[x\to+\infty]{\norm{\cdot}}x
+     $$
+  2. $A$ est fermée si et seulement si $\bar{A} = A$.
+  3. $A \subset B \implies \bar{A} \subset \bar{B}$
+  4. $\forall a \in E, \forall r \in \R_{+}^{*}, \bar{B(a,r)} = B'(a,r)$. On la note $\bar{B}(a,r)$
+  %offprog
+    5. Si $A$ est un sous-espace vectoriel de $E$, alors $\bar{A}$ est un sous-espace vectoriel de $E$
+    6. $\bar{A \times B} = \bar{A} \times \bar{B}$
+  %
+%
+
+%proof
+  1. - Si $\bar{A}$ est un fermé et $(a_{n})$ une suite à valeurs dans $A \subset \bar{A}$ telle que $a_{n}\xrightarrow[n\to+\infty]{\norm{\cdot}}x$, alors $x \in \bar{A}$.
+     - Supposons $x \in \bar{A}$.
+       $$
+         \forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap  A \ne \emptyset
+       $$
+       donc il existe une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que $\forall n \in \N, \norm{x-a_{n}} < \frac{1}{n+1}$ donc
+       ~ $a_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}}x$  ~ $(a_{n})_{n \in \N} \in A^{\N}$
+  2. - Si $A$ est fermée, alors $\bar{A}$, plus petite partie fermée de $E$ contenant $A$, est donc égale à $A$.
+     - Si $\bar{A} = A$, comme $\bar{A}$ est une partie fermée, alors $A$ est fermée.
+  3. Soit $x \in \bar{A}$, il existe une suite $(a_{n})$ d’éléments de $A$ telle que $a_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}}x$. Or $A \subset B$ donc $(a_{n}) \in B^{\N}$ d’où $x \in \bar{B}$.
+  4. $B(a,r) \subset \underbrace{B'(a,r)}_{\text{partie fermée}}$ donc $B(a,r) \subset \bar{B(a,r)} \subset \bar{B'(a,r)} \subset B'(a,r)$. Soit $u \in S(a,r)$. ==FIG== Posons, pour tout $n \in \N, x_{n} = u + \frac{1}{n+1}(a-u)$.
+     $$
+       \forall n \in \N, x_{n} - a = \left(1-\frac{1}{n+1}\right)(u-a)
+     $$
+     donc,
+     $$
+       \forall n \in \N, \norm{x_{n}-a} = \left(1-\frac{1}{n+1}\right)\norm{u-a} = \left(1-\frac{1}{n+1}\right)r < r
+     $$
+     donc $(x_{n})_{n \in \N} \in B(a,r)^{\N}$, d’où $a \in \bar{a,r}$.
+%

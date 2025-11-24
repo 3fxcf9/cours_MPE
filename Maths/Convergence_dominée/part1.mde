@@ -557,14 +557,15 @@ $$
         g: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
       $$
       - pour tout $t$ dans $\oo{0,+\infty}$, $x \longmapsto  g(x,t)$ est continue sur $\Def$.
-      - Soit $\cc{a,b} \subset \Def$ un segment quelconque (avec $0 < a < b$). $a \leq  x \leq  b$ et $t \in \oc{0,1}$ donc
-        $$
-          (a-1)\ln t \geq (x-1)\ln t \geq (b-1)\ln t
-        $$
-        et $a \leq  x \leq  b$ et $t \in \co{1,+\infty}$ donc
-        $$
-          (a-1)\ln t \leq (x-1)\ln t \leq (b-1)\ln t
-        $$
+      - Soient $\cc{a,b} \subset \Def$ un segment quelconque (avec $0 < a < b$), $a \leq  x \leq  b$.
+        - Si $t \in \oc{0,1}$, on a
+          $$
+            (a-1)\ln t \geq (x-1)\ln t \geq (b-1)\ln t
+          $$
+        - Si $t \in \co{1,+\infty}$, on a
+          $$
+            (a-1)\ln t \leq (x-1)\ln t \leq (b-1)\ln t
+          $$
 
         Donc pour tout $x \in \cc{a,b}$,
         $$
@@ -572,7 +573,7 @@ $$
         $$
         d’où
         $$
-          \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})
+          \forall x \in \cc{a,b}, \forall t \in \oo{0,+\infty}, \abs{g(x,t)}= g(x,t) \leq (t^{a-1}+t^{b-1})e^{-t}
         $$
         et $\varphi: t \longmapsto (t^{a-1} + t^{b-1})e^{-t}$ est intégrable sur $\oo{0,+\infty}$ comme somme des fonctions intégrables $t \longmapsto  t^{a-1}e^{-t}$ ($a > 0$) et $t \longmapsto t^{b-1}e^{-t}$ ($b > 0$). Ainsi, $\Gamma$ est continue sur $\Def = \oo{0,+\infty}$.
 %
@@ -624,7 +625,7 @@ $$
   $$
     \forall (u,v) \in S^{2}, \abs{f(u, t) - f(v, t)} \oleq{IAF} \norm{\pdv{f}{x}(x, t)} \times \abs{u-v} \leq \varphi_{S}(t) \times  \abs{u-v}
   $$
-  d’où $\varphi_{S} \in \L^{1}(I,\R_{+})$ et
+  d’où
   $$
     \forall x \in \N, \abs{\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}} \leq \varphi_{S}(t)
   $$
@@ -667,7 +668,7 @@ $$
     or $\int_{1}^{+\infty}\frac{1}{t}\dd t$ diverge et $\frac{e^{-xt}}{t} \arrowlim{t\to+\infty}+\infty$ si $x < 0$, donc $\int_{1}^{+\infty}\frac{e^{-xt}}{t}\dd t$ diverge, et pour $x > 0$, on a $\frac{e^{-xt}}{t} \ueq{+\infty}(e^{-xt})$.
     $g$ est donc définie sur $\Def = \oo{0,+\infty}$.
     - Pour tout $t \in \oo{0,+\infty}$, la fonction $x \longmapsto \frac{e^{-t}-e^{-xt}}{t}$ est de classe $\Cont^{1}$ sur $\Def$.
-    - Soit $x \in \D$
+    - Soit $x \in \Def$
       ~ $t \longmapsto  f(x,t) \in \L^{1}(\oo{0,+\infty})$  ~ $t \longmapsto  \pdv{f}{x}(x,t) = e^{-xt} \in \L^{1}(\oo{0,+\infty})$
     - Soit $\cc{a,b} \subset \Def$, i.e. $0 < a < b$. On a
       $$
@@ -847,7 +848,7 @@ $$
     f: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t}= e^{(x-1)\ln t} e^{-t}}
   $$
   - Pour $t$ fixé dans $\oo{0,+\infty}$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
-  - Pour $x$ fixé dans $\D$ et $k \in \icc{0,n}$, on a
+  - Pour $x$ fixé dans $\Def$ et $k \in \icc{0,n}$, on a
     $$
       t \longmapsto \pdvN{f}{x}{k} (x,t) = (\ln t)^{k}t^{x-1}e^{-t}
     $$
@@ -857,9 +858,9 @@ $$
     $$
     or $\int_{0}^{1}\frac{\dd t}{t^{1-\frac{x}{2}}}$ converge car $1-\frac{x}{2} < 1$, donc
     $$
-      t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oc{0,1}) \quad\text{et}\quad \pdvN{f}{x}{k}(x,t) \ueq{t\to 0^{+}}o \left(\frac{1}{t^{2}}\right)
+      t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oc{0,1})
     $$
-    et de même, $t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\co{1,+\infty})$. Ainsi,
+    et de même, $\pdvN{f}{x}{k}(x,t) \ueq{t\to 0^{+}}o \left(\frac{1}{t^{2}}\right)$ donc $t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\co{1,+\infty})$. Ainsi,
     $$
       \forall k \in \icc{0,n}, t \longmapsto \pdvN{f}{x}{k}(x,t) \in \L^{1}(\oo{0,+\infty})
     $$
@@ -878,11 +879,11 @@ $$
   $$
   d’où
   $$
-    \forall x > 0, \Gamma'(x) = \int_{0}^{+\infty}\ln t t^{x-1} e^{-t}\dd t
+    \forall x > 0, \Gamma'(x) = \int_{0}^{+\infty}(\ln t) t^{x-1} e^{-t}\dd t
   $$
   et
   $$
-    \forall x > 0, \Gamma''(x) f \int_{0}^{+\infty}(\ln t)^{2} t^{x-1}e^{-t}\dd t > 0
+    \forall x > 0, \Gamma''(x) = \int_{0}^{+\infty}(\ln t)^{2} t^{x-1}e^{-t}\dd t > 0
   $$
   donc $\Gamma'$ est strictement croissante sur $\oo{0,+\infty}$, i.e. $\Gamma$ est convexe sur cet intervalle.
   Or, $\forall n \in \N^{*}, \Gamma(n) = (n-1)!$ donc $\Gamma(1) = 0! = 1 = 1! = \Gamma(2)$ et $\Gamma \in \Cont(\cc{1,2})$ et $\Gamma$ est dérivable sur $\oo{1,2}$ donc d’après le *théorème de Rolle*, il existe $c \in \oo{1,2}$ tel que $\Gamma'(c) = 0$. On en déduit le tableau de variations de $\Gamma$:
@@ -911,7 +912,7 @@ $$
     $$
       \forall x > 0, \Gamma(x+1) = x \Gamma(x)
     $$
-    en faisant tendre $x$ vers $0^{+}$, on a pan continuité de $\Gamma$ en 1
+    en faisant tendre $x$ vers $0^{+}$, on a par continuité de $\Gamma$ en 1
     $$
       \Gamma(x) \usim{0^{+}}\frac{1}{x}
     $$

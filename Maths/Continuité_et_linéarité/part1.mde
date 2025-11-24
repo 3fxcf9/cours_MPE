@@ -446,7 +446,7 @@ Il y a mieux:
       donc $g$ est un endomorphisme continue de $(\R[X],N)$.
 %
 
-%def Définition et proposition
+%def Définition et proposition: norme subordonnée
   Pour $E \ne \{0_{E}\}$,
   1. $\L_{c}(E,F) = \{f \in \L(E,F) \where f \text{ continue eur } E\}$ est un sous-espace vectoriel de $(\L(E,F), +, \cdot )$.
   2. Pour $f \in \L_{c}(E,F)$, on pose
@@ -613,7 +613,7 @@ Il y a mieux:
 %def Application multilinéaire
   Soit $n \in \N^{*}$. Soient $E_{1}, \ldots, E_{n}, F$ des $\K$-espaces vectoriels. Une application $f: E_{1} \times \cdots \times E_{n} \longrightarrow F$ est dite *multilinéaire* ou *$n$-linéaire* si pour tout $(x_{1}, \ldots, x_{n}) \in E_{1} \times \cdots \times E_{n}$ et tout $i \in \icc{1,n}$, l’application
   $$
-    f_{i}: \applic{E_{i}}{F}{x}{f(x_{1}, \ldots, x_{i-1}, u, x_{i+1}), \ldots, x_{n}}}
+    f_{i}: \applic{E_{i}}{F}{x}{f(x_{1}, \ldots, x_{i-1}, u, x_{i+1}, \ldots, x_{n})}
   $$
   est linéaire. On écrit alors $f \in \L^{n}(E_{1} \times \cdots \times E_{n}, F)$, et parfois, $\L(E_{1}, F)$ désigne $\L^{1}(E_{1}, F)$.
 %
@@ -655,9 +655,9 @@ Il y a mieux:
 %
 
 %thm
-  Soit $n \in \N^{*}$. Considérons $(n+1)$ $\K$-espaces vectoriels $\big((E_{1}, \nu_{1}), \ldots, (E_{n} ,v_{n}), (F,\norm{\cdot}_{F})\big)$. On munit $E_{1} \times  \cdots \times  E_{n}$ de la norme produit
+  Soit $n \in \N^{*}$. Considérons $(n+1)$ $\K$-espaces vectoriels $\big((E_{1}, \nu_{1}), \ldots, (E_{n}, \nu_{n}), (F,\norm{\cdot}_{F})\big)$. On munit $E_{1} \times  \cdots \times  E_{n}$ de la norme produit
   $$
-    (x_{1}, \ldots, x_{n}) \longmapsto N_{\infty}(x_{1}, \ldots, x_{n}) = \max{i \in \icc{1,n}},v_{i}(x_{i})
+    (x_{1}, \ldots, x_{n}) \longmapsto N_{\infty}(x_{1}, \ldots, x_{n}) = \max_{i \in \icc{1,n}}\nu_{i}(x_{i})
   $$
   Pour $f \in \L^{n}(E_{1} \times \cdots \times E_{n}, F)$, il y a équivalence entre :
   1. $f: (E_{1} \times  \cdots E_{n}, \underline{N_{\infty}}) \longrightarrow (F, \norm{\cdot}_{\infty})$ est continue sur $E$
@@ -746,6 +746,96 @@ Il y a mieux:
     $$
     est une application linéaire. Si on munit $\L_{c}(E,F), \L_{c}(F,G)$ et $\L_{c}(E,G)$ des normes subordonnées à $\norm{\cdot}_{E}, \norm{\cdot}_{F}$ et $\norm{_{G}}$, alors comme
     $$
-      \forall (f,g) \in \L_{c}(E,F) \times \L_{c}(F,G), \opnorm{B(f,g)} = \opnorm{g\circ f}
+      \forall (f,g) \in \L_{c}(E,F) \times \L_{c}(F,G), \opnorm{B(f,g)} = \opnorm{g\circ f} \leq 1 \cdot \opnorm{g} \times \opnorm{f}
     $$
+    l’application $B$ est continue.
+  - Considérons
+    $$
+      \applic{(\K \times E,N_{\infty})}{(E,\norm{\cdot})}{\lambda, u}{\lambda \cdot u}
+    $$
+    On a
+    $$
+      \norm{\lambda u} = \abs{\lambda} \cdot \norm{u} \leq 1 \cdot \abs{\lambda} \cdot  \norm{u}
+    $$
+    ==TODO?==
+  - Soit $(E,\scalar{\cdot}{\cdot})$ un espace préhilbertien réel. $E$ est muni de la norme euclidienne $\norm{\cdot}$ associée au prodiut scalaire $\scalar{\cdot}{\cdot}$. Considérons
+    $$
+      \pi: \applic{E^{2}}{\R}{(x,y)}{\scalar{x,y}{\cdot}}
+    $$
+    On a l’inégalité de Cauchy-Schwarz :
+    $$
+      \forall (x,y)\in E^{2}, \abs{\pi(x,y)} \leq 1 \cdot \norm{x} \cdot \norm{y}
+    $$
+    or $\pi$ est bilinéaire donc
+    $$
+      \applic{(E^{2},N_{\infty})}{(\R,\abs{\cdot })}{(x,y)}{\scalar{x,y}}
+    $$
+    où $N_{\infty}(x,y) = \max \{\norm{x}, \norm{y}\}$ est continue.
+%
+
+%prop
+  Toute application multilinéaire sur un produit fini de $\K$-espace vectoriels normés de dimensions finies est continue.
+%
+
+%proof
+  Par récurrence sur $n \in \N^{*}$.
+  - Le résultat est vrai à l’ordre 1 :
+    $$
+      \begin{cases}\L^{1}(E_{1}, F)\\ \dim_\K E_{1} < +\infty\end{cases} \implies \L^{1}(E_{1}, F) = \L(E_{1}, F) = \L_{c}(E_{1}, F)
+    $$
+  - Supposons le résultat vrai pour toute application de $\L^{n}(E_{1} \times  \cdots \times E_{n}, F)$ avec $\forall i \in \icc{1,n}, \dim_{\K}E_{i} < +\infty$
+    Soit $f \in \L^{n+1}(E_{1} \times  \cdots \times E_{n+1}, F)$ avec $\forall i \in \icc{1,n+1}, \dim_{\K}E_{i}  < +\infty$.
+    - Si $E_{n+1} = \{0\}$, alors $f$ est nulle donc continue
+    - Sinon, notons $d = \dim E_{n+1}  \in \N^{*}$. Soit $(\varepsilon_{1}, \ldots, \varepsilon_{0})$ une base de $E_{n+1}$. Posons pour $i \in \icc{1,d}$,
+      $$
+        f_{i}: \applic{E_{1} \times  \cdots \times  E_{n}}{F}{(x_{1}, \ldots, x_{n})}{f(x_{1}, \ldots, x_{n}, \varepsilon_{i})}
+      $$
+      Alors pour tout $i \in \icc{1,n}$, $f_{i} \in \L^{n}(E_{1} \times  \cdots \times E_{n}, F)$ et $\dim E_{1} < +\infty, \ldots, \dim E_{n} < +\infty$. Par hypothèse de récurrence et par *caractérisation de la continuité des applications $n$-linéaires*, il existe $(c_{1}, \ldots, c_{d}) \in (\R_{+})^{n}$ tels que
+      $$
+        \forall i \in \icc{1,d}, \forall (x_{1}, \ldots, x_{n}) \in E_{1} \times  \cdots \times E_{n}, \norm{f_{i}(x_{1}, \ldots, x_{n})}_{F} \leq c_{i} \nu_{i}(x_{i}) \times  \cdots \times  \nu_{n}(x_{n})
+      $$
+      Soit $x_{n+1} \in E_{n+1}$. Posons $x_{n+1} = \sum_{i=1}^{d}\xi_{i}\varepsilon_{i}$ avec $(\xi_{1}, \ldots, \xi_{d}) \in \K^{d}$. On a
+      $$
+        \begin{align*}
+          \norm{f(x_{1}, \ldots, x_{n+1})}_{F} &= \norm{\sum_{i=1}^{d}\xi_{i}f_{i}(x_{1}, \ldots, x_{n})}\\
+          &\leq \sum_{i=1}^{d}\abs{x_{i}}c_{i} \nu_{i}(x_{i})\times  \cdots \times  \nu_{n}(x_{n})\\
+          &\leq c \cdot \nu_{1}(x_{1})\times  \cdots \times  \nu_{n}(x_{n}) \times \sum_{i=1}^{d}\abs{\xi_{i}} = N_{1,B}(x_{n+1})
+        \end{align*}
+      $$
+      avec $c = \max_{i \in \icc{1,d}}c_{i} \in \R_{+}$. Or $\dim E_{n+1} < +\infty$ donc $N_{1,B} \sim \nu_{n+1}$. Il existe donc $c' \in \R_{+}$ tel que
+      $$
+        \forall (x_{1}, \ldots, x_{n+1})\in E_{1} \times  \cdots \times  E_{n+1}, \norm{f(x_{1}, \ldots, x_{n+1})} \leq c' \nu_{1}(x_{1}) \times  \cdots \times  \nu_{n+1}(x_{n+1})
+      $$
+      donc $f \in \L_{c}^{n+1}(E_{1} \times  \cdots \times  E_{n+1}, F)$.
+%
+
+%eg
+  - Considérons
+    $$
+      \beta: \applic{\M_{n,p}(\K) \times \M_{p,q}(\K)}{\M_{n,q}(\K)}{(A,B)}{AB}
+    $$
+    où les ensembles $\M_{n,p}(\K), \M_{p,q}(\K)$ et $\M_{n,q}(\K)$ sont normés. $\beta$ est bilinéaire sur ce produit de $\K$-espaces vectoriels normés de dimension finie donc $\beta$ est continue.
+  - Soit $E$ un $\K$-espace vectoriel de dimension finie $p \in \N^{*}$. Soit $\B$ une base de $E$.
+    $$
+      \det_{\B}: \applic{E^{p}}{\K}{(v_{1}, \ldots, v_{p})}{\det_{\B}(v_{1}, \ldots, v_{p})}
+    $$
+    est $p$-linéaire et $\dim  E = p < +\infty$ donc $\det_{\B}$ est continue.
+%
+
+%rem
+  Une application $n$-linéaire ($n \geq 2$) non nulle n’est jamais uniformément continue.
+  ~
+  Soit $f: E_{1} \times  \cdots E_{n} \longrightarrow F$ une application $n$-linéaire non nulle. Il existe $(v_{1}, \ldots, v_{n}) \in E_{1} \times  \cdots \times  E_{n}$ tels que $f(v_{1}, \ldots, v_{n}) \ne 0_{F}$ et $\nu_{1}(v_{1}) = \cdots = \nu_{n}(v_{n}) = 1$. Posons, pour tout $k \in \N^{*}$, la suite définie par
+  $$
+    \begin{cases}x_{k} = k(v_{1}, \ldots, n_{n})\\ x'_{k} = \left(k+\frac{1}{k}\right)(v_{1}, \ldots, v_{n})\end{cases}
+  $$
+  Alors $x'_{k} - x_{k} = \frac{1}{k}(v_{1}, \ldots, v_{n}) \arrowlim{k\to+\infty} 0_{F}$ donc
+  $$
+    f(x'_{k}) - f(x_{k}) = \left[\left(k + \frac{1}{k}\right)^{n} - k^{n}\right] \cdot  f(v_{1}, \ldots, v_{n})
+  $$
+  donc
+  $$
+    \norm{f(x'_{k}) - f(x_{k})}_{F} = \left(\left(k + \frac{1}{k}\right)^{n} - k^{n}\right) \cdot \norm{f(v_{1}, \ldots, v_{n})} \geq nk^{n-2} \norm{f(v_{1}, \ldots, v_{n})} \geq n \norm{f(v_{1}, \ldots, v_{n})} > 0
+  $$
+  donc $f(x'_{k}) - f(x_{k}) \not\arrowlim{k\to+\infty}0$.
 %
