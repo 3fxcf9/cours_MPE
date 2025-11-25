@@ -7,7 +7,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %eg
   Considérons l’ensemble $A = \left\{\frac{1}{p} + \frac{1}{q} \where (p,q) \in (\N^{*})^{2}\right\} \subset \R$.
   $$
-    \forall n \in \N^{*}, x_{n} = \frac{1}{2n} + \frac{1}{2n} = \frac{1}{n} \in \A
+    \forall n \in \N^{*}, x_{n} = \frac{1}{2n} + \frac{1}{2n} = \frac{1}{n} \in A
   $$
   or $x_{n} \arrowlim{n\to+\infty}0 \notin A$. On dit que $A$ n’est pas une partie fermée de $(\R, \abs{\cdot})$.
 %
@@ -30,7 +30,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     ~
     Soit $(x_{n}) \in \N \in B'(a,r)^{\N}$ avec $x_{n}\xrightarrow[n\to+\infty]{\norm{\cdot}}\ell \in E$. On a
     $$
-      \forall n \in \N, \norm{x_{n}-a} \leq r \tag{\star}
+      \forall n \in \N, \norm{x_{n}-a} \leq r \tag{$\star$}
     $$
     or $x_{n} - a \xrightarrow[n\to+\infty]{\norm{\cdot}}\ell-a$ d’où $\norm{x_{n}-a}\arrowlim{n\to+\infty}\norm{\ell -a}$. Ainsi, $(\star) \implies \norm{\ell-a} \leq r$ donc $\ell \in B'(a,r)$.
   - Tout intervalle fermé de $\R$ borné ou non borné est une partie fermée de $\R$.
@@ -59,7 +59,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      $\N$ est infini donc il existe $i \in \icc{1,p}$ tel que $\{x \in \N \where x_{n} \in F_{i}\}$ est une partie infinie de $\N$ donc dénombrable. Il existe alors $\varphi: \N \longrightarrow \N$ strictement croissante telle que $\forall n \in \N, x_{\varphi(n)} \in F_{i}$. Or
      ~ $x_{\varphi(n)} \xrightarrow[n\to+\infty]{\norm{\cdot}} \ell$  ~ $\forall n \in \N, x_{\varphi(n)} \in F_{i}$  ~ $F_{i}$ bornée
      donc $\ell \in F_{i}$. Ainsi, $\ell \in F$. Si $p=0$, on a $\bigcup_{i \in \emptyset}F_{i} = \emptyset$ est une partie fermée.
-  3. Soit $(x(n))_{n \in \N} = \Bbig(\big(x_{1}(n), \ldots, x_{p}(n)\big)\Big)_{n \in \N}$ une suite d’éléments de $F_{1} \times  \cdots \times  F_{p}$ avec $x(n) \xrightarrow[n\to+\infty]{N_{\infty}} (\ell_{1}, \ldots, \ell_{p})$. Alors, pour tout $i \in \icc{1,p}$,
+  3. Soit $(x(n))_{n \in \N} = \Big(\big(x_{1}(n), \ldots, x_{p}(n)\big)\Big)_{n \in \N}$ une suite d’éléments de $F_{1} \times  \cdots \times  F_{p}$ avec $x(n) \xrightarrow[n\to+\infty]{N_{\infty}} (\ell_{1}, \ldots, \ell_{p})$. Alors, pour tout $i \in \icc{1,p}$,
      ~ $x_{i}(n) \xrightarrow[n\to+\infty]{\nu_{i}}\ell_{i}$  ~ $\forall n \in \N, x_{i}(n) \in F_{i}$  ~ $F_{i}$ est fermée
      donc $\forall i \in \icc{1,p}, \ell_{i} \in F_{i}$ donc $(\ell_{1}, \ldots, \ell_{p}) \in F_{1} \times  \cdots \times F_{p}$.
 %
@@ -145,4 +145,273 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
        \forall n \in \N, \norm{x_{n}-a} = \left(1-\frac{1}{n+1}\right)\norm{u-a} = \left(1-\frac{1}{n+1}\right)r < r
      $$
      donc $(x_{n})_{n \in \N} \in B(a,r)^{\N}$, d’où $a \in \bar{a,r}$.
+  5. Soit $A$ un sous-espace vectoriel de $(E, \norm{\cdot})$.
+     - On a $A \subset \bar{A}$ et $0_{E} \in A$ donc $0_{E} \in \bar{A}$: $\bar{A}$ est une partie non vide de l’espace vectoriel $E$.
+     - Soit $(x,y) \in \bar{A}^{2}$. Soit $(\lambda, \mu) \in \K^{2}$. Il existe deux suites $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ d’éléments de $A$ telles que
+       $$
+         a_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}} x \quad\text{et}\quad b_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}} y
+       $$
+       On a alors
+       $$
+         \lambda a_{n} + \mu b_{n} \arrowlim{n\to+\infty} \lambda x + \mu y
+       $$
+       or $A$ est un sous-espace vectoriel de $E$ donc: $\forall n \in \N, \lambda a_{n} + \mu b_{n} \in A$, d’où $\lambda x + \mu y \in \bar{A}$.
+  %offprog
+    6. On a $A \times B \subset \bar{A} \times  \bar{B}$, d’où $\bar{A \times B} \subset \bar{ \bar{A} \times  \bar{B}} = \bar{A} \times \bar{B}$.
+       Soit $(\ell_{1}, \ell_{2}) \in \bar{A} \times \bar{B}$. Il existe deux suites $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ respectivement d’éléments de $A$ et de $B$ telles que
+       $$
+         a_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}}\ell_{1} \quad\text{et}\quad b_{n} \xrightarrow[n\to+\infty]{\norm{E'}} \ell_{2}
+       $$
+       D’où $(a_{n}\beta_{n})\xrightarrow[n\to+\infty]{N_{\infty}} (\ell_{1}, \ell_{2})$ et $\forall n \in \N, (a_{n}, b_{n}) \in A \times B$ donc $(\ell_{1}, \ell_{2})\in \bar{A \times B}$.
+  %
+%
+
+%prop
+  Si $F$ est un sous-espace vectoriel de $(E, \norm{\cdot})$ et si $F$ est de dimension finie, alors $F$ est une partie fermée de $E$.
+%
+
+%proof
+  Soit une suite $(x_{n})_{n \in \N}$ d’éléments de $F$ telle que $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}} \ell \in E$. Cette suite est alors bornée dans $(E, \norm{\cdot})$ donc bornée dans $(F, \norm{\cdot})$, or $\dim_{\K} F < +\infty$. Le *théorème de Bolzano-Weierstrass* donne alors l’existence de $\lambda \in \F$ et d’une fonction $\varphi: \N \longrightarrow \N$ strictement croissante telle que $x_{\varphi(n)}\arrowlim{n\to+\infty}\lambda$ dans $(F, \norm{\cdot})$ donc dans $(E, \norm{\cdot})$ or $x_{\varphi(n)} \arrowlim{n\to+\infty} \ell$ donc $\ell = \lambda \in F$.
+%
+
+%eg
+  Pour $A \in \M_{n}(\K)$, on a $\exp A = \sum_{k=0}^{+\infty}\frac{A^{k}}{k!}$ donc $exp(A) = \lim_{N\to+\infty}\sum_{k=0}^{N}\frac{A^{k}}{k!}$. Or
+  $$
+    \forall n \in \N, \sum_{k=0}^{N}\frac{A^{k}}{k!} \in \K[A]
+  $$
+  et $\K[A]$ est un sous-espace vectoriel de $\M_{n}(\K)$ de dimension finie égale à $\deg \pi_{A}$ donc $\K[A]$ est une partie fermée de $\M_{n}(\K)$ donc $\exp(A) \in \K[A]$. Ainsi,
+  $$
+    \boxed{\forall A \in \M_{n}(\K), \exists P_{A} \in \K[X]: \exp(A) = P_{A}(A)}
+  $$
+%
+
+%def
+  Soient $A$ et $B$ deux parties d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$. On dit que $A$ est dense dans $B$ si $B \subset \bar{A}$, i.e. tout élément de $B$ est la limite d’une suite d’éléments de $A$.
+
+  En particulier, « $A$ dense dans $E$ » signifie $\bar{A} = E$.
+%
+
+%eg
+  - $\Q$ est dense dans $\R$ et $\Q^{n}$ est dense dans $\R^{n}$ ($\bar{\Q^{n}} = \bar{\Q}^{n} = \R$).
+  - $\D = \left\{\frac{p}{10^{n}} \where p \in \Z, n \in \N\right\}$ est dense dans $\R$ (grace au développement décimal d’un réel).
+  - $\Z + \sqrt{2}\Z$ est un sous-groupe dense dans $(\R,+)$ (supposons que $\Z + \sqrt{2}\Z = \alpha \Z$ avec $\alpha \geq 0$. Alors $1 = \alpha p$ et $\sqrt{2} = \alpha q$ donc $\sqrt{2} = \frac{\sqrt{2}}{1} = \frac{q}{p} \in \Q$ ce qui est faux). Comme $\Q \subset \R$, $\Z + \sqrt{2}\Z$ est dense dans $\Q$ mais $\Z + \sqrt{2}\Z \not\subset \Q$.
+  - $\GL_{n}(\K)$ est une partie dense de $\M_{n}(\K)$.
+    ~
+    Soit $A \in \M_{n}(\K)$. Posons, pour tout $k \in \N$,
+    $$
+      A_{k} = A-\frac{1}{k+1}I_{n} \arrowlim{k\to+\infty}A
+    $$
+    On a, pour tout $k \in \N$,
+    $$
+      \det A_{k} = \det  \left(A - \frac{1}{k+1}I_{n}\right) = (-1)^{n} \det  \left(\frac{1}{k+1}I_{n}-A\right) = (-1)^{n} \chi_{A} \left(\frac{1}{k+1}\right)
+    $$
+    or $\sp_{\K} A$ est fini et $\sp_{\K} A = Z_{\K}(\chi_{A})$ donc il existe $N \in \N$ tel que
+    $$
+      \forall k \geq N, \frac{1}{k+1} \notin \sp_{\K}A
+    $$
+    donc $\forall k \geq N, \det A_{k} \ne 0$ donc $\forall k \geq N, A_{k} \in \GL_{n}(\K)$.
+%
+
+%offprog
+  %prop
+    Soit $A$ une partie de $E$.
+    1. Si $A\ne\emptyset$ et $x \in E$, alors
+       $$
+         d(x,A) = 0 \iff x \in \bar{A}
+       $$
+    2. $\bar{A}$ est constitué de deux types de points :
+       $$
+         \bar{A} = I(A) \uplus A'
+       $$
+       avec *l’ensemble des points isolés de $A$*
+       $$
+         I(A) = \left\{x \in A \where \exists r > 0: B(x,r) \cap A = \{x\}\right\}
+       $$
+       et *l’ensemble des points d’accumulation*((Une caractérisation séquentielle d’un point d’accumulation pourrait être: « un élément est un point d’accumulation si et seulement si il est la limite d’une suite injective (ou non stationnaire).))
+       $$
+         A' = \left\{x \in E \where \forall r > 0, F(x,r) \cap (A \setminus \{x\}) \ne\emptyset\right\}
+       $$
+  %
+  %proof
+    1. - Soit $x \in \bar{A}$. Il existe une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que $a_{n} \arrowlim{n\to+\infty}x$. Par continuité de la distance à $A$,
+         $$
+           0 = d(a_{n},A) \arrowlim{n\to+\infty} d(x,A)
+         $$
+         donc $d(x,A) = 0$
+       - Soit $x \in E$ tel que $d(x,A) = 0 = \inf_{a \in A} \norm{x-a}$. Il existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que $\norm{x-a_{n}}\arrowlim{n\to+\infty}d(x,A) = 0$ donc $a_{n} \arrowlim{n\to+\infty}x$ or $(a_{n})_{n \in \N} \in A^{\N}$ donc $x \in \bar{A}$.
+    2. Soit $x \in \bar{A}$. Alors
+       $$
+         \forall r > 0, B(x,r) \cap A \ne\emptyset
+       $$
+       - si $\forall r > 0, B(x,r) \cap (A \setminus \{x\}) \ne \emptyset$, c’est bien un point de $A$
+       - si $\exists r > 0: B(x,r) \cap (A \setminus \{x\})= \emptyset$, $x \in \bar{A}$ donc $B(x,r) \cap A\notin \emptyset$  donc $B(x,r) \cap A = \{x\}$ soit $x \in A$ et
+         $$
+           \forall r' > 0, x \in B(x, r') \cap A \ne\emptyset
+         $$
+         donc $x \in \bar{A}$.
+  %
+%
+
+%eg
+  - Considérons l’ensemble $A = \left\{\frac{1}{n}\where n \in \N^{*}\right\}$. Alors $A \subset \bar{A}$ or la suite $\left(\frac{1}{n}\right)_{n \in \N^{*}} \in A^{\N}$ est de limite nulle donc $0 \in \bar{A}$ donc $A \cup \{0\} \subset \bar{A}$.
+    Soit $x \in \R \setminus (A \cup \{0\})$. IL existe alors $r > 0$ tel que $\oo{x-r, x+r} \cap A = \emptyset$.
+    - si $x < 0$, alors $r = \abs{x}$ convient
+    - si $x > 1$, $r = x-1$ convient
+    - si il existe $n \in \N^{*}$ tel que $\frac{1}{n+1} < x < \frac{1}{n}$, alors $r = \min \left(\abs{x- \frac{1}{n+1}}, \abs{x - \frac{1}{n}}\right)$ convient, donc $x \notin \bar{A}$.
+    Ainsi, $\bar{A} = \{0\} \cup A$ donc $I(A) = A$ et $A' = \{0\}$.
+  - Soit $B = \left(\cc{0,1} \cap \Q\right) \cup \N$. $\cc{0,1} \subset \bar{B}$ et $\N \subset \bar{B}$ donc $\underbrace{\cc{0,1} \cup \N}_{\text{réunion de deux fermés donc fermée}} \subset \bar{B}$ et $B \subset \cc{0,1} \cup \N$ donc $\bar{B} = \cc{0,1} \cup \N$. Ainsi, $I(B) = \ico{2,+\infty}$ et $B' = \cc{0,1}$.
+%
+
+## Parties compactes
+
+%def
+  Une partie $K$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite compacte si toute suite à valeurs dans $K$ possède une valeur d’adhérence dans $K$, i.e. « $K$ vérifie la propriété de *Bolzano-Weierstrass* ».
+%
+
+%eg
+  - $\emptyset$ est compacte
+  - Si $E \ne\{0_{E}\}$, alors $E$ n’est pas compacte.
+    ~
+    Soit $x \in E \setminus \{0\}$. Posons $\forall n \in \N, x_{n} = n x$. Soit $\varphi:\N \longrightarrow\N$ une application strictement croissante.
+    $$
+      \norm{x_{\varphi(n)}} = \varphi(n) \cdot \norm{x} \arrowlim{n\to+\infty}+\infty
+    $$
+    donc $(x_{\varphi(x)})_{n \in \N}$ n’est pas bornée donc n’est pas converegnte.
+  - $\cc{a,b}$ est un compact de $\R$ pour $a \leq b$ deux réels.
+    ~
+    Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $\cc{a,b}$. Elle est bornée donc possède une valeur d’adhérence $\ell \in \R$. Il existe donc $\varphi:\N\longrightarrow\N$ strictement croissante telle que
+    ~ $x_{\varphi(n)}\arrowlim{n\to+\infty}\ell$  ~ $\forall n \in \N, x_{\varphi(n)} \in \cc{a,b}$  ~ $\cc{a,b}$ est une partie fermée de $\R$
+    donc $\ell \in \cc{a,b}$.
+  - $\oc{a,b}$ et $\co{a,+\infty}$ ne sont pas des parties compactes de $\R$. En effet,
+    $$
+      \forall n \in \N, x_{n} = a + \frac{b-a}{n+1} \in \oc{a,b}
+    $$
+    et $x_{n} \arrowlim{n\to+\infty}a$ donc toute suite extraite de $(x_{n})$ a pour limite $a$ mais $a\notin \oc{a,b}$.
+    $$
+      \forall n \in \N, y_{n} = a+n \in \co{a,+\infty}
+    $$
+    et $y_{n} \arrowlim{n\to+\infty} +\infty$ donc toute suite extraite de $(y_{n})$ tend vers $+\infty$ donc $(y_{n})$ n’a pas de valeur d’adhérence.
+  - **$A = \{0\} \cup \{1\}$ est un compact de $\R$ mais n’est pas un segment.**
+  - Soit $E$ un $\K$-espace vectoriel normé de dimension finie. Soit $A$ une partie bornée de $E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$. La suite est donc bornée et $\dim_{\K}E < +\infty$, donc d’après le *théorème de Bolzano-Weierstrass en dimension finie*, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\ell \in E$ telle que
+    $$
+      x_{\varphi(n)} \arrowlim{n\to+\infty} \ell
+    $$
+    Si on suppose de plus $A$ fermée, alors
+    $$
+      \begin{cases}\forall n \in \N, x_{\varphi_{n}} \in A\\ x_{\varphi(n)} \arrowlim{n\to+\infty} \ell\end{cases} \implies \ell \in A
+    $$
+    donc $A$ est compacte.
+    Ainsi, ++dans un $\K$-espace vectoriel normé de dimension finie, toutes les parties fermées et bornées sont compactes.++
+%
+
+%prop
+  Toute partie compacte d’un $\K$-espace vectoriel normé est une partie bornée et fermée.
+%
+
+%proof
+  Soit $A$ une partie compacte d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$.
+  - Montrons que $A$ est fermée. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$ de limite $\ell \in E$. $A$ est un compact donc d’après la *propriété de Bolzano-Weierstrass*, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\lambda \in A$ tels que
+    $$
+      x_{\varphi(n)}\arrowlim{n\to+\infty}\lambda
+    $$
+    or $x_{\varphi(n)}\arrowlim{n\to+\infty}\ell$ donc $\ell = \lambda \in A$.
+  - Montrons que $A$ est bornée. Supposons que $A$ ne soit pas bornée. Il existe alors une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que
+    $$
+      \forall n \in \N, \norm{a_{n}} \geq n
+    $$
+    or $A$ est un compact; on peut donc trouver une suite extraite convergente $(a_{\varphi(n)})_{n \in \N}$ de $(a_{n})$ convergente dans $A$. Or pour tout $n \in \N$,
+    $$
+      \norm{a_{\varphi(n)}} \geq \varphi(n) \geq n
+    $$
+    donc $(a_{\varphi(n)})$ n’est pas bornée ce qui contredit sa convergence.
+
+%
+
+%conseq
+  Les parties compactes d’un $\K$-espace vectoriel de dimension finie sont les parties fermées et bornées((Appelées « fermés bornés »)).
+%
+
+%eg
+  - Soit $n \in \N^{*}$, notons
+    $$
+      \Delta_{n} = \left\{(x_{1}, \ldots, x_{n}) \in (\R_{+})^{n}\where x_{1} + \cdots + x_{n} = 1\right\}
+    $$
+    (ce sont les *simplexes*)==FIG SIMPLEX==
+    - Soit $(x(k)) = \Big(\big(x_{1}(k), \ldots, x_{n}(k)\big)\Big)_{k \in \N} \in \Delta_{n}^{\N}$ avec $x(k) \arrowlim{k\to+\infty} (\alpha_{1}, \ldots, \alpha_{n}) \in \R^{n}$ donc
+      $$
+        \begin{cases}x_{1}(k) \arrowlim{k\to+\infty}\alpha_{1}\\\vdots\\x_{n}(k) \arrowlim{k\to+\infty} \alpha_{n}\end{cases}
+      $$
+      or
+      $$
+        \forall k \in \N, \begin{cases}x_{1}(k) + \cdots + x_{n}(k) = 1\\ x_{1}(k) \geq 0 \\ \vdots \\ x_{n}(k) \geq 0\end{cases}
+      $$
+      Par passage à la limite, on a
+      $$
+        \begin{cases}\alpha_{1} + \cdots + \alpha_{n} = 1\\ \alpha_{1} \geq 0 \\ \vdots \\ \alpha_{n} \geq 0\end{cases}
+      $$
+      donc $(\alpha_{1}, \ldots, \alpha_{n}) \in \Delta_{n}$ donc $\Delta_{n}$ est une partie fermée de $\R_{n}$.
+    - $\Delta_{n}$ est une partie bornée de $\R^{n}$ car
+      $$
+        \Delta_{n} \subset \cc{0,1}^{n} \subset [-1,1]^{n} = \bar{B}_{\norm{\cdot}_{\infty}}\big((0, \ldots, 0), 1\big)
+      $$
+    Comme $\R^{n}$ est un $\R$-espace vectoriel de dimension finie, $\Delta_{n}$ est une partie compacte de $\R^{n}$.
+  - Soit l’ensemble des matrices *unimodulaires*
+    $$
+      SL_{n}(\R) = \left\{M \in \M_{n}(\R) \where \det M = 1\right\}
+    $$
+    - Soit $(M_{k})_{k \in \N}$ une suite de matrices unimodulaires de limite $M \in \M_{n}(\R)$. Le déterminant matriciel est continu donc
+      $$
+        \det M_{k} \arrowlim{k\to+\infty} \det M
+      $$
+      or $\forall k \in \N, \det M_{k} = 1$ d’où $\det M=1$, i.e. $M \in SL_{n}(\R)$. $SL_{n}(\R)$ est donc une partie fermée de $\M_{n}(\R)$.
+    - Considérons la suite de matrices définies pour tout $k \geq 2$ par
+      $$
+        M_{k} = \mtx{k & & & &\\
+                     & \frac{1}{k} & & & 0\\
+                     & & 1 & &\\
+                     & & & \ddots &\\
+                     0 & & & & 1}
+      $$
+      Alors
+      $$
+        \forall k \geq 2, \begin{cases}\det M_{k} = 1\\ \norm{M_{k}}_{c} = k \arrowlim{k\to+\infty}+\infty\end{cases}
+      $$
+      donc pour $n \geq 2$, $SL_{n}(\R)$ n’est pas une partie bornée donc $SL_{n}(\R)$ n’est pas une partie compacte de $\M_{n}(\R)$.
+%
+
+%prop
+  1. %callout Propriété fondamentale
+       Toute partie fermée incluse dans une partie compacte est une partie compacte.
+     %
+  2. Toute intersection d’une famille *non vides* de parties compactes est une partie compacte
+  3. Toute réunion finie de parties compactes de $E$ est une partie compacte de $E$.
+  4. Tout produit fini de parties compacetes est une partie compacte de l’espace vectoriel normé produit.
+  %offprog
+    5. Si $(x_{n})_{n \in \N}$ est une suite de $E$ convergente de limite $\ell$, alors $\K = \{\ell\} \cup  \{x_{n} \where n \in \N\}$ est une partie compacte de $E$.
+  %
+%
+
+%proof
+  1. Soit $F$ une partie fermée incluse dans un compact $K$. Soit $(x_{n})_{n \in N}$ une suite d’éléments de $F$, donc d’éléments de $K$. Comme $K$ est compact, il existe $\varphi:\N \longrightarrow\N$ strictement croissante et $\ell \in K$ tels que $x_{\varphi(n)} \arrowlim{n\to+\infty}\ell$, or $F$ est fermée et $\forall n \in \N, x_{\varphi(n)} \in F$ donc $\ell \in F$. $F$ est donc compact.
+  2. Soit $(K_{i})_{i \in I}$ une famille de compacts de $E$ avec $I\ne\emptyset$((Attention, $\bigcap_{i \in \emptyset}K_{i} = E$ n’est pas un compact !)). Tout compact est fermé donc $\bigcap_{i \in I}K_{i}$ est une partie fermée. Soit $i_{0} \in I$. On a $\bigcap_{i \in I}K_{i} \subset K_{i_{0}}$ et $K_{i_{0}}$ est compact donc d’après le premier point, $\bigcap_{i \in I}K_{i}$ est un compact.
+  3. $\bigcup_{i \in \emptyset}K_{i} = \emptyset$ est un compact. Soient $K_{1}, \ldots, K_{p}$ des parties compactes de $E$ avec $p \in \N^{*}$. Posons $K = K_{1} \cup  \cdots \cup  K_{p}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $K$. Il existe $i \in \icc{1,p}$ tel que $\left\{n \in \N \where x_{n} \in K_{i}\right\}$ est infini. Soit $\varphi: \N \longrightarrow\N$ strictement croissante telle que $\forall n \in \N, x_{\varphi(n)}\in K_{i}$. $K_{i}$ est compacte donc il existe $\psi:\N\longrightarrow\N$ strictement croissante et $\ell \in K_{i}$ tels que
+     $$
+       x_{(\varphi \circ \psi)(n)} = x_{\varphi(\psi(n))} \arrowlim{n\to+\infty}\ell \in K_{i} \subset K
+     $$
+     donc $K$ est compact.
+  4. $K = K_{1} \times  \cdots \times  K_{p}$ est un produit de compacts. Soit $(x(n))_{\in \N} = \Big(\big(x_{1}(n), \ldots, x_p(n)\big)\Big)_{n \in \N} \in K^{\N}$. Alors $(x_{1}(n))_{n \in \N}$ est à termes dans le compact $K_{1}$ donc il existe $\varphi_{1}:\N\longrightarrow\N$ strictement croissante et $\ell_{1} \in K_{1}$ tels que $x_{1}(\varphi_{1}(n)) \arrowlim{n\to+\infty}\ell_{1}$. On raisonne de même pour les suites $(x_{2}(n))_{n \in \N}$, …, $(x_{p}(n))_{n \in \N}$ pour lesquelles on trouve les extractrices $\varphi_{2}, \ldots, \varphi_{p}$. Posons alors $\varphi = \varphi_{1} \circ \varphi_{2} \circ \cdots\circ \varphi_{p}$.
+     $$
+       x(\varphi(x)) \arrowlim{n\to+\infty}(\ell_{1}, \ldots, \ell_{p}) \in K
+     $$
+%
+
+%eg
+  - Considérons la suite définie récursivement par
+   $$
+     \begin{cases}
+       F_{0} = \cc{0,1}\\
+       \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
+     \end{cases}
+   $$
+   Alors $K = \bigcap_{n \in \N} F_{n}$ est fermée et incluse dans le compact $\cc{0,1}$; c’est donc un compact.
 %
