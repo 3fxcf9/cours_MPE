@@ -327,7 +327,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %
 
-%conseq
+%cor
   Les parties compactes d’un $\K$-espace vectoriel de dimension finie sont les parties fermées et bornées((Appelées « fermés bornés »)).
 %
 
@@ -403,15 +403,262 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      $$
        x(\varphi(x)) \arrowlim{n\to+\infty}(\ell_{1}, \ldots, \ell_{p}) \in K
      $$
+  %offprog
+    5. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$ de limite $\ell$. Posons $\K = \{\ell\} \cup \{x_{n} \where n \in \N\}$. Soit $(y_{n})_{n \in \N} \in K^{\N}$.
+       - Si $\{y_{n} \where n \in \N\}$ est fini, on peut extraire une suite constante donc convergente dans $K$.
+       - Si $\{y_{n} \where n \in \N\}$ est infini, on cherche à extraire une sous-suite de $(x_{n})$ de la suite $(y_{n})$. Posons $n_{0} = \min \{n \in \N \where y_{n} \ne \ell\}$. Il existe alors $p_{0} \in \N$ tel que $y_{n_{0}} = x_{p_{0}}$. Posons ensuite
+         $$
+           n_{1} = \min \left\{n \geq n_{0}+1 \where y_{n} \notin \{x_{p} \where p \leq p_{0}\}\cup \{\ell\}\right\}
+         $$
+         $n_{1}$ existe car $\{y_{n} \where n \in \N\} \setminus \{x_{p} \where p \leq p_{0}\} \cup \{\ell\}\ne \emptyset$. Il existe alors $p_{1} > p_{0}$ tel que $y_{n_{1}} = x_{p_{1}}$. De façon générale, si les objets sont construits à l’ordre $k \in \N$,
+         $$
+           n_{k+1} = \min \left\{n \geq n_{k}+1 \where y_{n} \notin \{x_{p} \where p \leq p_{k}\} \cup \{\ell\}\right\}
+         $$
+         et $y_{n_{k+1}} = x_{p_{k-1}}$. Alors,
+         $$
+           \forall k \in \N, \begin{cases}p_{k} < p_k+1\\ n_{k} < n_k+1\end{cases}
+         $$
+         $(y_{n_{k}})_{k \in \N}$ est donc une suite extraite de $(y_{n})$ égale à une suite extraite de $(x_{n})$. Elle converge donc vers $\ell \in K$. Ainsi, $K$ est un compact.
+  %
 %
 
 %eg
   - Considérons la suite définie récursivement par
-   $$
-     \begin{cases}
-       F_{0} = \cc{0,1}\\
-       \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
-     \end{cases}
-   $$
-   Alors $K = \bigcap_{n \in \N} F_{n}$ est fermée et incluse dans le compact $\cc{0,1}$; c’est donc un compact.
+    $$
+      \begin{cases}
+        F_{0} = \cc{0,1}\\
+        \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
+      \end{cases}
+    $$
+    Alors $K = \bigcap_{n \in \N} F_{n}$ est fermée et incluse dans le compact $\cc{0,1}$; c’est donc un compact.
+  - L’ensemble $\left\{f_{n} \longmapsto e^{-nx} \where n \in \N^{*}\right\} \cup \{\tilde{0}\}$ est un compact de $(\L^{1}(\R_{+}) \cap \Cont(\R_{+}), \norm{\cdot}_{1})$ où
+    $$
+      \norm{f_{n}}_{1} = \int_{0}^{+\infty}\abs{f_{n}} = \frac{1}{n} \arrowlim{n\to +\infty}0
+    $$
+    donc $f_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{1}}\tilde{0}$.
+  - Munissons l’ensemble $E = \Cont( \cc{0,2 \pi}, \R)$ de la norme définie par
+    $$
+      f \longmapsto \norm{f}_{2} = \left(\int_{0}^{2 \pi}(f(t))^{2}\dd t\right)^{\frac{1}{2}}
+    $$
+    La famille de fonctions $(f_{n}: t \longmapsto \sin (nt))_{n \in \N}$ vérifie
+    $$
+      \forall n \in \N^{*}, \norm{f_{n}}_{2} = \sqrt{\pi}
+    $$
+    et pour $(n,p) \in (\N^{*})^{2}$,
+    $$
+      n\ne p \implies \abs{f_{n} - f_{p}} = \sqrt{2 \pi}
+    $$
+    Il existe $\varphi:\N\longrightarrow\N$ strictement croissante telle que
+    $$
+      \forall n \in \N^{*}, \norm{f_{\varphi(n)} - f_{\varphi(n+1)}} = \sqrt{2 \pi}
+    $$
+    et $(f_{\varphi(n)})_{n \in \N^{*}}$ ne converge pas, donc $S_{\norm{\cdot}_{2}}(\tilde{0}, \sqrt{\pi})$ est une partie fermée et bornée mais non compacte.
+%
+
+%prop
+  Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$. Alors $(x_{n})_{n \in \N}$ est convergente si et seulement si il existe une partie compacte $A$ de $E$ et un vecteur $\ell \in E$ tels que
+  ~ $\forall n \in \N, x_{n} \in A$  ~ $\adh \big((x_{n})\big) = \{\ell\}$
+%
+
+%proof
+  - Supposons la suite $(x_{n})$ convergente de limite $\ell \in E$. Alors $\adh (x_{n}) = \{\ell\}$, $A = \{\ell\} \cup \{x_{n} \where n \in \N\}$ est compacte et $\forall n \in \N, x_{n} \in A$.
+  - Supposons que le compact $A$ contienne tous les termes de $(x_{n})$ et que $\adh \big((x_{n})\big) = \{\ell\}$. Supposons que $(x_{n})$ ne converge pas vers $\ell$, i.e
+    $$
+      \exists \varepsilon > 0: \forall N \in \N, \exists n \geq N: \norm{x_{n} - \ell} \geq \varepsilon
+    $$
+    donc il existe $\varepsilon:\N\longrightarrow\N$ strictement croissante telle que
+    $$
+      \forall n \in \N, \abs{x_{\varphi(n)}-\ell} \geq \varepsilon \tag{$\triangle$}
+    $$
+    Or $(x_{\varphi(n)})_{n \in \N}$ est à termes dans le compact $A$ donc par la *propriété de Bolzano-Weierstrass*, $(x_{\varphi(n)})$ possède une valeur d’adhérence dans $A$, qui ne peut être que $\ell$ car $\adh \left((x_{n})\right) = \{\ell\}$, ce qui contredit $(\triangle)$.
+%
+
+%cor
+  Si $E$ est un $\K$-espace vectoriel normé de dimension finie et si $(x_{n})_{n \in \N}$ est une suite d’éléments de $E$, alors $(x_{n})_{n \in \N}$ converge si et seulement si
+  ~ $\exists M \in \R_{+}: \forall n \in \N, \norm{x_{n}} \leq M$  ~ $(x_{n})_{n \in \N}$ ne possède qu’une seule valeur d’adhérence
+%
+
+%proof
+  L’implication directe est immédiate et il suffit, pour prouver le sens réciproque, de remarquer que
+  ~ $\bar{B}(0_{E}, M)$ contient tous les termes de $(x_{n})_{n \in \N}$  ~ $\bar{B}(0_{E},M)$ est compacte en dimension finie
+%
+
+## Voisinages d’un point – Parties convexes
+
+%def Voisinage
+  Soit $V$ une partie de $E$ et $x \in V$. On dit que $V$ est un *voisinage* de $x$ si il existe $r > 0$ tel que $B(x,r) \subset V$. On écrit alors $V \in \V_{E}(x)$. On dit encore que $x$ est un *point intérieur* à $V$.
+%
+
+%eg
+  Dans $\R$, $V = \oc{0,1}$ est un voisinage de $\frac{1}{2}$ car $B \left(\frac{1}{2}, \frac{1}{2}\right) = \oo{0,1} \subset V$, mais ce n’est pas un voisinage de $1$ car
+  $$
+    \forall r > 0, \oo{1-r, 1+r} \notin V
+  $$
+  L’ensemble des points intérieurs à $V$ est $\oo{0,1}$.
+%
+
+%def Partie ouverte
+  Une partie $O$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite ouverte si $O$ est voisinage de chacun de ses points, i.e.
+  $$
+    \forall x \in O, O \in \V_{E}(x)
+  $$
+  i.e.
+  $$
+    \forall x \in O, \exists r > 0: B(x,r) \subset O
+  $$
+%
+
+%eg
+  - $E$ et $\emptyset$ sont des parties ouvertes de $E$.
+  - Toute boule ouverte de $E$ est une partie ouverte.
+    ~
+    %rfig
+      @[./figures/boule-ouverte.svg]
+    %
+    En effet, soient $a \in E$ et $r \in \R_{+}^{*}$. Soit $x \in B(a,r)$. Posons $d = r-d(x,a) > 0$. Soit $y \in B(x,d)$. On a
+    $$
+      \norm{y-a} \leq  \norm{y-x} + \norm{x-a} < d + (r-d) = r
+    $$
+    donc $y \in B(a,r)$. Ainsi $B(x,d) \subset B(a,r)$.
+  - Soit $\{x_{1}, \ldots, x_{n}\} \in E^{n}$. Posons $U = E \setminus \{x_{1}, \ldots, x_{n}\}$. Soit $y \in U$. $d = \min_{i \in \icc{1,n}} dy, x_{i} > 0$, donc $B(y,d) \subset U$ d’où $U$ est une partie ouverte de $E$.
+%
+
+%prop
+  Soit $A$ une partie de $E$. Alors $A$ est fermée si et seulement si $A^{\complement} = E \setminus A$ est ouverte.
+%
+
+%proof
+  Montrons que $A$ n’est pas fermée si et seulements si $E \setminus A$ n’est pas ouverte.
+  ~
+  - Supposons que $A$ ne soit pas une partie fermée de $E$. IL existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. IL existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \V_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
+  - Supposons $E \setminus A$ non ouverte. Il existe $x \in E \setminus A$ tel que $E \setminus A \notin \V_{E}(x)$. Pour tout $r > 0, B(x,r) \not \subset E \setminus A$ donc
+    $$
+      \forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap A \notin \emptyset
+    $$
+    donc il existe une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que
+    $$
+      \forall n \in N, \norm{x-a_{n}} < \frac{1}{n+1}
+    $$
+    donc $a_{n} \arrowlim{n\to+\infty}e \in E \setminus A$ or $A$ contient tous les termes de $(a_{n})$ donc $A$ n’est pas fermée.
+%
+
+%rem
+  - Deux normes équivalentes sur $E$ définissant les mêmes parties fermées définissent les mêmes parties ouvertes.
+  - Deux normes équivalentes sur $E$ définissent les mêmes voisinoges d’un point. En effet, si $\norm{\cdot}$ et $\norm{\cdot}'$ sont deux normes équivalentes sur $E$, appelons $E_{0} = (E, \norm{\cdot})$ et $E_{1} = (te, \norm{\cdot}')$. Soit $V$ une partie de $E$ contenant $x$. Supposons que $V$ est un voisinage de $x$ dans $E$. Il existe alors $r > 0$ tel que $B_{E_{0}}(x,r) \subset V$. Or il existe $\alpha > 0$ tel que $\norm{\cdot} \leq  \alpha \norm{\cdot}'$ donc
+    $$
+      y \in B_{E_{1}} \left(x, \frac{r}{\alpha}\right) \implies \norm{y-x}' < \frac{r}{\alpha} \implies \norm{y-x} < r
+    $$
+    donc $B_{E_{1}} \left(x, \frac{r}{\alpha}\right) \subset V$.
+%
+
+%eg
+  - Soit $(x_{1}, \ldots, x_{n}) \in E^{n}$. $\{x_{1}, \ldots, x_{n}\}$ est fini donc fermé dans $E$, donc $U \setminus \{x_{1}, \ldots, x_{n}\}$ est ouvert dans $E$.
+  - $E \setminus \bar{B}(a,r)$ et $E \setminus S(a,r)$ sont des parties ouvertes de $E$.
+  - Tout « intervalle ouvert » ($\emptyset$, $\R$, $\oo{-\infty, a}$, $\oo{a, +\infty}$, $\oo{a,b}$) de $\R$ est une partie ouverte de $\R$. Par exemple, $\oo{a,b}$ est une boule ouverte de centre $\frac{a+b}{2}$; c’est aussi la réunion des fermés $\oc{-\infty, a}$ et $\co{b,+\infty}$.
+%
+
+%prop
+  1. Toute réunion de parties ouvertes de $E$ est une partie ouverte de $E$.
+  2. Toute intersection finie de parties ouvertes de $E$ est une partie ouverte de $E$.
+  3. Tout produ $O_{1} \times  \cdots \times O_{p}$ de parties ouvertes $O_{1}, \ldots, O_{p}$ respectivement de $(E_{1},\nu_{1}), \ldots, (E_{p}, \nu_{p})$ est une partie ouverte de $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$.
+%
+
+%proof
+  Soit $(O_{i})_{i \in I}$ une famille d’ouverts.
+  1. $\displaystyle \left(\bigcup_{i \in I}O_{i}\right)^{\complement} = \bigcap_{i \in I}O_{i}^{\complement}$ est fermée comme intersection de fermés donc $\bigcup_{i \in I}O_{i}$ est ouverte.
+  2. Si $I$ est fini, alors $\displaystyle \left(\bigcap_{i \in I}O_{i}\right)^{\complement} = \bigcup_{i \in I}O_{i}^{\complement}$ est fermé comme réunion finie de fermée donc $\bigcap_{i \in I}O_{i}$ est un ouvert.
+  3. $\displaystyle (O_{1} \times  \cdots \times O_{p})^{\complement} = \bigcup_{r \in \icc{1,p}} \left(E_{1} \times  \cdots \times  E_{r-1} \times  O_{i}^{\complement} \times  E_{r+1} \times  \cdots \times E_{p}\right)$ est fermé une réunion finie de fermés. En effet,
+     $$
+       \non \left(\forall i \in \icc{1,p}, x_{i} \in O_{i}\right) \iff \exists i \in \icc{1,p}: x_{i} \in O_{i}^{\complement}
+     $$
+     Ainsi, $O_{1} \times  \cdots \times  O_{p}$ est un ouvert.
+%
+
+%def Définition-propositions
+  Soit $A$ une partie de $E$. Notons $\ring A$ la plus grande partie ouverte de $E$ incluse dans $A$. On a
+  1. $\ring A$ est la réunion de toutes les parties ouvertes de $E$ incluses dans $A$
+  2. $\ring A$ est l’ensemble des points intérieurs à $A$, i.e.
+     $$
+       \ring A = \big\{x \in A \where \exists r > 0: B(x,r) \subset A\big\}
+     $$
+     (noter le $x \in A$ et non $x \in E$ dans l’ensemble) i.e.
+     $$
+       x \in \ring A \iff A \in \V_{E}(x)
+     $$
+  $\ring A$ est appelé *intérieur* de $A$ ou *ensemble des points intérieurs à $A$*.
+%
+
+%proof
+  1. - $\bigcup_{O \subset A \text{ ouvert}} O$ est un ouvert de $E$ inclus dans $A$.
+     - Soit $O'$ un ouvert inclus dans $A$. On a $\bigcup_{O \subset A \text{ ouvert}}O$
+     Ainsi,
+     $$
+       \ring A = \bigup_{O \subset A \text{ ouvert}}O
+     $$
+  2. $x \in \ring A \iff \exists O \text{ ouvert}: x \in O \subset A \iff \exists r > 0: B(x,r) \subset A$
+%
+
+%property
+  Soient $A$ et $B$ deux parties de $E$.
+  1. $\ring A \subset A \subset \bar{A}$
+  2. $A$ est ouvert si et seulement si $A = \ring A$
+  3. $A \subset B \implies \ring A \subset \ring B$
+  %offprog
+    4. $\longring{A \times B} = \ring A \times \ring B$
+  %
+  5. $\forall a \in E, \forall r \in \R_{+}^{*}, \longring{\bar{B}(a,r)} = B(a,r)$
+  6. $\big(\ring A\big)^{\complement} = \bar{A^{\complement}}$; $\big(\bar{A}\big)^{\complement} = \longring{A^{\complement}}$
+%
+
+%proof
+  1. Par définition
+  2. - Si $A$ est ouvert, alors la plus grande partie ouverte de $A$ incluse dans $A$ est elle-même donc $\ring A = A$.
+     - Si $A = \ring A$, alors comme $\ring A$ est un ouvert, $A$ est une partie ouverte.
+  3. Supposons $A \subset B$. Soit $x \in \ring A$. Il existe $r > 0$ tel que $B(x,r) \subset A$, donc $B(x,r) \subset B$ donc $x \in \ring B$.
+  4. $\ring A \times \ring B \subset A \times B$ et $\ring A \times \ring B$ est un ouvert de $E \times E$ donc $\ring A \times \ring B \subset \longring{A \times B}$. Soit $(x, x') \in \longring(A \times B)$. Il existe $r > 0$ tel que
+     $$
+       B_{\norm{\cdot}}(x,r) \times B_{\norm{\cdot}}(x', r) B_{N_{\infty}}\big((x,x'), r\big) \subset A \times B
+     $$
+     donc
+     ~ $B_{\norm{\cdot}}(x,r)\subset A$  ~ $B_{\norm{\cdot}}(x', r) \subset B$
+     donc $(x,x') \in \ring A \times \ring B$.
+  5. $$
+       \begin{align*}
+         x \in \left(\ring A\right)^{\complement} &\iff x \notin \ring A\\
+         &\iff \forall r > 0, B(x,r)\not\subset A\\
+         &\iff \forall r > 0, B(x,r) \cap (E \setminus A)\notin \emptyset\\
+         &\iff x \in \bar{E \setminus A} \\
+         &\iff x \in \bar{A^{\complement}}
+       \end{align*}
+     $$
+     et
+     $$
+       \begin{align*}
+         x \in \left\(\bar{A}\right\)^{\complement} &\iff x \in \notin \bar{A}\\
+         &\iff \exists r > 0: B(x,r) \cap A = \emptyset\\
+         &\iff \exists r > 0: B(x,r) \subset E \setminus A\\
+         &\iff x \in \longring{E \setminus A}\\
+         &\iff x \in \longring{A^{\complement}}
+       \end{align*}
+     $$
+  6. Soit $F$ un sous-espace vectoriel de $E$ avec $F\ne E$. Soit $a \in E$. Posons $W = a+F = \{a+u \where u \in F\}$. Supposons $\ring W \ne \emptyset$. Il existe alors $x \in W$ et $r > 0$ tel que $B(x,r) \subset W$. Pour $x =a+u$ avec $u \in F$. Soit $y \in E \setminus W$.
+     $$
+       \underbrace{x}_{a+u} + \frac{r}{2} \frac{y-x}{\norm{y-x}} \in B(x,r) \subset W = a + F
+     $$
+     donc $u + \frac{r}{2}\frac{y-x}{\norm{y-x}} \in F$, or $u \in F$ donc $y-x \in F$ soit $y \in x+F = W$ — contradiction. Ainsi, $\ring W = \emptyset$.
+%
+
+%def Frontière d’une partie
+  Soit $A$ une partie de $E$. On appelle frontière de $A$ l’ensemble
+  $$
+    \fr A = \partial A = \bar{A}\setminus \ring A
+  $$
+  C’est une patie fermée de $E$. On a
+  $$
+    E = \underbrace{\ring A \uplus \partial A}_{\bar{A}} \uplus \underbrace{\big(\bar{A}\big)^{\complement}}_{\text{extérieur de }A}
+  $$
+%
+
+%eg
+  $\ring Q = \emptyset$, $\bar{Q} = \R$ et $\fr\Q = \R$.
 %
