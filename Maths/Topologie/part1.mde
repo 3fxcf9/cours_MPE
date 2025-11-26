@@ -47,7 +47,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %proof
-  1. Soit $(F_{i})_{i \in \I}$ une famille de parties femées de $E$ indexée par un ensemble $I$. ($\bigcap_{i \in \emptyset} F_{i} = E$ est une partie fermée). Soit $tf \in \bigcap_{i \in I} F_{i}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $F$ avec $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}}\ell \in E$. On a
+  1. Soit $(F_{i})_{i \in I}$ une famille de parties femées de $E$ indexée par un ensemble $I$. ($\bigcap_{i \in \emptyset} F_{i} = E$ est une partie fermée). Soit $tf \in \bigcap_{i \in I} F_{i}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $F$ avec $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}}\ell \in E$. On a
      $$
        \forall i \in I, \begin{cases}(x_{n})_{n \in \N} F_{i}^{\N}\\ F_{i} \text{ fermée}\end{cases}
      $$
@@ -593,7 +593,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      - Soit $O'$ un ouvert inclus dans $A$. On a $\bigcup_{O \subset A \text{ ouvert}}O$
      Ainsi,
      $$
-       \ring A = \bigup_{O \subset A \text{ ouvert}}O
+       \ring A = \bigcup_{O \subset A \text{ ouvert}}O
      $$
   2. $x \in \ring A \iff \exists O \text{ ouvert}: x \in O \subset A \iff \exists r > 0: B(x,r) \subset A$
 %
@@ -615,7 +615,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   2. - Si $A$ est ouvert, alors la plus grande partie ouverte de $A$ incluse dans $A$ est elle-même donc $\ring A = A$.
      - Si $A = \ring A$, alors comme $\ring A$ est un ouvert, $A$ est une partie ouverte.
   3. Supposons $A \subset B$. Soit $x \in \ring A$. Il existe $r > 0$ tel que $B(x,r) \subset A$, donc $B(x,r) \subset B$ donc $x \in \ring B$.
-  4. $\ring A \times \ring B \subset A \times B$ et $\ring A \times \ring B$ est un ouvert de $E \times E$ donc $\ring A \times \ring B \subset \longring{A \times B}$. Soit $(x, x') \in \longring(A \times B)$. Il existe $r > 0$ tel que
+  4. $\ring A \times \ring B \subset A \times B$ et $\ring A \times \ring B$ est un ouvert de $E \times E$ donc $\ring A \times \ring B \subset \longring{A \times B}$. Soit $(x, x') \in \longring{(A \times B)}$. Il existe $r > 0$ tel que
      $$
        B_{\norm{\cdot}}(x,r) \times B_{\norm{\cdot}}(x', r) B_{N_{\infty}}\big((x,x'), r\big) \subset A \times B
      $$
@@ -634,7 +634,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      et
      $$
        \begin{align*}
-         x \in \left\(\bar{A}\right\)^{\complement} &\iff x \in \notin \bar{A}\\
+         x \in \left(\bar{A}\right)^{\complement} &\iff x \notin \bar{A}\\
          &\iff \exists r > 0: B(x,r) \cap A = \emptyset\\
          &\iff \exists r > 0: B(x,r) \subset E \setminus A\\
          &\iff x \in \longring{E \setminus A}\\
