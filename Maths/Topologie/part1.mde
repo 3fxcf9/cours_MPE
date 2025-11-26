@@ -75,8 +75,10 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
     $$
-    ==FIG POUSSIERE CANTOR==
     $F_{n}$ est la réunion de $2^{n}$ intervalles fermés; c’est donc une partie fermée. $K = \bigcap_{n \in \N}F_{n}$ est une partie fermée; on l’appelle l’*ensemble triadique de Cantor*.
+    %fig Poussière de Cantor
+      @[./figures/poussière-cantor.svg]
+    %
   - Si $A_{1}, \ldots, A_{p}$ sont des parties respectives non vides de $E_{1}, \ldots, E_{p}$, alors $A_{1} \times  \cdots \times A_{p}$ est une partie fermée de $(E_{1}, \ldots, E_{p}, N_{\infty})$ si et seulement si pour tout $i \in \icc{1,p}$, $A_{i}$ est fermée dans $(E_{i}, \nu_{i})$.
     %proof
       - *sens direct* Supposons $A_{1} \times \cdots \times A_{p}$ fermée. Soit $i \in \icc{1,p}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A_{i}$ avec $x_{n} \xrightarrow[n\to+\infty]{\nu_{i}}\ell \in E_{i}$. Soit $(a_{1}, \ldots, a_{p}) \in A_{1} \times  \cdots \times A_{p}\ne\emptyset$.
@@ -336,7 +338,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       \Delta_{n} = \left\{(x_{1}, \ldots, x_{n}) \in (\R_{+})^{n}\where x_{1} + \cdots + x_{n} = 1\right\}
     $$
-    (ce sont les *simplexes*)==FIG SIMPLEX==
+    %fig Simplexes en deux et trois dimensions
+      @[./figures/simplexes.svg]
+    %
     - Soit $(x(k)) = \Big(\big(x_{1}(k), \ldots, x_{n}(k)\big)\Big)_{k \in \N} \in \Delta_{n}^{\N}$ avec $x(k) \arrowlim{k\to+\infty} (\alpha_{1}, \ldots, \alpha_{n}) \in \R^{n}$ donc
       $$
         \begin{cases}x_{1}(k) \arrowlim{k\to+\infty}\alpha_{1}\\\vdots\\x_{n}(k) \arrowlim{k\to+\infty} \alpha_{n}\end{cases}
@@ -509,12 +513,12 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %eg
+  %rfig
+    @[./figures/boule-ouverte.svg]
+  %
   - $E$ et $\emptyset$ sont des parties ouvertes de $E$.
   - Toute boule ouverte de $E$ est une partie ouverte.
     ~
-    %rfig
-      @[./figures/boule-ouverte.svg]
-    %
     En effet, soient $a \in E$ et $r \in \R_{+}^{*}$. Soit $x \in B(a,r)$. Posons $d = r-d(x,a) > 0$. Soit $y \in B(x,d)$. On a
     $$
       \norm{y-a} \leq  \norm{y-x} + \norm{x-a} < d + (r-d) = r
@@ -641,7 +645,10 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
          &\iff x \in \longring{A^{\complement}}
        \end{align*}
      $$
-  6. Soit $F$ un sous-espace vectoriel de $E$ avec $F\ne E$. Soit $a \in E$. Posons $W = a+F = \{a+u \where u \in F\}$. Supposons $\ring W \ne \emptyset$. Il existe alors $x \in W$ et $r > 0$ tel que $B(x,r) \subset W$. Pour $x =a+u$ avec $u \in F$. Soit $y \in E \setminus W$.
+  6. %rfig
+       @[./figures/frontière-sev.svg]
+     %
+     Soit $F$ un sous-espace vectoriel de $E$ avec $F\ne E$. Soit $a \in E$. Posons $W = a+F = \{a+u \where u \in F\}$. Supposons $\ring W \ne \emptyset$. Il existe alors $x \in W$ et $r > 0$ tel que $B(x,r) \subset W$. Pour $x =a+u$ avec $u \in F$. Soit $y \in E \setminus W$.
      $$
        \underbrace{x}_{a+u} + \frac{r}{2} \frac{y-x}{\norm{y-x}} \in B(x,r) \subset W = a + F
      $$
