@@ -669,3 +669,280 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %eg
   $\ring Q = \emptyset$, $\bar{Q} = \R$ et $\fr\Q = \R$.
 %
+
+%rem
+  - $\partial A = \bar{A} \setminus \ring A = \bar{A} \cap \left(\ring A\right)^{\complement}$ est fermé comme intersection de deux fermés
+  - $\longring{\bar{B}(a,r)} = B(a,r)$
+    ~
+    On a $B(a,r) \subset \bar{B}(a,r)$ donc $B(a,r) \subset \longring{\bar{B}(a,r)} \subset \bar{B}(a,r)$. Soit $u \in S(a,r)$. Soit $\varepsilon > 0$. Alors
+    $$
+      y = u + \frac{\varepsilon}{2} \frac{u-a}{\norm{u-a}} \in B(u, \varepsilon)
+    $$
+    et
+    $$
+      \norm{y-a} = \left(1+\frac{\varepsilon}{2 \norm{u-a}}\right) \norm{u-a} = \left(1+\frac{\varepsilon}{2 \norm{u-a}}\right)r > r
+    $$
+    donc $B(u, \varepsilon)\not\subset \bar{B}(a,r)$, donc $u \notin \longring{\bar{B}(a,r)}$.
+%
+
+## Topologie relative
+
+%offprog
+  %def Topologie
+    Une *topologie $\mathscr{T}$ sur un ensemble $X$* est une partie de $\Part X$ telle que
+    1. $\emptyset \in \mathscr{T}$, $X \in \mathscr{T}$.
+    2. $\mathscr T$ est stable par réunion quelconque.
+    3. $\mathscr T$ est stable par intersectoin finie.
+    $X$ est alors dit *topologique*.
+  %
+%
+
+%eg
+  %offprog
+    - Soit $X$ un ensemble. $\{\emptyset, X\}$ est une topologie sur $X$; $\Part (X)$ en est une autre.
+    - Soit $(X,d)$ un espace màtrique. Pour $x \in X$ et $r \in \R_{+}^{*}$, on pose $B_{d}(x,r) = \{y \in X \where d(y,x) < r\}$ et
+      $$
+        \mathscr T_{X} = \left\{A \in \Part(X) \where \forall a \in A, \exists r > 0: B_{d}(a,r) \subset A\right\}
+      $$
+      $\mathscr T_{X}$ est alors une topologie sur $X$ (« la topologie d’espace métrique »). Si $A$ est une partie de $X$, alors on pose, pour $a \in A$ et $r > 0$,
+      $$
+        B_{A}(x,r) = \{y \in A \where d(y,r) < r\} = B(x,r) \cap A = \{y \in A \where d_{A}(y,x) < r\} = B_{d_{A}}(x,r)
+      $$
+      où $d_{A}:\applic{A^{2}}{\R}{(x,y)}{d(x,y)}$. Alors
+      $$
+        \mathscr T_{A} = \{B \in \Part(A) \where \forall b \in B, \exists r > 0: B_{A}(b,r) \subset B\}
+      $$
+      est une topologie sur $A$, appelée *topologie relative*.
+  %
+  - Si $E$ est un $\K$-espace vectoriel normé de norme $\norm{\cdot}$ et si $d$ est la distance associée à cette norme, alors
+    $$
+      \mathscr T_{E} = \{U \in \Part(E) \where \forall x \in U, \exists r > 0: B_{d}(x,r) \subset U\}
+    $$
+    est une topologie sur $E$. C’est l’ensemble des parties ouvertes de $E$. C’est « la topologie d’espaces vectoriels normés ». Si $A$ est une partie de $E$, alors on pose, pour $x \in A$ et $r > 0$,
+    $$
+      B_{A}(x,r) = \{y \in A \where \norm{y-x} < r\} = B_{E}(x,r)\cap A
+    $$
+    la boule relative de centre $a$ et de rayon $r$.
+%
+
+%def Définition-proposition
+  Soit $A$ une partie de l’espace vectoriel normé $(E, \norm{\cdot})$. Soient $V'$ une partie de $A$ et $a$ un point de $A$. On dit que $V'$ est un voisinage relatif de $a$ dans $A$ si
+  $$
+    \forall r > 0: B_{A}(a,r) \subset V'
+  $$
+  i.e.
+  $$
+    \exists r > 0: B(a,r) \cap A \subset V'
+  $$
+  On écrit $V' \in \V_{A}(e)$. C’est le cas si et seulement si il existe $V \in \V_{E}(a)$ tel que $V' = V \cap A$.
+%
+
+%eg
+  %fig Exemple de voisinage relatif
+    @[./figures/voisinage-relatif.svg]
+  %
+  ~ $V' \in \V_{A}(a_{1})$  ~ $V' \in \V_{A}(a_{2})$  ~ $V' \notin \V_{A}(a_{3})$  ~ $V' \notin V_{A} (a_{4})$
+  En effet,
+  - Soit $V \in \V_{A}(a)$. Posons $V' = V \cap A$. ALors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \V_{A}(a)$
+  - Soit $V' \in \V_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \V_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$
+%
+
+%def Définition-proposition
+  Soit $A$ une partie de $E$.
+  - Une partie $O'$ de $A$ est appelé *ouvert relatif de $A$* si $O'$ est un voisinage relatif de chacun de ses points, i.e.
+    $$
+      \forall x \in O', \exists r > 0: B_{A}(x,r) \subset O'
+    $$
+  - C’est le cas si et seulement si il existe une partie ouverte $O$ de $E$ telle que
+    $$
+      O' = O \cap A
+    $$
+%
+
+%proof
+  - Soit $O$ un ouvert de $E$. Posons $O' = O \cap A$. Soit $x \in O'$. Alors $x \in O$ et $O$ est un ouvert donc il existe $r > 0$ tel que $B(x,r) \subset O$. Ainsi, $B_{A}(x,r) \subset O$ d’où $O' \in \V_{A}(x)$.
+  - Soit $O'$ un ouvert relatif de $A$. Posons
+    $$
+      \Omega = \left\{(x,r) \in O' \times \R_{+}^{*}\where B_{A}(x,r) \subset O'\right\}
+    $$
+    Posons
+    $$
+      O = \bigcup_{(x,r) \in \Omega}B(x,r)
+    $$
+    C’est un partie ouverte de $E$. On a
+    $$
+      O \cap A = \bigcup{(x,r) \in \Omega}B_{A}(x,r) \subset O'
+    $$
+    Si $x \in O'$, alors il existe $r$ tel que $B_{A}(x,r) \subset O'$ donc $(x,r) \in \Omega$, donc $x \in B_{A}(x,r)\subset O \cap A$ d’où $O' \subset O \cap A$.
+  Ainsi, $O' = O \cap A$.
+%
+
+%eg
+  - $\cc{0,1} \notin \V_{\R}(1)$ mais $\cc{0,1} \in \V_{\oc{-\infty, 1}}$ car $\cc{0,1} = \cc{0,2} \cap \oc{-\infty, 1}$ et $\cc{0,1} \in \V_{\R}(1)$
+  - $\co{0,1}$ n’est pas un ouvert de $\R$ et $\co{0,1}$ n’est pas une partie ouverte relative de $\R_{+}^{*}$ car $\co{0,1} = \oo{-1,1} \cap \R_{+}$ et $\oo{-1,1}$ est un ouvert de $\R$.
+%
+
+%eg
+  Si $A$ est une partie ouverte de $E$, alors les ouverts relatifs de $A$ sont exactement les parties ouvertes de $E$ incluses dans $A$.
+  ~
+  - Si $O$ est une partie ouverte de $E$ incluse dans $A$, alors
+    ~ $O = O \cap A$  ~ $O$ est ouverte dans $E$
+    donc $O$ est un ouvert relatif de $A$.
+  - Si $O'$ est une partie ouverte relative de $A$, alors il existe une partie ouverte de $E$ telle que $O' = O \cap A$. Comme $O$ et $A$ sont des parties ouvertes de $E$, $O'$ est une partie ouverte de $E$ et $O' \subset A$.
+%
+
+%eg
+  - $\co{0,1}$ est une partie ouverte relative de $\R_{+}$ mais ce n’est pas une partie ouverte de $\R$.
+  - Les partie ouvertes relatives de $\R_{+}^{*}$ sont les parties ouvertes de $\R$ incluses dans $\R_{+}^{*}$.
+%
+
+%def Définition-proposition
+  Soit $A$ une partie de $E$. Soit $F'$ une partie de $A$. On dit que $F'$ est un *fermé relatif* de $A$ si l’une des condition équivalentes suivantes est vérifiée
+  1. $A \setminus F'$ est un ouvert relatif de $A$.
+  2. Il existe une partie fermée $F$ de $E$ telle que
+     $$
+       F' = F \cap A
+     $$
+  3. Pour toute suite $(x_{n})_{n \in \N}$ d’éléments de $F'$ convergente dans $\color{yellow}A$ et de limite $\ell \in \color{yellow}A$, on a $\ell \in F'$.
+%
+
+%proof
+  - Supposons la première condition vérifiée. Il existe un ouvert $O$ de $E$ tel que $A \setminus F' = A \cap O$, d’où
+    $$
+      F' = A \setminus (A \cap O) = A \setminus O = A \cap \oc{C}
+    $$
+    et $F = O^{\complement}$ est une partie fermée de $E$.
+  - Supposons le second point. Posons $F' = F \cap A$ avec $F$ fermée de $E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $F'$ convergente et de limite $\ell \in \color{yellow}A$. Ses termes sont dans le fermé $F$ donc $\ell \in F$ et $\ell \in \color{yellow}A$ donc $\ell \in F'$
+  - Supposons la négation du premier point, i.e $A \setminus  F'$ n’est pas un ouvert relatif de $A$. Il existe donc $x \in A \setminus F'$ tel que $A \setminus F' \notin \V_{A}(x)$ donc
+    $$
+      \forall r > 0, B_{A}(x,r) \not \subset A \setminus F'
+    $$
+    donc $\forall r > 0, B_{A}(x,r) \cap F' \ne \emptyset$, d’où
+    $$
+      \forall n \in \N, B_{A} \left(x, \frac{1}{n+1}\right) \cap  F'\ne \emptyset
+    $$
+    Il existe une suite $(a_{n})_{n \in \N}$ d’éléments de $F'$ telle que
+    $$
+      \forall n \in \N, \norm{x-a_{n}} < \frac{1}{n+1}
+    $$
+    donc $a_{n} \arrowlim{n \to+\infty}x$ et $\forall n \in \N, a_{n} \in F'$ et $x \in A' \setminus F'$; on a donc la négation du dernier point.
+%
+
+%eg
+  - $\co{0,1}$ n’est pas une partie fermée de $\R$; $\co{0,1}$ est un fermé relatif de $\oo{-\infty,1}$ car $\co{0,1} = \oo{-\infty,1}\cap \cc{0,1}$ et $\cc{0,1}$ est une partie fermée de $\R$.
+  - %callout
+      Si $A$ est une partie fermée de $E$, alors les fermés relatifs de $A$ sont exactement les parties fermées de $E$ incluses dans $A$.
+    %
+%
+
+## Continuité d’une intégrale à paramètres
+
+%prop
+  Soit $A$ une partie non vide d’un $\K$-espace vectoriel normé $E$. Soit $I$ un intervalle d’intérieur non vide (i.e. de longueur non nulle). Soit
+  $$
+    f: \applic{A \times I}{\K}{(x,t)}{f(x,t)}
+  $$
+  une application. Si
+  - pour tout $t$ fixé dans $I$, $x \longmapsto f(x,t)$ est continue sur $A$
+  - pour tout $x$ fixé dans $A$, $t \longmapsto f(x,t)$ est continue par morceaux sur $I$
+  - pour tout compact $K$ inclus dans $A$, il existe $\varphi_{K} \in \L^{1}(I,\R_{+})$ tel que
+    $$
+      \forall x \in K, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{K}(t)
+    $$
+  Alors,
+  $$
+    g: \applic{A}{\K}{x}{\int_{I}f(x,t)\dd t}
+  $$
+  est continue sur $A$.
+%
+
+%proof
+  - Soit $\alpha \in A$. $K = \{\alpha\}$ est compact donc il existe $\varphi_{K} \in \L^{1}(I,\R_{+})$ tel que
+    ~ $\forall t \in I, \abs{f(\alpha, t)} \leq \varphi_{K}(t)$  ~ $t \longmapsto f(\alpha, t) \in \Cont_{m}(I)$
+    donc $t \longmapsto f(\alpha, t) \in \L(I,\K)$, donc $g$ est définie en $\alpha$: $g$ est bien définie sur $A$.
+  - Soit $\alpha \in A$. Soit $(a_{n})_{n \in \N}$ une suite d’éléments de $A$ telle que $a_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}} \alpha$ dans $E$.
+    $$
+      \left[t \longmapsto f(a_{n}, t)\right] \sarrowlim{n\to+\infty} \left[t \longmapsto f(\alpha, t)\right]
+    $$
+    par continuité de $x \longmapsto  f(x,t)$ en $\alpha$ pour tout $t \in I$. Posons $K = \{a_{n} \where n \in \N\} \cup \{\alpha\}$. $K$ est un compact donc il existe $\varepsilon_{K} \in \L^{1}(I,\R_{+})$ tel que
+    $$
+      \forall x \in K, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{K}(t)
+    $$
+    donc
+    $$
+      \forall n \in \N, \forall t \in I, \abs{f(a_{n}, t)} \leq \varphi_{K}(t)
+    $$
+    D’après le théorème de convergence dominée, on a
+    $$
+      \lim_{n\to+\infty} \int_{I} f(a_{n}, t)\dd t = \int_{I}f(\alpha, t)\dd t
+    $$
+    i.e. $\lim_{n\to+\infty}g(a_{n}) = g(\alpha)$, si bien que par *caractérisation séquentielle de la continuité* en $\alpha$, $g$ est continue en $\alpha$.
+%
+
+%prop
+  L’application $\applic{\C}{\C}{z}{e^{z}}$ est continue sur $\C$.
+%
+
+%proof
+  Soit $z_{0} \in \C$.
+  $$
+    \forall h \in \C, e^{z_{0}+h} - e^{z_{0}} = e^{z_{0}}(e^{h}-1)
+  $$
+  d’où $\abs{e^{z_{0}+h} - e^{z_{0}}} = \abs{e^{z_{0}}} \times \abs{e^{h}-1}$ or
+  $$
+    e^{h}-1 = \sum_{n=1}^{+\infty}\frac{h^{n}}{n!}
+  $$
+  donc par absolue convergence, on a
+  $$
+    \abs{e^{h}-1} \leq \sum_{n=1}^{+\infty}\frac{\abs{h}^{n}}{n!} = e^{\abs{h}}-1
+  $$
+  d’où
+  $$
+    \forall h \in \C, \abs{e^{z_{0}+h} - e^{z_{0}}} \leq \abs{e^{z_{0}}} \times  \big(e^{\abs{h}} - 1\big)
+  $$
+  Soit $\varepsilon > 0$. $e^{x} \arrowlim{x\to 0}1$ donc il existe $\delta > 0$ tel que $x \in \oo{- \delta, \delta} \implies  \abs{e^{x} - 1} < \frac{\varepsilon}{\abs{e^{z_{0}}}}$ d’où
+  $$
+    \abs{h} < \delta \implies \abs{e^{z_{0}+h} - e^{z_{0}}} < \varepsilon
+  $$
+%
+
+%eg
+  Posons pour $z$ complexe, sous réserve d’intégrabilité,
+  $$
+    \Gamma(z) = \int_{0}^{+\infty}t^{z-1}e^{-t}\dd t
+  $$
+  avec $t^{z-1} \defeq e^{(z-1)\ln t}$ pour $t > 0$.
+  - $t \longmapsto t^{z-1}e^{-t} = e^{(z-1)\ln t}$ est continue sur $\oo{0,+\infty}$ pour tout $z \in \C$. En effet: soit $z \in \C$. $t \longmapsto (z-1)\ln t \in \C$ est continue sur $\R_{+}^{*}$ à valeurs dans $\C$ où $z \longmapsto e^{z}$ est continue. Donc par composition, $t \longmapsto t^{z-1}$ est continue sur $\R_{+}^{*}$ et $t \longmapsto e^{-t}$ est continue sur $\R_{+}^{*}$.
+  - On a, avec $z = a+ib$,
+    $$
+      \abs{t^{z-1}e^{-t}e^{-t}} = e^{-t}\abs{e^{(z-1)\ln t}} = e^{-t}\abs{e^{\big((a+ib) - 1\big)\ln t}} = e^{-t}e^{(a-b)\ln t} = e^{-t}t^{a-1} = e^{-t}t^{\Re (z)-1}
+    $$
+    et
+    $$
+      t \longmapsto  e^{-t}t^{\Re(z) - 1} \usim{0+} \frac{1}{t^{1-\Re(z)}}
+    $$
+    et $t \longmapsto \frac{1}{t^{1-\Re(z)}}$ est intégrable sur $\oc{0,1}$ si et seulement si $\Re z > 0$ et $e^{-t}t^{\Re(z) - 1} \ueq{+\infty} o \left(\frac{1}{t^{2}}\right)$. Ainsi,
+    $$
+      t \longmapsto  e^{-t}t^{z-1} \in \L^{1}(\oo{0,+\infty},\C) \iff \Re z > 0
+    $$
+  %callout
+    Posons, $H = \{z \in \C \where \Re z > 0\}$ et
+    $$
+      \Gamma: \applic{H}{\C}{z}{\int_{0}^{+\infty}t^{z-1}e^{-t}\dd t}
+    $$
+  %
+  Posons
+  $$
+    f: \applic{H \times \oo{0,+\infty}}{\C}{(z,t)}{t^{z-1}e^{-t}}
+  $$
+  - Pour $t$ fixé dans $\oo{0,+\infty}$, $z \longmapsto t^{z-1}e^{-t} = e^{(z-1)\ln t} e^{-t} = e^{z\ln t} \times \frac{e^{-t}}{t}(($ est continue sur $\C$ donc sur $H$ ($z \longmapsto  z\ln t$ continue (affine) est à valeurs dans $\C$, ensemble sur lequel $\exp$ est continue).
+  - Pour $z$ fixé dans $H$, $t \longmapsto f(z, t)$ est contieus ~~par morceaux~~ sur $\oo{0,+\infty}$.
+  - Soit $K$ un compact inclus dans $H$. $(Oy)$ est une partie fermée de $\C$ disjointe du compact $K$ donc $d((Oy), K)$ Prenons $\alpha = \frac{d}{2}$. Il existe $r > 0$ tel que $K \subset \bar{B}(0,r)$. Prenons $b = r$.
+    $$
+      H_{a,b} = \{z \in \C\where a \leq \Re z \leq b\}
+    $$
+    $$
+      \forall  z \in H_{a,b}, \forall t \in \oo{0,+\infty}, \abs{f(z,t)} = e^{-t}t^{\Re z-1} \leq e^{-t}(t^{a-1}+t^{b-1})
+    $$
+    et $\varphi: t \longmapsto  e^{-t}(t^{a-1} + t^{b-1}) \in \L^{1}(\oo{0,+\infty})$. Ainsi, $\boxed{\Gamma \in \Cont(H)}$.
+%
