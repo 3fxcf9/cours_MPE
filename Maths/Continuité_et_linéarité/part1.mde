@@ -760,7 +760,7 @@ Il y a mieux:
     ==TODO?==
   - Soit $(E,\scalar{\cdot}{\cdot})$ un espace préhilbertien réel. $E$ est muni de la norme euclidienne $\norm{\cdot}$ associée au prodiut scalaire $\scalar{\cdot}{\cdot}$. Considérons
     $$
-      \pi: \applic{E^{2}}{\R}{(x,y)}{\scalar{x,y}{\cdot}}
+      \pi: \applic{E^{2}}{\R}{(x,y)}{\scalar{x}{y}}
     $$
     On a l’inégalité de Cauchy-Schwarz :
     $$
@@ -768,7 +768,7 @@ Il y a mieux:
     $$
     or $\pi$ est bilinéaire donc
     $$
-      \applic{(E^{2},N_{\infty})}{(\R,\abs{\cdot })}{(x,y)}{\scalar{x,y}}
+      \applic{(E^{2},N_{\infty})}{(\R,\abs{\cdot })}{(x,y)}{\scalar xy}
     $$
     où $N_{\infty}(x,y) = \max \{\norm{x}, \norm{y}\}$ est continue.
 %

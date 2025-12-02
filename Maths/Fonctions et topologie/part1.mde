@@ -1,0 +1,256 @@
+# Fonctions et topologie
+
+:date 02/12/2025
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \norm{\cdot}_{E'})$ sont deux $\K$-espaces vectoriels normés.
+
+
+## Caractérisation de la continuité
+
+%prop
+  Soit $A \in \Part(E)\setminus \{\emptyset\}$. Soit $f: A\longrightarrow E'$ une application. Il y a équivalence entre
+  1. $f$ est continue sur $A$
+  2. pour tout fermé $F$ de $E'$, $f^{-1}(F)$ est un fermé relatif de $A$
+  3. pour tout ouvert $O$ de $E'$, $f^{-1}(O)$ est un ouvert relatif de $A$
+%
+
+%proof
+  - Supposons $f$ continue. Soit $F$ un fermé de $E'$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $f^{-1}(F)$ qui converge vers $a \in A$. Par continuité de $f$ en $a$, $f(x_{n}) \arrowlim{n\to+\infty}f(a)$. Or $\forall n \in \N, f(x_{n}) \in F$ et $F$ est fermée donc $f(a) \in F$ soit $a \in f^{-1}(F)$.
+  - Supposons le deuxième point. Soit $O$ un ouvert de $E'$.
+    $$
+      \complement_{A}f^{-1}(O) = f^{-1} \left(\complement_{E'}O\right)
+    $$
+    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ansi, $f^{-1}(O)$ est un ouvert relatif de $A$.
+  - Supposons le troisième point. Soient $a \in E$ et $\varepsilon > 0$. $B_{E'}(f(a), \varepsilon)$ est une partie ouverte de $E'$ donc $f^{-1}(B_{E'}(f(a), E))$ est un ouvert relatif de $A$, qui contient $a$ car $f(a) \in B_{E'}(f(a), \varepsilon)$. Il existe donc $\delta > 0$ tel que $B_{A}(a, \delta)\subset f^{-1}(B_{E'}(f(a), \varepsilon))$ donc
+    $$
+      f \big(A \cap B_{E}(a, \delta)\big) = f\big(B_{A}(a, \delta)\big)\subset B_{E'}\big(f(a), \varepsilon\big)
+    $$
+    donc $f: A \longrightarrow E'$ est continue en tout point $a \in A$.
+%
+
+%eg
+  - Reprenons l’ensemble des matrices *unimodulaires*
+    $$
+      SL_{n}(\R) = \big\{M \in \M_{n}(\R) \where \det M=1\big\}
+    $$
+    On a $SL_{n}(\R) = \det^{-1}(\{1\})$ or $\det : \M_{n}(\R)\longrightarrow\R$ est une application continue (application polynomiale en les coordonnées dans la base canonique de $\M_{n}(\R)$) et $\{1\}$ est une partie fermée de $\R$. Ainsi, $SL_{n}(\R)$ est une partie fermée de $\M_{n}(\R)$.
+  - Soit $E$ un $\K$-espace vectoriel normé de dimension $n$ dont une base est $(e_{1}, \ldots, e_{n})$. Soit $P \in \K[X_{1}, \ldots, X_{n}]$. Considérons
+    $$
+      U = \left\{x = \sum_{i=1}^{n}x_{i}e_{i} \in E \where \tilde{P}(x_{1}, \ldots, x_{n})\ne 0\right\}
+    $$
+    L’application
+    $$
+      f: \applic{E}{\K}{x}{\tilde{P}(x_{1}, \ldots, x_{n})}
+    $$
+    est continue comme application polynomiale en les coordonnéès dans une base de $E$. Or $U = f^{-1}(\K^{*})$ et $\K^{*}$ est un ouvert de $\K$ donc $U$ est une partie ouverte de $E$.
+    ~
+    En conséquence, si $(P,Q) \in \K[X_{1}, \ldots, X_{n}]^{2}$ avec $Q\ne 0$ et $E$ de base $(e_{1}, \ldots, e_{n})$, alors
+    $$
+      f: x \longmapsto \frac{\tilde{P}(x_{1}, \ldots, x_{n})}{\tilde{Q}(x_{1}, \ldots, x_{n})}
+    $$
+    est définie et continue sur l’ouvert $U = \big\{x \in E \where \tilde{Q}(x_{1}, \ldots, x_{n})\ne 0\big\}$.
+  - Considérons à nouveau
+    $$
+      \Delta_{n} = \left\{(x_{1}, \ldots, x_{n}) \in \big(\R_{+}\big)^{n}\where \sum_{i=1}^{n}x_{i} = 1\right\}
+    $$
+    On a $\Delta_{n} = \big(\R_{+}\big)^{n} \cap f^{-1}(\{1\})$ avec
+    $$
+      f: \applic{\R^{n}}{\R}{(x_{1}, \ldots, x_{n})}{x_{1} + \cdots + x_{n}}
+    $$
+    est une application polynomiale, donc continue sur $\R^{n}$. $\{1\}$ est un fermé de $\R$ donc $f^{-1}(\{1\})$ est un fermé de $\R^{n}$. $\big(\R_{+}\big)^{n}$ une partie fermée de $\R^{n}$ en tant que produit de parties fermées de $\R$. Par intersection $\D_{n}$ est une partie fermée de $\R^{n}$.
+    ~
+    On pourrait aussi dire que $\Delta_{n} = g^{-1}(\{1\})$ avec
+    $$
+      g: \applic{\big(\R_{+}\big)^{n}}{\R}{(x_{1}, \ldots, x_{n})}{f(x_{1}, \ldots, x_{n})}
+    $$
+    $g$ est la restriction de $f$ à $\big(\R_{+}\big)$ donc $g$ est continue, $g^{-1}(\{1\})$ est donc un fermé relatif de $\big(\R_{+}\big)^{n}$. Or $\big(\R_{+}\big)^{n}$ est une partie fermée de $\R^{n}$ donc $\Delta_{n}$ est une partie fermée de $\R^{n}$ (incluse dans $\big(\R_{+}\big)^{n}$).
+    ~
+    De plus, $\Delta_{n} \subset \cc{0,1}^{n}$ donc $\Delta_{n}$ est une partie bornée de $\R^{n}$; elle est donc compacte.
+%
+
+%prop « Arme absolue »
+  Si $f: E \longrightarrow\R$ est une application continue sur $E$ (sur une partie non vide $A$ de $E$), et si $a \leq b$ sont deux réels, alors
+  1. $\big\{x \in E_{(A)} \where f(x) = a\big\}$, $\left\{x \in E_{(A)} \where f(x) \geq a\right\}$, $\left\{x \in E_{(A)} \where f(x) \leq a\right\}$, $\left\{x \in E_{(A)} \%here f(x) \in \cc{a,b}\right\}$ sont des parties fermées de $E$ (parties fermées relatives de $A$)
+  2. $\left\{x \in E_{(A)} \where f(x)\ne a\right\}$, $\left\{x \in E_{(A)}\where f(x) > a\right\}$, $\left\{x \in E_{(A)} \where f(x) < a\right\}$ et $\left\{x \in E_{(A)} \where f(x) \in \oo{a,b}\right\}$ sont des parties ouvertes de $E$ (parties ouvertes relatives de $A$).
+%
+
+%proof
+  1. $f^{-1}(\{a\})$, $f^{-1}(\co{a,+\infty})$, $f^{-1}(\oc{-\infty, a})$, $f^{-1}(\cc{a,b})$ sont des images réciproques de parties fermées de $\R$ par $f$ continue.
+  2. $f^{-1}(\R \setminus \{a\})$, $f^{-1}(\oo{a,+\infty})$, $f^{-1}(\oo{-\infty, a})$, $f^{-1}(\oo{a,b})$ sont des images réciproques de parties ouvertes de $\R$ par $f$ continues.
+%
+
+%rem
+  Attention, $\arctan(\R) = \oo{-\frac{\pi}{2}, \frac{\pi}{2}}$ n’est pas fermé or $\R$ l’est donc $\arctan$ n’est pas une *application fermée*.
+%
+
+%eg
+  - $GL_{n}(\R) = \det^{-1}(\R^{*})$ avec $\det : \M_{n}(\R) \longrightarrow\R$ continue, donc $\GL_{n}(\R)$ est une partie ouverte dense dans $\M_{n}(\R)$.
+    $$
+      \GL_{n}^{+}(\R) = \left\{M \in \M_{n}(\R) \where \det M > 0\right\}
+    $$
+    $$
+      \GL_{n}^{-}(\R) = \left\{M \in \M_{n}(\R) \where \det M < 0\right\}
+    $$
+    sont des parties ouvertes de $\M_{n}(\R)$ et de $\GL_{n}(\R)$.
+  - Soit la fonction $f: (x,y) \longmapsto \ln (x^{2}+y)$ et
+    $$
+      U = \big\{(x,y) \in \R^{2} \where x^{2}+y > 0\big\} = g^{-1}\left\{\oo{0,+\infty}\right\}
+    $$
+    avec
+    $$
+      g: \applic{\R^{2}}{\R}{(x,y)}{x^{2}+y}
+    $$
+    est polynomiale donc continue, donc $U$ est ouverte. $f = \ln\circ g$ et $g: U \longrightarrow\R$ est continue sur $U$ à valeurs dans $\R_{+}^{*}$ où $\ln$ est continue, donc $f$ est continue sur $U$.
+%
+
+%rem
+  Soit $f : A\longrightarrow E'$ une application sur une partie $A$ de $E$. Si $U'$ est un ouvert relatif de $A$ et si $f_{|U'}: U' \longrightarrow E'$ est continue sur $U'$, alors $f$ est au moins continue en tout point de $U'$.
+  ~
+  %rfig Graphe de $f$
+    @[./figures/exemple-continuité_optimized.svg]
+  %
+  L’application $f$ dessinée ci-contre est telle que $f_{|\R_{+}}: \R_{+} \longrightarrow \R$ est continue mais $f$ n’est pas continue en 0.
+%
+
+%proof
+  Supposons $f_{|U'}: U' \longrightarrow E'$ continue. Soit $a \in U'$. Montrons la continuité de $f$ en $a$. Soit $\varepsilon > 0$. Par continuité de $f_{|U'}$ en $a$, il existe $\delta > 0$ tel que
+  $$
+    f_{|U'} \left(B_{E}(a, \delta) \cap U'\right) \subset B_{E'} \big(f(a), \varepsilon\big)
+  $$
+  or $U'$ est un ouvert relatif de $A$ contenant $a$. Il existe donc $\delta' > 0$ tel que $B_{A}(a, \delta') \subset U'$ d’où
+  $$
+    \underbrace{f_{|U'} \left(B(a, \min\{\delta, \delta'\}) \cap A\right)}_{=f \left(A \cap  B(a, \min \{\delta, \delta'\})\right)} \subset B_{E'}\left(f(a), \varepsilon\right)
+  $$
+%
+
+%eg
+  Considérons
+  $$
+    f: \applic{\R^{2}}{\R}{(x,y)}{\begin{cases}\frac{\sin x - \sin y}{x-y} \if x\ne y\\ \cos x\if x=y\end{cases}}
+  $$
+  et
+  $$
+    U = \big\{(x,y) \in \R^{2} \where x-y \ne 0\big\}
+  $$
+  est un ouvert de $\R^{2}$. $(x,y) \longmapsto x-y$ est polynomiale sur $\R^{2}$ donc continue sur $\R^{2}$ donc continue sur $U$. La fonction d’une variable $\sin:\applic{\R}{\R}{x}{\sin x}$ est continue donc $\applic{\R^{2}}{\R}{(x,y)}{\sin x}$ est continue((SIDENOTE)). De même, $\applic{\R^{2}}{\R}{(x,y)}{\sin y}$ est continue. Par différence, $(x,y) \longmapsto \sin x-\sin y$ est continue sur $\R^{2}$ donc par restriction, sur $U$. Par quotient, $f_{|U}$ est continue sur $U$ donc comme $U$ est un ouvert de $\R^{2}$, $f$ est au moins continue en tout point de $U$: « le seul problème est la droite $x=y$ ».
+  $$
+    \forall (x,y) \in U, f(x,y) = 2 \frac{\sin \left( \frac{x-y}{2}\right) \cos \left(\frac{x+y}{2}\right)}{x-y}
+  $$
+  On pose
+  $$
+    \sinc: \applic{\R}{\R}{t}{\begin{cases}\frac{\sin t}{t}\if t\ne 0\\ 1\if t=0\end{cases}}
+  $$
+  C’est une fonction continue sur $\R$. On a alors
+  $$
+    \forall (x,y) \in \R^{2}, f(x,y) = \sinc \left(\frac{x-y}{2}\right)\cos \left(\frac{x+y}{2}\right)
+  $$
+  or $\alpha: (x,y) \longmapsto \frac{x-y}{2}$ et $\beta: (x,y) \longmapsto \frac{x+y}{2}$ sont continues sur $\R^{2}$ à valeurs dans $\R$ où $\sinc$ et $\cos$ sont continues, donc $\sinc \circ \alpha$ et $\cos \circ \beta$ sont continues sur $\R^{2}$. Ainsi, par produit, $f$ est continue sur $\R^{2}$.
+%
+
+%prop Prolongement des identités
+  1. Si deux application **continues** $f: A \longrightarrow E'$ et $g: A \longrightarrow E'$ coïncident sur une partie $D$ de $A$ dense dans $A$, alors $f$ et $g$ sont égales.
+  2. Si $f: A\longrightarrow E'$ est continue et si $D$ est une partie de $A$ dense dans $A$, alors $f(D)$ est dense dans $f(A)$.
+%
+
+%proof
+  1. Supposons $f_{|D} = g_{|D}$, $f$ et $g$ continues et $A \subset \bar{D}$. Soit $a \in A$. IL existe une suite $(d_{n})_{n \in \N}$ d’éléments de $D$ telle que $a = \lim_{n\to+\infty} d_{n}$. Par continuité de $f$ et $g$ en $a$, on a
+     $$
+       f(a) = \lim_{n\to+\infty}f(d_{n}) = \lim_{n\to+\infty}g(d_{n}) = g(a)
+     $$
+  2. Soit $b \in f(A). Il existe mma \in A$ tel que $b=f(A)$. Soit $(d_{n})_{n \in \N}$ une suite d’éléments de $D$ telle que $x_{n} \arrowlim{n \to+\infty} a$. Par continuité de $f$ en $a$, on a
+     $$
+       b = \lim_{n \to+\infty}f(d_{n}) \in \bar{f(D)}
+     $$
+     donc $f(A) \subset \bar{f(D)}$.
+%
+
+%eg
+  1. Soit $(A,B) \in \big(\GL_{n}(\K)\big)^{2}$. On a
+     $$
+       \com(AB) = \det (AB) \big((AB)^{-1}\big)\transp = \det(A)\det (B) \big(A^{-1}\big)\transp \left(B^{-1}\right)\transp = \com(A)\com (B)
+     $$
+     Considérons
+     $$
+       f: \applic{\big(\M_{n}(\K)\big)^{2}}{\M_{n}(\K)}{(M,N)}{\com (MN)}
+     $$
+     et
+     $$
+       g: \applic{\big(\M_{n}(\K)\big)^{2}}{\M_{n}(\K)}{(M,N)}{\com(M) \times \com(N)}
+     $$
+     Alors les application $f_{i,j}: (M,N) \longmapsto \big(\com(MN)\big)_{i,j}$ et $g_{i,j}: (M,N) \longmapsto \big(\com(M) \times \com(N)\big)_{i,j}$ sont polynomiale en les coordonnéès de $M$ et $N$ dans la base canonique, donc $f$ et $g$ sont continues. Or, ces applications coïncident sur $\GL_{n}(\K)^{2}$ et $\bar{\GL_{n}(\K)^{2}} = \bar{\GL_{n}(\K)}^{2} = \M_{n}(\K)^{2}$, i.e. $\GL_{n}(\K)^{2}$ est densed ans $\M_{n}(\K)^{2}$. On a donc $f = g$, i.e.
+     $$
+       \forall (A,B) \in \M_{n}(\K)^{2}, \com(AB) = \com(A)\com(B)
+     $$
+  2. Considérons
+     $$
+       f: \applic{\R}{\C}{x}{e^{2i \pi x}}
+     $$
+     Soit $\alpha \in \R \setminus \Q$. $H = \Z + \alpha\Z$ est un sous-groupe dense de $(\R,+)$ or $f$ est continue. Alors $f(H)$ est dense dans $f(\R) = \U$.
+     $$
+       f(H) = \left\{e^{2i \pi(p+\alpha q)} \where (p,q) \in \Z^{2}\right\} = \left\{e^{2i \pi q \alpha} \where q \in \Z\right\}
+     $$
+     donc
+     $$
+       \U \subset \bar{f(H)} \subset \bar{\U} = \U
+     $$
+     donc
+     $$
+       \adh \left( \left(e^{2i \pi n \alpha}\right)_{n \in \N}\right) \subset \bar{\big\{e^{2i \pi n \alpha} \where n \in \N\big\}} \subset \bar{ \big\{e^{2i \pi q \alpha} \where q \in \Z\big\}} = \U
+     $$
+%
+
+## Continuité et compacité
+
+%prop
+  Soit $A$ une partie non vide de $E$. Si $f: A \longrightarrow E'$ est continue et si $K$ est une partie compacte de $E$ incluse dans $A$, alors $f(K)$ est une partie compacte de $E'$.
+  « L’image continue d’un compact est un compact »
+%
+
+%proof
+  Soit $(y_{n})_{n \in \N}$ une suite d’éléments de $f(K)$. Il existe une site $(x_{n})_{n \in \N}$ d’éléments de $K$ telle que $\forall n \in \N, y_{n} = f(x_{n})$. Comme $K$ est compact, il existe $\varphi: \N \longrightarrow \N$ strictement croissante et $\alpha \in K$ tels que $x_{\varphi(n)} \arrowlim{n\to+\infty}\alpha$. Par continuité de $f$ en $\alpha$, on a
+  $$
+    y_{\varphi(n)} = f(x_{\varphi(n)}) \arrowlim{n\to+\infty} f(\alpha) \in f(K)
+  $$
+  donc $f(K)$ est une partie compacte de $E'$.
+%
+
+%cor Théorème des bornes atteintes
+  1. Si $f: K \longrightarrow\R$ est **continue** sur une partie **compacte** non vide $K$ de $E$, alors $f$ est bornée et atteint ses bornes : il existe $(x_{0}, y) \in K^{2}$ tels que
+     ~ $f(x_{0}) = \min_{K}f$  ~ $f(x_{1}) = \max_{K}f$
+  2. Si $f: K \longrightarrow E'$ est une application continue sur $K$, alors $f$ est bornée et il existe $(x_{0}, x_{1}) \in K^{2}$ tels que
+     $$
+       \forall x \in K, \norm{f(x_{0})}_{E'} \leq \norm{f(x)}_{E} \leq \norm{f(x_{1})}_{E'}
+     $$
+%
+
+%proof
+  1. Soit $f: K \longrightarrow\R$ continue sur un compact $K$. Alors $f(K)$ est une partie compacte de $\R$ donc $f(K)$ est bornée et fermée. Or $f(K)$ est bornée si et seulement si $f$ est bornée, donc $\inf_{K}f$ et $\sup_{K}f$ existent ($f(K)$ est bornée non vide). Il existe alors deux suite $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ à valeurs dans $K$ telles que
+     ~ $\inf_{K}f = \lim_{n\to+\infty}f(x_{n})$  ~ $\sup_{K}f = \lim_{n\to+\infty}f(x'_{n})$
+     or
+     $$
+       \forall n \in \N, \big(f(x_{n}), f(x'_{n})\big) \in f(K)^{2}
+     $$
+     et $f(K)$ est fermée, donc $\big(\inf_{K}f, \sup_{K}f\big) \in \big(f(K)\big)^{2}$. Il existe donc $(x_{0}, x_{1}) \in K^{2}$ tels que
+     ~ $\inf_{K}f = f(x_{0}) = \min_{K}f$  ~ $\sup_{K}f = f(x_{1}) = \max_{K}f$
+  2. Il suffit d’appliquer 1. à $g: \applic{K}{\R}{x}{\norm{f(x)}}$.
+%
+
+%rem
+  Attention,
+  - $\sin^{-1}(\cc{-1,1}) = \R$ n’est pas compacte.
+  - $\sin^{-1}(\{0\}) = \pi\Z$ n’est pas compact.
+  $\sin$ n’est pas une « application propre ».
+%
+
+%eg
+  1. Soit $K$ un compact non vide de $E$. Soit $x \in E$. La fonction
+     $$
+       \applic{K}{\R}{y}{\norm{x-y}}
+     $$
+     est continue sur le compact $K$, donc il existe $y_{0}\in K$ tel que $\norm{x-y_{0}} = \inf_{k \in K}\norm{x-y} = d(x,K)$.
+  2. Soit $K$ un compact non vide. Considérons l’application continue((v. plus bas)) $\applic{K^{2}}{\R}{(x,y)}{\norm{x-y}}$. $K^{2}$ est un produit de compacts donc c’est un compact pour $N_{\infty}$. Donc $f$ est bornée et atteint ses bornes, donc il existe $(x_{0}, y_{0}) \in K^{2}$ tel que $f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}}f(x,y)$. Autrement dit,
+     $$
+       f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}} d(x,y) = \delta(K)
+     $$
+     est le *diamètre du compact*.
+%

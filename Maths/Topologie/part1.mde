@@ -12,8 +12,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   or $x_{n} \arrowlim{n\to+\infty}0 \notin A$. On dit que $A$ n’est pas une partie fermée de $(\R, \abs{\cdot})$.
 %
 
-%def
-  Une partie $F$ d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$ est dite *fermée dans $(te, \norm{\cdot})$* si toute suite converegnte d’éléments de $F$ a sa limite dans $F$.
+%def Partie fermée
+  Une partie $F$ d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$ est dite *fermée dans $(E, \norm{\cdot})$* si toute suite converegnte d’éléments de $F$ a sa limite dans $F$.
 %
 
 %rem
@@ -43,7 +43,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %prop
   1. Toute intersection de parties fermées de $E$ est une partie fermée de $E$.
   2. Une réunion ++finie++ de parties fermées de $E$ est une partie fermée de $E$.
-  3. Si $F_{1}, \ldots, P_{p}$ sont des parties fermées respectivement de $(E_{1}, \nu_{1}), \ldots, (E_{p}, \nu_{p})$u, alors $F_{1} \times  \cdots F_{p}$ est une partie fermée de $(E_{1} \times  \cdots \times E_{p}, N_{\infty})$.
+  3. Si $F_{1}, \ldots, F_{p}$ sont des parties fermées respectivement de $(E_{1}, \nu_{1}), \ldots, (E_{p}, \nu_{p})$, alors $F_{1} \times \cdots \times F_{p}$ est une partie fermée de $(E_{1} \times  \cdots \times E_{p}, N_{\infty})$.
 %
 
 %proof
@@ -93,7 +93,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     %
 %
 
-%def Définition et proposition
+%def Définition et proposition — Adhérence d’une partie
   Soit $A$ une partie d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$. On note $\bar{A}$ la plus petite partie fermée contenant $A$.
   1. $\bar{A}$ est l’intersection de toutes les parties fermées de $E$ contenant $A$.
   2. $\bar{A} = \left\{x \in E \where \forall r > 0, B(x,r) \cap A \ne \emptyset\right\}$
@@ -177,7 +177,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %eg
-  Pour $A \in \M_{n}(\K)$, on a $\exp A = \sum_{k=0}^{+\infty}\frac{A^{k}}{k!}$ donc $exp(A) = \lim_{N\to+\infty}\sum_{k=0}^{N}\frac{A^{k}}{k!}$. Or
+  Pour $A \in \M_{n}(\K)$, on a $\exp A = \sum_{k=0}^{+\infty}\frac{A^{k}}{k!}$ donc $\exp(A) = \lim_{N\to+\infty}\sum_{k=0}^{N}\frac{A^{k}}{k!}$. Or
   $$
     \forall n \in \N, \sum_{k=0}^{N}\frac{A^{k}}{k!} \in \K[A]
   $$
@@ -266,7 +266,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 ## Parties compactes
 
-%def
+%def Partie compacte
   Une partie $K$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite compacte si toute suite à valeurs dans $K$ possède une valeur d’adhérence dans $K$, i.e. « $K$ vérifie la propriété de *Bolzano-Weierstrass* ».
 %
 
@@ -387,11 +387,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   1. %callout Propriété fondamentale
        Toute partie fermée incluse dans une partie compacte est une partie compacte.
      %
-  2. Toute intersection d’une famille *non vides* de parties compactes est une partie compacte
+  2. Toute intersection d’une famille *non vide* de parties compactes est une partie compacte
   3. Toute réunion finie de parties compactes de $E$ est une partie compacte de $E$.
-  4. Tout produit fini de parties compacetes est une partie compacte de l’espace vectoriel normé produit.
+  4. Tout produit fini de parties compactes est une partie compacte de l’espace vectoriel normé produit.
   %offprog
-    5. Si $(x_{n})_{n \in \N}$ est une suite de $E$ convergente de limite $\ell$, alors $\K = \{\ell\} \cup  \{x_{n} \where n \in \N\}$ est une partie compacte de $E$.
+    5. Si $(x_{n})_{n \in \N}$ est une suite de $E$ convergente de limite $\ell$, alors $K = \{\ell\} \cup  \{x_{n} \where n \in \N\}$ est une partie compacte de $E$.
   %
 %
 
@@ -564,7 +564,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %prop
   1. Toute réunion de parties ouvertes de $E$ est une partie ouverte de $E$.
   2. Toute intersection finie de parties ouvertes de $E$ est une partie ouverte de $E$.
-  3. Tout produ $O_{1} \times  \cdots \times O_{p}$ de parties ouvertes $O_{1}, \ldots, O_{p}$ respectivement de $(E_{1},\nu_{1}), \ldots, (E_{p}, \nu_{p})$ est une partie ouverte de $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$.
+  3. Tout produit $O_{1} \times  \cdots \times O_{p}$ de parties ouvertes $O_{1}, \ldots, O_{p}$ respectivement de $(E_{1},\nu_{1}), \ldots, (E_{p}, \nu_{p})$ est une partie ouverte de $(E_{1} \times  \cdots \times  E_{p}, N_{\infty})$.
 %
 
 %proof
@@ -578,7 +578,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      Ainsi, $O_{1} \times  \cdots \times  O_{p}$ est un ouvert.
 %
 
-%def Définition-propositions
+%def Définition-propositions — intérieur d’une partie
   Soit $A$ une partie de $E$. Notons $\ring A$ la plus grande partie ouverte de $E$ incluse dans $A$. On a
   1. $\ring A$ est la réunion de toutes les parties ouvertes de $E$ incluses dans $A$
   2. $\ring A$ est l’ensemble des points intérieurs à $A$, i.e.
@@ -689,7 +689,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %offprog
   %def Topologie
-    Une *topologie $\mathscr{T}$ sur un ensemble $X$* est une partie de $\Part X$ telle que
+    Une *topologie $\mathscr{T}$ sur un ensemble $X$* est une partie de $\Part (X)$ telle que
     1. $\emptyset \in \mathscr{T}$, $X \in \mathscr{T}$.
     2. $\mathscr T$ est stable par réunion quelconque.
     3. $\mathscr T$ est stable par intersectoin finie.
