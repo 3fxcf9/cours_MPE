@@ -612,6 +612,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   %
   5. $\forall a \in E, \forall r \in \R_{+}^{*}, \longring{\bar{B}(a,r)} = B(a,r)$
   6. $\big(\ring A\big)^{\complement} = \bar{A^{\complement}}$; $\big(\bar{A}\big)^{\complement} = \longring{A^{\complement}}$
+  7. Si $A$ est un sous-espace vectoriel de $E$ avec $A\ne E$, alors $\ring A = \emptyset$.
 %
 
 %proof
@@ -619,14 +620,17 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   2. - Si $A$ est ouvert, alors la plus grande partie ouverte de $A$ incluse dans $A$ est elle-même donc $\ring A = A$.
      - Si $A = \ring A$, alors comme $\ring A$ est un ouvert, $A$ est une partie ouverte.
   3. Supposons $A \subset B$. Soit $x \in \ring A$. Il existe $r > 0$ tel que $B(x,r) \subset A$, donc $B(x,r) \subset B$ donc $x \in \ring B$.
-  4. $\ring A \times \ring B \subset A \times B$ et $\ring A \times \ring B$ est un ouvert de $E \times E$ donc $\ring A \times \ring B \subset \longring{A \times B}$. Soit $(x, x') \in \longring{(A \times B)}$. Il existe $r > 0$ tel que
+  %offprog
+    4. $\ring A \times \ring B \subset A \times B$ et $\ring A \times \ring B$ est un ouvert de $E \times E$ donc $\ring A \times \ring B \subset \longring{A \times B}$. Soit $(x, x') \in \longring{(A \times B)}$. Il existe $r > 0$ tel que
+       $$
+         B_{\norm{\cdot}}(x,r) \times B_{\norm{\cdot}}(x', r) B_{N_{\infty}}\big((x,x'), r\big) \subset A \times B
+       $$
+       donc
+       ~ $B_{\norm{\cdot}}(x,r)\subset A$  ~ $B_{\norm{\cdot}}(x', r) \subset B$
+       donc $(x,x') \in \ring A \times \ring B$.
+  %
+  6. On a
      $$
-       B_{\norm{\cdot}}(x,r) \times B_{\norm{\cdot}}(x', r) B_{N_{\infty}}\big((x,x'), r\big) \subset A \times B
-     $$
-     donc
-     ~ $B_{\norm{\cdot}}(x,r)\subset A$  ~ $B_{\norm{\cdot}}(x', r) \subset B$
-     donc $(x,x') \in \ring A \times \ring B$.
-  5. $$
        \begin{align*}
          x \in \left(\ring A\right)^{\complement} &\iff x \notin \ring A\\
          &\iff \forall r > 0, B(x,r)\not\subset A\\
@@ -645,8 +649,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
          &\iff x \in \longring{A^{\complement}}
        \end{align*}
      $$
-  6. %rfig
-       @[./figures/frontière-sev.svg]
+  7. %rfig
+       @[./figures/frontière-sev_optimized.svg]
      %
      Soit $F$ un sous-espace vectoriel de $E$ avec $F\ne E$. Soit $a \in E$. Posons $W = a+F = \{a+u \where u \in F\}$. Supposons $\ring W \ne \emptyset$. Il existe alors $x \in W$ et $r > 0$ tel que $B(x,r) \subset W$. Pour $x =a+u$ avec $u \in F$. Soit $y \in E \setminus W$.
      $$
@@ -691,8 +695,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   %def Topologie
     Une *topologie $\mathscr{T}$ sur un ensemble $X$* est une partie de $\Part (X)$ telle que
     1. $\emptyset \in \mathscr{T}$, $X \in \mathscr{T}$.
-    2. $\mathscr T$ est stable par réunion quelconque.
-    3. $\mathscr T$ est stable par intersectoin finie.
+    2. $\mathscr T$ contient toute réunion quelconque d’éléments de $\mathscr T$(($\mathscr T$ est stable par réunion quelconque.))
+    3. $\mathscr T$ contient toute intersection finie d’éléments de $\mathscr T$(($\mathscr T$ est stable par intersection finie.))
     $X$ est alors dit *topologique*.
   %
 %
@@ -700,7 +704,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %eg
   %offprog
     - Soit $X$ un ensemble. $\{\emptyset, X\}$ est une topologie sur $X$; $\Part (X)$ en est une autre.
-    - Soit $(X,d)$ un espace màtrique. Pour $x \in X$ et $r \in \R_{+}^{*}$, on pose $B_{d}(x,r) = \{y \in X \where d(y,x) < r\}$ et
+    - Soit $(X,d)$ un espace métrique. Pour $x \in X$ et $r \in \R_{+}^{*}$, on pose $B_{d}(x,r) = \{y \in X \where d(y,x) < r\}$ et
       $$
         \mathscr T_{X} = \left\{A \in \Part(X) \where \forall a \in A, \exists r > 0: B_{d}(a,r) \subset A\right\}
       $$

@@ -1,0 +1,167 @@
+# Semaine 10
+
+## Caractérisation de la continuité d’une application multilinéaire
+
+%thm
+  Soit $n \in \N^{*}$. Considérons $(n+1)$ $\K$-espaces vectoriels $\big((E_{1}, \nu_{1}), \ldots, (E_{n}, \nu_{n}), (F,\norm{\cdot}_{F})\big)$. On munit $E_{1} \times  \cdots \times  E_{n}$ de la norme produit
+  $$
+    (x_{1}, \ldots, x_{n}) \longmapsto N_{\infty}(x_{1}, \ldots, x_{n}) = \max_{i \in \icc{1,n}}\nu_{i}(x_{i})
+  $$
+  Pour $f \in \L^{n}(E_{1} \times \cdots \times E_{n}, F)$, il y a équivalence entre :
+  1. $f: (E_{1} \times  \cdots E_{n}, \underline{N_{\infty}}) \longrightarrow (F, \norm{\cdot}_{\infty})$ est continue sur $E$
+  2. $f$ est continue en $(0_{E_{1}}, \ldots, 0_{E_{n}})$
+  %offprog
+    3. $f$ est bornée sur $B'_{N_{\infty}}(0,1)$
+    4. $f$ est bornée sur $S_{N_{\infty}}(0,1)$
+  %
+  4. Il existe un réel $c \in \R_{+}$ tel que
+     $$
+       \forall (x_{1}, \ldots, x_{n}) \in E_{1} \times \cdots \times E_{n}: \norm{f(x_{1}, \ldots, x_{n})}_{F} \leq c \nu_{1}(x_{1})\times  \cdots \times \nu_{n}(x_{n})
+     $$
+%
+
+%proof
+  - On a facilement $(1) \implies (2)$
+  - Supposons $f: (E_{1} \times  \cdots \times E_{n}, N_{\infty})\longrightarrow F$ continue en $(0_{E}, \ldots, 0_{E_{n}}) = « 0 »$. Soit $\varepsilon=1$. Il existe $\delta > 0$ tel que
+    $$
+      f(B_{N_{\infty}}(0, \delta)) \subset B_{F}(0_{F},1)
+    $$
+    Soit $(x_{1}, \ldots, x_{n}) \in B'_{N_{\infty}}(0,1)$.
+    $$
+      N_{\infty} \left(\frac{\delta}{2}(x_{1}, \ldots, x_{n})\right) = \frac{\delta}{2}N_{\infty}(x_{1}, \ldots, x_{n}) \leq \frac{\delta}{2} < \delta
+    $$
+    donc $\norm{f \left(\underbrace{\frac{\delta}{2}(x_{1}, \ldots, x_{n})}_{=\left(\frac{\delta}{2}x_{1}, \ldots, \frac{\delta}{2}x_{n}\right)}\right)}_{F} \leq 1$ donc par $n$-linéarité, on a
+    $$
+      \forall (x_{1}, \ldots, x_{n}) \in B'_{N_{\infty}}(0,1), \norm{f(x_{1}, \ldots, x_{n})} \leq \left(\frac{2}{\delta}\right)^{n}
+    $$
+    Ainsi $f$ est bornée sur $B_{N_{\infty}}(0,1)$.
+  - $S_{N_{\infty}}(0,1) \subset B'_{N_{\infty}}(0,1)$ donc $(3) \implies (4)$.
+  - Supposons $f$ bornée sur $S_{N_{\infty}}(0,1)$ et $f$ $n$-linéaire. Il existe alors $c \in \R_{+}$ tel que
+    $$
+      \forall (x_{1}, \ldots, x_{n}) \in  \big(S_{N_{\infty}}(0,1)\big)^{n}, \norm{f(x_{1}, \ldots, x_{n})}_{F} \leq c
+    $$
+    - Si l’un des vecteurs $x_{i}$ est nul, alors $f(x_{1}, \ldots, x_{n}) = 0_{F}$ et $\nu_{i}(x_{i}) = 0_{E_{i}}$ donc on a égalité.
+    - Si tous les $x_{i}$ sont non nuls, alors
+      $$
+        N_{\infty}\left(\frac{x_{1}}{\nu_{1}(x_{1})}, \ldots, \frac{x_{n}}{\nu_{n}(x_{n})}\right) = \max_{i \in \icc{1,n}} \nu_{i} \left(\frac{x_{i}}{}\nu_{i}(x_{i})\right) = \max_{i \in \icc{1,n}}1 = 1
+      $$
+      donc $\left(\frac{x_{1}}{\nu_{1}(x_{1})}, \ldots, \frac{x_{n}}{\nu_{n}}(x_{n})\right) \in S_{N_{\infty}}(0,1)$ donc
+      $$
+        \norm{f \left(\frac{x_{1}}{\nu_{1}(x_{1})}, \ldots, \frac{x_{n}}{\nu_{n}(x_{n})}\right)}_{F} \leq c
+      $$
+      Par $n$-linéarité, on a
+      $$
+        \frac{1}{\nu_{1}(x_{1})} \times  \cdots \times  \frac{1}{\nu_{n}(x_{n})} \norm{f(x_{1}, \ldots, x_{n})}_{F} \leq c
+      $$
+      d’où
+      $$
+        \norm{f(x_{1}, \ldots, x_{n})}_{F} \leq c \nu_{1}(x_{1}) \times  \cdots \times \nu_{n}(x_{n})
+      $$
+  - Soit $f \in \L^{n}(E_{1} \times  \cdots \times E_{n}, F)$. Supposons l’existence de $c$ tel que
+    $$
+      \forall (x_{1}, \ldots, x_{n}) \in E_{1} \times  \cdots \times E_{n}, \norm{f(x_{1}, \ldots, x_{n})}_{F} \leq c \nu_{1}(x_{1}) \times  \cdots \times \nu_{n}(x_{n})
+    $$
+    Soit $a = (a_{1}, \ldots, a_{n}) \in E_{1} \times  \cdots \times E_{n}$. Montrons que pour tout $\varepsilon > 0$ donné, il existe $\delta > 0$ tel que
+    $$
+      \begin{cases}x = (x_{1}, \ldots, x_{n}) \in E_{1} \times  \cdots X_{n}\\ N_{\infty} (x_{1}-a_{1}, \ldots, x_{n}-a_{n}) < \delta\end{cases} \implies  \norm{f(x_{1}, \ldots, x_{n}) - f(a_{1}, \ldots, a_{n})}_{F} \leq \varepsilon
+    $$
+    Pour $\delta > 0$ (à déterminer par la suite), on prend $(x_{1}, \ldots, x_{n})$ tel que $\forall k \in \icc{1,n}, \nu_{k}(x_{k}-a_{k}) < \delta$
+    $$
+      \begin{align*}
+        \norm{f(x_{1}, \ldots, x_{n}) - f(a_{1}, \ldots, a_{n})} &\leq \sum_{k=1}^{n}\norm{f(a_{1}, \ldots, a_{k-1}, x_{k}-a_{k}, x_{k-1}, \ldots, x_{n})}_{F}\\
+        &\leq c \sum_{k=1}^{n}\nu_{1}(a_{1}) \times  \cdots \times \nu_{k-1}(a_{k-1}) \times  \nu_{k} (x_{k} - a_{k}) \nu_{k+1}(x_{k+1}) \times  \cdots \times \nu_{n}(x_{n})\\
+        &\leq c \sum_{k=1}^{n}N_{\infty}(a)^{k-1}N_{\infty}(x-a) \times N_{\infty}(x)^{n-k}
+      \end{align*}
+    $$
+    or $N_{\infty}(x) \leq N_{\infty}(x-a) + N_{\infty}(a) \leq \delta + N_{\infty}(a)$ et $N_{\infty} \leq \delta + N_{\infty}(a)$ donc
+    $$
+      \norm{f(x_{1}, \ldots, x_{n}) - f(a_{1}, \ldots, a_{n})}_{F} \leq c n (\delta + N_{\infty}(a))^{n-1}\delta
+    $$
+    Soit
+    $$
+      \delta = \min \left\{1, \frac{\varepsilon}{n(c+1)(1+N_{\infty}(a))^{n-1}}\right\}
+    $$
+    On a alors pour $N_{\infty}(x-a) < \delta$ :
+    $$
+      \norm{f(x_{1}, \ldots, x_{n}) - f(a_{1}, \ldots, a_{n})} < c n (1+N_{\infty}(a))^{n-1}\delta < \varepsilon
+    $$
+%
+
+
+%offprog
+  ## L’ensemble des termes d’une suite convergente complété par la limite est un compact
+
+  %prop
+    Si $(x_{n})_{n \in \N}$ est une suite de $E$ convergente de limite $\ell$, alors $K = \{\ell\} \cup  \{x_{n} \where n \in \N\}$ est une partie compacte de $E$.
+  %
+
+  %proof
+    Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $E$ de limite $\ell$. Posons $\K = \{\ell\} \cup \{x_{n} \where n \in \N\}$. Soit $(y_{n})_{n \in \N} \in K^{\N}$.
+    - Si $\{y_{n} \where n \in \N\}$ est fini, on peut extraire une suite constante donc convergente dans $K$.
+    - Si $\{y_{n} \where n \in \N\}$ est infini, on cherche à extraire une sous-suite de $(x_{n})$ de la suite $(y_{n})$. Posons $n_{0} = \min \{n \in \N \where y_{n} \ne \ell\}$. Il existe alors $p_{0} \in \N$ tel que $y_{n_{0}} = x_{p_{0}}$. Posons ensuite
+      $$
+       n_{1} = \min \left\{n \geq n_{0}+1 \where y_{n} \notin \{x_{p} \where p \leq p_{0}\}\cup \{\ell\}\right\}
+      $$
+      $n_{1}$ existe car $\{y_{n} \where n \in \N\} \setminus \{x_{p} \where p \leq p_{0}\} \cup \{\ell\}\ne \emptyset$. Il existe alors $p_{1} > p_{0}$ tel que $y_{n_{1}} = x_{p_{1}}$. De façon générale, si les objets sont construits à l’ordre $k \in \N$,
+      $$
+       n_{k+1} = \min \left\{n \geq n_{k}+1 \where y_{n} \notin \{x_{p} \where p \leq p_{k}\} \cup \{\ell\}\right\}
+      $$
+      et $y_{n_{k+1}} = x_{p_{k-1}}$. Alors,
+      $$
+       \forall k \in \N, \begin{cases}p_{k} < p_k+1\\ n_{k} < n_k+1\end{cases}
+      $$
+      $(y_{n_{k}})_{k \in \N}$ est donc une suite extraite de $(y_{n})$ égale à une suite extraite de $(x_{n})$. Elle converge donc vers $\ell \in K$. Ainsi, $K$ est un compact.
+  %
+%
+
+## Une partie est fermée si et seulement si son complémentaire est ouvert
+
+%prop
+  Soit $A$ une partie de $E$. Alors $A$ est fermée si et seulement si $A^{\complement} = E \setminus A$ est ouverte.
+%
+
+%proof
+  Montrons que $A$ n’est pas fermée si et seulements si $E \setminus A$ n’est pas ouverte.
+  ~
+  - Supposons que $A$ ne soit pas une partie fermée de $E$. IL existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. IL existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \V_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
+  - Supposons $E \setminus A$ non ouverte. Il existe $x \in E \setminus A$ tel que $E \setminus A \notin \V_{E}(x)$. Pour tout $r > 0, B(x,r) \not \subset E \setminus A$ donc
+    $$
+      \forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap A \notin \emptyset
+    $$
+    donc il existe une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ telle que
+    $$
+      \forall n \in N, \norm{x-a_{n}} < \frac{1}{n+1}
+    $$
+    donc $a_{n} \arrowlim{n\to+\infty}e \in E \setminus A$ or $A$ contient tous les termes de $(a_{n})$ donc $A$ n’est pas fermée.
+%
+
+## Adhérence du complémentaire
+
+L’adhérence du complémentaire est le complémentaire de l’intérieur.
+
+$$
+  \begin{align*}
+    x \in \left(\ring A\right)^{\complement} &\iff x \notin \ring A\\
+    &\iff \forall r > 0, B(x,r)\not\subset A\\
+    &\iff \forall r > 0, B(x,r) \cap (E \setminus A)\notin \emptyset\\
+    &\iff x \in \bar{E \setminus A} \\
+    &\iff x \in \bar{A^{\complement}}
+  \end{align*}
+$$
+
+## Intérieur d’un sous-espace affine strict
+
+%prop
+  Si $A$ est un sous-espace vvectoriel de $E$ avec $A\ne E$, alors $\ring A = \emptyset$.
+%
+
+%proof
+  %rfig
+    @[./figures/frontière-sev_optimized.svg]
+  %
+  Soit $F$ un sous-espace vectoriel de $E$ avec $F\ne E$. Soit $a \in E$. Posons $W = a+F = \{a+u \where u \in F\}$. Supposons $\ring W \ne \emptyset$. Il existe alors $x \in W$ et $r > 0$ tel que $B(x,r) \subset W$. Pour $x =a+u$ avec $u \in F$. Soit $y \in E \setminus W$.
+  $$
+    \underbrace{x}_{a+u} + \frac{r}{2} \frac{y-x}{\norm{y-x}} \in B(x,r) \subset W = a + F
+  $$
+  donc $u + \frac{r}{2}\frac{y-x}{\norm{y-x}} \in F$, or $u \in F$ donc $y-x \in F$ soit $y \in x+F = W$ — contradiction. Ainsi, $\ring W = \emptyset$.
+%
