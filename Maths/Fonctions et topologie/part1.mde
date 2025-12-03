@@ -248,9 +248,342 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
        \applic{K}{\R}{y}{\norm{x-y}}
      $$
      est continue sur le compact $K$, donc il existe $y_{0}\in K$ tel que $\norm{x-y_{0}} = \inf_{k \in K}\norm{x-y} = d(x,K)$.
-  2. Soit $K$ un compact non vide. Considérons l’application continue((v. plus bas)) $\applic{K^{2}}{\R}{(x,y)}{\norm{x-y}}$. $K^{2}$ est un produit de compacts donc c’est un compact pour $N_{\infty}$. Donc $f$ est bornée et atteint ses bornes, donc il existe $(x_{0}, y_{0}) \in K^{2}$ tel que $f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}}f(x,y)$. Autrement dit,
+  2. Soit $K$ un compact non vide. Considérons l’application continue((v. plus bas)) $f:\applic{K^{2}}{\R}{(x,y)}{\norm{x-y}}$. $K^{2}$ est un produit de compacts donc c’est un compact pour $N_{\infty}$. Donc $f$ est bornée et atteint ses bornes, donc il existe $(x_{0}, y_{0}) \in K^{2}$ tel que $f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}}f(x,y)$. Autrement dit,
      $$
        f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}} d(x,y) = \delta(K)
      $$
      est le *diamètre du compact*.
+     ~
+     *Continuité de $f$:* Posons $g: \applic{(E^{2}, N_{\infty})}{\R}{(x,y)}{\norm{x-y} = d(x,y)}$. Soit $\big((x,y), (x', y')\big) \in (E^{2})^{2}$.
+     $$
+       \abs{g(x,y) - g(x',y')} = \abs{d(x,y) - d(x',y')}  \leq \abs{\norm{x-y} - \norm{x'-y'}} \leq \norm{(x-y)-(x'-y')} \leq \norm{(x-xy) + (y'-y)} \leq  \norm{x-x'} + \norm{y-y'}  \leq 2 N_{\infty}\big((x-x', y-y')\big)
+     $$
+     donc $g$ est 2-lipschitzienne donc continue.
+%
+
+%lemma
+  Soient $A_{1}$ et $A_{2}$ deux parties respectives de $E_{1}$ et $E_{2}$. Soit
+  $$
+    f: \applic{A_{1}}{F}{x_{1}}{f(x_{1})}
+  $$
+  continue. Alors
+  $$
+    \applic{A_{1} \times A_{2}}{F}{(x_{1}, x_{2})}{f(x_{1})}
+  $$
+  est continue.
+%
+
+%proof
+  L’application
+  $$
+    \pi: \applic{(E_{1} \times E_{2}, N_{\infty})}{(E_{1}, \nu_{1})}{(x_{1}, x_{2})}{x_{1}}
+  $$
+  est linéaire et pour $(x_{1}, x_{2}) \in E_{1} \times E_{2}$, on a
+  $$
+    \nu_{1}(\pi(x_{1}, x_{2})) = \nu(x_{1}) \leq 1 \cdot N_{\infty}(x_{1}, x_{2})
+  $$
+  donc $\pi$ est continue, donc $\pi_{|A_{1} \times A_{2}}: A_{1} \times A_{2} \longrightarrow A_{1}$ est continue à valeurs dans $A_{1}$ où $f$ est continue. On a alors le résultat par composition.
+%
+
+%thm Théorème de Heine
+  Si $f: K \longrightarrow F$ est une application continue sur un compact (non vide) $K$ de $E$, alors $f$ est uniformément continue.
+%
+
+%proof
+  Soit $f$ une telle fonction. Supposons
+  $$
+    \non \left(\forall  \varepsilon > 0, \exists  \delta > 0: \begin{cases}(x,x') \in K^{2}\\ \norm{x-x'} < \delta\end{cases} \implies \norm{f(x) - f(y)}_{F} < \varepsilon\right)
+  $$
+  i.e.
+  $$
+    \exists \varepsilon > 0: \forall \delta > 0, \exists (x,x') \in K^{2}: \begin{cases}\norm{x-x'} < \delta\\ \norm{f(x) - f(x')} \geq  \varepsilon\end{cases}
+  $$
+  Alors, il existe une suite $\big((x_{n}, x'_{n})\big)_{n \in \N}$ de $K^{2}$ telle que
+  $$
+    \forall n \in \tn, \begin{cases}\norm{x_{n} - x'_{n}} < \frac{1}{n+1}\\ \norm{f(x_{n}) - f(x'_{n})} \geq \varepsilon\end{cases}
+  $$
+  Comme $K$ est compact, il existe $\varepsilon: \N \longrightarrow \N$ strictement croissante et $\alpha \in K$ tels que $x_{\varphi(n)} \arrowlim{n\to+\infty}\alpha$. Alors,
+  $$
+    x'_{\varphi(n)} = (x'_{\varphi(n)} - x_{\varphi(n)}) + x_{\varphi(n)} \arrowlim{n\to+\infty}0+\alpha
+  $$
+  or
+  $$
+    \forall  n \in \N, \varepsilon \leq  \norm{f(x_{\varphi(n)}) - f(x'_{\varphi(n)})}
+  $$
+  donc par continuité de $f$ en $\alpha$, on a
+  $$
+    \varepsilon \leq \norm{f(\alpha) - f(\alpha)} = 0
+  $$
+  ce qui contredit $\varepsilon > 0$.
+%
+
+## Connexité par arcs
+
+%def Définition-proposition
+  Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$.
+  1. Soit $(x,y) \in X^{2}$. On appelle *chemin* (ou *arc*) *continu* joignant $x$ à $y$ tracé sur $X$ teute application continue $\gamma: \cc{a,b} \longrightarrow E$ avec $a \leq b$ deux réels telle que
+     ~ $\gamma(\cc{a,b}) \subset X$  ~ $\gamma(a) = x$ et $\gamma(b) = y$
+  2. Soit $(x,y) \in X^{2}$. S’il existe un arc continu joignant $x$ à $y$ tracé sur $X$, alors on note (notation non officielle) $x \arc{X} y$. $\arc X$ est une relation d’équivalence sur $X$ et la classe de $x \in X$ est
+     $$
+       C_{X}(x) = \{y \in X \where x \arc X y\}
+     $$
+  3. On dit que $X$ est connexe par arcs s’il n’existe qu’une seule classe d’équivalence pour la relation d’équivalence $\arc X$. Autrement dit, on a l’une des conditions équivalentes suivantes :
+     - $\exists  x \in X: X = C_{X}(x)$
+     - $\forall (x,y) \in X^{2}, x \arc X y$
+     - $\forall t \in X, X = C_{X}(t)$
+%
+
+%rem
+  On peut se limiter aux chemins continus $\gamma: \cc{0,1} \longrightarrow X$ avec $\gamma(0) = x$ et $\gamma(1) = y$. En effet,
+  $$
+    \applic{\cc{0,1}}{\cc{a,b}}{t}{a+t(b-a)}
+  $$
+  est un homéomorphisme.
+  $$
+    \begin{cases}\gamma \in \Cont(\cc{0,1}, X)\\ \gamma(0) = x \\ \gamma(1) = y\end{cases} \iff  \begin{cases}\gamma\circ \delta^{-1} \in \Cont(\cc{a,b}, X) \\ (\gamma \circ \delta^{-1}) (a) = x \\ (\gamma\circ \delta^{-1})(b) = y\end{cases}
+  $$
+%
+
+%proof
+  - Soit $x \in X$. $\gamma: \applic{\cc{0,1}}{E}{t}{x}$ est continue à valeurs dans $X$ et $\gamma(0) = \gamma(1) = x$ donc $x \arc X y$
+  - Soit $(x,y) \in X^{2}$ avec $x \arc X y$. Il existe $\gamma: \cc{0,1} \longrightarrow E$ continue telle que
+    ~ $\gamma(\cc{0,1}) \subset X$  ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
+    Posons
+    $$
+      \delta: \applic{\cc{0,1}}{E}{t}{\gamma(1-t)}
+    $$
+    $\gamma$ est continue et à valeurs dans $X$, $\delta(0) = \gamma(1) = y$ et $\delta(1) = \gamma(0) = x$ donc $y \arc X x$.
+  - Soient $(x,y,z) \in X^{3}$ avec $x \arc X y$ et $y \arc X z$. Il existe $\gamma: \cc{0,1} \longrightarrow X$ et $\delta: \cc{0,1} \longrightarrow X$ continues telles que $\gamma(0) = x, \gamma(1) = y, \delta(0) = y$ et $\delta(1) = z$. Posons
+    $$
+      \varepsilon: \applic{\cc{0,1}}{X}{t}{\begin{cases}\gamma(2t) \if t \in \cc{0,\frac{1}{2}}\\ \delta(2t-1) \if t \cc{\frac{1}{2}, 1}\end{cases}}
+    $$
+    Elle est bien définie car $\varepsilon(\frac{1}{2}) = \gamma(1) = y$ et $\delta(2 \times \frac{1}{2} - 1) = \delta(0) = y$. De plus, $\varepsilon \in \Cont(\cc{0,1}, X)$, $\varepsilon(0) = \gamma(0) = x$ et $\varepsilon(1) = \delta(2-1) = \delta(1) = z$ donc $x \arc X z$.
+%
+
+%eg
+  - $\emptyset$, $E$ et $\{x\}$ pour $x \in E$ sont des parties convexes par arcs.
+  - Toute partie convexe de $E$ est une partie convexe par arcs.
+    ~
+    Soit $A$ une partie convexe de $E$. Soit $(x,y) \in A^{2}$. Posons
+    $$
+      \gamma: \applic{\cc{0,1}}{E}{t}{x+t(y-x) = (1-t)x + ty}
+    $$
+    - $\gamma(\cc{0,1}) = \{(1-t)x + ty \where t \in \cc{0,1}\} = \cc{x,y} \subset A$
+    - $\gamma \in \Cont(\cc{0,1}, E)$ car $\norm{y-x}$-lipschitzienne.
+    - $\gamma(0) = x$ et $\gamma(1) = y$
+  - $X = \big(\{0\} \times \R\big) \cup \big(\R \times \{0\}\big)$ est convexe par arcs mais pas convexe.
+  - Pour $X$ partie de $\R$, on a l’équivalence
+    $$
+      X \text{ intervalle} \defiff X \text{ convexe} \iff X \text{ convexe par arcs}
+    $$
+    ~
+    Soit $X$ une partie convexe par arcs de $\R$. Soient $x \leq  y$ deux éléments de $X$. Soit $z \in \cc{x,y}$. On a $x \arc X y$ donc il existe $\gamma: \cc{0,1} \longrightarrow\R$ continue telle que
+    ~ $\gamma(\cc{0,1}) \subset X$  ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
+    D’après le théorème des valeurs intermédiaires, il existe $t \in \cc{0,1}$ tel que $z = \gamma(t) \in X$, donc $X$ est convexe.
+  - %def Partie étoilée
+      Soit $X$ une partie de $E$. On dit que $X$ est *étoilée* par rapport à $\omega \in X$ si
+      $$
+        \forall x \in X, \cc{\omega, x} \subset X
+      $$
+    %
+    Toute partie étoilée est convexe par arcs.
+    ```
+      .                       xx xxxxxx
+      .                     xx        xxx
+      .                   xx             xx
+      .                  x                 x
+      .                  x                  x
+      .                  x                   x
+      .                  x                    x
+      .                  x                    x
+      .                  x                    x
+      .                  x                     x
+      .                   x                    x
+      .                   x                    xx
+      .                   x                     xx
+      .                    x                      x
+      .                    x                       xx
+      .                    x                        xxxx xx    xxxxxxxxxxxxxxxxxxxxx
+      .                     x                              xxxx                    xx
+      .                     x                                                        x
+      .                     x                                                        x
+      .                    x                                                         x
+      .                    x                                                        xx
+      .                    x              xxx  Omega                                x
+      .                   x               xxx                                      x
+      .                  x                                                       xx
+      .                 x                                                       xx
+      .                x                                                     xxx
+      .               x                                                  x xx
+      .              x                                             xx xxx
+      .            xx                                      xx xx xx
+      .          x                                  x x x x
+      .          x                             xx x
+      .        xx                           xx
+      .      x                            x
+      .     x                          xx
+      .     x                       x x
+      .   xx                      x
+      .  x                     x x
+      . x                      x
+      . x                   xx
+      .x                   x
+      .x                 x
+      .x               x
+      .xx             x
+      . x           xx
+      .  xxx     xxx
+      .    xxxxxx
+    ```
+    ~
+    $X = \big(\R \times \{0\}\big) \cup  \big(\{0\} \times \R\big) \cup \big(\{1\}\times \R\big)$ est convexe par arcs mais n’est pas étoilée.
+  - Soit $E$ un $\K$-espace evctoriel normé (de dimension finie ou infinie). Alors $E \setminus \{0\}$ est convexe par arcs si $\dim_{\R} E \geq 2$.
+    %proof
+      Soit $(x,y) \in \big(E \setminus \{0\}\big)^{2}$.
+      - si $(x,y)$ est $\R$-libre, soit $t \in \cc{0,1}$.
+        $$
+          x+t(y-x) = 0_{E} \iff (1+t)x + ty = 0_{E} \implies 0 = 1-t = t
+        $$
+        ce qui est faux. Ainsi, $\forall t \in \cc{0,1}, x + t(y-x) \in E \setminus \{0\}$ donc $\gamma: \applic{\cc{0,1}}{E}{t}{x+t(y-x)}$ est continue à valeurs dans $E \setminus \{x\}$ et
+        ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
+        donc $x \arc {E \setminus \{0\}}y$.
+      - sinon, $(x,y)$ est liée. Alors,
+        $$
+          \Vect_{\R}\left\{x\right\} = \Vect_{\R}\left\{y\right\} \}e E
+        $$
+        car $\dim_{\R}E \geq 2$. Soit $z \in E \setminus \Vect_{\R}\left\{x\right\}$. Alors, $(x,y)$ et $(z, y)$ sont $\R$-libres donc $x \arc{ E \setminus \{0\}} z$ et $z \arc{E \setminus \{0\}}y$ donc $x\arc{E \setminus \{0\}} z$.
+    %
+  - Une intersection et une réunion de parties convexes par arcs n’est pas convexe par arcs en général.
+    ```
+      |
+      |                                 x                                                                xxxx  x x
+      |                              xx  x x                                                           xxx         x x
+      |                 xx  x xx  x x          xxx                                                     x               xx
+      |              xxx         xxxx             x                                                    xx                x
+      |            xx           xxxxx               x                                xxx x  xx           x                x
+      |           x            xx xxxxxx               x                         x x           x x        x                xx
+      |          x              xxxxx x x              xx                       x                 x        x                x
+      |        x    xx                 xxxx               x                   xx                   xx      x                 x
+      |       x    x x                    x xxxx           x                 x                       x     x         xxx      x
+      |      x    xx x                     x x   xx         x                x         x              x     x      xx   x     x
+      |      x    x   x                   x       xx         x              x         xxx             x     x      x  xx      x
+      |     x    xxxx x                   x         x        x             x          x x             x     x      x xx       x
+      |    x     x    x                   x         x         x            x         x   x             x    x         xx      x
+      |         x     xx                            x         x            x         x x               x    x      x   x      x
+      |    x    x                       x          x                       x        x  x              x     x     xx x        x
+      |    x              xxxxxxxxx    x         xxxx         x            x       x      x           x    xx     x xx       x
+      |     x           xxxxxxxxxxxxxxx xxxxxxxxxx            x             x      x                 x     x
+      |     x         xxxxxxxxxxxxxx x                                                              x      x               x
+      |     x          xxxxxxxxxxxxx     xxxxx               x               xx                    x      x               x
+      |      x        xxxxxxxxxx x       x  xx              x                  x                x x     xx              xx
+      |       xx        xxxx x           x xxx             x                    xx           x x       x               x
+      |          xx xxx xxxx             x   xx          x                         xx xx x x        xxx              x
+      |                   x x            xxxxx        x                                            xx              x
+      |                        x                   x x                                            xx             x
+      |                          xx x  x      xx x                                                xx           x
+      |                                    xx                                                          xxx  xx
+    ```
+  - Si $(C_{i})_{i \in I}$ est une famille de parties convexes par arcs de $E$ avec $\bigcap_{i \in I}C_{i} \ne \emptyset$, alors $\bigcup_{i \in I}C_{i}$ est convexe par arcs.
+  - L’intérieur d’une parties convexe par arcs n’est pas convexe par arcs en général.
+    ```
+      |                                                                                  x
+      |      xx                                                                      x x
+      |          x                                                                            x
+      |              x                                                           x           xxx
+      |      x x        x                                                    x               x  x
+      |      xxx             x                                                              x   x
+      |      xxx                                                        x                        x
+      |      xxxx                  x                                 x                x     x    xx
+      |         xxx                       x                                       xxxxxx   x xxxx xx
+      |            xxx                                         x            xxxxxx   xxx  x
+      |              xxxxx                   x                      xxxxxxxxx            xx          x
+      |                  xxxxxxxxxxx                 x    xxxxxxxxxxx
+      |                            xxxxxxxxxxxxxxxxxxxxxxxxx
+      |                                             x        x
+      |
+      |                                       x                     x
+      |                                  x
+      |                               x                                     x
+      |                            x                                           x
+      |                                                                               x
+      |                       x                                                            x
+      |                    x
+      |              x x                                                                       x   x
+      |           x x                                                                                x x
+      |
+      |
+      |
+      |
+      |
+      |                  x
+      |
+      |
+      |                                 x                                                        x
+      |
+      |
+      |                                                                         x
+      |                                                x
+      |
+      |
+      |                                                              x
+      |                                                         x
+      |
+      |
+      |                                                                             xx
+      |                                      xx
+      |
+      |
+      |                     xx
+      |                                                                                          x
+      |
+    ```
+  - %prop
+      Si $C_{1}$ (resp. $C_{2}$) est une partie convexe par arcs de $(E_{1}, \nu_{1})$ (resp. de $(E_{2}, \nu_{2})$), alors $C_{1} \times C_{2}$ est une partie convexe par arcs de $(E_{1} \times  E_{2}, N_{\infty})$.
+    %
+    %proof
+      Soit $\big((x_{1}, x_{2}), (y_{1}, y_{2})\big) \in (C_{1} \times C_{2})^{2}$. On a $x_{1}\arc{C_{1}}y_{1}$ et $x_{2} \arc{C_{2}}y_{2}$ donc il existe $\gamma_{1}: \cc{0,1}\longrightarrow E_{1}$ et $\gamma_{2}: \cc{0,1}\longrightarrow E_{2}$ avec
+      ~ $\gamma_{1}(\cc{0,1}) \subset C_{1}$  ~ $\gamma_{2}(\cc{0,1}) \in C_{2}$
+      et
+      ~ $\gamma_{1}(0) = x_{1}$  ~ $\gamma_{1}(1) = y_{1}$  ~ $\gamma_{2}(0) = x_{2}$  ~ $\gamma_{2}(1) = x_{2}$
+      Posons
+      $$
+        \gamma: \applic{\cc{0,1}}{(E_{1} \times E_{2}, N_{\infty})}{t}{(\gamma_{1}(t), \gamma_{2}(t))}
+      $$
+      C’est une application continue et
+      ~ $\gamma(\cc{0,1}) \subset C_{1} \times C_{2}$  ~ $\gamma(0) = (x_{1}, x_{2})$  ~ $\gamma(1) = (y_{1}, y_{2})$
+      donc $(x_{1}, x_{2}) \arc{C_{1} \times C_{2}} (y_{1}, y_{2})$
+    %
+%
+
+%prop
+  1. Si $f: X \longrightarrow E'$ est une application continue sur une partie convexe par arcs $X$ de $E$, alors $f(X)$ est une partie convexe par arcs de $E'$.
+  2. St $g: X \longrightarrow \R$ est continue sur une partie convexe par arcs alors $g(X)$ est un intervalle: si $a$ et $b$ sont deux valeurs prises par $f$, alors tout réel entre $a$ et $b$ est une valeur prise.
+%
+
+%proof
+  1. Soit $(y, y') \in f(X)^{2}$. Il existe $(x,x') \in X^{2}$ tels que $y = f(x)$ et $y' = f(x')$. Or $x \arc X x'$ donc il existe $\gamma: \cc{0,1}\longrightarrow X$ continue telle que $\gamma(0) = x$ et $\gamma(1) = x'$. Alors $f\circ \gamma: \cc{0,1} \longrightarrow f(X)$ est alors continue et
+     ~ $(f\circ \gamma)(0) = y$  ~ $(f\circ \gamma)(1) = y'$
+     donc $y \arc{f(X)}y'$.
+%
+
+%eg
+  - Toute boule ouverte ou fermée étant convexe, elle est connexe par arcs.
+  - Si $\dim_{\R} E \geq 2$, alors $S(0_{E},1)$ est une partie conxe par arcs.
+    ~
+    Soit $f: \applic{E \setminus \{0\}}{E}{x}{\frac{x}{\norm{x}}}$ est une application continue et $E \setminus \{0\}$ est connexe par arcs donc $f(E \setminus \{0\}) = S(0_{E},1)$ est connexe par arcs.
+  - Supposons $\R^{2}$ et $\R$ homéomorphes. Soit $f: \R^{2} \longrightarrow \R$ une bijection bicontinue. $\R^{2} \setminus \{(0,0)\}$ est connexe par arcs donc $f(\R^{2} \setminus \{(0,0)\}) = \R \setminus \{f(0,0)\}$ est connexe par arcs ce qui est faux car $\R \setminus \{f(0,0)\}$ n’est pas un intervalle.
+  - $\det: \GL_{n}(\R) \longrightarrow \R$ est continue or $\det \GL_{n}(\R) = \R^{*}$ n’est pas connexe par arcs donc $\GL_{n}(\R)$ n’est pas connexe par arcs.
+%
+
+%callout
+  Les segments de $\R$ sont les parties compactes et connexes par arcs de $\R$. Ce sont aussi les parties convexes de $\R$.
+%
+
+%def Définition-proposition
+  1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées *composantes connexes par arcs de $X$.
+  2. Pour $x \in X$, notons
+     $$
+       C_{X}(x) = \{y \in X \where y \arc X x\}
+     $$
+     C’est la plus grande partie connexe par arcs de $X$ contenant $x$.
 %
