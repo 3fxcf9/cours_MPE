@@ -587,3 +587,237 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
      $$
      C’est la plus grande partie connexe par arcs de $X$ contenant $x$.
 %
+
+%proof
+  1. DESSIN
+     ```
+       |
+       |                       xxxxxxxx                                                      xx xxxxxxxx
+       |                    x x       xx                                                 xxxx            xxx
+       |                  xx            x                                             xxx                   xx
+       |                 x              x                                           xx          X             x
+       |                x               x                                          xx                          xx
+       |              x                x                                          x                             xx
+       |              x        Y       x                                        xx                               xx
+       |             x                 x                                        x                                 x
+       |           x           xx     x                                       xx                  Z               x
+       |          x            x      x                                      x                                    x
+       |         x            x       x                                     x                x                    x
+       |                     xx        x                                 xxx              xxx                   xx
+       |        x            x         x                               xx                xx                    xx
+       |       x            x           xx                          xxx               xxx                    xx
+       |      xx            x            xx                     xx x                xx                    xxx
+       |      x             x             xxx              xx xx                  xx                  x xx
+       |     x             x                  xx xxxx xx x                    xxx                  xxx
+       |     x             xxx                                             x x                 xxx
+       |     x            xx  x                              xxxx      xx x                x xx
+       |     x           x  x  xxx                              xxxxxxx                xxx x                  x x
+       |    x           xx  x     x                            xxx xx               xx                     xxxxxx xx
+       |    x          x    x                             xx x     xx           xxx                   xxxx          x x
+       |    x         x     x                         xx x        xx          xx                   x x                  xx
+       |    x               x                     xxx             xx        xx                  xx                        xx
+       |     x               x              xx xx                         xx                x xx                            x
+       |     x               xx         xxx                              x               x xx                                x
+       |     x                x      xxx                                x               xx                                   x
+       |     x                 x     x                                 x             xxx                                      x
+       |      x                xx                                      x           xxx                                         x
+       |      x                 xxx                                   x           xx                   x                       x
+       |       x               xxx                                    x          xx                     xx    xx                x
+       |       xx                    x                               x          xx                       xx xx                  x
+       |         x                                                   x         x                          xx
+       |         xx                                                 xx        x                         xx  x                   x
+       |           xx                                              xx       xx                         xx    xx                x
+       |             xx                                         xxx         x                                 xx               x
+       |               xxx                                  xxx            x                                                 xx
+       |                  xxxxx                       x xx x               x                                                x
+       |                       xxxxxxxxxx xx xxxxxxxxx                    x                                               xx
+       |                                                                  x                                             xx
+       |                                                                  x                                           xx
+       |                                                                 xx                                        xxx
+       |                                                                 x                          xxxxx xx xxx xx
+       |                                                                 xx                     xx x
+       |                                                                  x                 xxx
+       |                                                                   x              xx
+       |                                                                    xx         xxx
+       |                                                                     xxxxxxxxxx
+     ```
+     Soit $x \in X$. Noto $C_{X} = \{y \in X \where y \arc X x\}$. Soit $(y,z) \in \C_{X}(x)$. Alors $y \arc X x$ et $z\arc X x$ donc $y \arc X z$. Soit $\gamma: \cc{0,1} \longrightarrow E$ continue avec
+     ~ $\gamma(\cc{0,1}) \subset X$  ~ $\gamma(0) = y$  ~ $\gamma(1) = z$
+     Soit $t_{0} \in \cc{0,1}$. La fonction $\delta: \applic{\cc{0,1}}{E}{t}{\gamma(t_{0}, t)}$ est continue et
+     ~ $\delta(\cc{0,1}) \subset X$  ~ $\delta(0) = \gamma(0) = y$  ~ $\delta(1) = \gamma(t_{0})$
+     donc $\gamma(t_{0}) \arc X y \arc X x$ donc
+     $$
+       \forall t \in \cc{0,1}, \gamma(t) \in C_{X}(x)
+     $$
+     donc $\gamma(\cc{0,1}) \subset C_{X}(x)$ d’où $y \arc{C_{X}(x)} z$.
+  2. Soit $x \in X$. Notons
+     $$
+       A_{x} = \bigcup_{A'_{x} \subset X, A'_{x} \text{ connexe par arcs}, x \in A'_{x}}A'_{x}
+     $$
+     $\{x\} \subset X$, $\{x\}$ est connexe par arcs et $x \in \{x\}$ donc $x \in \bigcap_{A'_{x} \subset X, A'_{x} \text{ connexe par arcs}, x \in A'_{x}}A'_{x}$ donc l’intersection n’est pas vide. Donc $A_{x}$ est une partie connexe par arcs incluse dans $X$ et contenant $x$. C’est par définition la plus grande partie connexe par arcs incluse dans $X$ et contenant $x$ donc $C_{X}(x) \subset A_{x}$.
+     Soit $y \in A_{x}$. Comme $A_{x}$ est connexe par arcs et $x \in A_{x}$, on a $y \arc{A_{x}} x$ or $A_{x} \subset X$ donc $y \arc X x$ donc $y \in C_{X}(x)$ d’où $A_{x} = C_{X}(x)$. Ainsi,
+     $$
+       C_{X}(x) = \bigcup_{A'_{x} \subset X, A'_{x} \text{ connexe par arcs}, x \in A'_{x}}A'_{x}
+     $$
+%
+
+%eg
+  - Les composantes connexe par arcs de $\R \setminus \{\frac{1}{n} \where n \in \N^{*}\}$ sont $\oc{-\infty, 0}, \oo{\frac{1}{n+1}, \frac{1}{n}}$ pour $n \in \N^{*}$ et $\oo{1,+\infty}$.
+  - Les composantes connexes par arcs de $\Q$ sont les singletons $\{r\}$ avec $r \in \Q$. On dit que $\Q$ est *totalement discontinu*.
+  - Si $f: I \longrightarrow \R$ est convexe sur l’intervalle réel $I$, alors son *épigraphe*
+    $$
+      \Epi (f) = \{(x,y) \in I \times \R \where y \geq f(x)\}
+    $$
+    est une partie convexe de $\R^{2}$.
+    ~
+    Soit $\big((x,y), (x',y')\big) \in (\Epi(f))^{2}$. Soit $\lambda \in \cc{0,1}$.
+    $$
+      \lambda \cdot (x,y) + (1-\lambda)(x',y') = (\lambda x + (1-\lambda)x', \lambda y + (1-\lambda)y') = M
+    $$
+    or $y \geq f(x)$ et $y' \geq f(x')$ donc
+    $$
+      \lambday + (1-\lambda)y \geq \lambda f(x) + (1-\lambda)f(x') \geq f(\lambda x + (1-\lambda)x')
+    $$
+    car $\lambda \geq 0$ et $(1-\lambda) \geq 0$. Ainsi, $M \in \Epi (f)$.
+    ```
+      |                                          .....
+      |             |               ..   . ....     . . .. . ..            ..
+      |             |             ..   ...    .           .....          .. .
+      |             |            . . .. . .... .     .... .. .        .    .
+      |             |           ... ...  .   .  ..........        .                 ..
+      |             |           . . ..  .    ......    ..  .             .        .  .
+      |             |              .. .              .    .   .  . . ...       .        ..
+      |             |              . .   (x,y)      .    ..  ..      .       .   ..   ...
+      |             |              ..               .. .  .        ...   .         . ...
+      |             +---------+------------ -+-                   . ..        .. ..   ..    +
+      |             |         +   ..       --+----              ..          ....     ..   ++
+      |             |          +    .....    |   ----           ... . .. .         ..     +
+      |             |          ++       ..   |      ------                      ....    ++
+      |  ly + (1-l)y'----------+++-----------+-----------+---                   .     ++
+      |             |            +           |           +- ----      (x',y')       +
+      |             |             +          | .. ...... |      ---                +
+      |             +-------------+-+--------+-----------+------------+          + +
+      |             |               +        |           |            +-       +
+      |             |                +  ..   |    ..     |            |       +
+      |             |                ++  ... |   ...     |    ....    |     +
+      |             |                 ++     |  .. ...   |   ....     |    +
+      |             |                  +     |  ...  .   |   ......   | + +
+      |             |                   +    |      .    |       ..   ++
+      |             |                   ++   |     ..    |      .     |
+      |             |                     +  |     ....  |     .    + |
+      |             |                     +  |        .  |         +  |
+      |             |                      +++       .   |      ++    |
+      |             |                       ++       .   |    ++      |
+      |             |                        ++++    .   |  +         |
+      |             |                        |  ++++    ++ +          |
+      |             |                        |      ++++++            |
+      |             |                        |           |            |
+      |             |                        |           |            |
+      |             |                        |           |            |
+      |             |                        |           |            |
+      |             |                        |           |            |
+      |             |                        |           |            |
+      |             +------------------------+-----------+------------+-----------------------
+      |                                      x           lx + (1-l)x' x'
+      |
+    ```
+  - Soit $E$ un $\K$-espace vectoriel normé de dimension finie, $H$ un hyperplan de $E$ et $A = E \setminus H$ le complémentaire de $H$. Soit $,vw \in \L(E,\K) \setminus \{0\}$ avec $H = \ker \varphi$. Soit $u \in A$ tel que $\varphi(u)\ne 0$. $\varphi: \applic{E}{\K}{x}{\varphi(x)}$ est continue car $E$ est de dimension finie et $\varphi(A) \subset \K^{*}$.
+    - si $\K = \R$, $\varphi(A) \subset \R^{*}$ et $\varphi(u)\varphi(-u) < 0$ donc $\varphi(A)$ n’est pas un intervalle donc $A$ n’est pas connexe par arcs. Posons
+      ~ $A^{+} = \{x \in E \%here \varphi(x) > 0\}$  ~ $A^{-} = \{x \in E \where \varphi(x) < 0\}$
+      Soit $(x,y) \in A^{+}$. Soit $t \in \cc{0,1}$.
+      $$
+        \varphi(tx + (1-t)y) = t \varphi(x) + (1-t)\varphi(y)
+      $$
+      donc $\varphi(\cc{x,y}) = \cc{\varphi(x), \varphi(y)} \subset \R_{+}^{*}$ donc $\cc{x,y} \subset A^{+}$ donc $A^{+}$ est convexe donc convexe par arcs.
+      L’application $\alpha: \applic{E}{E}{x}{-x}$ est continue et $\alpha(E^{+}) = E^{-}$ donc $E^{-}$ est connexe par arcs.
+      $A = A^{+}\uplus A^{-}$, $A$ n’est pas connexe par arcs mais $A^{+}$ et $A^{-}$ sont connexes par arcs. Soit $x \in A^{+}$. $A^{+} \subset C_{A}(x)$. Si $A^{+}\ne C_{A}(x)$, alors il existe $y \in A^{-}$ tel que $y \in C_{A}(x)$ donc $C_{A}(y) \subset C_{A}(x)$. $A^{-} \subset C_{A}(y)$ d’où $A^{-} \subset C_{A}(x)$ d’où $A \subset C_{A}(x)$ donc $C_{A}(x) = A$ ce qui est faux car $A$ n’est pas connexe par arcs.
+      Les composantes connexe par arcs sont $A^{+}$ et $A^{-}$.
+    - Si $\K = \C$, ==EXERCICE==
+  - Soit $A = \{(x,y) \in \R^{2} \where xy \ne 1\}$
+    ```
+      |                                                      ..
+      |                                                   ... ..   ..     .
+      |                                            |     ......   .      .
+      |                                            |    .... .  ..     .   ..
+      |                                            |   +.....  . .  . .   ..   ..    ..
+      |                                            |   + ..... .   .    ..    .     ..
+      |                                            |    + .....  ..   .    ...    .    ..
+      |                                            |    +  ....     . .  ..    . .   .    ..
+      |                                            |     +       . ..    .  . .    ..  ....   .
+      |                                            |      +    ..  .  ..   A2    ..   ..    ...
+      |                                            |       ++  . ...   .   .  ..   .    .  ..   ..
+      |                                            |          +  .   .   .  . .   ...     .   ...
+      |                                            |           +   . .  ... ... .     ..    . .     ..
+      |                                            |            + +         ..  ....     .        ...
+      |                                            |                +          ..   ...     .   .
+      |                                            |                  + +      .   .     ..  .   .  ....
+      |                                            |                       ++ +   .     . .   .. .   ..
+      |                                            |                            ++ + ++       ..
+      |                                            |                                    + ++ ++++++
+      |                                            |
+      |       -------------------------------------+-------------------------------------------
+      |        ++                                  |
+      |          + ++++ +                          |
+      |                  +++                       |
+      |                      + +                   |
+      |                         ++                 |
+      |                            +               |            A1
+      |                             + +            |
+      |                               +            |
+      |                                 +          |
+      |                                  +         |
+      |                                   +        |
+      |                                    +       |
+      |                                     +      |
+      |                                            |
+      |                                      ++    |
+      |                                       +    |
+      |                                       +    |
+      |                                       +    |
+      |                                       ++   |
+    ```
+    $A_{1} = \{(x,y) \in \R^{2}\where xy < 1\}$; $A_{2} = \{(x,y) \in \R^{2} \where xy>1 \text{ et } x > 0\}$; $A_{3} = \{(x,y) \in \R^{2}\where xy > 1 \text{ et } x < 0\}$
+    ~
+    $\varphi: \applic{\R^{2}}{\R}{(x,y)}{xy}$ est polynomiale en deux variables donc continue et $\varphi(A) \subset \R \setminus \{1\}$. De plus, pour $x \in \R \setminus \{1\}, \varphi(x,1) = x \in \R \setminus \{1\}$ et $(x,1) \in A$ donc $\varphi(A) = \R \setminus \{1\}$. Or $\R \setminus \{1\}$ n’est pas connexe par arcs donc ++$A$ n’est pas connexe par arcs++.
+    - $A_{1}$ est une partie étoilée par rapport à $(0,0)$ donc connexe par arcs. En effet, soit $(x,y) \in A_{1}$. Soit $t \in \cc{0,1}$.
+      $$
+        tx + ty = t^{2}xy \begin{cases}=0 \if t=0\\ < t^{2} \leq 1 \if t \in \oc{0,1}\end{cases}
+      $$
+      donc $(tx, ty) \in A_{1}$
+    - $f: x \longmapsto \frac{1}{x}$ est continue sur $\R_{+}^{*}$ donc $A_{2}$ est connexe comme épigraphe de $f$, donc connexe par arcs.
+    - $\alpha: \applic{\R^{2}}{\R^{2}}{(x,y)}{(-x,-y)}$ est continue (endomorphisme de $\R^{2}$ de dimension finie) et $A_{3} = \alpha(A_{2})$ donc $A_{3}$ est connexe par arcs.
+      ~ $A = A_{1} \uplus A_{2} \uplus A_{3}$  ~ $A$ non connexe par arcs  ~ $A_{1}$, $A_{2}$ et $A_{3}$ sont connexes par arcs
+      $\psi: \applic{A_{2} \cup A_{3}}{\R}{(x,y)}{x}$ continue or $\psi(A_{2} \cup A_{3}) \subset \R^{*}$, $\psi(2,1) = 2 > 0$ et $\psi(-2,-1) = -2 < 0$, donc $\psi(A_{2} \cup A_{3})$ n’est pas connexe par arcs, donc $A_{2} \cup A_{3}$ n’est pas connexe par arcs.
+      ~ $\varphi(A_{1} \uplus A_{2}) \subset \R \setminus \{1\}$  ~ $\varphi(0,0) = 0$  ~ $\varphi(2,1) = 2 > 1$
+      donc (…) $A_{1} \cup  A_{2}$ n’est pas connexe par arcs. Or $A_{1} \cup  A_{2} = \alpha(A_{1} \cup  A_{3})$ donc $A_{1} \cup  A_{3}$ n’est pas connexe par arcs.
+      Par un raisonnement identique à l’exemple précédent, on montre que $A_{1}$, $A_{2}$ et $A_{3}$ sont les composantes connexes par arcs de $A$.
+%
+
+%offprog
+  %prop
+    1. Si $A$ est une partie connexe par arcs d’un $\K$-espace vectoriel normé $E$, alors les seuls parties ouvertes et fermées de $A$ relativement à $A$ sont $\emptyset$ et $A$. On dit que $A$ est une *partie connexe*.
+    2. Les seules parties ouvertes et bermées d’un $\K$-espaces vectoriel normé $E$ sont $\emptyset$ et $E$.
+  %
+
+  %proof
+    1. Soient $A$ une partie connexe par arcs de $E$ et $X$ une partie de $A$ à la fois ouverte et fermée relativement à $A$. Supposons $X\ne \emptyset$ et $X\ne A$. $X$ est un ouvert relatif non vide de $A$ et $A \setminus X$ est un ouvert relatif non vide de $A$. Soient $x \in X$ et $y \in A \setminus X$. On a $x \arc A y$. ==DESSIN== Soit $\gamma: \cc{0,1} \longrightarrow E$ continue avec
+       ~ $\gamma(\cc{0,1}) \subset A$  ~ $\gamma(0) = x \in X$  ~ $\gamma(1) = y \in A \setminus X$
+       Soit
+       $$
+         f: \applic{\cc{0,1}}{\R}{t}{\begin{cases}0 \if \gamma(t) \in X\\ 1 \if \gamma(t) \in A \setminus X\end{cases}}
+       $$
+       $f$ vérifie $f(0) = 0$ car $\gamma(0) \in X$ et $f(1) = 1$ car $\gamma(1) \in A \setminus X$. Soit $U$ un ouvert de $\R$.
+       $$
+         f^{-1}(U) = \begin{cases}\emptyset \if \{0,1\} \cap U = \emptyset \\ \cc{0,1} \if \{0,1\} \subset U\\ \gamma^{-1}(X) \if 0 \in U \text{ et }1 \notin U \\ \gamma^{-1}(A \setminus X) \if 1 \in U \text{ et }0 \notin U\end{cases}
+       $$
+       or $X$ et $A \setminus X$ sont des ouverts relatifs de $A$. IL existe deux ouverts $O$ et $O'$ de $E$ tels que
+       ~ $X = O \cap A$  ~ $A \setminus X = O' \cap A$
+       donc
+       ~ $\gamma^{-1}(X) = \gamma^{-1}(O \cap A) = \gamma^{-1}(O)$  ~ $\gamma^{-1}(A \setminus X) = \gamma^{-1}(O' \cap A) = \gamma^{-1}(O')$
+       car $\gamma(\cc{0,1}) \subset A$. Comme $\gamma: \cc{0,1} \longrightarrow E$ est continue, $\gamma^{-1}(X)$ et $\gamma^{-1}(A \setminus X)$ sont des ouverts relatifs de $\cc{0,1}$. C’est aussi le cas de $\cc{0,1}$ et $\emptyset$. Donc $f^{-1}(U)$ est un ouvert relatif de $\cc{0,1}$ donc $f: \cc{0,1} \longrightarrow \R$ est continue et $f(\cc{0,1}) = \{0,1\}$ n’est pas connexe par arcs alors que $\cc{0,1}$ l’est.
+  %
+
+  %eg
+    Supposons $E$ de dimension 1. On a donc $E = \Vect_{\R}\left\{u\right\}$ avec $\norm{u}=1$. Considérons $S(0_{E},1) = \{u,-u\}$. On a $S(0_{E},1) \cap \underbrace{\{u\}}_{\text{fermé de }E} = \{u\}$ et $S(0_{E},1)\cap \underbrace{B(u,2)}_{\text{ouvert de }E} = \{u\}$ où $\{u\}$ est une partie de $S(0_{E},1)$ ouverte et fermée relativement à $S(0_{E},1)$. Or $\{u\}\ne \emptyset$ et $\{u\}\ne S(0_{E},1)$ donc $S(0_{E}, 1)$ n’est pas connexe par arcs.
+  %
+%
