@@ -647,7 +647,7 @@ Il y a mieux:
         &\:\:\vdots\\
         &+ f(y_{1}, \ldots, y_{n-1}, x_{n}) - f(y_{1}, \ldots, y_{n})\\
         &= f(x_{1}-y_{1}, x_{2}, \ldots, x_{n})\\
-        &+ f(xy1, x_{2}-y_{2}, x_{3}, \ldots, x_{n})\\
+        &+ f(y_{1}, x_{2}-y_{2}, x_{3}, \ldots, x_{n})\\
         &\:\:\vdots\\
         &+f(y_{1}, \ldots, y_{n-1}, x_{n}-y_{n})
     \end{align*}

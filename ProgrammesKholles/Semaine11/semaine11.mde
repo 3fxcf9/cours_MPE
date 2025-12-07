@@ -1,0 +1,96 @@
+# Semaine 11
+
+## Caractérisation de la continuité par images réciproques de fermés
+
+%prop
+  Soit $A \in \Part(E)\setminus \{\emptyset\}$. Soit $f: A\longrightarrow E'$ une application. Il y a équivalence entre
+  1. $f$ est continue sur $A$
+  2. pour tout fermé $F$ de $E'$, $f^{-1}(F)$ est un fermé relatif de $A$
+  3. pour tout ouvert $O$ de $E'$, $f^{-1}(O)$ est un ouvert relatif de $A$
+%
+
+%proof
+  - Supposons $f$ continue. Soit $F$ un fermé de $E'$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $f^{-1}(F)$ qui converge vers $a \in A$. Par continuité de $f$ en $a$, $f(x_{n}) \arrowlim{n\to+\infty}f(a)$. Or $\forall n \in \N, f(x_{n}) \in F$ et $F$ est fermée donc $f(a) \in F$ soit $a \in f^{-1}(F)$.
+  - Supposons le deuxième point. Soit $O$ un ouvert de $E'$.
+    $$
+      \complement_{A}f^{-1}(O) = f^{-1} \left(\complement_{E'}O\right)
+    $$
+    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ansi, $f^{-1}(O)$ est un ouvert relatif de $A$.
+  - Supposons le troisième point. Soient $a \in E$ et $\varepsilon > 0$. $B_{E'}(f(a), \varepsilon)$ est une partie ouverte de $E'$ donc $f^{-1}(B_{E'}(f(a), E))$ est un ouvert relatif de $A$, qui contient $a$ car $f(a) \in B_{E'}(f(a), \varepsilon)$. Il existe donc $\delta > 0$ tel que $B_{A}(a, \delta)\subset f^{-1}(B_{E'}(f(a), \varepsilon))$ donc
+    $$
+      f \big(A \cap B_{E}(a, \delta)\big) = f\big(B_{A}(a, \delta)\big)\subset B_{E'}\big(f(a), \varepsilon\big)
+    $$
+    donc $f: A \longrightarrow E'$ est continue en tout point $a \in A$.
+%
+
+## Diamètre d’un compact
+
+Soit $K$ un compact non vide. Considérons l’application
+$$
+ f:\applic{K^{2}}{\R}{(x,y)}{\norm{x-y}}
+$$
+- Elle est continue: Posons $g: \applic{(E^{2}, N_{\infty})}{\R}{(x,y)}{\norm{x-y} = d(x,y)}$. Soient $\big((x,y), (x', y')\big) \in \big(E^{2}\big)^{2}$.
+  $$
+    \begin{align*}
+      \abs{g(x,y) - g(x',y')} &= \abs{d(x,y) - d(x',y')}\\
+      &\leq \abs{\norm{x-y} - \norm{x'-y'}} \\
+      &\leq \norm{(x-y)-(x'-y')} \\
+      &\leq \norm{(x-xy) + (y'-y)}\\
+      &\leq  \norm{x-x'} + \norm{y-y'}\\
+      &\leq 2 N_{\infty}\big((x-x', y-y')\big)
+    \end{align*}
+  $$
+  donc $g$ est 2-lipschitzienne donc continue.
+- $K^{2}$ est un compact pour $N_{\infty}$ en tant que produit de compacts. $f$ est donc bornée et atteint ses bornes, i.e. il existe $(x_{0}, y_{0}) \in K^{2}$ tel que $f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}}f(x,y)$. Autrement dit,
+  $$
+    f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}} d(x,y) = \delta(K)
+  $$
+  On dit que $\delta(K)$ est le *diamètre du compact*.
+
+
+## Connexité par arcs de $E \setminus \{0\}$
+
+
+Soit $E$ un $\K$-espace evctoriel normé (de dimension finie ou infinie). Alors $E \setminus \{0\}$ est convexe par arcs si $\dim_{\R} E \geq 2$.
+
+%proof
+  Soit $(x,y) \in \big(E \setminus \{0\}\big)^{2}$.
+  - si $(x,y)$ est $\R$-libre, soit $t \in \cc{0,1}$.
+    $$
+      x+t(y-x) = 0_{E} \iff (1+t)x + ty = 0_{E} \implies 0 = 1-t = t
+    $$
+    ce qui est faux. Ainsi, $\forall t \in \cc{0,1}, x + t(y-x) \in E \setminus \{0\}$ donc $\gamma: \applic{\cc{0,1}}{E}{t}{x+t(y-x)}$ est continue à valeurs dans $E \setminus \{x\}$ et
+    ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
+    donc $x \arc {E \setminus \{0\}}y$.
+  - sinon, $(x,y)$ est liée. Alors,
+    $$
+      \Vect_{\R}\left\{x\right\} = \Vect_{\R}\left\{y\right\} \}e E
+    $$
+    car $\dim_{\R}E \geq 2$. Soit $z \in E \setminus \Vect_{\R}\left\{x\right\}$. Alors, $(x,y)$ et $(z, y)$ sont $\R$-libres donc $x \arc{ E \setminus \{0\}} z$ et $z \arc{E \setminus \{0\}}y$ donc $x\arc{E \setminus \{0\}} z$.
+%
+
+%offprog
+  ## Une partie connexe par arcs est convexe
+
+  %prop
+    Si $A$ est une partie connexe par arcs d’un $\K$-espace vectoriel normé $E$, alors les seuls parties ouvertes et fermées de $A$ relativement à $A$ sont $\emptyset$ et $A$. On dit que $A$ est une *partie connexe*.
+  %
+
+  %proof
+    Soient $A$ une partie connexe par arcs de $E$ et $X$ une partie de $A$ à la fois ouverte et fermée relativement à $A$. Supposons $X\ne \emptyset$ et $X\ne A$. $X$ est un ouvert relatif non vide de $A$ et $A \setminus X$ est un ouvert relatif non vide de $A$. Soient $x \in X$ et $y \in A \setminus X$. On a $x \arc A y$. ==DESSIN== Soit $\gamma: \cc{0,1} \longrightarrow E$ continue avec
+    ~ $\gamma(\cc{0,1}) \subset A$  ~ $\gamma(0) = x \in X$  ~ $\gamma(1) = y \in A \setminus X$
+    Soit
+    $$
+      f: \applic{\cc{0,1}}{\R}{t}{\begin{cases}0 \if \gamma(t) \in X\\ 1 \if \gamma(t) \in A \setminus X\end{cases}}
+    $$
+    $f$ vérifie $f(0) = 0$ car $\gamma(0) \in X$ et $f(1) = 1$ car $\gamma(1) \in A \setminus X$. Soit $U$ un ouvert de $\R$.
+    $$
+      f^{-1}(U) = \begin{cases}\emptyset \if \{0,1\} \cap U = \emptyset \\ \cc{0,1} \if \{0,1\} \subset U\\ \gamma^{-1}(X) \if 0 \in U \text{ et }1 \notin U \\ \gamma^{-1}(A \setminus X) \if 1 \in U \text{ et }0 \notin U\end{cases}
+    $$
+    or $X$ et $A \setminus X$ sont des ouverts relatifs de $A$. IL existe deux ouverts $O$ et $O'$ de $E$ tels que
+    ~ $X = O \cap A$  ~ $A \setminus X = O' \cap A$
+    donc
+    ~ $\gamma^{-1}(X) = \gamma^{-1}(O \cap A) = \gamma^{-1}(O)$  ~ $\gamma^{-1}(A \setminus X) = \gamma^{-1}(O' \cap A) = \gamma^{-1}(O')$
+    car $\gamma(\cc{0,1}) \subset A$. Comme $\gamma: \cc{0,1} \longrightarrow E$ est continue, $\gamma^{-1}(X)$ et $\gamma^{-1}(A \setminus X)$ sont des ouverts relatifs de $\cc{0,1}$. C’est aussi le cas de $\cc{0,1}$ et $\emptyset$. Donc $f^{-1}(U)$ est un ouvert relatif de $\cc{0,1}$ donc $f: \cc{0,1} \longrightarrow \R$ est continue et $f(\cc{0,1}) = \{0,1\}$ n’est pas connexe par arcs alors que $\cc{0,1}$ l’est.
+  %
+%

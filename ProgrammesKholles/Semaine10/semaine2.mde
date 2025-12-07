@@ -152,7 +152,7 @@ $$
 ## Intérieur d’un sous-espace affine strict
 
 %prop
-  Si $A$ est un sous-espace vvectoriel de $E$ avec $A\ne E$, alors $\ring A = \emptyset$.
+  Si $A$ est un sous-espace vectoriel de $E$ avec $A\ne E$, alors $\ring A = \emptyset$.
 %
 
 %proof
