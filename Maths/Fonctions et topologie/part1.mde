@@ -20,7 +20,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
     $$
       \complement_{A}f^{-1}(O) = f^{-1} \left(\complement_{E'}O\right)
     $$
-    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ansi, $f^{-1}(O)$ est un ouvert relatif de $A$.
+    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ainsi, $f^{-1}(O)$ est un ouvert relatif de $A$.
   - Supposons le troisième point. Soient $a \in E$ et $\varepsilon > 0$. $B_{E'}(f(a), \varepsilon)$ est une partie ouverte de $E'$ donc $f^{-1}(B_{E'}(f(a), E))$ est un ouvert relatif de $A$, qui contient $a$ car $f(a) \in B_{E'}(f(a), \varepsilon)$. Il existe donc $\delta > 0$ tel que $B_{A}(a, \delta)\subset f^{-1}(B_{E'}(f(a), \varepsilon))$ donc
     $$
       f \big(A \cap B_{E}(a, \delta)\big) = f\big(B_{A}(a, \delta)\big)\subset B_{E'}\big(f(a), \varepsilon\big)
@@ -110,17 +110,17 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
     @[./figures/exemple-continuité_optimized.svg]
   %
   L’application $f$ dessinée ci-contre est telle que $f_{|\R_{+}}: \R_{+} \longrightarrow \R$ est continue mais $f$ n’est pas continue en 0.
-%
 
-%proof
-  Supposons $f_{|U'}: U' \longrightarrow E'$ continue. Soit $a \in U'$. Montrons la continuité de $f$ en $a$. Soit $\varepsilon > 0$. Par continuité de $f_{|U'}$ en $a$, il existe $\delta > 0$ tel que
-  $$
-    f_{|U'} \left(B_{E}(a, \delta) \cap U'\right) \subset B_{E'} \big(f(a), \varepsilon\big)
-  $$
-  or $U'$ est un ouvert relatif de $A$ contenant $a$. Il existe donc $\delta' > 0$ tel que $B_{A}(a, \delta') \subset U'$ d’où
-  $$
-    \underbrace{f_{|U'} \left(B(a, \min\{\delta, \delta'\}) \cap A\right)}_{=f \left(A \cap  B(a, \min \{\delta, \delta'\})\right)} \subset B_{E'}\left(f(a), \varepsilon\right)
-  $$
+  %proof
+    Supposons $f_{|U'}: U' \longrightarrow E'$ continue. Soit $a \in U'$. Montrons la continuité de $f$ en $a$. Soit $\varepsilon > 0$. Par continuité de $f_{|U'}$ en $a$, il existe $\delta > 0$ tel que
+    $$
+      f_{|U'} \left(B_{E}(a, \delta) \cap U'\right) \subset B_{E'} \big(f(a), \varepsilon\big)
+    $$
+    or $U'$ est un ouvert relatif de $A$ contenant $a$. Il existe donc $\delta' > 0$ tel que $B_{A}(a, \delta') \subset U'$ d’où
+    $$
+      \underbrace{f_{|U'} \left(B(a, \min\{\delta, \delta'\}) \cap A\right)}_{=f \left(A \cap  B(a, \min \{\delta, \delta'\})\right)} \subset B_{E'}\left(f(a), \varepsilon\right)
+    $$
+  %
 %
 
 %eg
@@ -310,7 +310,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
   $$
   Alors, il existe une suite $\big((x_{n}, x'_{n})\big)_{n \in \N}$ de $K^{2}$ telle que
   $$
-    \forall n \in \tn, \begin{cases}\norm{x_{n} - x'_{n}} < \frac{1}{n+1}\\ \norm{f(x_{n}) - f(x'_{n})} \geq \varepsilon\end{cases}
+    \forall n \in \N, \begin{cases}\norm{x_{n} - x'_{n}} < \frac{1}{n+1}\\ \norm{f(x_{n}) - f(x'_{n})} \geq \varepsilon\end{cases}
   $$
   Comme $K$ est compact, il existe $\varepsilon: \N \longrightarrow \N$ strictement croissante et $\alpha \in K$ tels que $x_{\varphi(n)} \arrowlim{n\to+\infty}\alpha$. Alors,
   $$
@@ -447,19 +447,19 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
     ```
     ~
     $X = \big(\R \times \{0\}\big) \cup  \big(\{0\} \times \R\big) \cup \big(\{1\}\times \R\big)$ est connexe par arcs mais n’est pas étoilée.
-  - Soit $E$ un $\K$-espace evctoriel normé (de dimension finie ou infinie). Alors $E \setminus \{0\}$ est connexe par arcs si $\dim_{\R} E \geq 2$.
+  - Soit $E$ un $\K$-espace vectoriel normé (de dimension finie ou infinie). Alors $E \setminus \{0\}$ est connexe par arcs si $\dim_{\R} E \geq 2$.
     %proof
       Soit $(x,y) \in \big(E \setminus \{0\}\big)^{2}$.
       - si $(x,y)$ est $\R$-libre, soit $t \in \cc{0,1}$.
         $$
           x+t(y-x) = 0_{E} \iff (1+t)x + ty = 0_{E} \implies 0 = 1-t = t
         $$
-        ce qui est faux. Ainsi, $\forall t \in \cc{0,1}, x + t(y-x) \in E \setminus \{0\}$ donc $\gamma: \applic{\cc{0,1}}{E}{t}{x+t(y-x)}$ est continue à valeurs dans $E \setminus \{x\}$ et
+        ce qui est faux. Ainsi, $\forall t \in \cc{0,1}, x + t(y-x) \in E \setminus \{0\}$ donc $\gamma: \applic{\cc{0,1}}{E}{t}{x+t(y-x)}$ est continue à valeurs dans $E \setminus \{0\}$ et
         ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
         donc $x \arc {E \setminus \{0\}}y$.
       - sinon, $(x,y)$ est liée. Alors,
         $$
-          \Vect_{\R}\left\{x\right\} = \Vect_{\R}\left\{y\right\} \}e E
+          \Vect_{\R}\left\{x\right\} = \Vect_{\R}\left\{y\right\} \ne E
         $$
         car $\dim_{\R}E \geq 2$. Soit $z \in E \setminus \Vect_{\R}\left\{x\right\}$. Alors, $(x,y)$ et $(z, y)$ sont $\R$-libres donc $x \arc{ E \setminus \{0\}} z$ et $z \arc{E \setminus \{0\}}y$ donc $x\arc{E \setminus \{0\}} z$.
     %
@@ -590,7 +590,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 %
 
 %def Définition-proposition
-  1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées *composantes connexes par arcs de $X$.
+  1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées *composantes connexes par arcs de $X$*.
   2. Pour $x \in X$, notons
      $$
        C_{X}(x) = \{y \in X \where y \arc X x\}
@@ -806,7 +806,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 %offprog
   %prop
     1. Si $A$ est une partie connexe par arcs d’un $\K$-espace vectoriel normé $E$, alors les seuls parties ouvertes et fermées de $A$ relativement à $A$ sont $\emptyset$ et $A$. On dit que $A$ est une *partie connexe*.
-    2. Les seules parties ouvertes et bermées d’un $\K$-espaces vectoriel normé $E$ sont $\emptyset$ et $E$.
+    2. Les seules parties ouvertes et bornées d’un $\K$-espaces vectoriel normé $E$ sont $\emptyset$ et $E$.
   %
 
   %proof
@@ -830,4 +830,239 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
   %eg
     Supposons $E$ de dimension 1. On a donc $E = \Vect_{\R}\left\{u\right\}$ avec $\norm{u}=1$. Considérons $S(0_{E},1) = \{u,-u\}$. On a $S(0_{E},1) \cap \underbrace{\{u\}}_{\text{fermé de }E} = \{u\}$ et $S(0_{E},1)\cap \underbrace{B(u,2)}_{\text{ouvert de }E} = \{u\}$ où $\{u\}$ est une partie de $S(0_{E},1)$ ouverte et fermée relativement à $S(0_{E},1)$. Or $\{u\}\ne \emptyset$ et $\{u\}\ne S(0_{E},1)$ donc $S(0_{E}, 1)$ n’est pas connexe par arcs.
   %
+%
+
+## Limites
+
+Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectoriels normés.
+
+%def Définition-proposition
+  Soit $A$ une partie non vide de $E$. Soit $f: A\longrightarrow E'$ une application. Soit $\alpha \in \bar{A}$. Soit $\ell \in E'$. On dit que $f$ admet $\ell$ pour limite en $\alpha$ si l’une des propositions équivalentes suivantes :
+  1. $\forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-\alpha}_{E}\end{cases} \implies \norm{f(x) - \ell}_{E'} < \varepsilon$
+  2. $\forall W \in \in \Vois_{E'}(\ell), \exists V \in \Vois_{E}(\alpha): f(A \cap V) \subset W$ (($V$ n’est pas forcément un voisinage de $\alpha$ car $\alpha$ n’appartient pas forcément à $A$))
+%
+
+%proof
+  - Supposons le premier point. Soit $W \in \V_{E'}(\ell)$. Il existe $\varepsilon > 0$ tel que $B_{E'}(\ell, \varepsilon) \subset W$. D’après la supposition, il existe $\delta > 0$ tel que
+    $$
+      f(A \cap B_{E}(\alpha, \delta)) \subset B_{E'}(0, \varepsilon) \subset W
+    $$
+    Prenons $V = B_{E}(\alpha, \delta) \subset \Vois_{E}(\alpha)$ et on a $f(A \cap  W) \subset W$.
+  - Supposons le second point. Soit $\varepsilon > 0$. Comme $B_{E'}(\ell, \varepsilon) \in \Vois_{E'}(\ell)$, on a l’existence d’un voisinage $V$ de $\alpha$ dans $E$ tel que $f(A \cap V) \subset B_{E'}(\ell, \varepsilon)$. Or par définition de $V$, il existe $\delta > 0$ tel que $B_{E}(\alpha, \delta) \subset V$. Ainsi,
+    $$
+      f(B_{E}(\alpha, \delta) \cap A) \subset f(A \cap V) \subset V_{E'}(\ell, \varepsilon)
+    $$
+    d’où le premier point.
+%
+
+%rem
+  - Des normes équivalentes sur $E$ et $E'$ définissent la même notion de limite pour $f$ (car elles définissent les mêmes voisinages).
+  - La limite de $f$ en $\alpha$ est unique si elle existe.
+    ~
+    Supposons que $f$ admette $\ell$ et $\ell' \ne \ell$ comme limites. Posons $\varepsilon = \frac{\norm{\ell'-\ell}}{2}$. Il existe $\delta > 0$ et $\delta' > 0$ tels que
+    ~ $f(A \cap  B(\alpha, \delta)) \subset B(\ell, \varepsilon)$  ~ $f(A \cap  B(\alpha, \delta')) \subset B(\ell', \varepsilon)$
+    d’où
+    $$
+      f(\underbrace{A \cap  B(\alpha, \delta) \cap  B(\alpha, \delta')}_{\ne \emptyset}) \subset B(\ell, \varepsilon) \cap B(\ell', \varepsilon) = \emptyset
+    $$
+  - Si $\alpha \in A$ et $\lim_{\alpha}f = \ell \in E'$., alors $\ell = f(\alpha)$.
+    ~
+    En effet,
+    $$
+      \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}e \in A\\ \norm{x-a} < \delta\end{cases} \implies  \norm{f(x) - \ell} < \varepsilon
+    $$
+    or $\alpha \in A$ et $\norm{\alpha - \alpha} = 0 < \delta$ donc $\forall  \varepsilon > 0, \norm{f(\alpha) - \ell} < \varepsilon$ d’où $f(\alpha) = \ell$.
+    ~
+    Ainsi, pour $\alpha \in A$, **$f$ est continue en $\alpha$ si et seulement si $f$ admet une limite en $\alpha$ dans $E'$**.
+%
+
+%def
+  Soit $A$ une partie de $\R$.
+  - $A \in \Vois_{\R}(+\infty) \defiff \exists M > 0: \oo{M,+\infty} \subset A$
+  - $A \in \Vois_{\R}(-\infty) \defiff \exists M > 0: \oo{-\infty,M} \subset A$
+%
+
+%def
+  Soit $A$ une partie non vide de $E$. Soit $\alpha \in \bar{A}$. Soit $f: A\longrightarrow \R$ une application. On dit que $f$ tend vers $+\infty$ en $\alpha$ si
+  1. $\forall W \in \Vois_{\R}(+\infty), \exists V \in \Vois_{E}(\alpha): f(A \cap  V) \subset W$
+  ce qui revient à
+  2. $\forall M > 0, \exists  \delta > 0: \begin{cases}x \in A\\ \norm{x-\alpha}< \delta\end{cases} \implies f(x) > M$
+%
+
+%proof
+  - Supposons le premier point. Soit $M > 0$. $\oo{M,+\infty}$ est un voisinage réel de $+\infty$ donc il existe $V \in V_{E}(\alpha)$ tel que $f(A \cap V) \subset \oo{M,+\infty}$. Or il existe $\delta > 0$ tel que $B(\alpha, \delta) \subset V$ d’où
+    $$
+      f(A \cap B(\alpha, \delta)) \subset f(A \cap V) \subset \oo{M,+\infty}
+    $$
+    On a donc le second point
+  - Supposons le second point. Soit $W$ un voisinage réel de $+\infty$. Il existe alors $M > 0$ tel que $\oo{M,+\infty} \subset W$. Il existe donc $\delta > 0$ tel que
+    $$
+      f(A \cap B(\alpha, \delta)) \subset \oo{M,+\infty} \subset W
+    $$
+    Il suffit de prendre $V = B_{E}(\alpha, \delta) \in V_{E}(\alpha)$ pour obtenir $f(A \cap  B) \subset W$.
+%
+
+%def
+  1. Soit $A$ une partie non majorée de $\R$. Soit $f: A \longrightarrow E'$ une application. Soit $\ell \in E'$.
+     $$
+       \begin{align*}
+         \lim_{+\infty} f = \ell &\iff \forall W \in \Vois_{E'}(\ell), \exists V \in \Vois_{\R}(+\infty): f(A \cap  V) \subset W\\
+         &\iff \forall  \varepsilon > 0, \exists M > 0: x \in A \cap  \oo{M,+\infty} \implies \norm{f(x) - \ell} < \varepsilon
+       \end{align*}
+     $$
+  2. Si $A$ est une partie non majorée de $\R$, et $f: A\longrightarrow \R$ une application, alors on a
+     $$
+       \begin{align*}
+         \lim_{+\infty}f = +\infty &\iff \forall  W \in \Vois_\R(+\infty), \exists V \in \Vois_{\R}(+\infty): f(A \cap  V) \subset W\\
+         &\iff \forall M > 0, \exists M' > 0: f(A \cap \oo{M',+\infty}) \subset \oo{M,+\infty}
+       \end{align*}
+     $$
+  3. Soit $A$ une partie non bornée de $E$. Soit $f: A\longrightarrow E'$ une application. Soit $\ell \in E'$.
+     $$
+       \begin{align*}
+         \lim_{\norm{x}\to+\infty} = \ell &\defiff \forall \varepsilon > 0, \exists M > 0: \begin{cases}x \in A\\ \norm{x} > M\end{cases} \implies  \norm{f(x) - \ell} < \varepsilon
+       \end{align*}
+     $$
+%
+
+%eg
+  - Considérons $f: \applic{\R^{2}}{\R}{(x,y)}{(x^{2}-2y^{2})e^{-2x^{2}-y^{2}}}$. On a
+    $$
+      \forall (x,y) \in \R^{2}, \abs{f(x,y)} \leq 2 \varphi(x^{2}+y^{2})
+    $$
+    avec $\varphi: t \longmapsto t e^{-t}$, donc pour $\varepsilon > 0$, il existe $M > 0$ tel que $t \geq M \implies 0 \leq \varphi(t) < \varepsilon$. D’où
+    $$
+      \norm{(x,y)}_{2} > \sqrt{M} \implies  \abs{f(x,y) - 0} < \varepsilon
+    $$
+    donc $\lim_{\norm{(x,y)} \to+\infty}f(x,y) = 0$.
+  - Soit $n_{0} \in \N$. $\ico{n_{0},+\infty}$ est une partie non majorée de $\R$. Si $(u_{n})_{n \geq n_{0}}$ est une suite d’éléments de $E$ et $\ell \in E$, alors
+    $$
+      \lim_{n \to+\infty}u_{n} = \ell \iff \forall  \varepsilon > 0, \exists M \in \R_{+}^{*}: \begin{cases}n \geq n_{0}\\ n > M\end{cases} \implies \norm{u_{n}-\ell} < \varepsilon \iff  \forall \varepsilon > 0, \exists M \geq n_{0}: \forall n \geq N, \norm{u_{n}-\ell} < \varepsilon
+    $$
+%
+
+%prop Limite d’une composée
+  Soient $E$, $F$ et $G$ trois $\K$-espaces vectoriels normés. Soient $A$ une partie de $E$ non vide et $B$ une partie de $F$  non vide. Soit $\alpha \in \bar{A}$ (voire $+\infty$ si $A$ est une partie de $\R$ non majorée, ou $-\infty$ si $A$ est une partie de $\R$ non minorée). Soit $\beta \in \bar{B}$ (voire…). Soit $\ell \in G$ (voire $+\infty$ ou $-\infty$ si $G = \R$). Soient
+  - $f: A\longrightarrow F$ une application avec $\lim_{\alpha}f = \beta$ telle que $f(A) \subset B$
+  - $g: B \longrightarrow G$ une application telle que $\lim_{\beta}g = \ell$.
+  Alors,
+  $$
+    \lim_{\alpha}(g\circ f) = \ell
+  $$
+%
+
+%proof
+  Soient de tels objets. Soit $W \in \Vois_{G}(\ell)$. Comme $\lim_{\beta} g = \ell$, il existe $V \in \Vois_{F}(B)$ tel que $g(B \cap V)\subset W$. Or $\lim_{\alpha}f = \beta$ donc il existe $U \in \Vois_{E}(\alpha)$ tel que $f(A \cap  U) \subset V$. Or $f(A \cap U)\subset B$ donc $f(A \cap  U) \subset B \cap  V$ d’où $g(f(A \cap  U)) \subset g(B \cap  V) \subset W$.
+%
+
+%prop Caractérisation séquentielle
+  Soit $A$ une partie non vide de $E$. Soit $f: A \longrightarrow E'$ une application. Soit $\alpha \in \bar{A}$ (voire $+\infty$ si $A \subset \R$ n’est pas majorée, ou $-\infty$ si $A$ n’est pas minorée). Soit $\ell \in E'$ (voire $+\infty$ ou $-\infty$ si $E' = \R$). Alors $f$ admet une limite $\ell$ en $\alpha$ si et seulement si pour toute suite $(u_{n})_{n \in \N}$ d’éléments de $A$ convergeant vers $\alpha$, la suite $(f(u_{n}))_{n \in \N}$ converge vers $\ell$.
+%
+
+%proof
+  - Supposoons $\lim_{\alpha}f = \ell$. Soit une suite $(u_{n})_{n \in \N}$ une suite d’éléments de $A$ convergeant vers $\alpha$. Par composition des limites, on a $\lim_{n\to+\infty}f(u_{n}) = \ell$.
+  - Supposons que $f$ n’admette pas de limite en $\alpha$, i.e.
+    $$
+      \non \left(\forall W \in \Vois_{E'}(\ell), \exists V \in \Vois_{E}(\alpha): f(A \cap  V) \subset W\right) \iff \exists W \in \Vois_{E'}(\ell): \forall V \in \Vois_{E}(\alpha), f(A \cap  V) \not\subset W
+    $$
+    - si $\alpha \in \bar{A}$, on a
+      $$
+        \forall n \in \N, V_{n} = B(\alpha, \frac{1}{n+1}) \in \Vois_{E}(\alpha)
+      $$
+      Il existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A \cap V$ telle que $\forall n \in \tn, f(u_{n}) \notin W$. On a donc
+      ~ $\forall n \in \N, \norm{u_{n}-\alpha} < \frac{1}{n+1}$  ~ $\forall n \in \N, f(u_{n}) \notin W$
+      donc $u_{n} \arronlim{n\to+\infty}\alpha$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
+    - si $\alpha = +\infty$ (pour $A \subset \R$ non majorée), alors
+      $$
+        \forall n \in \N, V_{n} = \oo{n,+\infty} \in \Vois_{\R}(+\infty)
+      $$
+      IL existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A$ telle que $\forall n \in \tn, u_{n} \in \oo{n,+\infty}$ et $f(u_{n})\notin W$ donc $u_{n}\arrowlim{n\to+\infty}\alpha = +\infty$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
+%
+
+
+%prop
+  1. Soient $f: A\longrightarrow E'$ telle que $\lim_{a}f = \ell \in E$ et $g: A\longrightarrow E'$ avec $\lim_{a}g = \ell' \in E'$ et $\alpha \in \bar{A}$ (ou $+\infty$ ou $-\infty$ si…). Alors
+     $$
+       \lim_{\alpha}(\lambda f + \mu g) = \lambda \ell + \mu \ell'
+     $$
+     pour $(\lambda, \mu) \in \K^{2}$.
+  2. On a aussi lorsque $te'$ est une $\K$-algèbre munie d’une norme sous-multiplicative,
+     $$
+       \lim_{\alpha} fg = \ell\ell'
+     $$
+  3. Si $f: A\longrightarrow \R$ et $g: A\longrightarrow \R$ sont telles que $\lim_{\alpha}f = \ell \in \R \cup \{+\infty, -\infty\}$ et $\lim_{\alpha}g=\ell' \in \R \cup \{+\infty, -\infty\}$ avec $\alpha \in \bar{A}$. Si il existe $V \in \Vois_{E}(\alpha)$ tel que
+     $$
+       \forall x \in V \cap A, f(x) \leq g(x)
+     $$
+     alors, $\ell \leq \ell'$ dans $\R \cup \{+\infty, -\infty\}$.
+  4. Si $f$, $g$ et $h$ sont trois applications de $A$ dans $\R$ telles que $\lim_{\alpha}f = \ell = \lim_{\alpha}h$ avec $\alpha \in \bar{A}$, si
+     $$
+       \exists V \in \Vois_{E}(\alpha): f \leq g \leq h \sur V \cap A
+     $$
+     alors $g$ admet une limite en $\alpha$ et $\lim_{\alpha} g f \ell$.
+  5. Si $f: A\longrightarrow E'$ admet $\ell \in E'$ comme limite en $\alpha \in \bar{A}$, alors $\lim_{x\to \alpha}\norm{f(x)} = \norm{\ell}$. De plus, si $\ell \ne 0_{E}$, alors il existe $V \in \Vois_{E}(\alpha)$ tel que
+     $$
+       \forall x \in V \cap  A, \norm{f(x)} \geq \frac{\norm{h}}{2} > 0
+     $$
+%
+
+%proof
+  - Les cinq premiers points se prouvent par caractérisation séquentielle
+  - Le dernier nécessite en plus l’inégalité triangulaire renversée
+%
+
+%eg
+  Considérons l’application
+  $$
+    f: \applic{\R^{2} \setminus \{(0,0)\}}{\R}{(x,y)}{\frac{x^{2}y^{2}}{x^{2}+y^{2}}}
+  $$
+  Elle est définie sur l’ouvert $U = \R^{2} \setminus \{(0,0)\}$ et $(0,0) \in \bar{U}$. Admet-elle une limite en $(0,0)$ ?
+  - *Première méthode.* Pour tous $(x,y) \in U$, $0 \leq f(x,y) \leq x^{2}$ et $\lim_{(x,y) \to(0,0)}x^{2} = 0^{2} = 0$ (continuité d’une fonction polynomiale) d’où $\lim_{(0,0)}f = 0$
+  - *Deuxième méthode.* Pour tous $(r,\theta) \in \R_{+}^{*} \times \R$,
+    $$
+      \abs{f(r\cos \theta, r\sin \theta)} \leq \frac{r^{4}}{r^{2}} = r^{2}
+    $$
+    donc
+    $$
+      \forall (x,y) \in U, \abs{f(x,y)} \leq x^{2}+y^{2}
+    $$
+    et $\lim_{(x,y)\to(0,0)}x^{2}+y^{2} = 0^{2}+0^{2} = 0$ d’où $\lim_{(0,0)} f = 0$ par encadrement.
+  - *Troisième méthode.* Pour tous $(x,y) \in \R^{2}$, on a
+    $$
+      2x^{2}y^{2} \leq (x^{2}+y^{2})^{2}
+    $$
+    d’où
+    $$
+      \forall (x,y) \in U, 0 \leq f(x,y) \leq  \frac{1}{2}(x^{2}+y^{2})
+    $$
+    d’où (…) $\lim_{(0,0)}f = 0$
+%
+
+%prop
+  1. Soient $E_{1}, \ldots, E_{p}$ des $\K$-espaces vectoriels normés. Soient $\alpha \in \bar{A}$, $\ell = (\ell_{1}, \ldots, \ell_{p}) \in E_{1}, \ldots, E_{p}$ et
+     $$
+       f: \applic{A}{(E_{1} \times  \cdots \times E_{p}, N_{\infty})}{x}{(f_{1}(x), \ldots, f_{p}(x))}
+     $$
+     Alors
+     $$
+       \lim_{\alpha}f = \ell \iff  \forall i \in \icc{1,p}, \lim_{\alpha}f_{i} = \ell_{i}
+     $$
+  2. Soit $E'$ de dimension finie $p$ dont une base est $(\varepsilon_{1}, \ldots, \varepsilon_{p})$. Considérons
+     $$
+       f: \applic{A}{E'_{p}}{x}{\sum_{i=1}^{p}f_{i}(x)\varepsilon_{i}}
+     $$
+     avec $f_{i} \in \Func(A,\K)$ pour $i \in \icc{1,p}$. Soit $\ell = \sum_{i=1}^{p}\ell_{i} \varepsilon_{i} \in E'$ et $(\ell_{1}, \ldots, \ell_{p})\in \K^{p}$. On a
+     $$
+       \lim_{\alpha}f = \ell \iff \forall i \in \icc{1,p}, \lim_{\alpha}f_{i} = \ell_{i}
+     $$
+%
+
+%eg
+  Considérons l’application
+  $$
+    g: \applic{\R^{2} \setminus \{(0,0)\}}{\R}{(x,y)}{\frac{x^{2}y}{x^{2}+y^{2}}}
+  $$
+  Admet-elle une limite en $(0,0)$ ?
+  ~
+  $\alpha: \applic{\R}{\R^{2}}{x}{(x,0)}$ tend vers $(0,0)$ en $0$. Si $\lim_{(0,0)}g = \ell$, alors $\lim_{x\to 0}g(x,0) = \ell$, i.e. $\ell = 0$. Or, $\beta: x \longmapsto  (x,x^{2})$ tend aussi vers $(0,0)$ en $0$ mais $\lim_{0}g(\beta(x)) = \frac{1}{2} \ne 0$ donc $g$ n’admet pas de limite en $(0,0)$.
 %
