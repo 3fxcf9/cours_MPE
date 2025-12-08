@@ -256,7 +256,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %eg
   - Considérons l’ensemble $A = \left\{\frac{1}{n}\where n \in \N^{*}\right\}$. Alors $A \subset \bar{A}$ or la suite $\left(\frac{1}{n}\right)_{n \in \N^{*}} \in A^{\N}$ est de limite nulle donc $0 \in \bar{A}$ donc $A \cup \{0\} \subset \bar{A}$.
-    Soit $x \in \R \setminus (A \cup \{0\})$. IL existe alors $r > 0$ tel que $\oo{x-r, x+r} \cap A = \emptyset$.
+    Soit $x \in \R \setminus (A \cup \{0\})$. Il existe alors $r > 0$ tel que $\oo{x-r, x+r} \cap A = \emptyset$.
     - si $x < 0$, alors $r = \abs{x}$ convient
     - si $x > 1$, $r = x-1$ convient
     - si il existe $n \in \N^{*}$ tel que $\frac{1}{n+1} < x < \frac{1}{n}$, alors $r = \min \left(\abs{x- \frac{1}{n+1}}, \abs{x - \frac{1}{n}}\right)$ convient, donc $x \notin \bar{A}$.
@@ -534,7 +534,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %proof
   Montrons que $A$ n’est pas fermée si et seulements si $E \setminus A$ n’est pas ouverte.
   ~
-  - Supposons que $A$ ne soit pas une partie fermée de $E$. IL existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. IL existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \V_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
+  - Supposons que $A$ ne soit pas une partie fermée de $E$. Il existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. Il existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \V_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
   - Supposons $E \setminus A$ non ouverte. Il existe $x \in E \setminus A$ tel que $E \setminus A \notin \V_{E}(x)$. Pour tout $r > 0, B(x,r) \not \subset E \setminus A$ donc
     $$
       \forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap A \notin \emptyset
@@ -732,7 +732,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %def Définition-proposition
   Soit $A$ une partie de l’espace vectoriel normé $(E, \norm{\cdot})$. Soient $V'$ une partie de $A$ et $a$ un point de $A$. On dit que $V'$ est un voisinage relatif de $a$ dans $A$ si
   $$
-    \forall r > 0: B_{A}(a,r) \subset V'
+    \exists r > 0: B_{A}(a,r) \subset V'
   $$
   i.e.
   $$
@@ -747,7 +747,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   %
   ~ $V' \in \V_{A}(a_{1})$  ~ $V' \in \V_{A}(a_{2})$  ~ $V' \notin \V_{A}(a_{3})$  ~ $V' \notin V_{A} (a_{4})$
   En effet,
-  - Soit $V \in \V_{A}(a)$. Posons $V' = V \cap A$. ALors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \V_{A}(a)$
+  - Soit $V \in \V_{A}(a)$. Posons $V' = V \cap A$. Alors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \V_{A}(a)$
   - Soit $V' \in \V_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \V_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$
 %
 
@@ -773,9 +773,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       O = \bigcup_{(x,r) \in \Omega}B(x,r)
     $$
-    C’est un partie ouverte de $E$. On a
+    C’est une partie ouverte de $E$. On a
     $$
-      O \cap A = \bigcup{(x,r) \in \Omega}B_{A}(x,r) \subset O'
+      O \cap A = \bigcup_{(x,r) \in \Omega}B_{A}(x,r) \subset O'
     $$
     Si $x \in O'$, alors il existe $r$ tel que $B_{A}(x,r) \subset O'$ donc $(x,r) \in \Omega$, donc $x \in B_{A}(x,r)\subset O \cap A$ d’où $O' \subset O \cap A$.
   Ainsi, $O' = O \cap A$.
@@ -929,19 +929,20 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       t \longmapsto  e^{-t}t^{z-1} \in \L^{1}(\oo{0,+\infty},\C) \iff \Re z > 0
     $$
-  %callout
-    Posons, $H = \{z \in \C \where \Re z > 0\}$ et
-    $$
-      \Gamma: \applic{H}{\C}{z}{\int_{0}^{+\infty}t^{z-1}e^{-t}\dd t}
-    $$
-  %
+
+  ---
+
+  Posons, $H = \{z \in \C \where \Re z > 0\}$ et
+  $$
+    \Gamma: \applic{H}{\C}{z}{\int_{0}^{+\infty}t^{z-1}e^{-t}\dd t}
+  $$
   Posons
   $$
     f: \applic{H \times \oo{0,+\infty}}{\C}{(z,t)}{t^{z-1}e^{-t}}
   $$
-  - Pour $t$ fixé dans $\oo{0,+\infty}$, $z \longmapsto t^{z-1}e^{-t} = e^{(z-1)\ln t} e^{-t} = e^{z\ln t} \times \frac{e^{-t}}{t}(($ est continue sur $\C$ donc sur $H$ ($z \longmapsto  z\ln t$ continue (affine) est à valeurs dans $\C$, ensemble sur lequel $\exp$ est continue).
-  - Pour $z$ fixé dans $H$, $t \longmapsto f(z, t)$ est contieus ~~par morceaux~~ sur $\oo{0,+\infty}$.
-  - Soit $K$ un compact inclus dans $H$. $(Oy)$ est une partie fermée de $\C$ disjointe du compact $K$ donc $d((Oy), K)$ Prenons $\alpha = \frac{d}{2}$. Il existe $r > 0$ tel que $K \subset \bar{B}(0,r)$. Prenons $b = r$.
+  - Pour $t$ fixé dans $\oo{0,+\infty}$, $z \longmapsto t^{z-1}e^{-t} = e^{(z-1)\ln t} e^{-t} = e^{z\ln t} \times \frac{e^{-t}}{t}$ est continue sur $\C$ donc sur $H$ ($z \longmapsto  z\ln t$ continue (affine) est à valeurs dans $\C$, ensemble sur lequel $\exp$ est continue).
+  - Pour $z$ fixé dans $H$, $t \longmapsto f(z, t)$ est continue ~~par morceaux~~ sur $\oo{0,+\infty}$.
+  - Soit $K$ un compact inclus dans $H$. $(Oy)$ est une partie fermée de $\C$ disjointe du compact $K$ donc $d((Oy), K)$. Prenons $\alpha = \frac{d}{2}$. Il existe $r > 0$ tel que $K \subset \bar{B}(0,r)$. Prenons $b = r$.
     $$
       H_{a,b} = \{z \in \C\where a \leq \Re z \leq b\}
     $$

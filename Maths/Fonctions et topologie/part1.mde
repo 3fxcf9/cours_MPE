@@ -843,7 +843,7 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
 %
 
 %proof
-  - Supposons le premier point. Soit $W \in \V_{E'}(\ell)$. Il existe $\varepsilon > 0$ tel que $B_{E'}(\ell, \varepsilon) \subset W$. D’après la supposition, il existe $\delta > 0$ tel que
+  - Supposons le premier point. Soit $W \in \Vois_{E'}(\ell)$. Il existe $\varepsilon > 0$ tel que $B_{E'}(\ell, \varepsilon) \subset W$. D’après la supposition, il existe $\delta > 0$ tel que
     $$
       f(A \cap B_{E}(\alpha, \delta)) \subset B_{E'}(0, \varepsilon) \subset W
     $$
@@ -969,14 +969,14 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
       $$
         \forall n \in \N, V_{n} = B(\alpha, \frac{1}{n+1}) \in \Vois_{E}(\alpha)
       $$
-      Il existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A \cap V$ telle que $\forall n \in \tn, f(u_{n}) \notin W$. On a donc
+      Il existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A \cap V$ telle que $\forall n \in \N, f(u_{n}) \notin W$. On a donc
       ~ $\forall n \in \N, \norm{u_{n}-\alpha} < \frac{1}{n+1}$  ~ $\forall n \in \N, f(u_{n}) \notin W$
-      donc $u_{n} \arronlim{n\to+\infty}\alpha$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
+      donc $u_{n} \arrowlim{n\to+\infty}\alpha$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
     - si $\alpha = +\infty$ (pour $A \subset \R$ non majorée), alors
       $$
         \forall n \in \N, V_{n} = \oo{n,+\infty} \in \Vois_{\R}(+\infty)
       $$
-      IL existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A$ telle que $\forall n \in \tn, u_{n} \in \oo{n,+\infty}$ et $f(u_{n})\notin W$ donc $u_{n}\arrowlim{n\to+\infty}\alpha = +\infty$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
+      IL existe une suite $(u_{n})_{n \in \N}$ d’éléments de $A$ telle que $\forall n \in \N, u_{n} \in \oo{n,+\infty}$ et $f(u_{n})\notin W$ donc $u_{n}\arrowlim{n\to+\infty}\alpha = +\infty$ et $f(u_{n})\not\arrowlim{n\to+\infty}\ell$.
 %
 
 
