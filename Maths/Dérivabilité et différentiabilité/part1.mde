@@ -1,0 +1,326 @@
+# Dérivabilité et différentiabilité
+
+## Arc paramétrés dérivables
+
+Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\norm{\cdot})$ est un $\K$-espace vectoriel normé de dimension finie dont une base est $(e_{1}, \ldots, e_{n})$.
+
+%ffprog
+  Soit $x \in E$. Posons $x = \sum_{i=1}^{n}x_{i}e_{i}$ avec $(x_{1}, \ldots, x_{n}) \in \K^{n}$. On note, pour $i \in \icc{1,n}$,
+  $$
+    e_{i}^{*}: \applic{E}{\K}{x}{x_{i}}
+  $$
+  la i-ème forme linéaire coordonnée dans la base $(e_{1}, \ldots, e_{n})$. $(e_{1}^{*}, \ldots, e_{n}^{*})$ est alors une base de $\L(E,\K)$ appelée la base duale de $(e_{1}, \ldots, e_{n})$.
+%
+
+%recall
+  Pour $E$ et $F$ de dimension finie, $\dim \L(E,F) = \dim E \times \dim F$ donc $\dim \L(E,\K) f \dim E = n$.
+  $$
+    \forall i \in \icc{1,n}, e_{i}^{*} \in \L(E,\K)
+  $$
+  Soit $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ avec $il_{1} e_{1}^{*} + \cdots + \lambda_{n}e_{n}^{*} = 0_{E^{*}}$. On a alors pour tout $i \in \icc{1,n}$,
+  $$
+    (\lambda_{1}e_{1}^{*} + \cdots + \lambda_{n}e_{n}^{*})(e_{i}) = 0
+  $$
+  i.e. $\lambda_{i} = 0$. Ainsi, la famille $(e_{1}^{*}, \ldots, e_{n}^{*})$ est une famille libre de $E^{*}$ de longueur $n = \dim E^{*}$; c’est donc une base.
+%
+
+%def
+  - Une application $f: \applic{I}{E}{t}{f(t)}$ est appelée *fonction vectorielle* ou *arc paramétré*.
+  - $f(I)$ est appelé *support* de l’arc.
+  - Si $f_{i} = e_{i}^{*} \circ f$, i.e.
+    $$
+      \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i}
+    $$
+    alors
+    $$
+      \begin{cases}x_{1}&= f_{1}(t) \\ &\cdots\\x_{n}&= f_{n}(t)\end{cases}, t \in I
+    $$
+    est appelée *représentation paramétrique de l’arc*.
+%
+
+%eg
+  L’application $f: \applic{\R}{\R^{3}}{t}{(\cos t, \sin t,t)}$ paramètre une spirale :
+  ==DESSIN==
+%
+
+%def
+  Soit $f: I \longrightarrow E$ un arc paramétré. Soit $t_{0} \in I$. On dit que $f$ est dérivable en $t_{0}$ si l’une des conditions équivalentes suivantes est vériiée :
+  1. $t \longmapsto \frac{f(t)-f(t_{0})}{t-t_{0}} \in E$ (définie sur $I \setminus \{t_{0}\}$) admet une limite dans $E$ en $t_{0}$ (on note cette limite $f'(t_{0})$).
+  2. $f$ possède un développement limité à l’ordre 1 en $t_{0}$ : il existe $u \in E$ et $\varepsilon \in \Func(I,E)$ tels que
+     $$
+       \forall t \in I, f(t) = f(t_{0}) + (t-t_{0})u + (t-t_{0})\varepsilon(t)
+     $$
+     avec $\varepsilon(t) \arrowlim{t\to t_{0}}0_{E}$.
+  3. (si $t_{0}$ est dans l’intérieur de $I$)
+     $$
+       \lim_{t\to t_{0}^{+}t_{0}}\frac{f(t)-f(t_{0})}{t-t_{0}} \quad\text{et}\quad \lim_{t\to t_{0}^{-} t_{0}} \frac{f(t)-f(t_{0})}{t-t_{0}}
+     $$
+     existent dans $E$ et sont égales.
+%
+
+%proof
+  - Supposons le premier point. Posons
+    $$
+      \varepsilon(t) = \begin{cases}\frac{f(t)-f(t_{0})}{t-t_{0}}-f'(t_{0}) \if t\ne t_{0}\\ 0\if t=t_{0}\end{cases}
+    $$
+    On a $\lim_{b\to t_{0}} \varepsilon(t) = 0_{E}$, d’où
+    $$
+      \forall t \in I, f(t) = f(t_{0}) + (t-t_{0})f'(t_{0})+(t-t_{0})\varepsilon(t)
+    $$
+  - Supposons le deuxième point. On a alors
+    $$
+      \forall t \in I \setminus \{t_{0}\}, \frac{f(t)-f(t_{0})}{t-t_{0}} = u+\varepsilon(t)\arrowlim{t\to t_{0}} u \in E
+    $$
+%
+
+%prop
+  Soit $f: I\longrightarrow E$ un arc paramétré. Soit $t_{0} \in I$.
+  1. Si $f$ est dérivable en $t_{0}$, alors $f$ est continue en $t_{0}$
+  2. Pour $f= \sum_{i=1}^{n}f_{i}e_{i}$ avec $f_{i} = e_{i}^{*}\circ f \in \Func(I,\K)$ pour tout $i \in \icc{1,n}$, on a
+     $$
+       f \text{ dérivable en }t_{0} \iff \text{chaque } f_{i} \text{ est dérivable en }t_{0}
+     $$
+     Si tel est le cas, alors
+     $$
+       f'(t_{0}) = \sum_{i=1}^{n}f_{i}'(t_{0})e_{i}
+     $$
+  3. $f$ est constante sur $I$ si et seulement si
+     ~ $f$ est continue sur $I$  ~ $f$ est dérivable sur $\ring I$  ~ $f'=0$ sur $\ring I$
+  4. Si $g: I \longrightarrow E$ est un second arc et si $f$ et $g$ sont dérivables en $t_{0}$, alors $\lambda f + \mu g$ est dérivable en $t_{0}$ pour tous $(\lambda, \mu) \in \K^{2}$, et
+     $$
+       (\lambda f+\mu g)'(t_{0}) = \lambda f'(t_{0}) + \mu g'(t_{0})
+     $$
+  5. Si $L: E\longrightarrow F$ est une application linéaire (avec $F$ un $\K$-espace vectoriel normé de dimension finie) et si $f$ est dérivable en $t_{0}$, alors $L\circ f: I \longrightarrow F$ est dérivable en $t_{0}$ et
+     $$
+       (L\circ f)'(t_{0}) = L(f'(t_{0}))
+     $$
+     On note parfois $L(f) = L\circ f$.
+  6. Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est une application $p$-linéaire avec $E_{1}, \ldots, E_{p}$ et $F$ des $\K$-espaces vectoriels normés de dimension finie, et si $g_{1}: I\longrightarrow E_{1}, \ldots, g_{p}: I\longrightarrow E_{p}$ sont des arcs dérivables en $t_{0}$, alors
+     $$
+       « M(g_1, \ldots, g_{p}) » : \applic{I}{F}{t}{M(g_{1}(t), \ldots, g_{p}(t))}
+     $$
+     est dérivable en $t_{0}$ et
+     $$
+       (M(g_{1}, \ldots, g_{p}))'(t_{0}) = \sum_{i=1}^{p}M(g_{1}(t_{0}), \ldots, g_{i-1}(t_{0}), g_{i}'(t_{0}), g_{i+1}(t_{0}), \ldots, g_{p}(t_{0}))
+     $$
+%
+
+%proof
+  1. On a
+     $$
+       \forall t \in I, f(t) = f(t_{0}) + (t-t_{0})f'(t_{0}) + (t-t_{0})\varepsilon(t)
+     $$
+     avec $\varepsilon(t) \arrowlim{t\to t_{0}}0_{E}$, d’où $f(t) \arrowlim{t\to t_{0}}f(t_{0})$.
+  2. On a
+     $$
+       \forall t \in I \setminus \{t_{0}\}, \underbrace{\frac{\vec{f}(t) - \vec{f}(t_{0})}{t-t_{0}}}_{\in E} = \sum_{i=1}^{n}\frac{f_{i}(t) - f_{i}(t_{0})}{t-t_{0}}\vec{e_{i}}
+     $$
+     et pour tout $i \in \icc{1,n}$, $t \longmapsto \frac{f(t)-f(t_{0})}{t-t_{0}}$ admet une limite dans $E$ en $t_{0}$ si et seulement si $t \longmapsto \frac{f_{i}(t)-f_{i}(t_{0})}{t-t_{0}}$ admet une limite dans $\K$ en $t_{0}$. En cas de dérivabilité en $t_{0}$,
+     $$
+       f'(t_{0}) = \lim_{t\to t_{0}}\sum_{i=1}^{n}\frac{f_{i}(t)-f_{i}(t_{0})}{t-t_{0}}e_{i} = \sum_{i=1}^{n}f_{i}'(t_{0})e_{i}
+     $$
+  3. $f$ est constante sur $I$ si et seulement si chaque $f_{i}: I \longrightarrow\K$ est constante sur $I$, ce qui est le cas si et seulement si pour tout $i \in \icc{1,n}$,
+     ~ $f_{i}$ est continue sur $I$  ~ $f_{i}$ est dérivable sur $\ring I$  ~ $f_{i}' = 0$ sur $I$
+     ce qui est le cas si et seulement si
+     ~ $f$ est continue sur $I$  ~ $f$ est dérivable sur $I$  ~ $f'=0$ sur $I$
+  4. $f(t) = f(t_{0}) + (t-t_{0})f'(t_{0}) + (t-t_{0})\varepsilon_{f}(t)$ et $g(t) = g(t_{0}) + (t-t_{0})g'(t_{0}) + (t-t_{0})\varepsilon_{g}(t)$ avec
+     ~ $\varepsilon_{f}(t) \arrowlim{t\to t_{0}}0_{E}$  ~ $\varepsilon_{g}(t) \arrowlim{t\to t_{0}}0_{E}$
+     d’où
+     $$
+       (\lambda f+\mu g)(t) = \lambda f(t) + \mu g(t) = \lambda f(t_{0}) + \mu g(t_{0}) + (t-t_{0})(\lambda f'(t_{0})+\mu g'(t_{0})) + (t-t_{0})\varepsilon (t)
+     $$
+     avec $\varepsilon(t) = \lambda \varepsilon_{f}(t) + \mu \varepsilon_{g}(t) \arrowlim{t\to t_{0}}0_{E}$. Ainsi, $\lambda f+\mu g$ est dérivable est $t_{0}$.
+  5. $\frac{L(f(t)) - L(f(t_{0}))}{t-t_{0}} = L \left(\frac{f(t) - f(t_{0})}{t-t_{0}}\right)$ car $el$ est linéaire. Si $f$ est dérivable en $t_{0}$, alors
+     $$
+       \frac{f(t) - f(t_{0})}{t-t_{0}} \arrowlim{t\to t_{0}}f'(t_{0})
+     $$
+     et par continuité de $L$ ($L$ est linéaire et de dimension finie), on a
+     $$
+       \frac{(L\circ f)(t) - (L\circ f)(t_{0})}{t-t_{0}} \arrowlim{t\to t_{0}} L(f'(t_{0}))
+     $$
+     Donc $L\circ f$ est dérivable en $t_{0}$ et $(L\circ f)'(t_{0}) = L(f'(t_{0}))$.
+  6. On a
+     $$
+       \begin{align*}
+         \frac{M(g_{1}(t), \ldots, g_{p}(t) - M(g_{1}(t_{0}), \ldots, g_{p}(t_{0})))}{t-t_{0}} &= \frac{1}{t-t_{0}}\sum_{i=1}^{p}M(g_{1}(t_{0}), \ldots, g_{i-1}(t_{0}), g_{i}(t)-g_{i}(t_{0}), g_{i+1}(t), \ldots, g_{p}(t))\\
+         &=\sum_{i=1}^{p} M(g_{1}(t_{0}), \ldots, g_{i-1}(t_{0}), \frac{g_{i}(t) - g_{i}(t_{0})}{t-t_{0}}, g_{i+1}(t), \ldots, g_{p}(t))
+       \end{align*}
+     $$
+     or
+     ~ $\frac{g_{i}(t) - g_{i}(t_{0})}{t-t_{0}}\arrowlim{t\to t_{0}}g_{i}'(t_{0})$  ~ $g_{i+1}(t) \arrowlim{t\to t_{0}}g_{i+1}(t_{0})$  ~ …  ~ $g_{p}(t) \arrowlim{t\to t_{0}}g_{p}(t_{0})$  ~ $M$ est continue (forme $p$-linéaire sur un produit d’espaces vectoriels de dimension finie)
+     d’où la dérivabilité de $M(g_{1}, \ldots, g_{p})$ et la formule annoncée.
+%
+
+%eg
+  - Soit $A: \applic{I}{\M_{n}(\K)}{t}{A(t)}$ un arc dérivable. Soit $p \in \N^{*}$. Posons $f: \applic{I}{\M_{n}(\K)}{t}{(A(t))^{p}}$.
+    $$
+      M: \applic{\M_{n}(\K)^{p}}{\M_{n}(\K)}{(A_{1}, \ldots, A_{p})}{A_{1} \times  \cdots \times  A_{p}}
+    $$
+    est $p$-linéaire et $f = M(A, \ldots, A)$ donc $f$ est dérivable sur $I$ et
+    $$
+      \forall t \in I, f'(t) = A'(t)(A(t))^{p-1} + A(t) A'(t)A(t)^{p-2} + \cdots + A(t)^{p-1}A'(t)
+    $$
+    Si de plus $\forall t \in I, [A(t), A'(t)] = 0_{n}$ (ce qui est très rare), alors
+    $$
+      \forall t \in I, f'(t) = p A'(t) A(t)^{p-1}
+    $$
+  - Si $\lambda : I \longrightarrow \K$ et $f: I \longrightarrow E$ sont dérivables en $t_{0} \in I$, alors $\lambda f:I \longrightarrow E$ est dérivable en $t_{0}$ et
+    $$
+      (\lambda f)'(t_{0}) = \lambda' (t_{0})f(t_{0}) + \lambda(t_{0})f'(t_{0})
+    $$
+    car $\lambda f = B(\lambda, f)$ avec $B: \applic{\K \times  E}{E}{(\lambda u)}{\lambda \cdot u}$ est bilinéaire.
+  - Si $E$ est un espace vectoriel euclidien de produit scalaire $\scalar{\cdot}{\cdot}$ (et donc muni de la norme euclidienne associée), et si $f: I \longrightarrow E$ et $g: I \longrightarrow E$ sont deux arcs dérivables en $t_{0}$, alors $\scalar{f}{g} : t \longmapsto \scalar{f(t)}{g(t)}$ est dérivable en $t_{0}$ et
+    $$
+      \scalar{f}{g}'(t_{0}) = \scalar{f'(t_{0})}{g(t_{0})} +\scalar{f(t_{0})}{g'(t_{0})}
+    $$
+  - Si $f_{1}: I \longrightarrow E, \ldots, f_{n}: I \longrightarrow E$ sont $n$ arcs dérivables en $t_{0} \in I$ à valeurs dans $E$ de dimension $n$ muni d’une base $\B$, alors
+    $$
+      t \longmapsto \det_{\B} (f_{1}(t), \ldots, f_{n}(t))
+    $$
+    est dérivable en $t_{0}$ et
+    $$
+      \left(\det_{\B}(f_{1}, \ldots, f_{n})\right)'(t_{0}) = \sum_{i=1}^{n}\det_{\B}(f_{1}(t), \ldots, f_{i}'(t_{0}), \ldots, f_{n}(t_{0}))
+    $$
+    car $\det_{\B}$ est n-linéaire.
+
+    %eg
+      Soit $(a_{1}, \ldots, a_{n})\in \R^{n}$. Soit $x \in \R$. Calculons
+      $$
+        \vmtx{a_{1}+x & x && (x)\\ & a_{2}+x &&\\ & \vdots & \ddots & \\ (x) & x & & a_n + x} = \Delta(x)
+      $$
+      On a pour $C_{i} \leftarrow C_{i} - C_{n}$
+      $$
+        \Delta(x) = \vmtx{a_{1} & 0 & && &x\\0 & a_{2} & &&& \vdots\\\vdots&0 & \ddots && &\vdots\\\vdots & \vdots & & \ddots && \vdots\\ 0 & 0 && & a_{n-1} & x\\ -a_{n} & -a_{n} & && -a_{n} & a_{n}+x}
+      $$
+      En développant selon $C_{n}$, on montre que $\Delta$ est affine. On a $\forall x \in \R, \Delta(x) = \Delta'(0)x + \Delta(0)$ avec $\Delta(0) = \prod_{i=1}^{n}a_{i}$ et $\Delta(x) = \det_{\text{can}}(C_{1}, \ldots, C_{n})$. On a donc
+      $$
+        \Delta'(x) = \sum_{i=1}^{n}\vmtx{a_{1}+x & &&1&&&(x)\\&\ddots&&\vdots&&&\\&&a_{i-1}+x&&&&\\&&&1&&&\\&&&&a_{i+1}+x&&\\&&&\vdots&&\ddots&\\(x)&&&1&&&a_{n}+x}
+      $$
+      et
+      $$
+        \Delta'(0) = \sum_{i=1}^{n}\vmtx{a_{1} & &&1&&&(0)\\&\ddots&&\vdots&&&\\&&a_{i-1}&&&&\\&&&1&&&\\&&&&a_{i+1}&&\\&&&\vdots&&\ddots&\\(0)&&&1&&&a_{n}} = \sum_{i=1}^{n}\prod_{j \in \icc{1,n}\setminus \{i\}}a_{j}
+      $$
+
+    %
+%
+
+%prop
+  Soient
+  ~ $\varphi: I \longrightarrow \R$ dérivable en $t_{0}$  ~ $\varphi(I) \subset J$ avec $J$ un intervalle  ~ $f: J \longrightarrow E$ est dérivable en $\varphi(t_{0})$
+  Alors $f\circ \varphi: I \longrightarrow E$ est un arc dérivable en $t_{0}$ et
+  $$
+    (f\circ \varphi)'(t_{0}) = \underbrace{\varphi'(t_{0})}_{\in \R} \underbrace{f'(\varphi(t_{0}))}_{\in E}
+  $$
+%
+
+%proof
+  $$
+    \forall t \in J, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i}
+  $$
+  d’où
+  $$
+    \forall t \in I, f(\varphi(t)) = \sum_{i=1}^{n}f_{i}(\varphi(t))e_{i}
+  $$
+  On sait que $f_{i}\circ \varphi$ est dérivable en $t_{0}$ et
+  $$
+    (f_{i}\circ \varphi)'(t_{0}) = f_{i}'(\varphi(t_{0}))\varphi'(t_{0})
+  $$
+  d’où la dérivabilité de $f\circ \varphi$ en $t_{0}$ :
+  $$
+    \begin{align*}
+      (f\circ \varphi)'(t_{0}) &= \sum_{i=1}^{n}f_{i}'(\varphi(t))\varphi'(t_{0})e_{i} \\
+      &= \varphi'(t_{0})\sum_{i=1}^{n}f_{i}'(\varphi(t_{0}))e_{i}\\
+      &= \varphi'(t_{0})f'(\varphi(t_{0}))
+    \end{align*}
+  $$
+%
+
+%def Proposition-définition
+  - Un arc $f: I \longrightarrow  E$ est dit de classe $\Cont^{k}$ avec $k \in \N^{*}$ si $f$ est $k$ fois dérivable et si $f^{(k)}$ est continue sur $I$. On pose
+    $$
+      \Cont^{\infty}(I, E) = \bigcap_{k \in \N^{*}}\Cont^{k}(I,E)
+    $$
+  1. $\Cont^{k}(I, E)$ est un sous-espace vectoriel de $\Cont(I, E)$.
+  2. Si $L \in \L(E,F)$ et si $f \in \Cont^{k}(I, E)$, alors $L\circ f \in \Cont^{k}(I, F)$ et $(L\circ f)^{(k)} = L\circ f^{(k)}$
+  3. Si $\lambda \in \Cont^{k}(I, \K)$ et $f \in \Cont^{k}(I, E)$, alors $\lambda \cdot f \in \Cont^{k}(I, E)$ et
+     $$
+       (\lambda \cdot f)^{(k)} = \sum_{p=0}^{k}\binom{k}{p}\lambda^{(p)}\cdot f^{(k-p)}
+     $$
+  4. Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est $p$-linéaire et $g_{1} \in \Cont^{k}(I, E_{1})$, …, $g_{p} \in \Cont^{k}(I, E_{p})$, alors $M(g_{1}, \ldots, g_{p}) \in \Cont^{k}(I, F)$.
+  5. Si
+     ~ $\varphi: I \longrightarrow \R$ est de classe $\Cont^{k}$  ~ $\varphi(I) \subset J$ et $J$ est un intervalle  ~ $f: J \longrightarrow E$ est de classe $\Cont^{k}$
+     Alors, $f\circ \varphi \in \Cont^{k}(I, E)$.
+%
+
+%proof
+  Les preuves se font par récurrence sur $k$.
+  5. Appelons $\Prop(k)$ l’énnoncé ci-dessus.
+     - $f\circ \varphi$ est dérivable et
+       $$
+         \forall t \in I, (f\circ \varphi)''(t) = \varphi'(t) \cdot f'(\varphi(t))
+       $$
+       De plus, $\varphi' \in \Cont(I,\R)$ et $t \longmapsto f'(\varphi(t)) \in \Cont(I, E)$ donc $(f\circ \varphi)' \in \Cont(I, E)$ donc $f\circ \varphi \in \Cont^{1}(I, E)$: $\Prop(1)$ est vraie.
+     - Supposons $\Prop(k)$ vraie pour $k$ fixé dans $\N^{*}$. Soient $I \xrightarrow[]{\varphi} J \xrightarrow[]{f} E$ deux applications de classe $\Cont^{k+1}$. Alors $f\circ \varphi \in \Cont^{1}$ et
+       $$
+         \forall t \in I, (f\circ \varphi)'(t) = \varphi'(t)f'(\varphi(t))
+       $$
+       or
+       ~ $\varphi' \in \Cont^{k}(I, \R)$  ~ $f' \in \Cont^{k}(J, E)$  ~ $\varphi \in \Cont^{k}(I)$
+       donc selon $\Prop(k)$, on a $f'\circ \varphi \in \Cont^{k}(I, E)$. D’après le troisième point, $\varphi' \times f'\circ \varphi \in \Cont^{k}(I, E)$ donc $(f\circ \varphi)' \in \Cont^{k}(I, E)$, i.e $f\circ \varphi \in \Cont^{k+1}(I, E)$.
+%
+
+%prop Formule de Taylor-Young en $t_0 \in I$ pour un arc de clsase $\Cont^p$
+  Si $f: I \longrightarrow E$ est un arc de classe $\C^{p}$ et si $t_{0} \in I$, alors il existe $\varepsilon \in \Func(I, E)$ tel que
+  $$
+    \forall t \in I, f(t) = f(t_{0})+(t-t_{0})f'(t_{0}) + \cdots + \frac{(t-t_{0})^{p}}{p!}f^{(p)}(t_{0}) + (t-t_{0})^{p} \varepsilon(t)
+  $$
+  avec $\varepsilon(t) \arrowlim{t\to t_{0}} 0_{E}$.
+%
+
+%proof
+  Posons $f = \sum_{i=1}^{n}f_{i}e_{i}$. Alors $\forall i \in \icc{1,p}, f_{i} \in \Cont^{p}(I,\K)$ donc pour tout $i \in \icc{1,p}$, il existe $\varphi_{i}: I \longrightarrow \K$ tel que
+  $$
+    \forall t \in I, f_{i}(t) = \sum_{k=0}^{p}\frac{(t-t_{0})^{k}}{k!}f_{i}^{(k)}(t_{0}) + (t-t_{0})^{p} \varepsilon_{i}(t)
+  $$
+  avec $\varepsilon_{i}(t)\arrowlim{t\to t_{0}}0_{\K}$. Ainsi
+  $$
+    f(t) = \sum_{k=0}^{p}\frac{(t-t_{0})^{k}}{k!}f^{(k)}(t_{0}) + (t-t_{0})^{p}\varepsilon(t)
+  $$
+  avec $\varepsilon(t) = \sum_{i=1}^{n}\varepsilon_{i}(t)e_{i} \arrowlim{t\to t_{0}} 0_{E}$.
+%
+
+%offprog
+  %eg
+    Soit $f: I \longrightarrow  E$ un arc de classe $\Cont^{k}$. Soit $t_{0} \in I$. Si le quotient vectoriel $\frac{f(t) - f(t_{0})}{\norm{f(t) - f(t_{0})}}$ existe et a une limite $u$ non nulle en $t_{0}^{+}$, alors on dit que l’arc possède une demi-tangente au point $f(t_{0})$ dirigée par $u$: $f(t_{0}) + \R_{+}u$. Si $t_{0} \in \ring I$, alors on dit que l’arc possède une tangente au point $f(t_{0})$ si $\lim_{t\to t_{0}+} \frac{f(t) - f(t_{0})}{\norm{t-t_{0}}}$ et $\lim_{t\to t_{0}-} \frac{f(t)-f(t_{0})}{\norm{f(t)-f(t_{0})}}$ ont des limites $u$ et $b$ avec $v \in \{u,-u\}$.
+    ~
+    L’arc dessiné ci-contre possède une tangente au point $f(t_{0})$ dirigée par le vecteur $f'(t_{0})$. Supposons $f'(t_{0})\ne 0$. On a
+    $$
+      \frac{f(t) - f(t_{0})}{t-t_{0}} \arrowlim{t\to t_{0}}f'(t_{0})\ne 0_{E}
+    $$
+    d’où
+    $$
+      \norm{\frac{f(t) - f(t_{0})}{t-t_{0}}}\arrowlim{t\to t_{0}}\norm{f'(t_{0})}\ne 0_{\R}
+    $$
+    d’où
+    $$
+      \frac{f(t)-f(t_{0})}{\norm{f(t) - f(t_{0})}} \arrowlim{t\to t_{0}^{\varepsilon}} \varepsilon \frac{f'(t_{0})}{\norm{f'(t_{0})}}
+    $$
+    avec $\varepsilon \in \{+,-\}$. Si $f'(t_{0}) = \cdots = f^{(k-1)}(t_{0}) = 0$ et $f^{(k)}(t_{0}) \ne 0$, alors
+    $$
+      f(t) = f(t_{0}) + \frac{(t-t_{0})^{k}}{k!}f^{(k)}(t_{0}) + (t-t_{0})^{k} \varepsilon(t)
+    $$
+    d’où
+    $$
+      \frac{f(t) - f(t_{0})}{\frac{(t-t_{0})^{k}}{k!}} \arrowlim{t\to t_{0}} f^{(k)}(t_{0})\ne 0
+    $$
+    donc
+    $$
+      \norm{\frac{f(t) - f(t_{0})}{\frac{(t-t_{0})^{k}}{k!}}} \arrowlim{t\to t_{0}} \norm{f^{(k)}(t_{0})}\ne 0
+    $$
+    d’où
+    $$
+      \frac{f(t) - f(t_{0})}{\norm{f(t) - f(t_{0})}}\arrowlim{t\to t_{0}^{\varepsilon}}\varepsilon' \frac{f^{(k)}(t_{0})}{\norm{f^{(k)}(t_{0})}}
+    $$
+    avec $(\varepsilon, \varepsilon') \in \{+,-\}^{2}$. L’arc possède au point $f(t_{0})$ une tangente dirigée par $f^{(k)}(t_{0})$, premier vecteur dérivé non nul en $t_{0}$.
+  %
+%
