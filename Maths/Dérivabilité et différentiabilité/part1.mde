@@ -324,3 +324,487 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
     avec $(\varepsilon, \varepsilon') \in \{+,-\}^{2}$. L’arc possède au point $f(t_{0})$ une tangente dirigée par $f^{(k)}(t_{0})$, premier vecteur dérivé non nul en $t_{0}$.
   %
 %
+
+A partir de maintenant, tout les espaces vectoriels normés sont réels ($\K=\R$) et de dimension finie.
+
+## Dérivée selon un vecteur
+
+Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie. Soit $U$ une partie ouverte non vide de $E$. Soit $f: U \longrightarrow F$ une application. Soit $a \in U$.
+==FIGURE 1==
+Si l’arc $\varphi: t \longmapsto f(a+tv)$ est dérivable en $0$, alors on dit que $f$ possède une dérivée en $a$ selon $v$ notée $D_{v}f(a)$ égale par définition à
+$$
+  D_{v}f(a) = \varphi'(0) = \lim_{t\to 0}\frac{f(a+tv) - f(a)}{t}
+$$
+
+%rem
+  1. - Si $v = 0$, alors $\varphi: t \longmapsto f(a+tv) = f(a)$ est définie sur $\R$.
+     - Si $v\ne 0$, $U$ est ouvert et $a \in U$, donc il existe $\varepsilon > 0$ tel que $B(a, \varepsilon) \subset U$.
+       $$
+         \norm{a+tv - a} < \varepsilon \iff \abs{t} < \frac{\varepsilon}{\norm{v}}
+       $$
+       donc l’arc $\varphi$ est au moins défini sur $\oo{\frac{\varepsilon}{\norm{v}}, \frac{\varepsilon}{\norm{v}}}$ et $0$ est dans l’intérieur de cet intervalle.
+     Dans tous les cas, $\varphi$ est définie sur un intervalle d’intérieur non vide contenant $0$.
+  2. $\varphi:t \longmapsto f(a)$ est dérivable en $0$ et $D_{0_{E}}f(a) = 0_{F}$
+  3. Si $D_{v}f(a) \ne 0_{F}$, alors $D_{v}f(a)$ est un vecteur directeur de la tangente à l’arc $\varphi$ au point $f(a)$.
+%
+
+%eg
+  - Considérons $f: \applic{\M_{n}(\R)}{\M_{n}(\R)}{M}{M^{2}}$ définie sur l’espace vectoriel normé $\M_{n}(\R)$. Soient $A \in \M_{n}(\R)$ et $M \in M_{n}(\R)$.
+    $$
+      \varphi:t \longmapsto f(A+tM) = (A+tM)^{2} = A^{2}+t(AM + MA) + t^{2}M^{2}
+    $$
+    est dérivable sur $\R$ donc en $0$, et
+    $$
+      \forall t \in \R, \varphi'(t) = AM+MA+2tM^{2}
+    $$
+    donc $D_{M}f(A) = AM+MA$.
+  - %callout
+      Soient $(X,Y) \in \big(\M_{n,1}(\R)\big)^{2}$. Soit $A \in \M_{n}(\R)$. Posons $X = \mtx{x_{1}\\\vdots\\x_{n}}$ et $Y = \mtx{y_{1}\\\vdots\\y_{n}}$. On pose
+      $$
+        \scalar{X}{Y}_{\can}  = \sum_{i=1}^{n}x_{i}y_{i} = X\transp Y = \mtx{x_{1}&\cdots&x_{n}}\mtx{y_{1}\\\vdots\\y_{n}}
+      $$
+      Alors
+      $$
+        \scalar{AX}{Y}_{\can} = (AX)\transpY = X\transp A\transp Y = \scalar{X}{A\transp Y}_{\can}
+      $$
+    %
+  - Soit $A \in \M_{n}(\R)$. Considérons
+    $$
+      g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transpAX = \scalar{X}{AX}_{\can}}
+    $$
+    Soient $X_{0} \in \M_{n,1}(\R)$ et $V \in \M_{n,1}(\R)$.
+    $$
+      \varphi: t \longmapsto g(X_{0}+t V) = \scalar{X_{0} + tV}{AX_{0}+t AV}  = \scalar{X_{0}}{AX_{0}} + t \big(\scalar{V}{AX_{0}} + \scalar{X_{0}}{AV}\big) + t^{2} \scalar{V}{AV}
+    $$
+    est polynomiale donc dérivable en $0$ et
+    $$
+      \varphi'(0) = \scalar{V}{AX_{0}} + \scalar{X_{0}}{AV} = \scalar{V}{AX_{0}}  + \scalar{A\transp X_{0}}{V}
+    $$
+    donc
+    $$
+      D_{V}g(X_{0}) = \scalar{V}{(A+A\transp)X_{0}} \in \R
+    $$
+  - Considérons (attention, $(\R^{*})^{2} \ne \R^{2} \setminus \{(0,0)\}$)
+    $$
+      h: \applic{(\R^{*})^{2}}{\R}{(x,y)}{\frac{1}{xy}}
+    $$
+    $U = (\R^{*})^{2}$ est une partie ouverte de $\R^{2}$. Soient $(a,b) \in U$ et $(v,w) \in \R^{2}$.
+    $$
+      \varphi:t \longmapsto h ((a,b) + t(v,w)) = h(a+tv,b-tw) = \frac{1}{(a+tv)(b+tw)}
+    $$
+    est une fonction rationnelle définie sur un voisinage de $0$ donc dérivable, et
+    $$
+      \forall t \in V, \varphi'(t) = \frac{-v}{(a+tv)^{2}(b+tw)} - \frac{w}{(a+tv)(b+tw)^{2}}
+    $$
+    donc
+    $$
+      D_{(u,v)}h(a,b) = -\frac{v}{a^{2}b} - \frac{w}{ab^{2}}
+    $$
+%
+
+%def
+  Soit $(e_{1}, \ldots, e_{n}) = \B$ une base de $E$. Soit $f: U \longrightarrow F$ définie sur une partie $U$ ouverte de $E$. Soit $a \in U$.
+  Si $f$ possède une dérivée en $a$ selon $e_{i}$ (pour $i \in \icc{1,n}$), alors $D_{e_{i}}f(a)$ est appelée i-ème dérivée partielle de $f$ en $a$ d’as la base $\B$.
+  Si aucune confusion n’est possible sur le choix de la base, alors on pose
+  $$
+    D_{e_{i}}f(a) = \partial_{i}f(a) = \pdv{f}{x_{i}}(a)
+  $$
+  si pour $x \in E$, on pose $x = \sum_{i=1}^{n}x_{i}e_{i}$.
+%
+
+%eg
+  - Reprenons $f: M \longmapsto M^{2}$. Soit $(E_{i,j})_{1 \leq i,j \leq n}$ la base canonique de $\M_{n}(\R)$.
+    $$
+      D_{E_{i,j}}f(A) = A E_{i,j} + E_{i,j}A
+    $$
+    donc
+    $$
+      \partial_{(i,j)}f(A) = \mtx{\begin{cases}a_{jj} + a_{ii} \if (r,s) = (i,j)\\0\else\end{cases}}_{1 \leq r,s \leq n}
+    $$
+  - Reprenons $g: X \longmapsto X\transp AX$. Soit $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\R)$.
+    $$
+      D_{E_{i}}f(X_{0}) = \scalar{E_{i}}{(A+A\transp)X_{0}}_{\can}
+    $$
+    donc
+    $$
+      \partial_{i}g(X_{0}) = \pdv{g}{x_{i}}(X_{0}) = \left[(A+A\transp)X_{0}\right]_{i}
+    $$
+  - Reprenons $h: (x,y) \longmapsto \frac{1}{xy}$ définie sur $(\R^{*})^{2}$.
+    $$
+      D_{(1,0)}f(a,b) = -\frac{1}{a^{2}b} = \partial_{1} f(a,b) = \pdv{f}{x}(a,b)
+    $$
+    donc
+    $$
+      D_{(0,1)}f(a,b) = -\frac{1}{ab^{2}} = \partial_{2}f(a,b) f \pdv{f}{y}(a,b)
+    $$
+%
+
+De façon générale, on a pour $a = \sum_{i=1}^{n}a_{i}e_{i} \in E$ avec $\B = (e_{1}, \ldots, e_{n})$ une base de $E$,
+$$
+  \partial_{i}f(a) = \lim_{t\to 0}\frac{f(a+t e_{i}) - f(a)}{t} = \lim_{t\to 0}\frac{f(a_{1} e_{i} + \cdots + (a_{i} + t)e_{i} + \cdots + a_{n}e_{n})-f(n)}{t}
+$$
+Si note abusivement $f(x_{1}e_{1} + \cdots + x_{n}e_{n})$ par $f(x_{1}, \ldots, x_{n})$, alors
+$$
+  \partial_{i} f(a) = \lim_{t\to 0}\frac{f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n}) - f(a_{1}, \ldots, a_{n})}{t} = \dv{}{t}\left(f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n})\right)\eval{t=0}
+$$
+soit
+$$
+  \pdv{f}{x_{i}}(a) = \dv{}{x_{i}} \left(f(a_{1}, \ldots, x_{i}, \ldots, a_{n})\right)\eval{x_{i}=a_{i}}
+$$
+
+%eg
+  - Soit $P \in \K[X_{1}, \ldots, X_{n}]$. Soit $E$ dont une base est $(e_{1}, \ldots, e_{n})$. Considérons
+    $$
+      f: \applic{E}{\K}{x = \sum_{i=1}^{n}x_{i}e_{i}}{\tilde{P}(x_{1}, \ldots, x_{n})}
+    $$
+    est une application polynomiale admettant une dérivée en tout point selon tout vecteur.
+    Soient $a \in E$ et $v \in E$.
+    $$
+      \varphi: t \longmapsto f(a+tv) = \tilde{P}(a_{1}+tv_{1}, \ldots, a_{n}+tv_{n})
+    $$
+    est polynomiale donc dérivable sur $\R$ donc en $0$.
+  - Toute fonction rationnelle en les coordonnées dans une base de $E$ possède en tout point de son ouvert de définition((toute fonction rationnelle est définie sur un ouvert, qui est l’image réciproque par son dénominateur (polynomial) de $\R$)) une dérivée selon tout vecteur. L’arc correspondant est une fonction rationnelle de la variable réelle donc dérivable au voisinage de $0$.
+  - Soit $f: U \longrightarrow F$ une application définie sur un ouvert $U$. Si $V$ est un ouvert inclus dans $U$ et si $f_{|V}:V \longrightarrow F$ admet en $a \in V$ une dérivée selon $v \in E$, alors $f$ admet une dérivée en $a$ selon $v$, et
+    $$
+      D_{v}f(a) = D_{v}(f_{|V})(a)
+    $$
+
+    %proof
+      Comme $V$ est ouvert, il existe $\varepsilon > 0$ tel que
+      $$
+        \forall t \in \oo{-\varepsilon, \varepsilon}, a+tv \in V \subset U
+      $$
+      donc
+      $$
+        \forall t \in \oo{-\varepsilon, \varepsilon}, \varphi(t) = f(a+tv) = f_{|V}(a+tv)
+      $$
+      donc $\varphi$ est dérivable en $0$ et $\varphi'(0) = D_{v}(f_{|V})(a)$ d’où
+      $$
+        D_{v}f(a) = D_{f}(f_{|V})(a)
+      $$
+    %
+  - Considérons l’application
+    $$
+      f: \applic{\R^{2}}{\R}{(x,y)}{\begin{cases}\frac{x^{5}}{(y-x^{2})^{2}+x^{6}} \if (x,y)\ne (0,0)\\0\if (x,y)=(0,0)\end{cases}}
+    $$
+    On a
+    $$
+      (y-x^{2})^{2}+x^{6} = 0 \iff  \begin{cases}y-x^{2} = 0\\x=0\end{cases}\iff \begin{cases}x=0\\y=0\end{cases}
+    $$
+    donc $f$ est définie sur $\R^{2}$. $U = \R^{2} \setminus \{(0,0)\}$ est un ouvert et $f_{|U}$ est rationnelle donc possède en tout point de $U$ une dérivée selon tout vecteur de $\R^{2}$. Comme $U$ est ouvert, c’est aussi le cas pour $f$.
+    - Étude en $(0,0)$ :
+      - $D_{0_{\R^{2}}}f(0,0) = 0$
+      - Soit $(\alpha, \beta) \in \R^{2} \setminus \{(0,0)\}$.
+        $$
+          t \longmapsto f((0,0) + t(\alpha, \beta)) = f(t \alpha, t \beta) = \begin{cases}\frac{t^{5}\alpha^{5}}{(t \beta - t^{2} \alpha^{2}) + t^{6} \alpha^{6}} \if t\ne 0\\ 0\if t=0\end{cases}
+        $$
+        - pour $\beta \ne 0$,
+          $$
+            \frac{t^{5} \alpha^{5}}{(t \beta - t^{2} \alpha^{2})^{2} + t^{6} \alpha^{6}} \usim{0^{\pm}} t^{3} \frac{\alpha^{5}}{\beta^{6}}
+          $$
+          donc, comme $f(0) = 0$, $\varphi(t) \usim 0 \frac{\alpha^{5}}{\beta^{2}}t^{3}$ i.e. $f(t) = \frac{\alpha^{5}}{\beta^{2}}t^{3} + o(t^{5}) = 0+o(t)$ donc $\varphi$ est dérivable en $0$ et $\varphi'(0) = 0$.
+        - pour $\beta = 0$ (et donc $\alpha \ne 0$),
+          $$
+            \frac{t^{5} \alpha^{5}}{(t \beta - t^{2} \alpha^{2})^{2} + t^{6} \alpha^{6}}\usim{0^{\pm}} t \alpha
+          $$
+          d’où $\varphi(t)\usim 0 t \alpha$ donc $\varphi$ est dérivable en $0$ et $\varphi'(0) = \alpha$.
+      Donc $f$ admet en $(0,0)$ une dérivée selon tout vecteur $(\alpha, \beta) \in \R^{2}$ et
+      $$
+        D_{(\alpha, \beta)}f(0,0) = \begin{cases}0 \if (\alpha, \beta) = (0,0)\\ 0 \if \beta \ne 0\\ \alpha\if \alpha\ne 0 \text{ et } \beta = 0\end{cases}
+      $$
+      Cependant, $f$ n’est pas continue en $(0,0)$ !
+      $$
+        x \longmapsto f(x,x^{2}) = \begin{cases}\frac{1}{x}\if x\ne 0\\ 0\if x=0\end{cases}
+      $$
+      n’est pas continue en $0$ et $(x,x^{2}) \arrowlim{x\to 0}(0,0)$.
+%
+
+## différentiabilité
+
+%def
+  Soit $U$ un ouvert de $E$. Soit $f: U \longrightarrow F$ une application. Soit $a \in U$. On dit que $f$ est *différentiable* en $a$ si l’une des deux conditions équivalentes suivantes est satisfaite :
+  1. Il existe $\ell \in \L(E,F)$ telle que
+     $$
+       \lim_{h\to 0_{E}} \frac{f(a+h)-f(a) - \ell \mdot h}{\norm{h}_{E}} = 0_{F}
+     $$
+     ce que l’on écrit encore
+     $$
+       f(a+h) - f(a) - \ell \mdot h \ueq{o\to 0_{E}} o(h) \ne o(\norm{h})
+     $$
+     ou
+     $$
+       f(a+h) \ueq{h\to 0_{E}} f(a) + \ell\mdot h + o(h)
+     $$
+  2. Il existe $\ell \in \L(E,F)$ et $\varepsilon \in \Func(U,F)$ tels que
+     ~ $\forall x \in U, f(x) = f(a) + \ell\mdot (x-a) + \norm{x-a}_{E} \varepsilon(x)$  ~ $\lim_{x\to \alpha}\varepsilon(x) = 0_{F}$
+%
+
+%proof
+  - Supposons le premier point. Posons
+    $$
+      \varepsilon(x) = \begin{cases}\frac{f(x) - f(a) - \ell\mdot(x-a)}{\norm{x-a}_{E}} \if x\ne a \\ 0_{F} \if x=a\end{cases}
+    $$
+    On a alors
+    $$
+      \forall x \in U, f(x) = f(a) + \ell\mdot (x-a) + \norm{x-a}\varepsilon(x)
+    $$
+    et $\lim_{x\to a}\varepsilon(x) = \lim_{h\to 0_{E}}\varepsilon(a+h) = 0_{F}$.
+  - Supposons le second point. Il existe $\delta > 0$ tel que $B_{E}(a, \delta) \subset U$. Soit $h \in B_{E}(0_{t}e, \delta)$.
+    $$
+      f(a+h) = f(a) + \ell\mdot h + \norm{h}\varepsilon(a+h)
+    $$
+    d’où pour $h \in B_{E}(0_{t}e, \delta) \setminus \{0_{E}\}$,
+    $$
+      \frac{f(a+h) - f(a) - \ell \mdot h}{\norm{h}_{E}} = \varepsilon(a+h) \arrowlim{h\to 0_{E}}0_{F}
+    $$
+%
+
+%rem
+  La notion de différentiabilité ne dépend pas des normes choisies sur $E$ et $F'$. Soient
+  $$
+    \alpha \norm{\cdot}_{E}' \leq \norm{\cdot}_{E} \leq \beta \norm{\cdot}_{E}
+  $$
+  et
+  $$
+    \gamma \norm{\cdot}_{F}' \leq  \norm{\cdot}_{F} \leq \delta \norm{\cdot}_{F}'
+  $$
+  avec $\alpha$, $\beta$, $\gamma$ et $\delta$ des réels strictement positifs.
+  $$
+    \frac{\gamma}{\beta}\frac{\norm{\cdot}_{F}'}{\norm{h}_{E}} \leq \frac{\norm{\cdot}_{F}}{\norm{h}_{E}} \leq  \frac{\delta}{\alpha}\frac{\norm{\cdot}_{F}'}{\norm{h}_{E}'}
+  $$
+%
+
+%prop
+  Soit $f: U \longrightarrow F$ une application. Soit $a \in U$.
+  - Si $\ell \in \L(E,F)$ vérifie
+    $$
+      \lim_{h\to 0} \frac{f(a+h)-f(a) - \ell\mdot h}{\norm{h}_{E}} = 0_{F}
+    $$
+    alors $\ell$ est unique.
+  - Si $f$ est différentiable en $a$, alors l’unique application linéaire $\ell' \in \L(E,F)$ telle que
+    $$
+      \lim_{h\to 0_{E}}\frac{f(a+h)-f(a) - \ell\mdot h}{\norm{h}_{E}} = 0_{F}
+    $$
+    est appelée différentielle de $f$ en $a$ et notée $\dd f(a)$. Ainsi,
+    $$
+      \boxed{\begin{cases}\dd f(a) \in \L(E,F)\\ f(x) = f(a) + \dd f(a) \mdot (x-a) + \norm{x-a}\varepsilon(x)\\ \varepsilon(x) \arrowlim{x\to a}0_{F}\end{cases}}
+    $$
+%
+
+%proof
+  1. Soient $(\ell, \ell') \in (\L(E,F))^{2}$. Supposons
+     $$
+       \lim_{h\to 0_{E}}\frac{f(a+h)-f(a)-\ell\mdot h}{\norm{h}_{E}} = 0_{F} = \lim_{h\to 0_{E}}\frac{f(a+h) - f(a) - \ell'\mdot h}{\norm{h}_{E}}
+     $$
+     d’où par différence,
+     $$
+       \lim_{h\to 0_{E}}\frac{(\ell-\ell')\mdot h}{\norm{h}_{E}} = 0_{E}
+     $$
+     Soit $u \in E \setminus \{0\}$. $\lim_{t\to 0^{+}}tu = 0_{E}$ donc par composition,
+     $$
+       \lim_{t\to 0^{+}}\frac{(\ell-\ell')\mdot (tu)}{\norm{tu}_{E}} = 0_{F}
+     $$
+     i.e. $\lim_{t\to 0^{+}}\frac{(\ell-\ell')\mdot u}{\norm{u}_{E}} = 0_{F}$ donc
+     $$
+       \frac{(\ell-\ell')\mdot u}{\norm{u_{E}}}=0_{F}
+     $$
+     i.e. $\ell(u) = \ell'(u)$ (vrai aussi pour $u = 0_{E}$).
+%
+
+%eg
+  - Reprenons $f: \applic{\M_{n}(\R)}{\M_{n}(\R)}{M}{M^{2}}$. Soit $A \in \M_{n}(\R)$. Soit $H \in \M_{n}(\R)$.
+    $$
+      f(A+H) = (A+H)^{2} = A^{2} + AH + HA + H^{2}
+    $$
+    et $L: \applic{\M_{n}(\R)}{\M_{n}(\R)}{H}{AH+HA}$ est linéaire. Soit $\norm{\cdot}$ une norme sous-multiplicative sur $\M_{n}(\R)$. Alors $\norm{H^{2}} \leq \norm{H}^{2}$
+    $$
+      \frac{\norm{H^{2}}}{\norm{H}} \leq \norm{H} \arrowlim{}0
+    $$
+    donc $\frac{H^{2}}{\norm{H}} = \varepsilon(H)\arrowlim{H\to 0_{n}} 0_{n}$ donc $H^{2} \ueq{H\to 0_{n}}o(H)$. Ainsi, $f$ est différentiable en $A$ et
+    $$
+      \dd f(A): \applic{\M_{n}(\R)}{\M_{n}(\R)}{H}{AH+HA}
+    $$
+    (cette application est linéaire).
+  - Soit $A \in \M_{n}(\R)$. Considérons
+    $$
+      g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transp AX}
+    $$
+    Soient $X_{0} \in \M_{n,1}(\R)$ et $H \in \M_{n,1}(\R)$.
+    $$
+      g(X_{0} + H) = \scalar{X_{0}+H}{AX_{0}+AH} = \scalar{X_{0}}{AX} +\scalar{H}{AX_{0}}  + \scalar{X_{0}}{AH}  + \scalar{H}{AH}
+    $$
+    donc $H \longmapsto \scalar{H}{AX_{0}} +\scalar{X_{0}}{AH}  = \scalar{H}{(A+A\transp)X_{0}}$ est une forme linéaire sur $\M_{n}(\R)$.
+    $$
+      \abs{\scalar{H}{AH} } \leq \norm{H}\times \norm{AH}
+    $$
+    or $\norm{AH}\arrowlim{H\to 0_{n,1}}0$ d’où $\scalar{H}{AH} \ueq{H\to 0}o(H)$ donc $g$ est différentiable en $X_{0}$ et
+    $$
+      \dd g(X_{0}): \applic{\M_{n}(\R)}{\R}{H}{\scalar{H}{(A+A\transp)X_{0}}}
+    $$
+  - Soit $N: E \longrightarrow \R_{+}$ une norme sur $E$. Alors $N$ n’est pas différentiable en $0_{E}$.
+    ~
+    Supposons $N$ différentiable en $0_{E}$. Il existe alors $\ell \in \L(E,\R)$ telle que
+    $$
+      \frac{N(h) - N(0)-\ell\mdot h}{N(h)} \arrowlim{h\to 0_{E}}0
+    $$
+    i.e.$1-\ell\mdot \left(\frac{h}{N(h)}\right) \arrowlim{h\to 0_{E}}0$ donc
+    $$
+      \ell\mdot \left(\frac{h}{N(h)}\right)\arrowlim{h\to 0_{E}}1
+    $$
+    Soit $u \in E \setminus \{0_{E}\}$. $tu \arrowlim{t\to 0^{\pm}}O_{E}$ donc
+    $$
+      \lim_{t\to 0^{+}}\ell\mdot \left(\frac{tu}{N(t)u}\right) = \lim_{t\to 0^{-}}\ell\mdot \left(\frac{tu}{N(tu)}\right)
+    $$
+    donc $\ell\mdot \left(\frac{u}{N(u)}\right) = -\ell\mdot \left(\frac{u}{N(u)}\right) = 1$, ce qui est impossible.
+%
+
+%property
+  Soient $U$ un ouvert de $E$ et $a$ un point de $E$.
+  1. Si $f: U \longrightarrow F$ est différentiable en a, alors
+     - $f$ est continue en $a$
+     - $f$ admet une dérivée en $a$ selon tout vecteur $v \in E$ et
+       $$
+         D_{v}f(a) = \dd f(a) \mdot v
+       $$
+       et si $v = \sum_{i=1}^{n}v_{i}e_{i}$, alors
+       $$
+         \dd f(a) \mdot v = \sum_{i=1}^{n}v_{i} \partial_{i}f(a)
+       $$
+  2. Si $f: U \longrightarrow F$ est constante, alors $f$ est différentiable en tout point $x \in U$ et
+     $$
+       \dd f(x) = 0_{\L(E,F)}
+     $$
+  %callout
+    3. Si $L \in \L(E,F)$ et si $\ell = L_{|U}$, alors $\ell$ est différentiable en tout point $x$ de $U$ et $\dd \ell(x) = L$.
+  %
+  4. Si $f: U \longrightarrow F$ et $g: U \longrightarrow F$ sont différentiables en $a$ et si $(\lambda, \mu) \in \R^{2}$, alors $\lambda f + \mu g$ est différentiable en a et
+     $$
+       \dd (\lambda f+\mu g) (a) = \lambda \dd f(a) + \mu \dd g(a)
+     $$
+  5. Soit $I$ un intervalle réel ouvert non vide. Soit $f: I \longrightarrow F$ un arc. Pour tout $t_{0} \in I = \ring I$,
+     $$
+       f \text{ dérivable en } t_{0} \iff f \text{ différentiable en } t_{0}
+     $$
+     Si tel est le cas, alors
+     $$
+       f'(t_{0}) = \dd f(t_{0})\mdot 1
+     $$
+%
+
+%proof
+  1. Soit $f: U \longrightarrow F$ différentiable en $a$.
+     - On a
+       $$
+         f(a+h) = f(a) + \dd f(a)\mdot h + \norm{h}\varepsilon(h)
+       $$
+       où $\varepsilon \in \Func(B(0_{E}, \delta), F)$ est tel que  $\varepsilon(h)\arrowlim{h\to 0_{E}}0_{F}$. Ainsi,
+       $$
+         f(a+h) \arrowlim{h\to 0_{E}}f(a)
+       $$
+       donc $f$ est continue en $a$.
+     - Soit $v \in E$. Il existe $\varepsilon > 0$ tel que
+       $$
+         \forall t \in \oo{-\varepsilon, \varepsilon}, tv \in B(0_{E}, \delta)
+       $$
+       d’où
+       $$
+         \forall t \in \oo{-\varepsilon, \varepsilon}, \underbrace{f(a+tv)}_{\varphi(t)} = f(a) + t \dd f(a)\mdot v + \abs{t}\norm{v}\varepsilon(tv)
+       $$
+       et
+       $$
+         \varphi(t) \ueq{t\to 0} \varphi(0)+t \underbrace{\dd f(a)\mdot v}_{\in F} + o(t)
+       $$
+       $\varphi$ admet donc un développement limité d’ordre $1$ en $0$, donc elle est dérivable en $0$. Autrement dit, $f$ admet en $a$ une dérivée selon $v$
+       $$
+         D_{v}f(a) = \varphi'(0) = \dd f(a)\mdot v
+       $$
+       Si $f = \sum_{i=1}^{n}v_{i}e_{i}$, alors
+       $$
+         \dd f(a)\mdot v = \sum_{i=1}^{n}v_{i}\dd f(a)\mdot e_{i} f \sum_{i=1}^{n}v_{i}D_{e_{i}}f(a)
+       $$
+       donc $\dd f(a)\mdot v = \sum_{i=1}^{n}f_{i}\partial_{i}f(a)$
+  2. Si $f$ est constante, pour $a \in U$,
+     $$
+       \forall x \in U, f(x) = f(a) + 0_{\L(E,F)}(x-a) + \norm{x-a}\varepsilon(x)
+     $$
+     avec $\varepsilon : \applic{U}{F}{x}{0_{F}}$. Comme $0_{\L(E,F) \in \L(E,F)}$, on a $\dd f(a) = 0_{\L(E,F)}$.
+  3. $L \in \L(E,F)$ et $\ell \in \L_{|U}$. Soit $a \in U$.
+     $$
+       \forall x \in U, \ell(x) = L(x) = L(a) + L(x-a)
+     $$
+     d’où
+     $$
+       \ell(x) = \ell(a) + L\mdot(x-a) + \norm{x-a}\varepsilon(x)
+     $$
+     avec $\varepsilon(x)=0_{F} \arrowlim{x\to a}0_{F}$. Comme $L \in \L(E,F)$, on a $\dd \ell(a) = L$.
+  4. $f(a+h) = f(a) + \dd f(a)\mdot h + \norm{h}\varepsilon_{1}(h)$ et $g(a+h) = g(a) + \dd g(a)\mdot h + \norm{h}\varepsilon_{2}(h)$ avec
+     ~  $\varepsilon_{1}(h)\arrowlim{h\to 0_{E}}0_{F}$  ~ $\varepsilon_{2}(h)\arrowlim{h\to 0_{E}}0_{F}$
+     d’où
+     $$
+       (\lambda f+\mu g)(a+h) = \lambdaf(a+h)+\mu g(a+h) = (\lambda f(a) + \mu g(a)) + (\lambda \dd f(a) + \mu \dd g(a))\mdot h + \norm{h}\varepsilon(h)
+     $$
+     avec $\varepsilon(h) = \lambda \varepsilon_{1}(h) + \mu \varepsilon_{2}(h) \arrowlim{h\to 0_{E}}0_{F}$. Or
+     $$
+       \lambda \dd f(a) + \mu \dd  g(a) \in \L(E,F)
+     $$
+     d’où la conclusion.
+  5. Soient $f: I \longrightarrow F$ avec $I$ un intervalle ouvert et $t_{0}$ un point de $\ring I = I$.
+     %recall
+       Si $L \in \lL(\R,F)$, alors $\forall h \in \R, L(h) = hL(1)$ donc
+       $$
+         \L(\R,F) = \left\{\applic{\R}{F}{h}{hu}\where u \in F\right\}
+       $$
+     %
+     $f$ est dérivable en $t_{0}$ si et seulement si
+     $$
+       \exists u \in F: \lim_{h\to 0}\left[\frac{f(t_{0}+h)-f(t_{0})}{h} - u\right] = 0_{F}
+     $$
+     donc si et seulement si
+     $$
+       \exists u \in F: \lim_{h\to 0} \left[\frac{f(t_{0}+h) - f(t_{0}) - hu}{h}\right] = 0_{F}
+     $$
+     soit si et seulement si
+     $$
+       \exists u \in F: \lim_{h\to 0} \left[\frac{f(t_{0}+h) - f(t_{0}) - hu}{\abs{h}}\right] = 0_{F}
+     $$
+     ce qui est le cas si et seulement si $f$ est différentiable en $t_{0}$.
+     En cas de dérivabilité, on a
+     $$
+       \dd f(t_{0}): \applic{\R}{F}{h}{h f'(t_{0}0)}
+     $$
+     soit
+     $$
+       \dd f(t_{0})\mdot 1 = f'(t_{0})
+     $$
+%
+
+%prop
+  Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est une application $p$-linéaire, alors $M$ est différentiable en tout point $(a_{1}, \ldots, a_{p})\in E_{1} \times  \cdots \times E_{p}$ et
+  $$
+    \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h1, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}h_{i}, a_{i+1}, \ldots, a_{p})}
+  $$
+%
+
+%proof
+  Soit $(a_{1}, \ldots, a_{p})\in E_{1} \times  \cdots \times E_{p}$.
+  $$
+    M(a_{1}+h_{1}, \ldots, a_{p}+h_{p}) - M(a_{1}, \ldots, a_{p}) = \sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, \underbrace{a_{i}+h_{i}-a_{i}}_{h_{i}}, a_{i+1}+h_{i+1}, \ldots, a_{p}+h_{p})
+  $$
+  donc
+  $$
+    M(a+h)-M(a) = \sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, h_{i}, a_{i+1}, \ldots, a_{p}) + S
+  $$
+  où $S$ est une somme finie de termes de la forme $M(a'_{1}, \ldots, a'_{p}) = \alpha$ avec $\forall i \in \icc{1,p}, a'_{i} \in \{a_{i}, h_{i}\}$.
+  $$
+    \exists (i,j) \in \icc{1,p}^{2}: i\ne j \text{ et } a'_{i} = h_{i} \text{ et }a'_{j} = h_{j}
+  $$
+  donc
+  $$
+    \norm{\alpha}_{F} \leq K \norm{a'_{1}}_{E_{1}}\times  \cdots \times  \norm{a'_{p}}_{E_{p}} \leq K N_{\infty}(h_{1}, \ldots, h_{p})^{2} N_{\infty}(h_{1}, \ldots, h_{p}) \times N_{\infty}(a_{1}, \ldots, a_{p})^{2}
+  $$
+  et
+  $$
+    \frac{\alpha}{N_{\infty}(h_{1}, \ldots, h_{p})}\arrowlim{(h_{1}, \ldots, h_{p})\to (0_{E_{1} \times  \cdots \times E_{p}})}0_{F}
+  $$
+  donc $S = o \big((h_{1}, \ldots, h_{p})\big)$.
+%
