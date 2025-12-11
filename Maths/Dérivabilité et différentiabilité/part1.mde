@@ -808,3 +808,281 @@ $$
   $$
   donc $S = o \big((h_{1}, \ldots, h_{p})\big)$.
 %
+
+%eg
+  - Soit $E$ un espace euclidien. Considérons l’application bilinéaire
+    $$
+      \pi: \applic{E^{2}}{\R}{(x,y)}{\scalar{x}{y} }
+    $$
+    Elle est donc différentiable et pour tout $(x,y) \in E^{2}$,
+    $$
+      \dd \pi(x,y): \applic{E^{2}}{\R}{(h,k)}{\scalar{h}{y} + \scalar{x}{k}}
+    $$
+  - Soit $E$ un $\R$-espace vectoriel de dimension 2. Soit $\B$ une base de $E$. $\det_{\B}: E^{n} \longrightarrow \R$ est $n$-linéaire donc différentiable en tout $(u_{1}, \ldots, u_{n}) \in E^{n}$ et
+    $$
+      \dd (\det_{\B})(u_{1}, \ldots, u_{n}): \applic{E^{n}}{\R}{(h_{1}, \ldots, h_{n})}{\sum_{i=1}^{n}\det_{\B}}(u_{1}, \ldots, u_{i-1}h_{i}, u_{i+1}, \ldots, u_{n})
+    $$
+%
+
+%prop
+  Soit $f: U \longrightarrow F$ différentiable en tout point de $U$. Soit $\gamma: ei \longrightarrow  E$ un arc tracé sur $U$ et dérivable sur un intervalle $I$ d’intérieur non vide.
+  ==FIGURE 2==
+  Alors l’arc $f\circ \gamma: I \longrightarrow F$ est dérivable sur $I$ et
+  $$
+    \forall t \in I, \underbrace{(f\circ \gamma)'(t)}_{\in F} = \underbrace{\dd f(\gamma(t))}_{\in \L(E,F)}\mdot \underbrace{\gamma'(t)}_{\in E}
+  $$
+  ($\dd f(\gamma(t))$ est l’application linéaire tangente à $f$ en $\gamma(t)$, ou différentielle de $f$ en $\gamma(t)$).
+%
+
+%proof
+  Soit $t_{0} \in I$. $f$ est différentiable en $\gamma(t_{0}) \in U$ donc
+  $$
+    \forall x \in U, f(x) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (x-y(t_{0})) + \norm{x-\gamma(t_{0})}\varepsilon(x)
+  $$
+  avec $\varepsilon(x) \arrowlim{x\to \gamma(t_{0})}0_{F}$. Or $\forall t \in I, \gamma(t) \in U$ donc
+  $$
+    \forall t \in I, f(\gamma(t)) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (\gamma(t) - \gamma(t_{0})) + \norm{\gamma(t) - \gamma(t_{0})}\varepsilon(\gamma(t))
+  $$
+  Soit $t \in I \setminus \{t_{0}\}$.
+  $$
+    \frac{f(\gamma(t)) - f(\gamma(t_{0}))}{t-t_{0}} = \underbrace{\dd f(\gamma(t_{0}))\mdot \frac{\gamma(t)-\gamma(t_{0})}{t-t_{0}}}_{\arrowlim{t\to t_{0}}\dd f(\gamma(t_{0}))\mdot \gamma'(t_{0})} + \underbrace{\frac{\norm{\gamma(t) - \gamma(t_{0})}}{t-t_{0}}}_{\arrowlim{t\to t_{0}^{\pm}}\norm{\gamma'(t_{0})}}\underbrace{\varepsilon(\gamma(t))}_{\arrowlim{t\to t_{0}}0_{F}}
+  $$
+  donc $t \longmapsto (f\circ \gamma)(t)$ est dérivable en $t_{0}$ et
+  $$
+    (f\circ \gamma)'(t_{0}) = \dd f(\gamma(t_{0}))\mdot \gamma'(t_{0})
+  $$
+%
+
+%eg
+  - Si $\cc{a,b} \subset U$ et $f: U \longrightarrow F$ est différentiable, alors $\gamma: t \in \cc{0,1} \longmapsto a+t(b-a)$ est tracée sur $U$ et dérivable donc
+    $$
+      \dv{}{t}\left(f(a+t(b-a))\right) = \dd f \big(a+t(b-a)\big) \mdot (b-a)
+    $$
+  - Si $E$ a pour base $\B = (e_{1}, \ldots, e_{n})$, et si
+    $$
+      \forall t \in I, \gamma(t) = \sum_{i=1}^{n}\gamma_{i}(t)e_{i}
+    $$
+    alors pour $f: U \longrightarrow F$ différentiable sur $U$ et $\gamma$ différentiable sur $I$,
+    $$
+      \dv{}{t}\big((f\circ \gamma)(t)\big) = \dd f(\gamma(t))\mdot \sum_{i=1}^{n}\gamma_{i}'(t)e_{i} = \sum_{i=1}^{n}\gamma_{i}'(t)\underbrace{\dd f(\gamma(t))\mdot e_{i}}_{D_{e_{i}}f(\gamma(t))}
+    $$
+    d’où
+    $$
+      \dv{}{t}\big(f(\gamma(t))\big) = \sum_{i=1}^{n}\gamma_{i}'(t)\partial_{i}f(\gamma(t))
+    $$
+    ou encore si $\gamma: t \longmapsto (x_{1}(t), \ldots, x_{n}(t)) \in \R^{n}$ et $f: U \subset \R^{n} \longrightarrow \R$ est différentiable, alors
+    $$
+      \dv{}{t}\big(f(x_{1}(t), \ldots, x_{n}(t))\big) = \sum_{i=1}^{n}\underbrace{x'_{i}(t) \pdv{f}{x_{i}}\big((x_{1}(t), \ldots, x_{n}(t))\big)}_{\pdv{f}{x_{i}}\big(x_{1}(t), \ldots, x_{n}(t)\big)\dv{x_{i}}{t}}
+    $$
+%
+
+%prop
+  Soit $U$ un ouvert non vide convexe par arcs de $E$. Soit $f: U \longrightarrow F$ une application. Alors $f$ est constante si et seulement st
+  ~ $f: U \longrightarrow F$ est différentiable sur $U$  ~ $\forall x \in U, \dd f(x) = 0_{\L(E,F)}$
+%
+
+%proof
+  - Le sens direct est connu
+  - Supposons $f:U \longrightarrow F$ différentiable sur $U$ connexe par arcs et telle que $\forall x \in U, \dd f(x) = 0_{\L(E,F)}$.
+    - Si $U$ est convexe, soit $(a,b) \in U^{2}$. Comme $U$ est convexe, on a $\cc{a,b} \subset U$. $\gamma: \applic{\cc{0,1}}{U}{t}{a+t(b-a)}$ est dérivable sur $\cc{0,1}$ donc $t \longmapsto (f\circ \gamma)(t)$ est dérivable sur $\cc{0,1}$ et
+      $$
+        \forall t \in \cc{0,1}, (f\circ \gamma)'(t) = \dd f(\gamma(t)) \mdot \gamma'(t) = 0_{\L(E,F)}\mdot \gamma'(t) = 0
+      $$
+      donc $f\circ \gamma$ est un arc constant, donc $f(\gamma(1)) = f(\gamma(0))$, i.e. $f(b) = f(a)$.
+    - Sinon, $U$ est connexe par arcs. Soit $a \in U$. Comme $U$ est ouvert, il existe $\varepsilon > 0$ tel que $B(a, \varepsilon) \subset U$. On a $\forall x \in U, \dd f(x) = 0$ donc $\forall x \in B(a, \varepsilon), \dd f(x) = 0$ or $B(a, \varepsilon)$ est convexe, donc $f$ est constante sur $B(a, \varepsilon)$. $f$ est donc localement constante sur $U$ convexe par arcs, donc (exercice 11), $f$ est constante sur $U$.
+%
+
+%term
+  Si $f: U \longrightarrow F$ est différentiable en tout point de $U$, alors
+  $$
+    \dd f: \applic{U}{\L(E,F)}{x}{\dd f(x)}
+  $$
+  est appelée *différentielle de $f$*. C’est un « objet compliqué ». On a alors pour $v = \sum_{i=1}^{n}v_{i}e_{i}$ où $(e_{1}, \ldots, e_{n})$ est une base de $E$ :
+  $$
+    \forall x \in U, \dd f(x) \mdot v = \sum_{i=1}^{n}v_{i}\dd f(x)\mdot e_{i} =f \sum_{i=1}^{n}v_{i} \partial_{i}f(x)
+  $$
+  $e_{i}^{*}: \applic{E}{\R}{x = \sum_{i=1}^{n}x_{i}e_{i}}{x_{i}}$ est linéaire donc différentiable en tout point et
+  $$
+    \forall x \in E, \dd e_{i}^{*}(x) = e_{i}^{*}
+  $$
+  donc
+  $$
+    \forall (x,v) \in E, \dd e_{i}^{*}(x)\mdot v = v_{i}
+  $$
+  donc
+  $$
+    \underbrace{\dd f(x)\mdot v}_{\in F} = \sum_{i=1}^{n}\underbrace{\dd e_{i}^{*}(x)\mdot v}_{\in \R}\underbrace{\partial_{i}f(x)}_{\in F}
+  $$
+  Si $F =\R$ ou $F = \C$,
+  $$
+    \forall x \in E, \dd f(x)\mdot v = \sum_{i=1}^{n}\partial_{i}f(x)\dd e_{i}^{*}(x)\mdot v
+  $$
+  et
+  $$
+    \forall x \in U, \underbrace{\dd f(x)}_{\in \L(E,\R)} = \sum_{i=1}^{n}\partial_{i}f(x)\underbrace{\dd e_{i}^{*}(x)}_{\L(E,\R)}
+  $$
+  ce qu’on écrit
+  $$
+    \dd f = \sum_{i=1}^{n}\partial_{i}f \dd e_{i}^{*} \sur U
+  $$
+  ou
+  $$
+    \dd f = \sum_{i=1}^{n}\frac{\partial f}{\partial x_{i}}\dd x_{i}
+  $$
+  À interpréter comme
+  $$
+    \forall x \in U, \dd f(x) = \sum_{i=1}^{n}\pdv{f}{x_{i}}(x)\dd x_{i}(x)
+  $$
+  et
+  $$
+    \forall x \in U, \forall h \in E, \dd f(x)\mdot h = \sum_{i=1}^{n}h_{i} \pdv{f}{x_{i}}(x)
+  $$
+  $$
+    f(a+h) = f(a) + \sum_{i=1}^{n}h_{i} \pdv{f}{x_{i}}(a) + \norm{h}\varepsilon(h)
+  $$
+  avec $\varepsilon(h)\arrowlim{h\to 0_{E}}0$.
+  $$
+    f(a+h)-f(a) = \Deltaf(a) = \sum_{i=1}^{x_{i}}\pdv{f}{x_{i}}\Delta x_{i}
+  $$
+%
+
+## Composition des applications différentiables
+
+%prop
+  Soient $E$, $F$ et $G$ trois $\R$-espaces vectoriels normés de dimensions finies. Soient
+  ~ $f: U \longrightarrow F$ différentiable en $a \in U$, $U$ ouvert de $E$
+  ~ $f(U)\subset V$ avec $V$ ouvert de $E$
+  ~ $g: V \longrightarrow G$ différentiable en $f(a)\in V$
+  Alors, $g\circ f \longrightarrow G$ est différentiable en $a$ et
+  $$
+    \underbrace{\dd (g\circ f)(a)}_{\in \L(E,G)} = \underbrace{\in \L(F,G)}_{}\circ \underbrace{\dd f(a)}_{\in \L(E,F)}
+  $$
+%
+
+%proof
+  $$
+    f(a+h) = f(a) + \dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h)
+  $$
+  avec $\varepsilon_{1}: B_{E}(0_{F}, \delta_{2}) \longrightarrow G$ et $\lim_{x\to 0_{F}}\varepsilon_{2}(x) = 0_{G}$. Or $\dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h) \arrowlim{h\to 0_{E}}0_{F}$ donc il existe $\delta \in \oo{0,\delta_{1}}$ tel que
+  $$
+    \forall h \in B_{E}(0_{E}, \delta), K = \dd f(a)\mdot h+\norm{h}_{E} \varepsilon_{1}(h) \in B_{F}(0_{F}, \delta_{2})
+  $$
+  D’où, pour tot $h \in B_{E}(0_{E}, \delta)$,
+  $$
+    \begin{align*}
+      (g\circ f)(a+h) &= g(f(a+h))\\
+       &= g(f(a) + K)\\
+        &= g(f(a)) + \dd g(f(a))\mdot K + \norm{K}_{F}\varepsilon_{2}(K)\\
+        &= g(f(a)) + \underbrace{\dd g(f(a))\mdot \big(\dd f(a)\mdot h\big)}_{\big(\dd g(f(a))\circ \dd f(a)\big)\mdot h}+ \underbrace{\norm{h}_{E} \dd g(f(a))\mdot \varepsilon_{1}(h)}_{o(h)} + \norm{K}_{F} \varepsilon_{2}(K)
+    \end{align*}
+  $$
+  or
+  $$
+    \norm{K}_{F} \norm{\varepsilon_{2}(K)}_{G} \leq \big(\underbrace{\opnorm{\dd f(a)} \norm{h}_{E} + \norm{h}_{E} \norm{\varepsilon_{1}(h)}_{F}}_{\norm{h} \big(\opnorm{\dd f(a)} + \norm{\varepsilon_{1}(h)}_{F}\big)}\big)\underbrace{\norm{\varepsilon_{2}(K)}_{G}}_{\arrowlim{h\to 0_{E}}0} = \norm{h} \eta (h)
+  $$
+  avec $\eta(h)\arrowlim{h\to 0_{E}}0$. Ainsi, $\norm{K}\varepsilon_{2}(K) \ueq{h\to 0_{F}} o(h)$.
+%
+
+%eg
+  - Considérons $g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transp AX = \scalar{X}{AX}} = \pi\circ L$ avec $L X \longmapsto (X,AX)$ et $\pi = \scalar{\cdot}{\cdot}$. $\pi$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)^{2}$ et $L$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)$. Par compositions, $g$ est différentiable sur $\M_{n,1}(\R)$ et
+    $$
+      \forall X \in \M_{n,1}(\R), \dd g(X) = \dd (\pi\circ L)(X) = \dd  \pi(L(X))\circ \dd L(X) = \dd  \pi(X,AX)\circ L
+    $$
+    d’où
+    $$
+      \begin{align*}
+        \forall (X,H) \in \M_{n,1}(\R)^{2}, \dd g(X)\mdot H &= \dd  \pi(X,AX) \mdot (L(H))\\
+          &= \dd \pi(X,AX)\mdot (H,AH) \\
+          &= \pi(H,AX) + \pi(X,AH) \\
+          &= \scalar{H}{AX}  + \scalar{X}{AH} \\
+          &= \scalar{H}{(A+A\transp)X}
+      \end{align*}
+    $$
+  - Soit $f: U \longrightarrow \R$ une fonction différentiable sur un ouvert $U$ de $E$ à valeurs dans un intervalle ouvert $I$ de $\R$. Soit $\varepsilon: I \longrightarrow \R$ dérivable sur $I$. Considérons $\varphi\circ f: U \longrightarrow \R$. Cette fonction est différentiable sur $U$ et
+    $$
+      \forall x \in U, \dd (\varphi\circ f)(x) = \dd \varphi(f(x))\circ \dd f(x)
+    $$
+    donc
+    $$
+      \forall x \in U, \forall h \in E, \dd (\varphi\circ f)(x)\mdot h = \dd \varphi(f(x))\mdot \big(\underbrace{\dd f(x)\mdot h}_{\in \R}\big) = (\underbrace{\dd f(x)\mdot h}_{\in \R}) \underbrace{\varphi'(f(x))}_{\in \R} = \big(\varphi'(f(x))\big)(\dd f(x)\mdot h)
+    $$
+    d’où
+    $$
+      \forall x \in U, \underbrace{\dd (\varphi\circ f)(x)}_{\L(E,\R)} = \underbrace{(\varphi'\circ f)(x)}_{\in \R} \underbrace{\dd f(x)}_{\in \L(E,\R)}
+    $$
+    d’où $\dd (\varphi\circ f) = \varphi'\circ f \dd f$ sur $U$, ce qu’on écrit
+    $$
+      \dd (\varphi(f)) = \varphi'(f)\dd f
+    $$
+    %eg
+      Par exemple, $\dd (e^{f}) = e^{f}\dd f$ et $\dd (\sqrt{f}) = \frac{1}{2 \sqrt{f}}\dd f$ si $f: U \rightarrow \R_{+}^{*}$. Formellement, cela revient à
+      $$
+        \dd (\sqrt{f})(x) = \frac{1}{2 \sqrt{f(x)}}\dd f(x)
+      $$
+      d’où
+      $$
+        \dd (\sqrt{f})(x)\mdot h = \frac{1}{2 \sqrt{f(x)}}\dd f(x)\mdot h
+      $$
+    %
+%
+
+%prop
+  1. Soit $f: \applic{U}{F_{1} \times  \cdots \times F_{q}}{x}{(f_{1}(x), \ldots, f_{q}(x))}$ définie sur un ouvert $U$ de $E$. $f$ est différentiable en $a \in U$ si et seulement si pourtout $i \in \icc{1,q}$, $f_{i}$ est différentiable en $a$. En cas de différentiabilité,
+     $$
+       \forall h \in E, \underbrace{\dd f(a)\mdot h}_{\in F_{1} \times  \cdots \times F_{q}} = \big(\underbrace{\dd f_{1}(a)\mdot h}_{\in F_{1}}, \ldots, \underbrace{\dd f_{q}(a)\mdot h}_{\in F_{q}}\big)
+     $$
+  2. Soit $f: \applic{U}{F}{x}{\sum_{i=1}^{q}f_{i}(x)e_{i}}$ avec $(e_{1}, \ldots, e_{q})$ une base de $E$ et $f_{i}$ à valeurs dans $\R$. $f$ est différentiable en $a \in U$ st et seulement si pour tout $i \in \icc{1,q}$, $f_{i}$ est différentiable en $a$. En cas de différentiabilité, on a
+     $$
+       \forall h \in E, \dd f(a)\mdot h = \sum_{i=1}^{q}\big(\underbrace{\dd f_{i}(a)\mdot h}_{\in \R}\big)e_{i}
+     $$
+%
+
+%proof
+  1. - Notons $\pi_{i}: F_{1} \times  \cdots \times F_{q} \longrightarrow F_{i}$ la i-ème projection sur le facteur $F_{i}$. Elle est linéaire donc différentiable et $f_{i} = \pi_{i}\circ f$. Ainsi, si $f$ est différentiable en $a$, $f_{i}$ est différentiable en $a$.
+     - Supposons chaque $f_{i}$ différentiable en $a$. Alors
+       $$
+         \forall x \in U, f(x) = \big(f_{i}(a)+\dd f_{i}(a)\mdot (x-a) + \norm{x-a}\varepsilon_{i}(x)\big)_{1 \leq i \leq q} = f(a) + L\mdot (x-a) + \norm{x-a}\varepsilon(x)
+       $$
+       avec $\varepsilon_{i}(x) \arrowlim{x\to a}0_{F_{i}}$, $L: \applic{E}{F_{1} \times  \cdots \times F_{q}}{h}{\big(\dd f_{i}(a)\mdot h\big)_{1 \leq  i \leq q}}$ linéaire et $\varepsilon(x) = \big(\varepsilon_{i}(x)\big)_{1 \leq  i \leq q}\arrowlim{x\to a}(0_{F_{i}})_{1 \leq  i \leq q} = 0_{F_{1} \times \cdots \times F_{q}}$. Ainsi, $f$ est différentiable en $a$ et $\dd f(a) = L$.
+  2. - $f_{i} = e_{i}^{*}\circ f$ et $e_{i}^{*}$ est linéaire donc différentiable. Ainsi, le sens direct est vrai.
+     - Supposons chaque $f_{i}$ différentiable en $a$.
+       $$
+         \begin{align*}
+           \forall x \in U, f(x) &= \sum_{i=1}^{q}\big(f_{i}(a) + \dd f_{i}(a)\mdot (x-a) + \norm{x-a}\varepsilon_{i}(x)\big)e_{i}\\
+           &=  f(a) + L \mdot (x-a) + \norm{x-a}\underbrace{\sum_{i=1}^{q}\varepsilon_{i}(x)e_{i}}_{\arrowlim{x\to a}0_{F}}
+         \end{align*}
+       $$
+       avec $\varepsilon_{i}(x) \arrowlim{x\to a}0_{\R}$ et $L: \applic{E}{F_{q}}{h}{\sum_{i=1}^{q}\big(\dd f_{i}(a)\mdot h\big)e_{i}}$ linéaire. Ainsi, $f$ est différentiable en $a$ et $\dd f(a) = L$.
+%
+
+%eg
+  - Soit $E$ un espace vectoriel euclidien. Considérons
+    $$
+      f: \applic{te^{2}}{\R \times E}{(u,v)}{(\scalar{u}{v} , u+v)}
+    $$
+    ~ $(u,v) \longmapsto \scalar{u}{v}$ est bilinéaire donc différentiable
+    ~ $L:(u,v) \longmapsto u+v$ est linéaire donc différentiable et $\dd L(u,v) = L$
+    donc $f$ est différentiable sur $E^{2}$ et
+    $$
+      \forall (u,v)\in E^{2}, \forall (h,k) \in E^{2}, \dd f(u,v)\mdot (h, k) = \big(\scalar{h}{v} + \scalar{u}{k} \big)
+    $$
+  - Soit $E$ un espace vectoriel euclidien. Considérons
+    $$
+      G: \applic{E^{2}}{\M_{2}(\R)}{(u,v)}{\mtx{\norm{u}^{2} & \scalar{u}{v} \\ \scalar{v}{u} \norm{v}^{2}}}
+    $$
+    ~ $\pi: (u,v) \longmapsto \scalar{u}{v}$ est bilinéaire donc différentiable
+    Posons
+    ~ $\alpha: (u,v) \longmapsto \norm{u}^{2}$  ~ $\beta: (u,v) \longmapsto \norm{v}^{2}$  ~ $L: (u,v)\longmapsto (u,u)$  ~ $M: (u,v) \longmapsto (v,v)$
+    On a alors $\alpha = \pi\circ L$ et $\beta = \pi\circ M$ donc, comme $L$ et $M$ sont linéaires, $\alpha$ et $\beta$ sont différentiables, et
+    $$
+      \dd \alpha(u,v) = \dd (\pi\circ L)(u,v) = \dd \pi(L(u,v)) \circ \dd L(u,v) = \dd \pi(u,u)\circ L
+    $$
+    donc
+    $$
+      \forall (h,k)\in E^{2}, \dd \alpha(u,v)\mdot (h,k) = \dd \pi(u,v)\mdot (h,k) = \scalar{h}{u} + \scalar{u}{k}  = 2 \scalar{h}{u}
+    $$
+    donc $G$ est différentiable sur $E^{2}$ et
+    $$
+      \forall (u,v) \in E^{2}, \dd G(u,v): \applic{E^{2}}{\M_{2}(\R)}{(h,k)}{\mtx{2 \scalar{h}{u} & \scalar{h}{v} + \scalar{u}{k} \\ \scalar{h}{v}  + \scalar{h}{k} & 2 \scalar{k}{v}  }}
+    $$
+%
