@@ -490,7 +490,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 ## Voisinages d’un point – Parties convexes
 
 %def Voisinage
-  Soit $V$ une partie de $E$ et $x \in V$. On dit que $V$ est un *voisinage* de $x$ si il existe $r > 0$ tel que $B(x,r) \subset V$. On écrit alors $V \in \V_{E}(x)$. On dit encore que $x$ est un *point intérieur* à $V$.
+  Soit $V$ une partie de $E$ et $x \in V$. On dit que $V$ est un *voisinage* de $x$ si il existe $r > 0$ tel que $B(x,r) \subset V$. On écrit alors $V \in \Vois_{E}(x)$. On dit encore que $x$ est un *point intérieur* à $V$.
 %
 
 %eg
@@ -504,7 +504,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %def Partie ouverte
   Une partie $O$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite ouverte si $O$ est voisinage de chacun de ses points, i.e.
   $$
-    \forall x \in O, O \in \V_{E}(x)
+    \forall x \in O, O \in \Vois_{E}(x)
   $$
   i.e.
   $$
@@ -534,8 +534,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %proof
   Montrons que $A$ n’est pas fermée si et seulements si $E \setminus A$ n’est pas ouverte.
   ~
-  - Supposons que $A$ ne soit pas une partie fermée de $E$. Il existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. Il existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \V_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
-  - Supposons $E \setminus A$ non ouverte. Il existe $x \in E \setminus A$ tel que $E \setminus A \notin \V_{E}(x)$. Pour tout $r > 0, B(x,r) \not \subset E \setminus A$ donc
+  - Supposons que $A$ ne soit pas une partie fermée de $E$. Il existe donc une suite $(a_{n})_{n \in \N}$ d’éléments de $A$ conevrgente de limite $\ell \in E \setminus A$. Soit $r > 0$ quelconque. Il existe $N \in \N$ tel que $a_{N} \in B(\ell, r)$. Or $a_{N} \in A$ donc $B(\ell, r) \not\subset  E \setminus A$, donc $E \setminus A \notin \Vois_{E}(\ell)$. Ainsi, $E \setminus A$ n’est pas ouverte.
+  - Supposons $E \setminus A$ non ouverte. Il existe $x \in E \setminus A$ tel que $E \setminus A \notin \Vois_{E}(x)$. Pour tout $r > 0, B(x,r) \not \subset E \setminus A$ donc
     $$
       \forall n \in \N, B \left(x, \frac{1}{n+1}\right) \cap A \notin \emptyset
     $$
@@ -587,7 +587,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      $$
      (noter le $x \in A$ et non $x \in E$ dans l’ensemble) i.e.
      $$
-       x \in \ring A \iff A \in \V_{E}(x)
+       x \in \ring A \iff A \in \Vois_{E}(x)
      $$
   $\ring A$ est appelé *intérieur* de $A$ ou *ensemble des points intérieurs à $A$*.
 %
@@ -738,17 +738,17 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   $$
     \exists r > 0: B(a,r) \cap A \subset V'
   $$
-  On écrit $V' \in \V_{A}(e)$. C’est le cas si et seulement si il existe $V \in \V_{E}(a)$ tel que $V' = V \cap A$.
+  On écrit $V' \in \Vois_{A}(e)$. C’est le cas si et seulement si il existe $V \in \Vois_{E}(a)$ tel que $V' = V \cap A$.
 %
 
 %eg
   %fig Exemple de voisinage relatif
     @[./figures/voisinage-relatif.svg]
   %
-  ~ $V' \in \V_{A}(a_{1})$  ~ $V' \in \V_{A}(a_{2})$  ~ $V' \notin \V_{A}(a_{3})$  ~ $V' \notin V_{A} (a_{4})$
+  ~ $V' \in \Vois_{A}(a_{1})$  ~ $V' \in \Vois_{A}(a_{2})$  ~ $V' \notin \Vois_{A}(a_{3})$  ~ $V' \notin \nois_{A} (a_{4})$
   En effet,
-  - Soit $V \in \V_{A}(a)$. Posons $V' = V \cap A$. Alors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \V_{A}(a)$
-  - Soit $V' \in \V_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \V_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$
+  - Soit $V \in \Vois_{A}(a)$. Posons $V' = V \cap A$. Alors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \Vois_{A}(a)$
+  - Soit $V' \in \Vois_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \Vois_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$
 %
 
 %def Définition-proposition
@@ -764,7 +764,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %proof
-  - Soit $O$ un ouvert de $E$. Posons $O' = O \cap A$. Soit $x \in O'$. Alors $x \in O$ et $O$ est un ouvert donc il existe $r > 0$ tel que $B(x,r) \subset O$. Ainsi, $B_{A}(x,r) \subset O$ d’où $O' \in \V_{A}(x)$.
+  - Soit $O$ un ouvert de $E$. Posons $O' = O \cap A$. Soit $x \in O'$. Alors $x \in O$ et $O$ est un ouvert donc il existe $r > 0$ tel que $B(x,r) \subset O$. Ainsi, $B_{A}(x,r) \subset O$ d’où $O' \in \Vois_{A}(x)$.
   - Soit $O'$ un ouvert relatif de $A$. Posons
     $$
       \Omega = \left\{(x,r) \in O' \times \R_{+}^{*}\where B_{A}(x,r) \subset O'\right\}
@@ -782,7 +782,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %eg
-  - $\cc{0,1} \notin \V_{\R}(1)$ mais $\cc{0,1} \in \V_{\oc{-\infty, 1}}$ car $\cc{0,1} = \cc{0,2} \cap \oc{-\infty, 1}$ et $\cc{0,1} \in \V_{\R}(1)$
+  - $\cc{0,1} \notin \Vois_{\R}(1)$ mais $\cc{0,1} \in \Vois_{\oc{-\infty, 1}}$ car $\cc{0,1} = \cc{0,2} \cap \oc{-\infty, 1}$ et $\cc{0,1} \in \Vois_{\R}(1)$
   - $\co{0,1}$ n’est pas un ouvert de $\R$ et $\co{0,1}$ n’est pas une partie ouverte relative de $\R_{+}^{*}$ car $\co{0,1} = \oo{-1,1} \cap \R_{+}$ et $\oo{-1,1}$ est un ouvert de $\R$.
 %
 
@@ -817,7 +817,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
     et $F = O^{\complement}$ est une partie fermée de $E$.
   - Supposons le second point. Posons $F' = F \cap A$ avec $F$ fermée de $E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $F'$ convergente et de limite $\ell \in \color{yellow}A$. Ses termes sont dans le fermé $F$ donc $\ell \in F$ et $\ell \in \color{yellow}A$ donc $\ell \in F'$
-  - Supposons la négation du premier point, i.e $A \setminus  F'$ n’est pas un ouvert relatif de $A$. Il existe donc $x \in A \setminus F'$ tel que $A \setminus F' \notin \V_{A}(x)$ donc
+  - Supposons la négation du premier point, i.e $A \setminus  F'$ n’est pas un ouvert relatif de $A$. Il existe donc $x \in A \setminus F'$ tel que $A \setminus F' \notin \Vois_{A}(x)$ donc
     $$
       \forall r > 0, B_{A}(x,r) \not \subset A \setminus F'
     $$

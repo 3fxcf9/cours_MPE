@@ -15,7 +15,7 @@
     $$
       \complement_{A}f^{-1}(O) = f^{-1} \left(\complement_{E'}O\right)
     $$
-    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ansi, $f^{-1}(O)$ est un ouvert relatif de $A$.
+    est un fermé relatif de $A$ car $\complement_{E'}O$ est un fermé de $E$. Ainsi, $f^{-1}(O)$ est un ouvert relatif de $A$.
   - Supposons le troisième point. Soient $a \in E$ et $\varepsilon > 0$. $B_{E'}(f(a), \varepsilon)$ est une partie ouverte de $E'$ donc $f^{-1}(B_{E'}(f(a), E))$ est un ouvert relatif de $A$, qui contient $a$ car $f(a) \in B_{E'}(f(a), \varepsilon)$. Il existe donc $\delta > 0$ tel que $B_{A}(a, \delta)\subset f^{-1}(B_{E'}(f(a), \varepsilon))$ donc
     $$
       f \big(A \cap B_{E}(a, \delta)\big) = f\big(B_{A}(a, \delta)\big)\subset B_{E'}\big(f(a), \varepsilon\big)

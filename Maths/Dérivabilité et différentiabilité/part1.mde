@@ -365,12 +365,12 @@ $$
       $$
       Alors
       $$
-        \scalar{AX}{Y}_{\can} = (AX)\transpY = X\transp A\transp Y = \scalar{X}{A\transp Y}_{\can}
+        \scalar{AX}{Y}_{\can} = (AX)\transp Y = X\transp A\transp Y = \scalar{X}{A\transp Y}_{\can}
       $$
     %
   - Soit $A \in \M_{n}(\R)$. Considérons
     $$
-      g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transpAX = \scalar{X}{AX}_{\can}}
+      g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transp AX = \scalar{X}{AX}_{\can}}
     $$
     Soient $X_{0} \in \M_{n,1}(\R)$ et $V \in \M_{n,1}(\R)$.
     $$
@@ -445,11 +445,11 @@ $$
 $$
 Si note abusivement $f(x_{1}e_{1} + \cdots + x_{n}e_{n})$ par $f(x_{1}, \ldots, x_{n})$, alors
 $$
-  \partial_{i} f(a) = \lim_{t\to 0}\frac{f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n}) - f(a_{1}, \ldots, a_{n})}{t} = \dv{}{t}\left(f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n})\right)\eval{t=0}
+  \partial_{i} f(a) = \lim_{t\to 0}\frac{f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n}) - f(a_{1}, \ldots, a_{n})}{t} = \eval{\dv{}{t}\left(f(a_{1}, \ldots, a_{i}+t, \ldots, a_{n})\right)}{t=0}
 $$
 soit
 $$
-  \pdv{f}{x_{i}}(a) = \dv{}{x_{i}} \left(f(a_{1}, \ldots, x_{i}, \ldots, a_{n})\right)\eval{x_{i}=a_{i}}
+  \pdv{f}{x_{i}}(a) = \eval{\dv{}{x_{i}} \left(f(a_{1}, \ldots, x_{i}, \ldots, a_{n})\right)}{x_{i}=a_{i}}
 $$
 
 %eg
@@ -519,7 +519,7 @@ $$
       n’est pas continue en $0$ et $(x,x^{2}) \arrowlim{x\to 0}(0,0)$.
 %
 
-## différentiabilité
+## Différentiabilité
 
 %def
   Soit $U$ un ouvert de $E$. Soit $f: U \longrightarrow F$ une application. Soit $a \in U$. On dit que $f$ est *différentiable* en $a$ si l’une des deux conditions équivalentes suivantes est satisfaite :
@@ -741,7 +741,7 @@ $$
      ~  $\varepsilon_{1}(h)\arrowlim{h\to 0_{E}}0_{F}$  ~ $\varepsilon_{2}(h)\arrowlim{h\to 0_{E}}0_{F}$
      d’où
      $$
-       (\lambda f+\mu g)(a+h) = \lambdaf(a+h)+\mu g(a+h) = (\lambda f(a) + \mu g(a)) + (\lambda \dd f(a) + \mu \dd g(a))\mdot h + \norm{h}\varepsilon(h)
+       (\lambda f+\mu g)(a+h) = \lambda f(a+h)+\mu g(a+h) = (\lambda f(a) + \mu g(a)) + (\lambda \dd f(a) + \mu \dd g(a))\mdot h + \norm{h}\varepsilon(h)
      $$
      avec $\varepsilon(h) = \lambda \varepsilon_{1}(h) + \mu \varepsilon_{2}(h) \arrowlim{h\to 0_{E}}0_{F}$. Or
      $$
@@ -750,7 +750,7 @@ $$
      d’où la conclusion.
   5. Soient $f: I \longrightarrow F$ avec $I$ un intervalle ouvert et $t_{0}$ un point de $\ring I = I$.
      %recall
-       Si $L \in \lL(\R,F)$, alors $\forall h \in \R, L(h) = hL(1)$ donc
+       Si $L \in \L(\R,F)$, alors $\forall h \in \R, L(h) = hL(1)$ donc
        $$
          \L(\R,F) = \left\{\applic{\R}{F}{h}{hu}\where u \in F\right\}
        $$
@@ -778,7 +778,7 @@ $$
      $$
 %
 
-%prop
+%prop Différentiabilité d’une application multilinéaire
   Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est une application $p$-linéaire, alors $M$ est différentiable en tout point $(a_{1}, \ldots, a_{p})\in E_{1} \times  \cdots \times E_{p}$ et
   $$
     \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h1, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}h_{i}, a_{i+1}, \ldots, a_{p})}
@@ -825,8 +825,10 @@ $$
 %
 
 %prop
-  Soit $f: U \longrightarrow F$ différentiable en tout point de $U$. Soit $\gamma: ei \longrightarrow  E$ un arc tracé sur $U$ et dérivable sur un intervalle $I$ d’intérieur non vide.
-  ==FIGURE 2==
+  Soit $f: U \longrightarrow F$ différentiable en tout point de $U$. Soit $\gamma: I \longrightarrow  E$ un arc tracé sur $U$ et dérivable sur un intervalle $I$ d’intérieur non vide.
+  %fig Dérivation le long d’un arc
+    @[./figures/dérivation-le-long-d-un-arc_optimized.svg]
+  %
   Alors l’arc $f\circ \gamma: I \longrightarrow F$ est dérivable sur $I$ et
   $$
     \forall t \in I, \underbrace{(f\circ \gamma)'(t)}_{\in F} = \underbrace{\dd f(\gamma(t))}_{\in \L(E,F)}\mdot \underbrace{\gamma'(t)}_{\in E}
@@ -942,7 +944,7 @@ $$
   $$
   avec $\varepsilon(h)\arrowlim{h\to 0_{E}}0$.
   $$
-    f(a+h)-f(a) = \Deltaf(a) = \sum_{i=1}^{x_{i}}\pdv{f}{x_{i}}\Delta x_{i}
+    f(a+h)-f(a) = \Delta f(a) = \sum_{i=1}^{x_{i}}\pdv{f}{x_{i}}\Delta x_{i}
   $$
 %
 
@@ -955,7 +957,7 @@ $$
   ~ $g: V \longrightarrow G$ différentiable en $f(a)\in V$
   Alors, $g\circ f \longrightarrow G$ est différentiable en $a$ et
   $$
-    \underbrace{\dd (g\circ f)(a)}_{\in \L(E,G)} = \underbrace{\in \L(F,G)}_{}\circ \underbrace{\dd f(a)}_{\in \L(E,F)}
+    \underbrace{\dd (g\circ f)(a)}_{\in \L(E,G)} = \underbrace{\dd g(f(a))}_{\in \L(F,G)}\circ \underbrace{\dd f(a)}_{\in \L(E,F)}
   $$
 %
 
