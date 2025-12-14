@@ -838,8 +838,8 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
 
 %def Définition-proposition
   Soit $A$ une partie non vide de $E$. Soit $f: A\longrightarrow E'$ une application. Soit $\alpha \in \bar{A}$. Soit $\ell \in E'$. On dit que $f$ admet $\ell$ pour limite en $\alpha$ si l’une des propositions équivalentes suivantes :
-  1. $\forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-\alpha}_{E}\end{cases} \implies \norm{f(x) - \ell}_{E'} < \varepsilon$
-  2. $\forall W \in \in \Vois_{E'}(\ell), \exists V \in \Vois_{E}(\alpha): f(A \cap V) \subset W$ (($V$ n’est pas forcément un voisinage de $\alpha$ car $\alpha$ n’appartient pas forcément à $A$))
+  1. $\forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-\alpha}_{E} \leq \delta\end{cases} \implies \norm{f(x) - \ell}_{E'} < \varepsilon$
+  2. $\forall W \in \Vois_{E'}(\ell), \exists V \in \Vois_{E}(\alpha): f(A \cap V) \subset W$ (($V$ n’est pas forcément un voisinage de $\alpha$ car $\alpha$ n’appartient pas forcément à $A$))
 %
 
 %proof
@@ -986,7 +986,7 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
        \lim_{\alpha}(\lambda f + \mu g) = \lambda \ell + \mu \ell'
      $$
      pour $(\lambda, \mu) \in \K^{2}$.
-  2. On a aussi lorsque $te'$ est une $\K$-algèbre munie d’une norme sous-multiplicative,
+  2. On a aussi lorsque $E'$ est une $\K$-algèbre munie d’une norme sous-multiplicative,
      $$
        \lim_{\alpha} fg = \ell\ell'
      $$
@@ -999,7 +999,7 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
      $$
        \exists V \in \Vois_{E}(\alpha): f \leq g \leq h \sur V \cap A
      $$
-     alors $g$ admet une limite en $\alpha$ et $\lim_{\alpha} g f \ell$.
+     alors $g$ admet une limite en $\alpha$ et $\lim_{\alpha} g = \ell$.
   5. Si $f: A\longrightarrow E'$ admet $\ell \in E'$ comme limite en $\alpha \in \bar{A}$, alors $\lim_{x\to \alpha}\norm{f(x)} = \norm{\ell}$. De plus, si $\ell \ne 0_{E}$, alors il existe $V \in \Vois_{E}(\alpha)$ tel que
      $$
        \forall x \in V \cap  A, \norm{f(x)} \geq \frac{\norm{h}}{2} > 0

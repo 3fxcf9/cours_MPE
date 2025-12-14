@@ -140,7 +140,11 @@ $$
   $$
     f(a+h) = f(a) + \dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h)
   $$
-  avec $\varepsilon_{1}: B_{E}(0_{F}, \delta_{2}) \longrightarrow G$ et $\lim_{x\to 0_{F}}\varepsilon_{2}(x) = 0_{G}$. Or $\dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h) \arrowlim{h\to 0_{E}}0_{F}$ donc il existe $\delta \in \oo{0,\delta_{1}}$ tel que
+  avec $\varepsilon_{1}: B_{E}(0_{F}, \delta_{2}) \longrightarrow G$ et $\lim_{x\to 0_{E}}\varepsilon_{1}(x) = 0_{F}$, donc
+  $$
+    g(f(a)+h) = g(f(a)) + \dd g(f(a))\mdot h + \norm{h}_{F}\varepsilon_{2}(h)
+  $$
+  avce $\varepsilon_{2}: B_{F}(0_{F}, \delta_{2}) \longrightarrow G$ vérifiant $\lim_{x\to 0_{F}}\varepsilon_{2}(x) = 0_{G}$. Or $\dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h) \arrowlim{h\to 0_{E}}0_{F}$ donc il existe $\delta \in \oo{0,\delta_{1}}$ tel que
   $$
     \forall h \in B_{E}(0_{E}, \delta), K = \dd f(a)\mdot h+\norm{h}_{E} \varepsilon_{1}(h) \in B_{F}(0_{F}, \delta_{2})
   $$

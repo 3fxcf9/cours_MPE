@@ -4,7 +4,7 @@
 
 Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\norm{\cdot})$ est un $\K$-espace vectoriel normé de dimension finie dont une base est $(e_{1}, \ldots, e_{n})$.
 
-%ffprog
+%offprog
   Soit $x \in E$. Posons $x = \sum_{i=1}^{n}x_{i}e_{i}$ avec $(x_{1}, \ldots, x_{n}) \in \K^{n}$. On note, pour $i \in \icc{1,n}$,
   $$
     e_{i}^{*}: \applic{E}{\K}{x}{x_{i}}
@@ -13,11 +13,11 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
 %
 
 %recall
-  Pour $E$ et $F$ de dimension finie, $\dim \L(E,F) = \dim E \times \dim F$ donc $\dim \L(E,\K) f \dim E = n$.
+  Pour $E$ et $F$ de dimension finie, $\dim \L(E,F) = \dim E \times \dim F$ donc $\dim \L(E,\K) = \dim E = n$.
   $$
     \forall i \in \icc{1,n}, e_{i}^{*} \in \L(E,\K)
   $$
-  Soit $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ avec $il_{1} e_{1}^{*} + \cdots + \lambda_{n}e_{n}^{*} = 0_{E^{*}}$. On a alors pour tout $i \in \icc{1,n}$,
+  Soit $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ avec $\lambda_{1} e_{1}^{*} + \cdots + \lambda_{n}e_{n}^{*} = 0_{E^{*}}$. On a alors pour tout $i \in \icc{1,n}$,
   $$
     (\lambda_{1}e_{1}^{*} + \cdots + \lambda_{n}e_{n}^{*})(e_{i}) = 0
   $$
@@ -53,7 +53,7 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
      avec $\varepsilon(t) \arrowlim{t\to t_{0}}0_{E}$.
   3. (si $t_{0}$ est dans l’intérieur de $I$)
      $$
-       \lim_{t\to t_{0}^{+}t_{0}}\frac{f(t)-f(t_{0})}{t-t_{0}} \quad\text{et}\quad \lim_{t\to t_{0}^{-} t_{0}} \frac{f(t)-f(t_{0})}{t-t_{0}}
+       \lim_{t\to t_{0}^{+}}\frac{f(t)-f(t_{0})}{t-t_{0}} \quad\text{et}\quad \lim_{t\to t_{0}^{-}} \frac{f(t)-f(t_{0})}{t-t_{0}}
      $$
      existent dans $E$ et sont égales.
 %
@@ -269,8 +269,8 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
        donc selon $\Prop(k)$, on a $f'\circ \varphi \in \Cont^{k}(I, E)$. D’après le troisième point, $\varphi' \times f'\circ \varphi \in \Cont^{k}(I, E)$ donc $(f\circ \varphi)' \in \Cont^{k}(I, E)$, i.e $f\circ \varphi \in \Cont^{k+1}(I, E)$.
 %
 
-%prop Formule de Taylor-Young en $t_0 \in I$ pour un arc de clsase $\Cont^p$
-  Si $f: I \longrightarrow E$ est un arc de classe $\C^{p}$ et si $t_{0} \in I$, alors il existe $\varepsilon \in \Func(I, E)$ tel que
+%prop Formule de Taylor-Young en $t_0 \in I$ pour un arc de classe $\Cont^p$
+  Si $f: I \longrightarrow E$ est un arc de classe $\Cont^{p}$ et si $t_{0} \in I$, alors il existe $\varepsilon \in \Func(I, E)$ tel que
   $$
     \forall t \in I, f(t) = f(t_{0})+(t-t_{0})f'(t_{0}) + \cdots + \frac{(t-t_{0})^{p}}{p!}f^{(p)}(t_{0}) + (t-t_{0})^{p} \varepsilon(t)
   $$
@@ -291,7 +291,7 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
 
 %offprog
   %eg
-    Soit $f: I \longrightarrow  E$ un arc de classe $\Cont^{k}$. Soit $t_{0} \in I$. Si le quotient vectoriel $\frac{f(t) - f(t_{0})}{\norm{f(t) - f(t_{0})}}$ existe et a une limite $u$ non nulle en $t_{0}^{+}$, alors on dit que l’arc possède une demi-tangente au point $f(t_{0})$ dirigée par $u$: $f(t_{0}) + \R_{+}u$. Si $t_{0} \in \ring I$, alors on dit que l’arc possède une tangente au point $f(t_{0})$ si $\lim_{t\to t_{0}+} \frac{f(t) - f(t_{0})}{\norm{t-t_{0}}}$ et $\lim_{t\to t_{0}-} \frac{f(t)-f(t_{0})}{\norm{f(t)-f(t_{0})}}$ ont des limites $u$ et $b$ avec $v \in \{u,-u\}$.
+    Soit $f: I \longrightarrow  E$ un arc de classe $\Cont^{k}$. Soit $t_{0} \in I$. Si le quotient vectoriel $\frac{f(t) - f(t_{0})}{\norm{f(t) - f(t_{0})}}$ existe et a une limite $u$ non nulle en $t_{0}^{+}$, alors on dit que l’arc possède une demi-tangente au point $f(t_{0})$ dirigée par $u$: $f(t_{0}) + \R_{+}u$. Si $t_{0} \in \ring I$, alors on dit que l’arc possède une tangente au point $f(t_{0})$ si $\lim_{t\to t_{0}+} \frac{f(t) - f(t_{0})}{\norm{f(t)-f(t_{0})}}$ et $\lim_{t\to t_{0}-} \frac{f(t)-f(t_{0})}{\norm{f(t)-f(t_{0})}}$ ont des limites $u$ et $b$ avec $v \in \{u,-u\}$.
     ~
     L’arc dessiné ci-contre possède une tangente au point $f(t_{0})$ dirigée par le vecteur $f'(t_{0})$. Supposons $f'(t_{0})\ne 0$. On a
     $$
@@ -342,7 +342,7 @@ $$
        $$
          \norm{a+tv - a} < \varepsilon \iff \abs{t} < \frac{\varepsilon}{\norm{v}}
        $$
-       donc l’arc $\varphi$ est au moins défini sur $\oo{\frac{\varepsilon}{\norm{v}}, \frac{\varepsilon}{\norm{v}}}$ et $0$ est dans l’intérieur de cet intervalle.
+       donc l’arc $\varphi$ est au moins défini sur $\oo{-\frac{\varepsilon}{\norm{v}}, \frac{\varepsilon}{\norm{v}}}$ et $0$ est dans l’intérieur de cet intervalle.
      Dans tous les cas, $\varphi$ est définie sur un intervalle d’intérieur non vide contenant $0$.
   2. $\varphi:t \longmapsto f(a)$ est dérivable en $0$ et $D_{0_{E}}f(a) = 0_{F}$
   3. Si $D_{v}f(a) \ne 0_{F}$, alors $D_{v}f(a)$ est un vecteur directeur de la tangente à l’arc $\varphi$ au point $f(a)$.
@@ -404,7 +404,7 @@ $$
 
 %def
   Soit $(e_{1}, \ldots, e_{n}) = \B$ une base de $E$. Soit $f: U \longrightarrow F$ définie sur une partie $U$ ouverte de $E$. Soit $a \in U$.
-  Si $f$ possède une dérivée en $a$ selon $e_{i}$ (pour $i \in \icc{1,n}$), alors $D_{e_{i}}f(a)$ est appelée i-ème dérivée partielle de $f$ en $a$ d’as la base $\B$.
+  Si $f$ possède une dérivée en $a$ selon $e_{i}$ (pour $i \in \icc{1,n}$), alors $D_{e_{i}}f(a)$ est appelée i-ème dérivée partielle de $f$ en $a$ dans la base $\B$.
   Si aucune confusion n’est possible sur le choix de la base, alors on pose
   $$
     D_{e_{i}}f(a) = \partial_{i}f(a) = \pdv{f}{x_{i}}(a)
@@ -419,11 +419,11 @@ $$
     $$
     donc
     $$
-      \partial_{(i,j)}f(A) = \mtx{\begin{cases}a_{jj} + a_{ii} \if (r,s) = (i,j)\\0\else\end{cases}}_{1 \leq r,s \leq n}
+      \partial_{(i,j)}f(A) = \mtx{\begin{cases}a_{jj} + a_{ii} \if (r,s) = (i,j)\\ a_{j,s} \if r=i \\a_{r,i} \if s = j \\0\else\end{cases}}_{1 \leq r,s \leq n}
     $$
   - Reprenons $g: X \longmapsto X\transp AX$. Soit $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\R)$.
     $$
-      D_{E_{i}}f(X_{0}) = \scalar{E_{i}}{(A+A\transp)X_{0}}_{\can}
+      D_{E_{i}}g(X_{0}) = \scalar{E_{i}}{(A+A\transp)X_{0}}_{\can}
     $$
     donc
     $$
@@ -435,13 +435,13 @@ $$
     $$
     donc
     $$
-      D_{(0,1)}f(a,b) = -\frac{1}{ab^{2}} = \partial_{2}f(a,b) f \pdv{f}{y}(a,b)
+      D_{(0,1)}f(a,b) = -\frac{1}{ab^{2}} = \partial_{2}f(a,b) = \pdv{f}{y}(a,b)
     $$
 %
 
 De façon générale, on a pour $a = \sum_{i=1}^{n}a_{i}e_{i} \in E$ avec $\B = (e_{1}, \ldots, e_{n})$ une base de $E$,
 $$
-  \partial_{i}f(a) = \lim_{t\to 0}\frac{f(a+t e_{i}) - f(a)}{t} = \lim_{t\to 0}\frac{f(a_{1} e_{i} + \cdots + (a_{i} + t)e_{i} + \cdots + a_{n}e_{n})-f(n)}{t}
+  \partial_{i}f(a) = \lim_{t\to 0}\frac{f(a+t e_{i}) - f(a)}{t} = \lim_{t\to 0}\frac{f(a_{1} e_{i} + \cdots + (a_{i} + t)e_{i} + \cdots + a_{n}e_{n})-f(a)}{t}
 $$
 Si note abusivement $f(x_{1}e_{1} + \cdots + x_{n}e_{n})$ par $f(x_{1}, \ldots, x_{n})$, alors
 $$
@@ -529,14 +529,14 @@ $$
      $$
      ce que l’on écrit encore
      $$
-       f(a+h) - f(a) - \ell \mdot h \ueq{o\to 0_{E}} o(h) \ne o(\norm{h})
+       f(a+h) - f(a) - \ell \mdot h \ueq{h\to 0_{E}} o(h) \ne o(\norm{h})
      $$
      ou
      $$
        f(a+h) \ueq{h\to 0_{E}} f(a) + \ell\mdot h + o(h)
      $$
   2. Il existe $\ell \in \L(E,F)$ et $\varepsilon \in \Func(U,F)$ tels que
-     ~ $\forall x \in U, f(x) = f(a) + \ell\mdot (x-a) + \norm{x-a}_{E} \varepsilon(x)$  ~ $\lim_{x\to \alpha}\varepsilon(x) = 0_{F}$
+     ~ $\forall x \in U, f(x) = f(a) + \ell\mdot (x-a) + \norm{x-a}_{E} \varepsilon(x)$  ~ $\lim_{x\to a}\varepsilon(x) = 0_{F}$
 %
 
 %proof
@@ -660,7 +660,7 @@ $$
 
 %property
   Soient $U$ un ouvert de $E$ et $a$ un point de $E$.
-  1. Si $f: U \longrightarrow F$ est différentiable en a, alors
+  1. Si $f: U \longrightarrow F$ est différentiable en $a$, alors
      - $f$ est continue en $a$
      - $f$ admet une dérivée en $a$ selon tout vecteur $v \in E$ et
        $$
@@ -677,7 +677,7 @@ $$
   %callout
     3. Si $L \in \L(E,F)$ et si $\ell = L_{|U}$, alors $\ell$ est différentiable en tout point $x$ de $U$ et $\dd \ell(x) = L$.
   %
-  4. Si $f: U \longrightarrow F$ et $g: U \longrightarrow F$ sont différentiables en $a$ et si $(\lambda, \mu) \in \R^{2}$, alors $\lambda f + \mu g$ est différentiable en a et
+  4. Si $f: U \longrightarrow F$ et $g: U \longrightarrow F$ sont différentiables en $a$ et si $(\lambda, \mu) \in \R^{2}$, alors $\lambda f + \mu g$ est différentiable en $a$ et
      $$
        \dd (\lambda f+\mu g) (a) = \lambda \dd f(a) + \mu \dd g(a)
      $$
@@ -710,11 +710,11 @@ $$
        $$
          \forall t \in \oo{-\varepsilon, \varepsilon}, \underbrace{f(a+tv)}_{\varphi(t)} = f(a) + t \dd f(a)\mdot v + \abs{t}\norm{v}\varepsilon(tv)
        $$
-       et
+       soit
        $$
          \varphi(t) \ueq{t\to 0} \varphi(0)+t \underbrace{\dd f(a)\mdot v}_{\in F} + o(t)
        $$
-       $\varphi$ admet donc un développement limité d’ordre $1$ en $0$, donc elle est dérivable en $0$. Autrement dit, $f$ admet en $a$ une dérivée selon $v$
+       $\varphi$ admet donc un développement limité d’ordre $1$ en $0$, donc elle est dérivable en $0$. Autrement dit, $f$ admet en $a$ une dérivée selon $v$ et
        $$
          D_{v}f(a) = \varphi'(0) = \dd f(a)\mdot v
        $$
@@ -781,7 +781,7 @@ $$
 %prop Différentiabilité d’une application multilinéaire
   Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est une application $p$-linéaire, alors $M$ est différentiable en tout point $(a_{1}, \ldots, a_{p})\in E_{1} \times  \cdots \times E_{p}$ et
   $$
-    \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h1, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}h_{i}, a_{i+1}, \ldots, a_{p})}
+    \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h1, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, h_{i}, a_{i+1}, \ldots, a_{p})}
   $$
 %
 
@@ -824,7 +824,7 @@ $$
     $$
 %
 
-%prop
+%prop Dérivée le long d’un arc
   Soit $f: U \longrightarrow F$ différentiable en tout point de $U$. Soit $\gamma: I \longrightarrow  E$ un arc tracé sur $U$ et dérivable sur un intervalle $I$ d’intérieur non vide.
   %fig Dérivation le long d’un arc
     @[./figures/dérivation-le-long-d-un-arc_optimized.svg]
@@ -879,7 +879,7 @@ $$
 %
 
 %prop
-  Soit $U$ un ouvert non vide convexe par arcs de $E$. Soit $f: U \longrightarrow F$ une application. Alors $f$ est constante si et seulement st
+  Soit $U$ un ouvert non vide convexe par arcs de $E$. Soit $f: U \longrightarrow F$ une application. Alors $f$ est constante si et seulement si
   ~ $f: U \longrightarrow F$ est différentiable sur $U$  ~ $\forall x \in U, \dd f(x) = 0_{\L(E,F)}$
 %
 
@@ -901,7 +901,7 @@ $$
   $$
   est appelée *différentielle de $f$*. C’est un « objet compliqué ». On a alors pour $v = \sum_{i=1}^{n}v_{i}e_{i}$ où $(e_{1}, \ldots, e_{n})$ est une base de $E$ :
   $$
-    \forall x \in U, \dd f(x) \mdot v = \sum_{i=1}^{n}v_{i}\dd f(x)\mdot e_{i} =f \sum_{i=1}^{n}v_{i} \partial_{i}f(x)
+    \forall x \in U, \dd f(x) \mdot v = \sum_{i=1}^{n}v_{i}\dd f(x)\mdot e_{i} = \sum_{i=1}^{n}v_{i} \partial_{i}f(x)
   $$
   $e_{i}^{*}: \applic{E}{\R}{x = \sum_{i=1}^{n}x_{i}e_{i}}{x_{i}}$ est linéaire donc différentiable en tout point et
   $$
@@ -917,7 +917,7 @@ $$
   $$
   Si $F =\R$ ou $F = \C$,
   $$
-    \forall x \in E, \dd f(x)\mdot v = \sum_{i=1}^{n}\partial_{i}f(x)\dd e_{i}^{*}(x)\mdot v
+    \forall v \in E, \dd f(x)\mdot v = \sum_{i=1}^{n}\partial_{i}f(x)\dd e_{i}^{*}(x)\mdot v
   $$
   et
   $$
@@ -965,7 +965,11 @@ $$
   $$
     f(a+h) = f(a) + \dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h)
   $$
-  avec $\varepsilon_{1}: B_{E}(0_{F}, \delta_{2}) \longrightarrow G$ et $\lim_{x\to 0_{F}}\varepsilon_{2}(x) = 0_{G}$. Or $\dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h) \arrowlim{h\to 0_{E}}0_{F}$ donc il existe $\delta \in \oo{0,\delta_{1}}$ tel que
+  avec $\varepsilon_{1}: B_{E}(0_{F}, \delta_{2}) \longrightarrow G$ et $\lim_{x\to 0_{E}}\varepsilon_{1}(x) = 0_{F}$, donc
+  $$
+    g(f(a)+h) = g(f(a)) + \dd g(f(a))\mdot h + \norm{h}_{F}\varepsilon_{2}(h)
+  $$
+  avce $\varepsilon_{2}: B_{F}(0_{F}, \delta_{2}) \longrightarrow G$ vérifiant $\lim_{x\to 0_{F}}\varepsilon_{2}(x) = 0_{G}$. Or $\dd f(a)\mdot h + \norm{h}_{E} \varepsilon_{1}(h) \arrowlim{h\to 0_{E}}0_{F}$ donc il existe $\delta \in \oo{0,\delta_{1}}$ tel que
   $$
     \forall h \in B_{E}(0_{E}, \delta), K = \dd f(a)\mdot h+\norm{h}_{E} \varepsilon_{1}(h) \in B_{F}(0_{F}, \delta_{2})
   $$
@@ -986,7 +990,7 @@ $$
 %
 
 %eg
-  - Considérons $g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transp AX = \scalar{X}{AX}} = \pi\circ L$ avec $L X \longmapsto (X,AX)$ et $\pi = \scalar{\cdot}{\cdot}$. $\pi$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)^{2}$ et $L$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)$. Par compositions, $g$ est différentiable sur $\M_{n,1}(\R)$ et
+  - Considérons $g: \applic{\M_{n,1}(\R)}{\R}{X}{X\transp AX = \scalar{X}{AX}} = \pi\circ L$ avec $L: X \longmapsto (X,AX)$ et $\pi = \scalar{\cdot}{\cdot}$. $\pi$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)^{2}$ et $L$ est bilinéaire donc différentiable sur $\M_{n,1}(\R)$. Par compositions, $g$ est différentiable sur $\M_{n,1}(\R)$ et
     $$
       \forall X \in \M_{n,1}(\R), \dd g(X) = \dd (\pi\circ L)(X) = \dd  \pi(L(X))\circ \dd L(X) = \dd  \pi(X,AX)\circ L
     $$
@@ -1004,9 +1008,9 @@ $$
     $$
       \forall x \in U, \dd (\varphi\circ f)(x) = \dd \varphi(f(x))\circ \dd f(x)
     $$
-    donc
+    donc pour tout $x \in U$ et pour tout $h \in E$,
     $$
-      \forall x \in U, \forall h \in E, \dd (\varphi\circ f)(x)\mdot h = \dd \varphi(f(x))\mdot \big(\underbrace{\dd f(x)\mdot h}_{\in \R}\big) = (\underbrace{\dd f(x)\mdot h}_{\in \R}) \underbrace{\varphi'(f(x))}_{\in \R} = \big(\varphi'(f(x))\big)(\dd f(x)\mdot h)
+      \dd (\varphi\circ f)(x)\mdot h = \dd \varphi(f(x))\mdot \big(\underbrace{\dd f(x)\mdot h}_{\in \R}\big) = (\underbrace{\dd f(x)\mdot h}_{\in \R}) \underbrace{\varphi'(f(x))}_{\in \R} = \big(\varphi'(f(x))\big)(\dd f(x)\mdot h)
     $$
     d’où
     $$
@@ -1029,7 +1033,7 @@ $$
 %
 
 %prop
-  1. Soit $f: \applic{U}{F_{1} \times  \cdots \times F_{q}}{x}{(f_{1}(x), \ldots, f_{q}(x))}$ définie sur un ouvert $U$ de $E$. $f$ est différentiable en $a \in U$ si et seulement si pourtout $i \in \icc{1,q}$, $f_{i}$ est différentiable en $a$. En cas de différentiabilité,
+  1. Soit $f: \applic{U}{F_{1} \times  \cdots \times F_{q}}{x}{(f_{1}(x), \ldots, f_{q}(x))}$ définie sur un ouvert $U$ de $E$. $f$ est différentiable en $a \in U$ si et seulement si pour tout $i \in \icc{1,q}$, $f_{i}$ est différentiable en $a$. En cas de différentiabilité,
      $$
        \forall h \in E, \underbrace{\dd f(a)\mdot h}_{\in F_{1} \times  \cdots \times F_{q}} = \big(\underbrace{\dd f_{1}(a)\mdot h}_{\in F_{1}}, \ldots, \underbrace{\dd f_{q}(a)\mdot h}_{\in F_{q}}\big)
      $$
@@ -1060,7 +1064,7 @@ $$
 %eg
   - Soit $E$ un espace vectoriel euclidien. Considérons
     $$
-      f: \applic{te^{2}}{\R \times E}{(u,v)}{(\scalar{u}{v} , u+v)}
+      f: \applic{E^{2}}{\R \times E}{(u,v)}{(\scalar{u}{v} , u+v)}
     $$
     ~ $(u,v) \longmapsto \scalar{u}{v}$ est bilinéaire donc différentiable
     ~ $L:(u,v) \longmapsto u+v$ est linéaire donc différentiable et $\dd L(u,v) = L$
@@ -1070,7 +1074,7 @@ $$
     $$
   - Soit $E$ un espace vectoriel euclidien. Considérons
     $$
-      G: \applic{E^{2}}{\M_{2}(\R)}{(u,v)}{\mtx{\norm{u}^{2} & \scalar{u}{v} \\ \scalar{v}{u} \norm{v}^{2}}}
+      G: \applic{E^{2}}{\M_{2}(\R)}{(u,v)}{\mtx{\norm{u}^{2} & \scalar{u}{v} \\ \scalar{v}{u} & \norm{v}^{2}}}
     $$
     ~ $\pi: (u,v) \longmapsto \scalar{u}{v}$ est bilinéaire donc différentiable
     Posons
