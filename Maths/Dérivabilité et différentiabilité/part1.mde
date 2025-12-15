@@ -794,17 +794,17 @@ $$
   $$
     M(a+h)-M(a) = \sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, h_{i}, a_{i+1}, \ldots, a_{p}) + S
   $$
-  où $S$ est une somme finie de termes de la forme $M(a'_{1}, \ldots, a'_{p}) = \alpha$ avec $\forall i \in \icc{1,p}, a'_{i} \in \{a_{i}, h_{i}\}$.
+  où $S$ est une somme finie de termes de la forme $M(a'_{1}, \ldots, a'_{p})$ avec $\forall i \in \icc{1,p}, a'_{i} \in \{a_{i}, h_{i}\}$ avec
   $$
     \exists (i,j) \in \icc{1,p}^{2}: i\ne j \text{ et } a'_{i} = h_{i} \text{ et }a'_{j} = h_{j}
   $$
   donc
   $$
-    \norm{\alpha}_{F} \leq K \norm{a'_{1}}_{E_{1}}\times  \cdots \times  \norm{a'_{p}}_{E_{p}} \leq K N_{\infty}(h_{1}, \ldots, h_{p})^{2} N_{\infty}(h_{1}, \ldots, h_{p}) \times N_{\infty}(a_{1}, \ldots, a_{p})^{2}
+    \norm{M(a'_{1}, \ldots, a'_{p})}_{F} \leq K \norm{a'_{1}}_{E_{1}}\times  \cdots \times  \norm{a'_{p}}_{E_{p}} \leq K N_{\infty}(h_{1}, \ldots, h_{p})^{2} \times  N_{\infty}(h_{1}, \ldots, h_{p})^{p-2-r} \times N_{\infty}(a_{1}, \ldots, a_{p})^{r}
   $$
   et
   $$
-    \frac{\alpha}{N_{\infty}(h_{1}, \ldots, h_{p})}\arrowlim{(h_{1}, \ldots, h_{p})\to (0_{E_{1} \times  \cdots \times E_{p}})}0_{F}
+    \frac{M(a'_{1}, \ldots, a'_{p})}{N_{\infty}(h_{1}, \ldots, h_{p})}\arrowlim{(h_{1}, \ldots, h_{p})\to (0_{E_{1} \times  \cdots \times E_{p}})}0_{F}
   $$
   donc $S = o \big((h_{1}, \ldots, h_{p})\big)$.
 %
@@ -839,7 +839,7 @@ $$
 %proof
   Soit $t_{0} \in I$. $f$ est différentiable en $\gamma(t_{0}) \in U$ donc
   $$
-    \forall x \in U, f(x) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (x-y(t_{0})) + \norm{x-\gamma(t_{0})}\varepsilon(x)
+    \forall x \in U, f(x) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (x-\gamma(t_{0})) + \norm{x-\gamma(t_{0})}\varepsilon(x)
   $$
   avec $\varepsilon(x) \arrowlim{x\to \gamma(t_{0})}0_{F}$. Or $\forall t \in I, \gamma(t) \in U$ donc
   $$
@@ -1091,4 +1091,231 @@ $$
     $$
       \forall (u,v) \in E^{2}, \dd G(u,v): \applic{E^{2}}{\M_{2}(\R)}{(h,k)}{\mtx{2 \scalar{h}{u} & \scalar{h}{v} + \scalar{u}{k} \\ \scalar{h}{v}  + \scalar{h}{k} & 2 \scalar{k}{v}  }}
     $$
+%
+
+%prop
+  Soit $M: E_{1} \times \cdots \times E_{p} \longrightarrow F$ une application multilinéaire. Soient $f_{1}: U \longrightarrow E_{1}$, …, $f_{p}: U\longrightarrow E_{p}$ des application différentiables sur $U$ (ou seulement en $a \in U$). Alors
+  $$
+    M(f_{1}, \ldots f_{p}): x \longmapsto M(f_{1}(x), \ldots, f_{p}(x))
+  $$
+  est différentiable sur $U$ (ou seulement en $a$) et((notation abusive))
+  $$
+    \dd M(f_{1}, \ldots, f_{p}) = \sum_{i=1}^{p}M(f_{1}, \ldots, f_{i-1}, \dd f_{i}, f_{i+1}, \ldots, f_{p})
+  $$
+%
+
+%proof
+  $M(f_{1}, \ldots, f_{p})$ est différentiable en $a$ par composition : $U \overset{(f_{1}, \ldots, f_{p})}\longmapsto (f_{1}(x), \ldots, f_{p}(x)) \overset M \longmapsto F$, et
+  $$
+    \dd M(f_{1}, \ldots, f_{p})(a) = \dd M(f_{1}(a), \ldots, f_{p}(a)) \circ \dd f(1, \ldots, f_{p})(a)
+  $$
+Soit $h \in E$.
+$$
+  \dd M(f_{1}, \ldots, f_{p})(a)\mdot h = \dd M(f_{1}(a), \ldots, f_{p}(a))\mdot (\dd f_{1}(a)\mdot h, \ldots, \dd f_{p}(a)\mdot h) = \sum_{i=1}^{p}M(f_{1}(a), \ldots, f_{i-1}(a), \dd f_{i}(a)\mdot h, f_{i+1}(a), \ldots, f_{p}(a))
+$$
+%
+
+%cor
+  1. Si $F$ est une $R$-algèbre normée (de dimension finie) et si $f_{1}: U \longrightarrow F$, …, $f_{p}: U \longrightarrow F$ sont différentiables sur $eu$, alors $f_{1} \times  \cdots \times  f_{p}: U \longrightarrow F$ est différentiable sur $U$ et
+     $$
+       \dd (f_{1} \times  \cdots \times  f_{p}) = \sum_{i=1}^{p}f_{1} \times  \cdots \times  f_{i-1} \times  \dd f_{i} \times f_{i+1}\times  \cdots \times  f_{p}
+     $$
+  2. Toute application polynomiale en les coordonnées dans une base de $E$ est différentiable sur $E$.
+  3. Toute fonction rationnelle en les coordonnées dans une base est différentiable sur son ouvert de définition.
+%
+
+%proof
+  1. $M: \applic{F^{p}}{F}{(u_{1}, \ldots, u_{p})}{u_{1} \times  \cdots \times  u_{p}}$ est $p$-linéaire et $f_{1} \times  \cdots \times  f_{p} = M(f_{1}, \ldots, f_{p})$
+  2. Soit $(e_{1}, \ldots, e_{n})$ une base de $E$. En notant $P = \sum_{(i_{1}, \ldots, i_{m}) \in I}a_{i_{1}, \ldots, i_{n}}X_{1}^{i_{1}} \times  \cdots \times  X_{n}^{i_{n}}$ avec $I$ une partie finie de $\N^{n}$.
+     $$
+       \tilde{P}: \applic{E}{\R}{x = \sum_{i=1}^{n}x_{i}e_{i}}{\tilde{P}(x_{1}, \ldots, x_{n})}
+     $$
+     donc
+     $$
+       \tilde{P} = \sum_{(i_{1}, \ldots, i_{n}) \in I} a_{i_{1}, \ldots, i_{n}} (e_{1}^{*})^{i_{1}} \times \cdots \times (e_{n}^{*})^{i_{n}}
+     $$
+     chaque $e_{i}^{*}$ est une forme linéaire donc différentiable sur $E$, donc tout produit $(e_{1}^{*})^{i_{1}} \times  \cdots \times  (e_{n}^{*})^{i_{n}}$ est différentiable sur $E$. Par combinaison linéaire, $\tilde{P}$ est différentiable sur $E$.
+  3. $\frac{\tilde{P}}{\tilde{Q}} = \tilde{P} \times  \frac{1}{\tilde{Q}}$ et $\frac{1}{\tilde{Q}} = I\circ \tilde{Q}$ avec $I: \applic{\R^{*}}{\R}{t}{\frac{1}{t}}$ est différentiable.
+%
+
+%eg
+  - Considérons $f: \applic{\R^{*} \times \R}{\R^{2}}{(x,y)}{\left(\frac{y}{x}, x+y\right)}$. $(x,y) \longmapsto \frac{y}{x}$ est différentiable sur $\R^{*} \times \R$ et $(x,y) \longmapsto x+y$ est différentiable sur $\R^{2}$ donc $f$ est différentable sur $\R^{*} \times \R$.
+  - Le déterminant $\det : \applic{\M_{n}(\R)}{\R}{A}{\sum_{\sigma \in \S_{n}}\varepsilon(\sigma) a_{\sigma,1} \cdots a_{\sigma(n), n}}$ est différentiable sur $\M_{n}(\R)$. Soit $A \in \M_{n}(\R)$. $\dd (\det )(A): \M_{n}(\R) \longrightarrow \R$ est linéaire. Soit $H \in \M_{n}(\R)$.
+    $$
+      \dd (\det )(A)\mdot H = D_{H} \det (A) = \varphi'(0)
+    $$
+    avec $\varphi: t \longmapsto \det (A+t H)$. Alors $\varphi'(t) = \tr (com(A+tH)\transp H)$. Ainsi,
+    $$
+      \dd (\det )(A): \applic{\M_{n}(\R)}{\R}{H}{\tr \big((\com A)\transp H\big)}
+    $$
+  - Considérons $I: \applic{\GL_{n}(\R)}{\M_{n}(\R)}{A}{A^{-1} = \frac{1}{\det A}(\com A)\transp}$. $A \longmapsto (A^{-1})_{i,j}$ est une fonction rationnelle en les coordonnées dans la base canonique donc est différentiable sur l’ouvert $\GL_{n}(\R)$.
+%
+
+## Équations aux dérivées partielles d’ordre 1
+
+%prop
+  Soit $I$ un intervalle réel ouvert non vide. Soit $U \subset \R^{n}$ un ouvert non vide. Soit $f: \applic{I \times U}{F}{(x,y)}{f(x,y)}$ une application différentiable sur $I \times U$. On a
+  $$
+    \partial_{1}f = 0 \sur I \times U \iff \text{il existe } \lambda: U \longrightarrow  F \text{ différentiable telle que } \forall (x,y)\in I \times U, f(x,y) = \lambda(y)
+  $$
+%
+
+%proof
+  - Supposons $\partial_{1} f = 0$ sur $I \times U$. Soient $y \in U$, $(x,x') \in I^{2}$ et $\gamma: \applic{\cc{0,1}}{F}{t}{\underbrace{f(x+t(x'-x), y)}_{\in I \times U}}$. $\gamma$ est alors dérivable et
+    $$
+      \forall t \in \cc{0,1}, \gamma'(t) = (x'-x)\partial_{1}f(x+t(x'-x), y) + \sum_{i=2}^{n+1}0 \times \partial_{i}f(x+t(x'-x),y)
+    $$
+    d’où $\forall t \in \cc{0,1}, \gamma'(t) = 0_{F}$, donc $\gamma(1) = \gamma(0)$, i.e.$f'(x',y) = f(x,y)$. Sinsi, pour $x_{0}\in I$ fixé, on a
+    $$
+      \forall (x,y) \in I \times U, f(x,y) = \underbrace{f(x_{0},y)}_{\lambda(y)}
+    $$
+    et $\lambda: \applic{U}{F}{y}{f(x_{0},y)}$ est différentiable comme composée des fonctions $y \longmapsto (x_{0},y)$ et $f:(x_{0},y) \longmapsto f(x_{0},y)$.
+  - La réciproque est immédiate.
+%
+
+%eg
+  Trouvons $f: (x,y,z) \longmapsto f(x,y,z) \in \R$ différentiable telle que
+  $$
+    \tag{$\star$} \partial_{1}f(x,y,z) = \frac{x}{\ln(x+z)}
+  $$
+  $f$ est définie sur $\R \times H$ avec $H = \{(y,z) \in \R^{2} \where y+z > 0 \and y+z \ne 1 \}$. $H$ est un ouvert de $\R^{2}$.
+  $$
+    \begin{align*}
+      (\star) &\iff  \pdv{}{x}\left(f(x,y,z) - \frac{x^{2}}{2\ln (y+z)}\right) = 0 \sur \R \times H\\
+              &\iff \text{il existe } \lambda: H \longrightarrow \R \text{ différentiable telle que } \forall (x,y,z) \in \R, f(x,y,z) = \frac{x^{2}}{2\le(y+z)} + \lambda(y,z)
+    \end{align*}
+  $$
+%
+
+%eg
+  Trouvons $f: \R \times H \longrightarrow \R$ différentiable telle que
+  $$
+    \tag{$\triangle$} \partial_{1} f = \frac{x}{\ln(y+z)}f
+  $$
+  $$
+    \begin{align*}
+      (\triangle) &\iff \partial_{1} f \times e^{\frac{x^{2}}{2\ln (y+z)}} - \frac{x}{\ln(y+z)} e^{\frac{x^{2}}{e^{2\ln(y+z)}}}f = 0\\
+&\iff \pdv{}{x}\big(f e^{-\frac{x^{2}}{2\ln(y+z)}}\big) = 0\\
+&\iff \exists \lambda: H \longrightarrow \R \text{ différentiable telle que } \forall (x,y,z) \in \R \times H, f(x,y,z) e^{-\frac{x^{2}}{2\ln(y+z)}} = \lambda(y,z)
+    \end{align*}
+  $$
+  Les solutions sont donc
+  $$
+    \Sol_{\R \times H} = \left\{(x,y,z) \longmapsto \lambda(y,z) e^{\frac{x^{2}}{2\ln(y+z)}}\where \lambda: H \longrightarrow \R \text{ différentiable}\right\}
+  $$
+%
+
+%prop Chain rule
+  Soit
+  $$
+    g: \applic{V \subset \R^{p}}{F}{(v_{1}, \ldots, b_{p})}{f(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}
+  $$
+  où $V$ est un ouvert de $\R^{p}$.
+  $$
+    f: \applic{U \subset \R^{n}}{F}{(x_{1}, \ldots, x_{n})}{f(x_{1}, \ldots, x_{n})}
+  $$
+  est différentiable en sur $U$ et $(v_{1}, \ldots, v_{n}) \longmapsto (x_{1}(v_{1}, \ldots, v_{n}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))$ est différentiable sur $V$ à valeurs dans $U$. Alors $g$ est différentiable sur $V$ et
+  $$
+    V(v_{1}, \ldots, v_{p}) \in V^{p}, \pdv{g}{v_{i}} (v_{1}, \ldots, v_{p}) = \sum_{k=1}^{n} \pdv{x_{k}}{v_{i}}(v_{1}, \ldots, v_{p}) \times \underbrace{\pdv{f}{x_{k}}(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}_{\in F}
+  $$
+  aussi écrit
+  $$
+    \partial_{i} g(v_{1}, \ldots, v_{p}) = \sum_{k=1}^{n}\partial_{i}x_{k}(v_{1}, \ldots, v_{p}) \times \partial_{k}f(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))
+  $$
+  Si $f$ est à valeurs réelles, alors on écrit
+  $$
+    \pdv{g}{v_{1}}(v) = \sum_{k=1}^{n}\pdv{f}{x_{k}}(x_{1}(v), \ldots, x_{n}(v)) \times \pdv{x_{k}}{v_{i}}(v)
+  $$
+  ou par abus,
+  $$
+    \pdv{g}{v_{i}} = \sum_{i=1}^{n}\pdv{f}{x_{k}} \pdv{x_{k}}{v_{i}}
+  $$
+%
+
+%proof
+  - $g = f\circ (x_{1}, \ldots, x_{p})$ est différentiable sur $V$.
+  - Soit $(v_{1}, \ldots, v_{p}) \in V$. $t \longmapsto  f(x_{1}(v_{1}, \ldots, t, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, t, \ldots, v_{p}))$ est dérivable en $v_{i}$ (dérivée le long d’un arc) et de dérivée en $v_{i}$ valant
+    $$
+      \sum_{k=1}^{n}\eval{\dv{}{t} \big(x_{k}(v_{1}, \ldots, t, \ldots, v_{p})\big)}{t=v_{i}} \pdv{f}{x_{k}}(x(v)) = \sum_{k=1}^{n}\pdv{x_{k}}{v_{i}}(v) \times \pdv{f}{x_{k}}(x(v))
+    $$
+%
+
+%eg
+  Déterminons les applications différentiables $f: \R^{3} \longrightarrow \R$ telles que
+  $$
+    \tag{$\oslash$} \partial_{1} f + \partial_{2} f + \partial_{3} f = 0
+  $$
+  Pour cela, posons
+  ~ $u = x-y$  ~ $v = y-z$  ~ $w = z$
+  Soit l’application $\varphi: \applic{\R^{3}}{\R}{(x,y,z)}{(x-y, y-z, z)} \in \L(\R^{3})$. Alors
+  $$
+    \det \varphi = \vmtx{1&-1&0\\0&1&-1\\0&0&1} \ne 0
+  $$
+  donc $\varphi \in \GL(\R^{3})$. Ainsi, $\varphi$ et $\varphi^{-1}$ sont différentiables. On pose $«\tilde{f}(u,v,w) = f(x,y,z)»$, i.e. $f(x,y,z) = \tilde{f(x-y, y-z, z)}$, i.e. $f = \tilde{f} \circ \varphi$ ou encore $\tilde{f} = f\circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*, on a
+  $$
+    f \text{ différentiable sur } \R^{3} \iff \tilde{f} \text{ différentiable sur } \R^{3}
+  $$
+  $$
+    \pdv{f}{x} = \pdv{\tilde{f}}{u} \pdv{u}{x} + \pdv{\tilde{f}}{v} \pdv{v}{x} + \pdv{\tilde{f}}{w}\pdv{w}{x}
+  $$
+  i.e.
+  ~ $\pdv{f}{x} = \pdv{\tilde{f}}{u}$ ou de façon correcte $\pdv{f}{x}(x,y,z) = \pdv{\tilde{f}}{u}(x-y, y-z,z)$  ~ $\pdv{f}{y} = - \pdv{\tilde{f}}{u} + \pdv{\tilde{f}}{v}$  ~ $\pdv{f}{z} = - \pdv{f}{v} + \pdv{\tilde{f}}{w}$
+  Alors,
+  $$
+    \begin{align*}
+      (\oslash) &\iff \pdv{\tilde{f}}{w} = 0\\
+      &\iff \exists \lambda: \R^{2} \longrightarrow \R \text{ différentiable telle que } \forall (u,v,w) \in \R^{3}, \tilde{f}(u,v,w) = \lambda(u,v)\\
+      &\iff \exists \lambda:\R^{2} \longrightarrow \R \text{ différentiable telle que } \forall (x,y,z) \in \R^{3}, f(x,y,z) = \lambda(x-y, y-z)
+    \end{align*}
+  $$
+  Ainsi,
+  $$
+    \Sol = \Big\{(x,y,z) \in \R^{3} \longmapsto \lambda(x,y,y-z) \where \lambda: \R^{2} \longrightarrow \R \text{ différentiable}\Big\}
+  $$
+%
+
+%eg
+  Trouvons les fonctions différentiables $f:\R_{+}^{*} \times \R \longrightarrow \R$ telles que, pour $\alpha \in \R$,
+  $$
+    \tag{$\ltimes$} x \pdv{f}{x} + y \pdv{f}{y} = \alpha f
+  $$
+  Pour cela, posons
+  ~ $x = r\cos \theta$  ~ $y = r\sin \theta$
+et
+$$
+  \varphi: \applic{\R_{+}^{*} \times \oo{\frac{\pi}{2}, \frac{\pi}{2}}}{\R_{+}^{*} \times \R}{r,\theta}{\left(\underbrace{r\cos \theta}_{x(r,\theta)}, \underbrace{r\sin \theta}_{y(r, \theta)}\right)}
+$$
+On a
+$$
+  \varphi^{-1}: \applic{\R_{+}^{*} \times \R}{\R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}}{(x,y)}{\left(\sqrt{x^{2}+y^{2}}, \arctan \left(\frac{y}{x}\right)\right)}
+$$
+donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f = f\circ \varphi}$, i.e $f = \tilde{f \circ \varphi^{-1}}$. Comme $\varphi$ est un *difféomorphisme*,
+$$
+  f \text{ différentiable sur } \R_{+}^{*} \times \R \iff \tilde{f} \text{ différentiable sur } \R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}
+$$
+$$
+  \pdv{\tilde{f}}{r} = \pdv{f}{x} \pdv{x}{r} + \frac{f}{y} \frac{y}{r}
+$$
+$$
+  \pdv{\tilde{f}}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}
+$$
+$$
+  r \pdv{\tilde{f}}{r} = x \pdv{f}{y} + y \pdv{f}{y}
+$$
+$$
+  \begin{align*}
+    (\ltimes) &\iff r \pdv{\tilde{f}}{r} = \alpha f\\
+&\iff \pdv{\tilde{f}}{r} = \frac{\alpha}{r}f \\
+&\iff \exists \lambda \in \Diff^{1}\left(\oo{-\frac{\pi}{2}, \frac{\pi}{2}}\right), \forall (r, \theta) \in \R_{+}^{*} \times \oo{-\frac{\pi}{2}, \frac{\pi}{2}}, \tilde{f}(r, \theta) = \lambda(\theta) e^{\alpha\ln r} = \lambda(\theta)r^\alpha
+  \end{align*}
+$$
+Ainsi, les solutions sont
+$$
+  \Sol = \left\{(x,y) \in \R_{+}^{*} \times \R \longmapsto \lambda \left(\arctan \left(\frac{y}{x}\right)\right) (x^{2}+y^{2})^{\frac{\alpha}{2}}\where \lambda \in \Diff^{1}\left(\oo{- \frac{\pi}{2}, \frac{\pi}{2}}\right)\right\}
+$$
+soit
+$$
+  \Sol = \left\{(x,y) \longmapsto \mu \left(\frac{y}{x}(x^{2}+y^{2})^{\frac{\alpha}{2}}\right) \where \mu \in \Diff^{1}(\R)\right\}
+$$
+
 %
