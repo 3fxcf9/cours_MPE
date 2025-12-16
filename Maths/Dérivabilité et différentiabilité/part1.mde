@@ -1281,41 +1281,368 @@ $$
   $$
   Pour cela, posons
   ~ $x = r\cos \theta$  ~ $y = r\sin \theta$
-et
+  et
+  $$
+    \varphi: \applic{\R_{+}^{*} \times \oo{\frac{\pi}{2}, \frac{\pi}{2}}}{\R_{+}^{*} \times \R}{r,\theta}{\left(\underbrace{r\cos \theta}_{x(r,\theta)}, \underbrace{r\sin \theta}_{y(r, \theta)}\right)}
+  $$
+  On a
+  $$
+    \varphi^{-1}: \applic{\R_{+}^{*} \times \R}{\R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}}{(x,y)}{\left(\sqrt{x^{2}+y^{2}}, \arctan \left(\frac{y}{x}\right)\right)}
+  $$
+  donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f = f\circ \varphi}$, i.e $f = \tilde{f \circ \varphi^{-1}}$. Comme $\varphi$ est un *difféomorphisme*,
+  $$
+    f \text{ différentiable sur } \R_{+}^{*} \times \R \iff \tilde{f} \text{ différentiable sur } \R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}
+  $$
+  $$
+    \pdv{\tilde{f}}{r} = \pdv{f}{x} \pdv{x}{r} + \frac{f}{y} \frac{y}{r}
+  $$
+  $$
+    \pdv{\tilde{f}}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}
+  $$
+  $$
+    r \pdv{\tilde{f}}{r} = x \pdv{f}{y} + y \pdv{f}{y}
+  $$
+  $$
+    \begin{align*}
+      (\ltimes) &\iff r \pdv{\tilde{f}}{r} = \alpha f\\
+  &\iff \pdv{\tilde{f}}{r} = \frac{\alpha}{r}f \\
+  &\iff \exists \lambda \in \Diff^{1}\left(\oo{-\frac{\pi}{2}, \frac{\pi}{2}}\right), \forall (r, \theta) \in \R_{+}^{*} \times \oo{-\frac{\pi}{2}, \frac{\pi}{2}}, \tilde{f}(r, \theta) = \lambda(\theta) e^{\alpha\ln r} = \lambda(\theta)r^\alpha
+    \end{align*}
+  $$
+  Ainsi, les solutions sont
+  $$
+    \Sol = \left\{(x,y) \in \R_{+}^{*} \times \R \longmapsto \lambda \left(\arctan \left(\frac{y}{x}\right)\right) (x^{2}+y^{2})^{\frac{\alpha}{2}}\where \lambda \in \Diff^{1}\left(\oo{- \frac{\pi}{2}, \frac{\pi}{2}}\right)\right\}
+  $$
+  soit
+  $$
+    \Sol = \left\{(x,y) \longmapsto \mu \left(\frac{y}{x}(x^{2}+y^{2})^{\frac{\alpha}{2}}\right) \where \mu \in \Diff^{1}(\R)\right\}
+  $$
+%
+
+## Matrices jacobiennes
+
+%def
+  Soit $f: U \subset \R^{n} \longrightarrow \R^{p}$ une application différentiable en $a \in U$ avec $U$ un ouvert de $\R^{n}$. La matrice de $\dd f(a) \in \L(\R^{n},\R^{p})$ relativement aux bases canoniques est appelée *matrice jacobienne* de $f$ en $a$. On la note parfois $J_{f}(a)$.
+  $$
+    J_{f}(a) = \mat_{\can,\can}(\dd f(a)) \in \M_{p,n}(\R)
+  $$
+%
+
+Soient $(e_{1}, \ldots, e_{n})$ la base canonique de $\R^{n}$ et $(\varepsilon_{1}, \ldots, \varepsilon_{p})$ celle de $\R^{p}$. Posons, pour $x \in U$, $f(x) = \sum_{i=1}^{p}f_{i}(x)\varepsilon_{i}$ avec $f_{i} = \varepsilon_{i}^{*}\circ f$ pour $i \in \icc{1,p}$. On a alors
 $$
-  \varphi: \applic{\R_{+}^{*} \times \oo{\frac{\pi}{2}, \frac{\pi}{2}}}{\R_{+}^{*} \times \R}{r,\theta}{\left(\underbrace{r\cos \theta}_{x(r,\theta)}, \underbrace{r\sin \theta}_{y(r, \theta)}\right)}
+  \forall h \in \R^{n}, \dd f(a)\mdot h = \sum_{i=1}^{n}\big(\underbrace{\dd f_{i}(a)\mdot h}_{\in \R}\big)\varepsilon_{i}
 $$
-On a
+donc
 $$
-  \varphi^{-1}: \applic{\R_{+}^{*} \times \R}{\R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}}{(x,y)}{\left(\sqrt{x^{2}+y^{2}}, \arctan \left(\frac{y}{x}\right)\right)}
+  \forall j \in \icc{1,n}, \dd f(a)\mdot e_{j} = \sum_{i=1}^{p}\big(\dd f_{i}(a)\mdot e_{j}\big)\varepsilon_{i} = \sum_{i=1}^{p}D_{e_{j}}f_{i}(a)\varepsilon_{i} = \sum_{i=1}^{p} \partial_{j}f_{i}(a)\varepsilon_{i}
 $$
-donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f = f\circ \varphi}$, i.e $f = \tilde{f \circ \varphi^{-1}}$. Comme $\varphi$ est un *difféomorphisme*,
+donc
+%callout
+  Pour $f = \sum_{i=1}^{p}f_{i}\varepsilon_{i}$ avec $f: U \subset \R^{n} \longrightarrow \R^{p}$ différentiable en $a \in U$, où $(\varepsilon_{1}, \ldots, \varepsilon_{p})$ est la base canonique de $\R^{p}$,
+  $$
+    J_{f}(a) = \Big(\partial_{j}f_{i}(a)\Big)_{\substack{1 \leq i \leq p\\1\leq j\leq n}}
+  $$
+%
+
+%rem
+  Pour ne pas se tromper dans l’écriture de $J_{f}(a)$, on pose $f = \sum_{i=1}^{p}f_{i}\varepsilon_{i} = (f_{1}, \ldots, f_{p})$. Alors
+  $$
+    \begin{cases}\dd f_{1} &= \displaystyle\pdv{f_{1}}{x_{1}}\dd x_{1} + \cdots + \pdv{f_{1}}{x_{n}}\dd x_{n}\\&\vdots\\\dd f_{p} &= \displaystyle\pdv{f_{p}}{x_{1}}\dd x_{1} + \cdots + \pdv{f_{p}}{x_{n}}\dd x_{n}\end{cases}
+  $$
+  d’où
+  $$
+    J_{f}(a) = \mtx{\pdv{f_{1}}{x_{1}}(a) & \cdots & \pdv{f_{1}}{x_{n}}(a)\\ \vdots & & \vdots \\ \pdv{f_{p}}{x_{1}}(a) & \cdots & \pdv{f_{p}}{x_{n}}(a)} \in \M_{p,n}(\R)
+  $$
+%
+
+%rem
+  Si $f: U \subset \R^{n} \longrightarrow \R^{p}$ est la restriction à un ouvert $U$ d’une application linéaire $\tilde{f}: \R^{n} \longrightarrow \R^{p}$, alors
+  $$
+    \forall a \in U, J_{f}(a) = \mat_{\can,\can}(\tilde{f})
+  $$
+%
+
+%rem
+  Si $f: \applic{U \subset \R^{\color{yellow}n}}{\R^{\color{yellow}n}}{x = (x_{1}, \ldots, x_{n})}{\big(f_{1}(x), \ldots, f_{n}(x)\big)}$ est différentiable en $a$, alors
+  $$
+    \tr \big(\dd f(a)\big) = \tr \big(J_{f}(a)\big) = \sum_{i=1}^{n}\pdv{f_{i}}{x_{i}}(a)
+  $$
+  est appelée *divergence de $f$ en $a$* :
+  $$
+    \boxed{\tr \big(\dd f(a)\big) \defeq \div f(a)}
+  $$
+  et
+  $$
+    \det \big(\dd f(a)\big) = \det \big(J_{f}(a)\big)
+  $$
+  est appelé *(déterminant) jacobien de $f$ en $a$*.
+  ~
+  Par exemple, pour $f: \applic{\R^{2}}{\R^{2}}{(r, \theta)}{(\underbrace{r\cos \theta}_{=x(r, \theta)}, \underbrace{r\sin \theta}_{=y(r,\theta)})}$, on a
+  ~ $\dd x = \cos \theta \dd r - r\sin \theta \dd \theta$  ~ $\dd y = \sin \theta \dd r + r\cos \theta \dd \theta$
+  donc
+  $$
+    J_{f}(r, \theta) = \mtx{\cos \theta & -r\sin \theta\\\sin \theta & r\cos \theta}
+  $$
+  d’où
+  ~ $\div f(r, \theta) = (1+r)\cos \theta$  ~ $DJ_{f}(r, \theta) \defeq \det \big(J_{f}(r, \theta)\big) = r$
+%
+
+%eg
+  Si $f: I \subset \R \longrightarrow \R$ définie sur un ouvert $I$ de $\R$ est dérivable en $x_{0} \in I$, alors $J_{f}(x_{0}) = \big(f'(x_{0})\big)$.
+%
+
+%eg
+  Si $f: \applic{I \subset \R}{\R^{p}}{t}{\big(f_{1}(t), \ldots, f_{p}(t)\big)}$ est un arc dérivable en $t_{0}$, alors
+  $$
+    J_{f}(t_{0}) = \mtx{f_{1}'(t_{0})\\\vdots\\f'_{p}(t_{0})} \;\Big( = f'(t_{0})\transp\Big)
+  $$
+%
+
+%eg
+  Si $f: \applic{U \subset \R^{n}}{\R}{(x_{1}, \ldots, x_{n})}{f(x_{1}, \ldots, x_{n})}$ est différentiable en $a$, alors
+  $$
+    J_{f}(a) = \mtx{\pdv{f}{x_{1}}(a) & \cdots & \pdv{f}{x_{n}}(a)} \in \M_{1,n}(\R)
+  $$
+%
+
+%eg
+  $f: \applic{\R^{3}}{\R^{2}}{(x,y,z)}{\big(e^{xy}, z\sin x\big)}$ est différentiable car
+  - $(x,y,z) \longmapsto xy$ est différentiable sur $\R^{3}$ comme application polynomiale à valeurs dans $\R$ où $t \longmapsto e^{t}$ est dérivable. Donc par composition, $(x,y,z) \longmapsto e^{xy}$ est différentiable sur $\R^{3}$.
+  - $(x,y,z) \longmapsto \sin x$ est différentiable comme composée de $\sin$ dérivable et de $(x,y,z) \longmapsto x$ linéaire donc différentiable, d’où $(x,y,z) \longmapsto z\sin x$ est différentiable par produit avec $(x,y,z) \longmapsto z$.
+  On a alors
+  ~ $\dd f_{1} = ye^{xy}\dd x + xe^{xy}\dd y$  ~ $\dd f_{2} = z\cos x \dd x + \sin x \dd z$
+  d’où
+  $$
+    J_{f}(x,y,z) = \mtx{ye^{xy} & xe^{xy} & 0\\ z\cos x & 0 & \sin x}
+  $$
+%
+
+%property
+  1. Soient $f: eu \subset \R^{n} \longrightarrow \R^{p}$ et $g: u \subset \R^{n} \longrightarrow \R^{p}$ deux applçations différentiables en $a \in U$. Soient $(\lambda, \mu) \in \R^{2}$. On a
+     $$
+       J_{\lambda f + \mu g}(a) = \lambda J_{f}(a) + \mu J_{g}(a)
+     $$
+  2. Soient
+     + $f: U \subset \R^{n} \longrightarrow \R^{p}$ définie sur un ouvert $U$, différentiable en $a \in U$ et telle que $f(U) \subset V$
+     + $g: V \subset \R^{p} \longrightarrow \R^{q}$ définie sur un ouvert $V$ et différentiable en $f(a) \in V$
+     Alors,
+     $$
+       J_{g\circ f} = J_{g}\big(f(a)\big) \times J_{f}(a)
+     $$
+%
+
+%proof
+  1. $\dd (\lambda f + \mu g) = \lambda \cdot \dd f(a) + \mu \cdot \dd g(a)$ donc
+     $$
+       J_{\lambda f + \mu g}(a) = \mat_{\can,\can}\big(\dd (\lambda f+\mu g)(a)\big) = \lambda \mat_{\can,\can}\big(\dd f(a)\big) + \mu \mat_{\can,\can}\big(\dd g(a)\big) = \lambda J_{f}(a) + \mu J_{g}(a)
+     $$
+  2. $\dd (g\circ f)(a) = \dd g \big(f(a)\big)\circ \dd f(a)$ donc
+     $$
+       \mat_{\can,\can}\big(\dd (g\circ f)(a)\big) = \mat_{\can,\can}\big(\dd g(f(a))\big) \times \mat_{\can,\can}\big(\dd f(a)\big)
+     $$
+%
+
+%cor
+  Si $f: \applic{U \subset \R}{V \subset \R^{p}}{(x_{1}, \ldots, x_{n})}{\big(f_{1}(x), \ldots, f_{p}(x)\big) = (y_{1}, \ldots, y_{p}) = y}$ et $g: \applic{V \subset \R^{p}}{\R^{q}}{y=(y_{1}, \ldots, y_{p})}{\big(g_{1}(y), \ldots, g_{q}(y)\big)}$, alors
+  $$
+    g\circ f: \applic{U \subset \R^{n}}{\R^{q}}{(x_{1}, \ldots, x_{n})}{\big((g\circ f)_{1}(x), \ldots, (g\circ f)_{q}(x)\big)}
+  $$
+  La seconde propriété ci-dessus devient alors équivalente à
+  $$
+    \left(\pdv{(g\circ f)_{i}}{x_{j}}(a)\right)_{\substack{1 \leq  i \leq q \\ 1 \leq  j \leq n}} = \left(\pdv{g_{i}}{y_{k}}\big(f(a)\big)\right)_{\substack{1 \leq  i \leq  q\\ 1 \leq k \leq p}}\times \left(\pdv{f_{k}}{x_{j}}(a)\right)_{\substack{1 \leq k \leq p\\ 1 \leq j \leq n}}
+  $$
+  On a donc
+  $$
+    \pdv{(g\circ f)_{i}}{x_{j}}(a) = \sum_{k=1}^{p}\pdv{g_{i}}{y_{k}}\big(f(a)\big) \times  \pdv{f_{k}}{x_{j}}(a)
+  $$
+  En effet, en notant $\tilde{g}: x = (x_{1}, \ldots, x_{n}) \longmapsto (g\circ f)(x) = g \big(f_{1}(x), \ldots, f_{p}(x)\big)$,
+  $$
+    \pdv{\tilde{g_{i}}}{x_{j}}(x) = \sum_{k=1}^{p}\pdv{f_{k}}{x_{j}}(x) \times  \pdv{g_{i}}{y_{k}}\big(f(x)\big)
+  $$
+%
+
+%eg
+  Calculons la matrice jacobienne de l’application
+  $$
+    g: \applic{\R^{2}}{\R}{(u,v)}{f(u^{2} + v^{2}, uv)}
+  $$
+  avec $f:\R^{2} \longrightarrow \R$ différentiable.
+  - *Première méthode~:*
+    ~ $\pdv{g}{u} = \pdv{f}{x} \times 2u + \pdv{f}{y} \times v$  ~ $\pdv{g}{v} = \pdv{f}{x} \times 2v + \pdv{f}{y}u$
+  - *Seconde méthode~:* considérons $\varphi(u,v) \longmapsto (u^{2}+v^{2}, uv)$ de sorte que $f\circ \varphi$. Alors, $J_{g}(u,v) = J_{f}(\varphi(u,v)) \times J_{\varphi}(u,v)$ d’où
+    $$
+      \begin{align*}
+        \mtx{\pdv{g}{u}(u,v) & \pdv{g}{v}\big(\varphi(u,v)\big)} &= \mtx{\pdv{f}{x}\big(\varphi(u,v)\big) & \pdv{f}{y}\big(\varphi(u,v)\big)} \mtx{2u & 2v \\ v&u}\\
+        &= \mtx{2u \pdv{f}{x}\big(\varphi(u,v)\big) + v \pdv{f}{y} \big(\varphi(u,v)\big) & 2v \pdv{f}{x}\big(\varphi(u,v)\big) + u \pdv{f}{y}\big(\varphi(u,v)\big)}
+      \end{align*}
+    $$
+%
+
+## Vecteur gradient
+
+Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\cdot}{\cdot}$.
+
+%thm Théorème de représentation des fonctions linéaires sur un espace euclidien (ou de Riesz)
+  Si $f: E \longrightarrow \R$ est une forme linéaire sur l’espace euclidien $(E, \scalar{\cdot}{\cdot})$, alors il existe un vecteur $x_{0} \in E$ et un seul tel que
+  $$
+    \forall x \in E, f(x) = \scalar{x_{0}}{x}
+  $$
+%
+
+%proof
+  Supposons $E$ non nul. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$.
+  - *Analyse~:* Soit $f \in \L(E,\R)$ telle que
+    $$
+      \exists x_{0} \in E: \forall x \in E, f(x) = \scalar{x_{0}}{x}
+    $$
+    Alors $\forall i \in \icc{1,n}, f(e_{i}) = \scalar{x_{0}}{e_{i}}$ or, comme $(e_{1}, \ldots, e_{n})$ est orthogonale, on a
+    $$
+      x_{0} = \sum_{i=1}^{n}\scalar{x_{0}}{e_{i}} e_{i} = \sum_{i=1}^{n}f(e_{i})e_{i}
+    $$
+  - *Synthèse~:* Soit $f \in \L(E,\R)$. Posons $x_{0} = \sum_{i=1}^{n}f(e_{i})e_{i}$. Pour tout $x \in E$,
+    $$
+      \begin{align*}
+        \scalar{x_{0}}{x} &= \sum_{i=1}^{n}f(e_{i})\scalar{e_{i}}{x} & \text{(linéarité à gauche de $\scalar{\cdot}{\cdot}$)}\\
+        &= f \left(\sum_{i=1}^{n}\scalar{e_{i}}{x} e_{i}\right) & \text{(linéarité de $f$)}\\
+        &= f(x) & \text{(car la base est orthonormale)}
+      \end{align*}
+    $$
+%
+
+%eg
+  L’application $\applic{\M_{n}(\R)^{2}}{\R}{(A,B)}{\tr (A\transp B) = \scalar{A}{B}}$ est un produit scalaire de $\M_{n}(\R)^{2}$ (appelé *produit scalaire canonique*). Les formes linéaires sur $\M_{n}(\R)$ sont donc du type
+  $$
+    \applic{\M_{n}(\R)}{\R}{M}{\scalar{M_{0}\transp}{M} = \tr (M_{0} M)}
+  $$
+  avec $M_{0}$ unique dans $\M_{n}(\R)$.
+%
+
+%def
+  Soit $f: U \subset E \longrightarrow \R$ une application différentiable en $a \in U$ où $U$ est un ouvert de l’espace euclidien $(E, \scalar{\cdot}{\cdot})$. $\dd f$ est u forme linéaire sur l’espace euclidien $E$. On appelle alors *gradient de $f$ en $a$* l’unique vecteur noté $\nabla f(a)$ tel que
+  $$
+    \forall h \in E, \dd f(a)\mdot h = \scalar{\nabla f(a)}{h}
+  $$
+  on a donc
+  $$
+    \boxed{\dd f(a) \mdot h = \scalar{\nabla f(a)}{h}  = D_{h}f(a) = \lim_{t\to 0}\frac{f(a+th)-f(a)}{t}}
+  $$
+  On lit le symbole $\nabla$ « nabla »((NEBEL (qui désigne le lac de tibériade ayant une forme triangulaire, ou une lyre) est devenu NABLA après des erreurs de vocalisation de la langue hébraïque)).
+%
+
+Si $(e_{1}, \ldots, e_{n})$ est une base orthonormale de $(E, \scalar{\cdot}{\cdot})$, alors
 $$
-  f \text{ différentiable sur } \R_{+}^{*} \times \R \iff \tilde{f} \text{ différentiable sur } \R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}
+  \nabla f(a) = \sum_{i=1}^{n}\scalar{\nabla f(a)}{e_{i}} e_{i}
 $$
+or
 $$
-  \pdv{\tilde{f}}{r} = \pdv{f}{x} \pdv{x}{r} + \frac{f}{y} \frac{y}{r}
-$$
-$$
-  \pdv{\tilde{f}}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}
-$$
-$$
-  r \pdv{\tilde{f}}{r} = x \pdv{f}{y} + y \pdv{f}{y}
-$$
-$$
-  \begin{align*}
-    (\ltimes) &\iff r \pdv{\tilde{f}}{r} = \alpha f\\
-&\iff \pdv{\tilde{f}}{r} = \frac{\alpha}{r}f \\
-&\iff \exists \lambda \in \Diff^{1}\left(\oo{-\frac{\pi}{2}, \frac{\pi}{2}}\right), \forall (r, \theta) \in \R_{+}^{*} \times \oo{-\frac{\pi}{2}, \frac{\pi}{2}}, \tilde{f}(r, \theta) = \lambda(\theta) e^{\alpha\ln r} = \lambda(\theta)r^\alpha
-  \end{align*}
-$$
-Ainsi, les solutions sont
-$$
-  \Sol = \left\{(x,y) \in \R_{+}^{*} \times \R \longmapsto \lambda \left(\arctan \left(\frac{y}{x}\right)\right) (x^{2}+y^{2})^{\frac{\alpha}{2}}\where \lambda \in \Diff^{1}\left(\oo{- \frac{\pi}{2}, \frac{\pi}{2}}\right)\right\}
-$$
-soit
-$$
-  \Sol = \left\{(x,y) \longmapsto \mu \left(\frac{y}{x}(x^{2}+y^{2})^{\frac{\alpha}{2}}\right) \where \mu \in \Diff^{1}(\R)\right\}
+  \nabla f(a) = \sum_{i=1}^{n}\dd (f(a)\mdot e_{i}) \cdot e_{i} = \sum_{i=1}^{n}D_{e_{i}}f(a)e_{i} = \sum_{i=1}^{n}\partial_{i}f(a)e_{i}
 $$
 
+%prop Expression du gradient dans une base orthonormale
+  Si $(e_{1}, \ldots, e_{n})$ est une base **orthonormale** de $(E, \scalar{\cdot}{\cdot})$ et si $f: U \subset E \longrightarrow \R$ est différentiable en $a$, alors
+  $$
+    \nabla f(a) = \sum_{i=1}^{n}\partial_{i}f(a)e_{i}
+  $$
+%
+
+%proof
+
+%
+
+%eg
+  L’application $f: \applic{E}{\R}{x}{\norm{x}^{2} = \scalar{x}{x}}$  est différentiable car égale à $\scalar{\id}{\id}$. Calculons son gradient en $x \in E$.
+  - *Première méthode~:*
+    $$
+      \forall h \in E, \dd f(x)\mdot h = 2 \scalar{x}{h}  = \scalar{2x}{h}
+    $$
+    donc $\nabla f(x) = 2x \in E$.
+  - *Seconde méthode~:* soit $(e_{1}, \ldots, e_{n})$ une base orthonormale. Posons $x = \sum_{i=1}^{n}x_{i}e_{i}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$. Alors $f(x) = \norm{x}^{2} = \sum_{i=1}^{n}x_{i}^{2}$ donc
+    $$
+      \nabla f(x) = \sum_{i=1}^{n}2x_{i}e_{i} = 2x
+    $$
+%
+
+%eg
+  Considérons le déterminant $\det : \M_{n}(\R) \longrightarrow \R$. Munissons $\M_{n}(\R)$ de sa structure euclidienne canonique~: $(A,B) \longmapsto \scalar{A}{B} = \tr (A\transp B)$. Alors
+  $$
+    \forall (A,H) \in \big(\M_{n}(\R)\big)^{2}, \dd (\det)(A)\mdot H = \tr \big((\com A)\transp H\big) = \scalar{\com A}{H}
+  $$
+  donc
+  $$
+    \forall A \in \M_{n}(\R), \nabla (\det )(A) = \com A
+  $$
+%
+
+%eg
+  Soient $f: U \subset E \longrightarrow \R$ telle que $f(U) \subset I$ et $g: U \subset E \longrightarrow \R$ deux applications différentiables en $a \in U$. Soit $\varphi: I \longrightarrow \R$ dérivable.
+  - $\dd (\varphi\circ f) = \varphi'(f)\dd f$ donc
+    $$
+     \scalar{\varphi' \big(f(a)\big)\nabla f(a)}{h} = \varphi'\big(f(a)\big)\scalar{\nabla f(a)}{h} = \scalar{\nabla (\varphi\circ f)(a)}{h} = \dd (\varphi\circ f)(a)\mdot h
+    $$
+    d’où
+    $$
+      \nabla(\varphi\circ f)(a) = \underbrace{\varphi' \big(f(a)\big)}_{\in \R}\nabla f(a)
+    $$
+  - Pour tout $h \in E$,
+    $$
+      \dd (\lambda f+\mu g)(a)\mdot h = \big(\lambda \dd f(a) + \mu \dd g(a)\big) \mdot h = \lambda \dd f(a) \mdot h + \mu \dd g(a)\mdot h
+    $$
+    donc
+    $$
+      \scalar{\nabla (\lambda f+\mu g)(a)}{h} = \lambda \scalar{\nabla f(a)}{h} +\mu \scalar{\nabla g(a)}{h}  = \scalar{\lambda \nabla f(a)+\mu \nabla g(a)}{h}
+    $$
+    d’où
+    $$
+      nabla(\lambda f+\mu g)(a) = \lambda \nabla f(a)+\mu \nabla g(a)
+    $$
+  - $\dd (fg)(a)\mdot h = f(a)\dd g(a)\mdot h + g(a)\dd f(a)\mdot h$ donc
+    $$
+      \forall h \in E, \scalar{\nabla (fg)(a)}{h} = f(a) \scalar{\nabla g(a)}{h} +g(a) \scalar{\nabla f(a)}{h}  = \scalar{f(a)\nabla g(a) + g(a)\nabla f(a)}{h}
+    $$
+    d’où
+    $$
+      \nabla (fg)(a) = f(a)\nabla g(a) + g(a) \nabla f(a)
+    $$
+%
+
+%eg
+  Soit $a > 0$. Considérons $f: \applic{E \setminus \{0\}}{\R}{x}{\norm{x}^{a}}$.
+  $$
+    \forall x \in E \setminus \{0\}, f(x) = \big(\norm{x}^{2}\big)^{\frac{a}{2}}
+  $$
+  or $g:x \longmapsto \norm{x}^{2}$ est différentiable sur $E \setminus \{0\}$ et à valeurs dans $\R_{+}^{*}$ où $\varphi: t \longmapsto t^{\frac{a}{2}}$ est dérivable. Donc $f = \varphi\circ g$ est différentiable sur $E \setminus \{0\}$ et
+  $$
+    \nabla f(x) = \varphi' \big(g(x)\big)\nabla g(x)
+  $$
+  donc
+  $$
+    \forall x \in E \setminus \{0\}, \nabla f(x) = \frac{a}{2}\big(\norm{x}^{2}\big)^{\frac{a}{2}-1}\cdot 2x = a \norm{x}^{a-2}x
+  $$
+%
+
+%eg
+  L’application $f: \R^{2} \setminus \{(0,0)\} \longrightarrow \R$ est différentiable sur le plan épointé $\R^{2} \setminus \{(0,0)\}$. Posons
+  $$
+    F: \applic{\R_{+}^{*} \times \R}{\R}{(r, \theta)}{f(r\cos \theta, r\sin \theta)}
+  $$
+  On a alors
+  ~ $\pdv{F}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}$  ~ $\pdv{F}{\theta} = -r\sin \theta \pdv{f}{x}+r\cos \theta \pdv{f}{y}$
+  Ainsi,
+  $$
+    \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}} = \underbrace{\mtx{\cos \theta & \sin \theta\\ -r\sin \theta & r\cos \theta}}_{=A(r,\theta)} \mtx{\pdv{f}{x}\\ \pdv{f}{y}}
+  $$
+  $dot A(r, \theta) = r > 0$ donc
+  $$
+    \mtx{\pdv{f}{x}\\ \pdv{f}{y}} = \frac{1}{r} \mtx{r\cos \theta & -\sin \theta \\ r\sin \theta & \cos \theta} \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}}
+  $$
+  Ainsi, pour $(x,y) \in \R^{2} \setminus \{(0,0)\}$, $\nabla f(x,y) = \left(\pdv{f}{x}(x,y), \pdv{f}{y}(x,y)\right)$ d’où
+  $$
+    \nabla f = \left(\cos \theta \pdv{F}{r} - \frac{1}{r}\sin \theta \pdv{F}{\theta}, \sin \theta \pdv{F}{r}+ \frac{\cos \theta}{r}\pdv{F}{\theta}\right) = \pdv{F}{r}(\cos \theta, \sin \theta) + \frac{1}{r}\pdv{F}{\theta} (-\sin \theta, \cos \theta)
+  $$
+  On en déduit « l’expression du gradient en polaires »~:
+  $$
+    \boxed{\nabla f(r\cos \theta, r\sin \theta)} = \pdv{F}{r}(r, \theta)\vec{u}(\theta) + \frac{1}{r}\pdv{F}{\theta}(r, \theta)\vec{v}(\theta)
+  $$
+  avec
+  ~ $\vec{u}(\theta) = (\cos \theta, \sin \theta)$  ~ $\vec{v}(\theta) = \dv{\vec{u}}{\theta} = (-\sin \theta, \cos \theta)$
 %
