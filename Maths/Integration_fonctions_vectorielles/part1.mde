@@ -1,0 +1,416 @@
+# Intégration des fonctions vectorielles
+
+:date 17/12/2025
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel normé de dimension finie $n \in \N^{*}$. On munit $\M_{n}(\K)$ d’une norme sous-multiplicative et $\L(E)$ de la norme d’opérateur (sous-multiplicative).
+
+## Résolution des systèmes différentiels homogènes à coefficients constants
+
+%prop
+  - Soit $A \in \M_{n}(\K)$. L’arc $f: \applic{\R}{\M_{n}(\K)}{t}{e^{tA}}$ est de classe $\Cont^{1}$ sur $\R$
+    $$
+      \forall t \in \R, f'(t) = A \times e^{tA} = e^{tA}\times A
+    $$
+  - Soit $a \in \L(E)$. L’arc $g: \applic{\R}{\L(E)}{t}{\exp(t \cdot a)}$ est de classe $\Cont^{1}$ sur $\R$ et
+    $$
+      \forall t \in \R, g'(t) = a\circ \exp(t \cdot a) = \exp(t \cdot a)\circ a
+    $$
+%
+
+%proof
+  - - Soit $t \in \R$.
+      $$
+        \frac{f(t)-f(0)}{t} = \frac{e^{tA}-I_{n}}{t} = \frac{1}{t}\sum_{k=1}^{+\infty}\frac{t^{k}A^{k}}{k!} = A + \frac{1}{t}\sum_{k=2}^{+\infty}\frac{t^{k}A^{k}}{k!}
+      $$
+      La série $\sum_{k \geq 2}\frac{(tA)^{k}}{k!}$ est absolument convergente donc
+      $$
+        \norm{\frac{1}{e}\sum_{k=2}^{+\infty}\frac{(tA)^{k}}{k!}} \leq \frac{1}{\abs{t}}\sum_{k=2}^{+\infty}\frac{\abs{t}^{k}\norm{A}^{k}}{k!} = \frac{1}{\abs{t}}\left(e^{\abs{t}\norm{A}} - 1 - \abs{t}\norm{A}\right) \usim{t\to 0} \frac{1}{\abs{t}}\frac{\abs{t}^{2}\norm{A}^{2}}{2!} = \frac{\abs{t}\cdot \norm{A}^{2}}{2} \arrowlim{t\to 0}0
+      $$
+      donc $\frac{1}{t}\sum_{k=2}^{+\infty}\frac{t^{k}A^{k}}{k!} \arrowlim{t\to 0}0$ donc $\frac{f(t)-f(0)}{t}\arrowlim{t\to 0}A$ donc $f'(0) = A$.
+    - Soit $t_{0} \in \R$. Soit $t \in \R \setminus \{t_{0}\}$.
+      $$
+        \frac{f(t)-f(t_{0})}{t-t_{0}} = \frac{e^{tA}-e^{t_{0}A}}{t-t_{0}} = e^{t_{0}A}\frac{e^{-t_{0}A}e^{tA}}{t-t_{0}} = \frac{e^{tA}e^{-t_{0}A}-I_{n}}{t-t_{0}}e^{t_{0}A}
+      $$
+      Comme $\big[tA,-t_{0}A\big] = 0_{n}$, on a
+      $$
+        \frac{f(t)-f(t_{0})}{t-t_{0}} = e^{t_{0}A}\frac{e^{(t-t_{0})A}-I_{n}}{t-t_{0}}\arrowlim{t\to t_{0}}e^{t_{0}A}A
+      $$
+      De plus, $e^{t_{0}A} \in \K[t_{0}A]$ donc $\big[e^{t_{0}A}, A\big] = 0_{n}$ donc
+      $$
+        f'(t_{0}) = e^{t_{0}A}\times A = Ae^{t_{0}}A
+      $$
+    Ainsi, $f: t \longmapsto e^{tA}$ est dérivable sur $\R$ et $f': t \longmapsto Ae^{tA} = e^{tA}A$. Ainsi, pour tout $k \in \N, f^{(k)}: t \longmapsto A^{k}e^{tA} = e^{tA}A^{k}$ d’où $f \in \Cont^{\infty}(\R)$.
+  - Le raisonnement est identique pour $g: t \longmapsto \exp (t \cdot a)$, et on montre que $g \in \Cont^{\infty}(\R)$ et que
+    $$
+        \forall k \in \N, \forall t \in \R, g^{(k)}(t) = a^{k}\circ \exp(t \cdot a) = \exp(t \cdot a)\circ a^{k}
+    $$
+%
+
+%eg
+  Soient $A \in \M_{n}(\K)$ et $V \in \M_{n,k}(\K)$. L’application
+  $$
+    \varphi: \applic{\R}{\M_{n,1}(\K)}{t}{e^{tA}V}
+  $$
+  est de classe $\Cont^{1}$ sur $\R$ comme composée des fonctions $t \longmapsto (e^{tA}, V)$ et $B:(M,X) \longmapsto M \times X$, respectivement de classe $\Cont^{1}$ et bilinéaire, et
+  $$
+    \forall t \in \R, \varphi'(t) = B(A e^{tA}, V) + B(e^{tA}, 0_{n,1})  Ae^{tA}V
+  $$
+  donc $\forall t \in \R, \varphi'(t) = A \varphi(t)$ et $\varphi(0) = V$.
+%
+
+%def Solutions d’un problème de Cauchy
+  Soit $a \in \L(E)$. Soit $(t_{0}, x_{0}) \in \R \times E$. Résoudre le problème de Cauchy
+  $$
+    \tag{C} \begin{cases}« x' = a(x) = a\mdot x »\\ x(t_{0})=x_{0}\end{cases}
+  $$
+  consiste à chercher les arcs $\varphi: \R \longrightarrow E$  de classe $\Cont^{1}$ tels que
+  $$
+    \begin{cases}\forall t \in \R, \varphi'(t) = a \big(\varphi(t)\big) = a\mdot \varphi(t)\\ \varphi(t_{0}) = x_{0}\end{cases}
+  $$
+  Un tel arc est appelé solution de $(C)$.
+%
+
+%prop
+  Soit $a \in \L(E)$.
+  - Les arcs solution de $x'=a(x)$ sont les arcs du type
+    $$
+      t \longmapsto e^{ta}\mdot u
+    $$
+    avec $u \in E$.
+  - Soit $(t_{0}, x_{0}) \in \L \times E$. Le problème de Cauchy
+    $$
+      \begin{cases}x'=a(x)\\ x(t_{0}) = x_{0}\end{cases}
+    $$
+    a pour unique solution l’arc
+    $$
+      t \longmapsto e^{(t-t_{0})a}\mdot x_{0}
+    $$
+%
+
+%proof
+  Soit $\varphi: \R \longrightarrow E$ de classe $\Cont^{1}$.
+  $$
+    \begin{align*}
+      \forall t \in \R, \varphi'(t) = a\mdot \varphi(t) &\iff \forall t \in \R, e^{-ta}\mdot \varphi'(t)\underbrace{-e^{-ta}\mdot \big(a\mdot \varphi(t)\big)}_{=+ \big(e^{-ta}\mdot (-a)\big)\mdot \varphi(t)} = 0 \\
+        &\iff \dv{}{t}\big(e^{-ta}\mdot \varphi(t)\big) = 0
+        &\iff \exists u \in E: \forall t \in \R, e^{-ta}\mdot \varphi(t)=u\\
+        &\iff \exists u \in E: \forall t \in \R, \varphi(t) = e^{ta}\mdot u
+    \end{align*}
+  $$
+  De plus, $\varphi(t_{0})=x_{0} \iff e^{t_{0}a} = x_{0} \iff u = e^{-t_{0}a}\mdot x_{0}$ d’où
+  $$
+    \varphi: t \longmapsto e^{ta}\mdot (e^{-t_{0}a}\mdot x_{0}) = (e^{ta}\circ e^{-t_{0}a})\mdot x_{0} = e^{(t-t_{0})a}\mdot x_{0}
+  $$
+  car $\big[ta, -t_{0}a\big] = 0_{\L(E)}$.
+%
+
+%def Définition-proposition: solutions matriciell d’un problème de Cauchy
+  Soit $A \in \M_{n}(\K)$. Les arcs solutions de l’équation homogène
+  $$
+    \tag{H} Y' = AY
+  $$
+  sont les arcs $t \longmapsto Y(t) = \mtx{y_{1}(t)\\\cdots\\ y_{n}(t)}$ de classe $\Cont^{1}$ vérifiant $\forall t \in \R, Y'(t) = AY(t)$, i.e.
+  $$
+    \begin{cases}y'_{1}(t) &= a_{1,1}y_{1}(t) + \cdots + a_{1,n}y_{n}(t)\\&\vdots\\y'_{n}(t) &= a_{n,1}y_{1}(t) + \cdots + a_{n,n}y_{n}(t)\end{cases}
+  $$
+  Ce sont les arcs du type $t \longmapsto e^{tA}V$ avec $V$ quelconque dans $\M_{n,1}(\K)$. **Ils forment un sous-espace vectoriel de $\Cont^{1}(\R, \M_{n,1}(\K))$ de dimension $n$.** De plus,
+  $$
+    \begin{cases}Y' = AY\\ Y(t_{0}) = A_{0}\end{cases} \iff Y: t \longmapsto e^{(t-t_{0})A}V_{0}
+  $$
+  avec $(t_{0}, V_{0}) \in \R \times \M_{n,1}(\K)$.
+%
+
+%proof
+  L’application
+  $$
+    f: \applic{\M_{n,1}(\K)}{\Cont^{1}(\R,\M_{n,1}(\K))}{V}{f_{V}: t \longmapsto e^{tA}V}
+  $$
+  est linéaire car
+  $$
+    f(\lambda V + \mu W): t \longmapsto e^{tA}(\lambda V+\mu W) = t \longmapsto  \lambda e^{tA}V + \mu e^{tA}W = \lambda f(V) + \mu f(W)
+  $$
+  et injective car
+  $$
+    tv \in \ker f \iff \forall t \in \R, e^{tA}V = 0 \implies V=0
+  $$
+%
+
+%cor
+  Pour $A \in \M_{n}(\K)$ et $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\K)$, $(f_{E_{1}, \ldots,f_{E_{n}}})$ est une base de l’espace des solutions de
+  $$
+    \tag{H} Y' = AY
+  $$
+  Donc si $e^{tA} = \arrmtx{c|c|c}{C_{1}(t) & \cdots & C_{n}(t)}$, alors $(t \longmapsto C_{1}(t), \ldots, t \longmapsto C_{n}(t))$ est une base des solutions de $(H)$.
+%
+
+%eg
+  Considérons le système
+  $$
+    \tag{S} \begin{cases}x' &= 2x+y \\ y' &= x+2y\end{cases}
+  $$
+  avec $x$ et $y$ de classe $\Cont^{1}$ sur $\R$ à valeurs réelles.
+  - *Première méthode~:* Ce système est équivalent à l’équation
+    $$
+      Y' = AY
+    $$
+    avec $A = \mtx{2&1\\1&2}$ et $Y = \mtx{x\\y}$.
+
+    %rem
+      Si $A \in \M_{n}(\K)$, alors $e^{tA}$ peut se calculer. Par exemple,
+      - si $A = I+B$,
+        $$
+          e^{tA} = e^{t I} \times e^{tB} = e^{t}e^{tB}
+        $$
+      - si $A = D+N$ avec $D$ diagonalisable, $N$ nilpotente, et $[D,N] = 0$, alors
+        $$
+          e^{tA} = e^{tD} \times  e^{tN}
+        $$
+        or $D = P \diag{\lambda_{1}, \ldots ,\lambda_{n}}P^{-1}$ donc $e^{tD} = P \diag (e^{t \lambda_{1}}, \ldots, e^{t \lambda_{n}})$, et $e^{tN} = \sum_{k=0}^{n-1}\frac{(tN)^{k}}{k!}$.
+    %
+
+    Ici, $A f I_{2} + U$ avec $U = \mtx{1&1\\1&1}$ et $[U, I_{2}] = 0_{2}$ donc
+    $$
+      \forall t \in \R, e^{tA} = e^{t I_{2}} \times  e^{tU} = e^{t I_{2}} \times  e^{tU}  = e^{t} e^{tU}
+    $$
+    or $U^{2} = 2U, U^{2} = 2U^{2} = 2^{2} U$, … donc par récurrence immédiate,
+    $$
+       U_{0} = I_{2} \quad\text{et}\quad \forall n \in \N^{*}, U^{n} = 2^{n-1}U
+    $$
+    Ainsi,
+    $$
+      \begin{align*}
+        \forall t \in \R, e^{tA} &= e^{t}\left(I_{2} + \left(\sum_{k=1}^{+\infty}\frac{t^{k} 2^{k-1}}{k!}\right)U\right)\\
+        &= e^{t} \left(I_{2} + \frac{1}{2}\left(e^{2t}-1\right)U\right)\\
+        &= \mtx{\frac{e^{3t}+e^{t}}{2} & \frac{e^{3t}-e^{t}}{2}\\ \frac{e^{3t}-e^{t}}{2} & \frac{e^{3t}+e^{t}}{2}} \\
+        &= e^{2t} \mtx{\ch t & \sh t\\ \sh t & \ch t}
+      \end{align*}
+    $$
+    Les solutions de $(S)$ sont donc les arcs $t \longmapsto  e^{tA} \mtx{a\\b}$ pour $(a,b) \in \R^{2}$, i.e. les arcs
+    $$
+      t \longmapsto a e^{2t}\mtx{\ch t\\ \sh t} + b e^{2t} \mtx{\sh t\\ \ch t}
+    $$
+    avec $(a,b) \in \R^{2}$.
+  - *Deuxième méthode~:*
+    $$
+      \begin{align*}
+        (S) &\iff \begin{cases}(x+y)' = 3(x+y) \\ x' &= 2x+y\end{cases}\\
+        &\iff (S) \iff \exists \lambda \in \R: \forall t \in \R, \begin{cases}(x+y)(t) = \lambda e^{3t}\\ x'(t) = x(t)+\lambda e^{3t}\end{cases}
+      \end{align*}
+    $$
+    On résout la seconde équation : $x(t) = c(t)e^{t}$ donc $c'(t)e^{t} + c(t)e^{t} = c(t)e^{t} + \lambda e^{3t}$, i.e. $c'(t) = \lambda e^{2t}$, i.e. $c(t) = \frac{\lambda}{2}e^{2t} + \mu$ avec $\mu \in \R$. Ainsi,
+    $$
+      \begin{align*}
+        (S) &\iff \exists (\lambda, \mu) \in \R^{2}: \forall t \in \R, \begin{cases}y(t) &= \lambda e^{3t}-x(t)\\ x(t) &= \mu e^{t} + \frac{\lambda}{2}e^{3t}\end{cases}\\
+        &\iff \exists (\lambda, \mu) \in \R^{2}: \forall t \in \R, \begin{cases}x(t) &= \mu e^{t}+ \frac{\lambda}{2}e^{3t}\\ z(t) &= -\mu e^{t} + \frac{\lambda}{2}e^{3t}\end{cases}
+      \end{align*}
+    $$
+    Les arcs solution de $(S)$ sont donc
+    $$
+      t \longmapsto  \mtx{x(t)\\ y(t)} = \mu \mtx{e^{t}\\ -e^{t}} + \nu \mtx{e^{3t}\\ e^{3t}}
+    $$
+    avec $(\mu, \nu) \in \R^{2}$
+%
+
+## Intégration des arcs
+
+Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et $(e_{1}, \ldots, e_{n})$ est une base du $\K$-espace vectoriel normé E.
+
+%def Définition-proposition
+  Soit $f: I \longrightarrow E$ un arc.
+  - On dit que $f$ est continue par morceaux sur $I$ si pour tout segment $S \subset I$, il existe une subdivision $\sigma = (a_{k})_{0 \leq k \leq n}$ de $S$ telle que pour tout $k \in \icc{0,n-1}$, $f_{|\oo{a_{k}, a_{k+1}}}$ se prolonge en un arc continu sur $\cc{a_{k}, a_{k+1}}$. On note alors $f \in \Cont_{m}(I, E)$.
+  - Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$, i.e.
+    $$
+      \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i}
+    $$
+    On a~:
+    $$
+      f \in \Cont_{m}(I, E) \iff \forall i \in \icc{1,n}, f_{i} \in \Cont_{m}(I, \K)
+    $$
+  - Soient $f \in \Cont_{m}(I,E)$ et $(a,b) \in I^{2}$. Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f \in \Cont_{m}(\cc{a,b}, \K)$. Le vecteur $\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}$ est un vecteur *indépendant du choix de la base* de $E$. Ce vecteur est noté $\int_{a}^{b}f$, ou $\int_{\cc{a,b}}$, ou encore $\int_{a}^{b} f(t)\dd t$. On a donc
+    $$
+      \forall i \in \icc{1,n}, e_{i}^{*} \left(\int_{a}^{b}f\right) = \int_{a}^{b}f_{i} = \int_{a}^{b}e_{i}^{*}\circ f
+    $$
+%
+
+%proof
+  Soient $(e_{1}, \ldots, e_{n}) = e$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n})=\varepsilon$ deux bases de $E$. Posons, pour tout $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$ et $g_{i} = \varepsilon_{i}^{*}\circ f$. On a
+  $$
+    \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i} = \sum_{i=1}^{n}g_{i}(t)\varepsilon_{i}
+  $$
+  et, en notant $\Pass{e}{\varepsilon}$ la matrice de passage de la base $e$ à la base $\varepsilon$,
+  $$
+    \mtx{f_{1}(t) \\ \vdots \\ f_{n}(t)} = \Pass{e}{\varepsilon} \mtx{g_{1}(t) \\ \vdots \\ g_{n}(t)}
+  $$
+  donc, pour tout $i \in \icc{1,n}$, $f_{i}(t) = \sum_{j=1}^{n}a_{i,j}g_{j}(t)$ d’où
+  $$
+    \sum_{i=1}^{n}\left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i} = \vec{I}
+  $$
+  avec
+  $$
+    \vec{I} = \sum_{i=1}^{n} \left(\sum_{j=1}^{n}a_{i,j} \int_{a}^{b}g_{j}(t)\dd t\right)e_{i} = \sum_{j=1}^{n}\int_{a}^{b}g_{i}(t)\dd t \left(\sum_{i=1}^{n}a_{i,j} e_{i}\right)
+  $$
+%
+
+%eg
+  Considérons l’application $t \longmapsto  A(t) = \mtx{t^{i+j}}_{1 \leq i,j \leq n}$. $A \in \Cont(\R, \M_{n}(\R))$ donc
+  $$
+    \int_{0}^{1} A(t)\dd t = \mtx{\int_{0}^{1}t^{i+j}\dd t}_{1 \leq  i,j \leq n} = \mtx{\frac{1}{i+j+1}}_{1 \leq i,j \leq n}
+  $$
+%
+
+%prop
+  1. Soit $(a,b) \in I^{2}$. Si $(f,g) \in \Cont_{m}(I, E)$ et si l’ensemble
+     $$
+       D = \left\{t \in \cc{a,b} \where f(t)\ne g(t)\right\}
+     $$
+     est fini, alors
+     $$
+       \int_{a}^{b}f = \int_{a}^{b}g
+     $$
+  2. Soit $(a,b) \in I^{2}$. L’application
+     $$
+       \applic{\Cont_{m}(I, E)^{2}}{E}{f}{\int_{a}^{b}f}
+     $$
+     est linéaire.
+  3. Si $(a,b,c) \in I^{3}$ et si $f \in \Cont_{m}(I, E)$, alors
+     $$
+       \int_{a}^{c}f = \int_{a}^{b}f + \int_{b}^{c}f
+     $$
+  4. Si $\varphi: I \longrightarrow \K$ est continue par morceaux, alors pour $u \in E$,
+     $$
+       \forall (a,b) \in I^{2}, \int_{a}^{b}\varphi(t)u \dd t = \underbrace{\left(\int_{a}^{b}\varphi(t)\dd t\right)}_{\in \K}u
+     $$
+  5. %callout
+       Si $L \in \L(E,F)$ et $f \in \Cont_{m}(I, E)$, alors
+       $$
+         \forall (a,b) \in I^{2}, L \left(\int_{a}^{b}f\right) = \int_{a}^{b}L\circ f
+       $$
+     %
+%
+
+%proof
+  1. Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$ et $g_{i} = e_{i}^{*}\circ g$. Si $D$ est fini, alors pour tout $i \in \icc{1,n}$, l’ensemble $D_{i} = \{t \in \cc{a,b} \where f_{i}(t) \ne g_{i}(t)\}$ est fini donc
+     $$
+       \forall i \in \icc{1,n}, \int_{a}^{b}f_{i} = \int_{a}^{b}g_{i}
+     $$
+     donc $\int_{a}^{b}f = \int_{a}^{b}g$.
+  2. On a
+     $$
+       e_{i}^{*} \big(\lambda f(t) + \mu g(t)\big) = \lambda e_{i}^{*} \big(f(t)\big) + \mu e_{i}^{*} \big(g(t)\big)
+     $$
+     donc $(\lambda f + \mu g)_{i} = \lambda f_{i} + \mu g_{i}$ pour tout $i \in \icc{1,n}$. Ainsi,
+     $$
+       \begin{align*}
+         \int_{a}^{b}\lambda f + \mu g &= \sum_{i=1}^{n} \left(\int_{a}^{b} (\lambda f + \mu t)_{i}\right)e_{i} \\
+         &= \sum_{i=1}^{n} \left(\lambda \int_{a}^{b}f_{i}+\mu \int_{a}^{b}g_{i}\right)e_{i}\\
+         &= \lambda\int_{a}^{b}f + \mu \int_{a}^{b}g
+       \end{align*}
+     $$
+  3. L’égalité est vérifiée pour chaque $f_{i}$, d’où le résultat.
+  4. Notons $u = \sum_{i=1}^{n}u_{i}e_{i}$.
+     $$
+       t \longmapsto \varphi(t)\cdot u = \sum_{i=1}^{n}\big(\underbrace{\varphi(t)u_{i}}_{\in \K}\big)e_{i}
+     $$
+     donc
+     $$
+       \begin{align*}
+         \int_{a}^{b} \big(\varphi(t)\cdot  u\big) \dd t &\defeq \sum_{i=1}^{n} \left(\int_{a}^{b}\varphi(t)u_{i} \dd t\right)\cdot e_{i}\\
+         &= \sum_{i=1}^{n}\left(u_{i} \int_{a}^{b}\varphi(t)\dd t\right)\cdot e_{i}\\
+         &= \int_{a}^{b}\varphi(t)\dd t \left(\sum_{i=1}^{n}u_{i}e_{i}\right)\\
+         &= \left(\int_{a}^{b}\varphi\right)\cdot u
+       \end{align*}
+     $$
+  5. On a $\int_{a}^{b}f = \int_{i=1}^{n}\left(\int_{a}^{b}f_{i}\right)e_{i}$ donc
+     $$
+       \begin{align*}
+         \int_{a}^{b} L(f(t))\dd t &= \int_{a}^{b}\left(\sum_{i=1}^{n}f_{i}(t)L(e_{i})\right)\dd t & \text{(car $L \in \L(E,F)$)}\\
+         &=\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)L(e_{i})\dd t\right) & \text{(par linéarité de l’intégrale)}\\
+         &= \sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)\cdot L(e_{i}) & \text{(d’après le 4e point)}\\
+         &= L \left(\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}\right) & \text{(car $L \in \L(E,F)$)}\\
+         &= L \left(\int_{a}^{b}f\right)
+       \end{align*}
+     $$
+%
+
+%eg
+  Considérons l’application
+  $$
+    A:\applic{\R^{*}}{\Sym_{n}(\R)}{t}{\mtx{\frac{t^{i} + t^{j}}{t^{i+j+1}}}_{1 \leq i,j \leq n}} \in \Cont(\R^{*}, \Sym_{n}(\R))
+  $$
+  - Soit $x \in \R_{+}^{*}$.
+    $$
+      \tr  \left(\int_{1}^{x}A(t)\dd t\right) = \int_{1}^{x}\tr (A(t))\dd t = \int_{1}^{x} \left(\sum_{i=1}^{n}\frac{2}{t^{i+1}}\right)\dd t
+    $$
+    d’où
+    $$
+      \tr \left(\int_{1}^{x}A(t)\dd t\right) = \sum_{i=1}^{n}2 \left[-\frac{1}{it^{i}}\right]_{1}^{x} = 2H_{n} - 2 \sum_{i=1}^{n}\frac{1}{i x^{i}}
+    $$
+  - Soit $x \in \R_{+}^{*}$.
+    $$
+      \int_{1}^{x}A(t)\dd t = \int_{1}^{x}A_{1}(t)\dd t + \int_{1}^{x}A_{2}(t)\dd t
+    $$
+    avec $A_{1}(t) = \mtx{\frac{1}{t^{j+1}}}_{1 \leq i,j \leq n}$ et $A_{2}(t) = \mtx{\frac{1}{t^{i+1}}}_{1 \leq i,j \leq n}$ donc
+    $$
+      \int_{1}^{x}A(t)\dd t = \mtx{\Big[-\frac{1}{j t^{j}}\Big]_{1}^{x}}_{1 \leq i,j \leq n} + \mtx{\Big[-\frac{1}{i t^{i}}\Big]_{1}^{x}}_{1 \leq i,j \leq n} = \mtx{\frac{1}{j} - \frac{1}{jx^{j}}}_{1 \leq i,j \leq n} + \mtx{\frac{1}{i} - \frac{1}{i x^{i}}}_{1 \leq i,j \leq n}
+    $$
+%
+
+%prop
+  1. Si $f \in \Cont^{1}(I, E)$, alors
+     $$
+       \forall (a,b) \in I^{2}, f(b) - f(a) = \int_{a}^{b}f'(x)\dd x
+     $$
+  2. Si $f \in \Cont_{m}(\cc{a,b}, E)$ et si $\varphi: \cc{c,d} \longrightarrow \cc{a,b}$ est de classe $\Cont^{1}$ bijective, alors
+     $$
+       \int_{a}^{b}f(t)\dd t = \int_{\varphi^{-1}(a)}^{\varphi^{-1}(b)}\underbrace{\varphi'(u)}_{\R}\underbrace{f(\varphi(u))}_{\in E}\dd u
+     $$
+  3. Si $\varphi: ei \longrightarrow \K$ et $f: I \longrightarrow E$ sont de classe $\Cont^{1}$, alors pour tout $(a,b) \in I^{2}$, on a
+     $$
+       \int_{a}^{b}\varphi'(t)f(t)\dd t = \Bigl[\varphi(t)f(t)\Bigr]_{a}^{b} - \int_{a}^{b}\varphi(t)f'(t)\dd t
+     $$
+  4. Si $f \in \Cont(I, E)$, alors pour $a \in I$, l’arc $x \longmapsto \int_{a}^{b}f(t)\dd t$ est de classe $\Cont^{1}$ et de dérivée $f$.
+%
+
+%proof
+  Posons $\forall i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$. On a alors, pour tout $t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i}$.
+  1. On a $\forall t \in I, f'(t) = \sum_{i=1}^{n}f_{i}'(t)e_{i}$ donc
+     $$
+       \int_{a}^{b}f'(t)\dd t \defeq \sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}'(t)\dd t\right)e_{i} = \sum_{i=1}^{n} \big(f_{i}(b)-f_{i}(a)\big)e_{i} = f(b)-f(a)
+     $$
+  2. Calculons
+     $$
+       \begin{align*}
+         \int_{a}^{b}f(t)\dd t &= \sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}\\
+         &= \sum_{i=1}^{n} \left(\int_{\varphi^{-1}(a)}^{\varphi^{-1}(b)}\underbrace{f_{i}(\varphi(n))\varphi'(u)}_{= e_{i}^{*} \left(\underbrace{\varphi'(u)}_{\in \R}\underbrace{f(\varphi(u))}_{\in E}\right)}\dd u\right)e_{i}\\
+         &= \int_{\varphi^{-1}(a)}^{\varphi^{-1}(b)}\varphi'(a)f(\varphi(u))\dd u
+       \end{align*}
+     $$
+  3. $\varphi'(t)f(t) = \sum_{i=1}^{n} \left(\varphi'(t)f_{i}(t)\right)e_{i}$ donc
+     $$
+       \begin{align*}
+         \int_{a}^{b}\varphi'(t)f(t)\dd t &\defeq \sum_{i=1}^{n} \left(\int_{a}^{b}\varphi'(t)f_{i}(t)\dd t\right)e_{i}\\
+         &= \sum_{i=1}^{n} \big(\varphi(b)f_{i}(b) - \varphi(a)f_{i}(a)\big)e_{i} - \sum_{i=1}^{n} \left(\sum_{a}^{b}\varphi(t)f_{i}'(t)\dd t\right)e_{i}\\
+         &=\varphi(b)f(b)-\varphi(a)f(a) - \int_{a}^{b}\varphi(t)f'(t)\dd t
+       \end{align*}
+     $$
+  4. Soit $F$ une primitive de l’arc continu $f: E \longrightarrow F$. Notonc $f = \sum_{i=1}^{n}f_{i}e_{i}$. Soit $F_{i}$ une primitive de $f_{i}$ (continue). Posons $F = \sum_{i=1}^{n}F_{i}e_{i}$. On a alors $tf' = f$, d’où
+     $$
+       \forall x \in I, \int_{a}^{x}f(t)\dd t = \int_{a}^{x}F'(t)\dd t = F(x) - F(a)
+     $$
+     et $x \longmapsto F(x) - F(a)$ est dérivable et d’arc dérivé $x \longmapsto f(a)$.
+%
+
+%eg
+  Soit $A \in \GL_{n}(\C)$. Soit $x \in \R$. Calculons $\int_{0}^{x}e^{tA}\dd t$.
+  $$
+    A \times \int_{0}^{x}e^{tA}\dd t = \int_{0}^{x}A e^{tA}\dd t
+  $$
+  car $M \longmapsto AM$ est linéaire, d’où
+  $$
+    A \int_{0}^{x}e^{tA}\dd t = \Big[e^{tA}\Big]_{0}^{x} = e^{xA}-I_{n}
+  $$
+  donc $\int_{0}^{x}e^{tA}\dd t = A^{-1}(e^{xA}- I_{n})$, d’où
+  $$
+    \int_{0}^{x} t e^{tA}\dd t = \Big[t A^{-1} e^{tA}\Big]_{0}^{x} = \int_{0}^{x}A^{-1}e^{tA}\dd t = xA^{-1}e^{xA} - A^{-1} \Big[A^{-1}e^{tA}\Big] - (A^{-1})^{2} \left(e^{xA}-I_{n}\right)
+  $$
+%

@@ -43,7 +43,7 @@ $$
 %prop Différentiabilité d’une application multilinéaire
   Si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est une application $p$-linéaire, alors $M$ est différentiable en tout point $(a_{1}, \ldots, a_{p})\in E_{1} \times  \cdots \times E_{p}$ et
   $$
-    \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h1, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}h_{i}, a_{i+1}, \ldots, a_{p})}
+    \dd M(a_{1}, \ldots, a_{p}): \applic{E_{1} \times  \cdots \times E_{p}}{F}{(h_{1}, \ldots, h_{p})}{\displaystyle\sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1},h_{i}, a_{i+1}, \ldots, a_{p})}
   $$
 %
 
@@ -56,24 +56,24 @@ $$
   $$
     M(a+h)-M(a) = \sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, h_{i}, a_{i+1}, \ldots, a_{p}) + S
   $$
-  où $S$ est une somme finie de termes de la forme $M(a'_{1}, \ldots, a'_{p}) = \alpha$ avec $\forall i \in \icc{1,p}, a'_{i} \in \{a_{i}, h_{i}\}$.
+  où $S$ est une somme finie de termes de la forme $M(a'_{1}, \ldots, a'_{p})$ avec $\forall i \in \icc{1,p}, a'_{i} \in \{a_{i}, h_{i}\}$ avec
   $$
     \exists (i,j) \in \icc{1,p}^{2}: i\ne j \text{ et } a'_{i} = h_{i} \text{ et }a'_{j} = h_{j}
   $$
   donc
   $$
-    \norm{\alpha}_{F} \leq K \norm{a'_{1}}_{E_{1}}\times  \cdots \times  \norm{a'_{p}}_{E_{p}} \leq K N_{\infty}(h_{1}, \ldots, h_{p})^{2} N_{\infty}(h_{1}, \ldots, h_{p}) \times N_{\infty}(a_{1}, \ldots, a_{p})^{2}
+    \norm{M(a'_{1}, \ldots, a'_{p})}_{F} \leq K \norm{a'_{1}}_{E_{1}}\times  \cdots \times  \norm{a'_{p}}_{E_{p}} \leq K N_{\infty}(h_{1}, \ldots, h_{p})^{2} \times  N_{\infty}(h_{1}, \ldots, h_{p})^{p-2-r} \times N_{\infty}(a_{1}, \ldots, a_{p})^{r}
   $$
   et
   $$
-    \frac{\alpha}{N_{\infty}(h_{1}, \ldots, h_{p})}\arrowlim{(h_{1}, \ldots, h_{p})\to (0_{E_{1} \times  \cdots \times E_{p}})}0_{F}
+    \frac{M(a'_{1}, \ldots, a'_{p})}{N_{\infty}(h_{1}, \ldots, h_{p})}\arrowlim{(h_{1}, \ldots, h_{p})\to (0_{E_{1} \times  \cdots \times E_{p}})}0_{F}
   $$
   donc $S = o \big((h_{1}, \ldots, h_{p})\big)$.
 %
 
 ## Dérivation le long d’un arc
 
-%prop
+%prop Dérivée le long d’un arc
   Soit $f: U \longrightarrow F$ différentiable en tout point de $U$. Soit $\gamma: I \longrightarrow  E$ un arc tracé sur $U$ et dérivable sur un intervalle $I$ d’intérieur non vide.
   %fig Dérivation le long d’un arc
     @[./figures/dérivation-le-long-d-un-arc_optimized.svg]
@@ -88,7 +88,7 @@ $$
 %proof
   Soit $t_{0} \in I$. $f$ est différentiable en $\gamma(t_{0}) \in U$ donc
   $$
-    \forall x \in U, f(x) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (x-y(t_{0})) + \norm{x-\gamma(t_{0})}\varepsilon(x)
+    \forall x \in U, f(x) = f(\gamma(t_{0})) + \dd f(\gamma(t_{0}))\mdot (x-\gamma(t_{0})) + \norm{x-\gamma(t_{0})}\varepsilon(x)
   $$
   avec $\varepsilon(x) \arrowlim{x\to \gamma(t_{0})}0_{F}$. Or $\forall t \in I, \gamma(t) \in U$ donc
   $$
