@@ -1,5 +1,7 @@
 # Dérivabilité et différentiabilité
 
+:date 11/12/2025
+
 ## Arc paramétrés dérivables
 
 Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\norm{\cdot})$ est un $\K$-espace vectoriel normé de dimension finie dont une base est $(e_{1}, \ldots, e_{n})$.
@@ -266,7 +268,7 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
        $$
        or
        ~ $\varphi' \in \Cont^{k}(I, \R)$  ~ $f' \in \Cont^{k}(J, E)$  ~ $\varphi \in \Cont^{k}(I)$
-       donc selon $\Prop(k)$, on a $f'\circ \varphi \in \Cont^{k}(I, E)$. D’après le troisième point, $\varphi' \times f'\circ \varphi \in \Cont^{k}(I, E)$ donc $(f\circ \varphi)' \in \Cont^{k}(I, E)$, i.e $f\circ \varphi \in \Cont^{k+1}(I, E)$.
+       donc selon $\Prop(k)$, on a $f'\circ \varphi \in \Cont^{k}(I, E)$. D’après le troisième point, $\varphi' \times f'\circ \varphi \in \Cont^{k}(I, E)$ donc $(f\circ \varphi)' \in \Cont^{k}(I, E)$, i.e. $f\circ \varphi \in \Cont^{k+1}(I, E)$.
 %
 
 %prop Formule de Taylor-Young en $t_0 \in I$ pour un arc de classe $\Cont^p$
@@ -647,7 +649,7 @@ $$
     $$
       \frac{N(h) - N(0)-\ell\mdot h}{N(h)} \arrowlim{h\to 0_{E}}0
     $$
-    i.e.$1-\ell\mdot \left(\frac{h}{N(h)}\right) \arrowlim{h\to 0_{E}}0$ donc
+    i.e. $1-\ell\mdot \left(\frac{h}{N(h)}\right) \arrowlim{h\to 0_{E}}0$ donc
     $$
       \ell\mdot \left(\frac{h}{N(h)}\right)\arrowlim{h\to 0_{E}}1
     $$
@@ -820,7 +822,7 @@ $$
     $$
   - Soit $E$ un $\R$-espace vectoriel de dimension 2. Soit $\B$ une base de $E$. $\det_{\B}: E^{n} \longrightarrow \R$ est $n$-linéaire donc différentiable en tout $(u_{1}, \ldots, u_{n}) \in E^{n}$ et
     $$
-      \dd (\det_{\B})(u_{1}, \ldots, u_{n}): \applic{E^{n}}{\R}{(h_{1}, \ldots, h_{n})}{\sum_{i=1}^{n}\det_{\B}}(u_{1}, \ldots, u_{i-1}h_{i}, u_{i+1}, \ldots, u_{n})
+      \dd (\det_{\B})(u_{1}, \ldots, u_{n}): \applic{E^{n}}{\R}{(h_{1}, \ldots, h_{n})}{\sum_{i=1}^{n}\det_{\B}(u_{1}, \ldots, u_{i-1}h_{i}, u_{i+1}, \ldots, u_{n})}
     $$
 %
 
@@ -1116,7 +1118,7 @@ $$
 %
 
 %cor
-  1. Si $F$ est une $R$-algèbre normée (de dimension finie) et si $f_{1}: U \longrightarrow F$, …, $f_{p}: U \longrightarrow F$ sont différentiables sur $eu$, alors $f_{1} \times  \cdots \times  f_{p}: U \longrightarrow F$ est différentiable sur $U$ et
+  1. Si $F$ est une $R$-algèbre normée (de dimension finie) et si $f_{1}: U \longrightarrow F$, …, $f_{p}: U \longrightarrow F$ sont différentiables sur $U$, alors $f_{1} \times  \cdots \times  f_{p}: U \longrightarrow F$ est différentiable sur $U$ et
      $$
        \dd (f_{1} \times  \cdots \times  f_{p}) = \sum_{i=1}^{p}f_{1} \times  \cdots \times  f_{i-1} \times  \dd f_{i} \times f_{i+1}\times  \cdots \times  f_{p}
      $$
@@ -1140,11 +1142,11 @@ $$
 
 %eg
   - Considérons $f: \applic{\R^{*} \times \R}{\R^{2}}{(x,y)}{\left(\frac{y}{x}, x+y\right)}$. $(x,y) \longmapsto \frac{y}{x}$ est différentiable sur $\R^{*} \times \R$ et $(x,y) \longmapsto x+y$ est différentiable sur $\R^{2}$ donc $f$ est différentable sur $\R^{*} \times \R$.
-  - Le déterminant $\det : \applic{\M_{n}(\R)}{\R}{A}{\sum_{\sigma \in \S_{n}}\varepsilon(\sigma) a_{\sigma,1} \cdots a_{\sigma(n), n}}$ est différentiable sur $\M_{n}(\R)$. Soit $A \in \M_{n}(\R)$. $\dd (\det )(A): \M_{n}(\R) \longrightarrow \R$ est linéaire. Soit $H \in \M_{n}(\R)$.
+  - Le déterminant $\det : \applic{\M_{n}(\R)}{\R}{A}{\sum_{\sigma \in \Sym_{n}}\varepsilon(\sigma) a_{\sigma,1} \cdots a_{\sigma(n), n}}$ est différentiable sur $\M_{n}(\R)$. Soit $A \in \M_{n}(\R)$. $\dd (\det )(A): \M_{n}(\R) \longrightarrow \R$ est linéaire. Soit $H \in \M_{n}(\R)$.
     $$
       \dd (\det )(A)\mdot H = D_{H} \det (A) = \varphi'(0)
     $$
-    avec $\varphi: t \longmapsto \det (A+t H)$. Alors $\varphi'(t) = \tr (com(A+tH)\transp H)$. Ainsi,
+    avec $\varphi: t \longmapsto \det (A+t H)$. Or $\varphi'(t) = \tr (\com(A+tH)\transp H)$, donc
     $$
       \dd (\det )(A): \applic{\M_{n}(\R)}{\R}{H}{\tr \big((\com A)\transp H\big)}
     $$
@@ -1165,7 +1167,7 @@ $$
     $$
       \forall t \in \cc{0,1}, \gamma'(t) = (x'-x)\partial_{1}f(x+t(x'-x), y) + \sum_{i=2}^{n+1}0 \times \partial_{i}f(x+t(x'-x),y)
     $$
-    d’où $\forall t \in \cc{0,1}, \gamma'(t) = 0_{F}$, donc $\gamma(1) = \gamma(0)$, i.e.$f'(x',y) = f(x,y)$. Sinsi, pour $x_{0}\in I$ fixé, on a
+    d’où $\forall t \in \cc{0,1}, \gamma'(t) = 0_{F}$, donc $\gamma(1) = \gamma(0)$, i.e. $f'(x',y) = f(x,y)$. Ainsi, pour $x_{0}\in I$ fixé, on a
     $$
       \forall (x,y) \in I \times U, f(x,y) = \underbrace{f(x_{0},y)}_{\lambda(y)}
     $$
@@ -1195,8 +1197,8 @@ $$
   $$
     \begin{align*}
       (\triangle) &\iff \partial_{1} f \times e^{\frac{x^{2}}{2\ln (y+z)}} - \frac{x}{\ln(y+z)} e^{\frac{x^{2}}{e^{2\ln(y+z)}}}f = 0\\
-&\iff \pdv{}{x}\big(f e^{-\frac{x^{2}}{2\ln(y+z)}}\big) = 0\\
-&\iff \exists \lambda: H \longrightarrow \R \text{ différentiable telle que } \forall (x,y,z) \in \R \times H, f(x,y,z) e^{-\frac{x^{2}}{2\ln(y+z)}} = \lambda(y,z)
+      &\iff \pdv{}{x}\big(f e^{-\frac{x^{2}}{2\ln(y+z)}}\big) = 0\\
+      &\iff \exists \lambda: H \longrightarrow \R \text{ différentiable telle que } \forall (x,y,z) \in \R \times H, f(x,y,z) e^{-\frac{x^{2}}{2\ln(y+z)}} = \lambda(y,z)
     \end{align*}
   $$
   Les solutions sont donc
@@ -1208,7 +1210,7 @@ $$
 %prop Chain rule
   Soit
   $$
-    g: \applic{V \subset \R^{p}}{F}{(v_{1}, \ldots, b_{p})}{f(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}
+    g: \applic{V \subset \R^{p}}{F}{(v_{1}, \ldots, v_{p})}{f(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}
   $$
   où $V$ est un ouvert de $\R^{p}$.
   $$
@@ -1216,7 +1218,7 @@ $$
   $$
   est différentiable en sur $U$ et $(v_{1}, \ldots, v_{n}) \longmapsto (x_{1}(v_{1}, \ldots, v_{n}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))$ est différentiable sur $V$ à valeurs dans $U$. Alors $g$ est différentiable sur $V$ et
   $$
-    V(v_{1}, \ldots, v_{p}) \in V^{p}, \pdv{g}{v_{i}} (v_{1}, \ldots, v_{p}) = \sum_{k=1}^{n} \pdv{x_{k}}{v_{i}}(v_{1}, \ldots, v_{p}) \times \underbrace{\pdv{f}{x_{k}}(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}_{\in F}
+    \forall (v_{1}, \ldots, v_{p}) \in V^{p}, \pdv{g}{v_{i}} (v_{1}, \ldots, v_{p}) = \sum_{k=1}^{n} \pdv{x_{k}}{v_{i}}(v_{1}, \ldots, v_{p}) \times \underbrace{\pdv{f}{x_{k}}(x_{1}(v_{1}, \ldots, v_{p}), \ldots, x_{n}(v_{1}, \ldots, v_{p}))}_{\in F}
   $$
   aussi écrit
   $$
@@ -1224,7 +1226,7 @@ $$
   $$
   Si $f$ est à valeurs réelles, alors on écrit
   $$
-    \pdv{g}{v_{1}}(v) = \sum_{k=1}^{n}\pdv{f}{x_{k}}(x_{1}(v), \ldots, x_{n}(v)) \times \pdv{x_{k}}{v_{i}}(v)
+    \pdv{g}{v_{i}}(v) = \sum_{k=1}^{n}\pdv{f}{x_{k}}(x_{1}(v), \ldots, x_{n}(v)) \times \pdv{x_{k}}{v_{i}}(v)
   $$
   ou par abus,
   $$
@@ -1251,7 +1253,7 @@ $$
   $$
     \det \varphi = \vmtx{1&-1&0\\0&1&-1\\0&0&1} \ne 0
   $$
-  donc $\varphi \in \GL(\R^{3})$. Ainsi, $\varphi$ et $\varphi^{-1}$ sont différentiables. On pose $«\tilde{f}(u,v,w) = f(x,y,z)»$, i.e. $f(x,y,z) = \tilde{f(x-y, y-z, z)}$, i.e. $f = \tilde{f} \circ \varphi$ ou encore $\tilde{f} = f\circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*, on a
+  donc $\varphi \in \GL(\R^{3})$. Ainsi, $\varphi$ et $\varphi^{-1}$ sont différentiables. On pose $«\tilde{f}(u,v,w) = f(x,y,z)»$, i.e. $f(x,y,z) = \tilde{f}(x-y, y-z, z)$, i.e. $f = \tilde{f} \circ \varphi$ ou encore $\tilde{f} = f\circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*, on a
   $$
     f \text{ différentiable sur } \R^{3} \iff \tilde{f} \text{ différentiable sur } \R^{3}
   $$
@@ -1289,7 +1291,7 @@ $$
   $$
     \varphi^{-1}: \applic{\R_{+}^{*} \times \R}{\R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}}{(x,y)}{\left(\sqrt{x^{2}+y^{2}}, \arctan \left(\frac{y}{x}\right)\right)}
   $$
-  donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f = f\circ \varphi}$, i.e $f = \tilde{f \circ \varphi^{-1}}$. Comme $\varphi$ est un *difféomorphisme*,
+  donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f} = f\circ \varphi$, i.e. $f = \tilde{f} \circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*,
   $$
     f \text{ différentiable sur } \R_{+}^{*} \times \R \iff \tilde{f} \text{ différentiable sur } \R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}
   $$
@@ -1407,8 +1409,8 @@ donc
 
 %eg
   $f: \applic{\R^{3}}{\R^{2}}{(x,y,z)}{\big(e^{xy}, z\sin x\big)}$ est différentiable car
-  - $(x,y,z) \longmapsto xy$ est différentiable sur $\R^{3}$ comme application polynomiale à valeurs dans $\R$ où $t \longmapsto e^{t}$ est dérivable. Donc par composition, $(x,y,z) \longmapsto e^{xy}$ est différentiable sur $\R^{3}$.
-  - $(x,y,z) \longmapsto \sin x$ est différentiable comme composée de $\sin$ dérivable et de $(x,y,z) \longmapsto x$ linéaire donc différentiable, d’où $(x,y,z) \longmapsto z\sin x$ est différentiable par produit avec $(x,y,z) \longmapsto z$.
+  + $(x,y,z) \longmapsto xy$ est différentiable sur $\R^{3}$ comme application polynomiale à valeurs dans $\R$ où $t \longmapsto e^{t}$ est dérivable. Donc par composition, $(x,y,z) \longmapsto e^{xy}$ est différentiable sur $\R^{3}$.
+  + $(x,y,z) \longmapsto \sin x$ est différentiable comme composée de $\sin$ dérivable et de $(x,y,z) \longmapsto x$ linéaire donc différentiable, d’où $(x,y,z) \longmapsto z\sin x$ est différentiable par produit avec $(x,y,z) \longmapsto z$.
   On a alors
   ~ $\dd f_{1} = ye^{xy}\dd x + xe^{xy}\dd y$  ~ $\dd f_{2} = z\cos x \dd x + \sin x \dd z$
   d’où
@@ -1418,7 +1420,7 @@ donc
 %
 
 %property
-  1. Soient $f: eu \subset \R^{n} \longrightarrow \R^{p}$ et $g: u \subset \R^{n} \longrightarrow \R^{p}$ deux applçations différentiables en $a \in U$. Soient $(\lambda, \mu) \in \R^{2}$. On a
+  1. Soient $f: U \subset \R^{n} \longrightarrow \R^{p}$ et $g: U \subset \R^{n} \longrightarrow \R^{p}$ deux applications différentiables en $a \in U$. Soient $(\lambda, \mu) \in \R^{2}$. On a
      $$
        J_{\lambda f + \mu g}(a) = \lambda J_{f}(a) + \mu J_{g}(a)
      $$
@@ -1443,7 +1445,9 @@ donc
 %
 
 %cor
-  Si $f: \applic{U \subset \R}{V \subset \R^{p}}{(x_{1}, \ldots, x_{n})}{\big(f_{1}(x), \ldots, f_{p}(x)\big) = (y_{1}, \ldots, y_{p}) = y}$ et $g: \applic{V \subset \R^{p}}{\R^{q}}{y=(y_{1}, \ldots, y_{p})}{\big(g_{1}(y), \ldots, g_{q}(y)\big)}$, alors
+  Soient
+  ~ $f: \applic{U \subset \R}{V \subset \R^{p}}{(x_{1}, \ldots, x_{n})}{\big(f_{1}(x), \ldots, f_{p}(x)\big) = (y_{1}, \ldots, y_{p}) = y}$  ~ $g: \applic{V \subset \R^{p}}{\R^{q}}{y=(y_{1}, \ldots, y_{p})}{\big(g_{1}(y), \ldots, g_{q}(y)\big)}$
+  Alors
   $$
     g\circ f: \applic{U \subset \R^{n}}{\R^{q}}{(x_{1}, \ldots, x_{n})}{\big((g\circ f)_{1}(x), \ldots, (g\circ f)_{q}(x)\big)}
   $$
@@ -1518,7 +1522,7 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
 %
 
 %def
-  Soit $f: U \subset E \longrightarrow \R$ une application différentiable en $a \in U$ où $U$ est un ouvert de l’espace euclidien $(E, \scalar{\cdot}{\cdot})$. $\dd f$ est u forme linéaire sur l’espace euclidien $E$. On appelle alors *gradient de $f$ en $a$* l’unique vecteur noté $\nabla f(a)$ tel que
+  Soit $f: U \subset E \longrightarrow \R$ une application différentiable en $a \in U$ où $U$ est un ouvert de l’espace euclidien $(E, \scalar{\cdot}{\cdot})$. $\dd f$ est une forme linéaire sur l’espace euclidien $E$. On appelle alors *gradient de $f$ en $a$* l’unique vecteur noté $\nabla f(a)$ tel que
   $$
     \forall h \in E, \dd f(a)\mdot h = \scalar{\nabla f(a)}{h}
   $$
@@ -1526,17 +1530,8 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
   $$
     \boxed{\dd f(a) \mdot h = \scalar{\nabla f(a)}{h}  = D_{h}f(a) = \lim_{t\to 0}\frac{f(a+th)-f(a)}{t}}
   $$
-  On lit le symbole $\nabla$ « nabla »((NEBEL (qui désigne le lac de tibériade ayant une forme triangulaire, ou une lyre) est devenu NABLA après des erreurs de vocalisation de la langue hébraïque)).
+  On lit le symbole $\nabla$ « nabla »((NĒVEL (נֵבֶל) (qui désigne le lac de Tibériade ayant une forme triangulaire, ou une lyre) est devenu NABLA après des erreurs de vocalisation de la langue hébraïque)).
 %
-
-Si $(e_{1}, \ldots, e_{n})$ est une base orthonormale de $(E, \scalar{\cdot}{\cdot})$, alors
-$$
-  \nabla f(a) = \sum_{i=1}^{n}\scalar{\nabla f(a)}{e_{i}} e_{i}
-$$
-or
-$$
-  \nabla f(a) = \sum_{i=1}^{n}\dd (f(a)\mdot e_{i}) \cdot e_{i} = \sum_{i=1}^{n}D_{e_{i}}f(a)e_{i} = \sum_{i=1}^{n}\partial_{i}f(a)e_{i}
-$$
 
 %prop Expression du gradient dans une base orthonormale
   Si $(e_{1}, \ldots, e_{n})$ est une base **orthonormale** de $(E, \scalar{\cdot}{\cdot})$ et si $f: U \subset E \longrightarrow \R$ est différentiable en $a$, alors
@@ -1546,7 +1541,14 @@ $$
 %
 
 %proof
-
+  Si $(e_{1}, \ldots, e_{n})$ est une base orthonormale de $(E, \scalar{\cdot}{\cdot})$, alors
+  $$
+    \nabla f(a) = \sum_{i=1}^{n}\scalar{\nabla f(a)}{e_{i}} e_{i}
+  $$
+  or
+  $$
+    \nabla f(a) = \sum_{i=1}^{n}(\dd f(a)\mdot e_{i}) \cdot e_{i} = \sum_{i=1}^{n}D_{e_{i}}f(a)e_{i} = \sum_{i=1}^{n}\partial_{i}f(a)e_{i}
+  $$
 %
 
 %eg
@@ -1577,7 +1579,7 @@ $$
   Soient $f: U \subset E \longrightarrow \R$ telle que $f(U) \subset I$ et $g: U \subset E \longrightarrow \R$ deux applications différentiables en $a \in U$. Soit $\varphi: I \longrightarrow \R$ dérivable.
   - $\dd (\varphi\circ f) = \varphi'(f)\dd f$ donc
     $$
-     \scalar{\varphi' \big(f(a)\big)\nabla f(a)}{h} = \varphi'\big(f(a)\big)\scalar{\nabla f(a)}{h} = \scalar{\nabla (\varphi\circ f)(a)}{h} = \dd (\varphi\circ f)(a)\mdot h
+      \scalar{\nabla (\varphi\circ f)(a)}{h} = \scalar{\varphi' \big(f(a)\big)\nabla f(a)}{h} = \varphi'\big(f(a)\big)\scalar{\nabla f(a)}{h} = \dd (\varphi\circ f)(a)\mdot h
     $$
     d’où
     $$
@@ -1593,7 +1595,7 @@ $$
     $$
     d’où
     $$
-      nabla(\lambda f+\mu g)(a) = \lambda \nabla f(a)+\mu \nabla g(a)
+      \nabla(\lambda f+\mu g)(a) = \lambda \nabla f(a)+\mu \nabla g(a)
     $$
   - $\dd (fg)(a)\mdot h = f(a)\dd g(a)\mdot h + g(a)\dd f(a)\mdot h$ donc
     $$
@@ -1621,17 +1623,17 @@ $$
 %
 
 %eg
-  L’application $f: \R^{2} \setminus \{(0,0)\} \longrightarrow \R$ est différentiable sur le plan épointé $\R^{2} \setminus \{(0,0)\}$. Posons
+  Soit $f: \R^{2} \setminus \{(0,0)\} \longrightarrow \R$ une application différentiable sur le plan épointé $\R^{2} \setminus \{(0,0)\}$. Posons
   $$
     F: \applic{\R_{+}^{*} \times \R}{\R}{(r, \theta)}{f(r\cos \theta, r\sin \theta)}
   $$
   On a alors
-  ~ $\pdv{F}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}$  ~ $\pdv{F}{\theta} = -r\sin \theta \pdv{f}{x}+r\cos \theta \pdv{f}{y}$
+  ~ $\displaystyle\pdv{F}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}$  ~ $\displaystyle\pdv{F}{\theta} = -r\sin \theta \pdv{f}{x}+r\cos \theta \pdv{f}{y}$
   Ainsi,
   $$
     \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}} = \underbrace{\mtx{\cos \theta & \sin \theta\\ -r\sin \theta & r\cos \theta}}_{=A(r,\theta)} \mtx{\pdv{f}{x}\\ \pdv{f}{y}}
   $$
-  $dot A(r, \theta) = r > 0$ donc
+  $\det A(r, \theta) = r > 0$ donc
   $$
     \mtx{\pdv{f}{x}\\ \pdv{f}{y}} = \frac{1}{r} \mtx{r\cos \theta & -\sin \theta \\ r\sin \theta & \cos \theta} \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}}
   $$
@@ -1641,7 +1643,7 @@ $$
   $$
   On en déduit « l’expression du gradient en polaires »~:
   $$
-    \boxed{\nabla f(r\cos \theta, r\sin \theta)} = \pdv{F}{r}(r, \theta)\vec{u}(\theta) + \frac{1}{r}\pdv{F}{\theta}(r, \theta)\vec{v}(\theta)
+    \boxed{\nabla f(r\cos \theta, r\sin \theta) = \pdv{F}{r}(r, \theta)\vec{u}(\theta) + \frac{1}{r}\pdv{F}{\theta}(r, \theta)\vec{v}(\theta)}
   $$
   avec
   ~ $\vec{u}(\theta) = (\cos \theta, \sin \theta)$  ~ $\vec{v}(\theta) = \dv{\vec{u}}{\theta} = (-\sin \theta, \cos \theta)$

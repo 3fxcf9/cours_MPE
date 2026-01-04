@@ -1,0 +1,230 @@
+# Semaine 13
+
+## Théorème de Riesz
+
+%thm Théorème de représentation des fonctions linéaires sur un espace euclidien (ou de Riesz)
+  Si $f: E \longrightarrow \R$ est une forme linéaire sur l’espace euclidien $(E, \scalar{\cdot}{\cdot})$, alors il existe un vecteur $x_{0} \in E$ et un seul tel que
+  $$
+    \forall x \in E, f(x) = \scalar{x_{0}}{x}
+  $$
+%
+
+%proof
+  Supposons $E$ non nul. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$.
+  - *Analyse~:* Soit $f \in \L(E,\R)$ telle que
+    $$
+      \exists x_{0} \in E: \forall x \in E, f(x) = \scalar{x_{0}}{x}
+    $$
+    Alors $\forall i \in \icc{1,n}, f(e_{i}) = \scalar{x_{0}}{e_{i}}$ or, comme $(e_{1}, \ldots, e_{n})$ est orthogonale, on a
+    $$
+      x_{0} = \sum_{i=1}^{n}\scalar{x_{0}}{e_{i}} e_{i} = \sum_{i=1}^{n}f(e_{i})e_{i}
+    $$
+  - *Synthèse~:* Soit $f \in \L(E,\R)$. Posons $x_{0} = \sum_{i=1}^{n}f(e_{i})e_{i}$. Pour tout $x \in E$,
+    $$
+      \begin{align*}
+        \scalar{x_{0}}{x} &= \sum_{i=1}^{n}f(e_{i})\scalar{e_{i}}{x} & \text{(linéarité à gauche de $\scalar{\cdot}{\cdot}$)}\\
+        &= f \left(\sum_{i=1}^{n}\scalar{e_{i}}{x} e_{i}\right) & \text{(linéarité de $f$)}\\
+        &= f(x) & \text{(car la base est orthonormale)}
+      \end{align*}
+    $$
+%
+
+
+## Expression du gradient en coordonnées polaires
+
+Soit $f: \R^{2} \setminus \{(0,0)\} \longrightarrow \R$ une application différentiable sur le plan épointé $\R^{2} \setminus \{(0,0)\}$. Posons
+$$
+  F: \applic{\R_{+}^{*} \times \R}{\R}{(r, \theta)}{f(r\cos \theta, r\sin \theta)}
+$$
+On a alors
+~ $\displaystyle\pdv{F}{r} = \cos \theta \pdv{f}{x} + \sin \theta \pdv{f}{y}$  ~ $\displaystyle\pdv{F}{\theta} = -r\sin \theta \pdv{f}{x}+r\cos \theta \pdv{f}{y}$
+Ainsi,
+$$
+  \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}} = \underbrace{\mtx{\cos \theta & \sin \theta\\ -r\sin \theta & r\cos \theta}}_{=A(r,\theta)} \mtx{\pdv{f}{x}\\ \pdv{f}{y}}
+$$
+$\det A(r, \theta) = r > 0$ donc
+$$
+  \mtx{\pdv{f}{x}\\ \pdv{f}{y}} = \frac{1}{r} \mtx{r\cos \theta & -\sin \theta \\ r\sin \theta & \cos \theta} \mtx{\pdv{F}{r}\\ \pdv{F}{\theta}}
+$$
+Ainsi, pour $(x,y) \in \R^{2} \setminus \{(0,0)\}$, $\nabla f(x,y) = \left(\pdv{f}{x}(x,y), \pdv{f}{y}(x,y)\right)$ d’où
+$$
+  \nabla f = \left(\cos \theta \pdv{F}{r} - \frac{1}{r}\sin \theta \pdv{F}{\theta}, \sin \theta \pdv{F}{r}+ \frac{\cos \theta}{r}\pdv{F}{\theta}\right) = \pdv{F}{r}(\cos \theta, \sin \theta) + \frac{1}{r}\pdv{F}{\theta} (-\sin \theta, \cos \theta)
+$$
+On en déduit « l’expression du gradient en polaires »~:
+$$
+  \boxed{\nabla f(r\cos \theta, r\sin \theta) = \pdv{F}{r}(r, \theta)\vec{u}(\theta) + \frac{1}{r}\pdv{F}{\theta}(r, \theta)\vec{v}(\theta)}
+$$
+avec
+~ $\vec{u}(\theta) = (\cos \theta, \sin \theta)$  ~ $\vec{v}(\theta) = \dv{\vec{u}}{\theta} = (-\sin \theta, \cos \theta)$
+
+
+## Définition de l’intégrale d’un arc
+
+%def
+  Soient $f \in \Cont_{m}(I,E)$ et $(a,b) \in I^{2}$. Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f \in \Cont_{m}(\cc{a,b}, \K)$. Le vecteur $\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}$ est un vecteur *indépendant du choix de la base* de $E$. Ce vecteur est noté $\int_{a}^{b}f$, ou $\int_{\cc{a,b}}f$, ou encore $\int_{a}^{b} f(t)\dd t$. On a donc
+  $$
+    \forall i \in \icc{1,n}, e_{i}^{*} \left(\int_{a}^{b}f\right) = \int_{a}^{b}f_{i} = \int_{a}^{b}e_{i}^{*}\circ f
+  $$
+%
+
+%proof
+  Soient $(e_{1}, \ldots, e_{n}) = e$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n})=\varepsilon$ deux bases de $E$. Posons, pour tout $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$ et $g_{i} = \varepsilon_{i}^{*}\circ f$. On a
+  $$
+    \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i} = \sum_{i=1}^{n}g_{i}(t)\varepsilon_{i}
+  $$
+  et, en notant $\Pass{e}{\varepsilon} = \mtx{a_{i,j}}_{1 \leq i,j \leq n}$ la matrice de passage de la base $e$ à la base $\varepsilon$,
+  $$
+    \mtx{f_{1}(t) \\ \vdots \\ f_{n}(t)} = \Pass{e}{\varepsilon} \mtx{g_{1}(t) \\ \vdots \\ g_{n}(t)}
+  $$
+  donc, pour tout $i \in \icc{1,n}$, $f_{i}(t) = \sum_{j=1}^{n}a_{i,j}g_{j}(t)$ d’où
+  $$
+    \sum_{i=1}^{n}\left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i} = \sum_{i=1}^{n} \left(\sum_{j=1}^{n}a_{i,j} \int_{a}^{b}g_{j}(t)\dd t\right)e_{i} = \sum_{j=1}^{n}\int_{a}^{b}g_{j}(t)\dd t \left(\sum_{i=1}^{n}a_{i,j} e_{i}\right) = \sum_{j=1}^{n}\left(\int_{a}^{b}g_{j}(t)\dd t \right) \varepsilon_{i}
+  $$
+%
+
+## Inégalité triangulaire et inégalité des accroissements finis
+
+%prop Inégalité triangulaire
+  Soit $f \in \Cont_{m}(I,F)$. On a, pour tout $(a,b) \in I^{2}$,
+  $$
+    \norm{\int_{a}^{b}f} \leq  \abs{\int_{a}^{b} \norm{f(t)}\dd t} \leq \sup_{t \in \cc{a,b}}\norm{f(t)}\times \abs{b-a}
+  $$
+%
+
+%proof
+  $$
+    \tag{$\star$}\norm{R_{N}(f)} \leq \frac{\abs{b-a}}{N}\sum_{k=0}^{N-1}\norm{f \left(a+k \frac{b-a}{N}\right)}
+  $$
+  or $t \longmapsto \norm{f(t)}$ est continue par morceaux sur $\cc{a,b}$, donc
+  $$
+    \frac{b-a}{N}\sum_{k=0}^{N-1} \norm{f \left(a+k \frac{b-a}{N}\right)} \arrowlim{N\to +\infty} \int_{a}^{b}\norm{f(t)}\dd t
+  $$
+  D’où, en passant à la limite sur $(\star)$,
+  $$
+    \norm{\int_{a}^{b}f(t)\dd t} \leq \abs{\int_{a}^{b} \norm{f(t)}\dd t}
+  $$
+%
+
+%rem
+  Si $f: I \longrightarrow E$ est continue par morceaux et si $\forall t \in I, f(t) \in A$ où $A$ est une partie convexe de $E$, alors
+  $$
+    \frac{1}{b-a} \int_{a}^{b}f = \lim_{N\to +\infty}\frac{1}{N}\sum_{k=0}^{N-1} f \left(a+k \frac{b-a}{N}\right) \in \bar{A}
+  $$
+%
+
+%prop Inégalité des accroissements finis
+  Si $f: I \longrightarrow E$ est un arc de classe $\Cont^{1}$, alors
+  $$
+    \forall (t_{0}, t_{1})\in I^{2}, \norm{f(t_{1})-f(t_{0})} \leq \sup_{t \in \cc{t_{0}, t_{1}}} \norm{f'(t)} \times \abs{t_{1}-t_{0}}
+  $$
+%
+
+%proof
+  $f(t_{1})-f(t_{0}) = \int_{t_{0}}^{t_{1}}f'(t)\dd t$ d’où
+  $$
+    \norm{f(t_{1})-f(t_{0})} \leq  \abs{\int_{t_{0}}^{t_{1}}\norm{f'(t)}\dd t} \leq \sup_{t \in \cc{t_{0}, t_{1}}} \norm{f'(t)} \abs{t_{1} - t_{0}}
+  $$
+%
+
+
+## Dérivation de $t \longmapsto \exp(tA)$
+
+%prop
+  Soit $A \in \M_{n}(\K)$. L’arc $f: \applic{\R}{\M_{n}(\K)}{t}{e^{tA}}$ est de classe $\Cont^{1}$ sur $\R$ et
+  $$
+    \forall t \in \R, f'(t) = A \times e^{tA} = e^{tA}\times A
+  $$
+%
+
+%proof
+  - Soit $t \in \R$.
+    $$
+      \frac{f(t)-f(0)}{t} = \frac{e^{tA}-I_{n}}{t} = \frac{1}{t}\sum_{k=1}^{+\infty}\frac{t^{k}A^{k}}{k!} = A + \frac{1}{t}\sum_{k=2}^{+\infty}\frac{t^{k}A^{k}}{k!}
+    $$
+    La série $\sum_{k \geq 2}\frac{(tA)^{k}}{k!}$ est absolument convergente donc
+    $$
+      \norm{\frac{1}{e}\sum_{k=2}^{+\infty}\frac{(tA)^{k}}{k!}} \leq \frac{1}{\abs{t}}\sum_{k=2}^{+\infty}\frac{\abs{t}^{k}\norm{A}^{k}}{k!} = \frac{1}{\abs{t}}\left(e^{\abs{t}\norm{A}} - 1 - \abs{t}\norm{A}\right) \usim{t\to 0} \frac{1}{\abs{t}}\frac{\abs{t}^{2}\norm{A}^{2}}{2!} = \frac{\abs{t}\cdot \norm{A}^{2}}{2} \arrowlim{t\to 0}0
+    $$
+    donc $\frac{1}{t}\sum_{k=2}^{+\infty}\frac{t^{k}A^{k}}{k!} \arrowlim{t\to 0}0$ donc $\frac{f(t)-f(0)}{t}\arrowlim{t\to 0}A$ donc $f'(0) = A$.
+  - Soit $t_{0} \in \R$. Soit $t \in \R \setminus \{t_{0}\}$.
+    $$
+      \frac{f(t)-f(t_{0})}{t-t_{0}} = \frac{e^{tA}-e^{t_{0}A}}{t-t_{0}} = e^{t_{0}A}\frac{e^{-t_{0}A}e^{tA}}{t-t_{0}} = \frac{e^{tA}e^{-t_{0}A}-I_{n}}{t-t_{0}}e^{t_{0}A}
+    $$
+    Comme $\big[tA,-t_{0}A\big] = 0_{n}$, on a
+    $$
+      \frac{f(t)-f(t_{0})}{t-t_{0}} = e^{t_{0}A}\frac{e^{(t-t_{0})A}-I_{n}}{t-t_{0}}\arrowlim{t\to t_{0}}e^{t_{0}A}A
+    $$
+    De plus, $e^{t_{0}A} \in \K[t_{0}A]$ donc $\big[e^{t_{0}A}, A\big] = 0_{n}$ donc
+    $$
+      f'(t_{0}) = e^{t_{0}A}\times A = Ae^{t_{0}}A
+    $$
+  Ainsi, $f: t \longmapsto e^{tA}$ est dérivable sur $\R$ et $f': t \longmapsto Ae^{tA} = e^{tA}A$. Ainsi, pour tout $k \in \N, f^{(k)}: t \longmapsto A^{k}e^{tA} = e^{tA}A^{k}$ d’où $f \in \Cont^{\infty}(\R)$.
+%
+
+## Solutions d’équations différentielles à coefficients constants
+
+- Les arcs solution de $x'=a(x)$ sont les arcs du type
+  $$
+    t \longmapsto e^{ta}\mdot u
+  $$
+  avec $u \in E$. En effet, si $\varphi: \R \longrightarrow E$ est de classe $\Cont^{1}$,
+  $$
+    \begin{align*}
+      \forall t \in \R, \varphi'(t) = a\mdot \varphi(t) &\iff \forall t \in \R, e^{-ta}\mdot \varphi'(t)\underbrace{-e^{-ta}\mdot \big(a\mdot \varphi(t)\big)}_{=+ \big(e^{-ta}\mdot (-a)\big)\mdot \varphi(t)} = 0 \\
+        &\iff \dv{}{t}\big(e^{-ta}\mdot \varphi(t)\big) = 0\\
+        &\iff \exists u \in E: \forall t \in \R, e^{-ta}\mdot \varphi(t)=u\\
+        &\iff \exists u \in E: \forall t \in \R, (e^{ta} \circ e^{-ta})\mdot \varphi(t)=e^{ta} \mdot u\\
+        &\iff \exists u \in E: \forall t \in \R, \varphi(t) = e^{ta}\mdot u
+    \end{align*}
+  $$
+  donc en représentation matricielle, si $A \in \M_{n}(\K)$, les arcs solutions de l’équation homogène
+  $$
+    \tag{H} Y' = AY
+  $$
+  sont les arcs $t \longmapsto Y(t) = \mtx{y_{1}(t)\\\cdots\\ y_{n}(t)}$ de classe $\Cont^{1}$ vérifiant $\forall t \in \R, Y'(t) = AY(t)$, i.e.
+  $$
+    \begin{cases}y'_{1}(t) &= a_{1,1}y_{1}(t) + \cdots + a_{1,n}y_{n}(t)\\&\vdots\\y'_{n}(t) &= a_{n,1}y_{1}(t) + \cdots + a_{n,n}y_{n}(t)\end{cases}
+  $$
+  Ce sont les arcs du type $t \longmapsto e^{tA}V$ avec $V$ quelconque dans $\M_{n,1}(\K)$. **Ils forment un sous-espace vectoriel de $\Cont^{1}(\R, \M_{n,1}(\K))$ de dimension $n$.**
+- %def Solutions d’un système différentiel linéaire à coefficients constants avec second membre
+    Soit $A \in \M_{n}(\K)$. Soit $B: \applic{I}{\M_{n,1}(\K)}{t}{B(t)}$ un arc continu sur un intervalle $I$. Résoudre
+    $$
+      \tag{E} Y' = AY+B(t) \sur I
+    $$
+    consiste à chercher les arcs $\varphi: I \longrightarrow \M_{n,1}(\K)$ de classe $\Cont^{1}$ tels que
+    $$
+      \tag{$\star$} \forall t \in I, \varphi'(t) = A \varphi(t) + B(t)
+    $$
+  %
+
+  %method
+    - Si on dispose d’une solution particulière $\varphi_{0}$, alors
+      $$
+        \forall t \in I, \varphi'(t) - A \varphi(t) = \varphi_{0}'(t) - A \varphi_{0}(t)
+      $$
+      i.e.
+      $$
+        \forall t \in I, (\varphi-\varphi_{0})'(t) = A \big(\varphi(t)-\varphi_{0}(t)\big)
+      $$
+      On considère alors l’*équation homogène associée à $(E)$* $(H): Y' = AY$, et on a
+      $$
+        (\star) \iff \exists V \in \M_{n,1}(\K): \forall t \in I, \varphi(t) - \varphi_{0}(t) = e^{tA}V
+      $$
+      donc
+      $$
+        \Sol_{E,I} = \Big\{t \longmapsto \underbrace{\varphi_{0}(t)}_{\text{sol. particulière}} + \underbrace{e^{tA}V}_{\text{sol. générale de }(H)} \where V \in \M_{n,1}(\K)\Big\}
+      $$
+    - Si on ne dispose pas de solution particulière, on applique la méthode de variation du vecteur constant~: on pose pour tout $t \in I$, $\varphi(t) = e^{tA}V(t)$, i.e. $V(t) = e^{-tA}\varphi(t)$. Comme $t \longmapsto e^{tA}$ et $t \longmapsto e^{-tA}$ sont de classe $\Cont^{1}$ sur $\R$, $\varphi$ est de classe $\Cont^{1}$ sur $I$ si et seulement si $V$ est de classe $\Cont^{1}$ sur $I$. Alors,
+      $$
+        (\star) \iff \begin{cases}\varphi(t) = e^{tA}V(t) \\ A e^{tA}V(t) + e^{tA}V'(t) = A e^{tA}V(t) + B(t)\end{cases} \iff \forall t \in I, \begin{cases}\varphi(t) = e^{tA}V(t)\\V'(t) = e^{-tA}B(t)\end{cases}
+      $$
+      Soit $t_{0} \in I$.
+      $$
+        (\star) \iff \exists W \in \M_{n,1}(\K), \forall t \in I, \begin{cases}\varphi(t) = e^{tA}V(t)\\ V(t) = \int_{t_{0}}^{t} e^{-ut}B(u)\dd u + W\end{cases}
+      $$
+      donc les solutions du système sont les solutions de l’ensemble
+      $$
+        \Sol_{E,I} = \left\{ t \longmapsto e^{tA}\int_{t_{0}}^{t} e^{-uA}B(u)\dd u + e^{tA}W \where W \in \M_{n,1}(\K)\right\}
+      $$
+      C’est un sous-espace affine de $\Cont^{1}(I,\M_{n,1(\K)})$ de dimension $n$.
+  %

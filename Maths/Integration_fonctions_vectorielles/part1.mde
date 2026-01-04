@@ -7,7 +7,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
 ## Résolution des systèmes différentiels homogènes à coefficients constants
 
 %prop
-  - Soit $A \in \M_{n}(\K)$. L’arc $f: \applic{\R}{\M_{n}(\K)}{t}{e^{tA}}$ est de classe $\Cont^{1}$ sur $\R$
+  - Soit $A \in \M_{n}(\K)$. L’arc $f: \applic{\R}{\M_{n}(\K)}{t}{e^{tA}}$ est de classe $\Cont^{1}$ sur $\R$ et
     $$
       \forall t \in \R, f'(t) = A \times e^{tA} = e^{tA}\times A
     $$
@@ -92,8 +92,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
   $$
     \begin{align*}
       \forall t \in \R, \varphi'(t) = a\mdot \varphi(t) &\iff \forall t \in \R, e^{-ta}\mdot \varphi'(t)\underbrace{-e^{-ta}\mdot \big(a\mdot \varphi(t)\big)}_{=+ \big(e^{-ta}\mdot (-a)\big)\mdot \varphi(t)} = 0 \\
-        &\iff \dv{}{t}\big(e^{-ta}\mdot \varphi(t)\big) = 0
+        &\iff \dv{}{t}\big(e^{-ta}\mdot \varphi(t)\big) = 0\\
         &\iff \exists u \in E: \forall t \in \R, e^{-ta}\mdot \varphi(t)=u\\
+        &\iff \exists u \in E: \forall t \in \R, (e^{ta} \circ e^{-ta})\mdot \varphi(t)=e^{ta} \mdot u\\
         &\iff \exists u \in E: \forall t \in \R, \varphi(t) = e^{ta}\mdot u
     \end{align*}
   $$
@@ -131,12 +132,12 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
   $$
   et injective car
   $$
-    tv \in \ker f \iff \forall t \in \R, e^{tA}V = 0 \implies V=0
+    V \in \ker f \iff \forall t \in \R, e^{tA}V = 0 \implies V=0
   $$
 %
 
 %cor
-  Pour $A \in \M_{n}(\K)$ et $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\K)$, $(f_{E_{1}, \ldots,f_{E_{n}}})$ est une base de l’espace des solutions de
+  Pour $A \in \M_{n}(\K)$ et $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\K)$, $(f_{E_{1}}, \ldots,f_{E_{n}})$ est une base de l’espace des solutions de
   $$
     \tag{H} Y' = AY
   $$
@@ -168,7 +169,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
         or $D = P \diag{\lambda_{1}, \ldots ,\lambda_{n}}P^{-1}$ donc $e^{tD} = P \diag (e^{t \lambda_{1}}, \ldots, e^{t \lambda_{n}})$, et $e^{tN} = \sum_{k=0}^{n-1}\frac{(tN)^{k}}{k!}$.
     %
 
-    Ici, $A f I_{2} + U$ avec $U = \mtx{1&1\\1&1}$ et $[U, I_{2}] = 0_{2}$ donc
+    Ici, $A = I_{2} + U$ avec $U = \mtx{1&1\\1&1}$ et $[U, I_{2}] = 0_{2}$ donc
     $$
       \forall t \in \R, e^{tA} = e^{t I_{2}} \times  e^{tU} = e^{t I_{2}} \times  e^{tU}  = e^{t} e^{tU}
     $$
@@ -193,8 +194,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
   - *Deuxième méthode~:*
     $$
       \begin{align*}
-        (S) &\iff \begin{cases}(x+y)' = 3(x+y) \\ x' &= 2x+y\end{cases}\\
-        &\iff (S) \iff \exists \lambda \in \R: \forall t \in \R, \begin{cases}(x+y)(t) = \lambda e^{3t}\\ x'(t) = x(t)+\lambda e^{3t}\end{cases}
+        (S) &\iff \begin{cases}(x+y)' = 3(x+y) \\ x' = 2x+y\end{cases}\\
+        &\iff \exists \lambda \in \R: \forall t \in \R, \begin{cases}(x+y)(t) = \lambda e^{3t}\\ x'(t) = x(t)+\lambda e^{3t}\end{cases}
       \end{align*}
     $$
     On résout la seconde équation : $x(t) = c(t)e^{t}$ donc $c'(t)e^{t} + c(t)e^{t} = c(t)e^{t} + \lambda e^{3t}$, i.e. $c'(t) = \lambda e^{2t}$, i.e. $c(t) = \frac{\lambda}{2}e^{2t} + \mu$ avec $\mu \in \R$. Ainsi,
@@ -226,7 +227,7 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
     $$
       f \in \Cont_{m}(I, E) \iff \forall i \in \icc{1,n}, f_{i} \in \Cont_{m}(I, \K)
     $$
-  - Soient $f \in \Cont_{m}(I,E)$ et $(a,b) \in I^{2}$. Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f \in \Cont_{m}(\cc{a,b}, \K)$. Le vecteur $\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}$ est un vecteur *indépendant du choix de la base* de $E$. Ce vecteur est noté $\int_{a}^{b}f$, ou $\int_{\cc{a,b}}$, ou encore $\int_{a}^{b} f(t)\dd t$. On a donc
+  - Soient $f \in \Cont_{m}(I,E)$ et $(a,b) \in I^{2}$. Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f \in \Cont_{m}(\cc{a,b}, \K)$. Le vecteur $\sum_{i=1}^{n} \left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i}$ est un vecteur *indépendant du choix de la base* de $E$. Ce vecteur est noté $\int_{a}^{b}f$, ou $\int_{\cc{a,b}}f$, ou encore $\int_{a}^{b} f(t)\dd t$. On a donc
     $$
       \forall i \in \icc{1,n}, e_{i}^{*} \left(\int_{a}^{b}f\right) = \int_{a}^{b}f_{i} = \int_{a}^{b}e_{i}^{*}\circ f
     $$
@@ -237,17 +238,13 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
   $$
     \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i} = \sum_{i=1}^{n}g_{i}(t)\varepsilon_{i}
   $$
-  et, en notant $\Pass{e}{\varepsilon}$ la matrice de passage de la base $e$ à la base $\varepsilon$,
+  et, en notant $\Pass{e}{\varepsilon} = \mtx{a_{i,j}}_{1 \leq i,j \leq n}$ la matrice de passage de la base $e$ à la base $\varepsilon$,
   $$
     \mtx{f_{1}(t) \\ \vdots \\ f_{n}(t)} = \Pass{e}{\varepsilon} \mtx{g_{1}(t) \\ \vdots \\ g_{n}(t)}
   $$
   donc, pour tout $i \in \icc{1,n}$, $f_{i}(t) = \sum_{j=1}^{n}a_{i,j}g_{j}(t)$ d’où
   $$
-    \sum_{i=1}^{n}\left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i} = \vec{I}
-  $$
-  avec
-  $$
-    \vec{I} = \sum_{i=1}^{n} \left(\sum_{j=1}^{n}a_{i,j} \int_{a}^{b}g_{j}(t)\dd t\right)e_{i} = \sum_{j=1}^{n}\int_{a}^{b}g_{i}(t)\dd t \left(\sum_{i=1}^{n}a_{i,j} e_{i}\right)
+    \sum_{i=1}^{n}\left(\int_{a}^{b}f_{i}(t)\dd t\right)e_{i} = \sum_{i=1}^{n} \left(\sum_{j=1}^{n}a_{i,j} \int_{a}^{b}g_{j}(t)\dd t\right)e_{i} = \sum_{j=1}^{n}\int_{a}^{b}g_{j}(t)\dd t \left(\sum_{i=1}^{n}a_{i,j} e_{i}\right) = \sum_{j=1}^{n}\left(\int_{a}^{b}g_{j}(t)\dd t \right) \varepsilon_{i}
   $$
 %
 
@@ -364,7 +361,7 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
      $$
        \int_{a}^{b}f(t)\dd t = \int_{\varphi^{-1}(a)}^{\varphi^{-1}(b)}\underbrace{\varphi'(u)}_{\R}\underbrace{f(\varphi(u))}_{\in E}\dd u
      $$
-  3. Si $\varphi: ei \longrightarrow \K$ et $f: I \longrightarrow E$ sont de classe $\Cont^{1}$, alors pour tout $(a,b) \in I^{2}$, on a
+  3. Si $\varphi: I \longrightarrow \K$ et $f: I \longrightarrow E$ sont de classe $\Cont^{1}$, alors pour tout $(a,b) \in I^{2}$, on a
      $$
        \int_{a}^{b}\varphi'(t)f(t)\dd t = \Bigl[\varphi(t)f(t)\Bigr]_{a}^{b} - \int_{a}^{b}\varphi(t)f'(t)\dd t
      $$
@@ -414,3 +411,232 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
     \int_{0}^{x} t e^{tA}\dd t = \Big[t A^{-1} e^{tA}\Big]_{0}^{x} = \int_{0}^{x}A^{-1}e^{tA}\dd t = xA^{-1}e^{xA} - A^{-1} \Big[A^{-1}e^{tA}\Big] - (A^{-1})^{2} \left(e^{xA}-I_{n}\right)
   $$
 %
+
+%prop
+  Soit $f \in \Cont_{m}(I,E)$. Soient $(a,b) \in I^{2}$. On a~:
+  $$
+    R_{N}(f) = \frac{b-a}{N}\sum_{k=0}^{N-1}f \left(a+k \frac{b-a}{N}\right) \arrowlim{N\to +\infty}\int_{a}^{b}f
+  $$
+%
+
+%proof
+  Notons $f = \sum_{i=1}^{n}f_{i}e_{i}$ avec $f_{i} = e_{i}^{*}\circ f$ et pour tout $i \in \icc{1,n}$, $f_{i}\in \Cont_{m}(I,\K)$, donc
+  $$
+    \frac{b-a}{N}\sum_{k=0}^{N-1}f_{i} \left(a+k \frac{b-a}{N}\right) \arrowlim{N\to+\infty}\int_{a}^{b}f_{i}
+  $$
+  d’où
+  $$
+    \frac{b-a}{N} \sum_{k=0}^{N-1} \left(\underbrace{\sum_{i=1}^{n}f_{i} \left(a+k \frac{b-a}{N}\right)e_{i}}_{=f \left(a+k \frac{b-a}{N}\right)}\right) \sum_{i=1}^{n} \left(\frac{b-a}{N}\sum_{k=0}^{N-1}f_{i} \left(a+k \frac{b-a}{N}\right)\right)e_{i} \arrowlim{} \sum_{i=1}^{n}\left(\int_{a}^{b}f_{i}\right)e_{i} = \int_{a}^{b}f
+  $$
+%
+
+%prop Inégalité triangulaire
+  Soit $f \in \Cont_{m}(I,F)$. On a, pour tout $(a,b) \in I^{2}$,
+  $$
+    \norm{\int_{a}^{b}f} \leq  \abs{\int_{a}^{b} \norm{f(t)}\dd t} \leq \sup_{t \in \cc{a,b}}\norm{f(t)}\times \abs{b-a}
+  $$
+%
+
+%proof
+  $$
+    \tag{$\star$}\norm{R_{N}(f)} \leq \frac{\abs{b-a}}{N}\sum_{k=0}^{N-1}\norm{f \left(a+k \frac{b-a}{N}\right)}
+  $$
+  or $t \longmapsto \norm{f(t)}$ est continue par morceaux sur $\cc{a,b}$, donc
+  $$
+    \frac{b-a}{N}\sum_{k=0}^{N-1} \norm{f \left(a+k \frac{b-a}{N}\right)} \arrowlim{N\to +\infty} \int_{a}^{b}\norm{f(t)}\dd t
+  $$
+  D’où, en passant à la limite sur $(\star)$,
+  $$
+    \norm{\int_{a}^{b}f(t)\dd t} \leq \abs{\int_{a}^{b} \norm{f(t)}\dd t}
+  $$
+%
+
+%rem
+  Si $f: I \longrightarrow E$ est continue par morceaux et si $\forall t \in I, f(t) \in A$ où $A$ est une partie convexe de $E$, alors
+  $$
+    \frac{1}{b-a} \int_{a}^{b}f = \lim_{N\to +\infty}\frac{1}{N}\sum_{k=0}^{N-1} f \left(a+k \frac{b-a}{N}\right) \in \bar{A}
+  $$
+%
+
+%prop Inégalité des accroissements finis
+  Si $f: I \longrightarrow E$ est un arc de classe $\Cont^{1}$, alors
+  $$
+    \forall (t_{0}, t_{1})\in I^{2}, \norm{f(t_{1})-f(t_{0})} \leq \sup_{t \in \cc{t_{0}, t_{1}}} \norm{f'(t)} \times \abs{t_{1}-t_{0}}
+  $$
+%
+
+%proof
+  $f(t_{1})-f(t_{0}) = \int_{t_{0}}^{t_{1}}f'(t)\dd t$ d’où
+  $$
+    \norm{f(t_{1})-f(t_{0})} \leq  \abs{\int_{t_{0}}^{t_{1}}\norm{f'(t)}\dd t} \leq \sup_{t \in \cc{t_{0}, t_{1}}} \norm{f'(t)} \abs{t_{1} - t_{0}}
+  $$
+%
+
+%prop Formule de Taylor avec reste intégral
+  Si $f: I \longrightarrow E$ est de classe $\Cont^{n+1}$, alors pour tout $(a,x) \in I^{2}$,
+  $$
+    f(x) = f(a) + (x-a)f'(a) + \cdots + \frac{(x-a)^{n}}{n!} f^{(n)}(a) + \int_{a}^{x}\frac{(x-a)^{n}}{n!}f^{(n+1)}(t)\dd t
+  $$
+%
+
+%proof
+  Posons, pour tout $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f \in \Cont^{n+1}(I,\K)$. Alors, pour tout $i \in \icc{1,n}$,
+  $$
+    f_{i}(x) = f_{i}(a) + (x-a)f'_{i}(a) + \cdots + \frac{(x-a)^{n}}{n!}f_{i}^{(n)}(a) + \int_{a}^{x}\frac{(x-t)^{n}}{n!}f_{i}^{(n+1)}(t)\dd
+  $$
+  d’où
+  $$
+    f(x) = \sum_{i=1}^{n}f_{i}(x)e_{i} = f(a) + (x-a)f'(a) + \cdots + \frac{(x-a)^{n}}{n!}f^{(n)}(a) + \int_{a}^{x}\frac{(x-t)^{n}}{n!}f^{(n+1)}(t)\dd t
+  $$
+%
+
+%cor Inégalité de Taylor-Lagrange
+  Si $f: I \longrightarrow E$ est de classe $\Cont^{n+1}$, alors pour tout $(x,a) \in I^{2}$,
+  $$
+    \norm{f(x) - \sum_{k=0}^{n}\frac{(x-a)^{k}}{k!}f^{(k)}(a)} \leq \sup_{t \in \cc{a,x}} \norm{f^{(n+1)}(t)} \times \frac{\abs{x-a}^{n+1}}{(n+1)!}
+  $$
+%
+
+%proof
+  $$
+    \norm{f(x) - \sum_{k=0}^{n}\frac{(x-a)^{k}}{k!} f^{(k)}(a)} = \norm{\int_{a}^{x}\frac{(x-t)^{n}}{n!}f^{(n+1)}(t)\dd t} \leq \abs{\int_{a}^{x} \frac{\abs{x-t}^{n}}{n!}\norm{f^{(n+1)}(t)}\dd t} \leq \sup_{t \in \cc{a,x}} \norm{f^{(n+1)}(t)} \times  \underbrace{\abs{\int_{a}^{x}\frac{\abs{x-t}^{n}}{n!}\dd t}}_{=\frac{\abs{x-a}^{n+1}}{(n+1)!}}
+  $$
+%
+
+## Systèmes différentiels linéaires à coefficients constants
+
+%recall Rappels et compléments
+  Soit $A \in \M_{n}(\K)$. L’ensemble des solutions du système homogène $(H): Y' = AY$ sont
+  $$
+    \Sol_{H} = \left\{\varphi \in \Cont^{1}(\R, \M_{n,1}(\K)) \where \forall t \in \R, \varphi'(t) = A \varphi(t)\right\}
+  $$
+  - On a~:
+    $$
+      \Sol_{H} = \left\{f_{V} : t \longmapsto e^{tA}V \where V \in \M_{n,1}(\K)\right\}
+    $$
+  - Si $\forall t \in \R, e^{tA} = \arrmtx{c|c|c}{C_{1}(t) & \cdots & C_{n}(t)}$, alors
+    $$
+      \Sol_{H} = \Vect\left\{t \longmapsto C_{1}(t), \ldots, t \longmapsto C_{n}(t)\right\}
+    $$
+  - $\Sol_{H}$ est un sous-espace vectoriel de dimension $n$ de $\Cont^{1}(\R, \M_{n,1}(\K))$.
+  - %callout
+      Soit $\lambda \in \sp_{\K}(A)$. Si $W \in \M_{n,1}(\K)$ vérifie $AW = \lambda W$, alors
+      $$
+        t \longmapsto e^{\lambda t}W
+      $$
+      est un arc rectiligne solution de $(H)$.
+
+      %proof
+        - *Première méthode~:* Posons $\varphi:t \longmapsto e^{\lambda t}W$ avec $\lambda \in \sp_{\K}(A)$ tel que $AW = \lambda W$. $\varphi$ est de classe $\Cont^{1}(\R)$ et
+          ~ $\forall t \in \R, \varphi'(t) = \lambda e^{\lambda t}W$  ~ $\forall t \in \R, A \varphi(t) = e^{\lambda t}AW = \lambda e^{\lambda t}W$
+          donc $\varphi'(t) = A \varphi(t)$ pour tout $t \in \R$.
+        - *Seconde méthode~:* L’ensemble des solutions de $(H)$ est
+          $$
+            \Sol_{H} = \left\{t \longmapsto e^{tA}V \where V \in \M_{n,1}(\K)\right\}
+          $$
+          donc
+          $$
+            t \longmapsto e^{tA}W = \left(\sum_{k=0}^{+\infty}\frac{t^{k}A^{k}}{k!}\right)W = \sum_{k=0}^{+\infty}\frac{t^{k}A^{k}W}{k!} = \sum_{k=0}^{+\infty}\frac{t^{k} \lambda^{k} W}{k!} = \sum_{k=0}^{+\infty} \frac{(\lambda t)^{k}}{k!} W = e^{\lambda t}W \in \Sol_{H}
+          $$
+          car $X \longmapsto MX$ est linéaire et continue sur $\M_{n,1}(\K)$.
+      %
+    %
+  - %callout
+      %offprog
+        Si $A$ est une matrice diagonalisable, et si $(W_{1}, \ldots, W_{n})$ est une base de vecteurs propres associés aux valeurs propres $(\lambda_{1}, \ldots, \lambda_{n})$ (distinctes ou non), alors
+        $$
+          \Sol_{H} = \Vect\left\{t \longmapsto e^{\lambda_{1}t}W_{1}, \ldots, t \longmapsto e^{\lambda_{n}t}W_{n}\right\}
+        $$
+
+        %proof
+          L’application $\applic{\M_{n,1}(\K)}{\Sol_{H}}{V}{f_{V}}$ est un **isomorphisme de $\K$-espaces vectoriels**, donc comme $(W_{1}, \ldots, W_{n})$ est une base de $\M_{n,1}(\K)$, $(f_{W_{1}}, \ldots, f_{W_{n}})$ est une base de $\Sol_{H}$.
+        %
+
+        %eg
+          $$
+            (H): \begin{cases}x' &= 2x &+ y \\ y' &= x &+ 2y\end{cases} \iff \mtx{x\\y}' = \mtx{2&1\\1&2} \mtx{x\\y}
+          $$
+          Posons $A = \mtx{2 & 1\\1&2}$.
+          $$
+            \chi_{A}(X) = X^{2}-4X+3 = (X-1)(X-3)
+          $$
+          donc $A$ est diagonalisable et ses valeurs propres sont 1 et 3. $E_{1}(A) = \R\mtx{1\\-1}$ et $E_{3}(A) = \R \mtx{1\\1}$. Ainsi,
+          $$
+            \Sol_{H} = \left\{t \longmapsto \alpha e^{t} \mtx{1\\-1} + \beta e^{3t}\mtx{1\\1} \where (\alpha \beta) \in \R^{2}\right\}
+          $$
+        %
+      %
+    %
+%
+
+%def Solutions d’un système différentiel linéaire à coefficients constants avec second membre
+  Soit $A \in \M_{n}(\K)$. Soit $B: \applic{I}{\M_{n,1}(\K)}{t}{B(t)}$ un arc continu sur un intervalle $I$. Résoudre
+  $$
+    \tag{E} Y' = AY+B(t) \sur I
+  $$
+  consiste à chercher les arcs $\varphi: I \longrightarrow \M_{n,1}(\K)$ de classe $\Cont^{1}$ tels que
+  $$
+    \tag{$\star$} \forall t \in I, \varphi'(t) = A \varphi(t) + B(t)
+  $$
+%
+
+%method
+  - Si on dispose d’une solution particulière $\varphi_{0}$, alors
+    $$
+      \forall t \in I, \varphi'(t) - A \varphi(t) = \varphi_{0}'(t) - A \varphi_{0}(t)
+    $$
+    i.e.
+    $$
+      \forall t \in I, (\varphi-\varphi_{0})'(t) = A \big(\varphi(t)-\varphi_{0}(t)\big)
+    $$
+    On considère alors l’*équation homogène associée à $(E)$* $(H): Y' = AY$, et on a
+    $$
+      (\star) \iff \exists V \in \M_{n,1}(\K): \forall t \in I, \varphi(t) - \varphi_{0}(t) = e^{tA}V
+    $$
+    donc
+    $$
+      \Sol_{E,I} = \Big\{t \longmapsto \underbrace{\varphi_{0}(t)}_{\text{sol. particulière}} + \underbrace{e^{tA}V}_{\text{sol. générale de }(H)} \where V \in \M_{n,1}(\K)\Big\}
+    $$
+
+    %eg
+      Le système $(E): \begin{cases}x' &= 2x + y - t -2\\ y' &= x + 2y - 2t\end{cases}$ a pour solutions les éléments de l’ensemble
+      $$
+        \Sol_{E,\R} = \Big\{t \longmapsto \mtx{1\\t} + \alpha e^{t}\mtx{1\\-1} + \beta e^{3t}\mtx{1\\1}\where (\alpha, \beta) \in \R^{2}\Big\}
+      $$
+    %
+  - Si on ne dispose pas de solution particulière, on applique la méthode de variation du vecteur constant~: on pose pour tout $t \in I$, $\varphi(t) = e^{tA}V(t)$, i.e. $V(t) = e^{-tA}\varphi(t)$. Comme $t \longmapsto e^{tA}$ et $t \longmapsto e^{-tA}$ sont de classe $\Cont^{1}$ sur $\R$, $\varphi$ est de classe $\Cont^{1}$ sur $I$ si et seulement si $V$ est de classe $\Cont^{1}$ sur $I$. Alors,
+    $$
+      (\star) \iff \begin{cases}\varphi(t) = e^{tA}V(t) \\ A e^{tA}V(t) + e^{tA}V'(t) = A e^{tA}V(t) + B(t)\end{cases} \iff \forall t \in I, \begin{cases}\varphi(t) = e^{tA}V(t)\\V'(t) = e^{-tA}B(t)\end{cases}
+    $$
+    Soit $t_{0} \in I$.
+    $$
+      (\star) \iff \exists W \in \M_{n,1}(\K), \forall t \in I, \begin{cases}\varphi(t) = e^{tA}V(t)\\ V(t) = \int_{t_{0}}^{t} e^{-ut}B(u)\dd u + W\end{cases}
+    $$
+    donc les solutions du système sont les solutions de l’ensemble
+    $$
+      \Sol_{E,I} = \left\{ t \longmapsto e^{tA}\int_{t_{0}}^{t} e^{-uA}B(u)\dd u + e^{tA}W \where W \in \M_{n,1}(\K)\right\}
+    $$
+    C’est un sous-espace affine de $\Cont^{1}(I,\M_{n,1(\K)})$ de dimension $n$.
+
+    %eg
+      Le système $(\star) : \begin{cases}x' &= 2x+y+e^{2t}\\ y' &= x+2y + e^{2t}\end{cases}$ est équivalent à $Y' = AY + B(t)$ avec $A = \mtx{2&&1\\1&&2}$ et $t \longmapsto B(t) = \mtx{e^{2t}\\ e^{2t}}$ continue sur $\R$.
+      $$
+        (\star) \iff \begin{cases}Y(t) = e^{tA}V(t)\\ A e^{tA}V(t) + e^{tA}V'(t) = A e^{tA}V(t) + B(t)\end{cases} \iff \forall t \in \R, \begin{cases}Y(t) = e^{tA}V(t)\\ V'(t) = e^{-tA}B(t)\end{cases}
+      $$
+      avec $V \in \Cont^{1}(\R,\M_{n,1}(\R))$. De plus, $e^{tA} = e^{2t} \mtx{\ch t&\sh t\\\sh t&\ch t}$ donc
+      $$
+        \begin{align*}
+          (\star) &\iff \begin{cases}Y(t) = e^{tA}V(t)\\ V'(t) = e^{-2t} \mtx{\ch t & -\sh t\\ -\sh t & \ch t} \mtx{e^{2t}\\ e^{2t}} = \mtx{e^{-t}\\e^{-t}}\end{cases}\\
+          &\iff \exists (a,b) \in \R^{2}: \forall t \in \R, \begin{cases}Y(t) = e^{tA}V(t)\\ V(t) = - \mtx{e^{-t}\\ e^{-t}} + \mtx{a\\b}\end{cases}
+        \end{align*}
+      $$
+      donc l’ensemble des solutions est
+      $$
+        \begin{align*}
+          \Sol_{E,\R} &= \left\{t \longmapsto  -e^{tA} \mtx{e^{-t}\\ e^{-t}} + e^{tA} \mtx{a\\b} \where (a,b)\in \R^{2}\right\}\\
+          &= \left\{t \longmapsto - \mtx{e^{2t}\\ e^{2t}} + a e^{2t}\mtx{\ch t\\\sh t} + b e^{2t}\mtx{\sh t\\\ch t}\where (a,b) \in \R^{2}\right\}
+        \end{align*}
+      $$
+    %
+%
+
