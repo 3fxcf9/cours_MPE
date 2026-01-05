@@ -1,0 +1,200 @@
+# Convergence uniforme
+
+:date 05/01/2026
+
+## Pour une suite de fonctions
+
+Dans cette partie, $X$ désigne un ensemble non vide, $(E, \norm{\cdot}_{E})$ est un $\K$-espace vectoriel normé où $\K$ désigne $\R$ ou $\C$. On notera $\B(X,E)$ le $\K$-espace vectoriel des applications bornéS de $X$ dans $E$, muni de la norme infinie $\norm{\cdot}_{\infty, X}$, définie par
+$$
+  \forall f \in \B(X,E), \norm{f}_{\infty, X} = \sup_{x \in X}\norm{f(x)}
+$$
+
+%def
+  Soit $\big(f_{n}: X \longrightarrow E\big)_{n \in \N}$ une suite d’applications. Soit $f: X \longrightarrow E$ une autre application. On dit que la suite de fonctions $(f_{n})_{n \in \N}$ _converge uniformément_ vers $f$ sur $X$ si :
+  1. $\exists n_{0} \in \N: \forall n \geq n_{0}, f_{n}-f \in \B(X,E)$
+  2. $\big(\norm{f_{n}-f}_{\infty, X}\big)_{n \geq n_{0}}$ tend vers 0
+  On écrit alors (notation non officielle)
+  $$
+    f_{n} \uarrowlim{n\to+\infty}f \sur X \quad\text{ou}\quad f_{n} \arrowlim{n\to+\infty} f \text{ uniformément sur } X
+  $$
+%
+
+%rem
+  Les deux conditions sont équvalentes à
+  $$
+    \forall \varepsilon > 0, \exists n_{1} \in \N: \forall n \geq n_{1}, \norm{f_{n} - f}_{\infty, X} < \varepsilon
+  $$
+  ce qui est équivalent à
+  $$
+    \forall \varepsilon > 0, \exists n_{2} \in \N: \forall n \geq n_{2}, \forall x \in X, \norm{f_{n}(x) - f(x)} < \varepsilon
+  $$
+  Illustration dans le cas où $X \subset \R$ et $E = \R$ :
+  $$
+    \forall \varepsilon > 0, \exists n_{0} \in \N: \forall n \geq n_{0}, \forall x \in X, f(x)-\varepsilon < f_{n}(x) < f(x+\varepsilon)
+  $$
+%
+
+%property
+  1. Si $(f_{n})$ converge uniformément vers $f$ sur $X$, alors $(f_{n})$ converge simplement vers $f$ sur $X$.
+  2. Si $(f_{n})$ converge uniformément vers $f$ sur $X$, alors
+     $$
+       \forall (x_{n})_{n \in \N} \in X^{\N}, f_{n}(x_{n}) - f(x_{n}) \arrowlim{n\to+\infty}0_{E}
+     $$
+     donc
+     $$
+       \exists (x_{n})_{n \in \N} \in X^{\N}: f_{n}(x_{n}) - f(x_{n}) \not\arrowlim{n\to+\infty}0_{E}
+     $$
+     donc $(f_{n})$ ne converge pas uniformément vers $f$ sur $X$.
+  3. - Si $(f_{n})$ et $g_{n}$ convergent uniformément vers $f$ et $g$ sur $X$, alors $(\lambda f_{n} + \mu g_{n})$ converge uniformément vers $\lambda f + \mu g$.
+     - Si $(f_{n})$ converge uniformément vers $f$ sur $X$ et $\varphi \in \B(X,\K)$, alors $(\varphi \cdot f_{n})$ converge uniformément vers $\varphi \cdot f$.
+%
+
+%proof
+  1. $\forall \varepsilon > 0, \exists n_{2} \in \N: \forall n \geq n_{2}, \forall x \in X, …$ donc
+     $$
+       \forall x \in X, \forall \varepsilon > 0, \exists n_{2} \in \N: \forall n \geq n_{2}, \norm{f_{n}(x) - f(x)} < \varepsilon
+     $$
+  2. Supposons que $(f_{n})$ converge uniformément vers $f$ sur $X$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $X$. Il existe $n_{0} \in \N$ tel que $\forall  n \geq n_{0}, f_{n} - f \in \B(X,E)$ d’où
+     $$
+       \forall n \geq n_{0}, \norm{f_{n}(x_{n}) - f(x_{n})} \leq \norm{f_{n} - f}_{\infty, X} \arrowlim{n\to+\infty}0
+     $$
+     donc $f_{n}(x.) - f(x_{n}) \arrowlim{n\to +\infty}0_{E}$
+  3. Il existe $n_{0} \in \N$ tel que
+     $$
+       \forall n \geq n_{0}, \begin{cases}f_{n} - f \in \B(X,E) \\ g_{n} -  \in \B(X,E)\end{cases}
+     $$
+     donc pour tout $n \geq n_{0}$,
+     $$
+       \lambda (f_{n} - f) + \mu(g_{n}-g) = (\lambda f_{n} + \mu g_{n}) - (\lambda f+\mu g) \in \B(X,E)
+     $$
+     et pour $n \geq n_{0}$,
+     $$
+       \norm{\lambda f_{n} + \mu g_{n} - (\lambda f + \mu g)}_{\infty, X} \abs{\lambda} \norm{f_{n} - f}_{\infty, X} + \abs{\mu} \norm{g_{n} - g}_{\infty, X} \arrowlim{n\to+\infty}0
+     $$
+     donc $(\lambda f_{n} + \mu g_{n})$ converge uniformément vers $\lambda f + \mu g$ sur $X$.
+     $$
+       \forall x \in X, \forall n \geq n_{0}, \norm{\varphi(x)\cdot f_{n}(x) - \varphi(x)\cdot  f(x)} = \abs{\varphi(x)} \cdot \norm{f_{n}(x) - f(x)} \leq \norm{\varphi}_{\infty, X} \times  \norm{f_{n}-f}_{\infty, X}
+     $$
+     d’où, pour $n \geq n_{0}$,
+     $$
+       \norm{\varphi \cdot f_{n} - \varphi \cdot f}_{\infty, X} \leq \norm{\varphi}_{\infty, X} \leq  \norm{\varphi}_{\infty, X} \times \norm{f_{n} - f}_{\infty, X} \arrowlim{n\to+\infty}0
+     $$
+%
+
+%eg Exemple fondamental
+  %rfig Exemple fondamental
+    @[./figures/exemple-1_optimized.svg]
+  %
+  Pour $n \in \N^{*}$, on considère
+  $$
+    f_{n} : \applic{\R}{\R}{x}{x + \frac{\th x}{x}}
+  $$
+  Pour $x \in \R$, $f_{n}(x) \arrowlim{n\to+\infty} x$ donc $(f_{n})$ converge simplement vers $\id_{\R}$ sur $\R$.
+  $$
+    f_{n} - \id : x \longmapsto \frac{\th x}{x}
+  $$
+  - $\forall n \in \N^{*}, f_{n} - \id  \in \B(\R,\R)$
+  - $\forall n \in \N^{*}, \norm{f_{n} - \id_{\R}}_{\infty, \R} = \frac{1}{n} \arrowlim{n\to+\infty} 0$
+  donc $(f_{n})$ converge uniformément vers $\id _{\R}$. Étudions à présent
+  $$
+    f_{n}^{2}: f_{n} \times f_{n}: x \longmapsto  x^{2} + \frac{2x\th x}{n} + \frac{\th^{2} x}{n^{2}}
+  $$
+  $(f_{n})^{2}$ converge simplement vers $(x \longmapsto x^{2}) = (\id_{\R})^{2}$ or
+  $$
+    (f_{n}(n))^{2} - n^{2} = 2\th n + \frac{\th^{2}n}{n} \arrowlim{n\to+\infty} 1 \ne 0
+  $$
+  donc $(f_{n})^{2}$ ne converge pas uniformément vers $(x \longmapsto x^{2})$.
+  Par contre, si $a > 0$,
+  $$
+    \forall x \in \cc{-a,a}, \abs{\big(f_{n}(x)\big)^{2} - x^{2}} \leq \frac{2a\th a}{n} + \frac{\th^{2} a}{n^{2}}
+  $$
+  donc
+  $$
+    \norm{(f_{n})^{2} - (\id )^{2}}_{\infty, \cc{-a, a}} = \frac{2a\th a}{n} + \frac{\th^{2} a}{n^{2}} \arrowlim{n\to+\infty}0
+  $$
+  %callout Erreur courante
+    Dans ce cas, $(f_{n})^{2}$ converge uniformément vers $\id_{\R}^{2}$ sur tout segment $\cc{-a,a}$ (donc sur tout compact de $\R$), mais pas sur $\R$.
+  %
+  ~
+  %callout Erreur de compréhension
+    $$
+      \cancel{f_{n} \uarrowlim{n\to+\infty}f \iff f_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{\infty, X}} f}
+    $$
+    Par contre, si $f \in \B(X,E)$ est telle que $\forall n \geq n_{0}, f_{n} \in \B(X,E)$, alorson a l’équivalence ci-dessus. En général, l’équivalence correcte est
+    $$
+      f_{n} \uarrowlim{n\to+\infty}f \iff f_{n} - f \xrightarrow[n\to+\infty]{\norm{\cdot}_{\infty, X}} \tilde{0_{E}}
+    $$
+  %
+%
+
+%eg
+  Considérons, pour $n \in \N^{*}$, la fonction
+  $$
+    f_{n}: \applic{\R_{+}}{\R}{x}{e^{-x}\frac{x^{n}}{n!}}
+  $$
+  Soit $x \in \R$. $\sum_{n \geq 0} \frac{x^{n}}{n!}$ converge et a pour somme $e^{x}$ donc $\frac{x^{n}}{n!}\arrowlim{n\to+\infty}0$, donc $(f_{n})$ converge simplement vers la fonction nulle.
+  - $\abs{f_{n}(x) - \tilde{0}} = \abs{f_{n}(x)} = f_{n}(x)$
+    - $\forall n \in \N, f_{n} - \tilde{0} =f_{n} \in \B(\R_{+}, \R)$ ($f_{n}$ est continue et de limite nulle en $+\infty$).
+    - $\forall x \in \R_{+}, f'_{n}(x) = e^{-x} \left(- \frac{x^{n}}{n!} + \frac{x^{n-1}}{(n-1)!}\right) = \frac{e^{-x}x^{n-1}}{n!}(-x+n)$
+      %fig
+        @[./figures/tabvar-1.svg]
+      %
+  $$
+    \norm{f_{n} - \tilde{0}}_{\infty} = \norm{f_{n}}_{\infty,\R_{+}} = f_{n}(n) = e^{-n}\frac{n^{n}}{n!} = \frac{(n/e)^{n}}{n!}
+  $$
+  donc $\norm{f_{n}}_{\infty, \R}\usim{n\to+\infty}\frac{1}{\sqrt{2n \pi}}$ d’où $\lim_{n\to+\infty}\norm{f_{n}}_{\infty, \R_{+}} = 0$. Ainsi, $(f_{n})$ converge uniformément vers $\tilde{0}$ sur $\R_{+}$.
+%
+
+## Préservation de la continuité
+
+%thm Préservation de la continuté
+  Soit $A$ une partie (non vide) d’un $\K$-espace vectoriel normé $(E, \norm{\cdot}_{E})$. Soit $(F, \norm{\cdot}_{F})$ un second $\K$-espace vectoriel normé. Soient $(f_{n}: A \longrightarrow F)_{n \in \N}$ une suite d’application et $f: A \longrightarrow F$ une autre application.
+  1. Soit $a \in A$. Si
+     - chaque $f_{n}$ est continue en $a$
+     - il existe $W \in \Vois_{A}(a)$ tel que $(f_{n})$ converge uniformément vers $f$ sur $W$.
+     Alors $f$ est continue en $a$.
+  2. Si
+    - $\exists N \in \N: \forall n \geq N, f_{n} \in \Cont(A,F)$
+    - $(f_{n})$ converge uniformément vers $f$ sur $A$
+    ou seulement
+    - pour tout $a \in A$, il existe $W \in \Vois_{A}(a)$ tel que $(f_{n})$ converge uniformément vers $f$ sur $W$
+    alors $f \in \Cont(A,F)$.
+%
+
+%proof
+  Prouvons le premier point. Supposons que $(f_{n})$ converge uniformément vers $f$ sur $W \in \Vois_{A}(a)$ ($W$ contient une boule relative à $A$ centrée en $a$), et que pour tout $n \in \N$, $f_{n}$ est continue en $a$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que
+  ~ $f_{N} - f \in \B(W,F)$  ~ $\norm{f_{N} - f}_{\infty, N} < \varepsilon$
+  Soit $x \in W$.
+  $$
+    \begin{align*}
+      \norm{f(x) - f(a)}_{F} &\leq \norm{f(x) - f_{N}(x)}_{F} + \norm{f_{N}(x) - f_{N}(a)}_{F} + \norm{f_{N}(a) - f(a)}_{F}\\
+       &<  2 \varepsilon + \norm{f_{N}(x) - f_{N}(a)}_{F}
+    \end{align*}
+  $$
+  or $f_{N}$ est continue en $a$ donc il existe $W' \in \Vois_{A}(a)$ tel que
+  $$
+    \forall x \in W', \norm{f_{N}(x) - f_{N}(a)}_{F} < \varepsilon
+  $$
+  D’où
+  $$
+    \forall x \subset \underbrace{W \cap  W'}_{W'' \in \Vois_{A}(a)}, \norm{f(x) - f(a)}_{F} < 3 \varepsilon
+  $$
+  - Justifions l’accolade : notons $W = A \cap V$ et $W' = A \cap  V'$ donc
+    ~ $\exists r > 0: \B(a,r) \subset V$  ~ $\exists r' > 0: \B(a,r') \subset V'$
+    d’où $W'' = A \cap  V \cap  V'$ vérifie $B(a, \min(r, r')) \subset V \cap V'$.
+%
+
+%eg
+  Considérons les fonctions
+  $$
+    f_{n}: x \longmapsto \frac{1}{1+x^{2n}}
+  $$
+  %rfig
+    @[./figures/exemple-5_optimized.svg]
+  %
+  $(f_{n})$ converge simplement vers la fonction
+  $$
+    x \longmapsto  \begin{cases}1 \if \abs{x} < 1\\ 1/2 \if \abs{x} = 1 \\ 0 \if \abs{x} > 1\end{cases}
+  $$
+  $\forall n \in \N, f_{n} \in \Cont(\R)$ or $f \notin \Cont(\R)$. Il n’y a donc pas convergence uniforme.
+%
