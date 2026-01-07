@@ -4,7 +4,7 @@
 
 ## Pour une suite de fonctions
 
-Dans cette partie, $X$ désigne un ensemble non vide, $(E, \norm{\cdot}_{E})$ est un $\K$-espace vectoriel normé où $\K$ désigne $\R$ ou $\C$. On notera $\B(X,E)$ le $\K$-espace vectoriel des applications bornéS de $X$ dans $E$, muni de la norme infinie $\norm{\cdot}_{\infty, X}$, définie par
+Dans cette partie, $X$ désigne un ensemble non vide, $(E, \norm{\cdot}_{E})$ est un $\K$-espace vectoriel normé où $\K$ désigne $\R$ ou $\C$. On notera $\B(X,E)$ le $\K$-espace vectoriel des applications bornées de $X$ dans $E$, muni de la norme infinie $\norm{\cdot}_{\infty, X}$, définie par
 $$
   \forall f \in \B(X,E), \norm{f}_{\infty, X} = \sup_{x \in X}\norm{f(x)}
 $$
@@ -35,14 +35,14 @@ $$
 %
 
 %property
-  1. Si $(f_{n})$ converge uniformément vers $f$ sur $X$, alors $(f_{n})$ converge simplement vers $f$ sur $X$.
+  1. Si $(f_{n})$ converge _uniformément_ vers $f$ sur $X$, alors $(f_{n})$ converge _simplement_ vers $f$ sur $X$.
   2. Si $(f_{n})$ converge uniformément vers $f$ sur $X$, alors
      $$
        \forall (x_{n})_{n \in \N} \in X^{\N}, f_{n}(x_{n}) - f(x_{n}) \arrowlim{n\to+\infty}0_{E}
      $$
      donc
      $$
-       \exists (x_{n})_{n \in \N} \in X^{\N}: f_{n}(x_{n}) - f(x_{n}) \not\arrowlim{n\to+\infty}0_{E}
+       \exists (x_{n})_{n \in \N} \in X^{\N}: f_{n}(x_{n}) - f(x_{n}) \cancel{\arrowlim{n\to+\infty}}0_{E}
      $$
      donc $(f_{n})$ ne converge pas uniformément vers $f$ sur $X$.
   3. - Si $(f_{n})$ et $g_{n}$ convergent uniformément vers $f$ et $g$ sur $X$, alors $(\lambda f_{n} + \mu g_{n})$ converge uniformément vers $\lambda f + \mu g$.
@@ -197,4 +197,529 @@ $$
     x \longmapsto  \begin{cases}1 \if \abs{x} < 1\\ 1/2 \if \abs{x} = 1 \\ 0 \if \abs{x} > 1\end{cases}
   $$
   $\forall n \in \N, f_{n} \in \Cont(\R)$ or $f \notin \Cont(\R)$. Il n’y a donc pas convergence uniforme.
+%
+
+%rem
+  Le théorème précédent permet de montrer que $f$ est continue en $a$, i.e.
+  $$
+    \lim_{x\to a}f(x) = f(a)
+  $$
+  i.e.
+  $$
+    \lim_{x\to a}f(x) = \lim_{n\to+\infty}f_{n}(a)
+  $$
+  i.e.
+  $$
+    \lim_{x\to a}\big(\lim_{n\to+\infty}f_{n}(x)\big) = \lim_{n\to+\infty} \big(\lim_{x\to a}f_{n}(x)\big)
+  $$
+%
+
+## Théorème de la double limite
+
+%thm Théorème de la double limite pour un espace d’arrivée de dimension finie
+  Soit $A$ une partie non vide d’un $\K$-espace vectoriel normé $E$, $\alpha \in \bar{A}$ (voire $\alpha = \pm \infty$ si $A \subset \R$ et si $\alpha = \sup A$ ou $\alpha = \inf A$(($V$ est un voisinage de $+\infty$ si pour un certain $A$, $\oo{A,+\infty} \subset V$)) ). Soit $F$ un $\K$-espace vectoriel normé de dimension finie. Soient $(f_{n}: A \longrightarrow F)_{n \in \N}$ une suite d’applications et $f: A \longrightarrow F$ une autre application. Si
+  1. Chaque $f_{n}$ possède une limite $\ell_{n} \in F$ en $a \in \bar{A}$
+  2. il existe $V \in \Vois_{E}(\alpha)$ tel que $(f_{n})$ converge uniformément vers $f$ sur $A \cap V$
+  alors
+  - la suite $(\ell_{n})_{n \in \N}$ est convergente (de limite notée $\ell$)
+  - $\lim_{x\to \alpha} f(x) = \ell$
+  Autrement dit,
+  $$
+    \lim_{x\to \alpha} \big(\lim_{n\to+\infty} f_{n}(x)\big) = \lim_{n\to+\infty}\ell_{n} = \lim_{n\to+\infty} \big(\lim_{x\to \alpha} f_{n}(x)\big)
+  $$
+%
+
+%proof
+  - Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que
+    $$
+      \forall n \geq N, \begin{cases}f_{n} - f \in \B(A \cap  V, F) \\ \norm{f_{n}-f}_{\infty, A \cap V} < \varepsilon\end{cases}
+    $$
+    Soit $(n,p) \in \N^{2}$ avec $n \geq N$ et $p \geq N$. Soit $x \in A \cap  V$.
+    $$
+      \norm{f_{n}(x) - f_{p}(x)}_{F} \leq \norm{f_{n}(x) - f(x)}_{F} + \norm{f(x) - f_{p}(x)}_{F}
+    $$
+    d’où $\norm{f_{n}(x) - f_{p}(x)} < 2 \varepsilon$. On fait alors tendre $x$ vers $\alpha$ :
+    $$
+      \norm{\ell_{n} - \ell_{p}} \leq 2 \varepsilon
+    $$
+    d’où $\forall n \geq N, \norm{\ell_{n}} \leq \norm{\ell_{N}} + 2 \varepsilon$ donc $(\ell_{n})_{n \geq N}$ est bornée donc $(\ell_{n})_{n \in \N}$ aussi. $F$ étant un $\K$-espace vectoriel de dimension finie, $(\ell_{n})_{n \in \N}$ possède une valeur d’adhérence $\ell \in F$. Il existe donc $\varphi:\N \longrightarrow \N$ strictement croissante telle que $\ell_{\varphi(n)} \arrowlim{n\to+\infty}\ell$ d’où
+    $$
+      \forall n \geq N, \forall p \geq N, \norm{\ell_{\varphi(n)} - \ell_{p}} \leq 2 \varepsilon
+    $$
+    On fait alors tendre $n$ vers $+\infty$ :
+    $$
+      \norm{\ell - \ell_{p}} \leq 2 \varepsilon
+    $$
+    Ainsi, $(\ell_{p})_{n \in \N}$ est convergente de limite $\ell$.
+  - Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que
+    ~ $\norm{f_{N} - f}_{\infty, A \cap V} < \varepsilon$  ~ $\norm{\ell_{N} - \ell} < \varepsilon$
+    Soit $x \in A \cap V$. On a
+    $$
+      \norm{f(x) - \ell} \leq \norm{f(x) - f_{N}(x)} + \norm{f_{N}(x) - \ell_{N}} + \norm{\ell_{N} - \ell}
+    $$
+    d’où $\norm{f(x) - \ell} < 2 \varepsilon + \norm{f_{N}(x) - \ell_{N}}$. Or $f_{N}(x) \arrowlim{x\to \alpha}\ell_{N}$. Il existe donc $V' \in \Vois_{E}(\alpha)$ tel que
+    $$
+      \forall x \in A \cap  V', \norm{f_{N}(x) - \ell_{N}} < \varepsilon
+    $$
+    d’où, pour tout $x \in A \cap  V \cap  V'$ ($V \cap V'$ est un voisinage de $\alpha$)
+    $$
+      \norm{f(x) - \ell} < 3 \varepsilon
+    $$
+    donc $f(x) \arrowlim{x\to \alpha}\ell$.
+%
+
+%eg
+  Déterminons le type de convergence de la suite de fonctions définies, pour $n \in \N$ par
+  $$
+    f_{n}: \applic{\R_{+}^{*}}{\R}{x}{n \frac{x^{2} e^{-nx}}{1- e^{-x^{2}}}}
+  $$
+  - Soit $x > 0$ fixé.
+    $$
+      f_{n}(x) = \frac{x}{1-e^{-x^{2}}}(nx)e^{-(nx)} \arrowlim{n\to+\infty}0
+    $$
+    donc $(f_{n})$ converge simplement vers la fonction nulle.
+  - $f_{n}(x) \usim{x\to 0^{+}} n \frac{x^{2}}{-(-x^{2})}\times 1 = n$ donc $f_{n}(x) \arrowlim{x\to 0^{+}} n$ or $(n)_{n \in \N}$ n’a pas de limite finie en $+\infty$ donc la convergence de $(f_{n})_{n \in \N}$ n’est pas uniforme sur $\R_{+}^{*}$.
+%
+
+## Intégration sur un segment et convergence uniforme
+
+%prop
+  Soit $E$ un $\K$-espace vectoriel normé de dimension finie.
+  1. Soit $\big(f_{n}: \cc{a,b} \longrightarrow E\big)_{n \in \N}$ une suite d’arcs continus sur un segment $\cc{a,b}$. Soit $f: \cc{a,b} \longrightarrow E$ un autre arc. Si $(f_{n})$ converge **uniformément** vers $f$ sur $\cc{a,b}$, alors
+     $$
+       \lim_{n\to+\infty} \int_{a}^{b}f_{n}(t)\dd t = \int_{a}^{b}f(t)\dd t
+     $$
+     (le théorème est faux si on remplace le segment par un intervalle quelconque)
+  2. Soit $I$ un intervalle réel d’intérieur non vide. Soit $\big(f_{n}: I \longrightarrow E\big)_{n \in \N}$ une suite d’arcs continus sur $I$. Soit $f: I \longrightarrow E$ un arc continu.
+     Si $(f_{n})_{n \in \N}$ converge uniformément vers $f$ sur tout segment $S \subset I$, alors $(F_{n})_{n \in \N}$ converge uniformément vers $F$ sur tout segment $S \subset I$ avec
+     ~ $a \in I$  ~ $\displaystyle F: x \longmapsto \int_{a}^{x}f(t)\dd t$  ~ $\displaystyle F_{n}: x \longmapsto \int_{a}^{x}f_{n}(t)\dd t$
+%
+
+%proof
+  1. $(f_{n})$ converge uniformément vers $f$ sur $\cc{a,b}$ et pour tout $n \in \N$, $f_{n}$ est bornée sur $\cc{a,b}$ donc $f$ est continue sur $\cc{a,b}$. De plus, pour tout $n \in \N$,
+     ~ $f_{n} \in \B(\cc{a,b}, E)$  ~ $f \in \B(\cc{a,b}, E)$
+     donc $\forall n \in \N, f_{n} - f \in \B(\cc{a,b}, E)$. De plus,
+     $$
+       \norm{\int_{a}^{b}f_{n} - \int_{a}^{b}f} = \norm{\int_{a}^{b} f_{n}-f} \leq \int_{a}^{b}\norm{f_{n}(t) - f(t)}\dd t \leq \norm{f_{n} - f}_{\infty, \cc{a,b}} \times (b-a) \arrowlim{n\to+\infty} 0
+     $$
+     donc $\int_{a}^{b}f_{n} \arrowlim{n\to+\infty}\int_{a}^{b}f$.
+  2. Par convergence uniforme, $f$ est continue sur $I$. Soit $S$ un segment quelconque inclus dans $I$.
+     %rfig
+       @[./figures/integration-convergence-uniforme_optimized.svg]
+     %
+     Soit $S'$ un segment inclus dans $I$ contenant $a$ et $S$. Soit $x \in S$.
+     $$
+       \norm{F_{n}(x) - F(x)} = \norm{\int_{a}^{x}f_{n} - \int_{a}^{x}f} \leq \norm{f_{n} - f}_{\infty, \cc{a,b}} \times \abs{x-a} \leq \norm{f_{n} - f}_{\infty, S'} \times \long(S')
+     $$
+     d’où
+     $$
+       \norm{F_{n} - F}_{\infty, S} \leq \long (S') \times \norm{f_{n} - f}_{\infty, S'} \arrowlim{n\to+\infty}0
+     $$
+     donc $(F_{n})$ converge uniformément vers $F$ sur $S$.
+%
+
+%rem
+  Le résultat est faux pour les intégrales généralisées : considérons
+  $$
+    f_{n}: \applic{\R_{+}}{\R}{x}{e^{-x}\frac{x^{n}}{n!}}
+  $$
+  La suite $(f_{n})$ converge uniformément vers la fonction nulle sur $\R_{+}$ et
+  $$
+    \int_{\R_{+}}f_{n} = \frac{1}{n!} \int_{0}^{+\infty}x^{n} e^{-x}\dd x = \frac{1}{n!}\int_{0}^{+\infty}x^{(n+1)-1}e^{-x}\dd x = \frac{1}{n!}\Gamma(n+1) = \frac{1}{n!}n! = 1 \arrowlim{n\to+\infty}1 \ne \int_{\R_{+}}\tilde{0}
+  $$
+  De plus,
+  $$
+    F_{n}(x) \arrowlim{x\to+\infty}1 = \ell_{n} \arrowlim{n\to+\infty} 1
+  $$
+  Si $(F_{n})$ converge uniformément vers $\left(x \longmapsto \int_{0}^{x}\tilde{0}\right) = \tilde{0}$ sur $\R_{+}$, alors le théorème de la double limite donne $\tilde{0}(x) \arrowlim{x\to+\infty}1$ ce qui est faux. Ainsi, $(F_{n})$ ne converge pas uniformément vers la fonction nulle sur $\cc{a,b}$.
+%
+
+%rem
+  Dans le cas où $(f_{n})$ converge uniformément vers $f$ sur $\cc{a,b}$ et où chaque $f_{n}$ est continue sur $\cc{a,b}$, on peut aussi appliquer le _théorème de convergence dominée_ (à condition que l’espace d’arrivée soit $\R$ ou $\C$). En effet,
+  - $(f_{n})$ converge simplement vers $f$ sur $\cc{a,b}$
+  - $\norm{f_{n} - f}_{\infty, \cc{a,b}} \arrowlim{n\to+\infty}0$ donc $f_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{\infty, \cc{a,b}}} f$ (les fonctions sont bornées) donc $(f_{n})_{n \in \N}$ converge donc est bornée. Il existe donc $M \in \R_{+}$ tel que
+    $$
+      \forall n \in \N, \norm{f_{n}}_{\infty, \cc{a,b}} \leq M
+    $$
+    d’où
+    $$
+      \forall n \in \N, \forall x \in \cc{a,b}, \abs{f_{n}(x)} \leq M
+    $$
+    or $x \longmapsto M \in \L^{1}(\cc{a,b}, \R_{+})$ donc le _théorème de convergence dominée_ donne
+    $$
+      \int_{a}^{b}f_{n} \arrowlim{n\to+\infty}\int_{a}^{b}f
+    $$
+%
+
+%eg
+  Posons, pour $n \in \N^{*}$,
+  $$
+    u_{n}: \applic{\cc{0,1}}{\R}{x}{\frac{ne^{-x}+x^{2}}{n+x}}
+  $$
+  Tous les $u_{n}$ sont continus sur $\cc{0,1}$.
+  - ++Première méthode :++ $(u_{n})$ converge simplement vers $\frac{1}{\exp}$. Pour tout $n \in \N$, $u_{n} - \frac{1}{\exp}$ est bornée sur $\cc{0,1}$ et
+    $$
+      \abs{u_{n}(x) - e^{-x}} = \abs{\frac{x^{2} - x e^{-x}}{n+x}} \leq \frac{x^{2} + x e^{-x}}{n+x} \leq \frac{2}{n}
+    $$
+    donc
+    $$
+      \norm{u_{n} - \frac{1}{\exp}}_{\infty, \cc{a,b}} \leq \frac{2}{n} \arrowlim{n\to+\infty}0
+    $$
+    donc $(u_{n})$ converge uniformément vers $\frac{1}{\exp}$ sur $\cc{0,1}$ donc
+    $$
+      \int_{0}^{1}u_{n}(x)\dd x \arrowlim{n\to+\infty} \int_{0}^{1}e^{-x}\dd x = \left[-e^{-x}\right]_{0}^{1} = 1 - \frac{1}{e}
+    $$
+  - ++Seconde méthode :++ $(u_{n})$ converge simplement vers $\frac{1}{\exp}$. Pour tout $n \in \N^{*}$ et pour tout $x \in \cc{1,n}$,
+    $$
+      \abs{u_{n}(x)} \leq \frac{ne^{-2} + x^{2}}{n} \leq e^{-x} + \frac{x^{2}}{n} \leq e^{-x}+x^{2} \leq 2
+    $$
+    et $\tilde{2}$ est intégrable sur $\cc{0,1}$ donc le _théorème de convergence dominée_ donne
+    $$
+      \int_{0}^{1}u_{n} \arrowlim{n\to+\infty}\int_{0}^{1}\frac{1}{\exp}
+    $$
+%
+
+## Dérivation et convergence uniforme
+
+Considérons les fonctions
+$$
+  f_{n}: x \longmapsto \sqrt{x^{2} + \frac{1}{n}} \in \Cont^{\infty}(\R)
+$$
+Soit $x \in \R$. $f_{n}(x) \arrowlim{n\to+\infty} \abs{x}$ donc $(f_{n})$ converge simplement vers $\abs{\cdot}$.
+$$
+  f_{n}(x) - \abs{x} = \sqrt{x^{2} + \frac{1}{n}} - \abs{x} = \frac{x^{2} + \frac{1}{n} - x^{2}}{\sqrt{x^{2} + \frac{1}{n}} + \abs{x}}
+$$
+donc
+$$
+  \abs{f_{n}(x) - \abs{x}} = \frac{1}{n \left(\sqrt{x^{2} + \frac{1}{n}} + \abs{x}\right)} \leq \frac{1}{n \sqrt{\frac{1}{n}}} = \frac{1}{\sqrt{n}}
+$$
+donc $\norm{f_{n} - \abs{\cdot}}_{\infty,\R} \leq \frac{1}{\sqrt{n}} \arrowlim{n\to+\infty}0$ donc $(f_{n})$ converge simplement vers $\abs{\cdot}$ sur $\R$ et $\abs{\cdot}$ n’est pas dérivable sur en 0.
+
+%prop
+  Soit $E$ un $\K$-espace vectoriel normé de dimension finie. Soit $I$ un intervalle réel d’intérieur non vide. Soit $(f_{n}: I \longrightarrow E)_{n \in \N}$ une suite d’arcs à valeurs dans $E$. Si
+  1. $\forall n \in \N, f_{n} \in \Cont^{1}(I, E)$
+  2. $(f_{n})$ converge _simplement_ vers $f$ avec $f \in \Func(I, E)$
+  3. $(f_{n}')$ converge _uniformément_ vers $g$ sur tout segment $S \subset I$ avec $g \in \Func(I, E)$
+  alors
+  ~ $f \in \Cont^{1}(I, E)$  ~ $f' = g$  ~ $(f_{n})$ converge _uniformément_ vers $f$ sur tout segment $S \subset I$.
+%
+
+%proof
+  Soit $a \in I$. Les hypothèses 1 et 3 donnent $g \in \Cont(I, E)$. D’après la dernière hypothèse,
+  $$
+    \forall x \in I, \int_{a}^{x}f_{n}'(t)\dd t \arrowlim{n\to+\infty} \int_{a}^{x}g(t)\dd t
+  $$
+  i.e. $\forall x \in I, f_{n}(x) - f_{n}(a) \arrowlim{n\to+\infty}\int_{a}^{x}g(t)\dd t$ donc d’après la seconde hypothèse,
+  $$
+    \forall x \in I, f(x) - f(a) = \int_{a}^{x}g(t)\dd t
+  $$
+  i.e.
+  $$
+    \forall x \in I, f(x) = f(a) + \int_{a}^{x}g(t)\dd t
+  $$
+  On en déduit, comme $g \in \Cont(I, F)$, que $f \in \Cont^{1}(I, F)$ et $f' = g$.
+  Soit $S$ un segment inclus dans $I$. On a
+  $$
+    \left[x \longmapsto \int_{a}^{x}f'_{n}(t)\dd t\right] \uarrowlim{n\to+\infty} \left[x \longmapsto \int_{a}^{x}g(t)\dd t\right] \sur S
+  $$
+  i.e.
+  $$
+    \left[x \longmapsto f_{n}(x) - f_{n}(a)\right] \uarrowlim{n\to+\infty} \left[x \longmapsto f(x) - f(a)\right] \sur S
+  $$
+  car $g = f'$ et
+  $$
+    \left[x \longmapsto f_{n}(a)\right] \uarrowlim{n\to+\infty} \left[x \longmapsto f(a)\right] \sur S
+  $$
+  car $\norm{ \tilde{f_{n}(a)} - \tilde{f(a)}}_{\infty, S} = \abs{f_{n}(a) - f(a)} \arrowlim{n\to+\infty}0$. Ainsi, on a par somme
+  $$
+    \left[x \longmapsto f_{n}(x)\right] \uarrowlim{n\to+\infty} \left[x \longmapsto f(x)\right] \sur S
+  $$
+%
+
+%prop
+  Soit $E$ un $\K$-espace vectoriel normé de dimension finie. Soit $I$ un intervalle réel d’intérieur non vide. Soit $p \in \N^{*}$. Soit $(f_{n}: I \longrightarrow E)_{n \in \N}$ une suite d’arcs. Si
+  1. tous les $f_{n}$ sont de classe $\Cont^{p}$ sur $I$
+  2. $(f_{n})$ converge simplement vers $g_{0} \in \Func(I, E)$ et … et $(f_{n}^{(p-1)})$ converge simplement vers $g_{p-1} \in \F(I, E)$
+  3. $(f_{n}^{(p)})$ converge uniformément vers $g_{p}$ sur tout segment $S \subset I$ avec $g_{p} \in \Func(I, E)$
+  Alors
+  ~ $g_{0} \in \Cont^{p}(I, E)$  ~ $\forall k \in \icc{0,p}, g_{0}^{(k)} = g_{k}$  ~ $\forall k \in \icc{0,p}$, $(f_{n}^{(k)})$ converge uniformément vers $g_{k}$ sur tout segment $S \subset L$.
+%
+
+%proof
+  L’ennoncé est vrai pour $p = 1$. Supposons-le vrai pour $p \in \N^{*}$ et supposons ses hypothèses vérifiées à l’ordre $p+1$. Le théorème appliqué aux $p$ dernières fonctoins donne
+  ~ $g_{1} \in \Cont^{p}(I, E)$  ~ $\forall k \in \icc{0,p}, g_{1}^{(k)} = g_{k+1}$  ~ $(f_{n}')$ converge uniformément vers $g_{1}$ et … et $(f_{n}^{(p)})$ converge uniformément vers $g_{p}$ sur tout segment $S \subset I$.
+  Alors $(f_{n})$ converge simplement vers $g_{0}$ et $(f_{n}')$ converge uniformément vers $g_{1}$ sur tout segment, ce qui permet d’àppliquer le théorème à l’ordre 1 : $g_{0} \in \Cont^{1}(I, F)$ et $g_{0}' = g_{1} \in \Cont^{p}(I, F)$. Donc $g_{0} \in \Cont^{p+1}(I, F)$ et
+  $$
+    \forall k \in \icc{1,p+1}, g_{0}^{(k)} = g_{1}^{(k-1)} = g_{1+k-1} = g_{k}
+  $$
+  et d’après l’ennoncé au rang 1, $(f_{n})$ converge uniformément vers $g_{0}$ sur tout segment $S \subset I$.
+%
+
+%rem
+  On n’utilise presque jamais ces résultats de dérivation.
+%
+
+## Séries de fonctions
+
+Soit $X$ un ensemble non vide et $(E, \norm{\cdot})$ un $\K$-espace vectoriel normé. Soit $(f_{n}: X \longrightarrow E)_{n \in \N}$ une suite d’applications. Le couple $\big((f_{n})_{n \in \N}, (S_{n})_{n \in \N}\big)$ est appelé série de terme général $f_{n}$ et est noté $\sum_{n \geq 0} f_{n}$ où $S_{n} = \sum_{k=0}^{n}f_{k}$.
+
+%def
+  On dit que la série de fonctions $\sum_{n \geq 0} f_{n}$ converge simplement sur $X$ (resp. uniformément sur $X$) si la suite de fonctions $(S_{n})_{n \geq 0}$ converge simplement (resp. uniformément) sur $X$. $\lim_{n\to+\infty}S_{n}$ est alors notée $\sum_{n=0}^{+\infty}f_{n}$ et est appelée somme de la série de fonctions.
+%
+
+%rem
+  Ici, $\sum_{n=0}^{+\infty}f_{n}$ désigne donc la fonction
+  $$
+    \applic{X}{E}{x}{\sum_{n=0}^{+\infty}f_{n}(x)}
+  $$
+  et non pas la somme de la série $\sum_{n \geq 0}f_{n}$ à valeurs dans $\Func(X,E)$ car cet ensemble n’est pas normé à priori.
+%
+
+%eg
+  Étudions la convergence de la série $\sum_{n \geq 1}f_{n}$ avec
+  $$
+    f_{n}: \applic{\R}{\R}{x}{\frac{1}{n^{x}}}
+  $$
+  - _Convergence simple_. Soit $x \in \R$. $\sum_{n \geq 1}f_{n}(x) = \sum_{n \geq 1}\frac{1}{n^{x}}$ converge si et seulement si $x > 1$. La série étudiée converge donc simplement sur $\oo{1,+\infty}$, et sa somme est notée $\zeta = \sum_{n=1}^{+\infty}f_{n}$ :
+    $$
+      \zeta: \applic{\oo{1,+\infty}}{\R}{x}{\sum_{n=1}^{+\infty}\frac{1}{x^{n}}}
+    $$
+    Chaque $f_{n}$ est décroissante sur $\oo{1,+\infty}$ donc chaque somme partielle $S_{n} = \sum_{k=1}^{n}f_{k}$ est décroissante sur $\oo{1,+\infty}$. Par convergence simple, $\zeta$ est décroissante sur $\oo{1,+\infty}$ :
+    $$
+      1 < x \leq y \implies \forall n \in \N, S_{n}(x) \geq S_{n}(y) \implies \zeta(x) \geq \zeta(y)
+    $$
+    %fig Tableau de variations de $\zeta$
+      @[./figures/tabvar-zeta.svg]
+    %
+    $$
+      \forall x > 1, \forall N \geq 1, \zeta(x) \geq \sum_{n=1}^{N}\frac{1}{n^{x}}
+    $$
+    d’où
+    $$
+      \forall N \geq 1, \ell \geq \sum_{n=1}^{N}\frac{1}{n} \quad (\text{dans }\bar{\R_{+}})
+    $$
+    d’où $\ell = +\infty$.
+  - _Convergence uniforme_. Chaque $f_{k}$ est continue sur $\co{1,+\infty}$ et de limite en $+\infty$ valant $1$ si $k = 1$ et $0$ si $k \geq 1$, donc les $f_{k}$ sont bornées sur $\oo{1,+\infty}$ donc $S_{n}$ l’est également. Or $\zeta$ n’est pas bornée sur $\oo{1,+\infty}$ donc $S_{n} - \zeta$ ne l’est pas, pour tout $n \in \N^{*}$. Ainsi, $\sum_{n \geq 1}f_{n}$ ne converge pas uniformément sur $\oo{1,+\infty}$.
+%
+
+%prop Condition nécessaire de convergence simple, uniforme
+  1. Si $\sum_{n \geq 0}f_{n}$ converge simplement sur $X$, alors $(f_{n})$ converge simplement vers la fonction nulle sur $X$.
+  2. Si $\sum_{n \geq 0}f_{n}$ converge uniformément sur $X$, alors $(f_{n})$ converge uniformément vers la fonction nulle sur $X$.
+%
+
+%proof
+  1. $(S_{n})$ et $(S_{n}+1)$ convergent simplement vers $S = \sum_{n=0}^{+\infty}f_{n}$ donc
+     $$
+       f_{n+1} = S_{n+1}-S_{n} \sarrowlim{n\to+\infty}\tilde{0}
+     $$
+  2. $(S_{n})$ et $(S_{n+1})$ convergent uniformément vers $S$ sur $X$ donc
+     $$
+       f_{n+1} = S_{n+1}-S_{n} \uarrowlim{n\to+\infty}\tilde{0}
+     $$
+%
+
+%eg
+  Reprenons $\zeta = \sum_{n=1}^{+\infty} f_{n}$. $f_{n} - \tilde{0} = f_{n}: x \longmapsto \frac{1}{n^{x}}$ et
+  $$
+    \norm{f_{n}}_{\infty, \oo{1,+\infty}} = \frac{1}{n} \arrowlim{n\to+\infty}0
+  $$
+  donc $(f_{n})$ converge uniformément vers la fonction nulle sur $\oo{1,+\infty}$ mais $\sum_{n \geq 1}f_{n}$ ne converge pas uniformément sur $\oo{1,+\infty}$.
+%
+
+%prop
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: X \rightarrow E$. La série $\sum_{n \geq 0}f_{n}$ converge uniformément sur $X$ si et seulement si
+  - $\sum_{n \geq 0}f_{n}$ converge simplement sur $X$
+  - La suite des fonctions restes
+    $$
+      (R_{n})_{n \geq 0} = \left(\sum_{k=n+1}^{+\infty} = \sum_{k=0}^{+\infty}f_{k} - S_{n}\right)_{n \geq 0}
+    $$
+    converge uniformément vers la fonction nulle sur $X$.
+%
+
+%eg
+  Pour $n \in \N^{*}$, on pose $g_{n}: \applic{\R}{\R}{x}{\frac{(-1)^{n+1}}{n^{x}}}$.
+  - *Convergence simple de $\sum_{n \geq 1}g_{n}$*. Soit $x \in \R$.
+    $$
+      \abs{g_{n}(x)} = \frac{1}{n^{x}} \arrowlim{n\to+\infty}0 \iff x > 0
+    $$
+    Soit $x > 0$. $\sum_{n \geq 1}g_{n}(x)$ est une série alternée telle que $\abs{g_{n}(x)} = \frac{1}{n^{x}}$ tende vers $0$ en décroissant, donc $\sum_{n \geq 1}g_{n}(x)$ converge, donc $\sum_{n \geq 1}g_{n}$ converge simplement sur $\oo{0,+\infty}$. Sa somme est notée $\eta$ :
+    $$
+      \eta: \applic{\oo{0,+\infty}}{\R}{x}{\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^{x}}}
+    $$
+  - *Convergence uniforme de $\sum_{n \geq 1}g_{n}$*. $\norm{g_{n}}_{\infty, \oo{0,+\infty}} = 1$ donc $(g_{n})$ ne converge pas uniformément vers la fonction nulle sur $\oo{0,+\infty}$, donc $\sum_{n \geq 1}g_{n}$ ne converge pas uniformément sur $\oo{0,+/nff}$.
+    - Soit $a > 0$.
+      $$
+        \forall x \in \co{a,+\infty}, \forall n \in \N, \abs{R_{n}(x)} \leq \frac{1}{(n+1)^{x}} \leq \frac{1}{(n+1)^{a}}
+      $$
+      donc pour tout $n \in \N$, $\R_{n}$ est borné sur $\co{a,+\infty}$ et
+      $$
+        \norm{R_{n}}_{\infty, \co{a,+\infty}} \leq \frac{1}{(n+1)^{a}} \arrowlim{n\to+\infty}0
+      $$
+      donc $(R_{n})$ converge uniformément vers la fonction nulle sur $\co{a,+\infty}$, donc $\sum_{n \geq 1}g_{n}$ converge uniformément sur toute demi-droite $\co{a,+\infty}$ incluse dans $\R_{+}^{*}$.
+%
+
+En général, on s’intéresse à un autre type de convergence :
+
+%def Convergence normale
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: X \longrightarrow E$. On dit que la série de fonctions $\sum_{n \geq 0}f_{n}$ _converge normalement_ sur $X$ si
+  1. $\exists n_{0} \in \N: \forall n \geq n_{0}, f_{n} \in \B(X,E)$
+  2. $\sum_{n \geq n_{0}} \norm{f_{n}}_{\infty, X}$ converge.
+  Il faut et il suffit qu’il existe une suite **réelle positive** $(\alpha_{n})_{n \geq n_{0}}$ telle que
+  ~ $\forall n \geq n_{0}, \norm{f_{n}}_{\infty, X} \leq \alpha_{n}$  ~ $\sum_{n \geq n_{0}}\alpha_{n}$ converge
+%
+
+%eg
+  Reprenons $\eta = \sum_{n=1}^{+\infty}g_{n}$ sur $\oo{0,+\infty}$ avec $g_{n}: x \longmapsto  \frac{(-1)^{n-1}}{n^{x}}$. $\norm{g_{n}}_{\infty, \oo{0,+\infty}} = 1$ et $\sum_{n \geq 1}1$ diverge. Soit $a > 0$.
+  $$
+    \sum_{n \geq 1}\norm{g_{n}}_{\infty, \co{a, +\infty}} = \sum_{n \geq 1}\frac{1}{n^{a}}
+  $$
+  $\sum_{n \geq 1}g_{n}$ converge normalement sur toute demi-droite $\co{a,+\infty}$ avec $a > 1$.
+%
+
+%prop
+  Toute série de fonctions $\sum_{n \geq 0}f_{n}$ avec $f_{n}: X \longrightarrow E$ normalement convergente sur $X$ est uniformément convergente **si $\boldsymbol E$ est un $\boldsymbol \K$-espace vectoriel normé de dimension finie**, et
+  $$
+    \norm{\sum_{k=n+1}^{+\infty}f_{k}}_{\infty, X} \leq \sum_{k=n+1}^{+\infty}\norm{f_{k}}_{\infty, X}
+  $$
+  **pour $\boldsymbol n$ assez grand**.
+%
+
+%proof
+  Supposons $\sum_{n \geq 0}f_{n}$ normalement convergente sur $X$. Il existe $N \in \N$ tel que
+  ~ $\forall n \geq N, f_{n} \in \B(X,E)$
+  ~ $\sum_{n \geq N}\norm{f_{n}}_{\infty, X}$ est convergente
+  - Soit $x \in X$.
+    $$
+      \forall n \geq N, \norm{f_{n}(x)}_{E} \leq \norm{f_{n}}_{\infty, X}
+    $$
+    donc $\sum_{n \geq N} \norm{f_{n}(x)}_{E}$ converge. Comme $E$ est de dimension finie, l’absolue convergence de la série de vecteurs $\sum_{n \geq N}f_{n}(x)$ implique la convergence de $\sum_{n \geq N}f_{n}(x)$, donc $\sum_{n \geq 0}f_{n}(x)$ converge pour tout $x \in X$, donc $\sum_{ n \geq 0}f_{n}$ est une série de fonctions qui converge simplement sur $X$.
+    Soit $n \geq N$. Par absolue convergence,
+    $$
+      \forall x \in X, \norm{R_{n}(x)}_{E} = \norm{\sum_{k=n+1}^{+\infty}f_{k}(x)} \leq \sum_{k=n+1}^{+\infty}\norm{f_{k}(x)}
+    $$
+    d’où pour tout $n \geq N$,
+    $$
+      \forall x \in X, \norm{R_{n}(x)} \leq \sum_{k=n+1}^{+\infty}\norm{f_{k}}_{\infty, X}
+    $$
+    donc $\forall n \geq  N, R_{n} \in \B(X,E)$ et
+    $$
+      \forall n \geq N, \underbrace{\norm{R_{n}}_{\infty, X}}_{\norm{\sum_{k=n+1}^{+\infty}f_{k}}_{\infty, X}} \leq \sum_{k=n+1}^{+\infty}\norm{f_{k}}_{\infty, X} \arrowlim{n\to+\infty}0
+    $$
+    donc $(R_{n})$ converge uniformément vers la fonction nulle sur $X$.
+%
+
+%callout Bilan pour une série de fonctions à valeurs dans un espace vectoriel normé de dimension finie
+  Pour la série $\sum f_{n}$ où $f_{n}: X \longrightarrow E$ avec $E$ un espace vectoriel normé de dimension finie, la convergence normale sur $X$ implique la convergence uniforme sur $X$ qui implique la convergence simple sur $X$.
+%
+
+- $\zeta = \sum_{n=1}^{+\infty}f_{n}$ converge simplement sur $\oo{1,+\infty}$ mais ne converge pas uniformément sur cet intervalle.
+- $\eta = \sum_{n=1}^{+\infty}g_{n}$ converge uniformément sur $\co{\frac{1}{k}, +\infty}$ mais ne converge pas normalement vsur cet intervalle, car $1/2 \leq 1$.
+
+%eg
+  - Considérons la série $\sum_{n \geq 1}h_{n}$ avec $h_{n}: x \longmapsto \frac{\cos(nx)}{n^{2}}$.
+    $$
+      \forall n \in \N^{*}, \norm{h_{n}}_{\infty, \R} = \frac{1}{n^{2}}
+    $$
+    et $\sum_{n \geq 1}\frac{1}{n^{2}}$ converge donc $\sum_{n \geq 1}h_{n}$ converge normalement sur $\R$.
+    Comme les $h_{n}$ sont à valeurs réelles, la série $\sum_{n \geq 1} h_{n}$ converge uniformément sur $\R$.
+  - Considérons la série $\sum_{n \geq 1}\varphi_{n}$ avec $\varphi_{n}: x \longmapsto \frac{x}{x^{2} + n^{2}}$.
+    - _Convergence simple_. Soit $x \in \R$.
+      $$
+        \varphi_{n}(x) \usim{n\to +\infty} \frac{x}{n^{2}}
+      $$
+      et $\sum_{n \geq 1}\frac{1}{n^{2}}$ converge et $\frac{1}{n^{2}} > 0$ donc $\sum_{n \geq 1}\varphi_{n}(x)$ converge. Ainsi, $\sum_{n \geq 1,}\varphi_{n}(x)$ converge simplement sur $\R$.
+    - _Convergence normale_. Pour tout entier naturel $n$,
+      ~ $\varphi_{n} \in \Cont(\R)$  ~ $\lim_{\pm \infty} \varphi_{n} = 0$
+      donc $\forall n \in \N, \varphi_{n} \in \B(\R)$.
+      $$
+        \norm{\varphi_{n}}_{\infty, \R} = \norm{\varphi_{n}}_{\infty, \R_{+}} = \sup_{x \in \R_{+}} \abs{\varphi_{n}(x)} = \sup_{x \in \R_{+}} \big(\varphi_{n}(x)\big)
+      $$
+      et
+      $$
+        \forall x \in \R_{+}, \varphi_{n}'(x) = \frac{x^{2}+n^{2}-2x^{2}}{(x^{2}+n^{2})^{2}} = \frac{n^{2} - x^{2}}{(x^{2}+n^{2})^{2}}
+      $$
+      On en déduit le tableau de variations de $\varphi_{n}$ :
+      %fig
+        @[./figures/tabvar-2.svg]
+      %
+      Alors,
+      $$
+        \forall n \in \N^{*}, \norm{\varphi_{n}}_{\infty, \R} = \varphi_{n}(x) = \frac{1}{2n}
+      $$
+      et $\sum_{n \geq 1}\frac{1}{2n}$ diverge donc il n’y a pas convergence normale de $\sum_{n \geq 1}\varphi_{n}$ sur $\R$.
+      - Soit $a > 0$.
+        $$
+          \forall n \geq \floor{a}+1, \norm{\varphi_{n}}_{\infty, \cc{-a,a}} = \varphi_{n}(a)
+        $$
+        et $\sum_{n \geq \floor{a}+1}\norm{\varphi_{n}}_{\infty, \cc{-a,a}} = \sum_{n \geq \floor{a}+1}\varphi_{n}(a)$ est convergente (convergence simple de $\sum_{n \geq 1}\varphi_{n}$ en $a$) donc $\sum_{n \geq 1}\varphi_{n}$ converge normalement sur tout segment du type $\cc{-a,a}$ donc sur tout segment de $\R$ (donc sur tout compact). Les $\varphi_{n}$ étant à valeurs réelle, $\sum_{n \geq 1}\varphi_{n}$ converge uniformément sur tout segment de $\R$.
+    - _Convergence uniforme sur $\R$_. Soit $x \in \R_{+}$.
+      $$
+        \abs{R_{n}(x)} = R_{n}(x) = \sum_{k=n+1}^{+\infty}\frac{x}{x^{2}+k^{2}} \geq \sum_{k=n+1}^{2n}\frac{x}{x^{2}+k^{2}} \geq \sum_{k=n+1}^{2n}\frac{x}{x^{2}+(2n)^{2}}
+      $$
+      donc
+      $$
+        R_{n}(2n) \geq \sum_{k=n+1}^{2n}\frac{2n}{2 \times 4n^{2}} = \frac{1}{4}\sum_{k=n+1}^{2n}\frac{1}{n} = \frac{1}{4}
+      $$
+      donc $(R_{n}-\tilde{0})(2n)\cancel{\arrowlim{n\to+\infty}}0$ donc $(R_{n})$ ne converge pas uniformément vers la fonction nulle sur $\R$ : il n’y a pas convergence uniforme sur $\R$.
+%
+
+%prop
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: A \longrightarrow F$ avec $A$ une partie d’un $\K$-espace vectoriel normé $E$ et $F$ un $\K$-espace vectoriel normé.
+  1. Soit $a \in A$. Si
+     1. chaque $f_{n}$ est continue en $a$
+     2. $\sum_{n \geq 0}f_{n}$ converge uniformément sur un voisinage $V$ de $a$ relatif à $A$
+     alors $\sum_{n=0}^{+\infty}f_{n}$ (au moins définie sur $V$) est continue en $a$.
+  2. Si
+     1. chaque $f_{n}$ est continue sur $A$
+     2. $\sum_{n \geq 0}f_{n}$ converge uniformément au voisinage de tout point de $A$
+     alors $\sum_{n=0}^{+\infty}f_{n}$ est continue sur $A$.
+%
+
+%proof
+  _Prouvons le premier ennoncé._ La première hypothèse permet d’affirmer que pour tout $n \in \N$, $S_{n} = \sum_{k=0}^{n}f_{k}$ est continue en $a$. La seconde hypothèse est équivalente à
+  $$
+    (S_{n})_{n \geq 0} \text{ converge uniformément sur } V \in \Vois_{A}(a)
+  $$
+  donc $\lim_{n\to+\infty}S_{n} = \sum_{n=0}^{+\infty}f_{k}$ définie sur $V$ est continue en $a$.
+%
+
+%eg
+  1. Reprenons $\eta = \sum_{n=1}^{+\infty}g_{n}$ avec
+     $$
+       g_{n}: \applic{\oo{0,+\infty}}{\R}{x}{\frac{(-1)^{n-1}}{n^{2}} = (-1)^{n-1}e^{-x\ln n}}
+     $$
+     - $\forall n \in \N^{*}, g_{n} \in \Cont(\oo{0,+\infty})$
+     - $\sum_{n \geq 1}g_{n}$ converge uniformément sur toute demi-droite $\co{a,+\infty}$ avec $ > 0$. Soit $x_{0} > 0$. $\co{\frac{x_{0}}{2}, +\infty}$ est un voisinage de $x_{0}$ relativement à $\oo{0,+\infty}$ donc $\eta$ est continue sur $\R_{+}^{*}$.
+  2. Considérons l’exponentielle matricielle $\exp: \M_{n}(\K) \longrightarrow \M_{n}(\K)$. Munissons $\M_{n}(\K)$ d’une norme sous-multiplicative $\norm{\cdot}$ telle que $\norm{I_{n}} = 1$. $\exp = \sum_{k=0}^{+\infty}f_{k}$ avec
+     $$
+       f_{k}: \applic{\M_{n}(\K)}{\M_{n}(\K)}{A}{\frac{A^{k}}{k!}}
+     $$
+     - Chaque $f_{k}$ est continue sur $M_{n}(\K)$ comme composée de l’application linéaire $A \longmapsto (A, \ldots, A)$ et de l’application multilinéaire $(A_{1}, \ldots, A_{k}) \longmapsto \frac{1}{k!}A_{1} \times \cdots \times A_{k}$ si $k \geq 1$.
+     - Soit $A \in \M_{n}(\K)$.
+       $$
+         \forall M \in \Ball(A,1), \norm{f_{k}(M)} \leq \frac{\norm{M}^{k}}{k!} \leq \frac{(\norm{A}+1)^{k}}{k!}
+       $$
+       donc $\norm{f_{k}}_{\infty, \Ball(A,1)} \leq \frac{(\norm{A}+1)^{k}}{k!}$ or $\sum_{k \geq 0}\frac{(\norm{A}+1)}{k!}$ converge (de somme $e^{\norm{A}+1}$) donc $\sum_{k \geq 0}f_{k}$ converge normalement sur $\Ball(A,1)$. Or les $f_{k}$ sont à valeurs dans l’espace vectoriel normé $\M_{n}(\K)$ de dimension finie, donc $\sum_{k \geq 0}f_{k}$ converge uniformément sur $\Ball(A,1) \in \Vois_{\M_{n}(\K)}(A)$.
+       %callout Résultat au programme
+         Ainsi, $\exp:\M_{n}(\K) \longrightarrow \M_{n}(\K)$ est continue.
+       %
+  3. Soit la fonction $\zeta$ définie sur $H = \left\{z \in \C\where \Re(z) > 1\right\}$ par
+     $$
+       \zeta: \applic{H}{\C}{z}{\sum_{n=1}^{+\infty}\frac{1}{n^{z}}} \with n^{z} \defeq e^{z\ln n}
+     $$
+     ((la définition de $n^{z}$ donne pour $z = a+ib$, l’égalité $n^{z} = e^{(a+ib)\ln n}$ et donc $\abs{n^{z}} = e^{a\ln n} = n^{\Re(z)}$))Considérons les fonctions
+     $$
+       f_{n}: \applic{H}{\C}{z}{\frac{1}{n^{z}} = e^{-z\ln n}}
+     $$
+     Elle sont continues sur $\H$ car $z \longmapsto e^{z}$ est continue sur $\C$ et à valeurs dans $\C$ où $z \longmapsto -z$ est continue.
+     - Soit $a > 1$. Notons $H_{a} = \big\{z \in \C \where \Re z \geq a\big\}$.
+       $$
+         \forall z \in H_{a}, \abs{f_{n}(z)} = \abs{\frac{1}{n^{z}}} = \frac{1}{n^{\Re(z)}}
+       $$
+       donc
+       $$
+         \forall n \in \N^{*}, \norm{f_{n}}_{\infty, H_{a}} = \frac{1}{n^{a}}
+       $$
+       Comme $a > 1$, $\sum_{n \geq 1}\norm{f_{n}}_{\infty, H_{a}}$ est convergente, donc $\sum_{n \geq 1}f_{n}$ est normalement convergente sur $H_{a}$, donc uniformément convergente sur demi-plan fermé de $H_{a}$ car $f_{n}$ est à valeurs complexes.
+     - Soit $z_{0} \in H$. On a $z_{0} \in H_{\frac{\Re(z_{0}) + 1}{2}} \in \Vois_{H}(z_{0})$. Ainsi, $\zeta$ est continue sur $H$.
 %
