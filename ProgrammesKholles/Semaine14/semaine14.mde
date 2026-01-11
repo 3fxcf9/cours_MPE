@@ -71,30 +71,56 @@
 
 ## Théorème de la double limite
 
-%thm Théorème de la double limite
-  Soit $\sum_{n \geq 0}f_{n}$ une série  de fonctions $f: A \longrightarrow F$ avec $A$ une partie d’un $\K$-espace vectoriel normé $E$, et $F$ un $\K$-espace vectoriel normé de dimension finie. Soit $\alpha \in \bar{A}$ (voire $\alpha = \pm \infty$ si $A \subset \R$ et $\alpha = \sup A$ ou $\alpha = \inf A$). Si
-  1. chaque $f_{n}$ admet une limite $\ell_{n} \in F$ en $\alpha \in \bar{A}$
-  2. $\sum_{n \geq 0}f_{n}$ converge uniformément sur $A \cap V$ avec $V \in \Vois_{E}(\alpha)$((« au voisinage de $\alpha$ »))
+%thm Théorème de la double limite pour un espace d’arrivée de dimension finie
+  Soit $A$ une partie non vide d’un $\K$-espace vectoriel normé $E$, $\alpha \in \bar{A}$ (voire $\alpha = \pm \infty$ si $A \subset \R$ et si $\alpha = \sup A$ ou $\alpha = \inf A$(($V$ est un voisinage de $+\infty$ si pour un certain $A$, $\oo{A,+\infty} \subset V$)) ). Soit $F$ un $\K$-espace vectoriel normé de dimension finie. Soient $(f_{n}: A \longrightarrow F)_{n \in \N}$ une suite d’applications et $f: A \longrightarrow F$ une autre application. Si
+  1. Chaque $f_{n}$ possède une limite $\ell_{n} \in F$ en $a \in \bar{A}$
+  2. il existe $V \in \Vois_{E}(\alpha)$ tel que $(f_{n})$ converge uniformément vers $f$ sur $A \cap V$
   alors
-  - $\sum_{n \geq 0}\ell_{n}$ est une série vectorielle convergente
-  - $\lim_{x\to \alpha} \underbrace{\sum_{n=0}^{+\infty}f_{n}(x)}_{\text{au moins définie sur } A \cap V} = \sum_{n=0}^{+\infty}\ell_{n}$
+  - la suite $(\ell_{n})_{n \in \N}$ est convergente (de limite notée $\ell$)
+  - $\lim_{x\to \alpha} f(x) = \ell$
   Autrement dit,
   $$
-    \lim_{x\to \alpha} \sum_{n=0}^{+\infty}f_{n}(x) = \sum_{n=0}^{+\infty}\lim_{x\to \alpha}f_{n}(x)
+    \lim_{x\to \alpha} \big(\lim_{n\to+\infty} f_{n}(x)\big) = \lim_{n\to+\infty}\ell_{n} = \lim_{n\to+\infty} \big(\lim_{x\to \alpha} f_{n}(x)\big)
   $$
 %
 
 %proof
-  De la première hypothèse découle
-  $$
-    S_{n}(x) = \sum_{k=0}^{n}f_{k}(x) \arrowlim{x\to \alpha} \sum_{k=0}^{n}\ell_{k}
-  $$
-  La seconde hypothèse est équivalente à la convergence uniforme de $(S_{n})_{n \geq 0}$ sur $A \cap  V$ avec $V$ un voisinage de $\alpha$. On peut alors appliquer le _théorème de la double limite_ pour la suite de fonctions $(S_{n})_{n \geq 0}$ :
-  - $\left(\sum_{k=0}^{n}\ell_{k}\right)_{n \geq 0}$ est une suite convergente, i.e. $\sum_{k \geq 0}\ell_{k}$ est convergente.
-  - Si $S = \sum_{k=0}^{+\infty}f_{k}$ (sur $A \cap V$), alors
+  - Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que
     $$
-      \lim_{x\to \alpha}S(x) = \lim_{n\to+\infty}\sum_{k=0}^{n}\ell_{k} = \sum_{k=0}^{+\infty}\ell_{k}
+      \forall n \geq N, \begin{cases}f_{n} - f \in \B(A \cap  V, F) \\ \norm{f_{n}-f}_{\infty, A \cap V} < \varepsilon\end{cases}
     $$
+    Soit $(n,p) \in \N^{2}$ avec $n \geq N$ et $p \geq N$. Soit $x \in A \cap  V$.
+    $$
+      \norm{f_{n}(x) - f_{p}(x)}_{F} \leq \norm{f_{n}(x) - f(x)}_{F} + \norm{f(x) - f_{p}(x)}_{F}
+    $$
+    d’où $\norm{f_{n}(x) - f_{p}(x)} < 2 \varepsilon$. On fait alors tendre $x$ vers $\alpha$ :
+    $$
+      \norm{\ell_{n} - \ell_{p}} \leq 2 \varepsilon
+    $$
+    d’où $\forall n \geq N, \norm{\ell_{n}} \leq \norm{\ell_{N}} + 2 \varepsilon$ donc $(\ell_{n})_{n \geq N}$ est bornée donc $(\ell_{n})_{n \in \N}$ aussi. $F$ étant un $\K$-espace vectoriel de dimension finie, $(\ell_{n})_{n \in \N}$ possède une valeur d’adhérence $\ell \in F$. Il existe donc $\varphi:\N \longrightarrow \N$ strictement croissante telle que $\ell_{\varphi(n)} \arrowlim{n\to+\infty}\ell$ d’où
+    $$
+      \forall n \geq N, \forall p \geq N, \norm{\ell_{\varphi(n)} - \ell_{p}} \leq 2 \varepsilon
+    $$
+    On fait alors tendre $n$ vers $+\infty$ :
+    $$
+      \norm{\ell - \ell_{p}} \leq 2 \varepsilon
+    $$
+    Ainsi, $(\ell_{p})_{n \in \N}$ est convergente de limite $\ell$.
+  - Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que
+    ~ $\norm{f_{N} - f}_{\infty, A \cap V} < \varepsilon$  ~ $\norm{\ell_{N} - \ell} < \varepsilon$
+    Soit $x \in A \cap V$. On a
+    $$
+      \norm{f(x) - \ell} \leq \norm{f(x) - f_{N}(x)} + \norm{f_{N}(x) - \ell_{N}} + \norm{\ell_{N} - \ell}
+    $$
+    d’où $\norm{f(x) - \ell} < 2 \varepsilon + \norm{f_{N}(x) - \ell_{N}}$. Or $f_{N}(x) \arrowlim{x\to \alpha}\ell_{N}$. Il existe donc $V' \in \Vois_{E}(\alpha)$ tel que
+    $$
+      \forall x \in A \cap  V', \norm{f_{N}(x) - \ell_{N}} < \varepsilon
+    $$
+    d’où, pour tout $x \in A \cap  V \cap  V'$ ($V \cap V'$ est un voisinage de $\alpha$)
+    $$
+      \norm{f(x) - \ell} < 3 \varepsilon
+    $$
+    donc $f(x) \arrowlim{x\to \alpha}\ell$.
 %
 
 
