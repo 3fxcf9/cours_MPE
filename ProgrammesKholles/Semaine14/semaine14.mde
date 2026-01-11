@@ -147,19 +147,26 @@ par exemple,
 %fig Graphe de la fonction $\zeta$
   @[./figures/zeta-graph.svg]
 %
-$$
-  \forall x > 1, \zeta(x) - \eta(x) = \sum_{n=1}^{+\infty}\frac{1}{n^{x}} + \sum_{n=1}^{+\infty}\frac{(-1)^{x}}{n^{x}} = 2 \cdot \sum_{p=1}^{+\infty}\frac{1}{(2p)^{x}} = 2^{1-x}\zeta(x)
-$$
-donc
-$$
-  \forall x > 1, (1-2^{1-x}) \zeta(x) = \eta(x) \quad\text{ou}\quad \forall x > 1, \zeta(x) = \frac{\eta(x)}{1-2^{1-x}}
-$$
-(($2^{1-z} = 1 \iff e^{(1-z)\ln 2} = 1 \iff (1-z)\ln 2 \in 2i \pi\Z \iff (1-z)\ln 2 = 2i \pi k \iff z = 1 + \frac{2i k \pi}{\ln 2}$))où $\eta = \sum_{n=1}^{+\infty}g_{n} \in \Cont(\R_{+}^{*})$ avec $g_{n}: x \longmapsto \frac{(-1)^{x-1}}{n^{x}}$. Par continuité de $\eta$,
-$$
-  \eta(x) \arrowlim{x\to 1} \eta(1) = \sum_{x=1}^{+\infty}\frac{(-1)^{x-1}}{n} = \ln 2
-$$
-donc
-$$
-  \zeta(x) \usim{x\to 1^{+}} \frac{\ln 2}{1-e^{(1-x)\ln 2}} \sim \frac{\ln 2}{-(1-x)\ln 2}
-$$
-soit $\zeta(x) \usim{x\to 1^{+}} \frac{1}{x-1}$.
+- _Limite en 1_.
+  $$
+    \forall x > 1, \zeta(x) - \eta(x) = \sum_{n=1}^{+\infty}\frac{1}{n^{x}} + \sum_{n=1}^{+\infty}\frac{(-1)^{x}}{n^{x}} = 2 \cdot \sum_{p=1}^{+\infty}\frac{1}{(2p)^{x}} = 2^{1-x}\zeta(x)
+  $$
+  donc
+  $$
+    \forall x > 1, (1-2^{1-x}) \zeta(x) = \eta(x) \quad\text{ou}\quad \forall x > 1, \zeta(x) = \frac{\eta(x)}{1-2^{1-x}}
+  $$
+  (($2^{1-z} = 1 \iff e^{(1-z)\ln 2} = 1 \iff (1-z)\ln 2 \in 2i \pi\Z \iff (1-z)\ln 2 = 2i \pi k \iff z = 1 + \frac{2i k \pi}{\ln 2}$))où $\eta = \sum_{n=1}^{+\infty}g_{n} \in \Cont(\R_{+}^{*})$ avec $g_{n}: x \longmapsto \frac{(-1)^{x-1}}{n^{x}}$. Par continuité de $\eta$,
+  $$
+    \eta(x) \arrowlim{x\to 1} \eta(1) = \sum_{x=1}^{+\infty}\frac{(-1)^{x-1}}{n} = \ln 2
+  $$
+  donc
+  $$
+    \zeta(x) \usim{x\to 1^{+}} \frac{\ln 2}{1-e^{(1-x)\ln 2}} \sim \frac{\ln 2}{-(1-x)\ln 2}
+  $$
+  soit $\zeta(x) \usim{x\to 1^{+}} \frac{1}{x-1}$.
+- _Limite en $+\infty$_.
+  ~ $\norm{f_{n}}_{\infty, \co{2,+\infty}} = \frac{1}{n^{2}}$  ~ $\sum_{n \geq 1}\frac{1}{n^{2}}$ converge
+  donc $\sum_{n \geq 1}f_{n}$ converge uniformément sur $\co{2,+\infty} = \oo{1,+\infty} \cap  \underbrace{\co{2,+\infty}}_{\in \Vois_{\R}(+\infty)}$ or $f_{n}(x) \arrowlim{x\to+\infty} \begin{cases}1\if n=1\\0\if n \geq 2\end{cases}$. Le théorème de la double limite donne donc
+  $$
+    \lim_{x\to+\infty} \zeta(x) = 1+ \sum_{n=2}^{+\infty}0 = 1
+  $$
