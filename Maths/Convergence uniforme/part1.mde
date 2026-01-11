@@ -882,7 +882,7 @@ En général, on s’intéresse à un autre type de convergence :
   par exemple,
   ~ $\zeta'(x) = -\sum_{n=1}^{+\infty}\frac{\ln n}{n^{x}} < 0$  ~ $\zeta''(x) = \sum_{n=1}^{+\infty}\frac{(\ln n)^{2}}{n^{x}} > 0$ ($\zeta$ est convexe)
   %fig Graphe de la fonction $\zeta$
-    ==ZETA==
+    @[./figures/zeta-graph.svg]
   %
   $$
     \forall x > 1, \zeta(x) - \eta(x) = \sum_{n=1}^{+\infty}\frac{1}{n^{x}} + \sum_{n=1}^{+\infty}\frac{(-1)^{x}}{n^{x}} = 2 \cdot \sum_{p=1}^{+\infty}\frac{1}{(2p)^{x}} = 2^{1-x}\zeta(x)
