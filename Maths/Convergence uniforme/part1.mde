@@ -947,9 +947,9 @@ Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0
 %proof
   - $\forall n \in \N, S_{n} = \sum_{k=0}^{n}f_{k} \in \Cont_{m}(I)$
   - $(S_{n})$ converge simplement vers $\sum_{n=0}^{+\infty}f_{n} \in \Cont_{m}(I)$
-  - $\forall n \in \tn, \abs{S_{n}} \leq \varphi$ avec $\varphi \in \L^{1}(I,\R_{+})$
+  - $\forall n \in \N, \abs{S_{n}} \leq \varphi$ avec $\varphi \in \L^{1}(I,\R_{+})$
   donc
-  ~ $\forall n \in \tn, S_{n} \in \L^{1}(I,\K)$  ~ $\sum_{n =0}^{+\infty}f_{n} \in L^{1}(I,\K)$
+  ~ $\forall n \in \N, S_{n} \in \L^{1}(I,\K)$  ~ $\sum_{n =0}^{+\infty}f_{n} \in L^{1}(I,\K)$
   donc $\forall n \in \N, f_{n} = S_{n} - S_{n-1} \in \L^{1}(I,\K)$ et par le _théorème de convergence dominée_ appliqué à $(S_{n})_{n \geq 0}$,
   $$
     \lim_{n\to+\infty} \int_{I} S_{n} = \int_{I} \sum_{n=0}^{+\infty}f_{n}
@@ -965,7 +965,7 @@ Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0
 %
 
 %eg
-  Calculons $I = \int_{0}^{1}\frac{\ln t}{t-1}\dd t$. Posons $f: t \longmapsto \frac{\ln t}{t-1} \in \Cont(\oo{0,1}, \R_{+}^{*})$. $f(t)\usim{t\to 0^{-}} -\ln t$ et $\int_{0}^{\frac{1}{2}}\ln t \dd t$ converge, donc $\int_{0}^{\frac{1}{2}}\f$ converge.
+  Calculons $I = \int_{0}^{1}\frac{\ln t}{t-1}\dd t$. Posons $f: t \longmapsto \frac{\ln t}{t-1} \in \Cont(\oo{0,1}, \R_{+}^{*})$. $f(t)\usim{t\to 0^{-}} -\ln t$ et $\int_{0}^{\frac{1}{2}}\ln t \dd t$ converge, donc $\int_{0}^{\frac{1}{2}}f$ converge.
   $$
     f(t) = \frac{\ln t - \ln 1}{t-1} \arrowlim{t\to 1}\eval{\frac{1}{t}}{t=1} = 1
   $$
@@ -975,7 +975,7 @@ Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0
       f(t) = - \frac{\ln t}{1-t} = - \sum_{n=0}^{+\infty}t^{n}\ln t
     $$
     Notons cette série $f = \sum_{n=0}^{+\infty}f_{n}$ sur $\oo{0,1}$ avec $f_{n}: \applic{\oc{0,1}}{\R}{t}{-t^{n}\ln t}$
-    - $\forall n \in \tn, f_{n} \in \Cont(\oo{0,1})$
+    - $\forall n \in \N, f_{n} \in \Cont(\oo{0,1})$
     - $\sum f_{n}$ converge simplement sur $\oo{0,1}$ de somme $f \in \Cont(\oo{0,1})$ et
       $$
         \abs{\sum_{k=0}^{n}f_{k}(t)} = \frac{1-t^{n+1}}{1-t}\abs{\ln t} \leq \frac{\abs{\ln t}}{1-t} = f(t)
@@ -987,7 +987,12 @@ Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0
     $$
     Par ailleurs,
     $$
-      \int_{0}^{1}f_{n} = - \int_{0}^{1}t^{n}\ln t \dd t = -\lim_{\varepsilon \rightarrow 0} \int_{\varepsilon}^{1}t^{n}\ln t \dd t = \left[\frac{t^{n+1}}{n+1}\ln t\right]_{\varepsilon}^{1}- \int_{\varepsilon}^{1\frac{t^{n}}{n+1}\dd t} = - \frac{\varepsilon^{n+1}\ln \varepsilon}{n+1} - \left[\frac{t^{n+1}}{(n+1)^{2}}\right]_{\varepsilon}^{1}
+      \begin{align*}
+        \int_{0}^{1}f_{n} &= - \int_{0}^{1}t^{n}\ln t \dd t \\
+        &= -\lim_{\varepsilon \rightarrow 0} \int_{\varepsilon}^{1}t^{n}\ln t \dd t \\
+        &= \left[\frac{t^{n+1}}{n+1}\ln t\right]_{\varepsilon}^{1}- \int_{\varepsilon}^{1\frac{t^{n}}{n+1}\dd t} \\
+        &= - \frac{\varepsilon^{n+1}\ln \varepsilon}{n+1} - \left[\frac{t^{n+1}}{(n+1)^{2}}\right]_{\varepsilon}^{1}
+      \end{align*}
     $$
     d’où
     $$
@@ -1174,18 +1179,27 @@ Le cas des fonctions positives est très simple~:
     $$
     $f_{n}: x \longmapsto 2(-1)^{n}x e^{-(2n+1)x}$. Si $\sum_{n \in \N} \int_{0}^{+\infty}\abs{f_{n}} < +\infty$, alors on peut permuter $\int_{0}^{+\infty}$ et $\sum_{n \in \N}$~:
     $$
-      \sum_{n \in \N}\int_{0}^{+\infty}\abs{f_{n}} = \int_{0}^{+\infty}\sum_{n=0}^{+\infty}\abs{f_{n}} = \int_{0}^{+\infty}2 \sum_{n=0}^{+\infty}x e^{-(2n+1)x}\dd x = \sum_{0}^{+\infty}\frac{2x e^{-x}}{1-e^{-2x}}\dd x = \int_{0}^{+\infty}\frac{x}{\sh x}\dd x < +\infty
+      \begin{align*}
+        \sum_{n \in \N}\int_{0}^{+\infty}\abs{f_{n}} &= \int_{0}^{+\infty}\sum_{n=0}^{+\infty}\abs{f_{n}} \\
+        &= \int_{0}^{+\infty}2 \sum_{n=0}^{+\infty}x e^{-(2n+1)x}\dd x \\
+        &= \sum_{0}^{+\infty}\frac{2x e^{-x}}{1-e^{-2x}}\dd x \\
+        &= \int_{0}^{+\infty}\frac{x}{\sh x}\dd x < +\infty
+      \end{align*}
     $$
     d’où
     $$
       I = \sum_{n=0}^{+\infty}2(-1)^{n} \int_{0}^{+\infty} x e^{-(2x+1)x}\dd x
     $$
     $$
-      I = \sum_{n=0}^{+\infty}2(-1)^{n} \left(\left[\frac{x e^{-(2x+1)x}}{-(2x+1)}\right]_{0}^{+\infty} - \sum_{0}^{+\infty}\frac{e^{-(2n+1)x}}{-(2n+1)}\dd x\right) = \sum_{n=0}^{+\infty}2(-1)^{n} \left[- \frac{e^{-(2n+1)x}}{(2n+1)^{x}}\right]_{0}^{+\infty} = 2 \underbrace{\sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{2}}}_{\text{constante de Catalan}}
+      \begin{align*}
+        I &= \sum_{n=0}^{+\infty}2(-1)^{n} \left(\left[\frac{x e^{-(2x+1)x}}{-(2x+1)}\right]_{0}^{+\infty} - \sum_{0}^{+\infty}\frac{e^{-(2n+1)x}}{-(2n+1)}\dd x\right)\\
+        &= \sum_{n=0}^{+\infty}2(-1)^{n} \left[- \frac{e^{-(2n+1)x}}{(2n+1)^{x}}\right]_{0}^{+\infty}\\
+        &= 2 \underbrace{\sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{2}}}_{\text{constante de Catalan}}
+      \end{align*}
     $$
     La constante de Catalan, ou $\beta(2)$ avec
     $$
-      \beta: x \longmapsto \sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{n}}
+      \beta: x \longmapsto \sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{x}}
     $$
     vaut 0.92 au centième près.
 %
