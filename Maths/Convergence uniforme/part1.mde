@@ -922,3 +922,270 @@ En général, on s’intéresse à un autre type de convergence :
       \forall t \in \R, f'(t) = \sum_{k=1}^{+\infty} \frac{t^{k-1}A^{k}}{(k-1)!} = \left[\sum_{k=1}^{+\infty}\frac{(tA)^{k-1}}{(k-1)!}\right]A = e^{tA}A
     $$
 %
+
+## Intégration terme à terme d’une série de fonctions
+
+Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \K$. On voudrait
+$$
+  \int_{I} \sum_{n=0}^{+\infty}f_{n}(t)\dd t = \sum_{n=0}^{+\infty}\int_{I}f_{n}(t)\dd t
+$$
+Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\cc{a,b}$, alors la relation ci-dessus est vraie. On ne peut cependant pas remplacer $\cc{a,b}$ par un intervalle quelconque.
+
+%thm Théorème de convergence dominée pour les séries de fonctions
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \K$ continues par morceaux. Si
+  1. $\sum_{n \geq 0}f_{n}$ converge simplement sur $I$ (et $\sum_{n=0}^{+\infty}f_{n} \in \Cont_{m}(I)$)
+  2. Il existe $\varphi \in \L_{n}^{1}(I, \R_{+})$ telle que
+     $$
+       \forall n \in \N, \abs{\sum_{k=0}^{n}f_{k}} \leq  \varphi
+     $$
+  alors $\forall n \in \N, f_{n} \in \L^{1}(I,\K)$, $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I,\K)$ et
+  $$
+    \int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n}
+  $$
+%
+
+%proof
+  - $\forall n \in \N, S_{n} = \sum_{k=0}^{n}f_{k} \in \Cont_{m}(I)$
+  - $(S_{n})$ converge simplement vers $\sum_{n=0}^{+\infty}f_{n} \in \Cont_{m}(I)$
+  - $\forall n \in \tn, \abs{S_{n}} \leq \varphi$ avec $\varphi \in \L^{1}(I,\R_{+})$
+  donc
+  ~ $\forall n \in \tn, S_{n} \in \L^{1}(I,\K)$  ~ $\sum_{n =0}^{+\infty}f_{n} \in L^{1}(I,\K)$
+  donc $\forall n \in \N, f_{n} = S_{n} - S_{n-1} \in \L^{1}(I,\K)$ et par le _théorème de convergence dominée_ appliqué à $(S_{n})_{n \geq 0}$,
+  $$
+    \lim_{n\to+\infty} \int_{I} S_{n} = \int_{I} \sum_{n=0}^{+\infty}f_{n}
+  $$
+  or, comme $\forall k \in \N, f_{k} \in \L^{1}(I,\K)$,
+  $$
+    \int_{I} S_{n} = \int_{I} \sum_{k=0}^{n}f_{k} = \sum_{k=0}^{n}\int_{I} f_{k}
+  $$
+  d’où
+  $$
+    \sum_{k=0}^{+\infty} \int_{I} f_{k} = \int_{I} \sum_{n=0}^{+\infty}f_{n}
+  $$
+%
+
+%eg
+  Calculons $I = \int_{0}^{1}\frac{\ln t}{t-1}\dd t$. Posons $f: t \longmapsto \frac{\ln t}{t-1} \in \Cont(\oo{0,1}, \R_{+}^{*})$. $f(t)\usim{t\to 0^{-}} -\ln t$ et $\int_{0}^{\frac{1}{2}}\ln t \dd t$ converge, donc $\int_{0}^{\frac{1}{2}}\f$ converge.
+  $$
+    f(t) = \frac{\ln t - \ln 1}{t-1} \arrowlim{t\to 1}\eval{\frac{1}{t}}{t=1} = 1
+  $$
+  $f$ est polynomiale par continuité en 1. $I$ est une intégrale convergente.
+  - Pour tout $t \in \oo{0,1}$,
+    $$
+      f(t) = - \frac{\ln t}{1-t} = - \sum_{n=0}^{+\infty}t^{n}\ln t
+    $$
+    Notons cette série $f = \sum_{n=0}^{+\infty}f_{n}$ sur $\oo{0,1}$ avec $f_{n}: \applic{\oc{0,1}}{\R}{t}{-t^{n}\ln t}$
+    - $\forall n \in \tn, f_{n} \in \Cont(\oo{0,1})$
+    - $\sum f_{n}$ converge simplement sur $\oo{0,1}$ de somme $f \in \Cont(\oo{0,1})$ et
+      $$
+        \abs{\sum_{k=0}^{n}f_{k}(t)} = \frac{1-t^{n+1}}{1-t}\abs{\ln t} \leq \frac{\abs{\ln t}}{1-t} = f(t)
+      $$
+      et $f \in \L^{1}(\oo{0,1}, \R_{+})$.
+    Ainsi, $\forall n \in \N, f_{n} \in \L^{1}(\oo{0,1})$ et
+    $$
+      \int_{0}^{1}f = \sum_{n=0}^{+\infty}\int_{0}^{1}f
+    $$
+    Par ailleurs,
+    $$
+      \int_{0}^{1}f_{n} = - \int_{0}^{1}t^{n}\ln t \dd t = -\lim_{\varepsilon \rightarrow 0} \int_{\varepsilon}^{1}t^{n}\ln t \dd t = \left[\frac{t^{n+1}}{n+1}\ln t\right]_{\varepsilon}^{1}- \int_{\varepsilon}^{1\frac{t^{n}}{n+1}\dd t} = - \frac{\varepsilon^{n+1}\ln \varepsilon}{n+1} - \left[\frac{t^{n+1}}{(n+1)^{2}}\right]_{\varepsilon}^{1}
+    $$
+    d’où
+    $$
+      \int_{0}^{1}t^{n}\ln t \dd t =  = - \frac{1}{(n+1)^{2}}
+    $$
+    d’où
+    $$
+      \int_{0}^{1}\frac{\ln t}{t-1}\dd t = \sum_{n=0}^{+\infty}\frac{1}{(n+1)^{2}} = \zeta(2) = \frac{\pi^{2}}{6}
+    $$
+%
+
+Le cas des fonctions positives est très simple~:
+
+%thm Intégration terme à terme pour les fonctions positives
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \R_{+}$ continues par morceaux **positives**. Si $\sum_{n \geq 0}f_{n}$ converge simplement (de somme $\sum_{n =0}^{+\infty}f_{n}$ continue par morceaux), alors on a
+  $$
+    \int_{I} \sum_{n=0}^{+\infty}f_{n}(t)\dd t = \sum_{n \in \N} \int_{I} f_{n} \dans \bar{\R_{+}}
+  $$
+  avec les convention
+  - $\int_{I} f_{n} = +\infty$ si $f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable
+  - $\forall \alpha \in \bar{\R_{+}}, \alpha + (+\infty) = +\infty$
+%
+
+%proof
+  - Si il existe $n \in \N$ tel que $f_{n_{0}} \notin \L^{1}(I,\R_{+})$, alors $\int_{I} f_{n_{0}} = +\infty$ d’où $\sum_{n \in \N}\int_{I} f_{n} = +\infty$, or $\sum_{n=0}^{+\infty}f_{n} \geq f_{n_{0}}$ car $\forall n \in \N, f_{n} \geq 0$ donc $\sum_{n=0}^{+\infty}f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable, donc $\int_{I} \sum_{n=0}^{+\infty}f_{n} = +\infty$.
+  - sinon, $\forall n \in \N, f_{n} \in \L^{1}(I, \R_{+})$.
+    - si $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I, \R_{+})$, la série $\sum_{n \geq 0}f_{n}$ converge simplement (de somme continue par morceaux) et
+      $$
+        0 \leq \sum_{k=0}^{n}f_{k} \leq \sum_{n=0}^{+\infty}f_{n} = \varphi_{n}n\L^{1}(I,\R_{+})
+      $$
+      donc d’après le _théorème de convergence dominée_ pour les séries, on a
+      $$
+        \int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n} = \sum_{n \in \N}\int_{I} f_{n}
+      $$
+    - sinon, $\sum_{n=0}^{+\infty}f_{n} \notin\L^{1}(I,\R_{+})$. Soit $M > 0$. Il existe un segment $S$ inclus dans $I$ tel que $\int_{S}\sum_{n=0}^{+\infty}f_{n} \geq M$. Or $\sum_{n \geq 0}f_{n}$ converge simplement de somme $\sum_{n=0}^{+\infty}f_{n}$ sur $S$ et
+      $$
+        0 \leq  \left(\sum_{k=0}^{n}f_{k}\right)_{|S} \leq \left(\sum_{k=0}^{+\infty}f_{k}\right)_{|S} \in \Cont_{m}(S) \subset \L^{1}(S,\R_{+})
+      $$
+      donc par le _théorème de convergence dominée_ sur les séries,
+      $$
+        M \leq \int_{S}\sum_{k=0}^{+\infty}f_{k} = \sum_{k=0}^{+\infty}\int_{S} f_{k} = \sum_{k \in \N} \int_{S} f_{k} \leq \sum_{k \in \N} \int_{I} f_{k}
+      $$
+      donc
+      $$
+        \sum_{k \in \N}\int_{I} f_{k} = +\infty = int_{I} \sum_{k=0}^{+\infty}f_{k}
+      $$
+%
+
+%eg
+  $$
+    I = \sum_{0}^{1}\frac{\ln t}{t-1}\dd t = \int_{0}^{1}\sum_{n=0}^{+\infty}-t^{n}\ln t \dd t
+  $$
+  et $\forall n \in \N, t \longmapsto -t^{n}\ln t \in \Cont(\oo{0,1}, \color{yellow}\R_{+}\color{reset})$ d’où
+  $$
+    I = \sum_{n \in \N}\int_{0}^{1}-\ln t t^{n} \dd t \dd t \dans \bar{\R_{+}}
+  $$
+  or $\int_{\varepsilon}^{1}-\ln t \cdot t^{n} \dd t = \cdot  = \arrowlim{\varepsilon \to 0} \frac{1}{(n+1)^{2}}$ d’où
+  $$
+    I = \sum_{n=0}^{+\infty}\frac{1}{(n+1)^{2}} < +\infty
+  $$
+  Ainsi, $I$ est une intégrale convergente et $ei = \zeta(2)$.
+%
+
+%eg
+  Calculons $J = \int_{2}^{+\infty}\big(\zeta(x)-1\big)\dd x$. La fonction $\zeta-1$ est continue sur $\co{2,+\infty}$ et
+  $$
+    \forall x \geq 2, \zeta(x) - 1 = \sum_{n=2}^{+\infty}\frac{1}{n^{x} > 0}
+  $$
+  d’où dasn $\bar{\R_{+}}$, $J = \sum_{n \in \ico{2,+\infty}}\int_{2}^{+/nff}\frac{\dd x}{n^{x}}$ donc pour $n \geq 2$ et $X \geq 2$,
+  $$
+    \int_{2}^{X}\frac{\dd x}{n^{x}} = \int_{2}^{X}e^{-x\ln n}\dd x = \left[\frac{e^{-x\ln x}}{-\ln n}\right]_{2}^{X} = \frac{1}{n^{2}\ln n} - \frac{1}{n^{X}\ln n} \arrowlim{X\to+\infty} \frac{1}{n^{2}\ln n}
+  $$
+  donc
+  $$
+    \int_{2}^{+\infty}\big(\zeta(2)-1\big)\dd x = \sum_{n \in \ico{2,+\infty}}\frac{1}{n^{2}\ln n} = O \left(\frac{1}{n^{2}}\right) < +\infty
+  $$
+  Ainsi, $J$ est une intégrale convergente et
+  $$
+    J = \sum_{n=1}^{+\infty}\frac{1}{n^{2}\ln n}
+  $$
+%
+
+%offprog
+  Cas général pour $\sum_{n \geq 0}f_{n}$ avec $f_{n}: I \longrightarrow \K$.
+
+  %prop
+    Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \K$ ++intégrables++ qui converge simplement de ++somme intégrable++ $\sum_{n=0}^{+\infty}f_{n}$. On a
+    $$
+      \int_{I} \sum_{n=0}^{+\infty}f_{n} \oeq{($\star$)} \sum_{n=0}^{+\infty}\int_{I} f_{n} \iff \lim_{n\to+\infty} \int_{I} R_{n} = 0
+    $$
+  %
+
+  %proof
+    Par équivalence,
+    $$
+      \begin{align*}
+        (\star) &\iff  \int_{I} \sum_{n=0}^{+\infty}f_{n} = \lim_{N\to+\infty} \left(\sum_{n=0}^{N}\int_{I} f_{n}\right) \\
+        &\iff \forall n \in \N, f_{n} \in \L^{1}(I,\K), \int_{I} \sum_{n=0}^{+\infty} f_{n} = \lim_{N\to+\infty}\int_{I} \sum_{n=0}^{N}f_{n} \\
+        &\iff \lim_{N\to+\infty}\int_{I} \left(\sum_{n=0}^{+\infty}f_{n} - \sum_{n=0}^{N}f_{n}\right) = 0\\
+        &\iff \lim_{N\to+\infty}\int_{I} R_{N} = 0
+      \end{align*}
+    $$
+  %
+%
+
+%thm Intégration terme à terme
+  Soit $\sum_{n \geq 0} f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \K$. Si
+  1. $\sum_{n \geq 0}f_{n}$ converge simplement (de somme continue par morceaux)
+  2. La série $\sum_{n \geq 0}\int_{I} \abs{f_{n}}$ est convergente (i.e. $\sum_{n \in \N}\int_{I} \abs{f_{n}} < +\infty$)
+  alors $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I,\K)$ et
+  $$
+    \int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n}
+  $$
+%
+
+%proof
+  Il suffit de prouver que tous les restes sont intégrables (donc $\underbrace{f_{0}}_{\in \L^{1}(I)} + R_{0} = \sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I,\K)$), et que $\int_{I} R_{n} \arrowlim{n\to+\infty}0$.
+  ~
+  Soit $N \in \N$. Soit $p \geq N$. Posons
+  $$
+    g_{p}: \applic{I}{\R_{+}}{t}{\min \left(\sum_{k=N}^{p}\abs{f_{k}(t)}\right), \abs{\sum_{k=N}^{+\infty}f_{k}(t)}}
+  $$
+  On a: $\forall p \geq N, g_{p} \in \Cont_{m}(I,\R_{+})$ (en effet, $\min(a,b) = \frac{a+b-\abs{a-b}}{2}$). Pour tout $N' \geq N$,
+  $$
+    \forall t \in I, \abs{\sum_{k=N}^{N'}f_{k}(t)} \leq \sum_{k \in \icc{N,N'}} \abs{f_{k}(t)} \leq \sum_{k \in \ico{N,+\infty} \abs{f_{k}(t)}} \dans \bar{\R_{+}}
+  $$
+  d’où
+  $$
+    \forall t \in I, \abs{\sum_{k=0}^{+\infty}f_{k}(t)} \leq \sum_{k \in \ico{N,+niff}} \abs{f_{k}(t)}
+  $$
+  - Montrons la convergence simple de $(g_{p})_{n \geq N}+inff$. Soit $t \in I$.
+    - si $\abs{\sum_{k=N}^{+\infty}f_{k}(t)} = \sum_{k \in \ico{N,+\infty}}\abs{f_{k}(t)} = \sum_{k=N}^{+\infty}\abs{f_{k}(t)}$, alors
+      $$
+        g_{p}(t) = \sum_{k=N}^{p}\abs{f_{k}(t)} \arrowlim{p\to+\infty} \sum_{k \in \ico{N,+\infty}}\abs{f_{k}(t)} = \abs{\sum_{k=N}^{+\infty}f_{k}(t)}
+      $$
+    - sinon, $\abs{\sum_{k=N}^{+\infty}f_{k}(t)} < \sum_{k \in \ico{N,+\infty}} \abs{f_{k}(t)}$. Il existe donc $p_{0} \geq N$ tel que
+      $$
+        mmllp \geq p_{0}, \abs{\sum_{k=N}^{+\infty}f_{k}(t)} < \sum_{k=N}^{p}\abs{f_{k}(t)}
+      $$
+      donc pour tout $p \geq p_{0}$,
+      $$
+        g_{p}(t) = \abs{\sum_{k=N}^{+\infty}f_{k}(t)} \arrowlim{p\to+\infty} \abs{\sum_{k=N}^{+\infty}f_{k}(t)}
+      $$
+      donc $(g_{p})_{p}$ converge simplement vers $\abs{\sum_{k=N}^{+\infty}f_{k}}$ sur $I$, donc sur tout segment $S \subset I$. Or
+      $$
+        0 \leq (g_{p})_{|S} \leq \abs{\sum_{k=N}^{+\infty}f_{k}(t)}_{|S} \in \Cont_{m}(S) \subset \L^{1}(S)
+      $$
+      donc
+      $$
+        \lim_{p\to+\infty}\int_{S} (g_{p})_{|S} = \int_{S} \abs{\sum_{k=N}^{+\infty}f_{k}(t)}
+      $$
+      alors $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I, \K)$ et $\int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n}$. Or $\forall t \in S, \forall p \in \N, 0 \leq g_{p}(t) \leq \sum_{k=N}^{p} \abs{f_{k}(t)}$ d’où
+      $$
+        0 \leq  \int_{S}g_{p} \leq \sum_{k=N}^{p}\int_{S} \abs{f_{k}} \leq \sum_{k=N}^{p}\int_{I} \abs{f_{k}} \leq \sum_{k=N}^{+\infty}\int_{I} \abs{f_{k}}
+      $$
+      On fait tendre $p$ vers $+\infty$~:
+      $$
+        0 \leq  \int_{S} \abs{\sum_{k=N}^{+\infty}f_{k}} \leq \sum_{k=N}^{+\infty}\int_{I} \abs{f_{k}} < \color{yellow}+\infty\color{reset}
+      $$
+      donc $\sum_{k=N}^{+\infty}f_{k} \in \L^{1}(I,\K)$ et
+      $$
+        \int_{I} \abs{R_{N}} \leq \sum_{k=N+1}^{+\infty}\int_{I} \abs{f_{k}}
+      $$
+      Comme $R_{N}$ est intégrable, on a
+      $$
+        \abs{\int_{I} R_{N}} \leq  \int_{I} \abs{R_{N}} \leq \sum_{k=N+1}^{+\infty}\int_{I} \abs{f_{k}} \color{yellow}\arrowlim{N\to+\infty}0\color{reset}
+      $$
+      Ainsi, $\int_{I} R_{N} \arrowlim{N\to+\infty}0$.
+%
+
+%eg
+  Calculons $I = \int_{0}^{+niff}\frac{x}{\ch x}\dd x$
+  - _Existence._ $f: x \longmapsto \frac{x}{\ch x}$ est continue et positive sur $\R_{+}$ et
+    $$
+      f(x) \usim{+\infty}\frac{x}{e^{x}/2} = 2 e e^{-x} = o \left(\frac{1}{x^{2}}\right)
+    $$
+  - _Calcul._
+    $$
+      \forall x \in \R_{+}, f(x) = \frac{2x}{e^{x} + e^{-x}} = \frac{2x e^{-x}}{1+e^{-2x}} = \frac{2x e^{-x}}{1-(-e^{-2x})}
+    $$
+    $\abs{-e^{-2x}} < 1 \iff x > 0$
+    $$
+      \forall x > 0, f(x) = 2x e^{-x} \sum_{n=0}^{+\infty}(-e^{-2x})^{x} = \sum_{n=0}^{+\infty}f_{n}(x)
+    $$
+    $f_{n}: x \longmapsto 2(-1)^{n}x e^{-(2n+1)x}$. Si $\sum_{n \in \N} \int_{0}^{+\infty}\abs{f_{n}} < +\infty$, alors on peut permuter $\int_{0}^{+\infty}$ et $\sum_{n \in \N}$~:
+    $$
+      \sum_{n \in \N}\int_{0}^{+\infty}\abs{f_{n}} = \int_{0}^{+\infty}\sum_{n=0}^{+\infty}\abs{f_{n}} = \int_{0}^{+\infty}2 \sum_{n=0}^{+\infty}x e^{-(2n+1)x}\dd x = \sum_{0}^{+\infty}\frac{2x e^{-x}}{1-e^{-2x}}\dd x = \int_{0}^{+\infty}\frac{x}{\sh x}\dd x < +\infty
+    $$
+    d’où
+    $$
+      I = \sum_{n=0}^{+\infty}2(-1)^{n} \int_{0}^{+\infty} x e^{-(2x+1)x}\dd x
+    $$
+    $$
+      I = \sum_{n=0}^{+\infty}2(-1)^{n} \left(\left[\frac{x e^{-(2x+1)x}}{-(2x+1)}\right]_{0}^{+\infty} - \sum_{0}^{+\infty}\frac{e^{-(2n+1)x}}{-(2n+1)}\dd x\right) = \sum_{n=0}^{+\infty}2(-1)^{n} \left[- \frac{e^{-(2n+1)x}}{(2n+1)^{x}}\right]_{0}^{+\infty} = 2 \underbrace{\sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{2}}}_{\text{constante de Catalan}}
+    $$
+    La constante de Catalan, ou $\beta(2)$ avec
+    $$
+      \beta: x \longmapsto \sum_{n=0}^{+\infty}\frac{(-1)^{n}}{(2n+1)^{n}}
+    $$
+    vaut 0.92 au centième près.
+%
