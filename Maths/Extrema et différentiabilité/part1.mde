@@ -1,0 +1,540 @@
+# Extrema et différentiabilité
+
+:date 13/01/2026
+
+## Points critiques
+
+Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
+
+%def
+  Soit $A$ une partie de $E$ d’intérieur non vide. Soit $a \in A$. Une application $f: A \longrightarrow \R$ présente un minimum local (resp. maximum local) en $a$ (égal à $f(a)$) si
+  $$
+    \exists \varepsilon > 0: \forall x \in \Ball(a, \varepsilon) \cap A, f(x) \geq f(a) (\text{resp. } f(x) \leq f(a))
+  $$
+%
+
+%eg
+  Considérons la fonction $f: \applic{\R^{2}}{\R}{(x,y)}{(x^{2}+y^{2}-1)^{2}}$. La surface dans $\R^{3}$ représentative de $f$ a pour équation
+  $$
+    z = f(x,y) = (x^{2}+y^{2}-1)^{2}
+  $$
+  ou en coordonnées cylindro-polaires $(r, \theta, z)$~:
+  %rfig Coordonnées cylindro-polaires
+    ==FIG 1==
+  %
+  $$
+    z = (r^{2}-1)^{2}
+  $$
+  Cette surface est invariante par rotation autour de l’axe $Oz$, autrement dit, $(Oz)$ est un axe de révolution pour la surface. La section plane $\begin{cases}z = f(x,y)\\ x=0\end{cases}$, i.e. $\begin{cases}z = (y^{2}-1)^{2} \\ x=0\end{cases}$ peut se représenter. On a $\dv{z}{y} = 4y(y^{2}-1)$ d’où ses variations~:
+  %fig Variations de la section plane de $f$
+    @[./figures/tabvar-1.svg]
+  %
+  %fig Section plane de $f$
+    @[./figures/section-yz-1.svg]
+  %
+  %fig Surface représentative de $f$
+    @[./figures/3d-plot-1.svg]
+  %
+  - $f$ présente un minimum global égal à $0$ en tout point $(x_{0}, y_{0}) \in \R^{2}$ tel que $x_{0}^{2}+y_{0}^{2} = 1$. En effet, on a
+    $$
+      \forall (x,y) \in \R^{2}, f(x,y) \geq 0 = f(x_{0},y_{0})
+    $$
+  - $f$ présente un maximum local égal à $1$ au point $(0,0)$. En effet, si $(x,y) \in \Ball_{\norm{\cdot}_{2}}((0,0), 1)$, alors $x^{2}+y^{2} < 1$, d’où
+    $$
+      f(x,y) = (1-x^{2}-y^{2})^{2} \leq 1 = f(0,0)
+    $$
+  - $f$ ne présente pas de maximum global.
+%
+
+%offprog
+  %def Minimum local strict
+    $f: A \longrightarrow E$ présente un minimum local strict en $a \in A$ si
+    $$
+      \forall \varepsilon > 0, \forall x \in  \big(\Ball(a, \varepsilon) \setminus \{a\}\big) \cap A, f(x) > f(a)
+    $$
+  %
+
+  %eg
+    Dans l’exemple précédent, $f$ présente un maximum local strict en $(0,0)$~:
+    $$
+      \forall (x,y) \in \Ball((0,0), 1) \setminus \{(0,0)\}, f(x,y) < 1
+    $$
+    Par contre, $f$ ne présente pas de minimum local strict en un point $(x_{0}, y_{0}) \in \R^{2}$ tel que $x_{0}^{2}+y_{0}^{2} = 1$, car tout disque centré en $(x_{0}, y_{0})$ contient d’autre points $(x,y)$ tels que $x^{2}+y^{2}=1$.
+  %
+%
+
+%def
+  Soit $U$ un ouvert non vide de $E$. Soit $f: U \longrightarrow \R$ une application. Soit $a \in U$. On dit que $a$ est un point critique de $f$ si
+  1. $f$ est différentiable en $a$
+  2. $\dd f(a) = 0_{\L(E,\R)}$ ou encore si $E$ est euclidient~: $\nabla f(a) = 0_{E}$((car $\forall h \in E, \dd f(a)\mdot h = \scalar{\nabla f(a)}{h}$))
+%
+
+%prop Condition nécessaire d’extremum local d’une fonction différentiable
+  1. Si $f: U \longrightarrow \R$ (avec $U$ ouvert de $E$) présente un extremum local en $a \in U$ et si $f$ est différentiable en $a$, alors
+     $$
+       \dd f(a) = 0_{\L(E,\R)}
+     $$
+     i.e. si $E$ est euclidien, $\nabla f(a) = 0_{E}$.
+  2. Pour $f: U \longrightarrow \R$ différentiable sur un ouvert $U$ de $E$, les seuls points de $U$ où $f$ peut présenter un extremum local sont les points critiques de $f$.
+%
+
+%proof
+  Supposons que $f$ présente un minimum local en $a$. Comme $U$ est un ouvert, il existe $\varepsilon > 0$ tel que
+  ~ $\Ball(a, \varepsilon) \subset U$  ~ $\forall x \in \Ball(a, \varepsilon), f(x) \geq f(a)$
+  Soit $v \in E$ unitaire.
+  $$
+    \varphi: \applic{\oo{-\varepsilon, \varepsilon}}{\R}{t}{f(a+tv)}
+  $$
+  est bien définie. Comme $f$ est différentiable, $f$ admet en $a$ une dérivée selon $v$. Autrement dit, $\varphi$ est dérivable en $0$. Or
+  $$
+    \forall t \in \oo{-\varepsilon, \varepsilon}, \varphi(t) \geq f(a) = \varphi(0)
+  $$
+  - $\frac{\varphi(t) - \varphi(0)}{t} > 0$ pour $t \in \oo{0, \varepsilon}$
+  - $\frac{\varphi(t)-\varphi(0)}{t} < 0$ pour $t \in \oo{-\varepsilon, 0}$
+  - d’où $\varphi_{d}'(0) \geq 0$ et $\varphi_{g}'(0) \leq 0$
+  Ainsi, $\varphi'(0) = 0$, i.e. $D_{v}f(a) = 0$, soit $\dd f(a) \mdot v = 0$. On a alors
+  $$
+    \forall w \in E \setminus \{0\}, \dd f(a) \mdot \frac{w}{\norm{w}} = 0
+  $$
+  donc
+  $$
+    \forall w \in E \setminus \{0\}, \dd f(a) \mdot w = 0
+  $$
+  d’où $\dd f(a) = 0_{\L(E,\R)}$.
+%
+
+%callout Attention
+  1. La fonction $f: \applic{\cc{0,1}}{\R}{x}{x}$ présente un minimum global en $0$ valant $0$ et un maximum global en $1$ valant $1$, $f$ est dérivable en ces points mais $f'(0) = f'(1) = 1 \ne 0$.
+  2. **Ce n’est pas une condition suffisante.** La fonction $f: \applic{\R^{2}}{\R}{(x,y)}{x^{2}-y^{2}}$ est polynomiale donc différentiable sur $\R^{2}$. Si $f$ présente un extremum local en $(x,y)$, alors
+     $$
+       \nabla f(x,y) = (0,0) \quad\text{i.e.}\quad (2x,-2y) = (0,0)
+     $$
+     %rfig
+       ==FIG 5==
+     %
+     $(0,0)$ est donc le seul point critique de $f$. On a $f(0,0) = 0$. Or,
+     ~ $\forall x \in \R^{*}, f(x, 0) = x^{2} > 0$  ~ $\forall y \in \R^{*}, f(0,y) = -y^{2} < 0$
+     don $f$ n’est extremale en $(0,0)$ sur aucun disque centré en $(0,0)$, donc $f$ ne présente pas d’extremum local en $(0,0)$.
+     ~ $\begin{cases}z = x^{2}-y^{2}\\ y=0\end{cases} \iff \begin{cases}z = x^{2}\\ y=0\end{cases}$  ~ $\begin{cases}z = x^{2}-y^{2}\\ x=a\end{cases} \iff \begin{cases}z = a^{2}-y^{2}\\ x=a\end{cases}$
+     %fig Surface représentative de $f$
+       @[./figures/3d-plot-2.svg]
+     %
+     On dit que la surface présente un point-selle (ou point-col) en $(0,0,0)$.
+%
+
+%eg
+  Considérons la fonction
+  $$
+    f: \applic{\R^{3}}{\R}{(x,y,z)}{(x+y+z)^{2} + x^{2}+y^{2}+z^{2}-1}
+  $$
+  - _Extrema de $f$._ $f$ est différentiable sur l’ouvert $\R^{3}$ car celle-ci est polynomiale. Si $f$ présente un extremum local en $(x,y,z)$, alors
+    $$
+      \nabla f(x,y,z) = (0,0,0) \iff \begin{cases}2(x+y+z) + 2x =0\\ 2(x+y+z) + 2y = 0\\ 2(x+y+z) + 2z = 0\end{cases} \iff \begin{cases}x = y = z\\ x+y+z = -x\end{cases} \iff x=y=z=0
+    $$
+    Le seul point critique de $f$ est $(0,0,0)$, point en lequel $f$ vaut $-1$. De plus,
+    $$
+      \forall (x,y,z) \in \R^{3}, f(x,y,z) \geq -1
+    $$
+    donc $f$ présente un minimum global en $(0,0,0)$ égal à $-1 = \min_{\R^{3}}f$.
+%
+
+%eg
+  L’application $g: \applic{\R^{2}}{\R}{(x,y)}{x^{3}y+x^{3}-x^{2}y}$ est différentiable sur $\R^{2}$ comme fonction polynomiale. Si $g$ présente un extremum local en $(x,y)$, _alors_
+  $$
+    \begin{align*}
+      \nabla g(x,y) = (0,0) &\iff \begin{cases}3x^{2}y + 3x^{2}-2xy = 0\\ x^{x}-x^{2} = 0 = x^{2}(x-1)\end{cases}\\
+        &\iff \begin{cases}x=0\\0=0\end{cases} \quad\text{ou}\quad \begin{cases}x=1\\ 3y+3-2y=0\end{cases}\\
+        &\iff x=0 \quad\text{ou}\quad \begin{cases}x=1\\y=-3\end{cases}
+    \end{align*}
+  $$
+  Les points critiques de $g$ sont $(1,-3)$ et les points $(0,y)$ pour $y \in \R$.
+  ~ $g(1,-3) = -3+1+3=1$  ~ $g(0,y) = 0$ pour $y \in \R$
+  - $x \longmapsto g(x,0) = x^{2}$ change de signe en 0 donc ne présente pas d’extremum local en $(0,0)$
+  - Soit $y \in \R^{*}$.
+    $$
+      g(x,y') = x^{2} \big(x(y'+1) - y'\big) \usim{(x,y') \to (0,y)} -y x^{2}
+    $$
+    donc $g$ présente un maximum local en $(0,y)$ pour $y > 0$ et un minimum local en $(0,y)$ pour $y < 0$ (ce ne sont pas des extrema globaux~: $g(1,0) = 1 > 0$ et $g(-1,0)=-1 < 0$)
+  - On a
+    $$
+      \begin{align*}
+        \underbrace{g(1+u,-3+v) - g(1,-3)}_{\delta(u,v)} &= (1+u)^{2} \big((1+u)(-2+v) + 3-v\big)-1\\
+        &= (1+u)^{2} \big(1-2u+uv\big)-1\\
+        &= 1-2u+uv + 2u-4u^{2}+2u^{2}v + u^{2}-2u^{3} + u^{3}v-1\\
+        &= -3u^{2}+uv+\varepsilon(u,v)
+      \end{align*}
+    $$
+    avec $\varepsilon(u,v) = 2u^{2} v - 2u^{3}+u^{3}v$. On a
+    $$
+      \delta(u,v) = -3 \left(u^{2}- \frac{uv}{3}\right) + \varepsilon(u,v) = -3 \left(\left(u- \frac{v}{6}\right)^{2}-\frac{v^{2}}{36}\right) + \varepsilon(u,v)
+    $$
+    donc
+    $$
+      \forall u \in \R^{*}, \delta(u,0) \usim{u\to 0} -3u^{2} < 0
+    $$
+    et
+    $$
+      \forall v \in \R^{*}, \delta \left(\frac{v}{6,v}\right)\usim{v\to 0}\frac{v^{2}}{12} > 0
+    $$
+    donc $g$ ne présente pas d’extremum local en $(1,-3)$.
+%
+
+La recherche des extrema de $f:A \longrightarrow \R$ pour $A$ partie quelconque de $E$ est plus délicate, cependant le cas suivant peut être étudié~:
+~ $f: K \longrightarrow \R$ continue  ~ $K$ compact de $E$ d’intérieur non vide  ~ $f_{|U}: U = \ring K \longrightarrow \R$ différentiable
+Comme $f$ est continue sur le compact $K$ et à valeurs réelles, $f$ est bornée et atteint ses bornes. Posons $m = \min_{K} f$ et $M = \max_{K}f$. Posons $\partial K = \bar{K} \setminus \ring K = K \setminus U$.
+- $m$ et $M$ peuvent être atteints en un point de $\partial K$
+- si il existe $a \in U$ tel que $f(a) \in \{m, M\}$, alors $f_{|U}$ présente un extremum local en $a$ (et même global). Comme $f_{|U}$ est différentiable en $a$, on a
+  $$
+    \dd (f_{|U})(a) = 0_{\L(E,\R)}
+  $$
+  Posons $\Gamma = \{x \in U \where \dd (f_{|U})(x) = 0_{\L(E,\R)}\}$. On a
+  ~ $m = \min \{f(x) \where x \in (\partial K \cup  \Gamma)\}$  ~ $M = \max \{f(x) \where x \in (\partial K \cup \Gamma)\}$
+  et $m$ et $M$ sont atteints uniquement en un point appartenant à $\partial K \cup \Gamma$.
+
+%eg
+  Considérons la fonction $f: \applic{A}{\R}{(x,y)}{x^{2}+5y^{3}-y}$ définie sur le compact
+  $$
+    A = \big\{(x,y) \in \R^{2} \where x^{2}+y^{2} \leq 1 \text{ et } y \geq 0\big\}
+  $$
+  %rfig
+    ==FIG 7==
+  %
+  Étudions ses extrema. $f$ est continue sur le compact $A$ comme la restriction d’une fonction polynomiale.
+  $$
+    \ring A = \big\{(x,y) \in \R^{2} \where x^{2}+y^{2} < 1 \text{ et } y > 0\big\}
+  $$
+  $f_{|\ring A}$ est différentiable. $f$ admet un minimum et maximum global $m$ et $M$~:
+  $$
+    m = \min \big\{f(x,y) \where (x,y) \in (\partial A \cup \Gamma)\big\}
+  $$
+  avec $\Gamma = \big\{(x,y) \in \ring A \where \dd f(|_{\ring A})(x,y) = 0\big\}$.
+  $$
+    \forall (x,y) \in \ring A, \nabla (f_{|\ring A})(x,y) = (2x, 15y^{2}-1)
+  $$
+  ~ $\Gamma = \left\{\left(0, \frac{1}{\sqrt{15}}\right)\right\}$  ~ $f \left(0, \frac{1}{\sqrt{15}}\right) = \frac{5}{15 \sqrt{15}} - \frac{1}{\sqrt{15}} = - \frac{2}{3 \sqrt{15}}$
+  $\partial A = L \cup S$ avec $L = \cc{-1,1} \times \{0\}$ et $S = \{(x,y) \in \R^{2} \where y \geq 0 \text{ et }x^{2}+y^{2}=1\} = \{(\varepsilon \sqrt{1-y^{2}}, y) \where y \in \cc{0,1}, \varepsilon \in \{-1,1\}\}$. $\forall x \in \cc{-1,1}, f(x,0) = x^{2}$. $f(L) = \cc{0,1}$.
+  $$
+    \forall y \in \cc{0,1}, f(\varepsilon \sqrt{1-y^{2}}, y) = 1-y^{2} + 5y^{3} - y = \varphi(y)
+  $$
+  et $\varphi'(y) = 15 y^{2}-2y-1$ a pour discriminant réduit $\Delta' = 1+15 = 16$ donc ses racines sont $\frac{1 \pm \sqrt{16}}{15}$, i.e. $\cancel{\frac{-1}{5}}$ ou $\frac{1}{3}$.
+  %fig
+    ==FIG 8==
+  %
+  $$
+    \varphi \left(\frac{1}{3}\right) = 1-\frac{1}{9} + \frac{5}{27} - \frac{1}{3} = \frac{27-3+5-9}{27} = \frac{20}{27}
+  $$
+  donc
+  $$
+    \min_{A}f = - \frac{2}{3 \sqrt{15}} \quad\text{et}\quad \max_{A} f = 4
+  $$
+  On peut envisager~:
+  - un minimum local en $(0,0)$, en $\left(\frac{2 \sqrt{2}}{3}, \frac{1}{3}\right)$ et en $\left(-\frac{2 \sqrt{2}}{3}, \frac{1}{3}\right)$
+  - un maximum local en $(1,0), (-1,0)$
+  Traitons ces cas~:
+  - $f(0,y) = 5y^{3}-y \usim{y\to 0^{+}} -y < 0$ et $f(x,0) = x^{2} > 0$ pour $x \in \oc{0,1}$ donc $f$ ne présente pas d’extremum local en $(0,0)$.
+  - $f(1,0)=1$ donc
+    $$
+      f(x,z)-f(1,0) = x^{2}-1+5y^{3}-y = \underbrace{(x-1)(x+1)}_{\leq 0 \text{ pour } x \in \cc{-1,1}} \underbrace{- y}_{\leq 0}(1+5y^{2})
+    $$
+    et $1-5y^{2} > 0 \iff y^{2} < \frac{1}{5}$ donc
+    $$
+      \forall (x,y) \in \cc{-1,1} \times \cc{0, \frac{1}{\sqrt{5}}}, f(x,y) - f(1,0) \leq 0
+    $$
+    $f$ présente un maximum local en $(1,0)$ (et en $(-1,0)$) égal à 1.
+%
+
+## Applications de classe $\Cont^{1}$
+
+Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie.
+
+%def
+  Soit $\Omega$ un ouvert de $E$ non vide. Une application $f: \Omega \longrightarrow F$ est dite de classe $\Cont^{1}$ si
+  1. $f$ est différentiable sur $\Omega$
+  2. $\dd f: \applic{\Omega}{\L(E,F)}{x}{\dd f(x)}$ est continue sur $\Omega$
+%
+
+%rem
+  On a muni $\L(E,F)$ d’une norme, par exemple
+  $$
+    \forall \ell \in \L(E,F), \opnorm{\ell} = \sup_{x \in E \setminus \{0\}} \frac{\norm{\ell(x)}_{F}}{\norm{x}_{E}}
+  $$
+  (toutes les normes sur $\L(E,F)$ sont équivalentes)
+%
+
+%rem
+  Soit $f: I \longrightarrow F$ un arc dérivable sur un intervalle ouvert. Alors $f$ est différentiable sur $I$ et
+  $$
+    \forall a \in I, \dd f(a): \applic{\R}{F}{h}{hf'(a)}
+  $$
+  Pour $\ell \in \L(\R, F)$, on a
+  $$
+    \opnorm{\ell} = \sup_{h \in \R^{*}} \frac{\norm{\ell(h)}_{F}}{\abs{h}} = \sup_{h \in \R^{*}} \frac{\abs{h} \norm{\ell(1)}_{F}}{\abs{h}} = \norm{\ell(1)}_{F}
+  $$
+  si bien que pour $(a,b) \in I^{2}$, on a
+  $$
+    \opnorm{\dd f(a) - \dd f(b)} = \norm{\dd f(a)\mdot 1 - \dd f(b)\mdot 1} = \norm{f'(a) - f'(b)}_{F}
+  $$
+  d’où
+  $$
+    \dd f(a) \xrightarrow[a\to b]{\opnorm{\cdot}} \dd f(b) \iff f'(a) \xrightarrow[a\to b]{\norm{\cdot}_{F}} f'(b)
+  $$
+  Les deux notions de classe $\Cont^{1}$ coïncident pour un arc.
+%
+
+%eg
+  Soit $f: E \longrightarrow F$ affine. Il existe alors $\ell \in \L(E,F)$ et $u \in F$ tels que
+  $$
+    \forall x \in E, f(x) = \ell(x) + u \ie f = \ell + \tilde{u}
+  $$
+  $f$ est différentiable sur $E$ et
+  $$
+    \forall x \in E, \dd f(x) = \dd \ell(x) + \dd \tilde{u}(x) = \ell
+  $$
+  donc $f$ est constante donc continue. Ainsi, **toute application affine (donc toute application linéaire) est de classe $\Cont^{1}$**.
+%
+
+%prop
+  Soient
+  ~ $f: \Omega \longrightarrow F$ est de classe $\Cont^{1}$ sur un ouvert $\Omega_{E}$ de $E$
+  ~ $g: \Omega_{F} \longrightarrow G$ de classe $\Cont^{1}$ sur un ouvert $\Omega_{F}$ de $F$
+  ~ $f(\Omega_{E}) \subset \Omega_{F}$
+  alors, $g\circ f: \Omega_{E} \longrightarrow G$ est de classe $\Cont^{1}$.
+%
+
+%proof
+  $g\circ f$ est différentiable et
+  $$
+    \forall x \in \Omega_{E}, \dd (g\circ f)(x) = \dd g(f(x)) \circ \dd f(x) = (\dd g\circ f)(x) \circ \dd f(x)
+  $$
+  $\dd (g\circ f)$ est la composée de la fonction continue $\applic{\Omega_{E}}{\L(F,G) \times \L(E,F)}{x}{\big((\dd g\circ f)(x), \dd f(x)\big)}$ et de la fonction bilinéaire $\applic{\L(F,G)\times \L(E,F)}{\L(E,G)}{(u,v)}{u\circ v = \dd (g\circ f)(x)}$. Ainsi, $\dd (g\circ f)$ est continue.
+%
+
+%property
+  Soit $\Omega$ un ouvert de $E$.
+  1. $\Cont^{1}(\Omega, F)$ est un sous-espace vectoriel de $\Cont(\Omega, F)$
+  2. Soit $f: \applic{\Omega}{(F_{1} \times  \cdots \times F_{q})}{x}{\big(f_{1}(x), \ldots, f_{q}(x)\big)}$. On a
+     $$
+       f \in \Cont^{1}(\Omega) \iff \forall i \in \icc{1,q}, f_{i} \in \Cont^{1}(\Omega, F_{i})
+     $$
+  3. Soit $(\varepsilon_{1}, \ldots, \varepsilon_{q})$ une base de $F$. Soit $f: \Omega \longrightarrow F$. Posons $\forall i \in \icc{1,q}, f_{i} = \varepsilon_{i}^{*} \circ f$. On a alors
+     $$
+       f \in \Cont^{1}(\Omega, F) \iff \forall i \in \icc{1,q}, f_{i} \in \Cont^{1}(\Omega, \R)
+     $$
+%
+
+%proof
+  1. $\Cont^{1}(\Omega, F) \subset \Cont(\Omega, F)$ et $\tilde{0_{F}} \in \Cont^{1}(\Omega, F)$. Soient $(f,g) \in \Cont^{1}(\Omega, F)^{1}$ et $(\lambda, \mu) \in \R^{2}$. $\lambda f + \mu g$ est différentiable sur $\Omega$ et
+     $$
+       \dd (\lambda f+\mu g) = \lambda \dd f + \mu \dd g
+     $$
+     est continue comme combinaison linéaires de fonctions continues. Ainsi, $\lambda f + \mu g \in \Cont^{1}(\Omega, F)$.
+  2. - Soit $\pi_{i}: F_{1} \times  \cdots \times  F_{q} \longrightarrow F_{i}$ la i-ème projection (linéaire). Alors $\pi_{i}$ est de classe $\Cont^{1}$ et
+       $$
+         f \in \Cont^{1}(\Omega, F_{1} \times  \cdots \times F_{q}) \implies \forall i \in \icc{1,q}, f_{i} = \pi_{i}\circ f \in \Cont^{1}(\Omega, F_{i})
+       $$
+     - Supposons~: $\forall i \in \icc{1,q}, f_{i} \in \Cont^{1}(\Omega, F_{i})$. On a
+       $$
+         \forall a \in \Omega, \forall h \in E, \dd f(a)\mdot h = \big(\dd f_{i}(a)\mdot h\big)_{1 \leq i \leq q}
+       $$
+       Soit $(a,b) \in \Omega^{2}$. Pour tout $h \in E$,
+       $$
+         \begin{align*}
+           \norm{ \big(\dd f(a) - \dd f(b)\big)\mdot h}_{F_{1} \times \cdots \times F_{q}} &= \norm{\mtx{\big(\dd f_{i}(a) - \dd f_{i}(b)\big)\mdot h}_{1 \leq i \leq q}} \\
+             &= \sum_{i=1}^{q}\norm{\big(\dd f_{i}(a) - \dd f_{i}(b)\big)\mdot h}_{F_{i}} \\
+             &\leq \left(\sum_{i=1}^{q}\opnorm{\dd f_{i}(a) - \dd f_{i}(b)}\right) \norm{h}
+         \end{align*}
+       $$
+       donc
+       $$
+         \opnorm{\dd f(a) - \dd f(b)} \leq \sum_{i=1}^{q}\norm{\dd f_{i}(a) - \dd f_{i}(b)} \arrowlim{a\to b} \sum_{i=1}^{q}0 = 0
+       $$
+       donc $\dd f(a) \arrowlim{a\to b}\dd f(b)$.
+  3. Notonc $f: \applic{\Omega}{F}{x}{\sum_{i=1}^{q}f_{i}(x)\varepsilon_{i}}$ et posons
+     $$
+       \varphi: \applic{\R^{q}}{F}{(\lambda_{1}, \ldots, \lambda_{q})}{\sum_{i=1}^{q}\lambda_{i} \varepsilon_{i}}
+     $$
+     $\varphi$ est un isomorphisme d’espaces vectoriels donc $\varphi$ et $\varphi^{-1}$ sont de classe $\Cont^{1}$.
+     $$
+       f \in \Cont^{1}(\Omega, F) \iff \varphi^{-1}\circ f \in \Cont^{1}(\Omega, \R^{q}) \iff \forall i \in \icc{1,q}, f_{i} \in \Cont^{1}(\Omega,\R)
+     $$
+%
+
+%prop
+  %rfig
+    @[./figures/arc-omega.svg]
+  %
+  Soit $f: \Omega \longrightarrow F$ une application de classe $\Cont^{1}$ sur un ouvert $\Omega$ de $E$. Soit $\gamma: \cc{0,1} \longrightarrow E$ un arc de classe $\Cont^{1}$ tracé sur $\Omega$ (i.e. $\gamma(\cc{0,1}) \subset \Omega$). Alors $f\circ \gamma: \cc{0,1} \longrightarrow F$ est un arc de classe $\Cont^{1}$ et si $\gamma(0) = a$ et $\gamma(1)=b$, alors
+  $$
+    f(b) - f(a) = \int_{0}^{1}\dd f(\gamma(t))\mdot \gamma'(t)\dd t = \int_{0}^{1} \scalar{\nabla f(\gamma(t))}{\gamma'(t)} \dd t
+  $$
+  que l’on note $\int_{\gamma}\dd f$.
+%
+
+%proof
+  On sait que $f\circ \gamma: \cc{0,1} \longrightarrow F$ est dérivable et
+  $$
+    \forall t \in I, (f\circ \gamma)'(t) = \dd f(\gamma(t))\mdot \gamma'(t)
+  $$
+  ==TODO==
+  $(f\circ \gamma)': \cc{0,1} \longrightarrow F$ est continue comme composée de la fonction continue $\applic{\cc{0,1}}{\L(E,F) \times E}{t}{(\dd f'(\gamma))}$
+  ==TODO==
+  donc $(f\circ \gamma)' \in \Cont(\cc{0,1}, F)$, i.e. $f\circ \gamma \in \Cont^{1}(\cc{0,1}, F)$. Ainsi,
+  $$
+    \int_{0}^{1}(f\circ \gamma)' = (f\circ \gamma)(1) - (f\circ \gamma)(0)
+  $$
+  i.e.
+  $$
+    f(b) - f(a) = \int_{0}^{1}\dd f(\gamma(t))\mdot \gamma'(t)\dd t
+  $$
+%
+
+%rem
+  %rfig
+    @[./figures/segment-ab.svg]
+  %
+  Si $f: \Omega \longrightarrow F$ est de classe $\Cont^{1}$ et si $\cc{a,b} \subset \Omega$, alors
+  $$
+    f(b)-f(a) = \int_{0}^{1}\dd f(a+t(b-a)) \mdot (b-a)\dd t
+  $$
+%
+
+%rem
+  Si $\Omega$ est un ouvert connexe et $f: \Omega \longrightarrow F$ est de classe $\Cont^{1}$ telle que
+  $$
+    \exists K > 0: \forall x \in \Omega, \opnorm{\dd f(x)} \leq K
+  $$
+  alors pour $(a,b) \in \Omega^{2}$, comme $\cc{a,b} \subset \Omega$, on a
+  $$
+    \norm{f(b) - f(a)} = \norm{\int_{a}^{1}\dd f(a+t(b-a))\mdot (b-a)\dd t} \leq \int_{0}^{1}\norm{\dd f(a + t(b-a))\mdot (b-a)}\dd t \leq \int_{0}^{1}\opnorm{\dd f(a+t(b-a))} \times \norm{b-a}\dd t \leq \int_{0}^{1}K \norm{b-a}\dd t
+  $$
+  donc
+  $$
+    \forall (a,b) \in \Omega^{2}, \norm{f(b)-f(a)} \leq K \norm{b-a}
+  $$
+%
+
+%rem
+  Si $\gamma: \cc{0,1} \longrightarrow \Omega$ est un lacet de classe $\Cont^{1}$ (i.e. $\gamma(1) = \gamma(0)$) et si $f: \Omega \longrightarrow F$ est de classe $\Cont^{1}$, alors
+  $$
+    \oint_{\gamma} \dd f = 0
+  $$
+%
+
+%rem
+  Si $f: I \longrightarrow F$ est de classe $\Cont^{1}$ sur un intervalle $I$, alors
+  $$
+    f(b)-f(a) = \int_{0}^{1}\dd f(a+t(b-a))\mdot (b-a)\dd t = \int_{0}^{1}(b-a)f'(a+t(b-a))\dd t \overset{u = a+t(b-a)}{\ueq{\dd u = (b-a)\dd t}} \int_{a}^{b}f'(u)\dd u
+  $$
+%
+
+%thm Caractérisation de la classe $\Cont^1$ à l’aide de dérivés partielles
+  Soit $f: \Omega \longrightarrow F$ une application définie sur un ouvert $\Omega$ non vide de $E$, $E$ étant muni d’une base $\B = (e_{1}, \ldots, e_{n})$. Il y a alors équivalence entre
+  1. $f \in \Cont^{1}(\Omega, F)$
+  2. $f$ admet des dérivés partielles en tout point de $\Omega$ selon la base $\B$ et pour tout $k \in \icc{1, n}, \partial_{k} f: \Omega \longrightarrow F$ est continue sur $\Omega$.
+%
+
+%proof
+  - Supposons $f \in \Cont^{1}(\Omega, F)$. Comme $f$ est différentiable, $f$ admet une dérivée en tout point de $\Omega$ selon tout vecteur de $\B$, donc $\partial_{k}f$ est définie sur $\Omega$ pour tout $k \in \icc{1,n}$. Soit $k \in \icc{1,n}$. Soient $(a,b) \in \Omega^{2}$.
+    $$
+      \begin{align*}
+        \norm{\partial_{k} f(a) - \partial_{k}f(b)}_{F} &= \norm{D_{e_{k}}f(a) - D_{e_{k}}f(b)}_{F} \\
+        &= \norm{\dd f(a) \mdot e_{k} - \dd f(b)\mdot e_{k}}_{F}\\
+        &= \norm{\big(\dd f(a) - \dd f(b)\big)\mdot e_{k}}_{F} \\
+        &\leq \opnorm{\dd f(a) - \dd f(b)} \times \norm{e_{k}} \arrowlim{a\to b}0
+      \end{align*}
+    $$
+    donc $\partial_{k} f(a) \arrowlim{a\to b} \partial_{k}(b)$.
+  - Supposons $\partial_{1} f, \ldots, \partial_{n} f$ définies et continues sur $\Omega$ (à valeurs dans $F$).
+    - _Analyse._ Si $f$ est différentiable en $a \in \Omega$, alors
+      $$
+        \forall h \in E, \dd f(a)\mdot h = \dd f(a) \mdot \left(\sum_{i=1}^{n}h_{i}e_{i}\right) = \sum_{i=1}^{n}h_{i} \dd f(a)\mdot e_{i} = \sum_{i=1}^{n}h_{i} \partial_{i} f(a)
+      $$
+    - _Synthèse._ Soit $a \in \Omega$. Posons
+      $$
+        \Delta(h) = f(a+h)-f(a) - \sum_{i=1}^{n}h_{i}\partial_{i}f(a)
+      $$
+      Montrons $\Delta(h) \ueq{h\to 0_{E}}o(h)$. Posons pour $h = \sum_{i=1}^{n}h_{i}e_{i} \in E$, $\norm{h} = \sum_{i=1}^{n}\abs{h_{i}}$. Soit $\varepsilon > 0$. Il existe $\delta > 0$ tel que $\Ball(a, \delta) \subset \Omega$ et que (continuité de chaque $\partial_{i} f$ en $a$),
+      $$
+        \forall i \in \icc{1,n}, \forall x \in \Ball(a, \delta), \norm{\partial_{i} f(x) - \partial_{i} f(a)} < \varepsilon
+      $$
+      Soit $h \in \Ball(0_{E}, \delta)$.
+      $$
+        \begin{align*}
+          \Delta(h) &= f\Big((a_{1}+h_{1})e_{1} + \cdots + (a_{n}+h_{n})e_{n}\Big) \\
+          &- f\Big(a_{1} e_{1} + (a_{2} + h_{2})e_{2} + \cdots + (a_{n} + h_{n})e_{n}\Big)\\
+          &+ f \Big(a_{1} e_{1} + (a_{2}+h_{2})e_{2} + \cdots + (a_{n}+h_{n}) e_{n}\Big)\\
+          &- f \Big(a_{1} e_{1} + a_{2} e_{2} + (a_{3}+h_{3})e_{3} + \cdots + (a_{n} + h_{n})e_{n}\Big)\\
+          &\vdots\\
+          &- f\Big(a_{1} e_{1} + \cdots + a_{n}e_{n}\Big)\\
+          &- \sum_{i=1}^{n}h_{i} \partial_{i}f(a)
+        \end{align*}
+      $$
+      Soit, pour $i \in \icc{1,n}$, l’application
+      $$
+        \varphi_{i}: \applic{\cc{0,1}}{F}{t}{f \Big(a_{1} e_{1} + \cdots + a_{i-1}e_{i-1} + (a_{i} + th_{i})e_{i} + (a_{i+1}+h_{i+1})e_{i+1} + \cdots + (a_{n} + h_{n})e_{n}\Big)}
+      $$
+      Ces applications sont de classe $\Cont^{1}$ sur $\cc{0,1}$ et
+      $$
+        \forall t \in \cc{0,1}, \varphi_{i}' = h_{i} \partial_{i} f \Big(a_{1} e_{1} + \cdots + a_{i-1}e_{i-1} + (a_{i} + th_{i})e_{i} + (a_{i+1}+ h_{i+1})e_{i+1} + \cdots + (a_{n} + h_{n})e_{n}\Big)
+      $$
+      Alors
+      $$
+        \begin{align*}
+          \Delta(h) &= \sum_{i=1}^{n}\Big[\big(\varphi_{i}(1) - \varphi_{i}(0)\big)-h_{i} \partial_{i} f(a)\Big]\\
+          &= \sum_{i=1}^{n} \left(\int_{0}^{1}\varphi_{i}' (t)\dd t\right) - h_{i}\partial_{i}f(a) \\
+          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{1} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
+        \end{align*}
+      $$
+      (la différence de $(…)$ et de $a$ vaut $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
+      $$
+        \norm{\Delta(h)} \leq \sum_{i=1}^{n}\norm{h_{i}}\int_{0}^{1}\norm{\partial_{i} f(\ldots) - \partial_{i}f(a)}\dd t
+      $$
+      donc
+      $$
+        \norm{\Delta(h)} \leq \sum_{i=1}^{n}\varepsilon \abs{h_{i}} = \varepsilon \norm{h}
+      $$
+      d’où $\Delta(h) = o(h)$.
+    Ainsi, $f$ est différentiable en tout point $a \in \Omega$.
+    Soit $(a,b) \in \Omega^{2}$.
+    $$
+      \begin{align*}
+        \forall h \in E, \norm{\dd f(a)\mdot h - \dd f(b)\mdot h} &= \norm{\sum_{i=1}^{n}h_{i} \big(\partial_{i} f(a) - \partial_{i} f(b)\big)}\\
+        &\leq \sum_{i=1}^{n}\norm{\partial_{i} f(a) - \partial_{i}f(b)}\abs{h_{i}}\\
+        &\leq \left(\sum_{i=1}^{n}\norm{\partial_{i} f(b) - \partial_{i}f(a)}\right)\norm{h}
+      \end{align*}
+    $$
+    d’où, par continuité de chaque $\partial_{i} f$,
+    $$
+      \opnorm{\dd f(a) - \dd f(b)} \leq \sum_{i=1}^{n}\norm{\partial_{i}f(a) - \partial_{i}f(b)} \arrowlim{a\to b}0
+    $$
+    Ainsi, $\dd f(a) \arrowlim{a\to b}\dd f(b)$.
+%
+
+%eg
+  Soit $(e_{1}, \ldots, e_{n})$ une base de $E$. Soit $P \in \R[X_{1}, \ldots, X_{n}]$. Posons
+  $$
+    f: \applic{E}{\R}{x = \sum_{i=1}^{n}x_{i}e_{i}}{\tilde{P}(x_{1}, \ldots, x_{n})}
+  $$
+  $f$ est différentiable sur $E$ et
+  $$
+    \partial_{i}f(x_{1}, \ldots, x_{n}) = D_{e_{i}}f(x_{1}, \ldots, x_{n}) = \pdv{\tilde{P}}{x_{i}}(x_{1}, \ldots, x_{n})
+  $$
+  donc pour tout $i \in \icc{1,n}$, $\partial_{i}f$ est polynomiale en les coordonnsès dans la base $(e_{1}, \ldots, e_{n})$, donc $\forall i \in \icc{1,n}, \partial_{i}f \in \Cont(E,\R)$.
+  ++Toute fonction polynomiale en les coordonnées dans une base est de classe $\Cont^{1}$.++((Résultat au programme.))
+  Par exemple, $\M_{n}(\R) \longrightarrow \R$ est de classe $\Cont^{1}$ sur $\M_{n}(\R)$.
+%
+
+%eg
+  Soit $M: E_{1} \times \cdots \times E_{p} \longrightarrow F$ une application multilinéaire. Elle est alors différentiable et
+  $$
+    \dd M(a_{1}, \ldots, a_{p})\mdot (h_{1}, \ldots, h_{p}) = \sum_{i=1}^{p}M(a_{1}, \ldots, a_{i-1}, h_{i}, a_{i+1}, \ldots, a_{p})
+  $$
+  Soient $(e_{i}(1))_{i \in I_{1}}, \ldots, (e_{i}(p))_{i \in I_{p}}$ des bases respectives de $E_{1} \times  \cdots \times E_{p}$. Alors $\big((\varepsilon_{i}(1), 0, \ldots, 0)_{i \in I_{1}}, \ldots, (0, \ldots, 0, \varepsilon_{i}(p))_{i \in I_{p}}\big)$ est une base de $E_{1} \times  \cdots \times E_{p}$.
+  $$
+    D_{(0, \ldots, 0, e_{i}(k), 0, \ldots, 0)}M(a_{1}, \ldots, a_{p}) = M(a_{1}, \ldots, a_{k-1}, \varepsilon_{i}(k), a_{k+1}, \ldots, a_{p})
+  $$
+  Cette dérivée partielle est continue comme composée de l’application linéaire $(a_{1}, \ldots, a_{p}) \longmapsto (a_{1}, \ldots, \xcancel{a_{k}}, \ldots, a_{p})$ (retire la $k$-ième coordonnée) et de l’application $(p-1)$-linéaire $(a_{1}, \ldots, a_{k}, \ldots, a_{p}) \longmapsto M(a_{1}, \ldots, a_{k-1}, \varepsilon_{i}(k), a_{k+1}, \ldots, a_{p})$.
+  Ainsi, ++toute application multilinéaire est de classe $\Cont^{1}$.++
+  Par exemple, $\det_{\B}: \applic{E^{n}}{\R}{(u_{1}, \ldots, u_{n})}{\det_{\B}(u_{1}, \ldots, u_{n})}$ est de classe $\Cont^{1}$ sur $E^{n}$ si $\dim E = n$ et si $\B$ est une base de $E$.
+%
+

@@ -938,10 +938,10 @@ Si $I = \cc{a,b}$, chaque $f_{n}$ est continue sur $\cc{a,b}$ et $\sum_{n \geq 0
      $$
        \forall n \in \N, \abs{\sum_{k=0}^{n}f_{k}} \leq  \varphi
      $$
-  alors $\forall n \in \N, f_{n} \in \L^{1}(I,\K)$, $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I,\K)$ et
-  $$
-    \int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n}
-  $$
+  alors
+  ~ $\forall n \in \N, f_{n} \in \L^{1}(I,\K)$
+  ~ $\displaystyle\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I,\K)$
+  ~ $\displaystyle\int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n}$
 %
 
 %proof
@@ -1011,8 +1011,8 @@ Le cas des fonctions positives est très simple~:
   $$
     \int_{I} \sum_{n=0}^{+\infty}f_{n}(t)\dd t = \sum_{n \in \N} \int_{I} f_{n} \dans \bar{\R_{+}}
   $$
-  avec les convention
-  - $\int_{I} f_{n} = +\infty$ si $f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable
+  avec les conventions
+  - $\displaystyle\int_{I} f_{n} = +\infty$ si $f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable
   - $\forall \alpha \in \bar{\R_{+}}, \alpha + (+\infty) = +\infty$
 %
 
@@ -1047,7 +1047,7 @@ Le cas des fonctions positives est très simple~:
   $$
   et $\forall n \in \N, t \longmapsto -t^{n}\ln t \in \Cont(\oo{0,1}, \color{yellow}\R_{+}\color{reset})$ d’où
   $$
-    I = \sum_{n \in \N}\int_{0}^{1}-\ln t t^{n} \dd t \dd t \dans \bar{\R_{+}}
+    I = \sum_{n \in \N}\int_{0}^{1}-\ln t \cdot t^{n} \dd t \dans \bar{\R_{+}}
   $$
   or $\int_{\varepsilon}^{1}-\ln t \cdot t^{n} \dd t = \cdot  = \arrowlim{\varepsilon \to 0} \frac{1}{(n+1)^{2}}$ d’où
   $$
