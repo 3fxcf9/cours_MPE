@@ -1021,7 +1021,7 @@ Le cas des fonctions positives est très simple~:
   - sinon, $\forall n \in \N, f_{n} \in \L^{1}(I, \R_{+})$.
     - si $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I, \R_{+})$, la série $\sum_{n \geq 0}f_{n}$ converge simplement (de somme continue par morceaux) et
       $$
-        0 \leq \sum_{k=0}^{n}f_{k} \leq \sum_{n=0}^{+\infty}f_{n} = \varphi_{n}n\L^{1}(I,\R_{+})
+        0 \leq \sum_{k=0}^{n}f_{k} \leq \sum_{n=0}^{+\infty}f_{n} = \varphi_{n} \in \L^{1}(I,\R_{+})
       $$
       donc d’après le _théorème de convergence dominée_ pour les séries, on a
       $$
@@ -1037,7 +1037,7 @@ Le cas des fonctions positives est très simple~:
       $$
       donc
       $$
-        \sum_{k \in \N}\int_{I} f_{k} = +\infty = int_{I} \sum_{k=0}^{+\infty}f_{k}
+        \sum_{k \in \N}\int_{I} f_{k} = +\infty = \int_{I} \sum_{k=0}^{+\infty}f_{k}
       $$
 %
 

@@ -14,14 +14,14 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
 %
 
 %eg
+  %rfig Coordonnées cylindro-polaires
+    @[./figures/cylindro-polaires.svg]
+  %
   Considérons la fonction $f: \applic{\R^{2}}{\R}{(x,y)}{(x^{2}+y^{2}-1)^{2}}$. La surface dans $\R^{3}$ représentative de $f$ a pour équation
   $$
     z = f(x,y) = (x^{2}+y^{2}-1)^{2}
   $$
   ou en coordonnées cylindro-polaires $(r, \theta, z)$~:
-  %rfig Coordonnées cylindro-polaires
-    ==FIG 1==
-  %
   $$
     z = (r^{2}-1)^{2}
   $$
@@ -110,7 +110,7 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
        \nabla f(x,y) = (0,0) \quad\text{i.e.}\quad (2x,-2y) = (0,0)
      $$
      %rfig
-       ==FIG 5==
+       @[./figures/signes-voisinage.svg]
      %
      $(0,0)$ est donc le seul point critique de $f$. On a $f(0,0) = 0$. Or,
      ~ $\forall x \in \R^{*}, f(x, 0) = x^{2} > 0$  ~ $\forall y \in \R^{*}, f(0,y) = -y^{2} < 0$
@@ -196,9 +196,6 @@ Comme $f$ est continue sur le compact $K$ et à valeurs réelles, $f$ est borné
   $$
     A = \big\{(x,y) \in \R^{2} \where x^{2}+y^{2} \leq 1 \text{ et } y \geq 0\big\}
   $$
-  %rfig
-    ==FIG 7==
-  %
   Étudions ses extrema. $f$ est continue sur le compact $A$ comme la restriction d’une fonction polynomiale.
   $$
     \ring A = \big\{(x,y) \in \R^{2} \where x^{2}+y^{2} < 1 \text{ et } y > 0\big\}
@@ -218,7 +215,7 @@ Comme $f$ est continue sur le compact $K$ et à valeurs réelles, $f$ est borné
   $$
   et $\varphi'(y) = 15 y^{2}-2y-1$ a pour discriminant réduit $\Delta' = 1+15 = 16$ donc ses racines sont $\frac{1 \pm \sqrt{16}}{15}$, i.e. $\cancel{\frac{-1}{5}}$ ou $\frac{1}{3}$.
   %fig
-    ==FIG 8==
+    @[./figures/tabvar-3.svg]
   %
   $$
     \varphi \left(\frac{1}{3}\right) = 1-\frac{1}{9} + \frac{5}{27} - \frac{1}{3} = \frac{27-3+5-9}{27} = \frac{20}{27}
@@ -538,3 +535,171 @@ Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie.
   Par exemple, $\det_{\B}: \applic{E^{n}}{\R}{(u_{1}, \ldots, u_{n})}{\det_{\B}(u_{1}, \ldots, u_{n})}$ est de classe $\Cont^{1}$ sur $E^{n}$ si $\dim E = n$ et si $\B$ est une base de $E$.
 %
 
+%prop
+  1. Si $f_{1}, \ldots, f_{p}$ sont $p$ applications de classe $\Cont^{1}$ de $\Omega$ (ouvert de $E$) à valeurs respectivement dans $E_{1}, \ldots, E_{p}$, et si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est multilinéaire, alors $M(f_{1}, \ldots \phi_{p})$ est de classe $\Cont^{1}$ sur $\Omega$.
+  2. Si $f: \Omega \longrightarrow \F$ et $g: \Omega \longrightarrow F$ sont de classe $\Cont^{1}$ à valeurs dans une $\R$-algèbre de dimension finie $F$, alors $f \times g$ est de classe $\Cont^{1}$ sur $\Omega$.
+  3. $\Cont^{1}(\Omega,\K)$ est une sous-$\K$-algèbre de $\Cont(\Omega,\K)$.
+%
+
+%proof
+  1. $« M(f_{1}, \ldots, f_{p}) » = M\circ \varphi$ avec $\varphi: x \longmapsto \big(f_{1}(x), \ldots, f_{p}(x)\big)$ de classe $\Cont^{1}$ et $M$ multilinéaire donc $\Cont^{1}$. Ainsi, par composition, $M(f_{1}, \ldots, f_{p}) \in \Cont^{1}(\Omega)$.
+  2. $f \times g = B(f,g)$ avec $B: \applic{F^{2}}{F}{(u,v)}{u \times v}$ bilinéaire.
+  3. Si $(f,g) \in \Cont^{1}(\Omega,\K)$, alors $f \times g \in \Cont^{1}(\Omega,\K)$, $\lambda f + \mu g \in \Cont^{1}(\Omega,\K)$ et $\tilde{1} \in \Cont^{1}(\Omega,\K).$
+%
+
+## Vecteurs tangents à une partie
+
+Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
+
+%def
+  Soit $X$ une partie non vide de $E$. Soit $x \in X$. Soit $v \in E$. On dit que $v$ est un _vecteur tangent_ à $X$ en $x$ si il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow E$ un arc dérivable en 0 tel que
+  %rfig Vecteur tangent à une partie $X$.
+    @[./figures/vecteur-tangent.svg]
+  %
+  1. $\gamma$ est tracé sur $X$, i.e. $\gamma(\oo{-\varepsilon, \varepsilon}) \subset X$
+  2. $\gamma(0) = x$
+  3. $\gamma'(0) = v$
+  On note $T_{x}X$ l’ensemble des vecteurs tangents à $X$ en $x$.
+%
+
+%eg
+  1. Soit $f: I \longrightarrow \R$ une application définie sur un intervalle ouvert $I$ dérivable en $a \in I$. Soit $\Gamma = \{(x,f(x))\where x \in I\} \subset \R^{2}$ le graphe de $f$.
+     %fig Graphe de $f$
+       @[./figures/graphe-f-tangente.svg]
+     %
+     - Soit $v \in T_{(a, f(a))}\Gamma$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R^{2}$ tel que
+       ~ $\gamma(\oo{-\varepsilon, \varepsilon}) \subset \Gamma$  ~ $\gamma$ est dérivable en 0  ~ $\gamma(0) = (a,f(a))$  ~ $\gamma'(0) = v$
+       Posons
+       $$
+         \gamma: \applic{\oo{-\varepsilon,\varepsilon}}{\R^{2}}{t}{\big(x(t), f(x(t))\big)}
+       $$
+       avec
+       ~ $x,y$ dérivables en $0$  ~ $\big(x(0), y(0)\big) = \big(a, f(a)\big)$  ~ $\big(x'(0), y'(0)\big) = v$
+       or
+       $$
+         \big(x'(0), y'(0)\big) = \big(x'(0), f'(x(0))x'(0)\big) = x'(0) \big(1, f'(a)\big)
+       $$
+       donc $v \in \R \big(1,f'(a)\big)$, i.e. $T_{(a, f(a))}\Gamma \subset \R \big(1, f'(a)\big)$.
+     - Soit $\lambda \in \R$. IL existe $\varepsilon > 0$ tel que $\gamma: \applic{\oo{-\varepsilon, \varepsilon}}{\R^{2}}{t}{\big(a+\lambda t, f(a+\lambda t)\big)}$ est définie sur $\oo{-\varepsilon, \varepsilon}$ avec $a \in \ring I = I$. $\gamma$ est tracé sur $\Gamma$, $\gamma$ est dérivable en 0 (car $f$ est dérivable en $a$), et
+       ~ $\gamma(0) = (a, f(a))$  ~ $\gamma'(0) = (\lambda, \lambda f'(a))$
+       donc $\R \big(1, f'(a)\big) \subset T_{(a, f(a))}\Gamma$.
+     Ainsi, si $f$ est dérivable, $T_{(a, f(a))}\Gamma = \R(1, f'(a))$. L’ensemble $\big(a, f(a)\big) + T_{(a, f(a))}\Gamma$ est la « droite affine tangenge à $\Gamma$ en $(a, f(a))$ ».
+  2. $\forall x \in X, 0_{E} \in T_{x}X$. En effet, $\gamma: \applic{\R}{E}{t}{x}$ est un arc dérivable sur $\R$ donc en 0; $\gamma(\R) = \{x\} \subset X$; $\gamma(0) = x$ et $\gamma'(0) = 0_{E}$.
+  3. Soit $\Omega$ un ouvert non vide de $E$. Soit $x \in \Omega$. Déterminons $T_{x} \Omega$.
+     - Soit $v \in E$. Comme $\Omega$ est un ouvert, il existe $\varepsilon > 0$ tel que $\forall t \in \oo{-\varepsilon, \varepsilon}, x+tv \in \Omega$. Alors, $\gamma: \applic{\oo{-\varepsilon,\varepsilon}}{E}{t}{x+tv}$ est un arc tracé sur $\Omega$, dérivable en $0$ et tel que $\gamma(0) = x$ et $\gamma'(0) = v$. Ainsi, $v \in T_{x} \Omega$ donc $te \subset T_{x}\Omega \subset E$, donc ++si $\Omega$ est un ouvert,
+       $$
+         \forall x \in \Omega, T_{x} \Omega = E
+       $$
+  4. Si $X$ une partie de $E$ non vide, alors pour tout vecteur $x \in \ring X$, $T_{x}X = E$.
+  5. Prenons $X = \R \times \R_{+}$. Soit $x \in X$. Déterminons $T_{x}X$.
+     - Si $x \in \R \times \R_{+}^{*} = \longring{\R \times \R_{+}^{*}}$, alors $T_{x}X = \R^{2}$.
+     - Sinon, $x \in \R \times \{0\}$. Posons $mx = (\alpha, 0)$ avec $\alpha \in \R$. Soit $v \in T_{x}X$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R^{2}$ tels que
+       ~ $\gamma(\oo{-\varepsilon, \varepsilon}) \subset \R \times \R_{+}$  ~ $\gamma$ est dérivable en 0  ~ $\gamma(0) = x$  ~ $\gamma'(0) = v$
+       donc
+       $$
+         v = \lim_{t\to 0^{+}} \frac{\overbrace{\gamma(t)}^{\in \R \times \R_{+}} - \gamma(0)}{t}
+       $$
+       on a
+       $$
+         \forall t \in  \oo{-\varepsilon, \varepsilon}, \gamma(t) - \gamma(0) \in \R \times \R_{+}
+       $$
+       or $\R \times \R_{+}$ est un cone positif, donc
+       $$
+         \forall t \in \oo{0, \varepsilon}, \frac{\gamma(t) - \gamma(0)}{t}\in \R \times \R_{+}
+       $$
+       or $\R \times \R_{+}$ est une partie fermée de $\R^{2}$, donc
+       $$
+         v = \lim_{n\to+\infty} \frac{\gamma \left(\frac{1}{n}\right) - \gamma(0)}{\frac{1}{n}} \in \R \times \R_{+} \quad\text{et de même}\quad v = \lim_{n\to+\infty} \frac{\gamma \left(-\frac{1}{n}\right) - \gamma(0)}{-\frac{1}{n}} \in \R \times \R-
+       $$
+       donc $v \in (\R \times \R_{+}) \cap (\R \times \R-) = \R \times \{0\}$.
+     - Soit $v \in \R \times \{0\}$. $\gamma: \applic{\R}{\R^{2}}{t}{x+tv = (\alpha, 0) + tv}$ est un arc tracé sur $\R \times \{0\}$ donc sur $\R \times \R_{+} = X$. $\gamma$ est dérivable en $0$, $\gamma(0) = x$ et $\gamma'(0) = v$ donc $v \in T_{x}X$.
+     Ainsi, $T_{x}X = \R \times \{0\}$.
+%
+
+%prop Vecteurs tangents à un sous-espace affine
+  Soit $F$ un sous-espace vectoriel de $E$. Soit $a \in E$. On a
+  $$
+    \forall x \in (a+F), T_{x}(a+F) = F
+  $$
+%
+
+%proof
+  %rfig
+    @[./figures/espaces-affines-vecteur-tangent.svg]
+  %
+  - Soit $W = a+F$. Soit $x \in W$. Soit $v \in T_{x}W$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow E$ tracé sur $W$, dérivable en 0 et tel que $\gamma(0) = x$ et $\gamma'(0) = v$. Alors, $\forall t \in \oo{-\varepsilon, \varepsilon}, \gamma(t) - \gamma(0) = \gamma(t) - x \in F$ car $W = a+F = x+F$. Donc
+    $$
+      \forall t \in \oo{-\varepsilon, \varepsilon}\setminus \{0\}, \frac{\gamma(t) - \gamma(0)}{t}\in F
+    $$
+    $F$ est un sous-espace vectoriel de dimension finie de $E$ donc une partie fermée, donc $\gamma'(0) \in F$, donc $v \in F$ d’où $T_{x}W \subset F$.
+  - Soit $v \in F$. Considérons $\gamma:\applic{\R}{E}{t}{x+tv}$. $\forall t \in \R, \gamma(t) \in x+F = W$, $\gamma$ est dérivable sur $\R$, $\gamma(0) = x$ et $\gamma'(0) = v$ donc $v \in T_{x}W$.
+%
+
+%prop Condition nécessaire d’existence d’un extremum local pour $f_{|X}$.
+  %rfig
+    @[./figures/extremum-local-differentielle.svg]
+  %
+  Soit $f: \Omega \longrightarrow \R$ une appliction. Soit $X$ une partie non vide de $\Omega$ . Soit $x \in X$. Si $f_{|X}: X \longrightarrow \R$ possède un extremum local en $x$ et si $f$ est différentiable en $x$, alors $T_{x}X \subset \ker (\dd f(x))$.
+%
+
+%rem
+  Si $X = \Omega$, $f_{|X} = f$ possède un extremum local en $x$ et $f$ est différentiable en $x$, alors $\dd f(x) = 0_{\L(E,\R)}$ i.e. $\ker \big(\dd f(x)\big)=E$, i.e. $E = T_{x} \Omega \subset \ker  \big(\dd f(x)\big)$.
+%
+
+%proof
+  Supposons $f$ différentiable en $x$ et $f_{|X}$ minimale localement en $x \in X$. Il existe alors $\delta > 0$ tel que $\Ball(x, \delta) \subset E$ et
+  $$
+    \forall y \in \Ball(x, \delta) \cap X, f(y) \geq f(x)
+  $$
+  Soit $v \in T_{x}X$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow E$ avec $\gamma$ tracé sur $X$, $\gamma$ dérivable en 0, $\gamma(0) = x$ et $\gamma'(0) = v$. Alors, $\varphi = f\circ \gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R$ est dérivable en 0 par composition. $\gamma$ est continue en 0 et $\gamma(0) = x$, donc il existe $\eta \in \oo{0, \varepsilon}$ tel que
+  ~ $\gamma(\oo{-\eta, \eta}) \subset \Ball(x, \delta)$  ~ $\gamma(\oo{-\varepsilon, \varepsilon})\subset X$
+  donc $\gamma(\oo{-\eta, \eta}) \subset \Ball(x, \delta) \cap X$, donc
+  $$
+    \forall t \in \oo{-\eta, \eta}, \varphi(t) = f_{|X} (\gamma(t)) \geq f_{|X}\big(\gamma(0)\big) = f \big(\gamma(0)\big)
+  $$
+  donc $\forall t \in \oo{-\eta \eta}, \varphi(t) \geq \varphi(0)$, donc $\varphi'(0) = 0$, i.e. $\dd f \big(\gamma(0)\big) \mdot \gamma'(0) = 0$, i.e. $\dd f(x)\mdot v = 0$ donc $v \in \ker  \big(\dd f(x)\big)$.
+%
+
+%eg
+  %rfig
+    @[./figures/droite-affine.svg]
+  %
+  Déterminons les extrema locaux de $g_{|D}$ où $D$ est une droite d’équation $x+y = -2$.
+  $g$ est différentiable sur $\R^{2}$. Soit $(x,y) \in D$. Si $g_{|D}$ admet un extremum local en $(x,y)$, alors
+  $$
+    \tag{$\star$}T_{(x,y)}D \subset \ker  \big(\dd g(x,y)\big)
+  $$
+  or $T_{(x,y)}D = \R(1,-1)$, alors
+  $$
+    \dd g(x,y): \applic{\R^{2}}{\R}{(h,k)}{h (3x^{2}y + 3x^{2}-2xy) + k(x^{3}-x^{2})}
+  $$
+  donc $(\star)$ est équivalente à
+  $$
+    3x^{2}y + 3x^{2} - 2xy - x^{3} + x^{2} = 0
+  $$
+  or $y = -2-x$ donc
+  $$
+    3x^{2}(-2-x) + 3x^{2} - 2x(-2-x) - x^{3}+x^{2} = 0
+  $$
+  soit
+  $$
+    -6x^{2}-3x^{3}+3x^{2} + 4x + 2x^{2} - x^{3} + x^{2} = 0
+  $$
+  i.e. $-4x^{3}+4x = 0$, i.e. $x(1-x^{2}) = 0$. Les seuls points où $g_{|D}$ peut être extrémale sont
+  ~ $(0,-2)$  ~ $1,-3$  ~ $(-1,-1)$
+  Comme $g$ présente un minimum local en $(0,-2)$, c’est aussi le cas pour $g_{|D}$. Par contre, $g$ ne présente pas d’extremum local en $(1,-3)$ ni en $(-1,-1)$. Cela ne dit rien pour $g_{|D}$.
+  $$
+    \begin{align*}
+      \varphi: x \longmapsto g(x,-2-x) &= x^{3}(-2-x) + x^{3} -x^{2} (-2-x) \\
+        &= x^{2}(-2x-x^{2} + x+2+x)\\
+        &= x^{2}(2-x^{2})
+    \end{align*}
+  $$
+  $$
+    \varphi'(x) = 2x(2-x^{2}) - 2x^{3} = 2x(2-x^{2}-x^{2}) = 4x(1-x^{2})
+  $$
+  %fig Variations de $\varphi$
+    @[./figures/tabvar-2.svg]
+  %
+  $g_{|D}$ présente un maximum global égal à $1$ en $(1,-3)$ et $(-1,-1)$.
+%

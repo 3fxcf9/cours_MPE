@@ -1,0 +1,173 @@
+# Semaine 15
+
+:date 19/01/2026
+
+## Intégration d’une série de fonction positives
+
+%thm Intégration terme à terme pour les fonctions positives
+  Soit $\sum_{n \geq 0}f_{n}$ une série de fonctions $f_{n}: I \longrightarrow \R_{+}$ continues par morceaux **positives**. Si $\sum_{n \geq 0}f_{n}$ converge simplement (de somme $\sum_{n =0}^{+\infty}f_{n}$ continue par morceaux), alors on a
+  $$
+    \int_{I} \sum_{n=0}^{+\infty}f_{n}(t)\dd t = \sum_{n \in \N} \int_{I} f_{n} \dans \bar{\R_{+}}
+  $$
+  avec les conventions
+  - $\displaystyle\int_{I} f_{n} = +\infty$ si $f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable
+  - $\forall \alpha \in \bar{\R_{+}}, \alpha + (+\infty) = +\infty$
+%
+
+%proof
+  - Si il existe $n \in \N$ tel que $f_{n_{0}} \notin \L^{1}(I,\R_{+})$, alors $\int_{I} f_{n_{0}} = +\infty$ d’où $\sum_{n \in \N}\int_{I} f_{n} = +\infty$, or $\sum_{n=0}^{+\infty}f_{n} \geq f_{n_{0}}$ car $\forall n \in \N, f_{n} \geq 0$ donc $\sum_{n=0}^{+\infty}f_{n}: I \longrightarrow \R_{+}$ n’est pas intégrable, donc $\int_{I} \sum_{n=0}^{+\infty}f_{n} = +\infty$.
+  - sinon, $\forall n \in \N, f_{n} \in \L^{1}(I, \R_{+})$.
+    - si $\sum_{n=0}^{+\infty}f_{n} \in \L^{1}(I, \R_{+})$, la série $\sum_{n \geq 0}f_{n}$ converge simplement (de somme continue par morceaux) et
+      $$
+        0 \leq \sum_{k=0}^{n}f_{k} \leq \sum_{n=0}^{+\infty}f_{n} = \varphi_{n} \in \L^{1}(I,\R_{+})
+      $$
+      donc d’après le _théorème de convergence dominée_ pour les séries, on a
+      $$
+        \int_{I} \sum_{n=0}^{+\infty}f_{n} = \sum_{n=0}^{+\infty}\int_{I} f_{n} = \sum_{n \in \N}\int_{I} f_{n}
+      $$
+    - sinon, $\sum_{n=0}^{+\infty}f_{n} \notin\L^{1}(I,\R_{+})$. Soit $M > 0$. Il existe un segment $S$ inclus dans $I$ tel que $\int_{S}\sum_{n=0}^{+\infty}f_{n} \geq M$. Or $\sum_{n \geq 0}f_{n}$ converge simplement de somme $\sum_{n=0}^{+\infty}f_{n}$ sur $S$ et
+      $$
+        0 \leq  \left(\sum_{k=0}^{n}f_{k}\right)_{|S} \leq \left(\sum_{k=0}^{+\infty}f_{k}\right)_{|S} \in \Cont_{m}(S) \subset \L^{1}(S,\R_{+})
+      $$
+      donc par le _théorème de convergence dominée_ sur les séries,
+      $$
+        M \leq \int_{S}\sum_{k=0}^{+\infty}f_{k} = \sum_{k=0}^{+\infty}\int_{S} f_{k} = \sum_{k \in \N} \int_{S} f_{k} \leq \sum_{k \in \N} \int_{I} f_{k}
+      $$
+      donc
+      $$
+        \sum_{k \in \N}\int_{I} f_{k} = +\infty = \int_{I} \sum_{k=0}^{+\infty}f_{k}
+      $$
+%
+
+## Caractère $\Cont^{1}$ et dérivées partielles
+
+%thm Caractérisation de la classe $\Cont^1$ à l’aide de dérivés partielles
+  Soit $f: \Omega \longrightarrow F$ une application définie sur un ouvert $\Omega$ non vide de $E$, $E$ étant muni d’une base $\B = (e_{1}, \ldots, e_{n})$. Il y a alors équivalence entre
+  1. $f \in \Cont^{1}(\Omega, F)$
+  2. $f$ admet des dérivés partielles en tout point de $\Omega$ selon la base $\B$ et pour tout $k \in \icc{1, n}, \partial_{k} f: \Omega \longrightarrow F$ est continue sur $\Omega$.
+%
+
+%proof
+  - _(Cas non demandé)._ Supposons $f \in \Cont^{1}(\Omega, F)$. Comme $f$ est différentiable, $f$ admet une dérivée en tout point de $\Omega$ selon tout vecteur de $\B$, donc $\partial_{k}f$ est définie sur $\Omega$ pour tout $k \in \icc{1,n}$. Soit $k \in \icc{1,n}$. Soient $(a,b) \in \Omega^{2}$.
+    $$
+      \begin{align*}
+        \norm{\partial_{k} f(a) - \partial_{k}f(b)}_{F} &= \norm{D_{e_{k}}f(a) - D_{e_{k}}f(b)}_{F} \\
+        &= \norm{\dd f(a) \mdot e_{k} - \dd f(b)\mdot e_{k}}_{F}\\
+        &= \norm{\big(\dd f(a) - \dd f(b)\big)\mdot e_{k}}_{F} \\
+        &\leq \opnorm{\dd f(a) - \dd f(b)} \times \norm{e_{k}} \arrowlim{a\to b}0
+      \end{align*}
+    $$
+    donc $\partial_{k} f(a) \arrowlim{a\to b} \partial_{k}(b)$.
+  - Supposons $\partial_{1} f, \ldots, \partial_{n} f$ définies et continues sur $\Omega$ (à valeurs dans $F$).
+    - _Analyse._ Si $f$ est différentiable en $a \in \Omega$, alors
+      $$
+        \forall h \in E, \dd f(a)\mdot h = \dd f(a) \mdot \left(\sum_{i=1}^{n}h_{i}e_{i}\right) = \sum_{i=1}^{n}h_{i} \dd f(a)\mdot e_{i} = \sum_{i=1}^{n}h_{i} \partial_{i} f(a)
+      $$
+    - _Synthèse._ Soit $a \in \Omega$. Posons
+      $$
+        \Delta(h) = f(a+h)-f(a) - \sum_{i=1}^{n}h_{i}\partial_{i}f(a)
+      $$
+      Montrons $\Delta(h) \ueq{h\to 0_{E}}o(h)$. Posons pour $h = \sum_{i=1}^{n}h_{i}e_{i} \in E$, $\norm{h} = \sum_{i=1}^{n}\abs{h_{i}}$. Soit $\varepsilon > 0$. Il existe $\delta > 0$ tel que $\Ball(a, \delta) \subset \Omega$ et que (continuité de chaque $\partial_{i} f$ en $a$),
+      $$
+        \forall i \in \icc{1,n}, \forall x \in \Ball(a, \delta), \norm{\partial_{i} f(x) - \partial_{i} f(a)} < \varepsilon
+      $$
+      Soit $h \in \Ball(0_{E}, \delta)$.
+      $$
+        \begin{align*}
+          \Delta(h) &= f\Big((a_{1}+h_{1})e_{1} + \cdots + (a_{n}+h_{n})e_{n}\Big) \\
+          &- f\Big(a_{1} e_{1} + (a_{2} + h_{2})e_{2} + \cdots + (a_{n} + h_{n})e_{n}\Big)\\
+          &+ f \Big(a_{1} e_{1} + (a_{2}+h_{2})e_{2} + \cdots + (a_{n}+h_{n}) e_{n}\Big)\\
+          &- f \Big(a_{1} e_{1} + a_{2} e_{2} + (a_{3}+h_{3})e_{3} + \cdots + (a_{n} + h_{n})e_{n}\Big)\\
+          &\vdots\\
+          &- f\Big(a_{1} e_{1} + \cdots + a_{n}e_{n}\Big)\\
+          &- \sum_{i=1}^{n}h_{i} \partial_{i}f(a)
+        \end{align*}
+      $$
+      Soit, pour $i \in \icc{1,n}$, l’application
+      $$
+        \varphi_{i}: \applic{\cc{0,1}}{F}{t}{f \Big(a_{1} e_{1} + \cdots + a_{i-1}e_{i-1} + (a_{i} + th_{i})e_{i} + (a_{i+1}+h_{i+1})e_{i+1} + \cdots + (a_{n} + h_{n})e_{n}\Big)}
+      $$
+      Ces applications sont de classe $\Cont^{1}$ sur $\cc{0,1}$ et
+      $$
+        \forall t \in \cc{0,1}, \varphi_{i}' = h_{i} \partial_{i} f \Big(a_{1} e_{1} + \cdots + a_{i-1}e_{i-1} + (a_{i} + th_{i})e_{i} + (a_{i+1}+ h_{i+1})e_{i+1} + \cdots + (a_{n} + h_{n})e_{n}\Big)
+      $$
+      Alors
+      $$
+        \begin{align*}
+          \Delta(h) &= \sum_{i=1}^{n}\Big[\big(\varphi_{i}(1) - \varphi_{i}(0)\big)-h_{i} \partial_{i} f(a)\Big]\\
+          &= \sum_{i=1}^{n} \left(\int_{0}^{1}\varphi_{i}' (t)\dd t\right) - h_{i}\partial_{i}f(a) \\
+          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{1} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
+        \end{align*}
+      $$
+      (la différence de $(…)$ et de $a$ vaut $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
+      $$
+        \norm{\Delta(h)} \leq \sum_{i=1}^{n}\norm{h_{i}}\int_{0}^{1}\norm{\partial_{i} f(\ldots) - \partial_{i}f(a)}\dd t
+      $$
+      donc
+      $$
+        \norm{\Delta(h)} \leq \sum_{i=1}^{n}\varepsilon \abs{h_{i}} = \varepsilon \norm{h}
+      $$
+      d’où $\Delta(h) = o(h)$.
+    Ainsi, $f$ est différentiable en tout point $a \in \Omega$.
+    Soit $(a,b) \in \Omega^{2}$.
+    $$
+      \begin{align*}
+        \forall h \in E, \norm{\dd f(a)\mdot h - \dd f(b)\mdot h} &= \norm{\sum_{i=1}^{n}h_{i} \big(\partial_{i} f(a) - \partial_{i} f(b)\big)}\\
+        &\leq \sum_{i=1}^{n}\norm{\partial_{i} f(a) - \partial_{i}f(b)}\abs{h_{i}}\\
+        &\leq \left(\sum_{i=1}^{n}\norm{\partial_{i} f(b) - \partial_{i}f(a)}\right)\norm{h}
+      \end{align*}
+    $$
+    d’où, par continuité de chaque $\partial_{i} f$,
+    $$
+      \opnorm{\dd f(a) - \dd f(b)} \leq \sum_{i=1}^{n}\norm{\partial_{i}f(a) - \partial_{i}f(b)} \arrowlim{a\to b}0
+    $$
+    Ainsi, $\dd f(a) \arrowlim{a\to b}\dd f(b)$.
+%
+
+
+## Vecteurs tangents à un sous-espace affine
+
+%prop
+  Soit $F$ un sous-espace vectoriel de $E$. Soit $a \in E$. On a
+  $$
+    \forall x \in (a+F), T_{x}(a+F) = F
+  $$
+%
+
+%proof
+  %rfig
+    @[./figures/espaces-affines-vecteur-tangent.svg]
+  %
+  - Soit $W = a+F$. Soit $x \in W$. Soit $v \in T_{x}W$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow E$ tracé sur $W$, dérivable en 0 et tel que $\gamma(0) = x$ et $\gamma'(0) = v$. Alors, $\forall t \in \oo{-\varepsilon, \varepsilon}, \gamma(t) - \gamma(0) = \gamma(t) - x \in F$ car $W = a+F = x+F$. Donc
+    $$
+      \forall t \in \oo{-\varepsilon, \varepsilon}\setminus \{0\}, \frac{\gamma(t) - \gamma(0)}{t}\in F
+    $$
+    $F$ est un sous-espace vectoriel de dimension finie de $E$ donc une partie fermée, donc $\gamma'(0) \in F$, donc $v \in F$ d’où $T_{x}W \subset F$.
+  - Soit $v \in F$. Considérons $\gamma:\applic{\R}{E}{t}{x+tv}$. $\forall t \in \R, \gamma(t) \in x+F = W$, $\gamma$ est dérivable sur $\R$, $\gamma(0) = x$ et $\gamma'(0) = v$ donc $v \in T_{x}W$.
+%
+
+
+## Vecteur tangents au graphe d’une fonction dérivable
+
+Soit $f: I \longrightarrow \R$ une application définie sur un intervalle ouvert $I$ dérivable en $a \in I$. Soit $\Gamma = \{(x,f(x))\where x \in I\} \subset \R^{2}$ le graphe de $f$.
+%fig Graphe de $f$
+  @[./figures/graphe-f-tangente.svg]
+%
+- Soit $v \in T_{(a, f(a))}\Gamma$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R^{2}$ tel que
+  ~ $\gamma(\oo{-\varepsilon, \varepsilon}) \subset \Gamma$  ~ $\gamma$ est dérivable en 0  ~ $\gamma(0) = (a,f(a))$  ~ $\gamma'(0) = v$
+  Posons
+  $$
+    \gamma: \applic{\oo{-\varepsilon,\varepsilon}}{\R^{2}}{t}{\big(x(t), f(x(t))\big)}
+  $$
+  avec
+  ~ $x,y$ dérivables en $0$  ~ $\big(x(0), y(0)\big) = \big(a, f(a)\big)$  ~ $\big(x'(0), y'(0)\big) = v$
+  or
+  $$
+    \big(x'(0), y'(0)\big) = \big(x'(0), f'(x(0))x'(0)\big) = x'(0) \big(1, f'(a)\big)
+  $$
+  donc $v \in \R \big(1,f'(a)\big)$, i.e. $T_{(a, f(a))}\Gamma \subset \R \big(1, f'(a)\big)$.
+- Soit $\lambda \in \R$. IL existe $\varepsilon > 0$ tel que $\gamma: \applic{\oo{-\varepsilon, \varepsilon}}{\R^{2}}{t}{\big(a+\lambda t, f(a+\lambda t)\big)}$ est définie sur $\oo{-\varepsilon, \varepsilon}$ avec $a \in \ring I = I$. $\gamma$ est tracé sur $\Gamma$, $\gamma$ est dérivable en 0 (car $f$ est dérivable en $a$), et
+  ~ $\gamma(0) = (a, f(a))$  ~ $\gamma'(0) = (\lambda, \lambda f'(a))$
+  donc $\R \big(1, f'(a)\big) \subset T_{(a, f(a))}\Gamma$.
+Ainsi, si $f$ est dérivable, $T_{(a, f(a))}\Gamma = \R(1, f'(a))$. L’ensemble $\big(a, f(a)\big) + T_{(a, f(a))}\Gamma$ est la « droite affine tangenge à $\Gamma$ en $(a, f(a))$ ».
+
