@@ -479,10 +479,10 @@ Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie.
         \begin{align*}
           \Delta(h) &= \sum_{i=1}^{n}\Big[\big(\varphi_{i}(1) - \varphi_{i}(0)\big)-h_{i} \partial_{i} f(a)\Big]\\
           &= \sum_{i=1}^{n} \left(\int_{0}^{1}\varphi_{i}' (t)\dd t\right) - h_{i}\partial_{i}f(a) \\
-          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{1} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
+          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{i} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
         \end{align*}
       $$
-      (la différence de $(…)$ et de $a$ vaut $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
+      (la différence de $(…)$ et de $a$ est, en norme, inférieure à $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
       $$
         \norm{\Delta(h)} \leq \sum_{i=1}^{n}\norm{h_{i}}\int_{0}^{1}\norm{\partial_{i} f(\ldots) - \partial_{i}f(a)}\dd t
       $$
@@ -536,7 +536,7 @@ Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie.
 %
 
 %prop
-  1. Si $f_{1}, \ldots, f_{p}$ sont $p$ applications de classe $\Cont^{1}$ de $\Omega$ (ouvert de $E$) à valeurs respectivement dans $E_{1}, \ldots, E_{p}$, et si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est multilinéaire, alors $M(f_{1}, \ldots \phi_{p})$ est de classe $\Cont^{1}$ sur $\Omega$.
+  1. Si $f_{1}, \ldots, f_{p}$ sont $p$ applications de classe $\Cont^{1}$ de $\Omega$ (ouvert de $E$) à valeurs respectivement dans $E_{1}, \ldots, E_{p}$, et si $M: E_{1} \times  \cdots \times E_{p} \longrightarrow F$ est multilinéaire, alors $M(f_{1}, \ldots, f_{p})$ est de classe $\Cont^{1}$ sur $\Omega$.
   2. Si $f: \Omega \longrightarrow \F$ et $g: \Omega \longrightarrow F$ sont de classe $\Cont^{1}$ à valeurs dans une $\R$-algèbre de dimension finie $F$, alors $f \times g$ est de classe $\Cont^{1}$ sur $\Omega$.
   3. $\Cont^{1}(\Omega,\K)$ est une sous-$\K$-algèbre de $\Cont(\Omega,\K)$.
 %
@@ -586,14 +586,14 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
      Ainsi, si $f$ est dérivable, $T_{(a, f(a))}\Gamma = \R(1, f'(a))$. L’ensemble $\big(a, f(a)\big) + T_{(a, f(a))}\Gamma$ est la « droite affine tangenge à $\Gamma$ en $(a, f(a))$ ».
   2. $\forall x \in X, 0_{E} \in T_{x}X$. En effet, $\gamma: \applic{\R}{E}{t}{x}$ est un arc dérivable sur $\R$ donc en 0; $\gamma(\R) = \{x\} \subset X$; $\gamma(0) = x$ et $\gamma'(0) = 0_{E}$.
   3. Soit $\Omega$ un ouvert non vide de $E$. Soit $x \in \Omega$. Déterminons $T_{x} \Omega$.
-     - Soit $v \in E$. Comme $\Omega$ est un ouvert, il existe $\varepsilon > 0$ tel que $\forall t \in \oo{-\varepsilon, \varepsilon}, x+tv \in \Omega$. Alors, $\gamma: \applic{\oo{-\varepsilon,\varepsilon}}{E}{t}{x+tv}$ est un arc tracé sur $\Omega$, dérivable en $0$ et tel que $\gamma(0) = x$ et $\gamma'(0) = v$. Ainsi, $v \in T_{x} \Omega$ donc $te \subset T_{x}\Omega \subset E$, donc ++si $\Omega$ est un ouvert,
+     - Soit $v \in E$. Comme $\Omega$ est un ouvert, il existe $\varepsilon > 0$ tel que $\forall t \in \oo{-\varepsilon, \varepsilon}, x+tv \in \Omega$. Alors, $\gamma: \applic{\oo{-\varepsilon,\varepsilon}}{E}{t}{x+tv}$ est un arc tracé sur $\Omega$, dérivable en $0$ et tel que $\gamma(0) = x$ et $\gamma'(0) = v$. Ainsi, $v \in T_{x} \Omega$ donc $E \subset T_{x}\Omega \subset E$, donc ++si $\Omega$ est un ouvert++,
        $$
          \forall x \in \Omega, T_{x} \Omega = E
        $$
   4. Si $X$ une partie de $E$ non vide, alors pour tout vecteur $x \in \ring X$, $T_{x}X = E$.
   5. Prenons $X = \R \times \R_{+}$. Soit $x \in X$. Déterminons $T_{x}X$.
      - Si $x \in \R \times \R_{+}^{*} = \longring{\R \times \R_{+}^{*}}$, alors $T_{x}X = \R^{2}$.
-     - Sinon, $x \in \R \times \{0\}$. Posons $mx = (\alpha, 0)$ avec $\alpha \in \R$. Soit $v \in T_{x}X$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R^{2}$ tels que
+     - Sinon, $x \in \R \times \{0\}$. Posons $x = (\alpha, 0)$ avec $\alpha \in \R$. Soit $v \in T_{x}X$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R^{2}$ tels que
        ~ $\gamma(\oo{-\varepsilon, \varepsilon}) \subset \R \times \R_{+}$  ~ $\gamma$ est dérivable en 0  ~ $\gamma(0) = x$  ~ $\gamma'(0) = v$
        donc
        $$
@@ -657,7 +657,7 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
   $$
     \forall t \in \oo{-\eta, \eta}, \varphi(t) = f_{|X} (\gamma(t)) \geq f_{|X}\big(\gamma(0)\big) = f \big(\gamma(0)\big)
   $$
-  donc $\forall t \in \oo{-\eta \eta}, \varphi(t) \geq \varphi(0)$, donc $\varphi'(0) = 0$, i.e. $\dd f \big(\gamma(0)\big) \mdot \gamma'(0) = 0$, i.e. $\dd f(x)\mdot v = 0$ donc $v \in \ker  \big(\dd f(x)\big)$.
+  donc $\forall t \in \oo{-\eta, \eta}, \varphi(t) \geq \varphi(0)$, donc $\varphi'(0) = 0$, i.e. $\dd f \big(\gamma(0)\big) \mdot \gamma'(0) = 0$, i.e. $\dd f(x)\mdot v = 0$ donc $v \in \ker  \big(\dd f(x)\big)$.
 %
 
 %eg
@@ -669,7 +669,7 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
   $$
     \tag{$\star$}T_{(x,y)}D \subset \ker  \big(\dd g(x,y)\big)
   $$
-  or $T_{(x,y)}D = \R(1,-1)$, alors
+  or $T_{(x,y)}D = \R(1,-1)$, et
   $$
     \dd g(x,y): \applic{\R^{2}}{\R}{(h,k)}{h (3x^{2}y + 3x^{2}-2xy) + k(x^{3}-x^{2})}
   $$
@@ -702,4 +702,204 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
     @[./figures/tabvar-2.svg]
   %
   $g_{|D}$ présente un maximum global égal à $1$ en $(1,-3)$ et $(-1,-1)$.
+%
+
+## Espaces tangents à une ligne de niveau
+
+%prop
+  Soit $g: \Omega \longrightarrow \R$ une application de classe $\Cont^{1}$ sur un ouvert $\Omega$ de $E$. Soit $c \in \R$. Posons
+  $$
+    X = g^{-1}(\{c\}) = \{x \in \Omega \where g(x) = c\}
+  $$
+  la « ligne de niveau $c$ de $g$ ». Si $x \in X$ et $\dd g(x)\ne 0_{\L(E,\R)}$, alors
+  $$
+    T_{x}X = \ker \big(\dd g(x)\big)
+  $$
+%
+
+%proof
+  - Soit $x \in X = mmg^{-1}(\{c\})$. Alors, $g$ est constante donc admet en $x$ un extremum (global) et $g$ est différentiable en $x$, donc $T_{x}X \subset \ker (\dd g(x))$.
+  - Si $g \in \Cont^{1}(\Omega)$ et si $\dd g(x)\ne 0_{\L(E,\R)}$, alors $T_{x} X = \ker (\dd g(x))$. _(Preuve dans le DM n°8)_.
+%
+
+%eg
+  1. Si $E$ est euclidien et $X= g^{-1}(\{c\})$ et $\dd g(x) \ne 0_{\L(E,\R)}$ pour $x \in X$ avec $g \in \Cont^{1}(\Omega)$, alors
+     $$
+       h \in \ker \big(\dd g(x)\big) \iff \dd g(x)\mdot h = 0 \iff \scalar{\nabla g(x)}{h} =0
+     $$
+     donc $T_{x}X = \{\nabla g(x)\}\ortho$.
+     %fig
+       @[./figures/contour-lines.svg]
+     %
+  2. Soit $f: I \longrightarrow \R$ de classe $\Cont^{1}$ sur un intervalle $I$ ouvert. Posons $\Gamma = \{(x,f(x)) \where x \in I\} = g^{-1}(\{0\})$ avec $g: \applic{I \times \R}{\R}{(x,y)}{y-f(x)} \in \Cont^{1}(I \times \R)$.
+     $$
+       \nabla g(x,y) = (-f'(x),1)\ne (0,0)
+     $$
+     donc pour $x \in I$,
+     $$
+       T_{(x, f(x))}\Gamma = \big\{\big(-f'(x), 1\big)\big\}\ortho f \Vect\left\{(1,f'(x))\right\}
+     $$
+  3. Supposons $E$ euclidien. Posons $S = \{x \in E \where \norm{x} = 1\} = g^{-1}(\{1\})$ avec
+     $$
+       g: \applic{E}{\R}{x}{\norm{x}^{2} = \scalar{x}{x}} \in \Cont^{1}(E)
+     $$
+     %rfig
+       @[./figures/plan-tangent-sphere.svg]
+     %
+     On a
+     $$
+       \forall x \in E, \forall h \in E, \dd g(x)\mdot h = 2 \scalar{x}{h}  = \scalar{2x}{h}
+     $$
+     donc $\forall x \in te, \nabla g(x) = 2x$. Soit $x_{0} \in S$. Alors $x_{0}\ne 0$ donc $\nabla g(x_{0}) \ne 0_{E}$ d’où
+     $$
+       T_{x_{0}}S = \{2x_{0}\}\ortho = \{x_{0}\}\ortho
+     $$
+     est  l’hyperplan vectoriel tangent à la sphère en $x_{0}$. $x_{0}+T_{x_{0}}S$ est l’hyperplan affine tangent à $S$ en $x_{0}$.
+  4. %rfig
+       ==FIG13==
+     %
+     Si $g: \applic{\Omega \subset \R^{n}}{\R}{(x_{1}, \ldots, x_{n})}{g(x_{1}, \ldots, x_{n})}$ est de classe $\Cont^{1}$ et si $X \subset \R^{n+1}$ a pour équation $z = g(x_{1}, \ldots, x_{n})$, posons
+     $$
+       \tilde{g}: \applic{\Omega \times \R}{\R}{(x_{1}, \ldots, x_{n}, z)}{z-g(x_{1}, \ldots, x_{n})}
+     $$
+     Alors $\tilde{g} \in \Cont^{1}(\Omega \times \R)$,
+     $$
+       \nabla \tilde{g}(x_{1}, \ldots, x_{n}, z) = \left(-\pdv{g}{x_{1}}(x), \ldots, - \pdv{g}{x_{n}}, 1\right) \ne (0, \ldots, 0)
+     $$
+     et $X \in \tilde{g}^{-1}(\{0\})$. On a pour $(x_{1}, \ldots, x_{n}) \in \Omega$ :
+     $$
+       H = T_{(\underbrace{x_{1}, \ldots, x_{n}}_{x}, g(x_{1}, \ldots, x_{n}))}=\left\{\left(\pdv{g}{1}(x), \ldots, \pdv{g}{x_{n}}(x), -1\right)\right\}\ortho
+     $$
+     et
+     $$
+       (u_{1}, \ldots, u_{n}, z) \in H \iff \scalar{\left(\pdv{g}{x_{1}}(x), \ldots, \pdv{g}{x_{n}}(x), -1\right)}{(u_{1}, \ldots, u_{n}, z)}  \iff z = \pdv{g}{x_{1}} (x) u_{1} + \cdots + \pdv{g}{x_{n}}(x)u_{n}
+     $$
+     L’hyperplan affine tangent à $X$ en $(x, g(x))$ est
+     $$
+       (x,g(x)) + T_{(x,g(x))}X = H'
+     $$
+     et on a
+     $$
+       (u_{1}, \ldots, u_{n}, z) \in H' \iff (u_{1}, \ldots, u_{n}, z) - (x,g(x)) \in H
+     $$
+     donc l’équation de $H'$ est
+     $$
+       z - g(x) = \partial_{1} g(x) (u_{1}-x_{1}) + \cdots + \partial_{n}g(x) (u_{n}-x_{n})
+     $$
+  5. %rfig Plan tangent au point col de la surface $S$
+       @[./figures/plan-tangent-point-col.svg]
+     %
+     Soit $S$ la surface d’équation $z = x^{2}-y^{2} = g(x,y)$. Soit $(x_{0}, y_{0}, z_{0}) \in S$. Le plan vectoriel tangent à $S$ en $(x_{0}, y_{0}, z_{0})$ a pour équation
+     $$
+       z = \pdv{g}{x}(x_{0}, y_{0})x + \pdv{g}{y}(x_{0},y_{0})y = 2x_{0}x - 2y_{0}y
+     $$
+     et l’hyperplan affine tangent a pour équation
+     $$
+       z = z_{0} = 2x_{0}(x-x_{0}) - 2y_{0}(y-y_{0})
+     $$
+     soit
+     $$
+       z = 2x_{0}x + 2y_{0}y \underbrace{- 2x_{0}^{1}+2y_{0}^{2}+z_{0}}_{=-z_{0}}
+     $$
+     On étudie les extrema de $f_{|X}: X \longrightarrow \R$ avec $X = g^{-1}(\{0\})$.
+%
+
+%thm Optimisation sous contrainte
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{1}$ sur un ouvert $\Omega$ de $E$. Soit $X = g^{-1}(\{0\})$ avec $g: \Omega \longrightarrow \R$ de classe $\Cont^{1}$. Si $f_{|X}$ admet un extremum local en $x \in X$ et si $\dd g(x)\ne 0_{\L(E,\R)}$ (« contrainte non critique »), alors
+  $$
+    \exists \lambda \in \R: \dd f(x) = \lambda \dd g(x)
+  $$
+  $\lambda$ s’appelle multiplicateur de Lagrange.
+%
+
+%proof
+  Supposons que $f_{|X}$ admette un extremum local N $x \in X = g^{-1}(\{0\})$. Comme $f$ est différentiable en $x$, on a: $X_{x}X \subset \ker (\dd f(x))$ or $X f g^{-1}(\{0\})$ et $\dd g(x)\ne 0$ pour $x \in X$, donc $X_{x}X = \ker (\dd f(x))$. Ainsi, $\ker  (\dd g(x)) \subset \ker (\dd f(x))$.
+  - Si $\dd f(x) = 0_{\L(te,\R)}$, alors $\dd f(x) = 0 \cdot \dd g(x)$
+  - sinon, $\dd f(x)$ étant une forme linéaire non nulle, $\ker (\dd f(x))$ est un hyperplan vectoriel de $E$. C’est aussi le cas de $\ker (\dd g(x))$. Or $\ker (\dd g(x)) \subset \ker (\dd f(x))$ donc $T_{x}X = \ker (\dd g(x)) = \ker (\dd f(x)) = H$. Soit $x \in E \setminus H. On a mmE = H\oplus\R u$. Il existe $(\alpha, \beta) \in \R^{2}$  tels que
+    ~ $\dd g(x) \mdot u = \alpha\ne 0$  ~ $\dd f(x) \mdot u = \beta\ne 0$
+    donc
+    $$
+      \frac{\beta}{\alpha}\dd g(x) \mdot u = \beta = \dd f(x)\mdot u
+    $$
+    et $\forall x' \in H, \frac{\beta}{\alpha} \dd g(x)\mdot x' = \dd f(x)\mdot x' = 0$ donc $\dd f(x) = \frac{\beta}{\alpha}\dd g(x)$.
+%
+
+%method
+  Pour trouver les points $x \in X = g^{-1}(\{0\})$ où $f_{|X}: X \longrightarrow \R$ est extremale localement (avec $(f,g) \in \Cont^{1}(\Omega)^{2}$ et $\dd g(x) \ne 0$), alors on résout le système en $(\lambda, x) \in \R \times \Omega$ suivant~:
+  $$
+    \begin{cases}\dd f(x) = \lambda \dd g(x)\\ g(x) = 0\end{cases}
+  $$
+  i.e. si $E$ est euclidien,
+  $$
+    \nabla f(x) = \lambda\nabla g(x)
+  $$
+%
+
+%eg
+  1. Parmi les rectangles dont l’aire est $A > 0$, déterminer ceux dont le périmètre est minimal, maximal. Notons $x$ la largeur d’un rectangle et $y$ sa hauteur.
+     - Posons
+       $$
+         f: \applic{(\R_{+}^{*})^{2}}{\R}{(x,y)}{2(x+y)} \quad\text{et}\quad g: \applic{(\R_{+}^{*})^{2}}{\R}{(x,y)}{xy-A}
+       $$
+       Ce sont deux fonctions de classe $\Cont^{1}$ sur $\R_{+}^{*}$. Le problème revient alors à chercher les points $(x,y) \in X$ en lesquels $f_{|X}$ est minimale, maximale, avec $X = g^{-1}(\{0\})$.
+       $$
+         \forall (x,y) \in (\R_{+}^{*})^{2}, \nabla g(x,y) = (y,x)\ne(0,0)
+       $$
+       donc le _théorème d’optimisation selon la contrainte_ $g$ permet d’affirmer que si $f_{X}$ est extremale en $(x,y)$, alors
+       $$
+         \exists \lambda \in \R: \begin{cases}
+           \nabla f(x,y) = \lambda \nabla g(x,y)\\
+           g(x,y) = 0
+         \end{cases}
+       $$
+       i.e.
+       $$
+         \exists \lambda \in \R: \begin{cases}
+           2 = \lambda y \\ 2 = \lambda x \\ xy = A
+         \end{cases} \ie \begin{cases}
+           \frac{2}{\lambda} = x = y \\ x^{2} = A
+         \end{cases}
+       $$
+       donc le rectangle est alors un carré.
+     - $\forall (x,y) \in (\R_{+}^{*})^{2}, \sqrt{xy} \leq \frac{x+y}{2}$, i.e. $4 \sqrt{xy} \leq 2(x+y)$ donc $\forall (x,y) \in S, f(x,y) \geq 4 \sqrt{A}$.
+     Les carrés sont les rectangle d’aire $A$ de périmètre minimal. Il n’y a pas de rectangle d’aire maximale.((on aurait aussi pu étudier $\varphi(x) = 2(x + A/x)$, minimale pour $x = \sqrt{A}$))
+  2. Soit $n \in \N^{*}$. Soit $s \in \R_{+}^{*}$. Trouvons les extrema de $f: \applic{(\R_{+}^{*})^{n}}{\R}{x}{x_{1} \times \cdots \times x_{n}}$ sous la contrainte $\sum_{i=1}^{n}x_{i} = s$.
+     ~
+     Posons
+     $$
+       g: \applic{(\R_{+}^{*})^{n}}{\R}{(x_{1}, \ldots, x_{n})}{\sum_{i=1}^{n}x_{i} - s}
+     $$
+     $f$ et $g$ sont de classe $\Cont^{1}$ sur l’ouvert $\Omega = (\R_{+}^{*})^{n}$. Posons $X = g^{-1}(\{0\})$.
+     $$
+       \forall (x_{1}, \ldots, x_{n}) \in X, \nabla g(x_{1}, \ldots, x_{n}) = (1, \ldots, 1)\ne 0
+     $$
+     donc d’après le _thèoràme d’optimisation sous contrainte_, si $f_{|X}$ possède un extremum local en $(x_{1}, \ldots, x_{n})$, alors
+     $$
+       \exists \lambda \in \R: \begin{cases}
+         \nabla f(x_{1}, \ldots, x_{n}) = \lambda\nabla g(x_{1}, \ldots, x_{n})\\ g(x_{1}, \ldots, x_{n}) = 0
+       \end{cases}
+     $$
+     i.e.
+     $$
+       \exists \lambda \in \R, \begin{cases}
+         \frac{f(x_{1}, \ldots, x_{n})}{x_{1}} = \lambda \\ \vdots \\ \frac{f(x_{1}, \ldots, x_{n})}{x_{n}} = \lambda \\ \sum_{i=1}^{n}x_{i} = 1
+       \end{cases}
+     $$
+     donc $\begin{cases}x_{1} = \cdots = x_{n} = \frac{f(x_{1}, \ldots, x_{n})}{\lambda} \\ nx_{1} = s\end{cases}$, d’où $x_{1} = \cdots = x_{n} = \frac{s}{n}$. Ainsi, $f \left(\frac{s}{n}, \ldots, \frac{s}{n}\right) = \left(\frac{s}{n}\right)^{n}$.
+     La fonction $f$ se prolonge par continuité en
+     $$
+       \tilde{f}: \applic{(\R_{+})^{n}}{\R}{x}{x_{1} \times \cdots \times x_{n}}
+     $$
+     Considérons $\tilde{g}: \applic{(\R_{+})^{n}}{\R}{x}{\sum_{i=1}^{n}x_{i}-s}$. $\tilde{X} = \tilde{g}^{-1}(\{0\})$ est une partie fermée relative de $(\R_{+})^{n}$, partie fermée de $\R^{n}$ donc $\tilde{X}$ est une partie fermée de $\R^{n}$. De plus, $\tilde{X} \subset \cc{0, s}^{n}$ donc $\tilde{X}$ est bornée donc $\tilde{X}$ est une partie compacte de $\R^{n}$ ($\R^{n}$ est de dimension finie). Ainsi, $\tilde{f}_{|\tilde{X}}$ est bornée et atteint ses bornes.
+     ~ $\min_{\tilde{X}}\tilde{f} = 0$  ~ $\max_{\tilde{X}}\tilde{f} > 0$
+     Si $(x_{1}, \ldots, x_{n}) \in (\R_{+})^{n} \setminus (\R_{+}^{*})^{n}$, alors $\tilde{f}(x_{1}, \ldots, x_{n}) = 0$ donc $\max_{\tilde{X}}\tilde{f} = \max_{X}\tilde{f} = \max_{X} f$. Nécessairement, $\max_{X}f = f \left(\frac{s}{n}, \ldots, \frac{s}{n}\right) = \left(\frac{s}{n}\right)^{n}$ donc
+     $$
+       \forall s > 0, \forall (x_{1}, \ldots, x_{n}) \in (\R_{+}^{*})^{n} , x_{1} + \cdots + x_{n} = s \implies x_{1} \times \cdots \times x_{n} \leq \left(\frac{s}{n}\right)^{n} = \left(\frac{\sum_{i=1}^{n}x_{i}}{n}\right)^{n}
+     $$
+     Ainsi
+     %lemma Inégalité arithmético-géométrique
+       $$
+         \forall n \in \N, \forall (x_{1}, \ldots, x_{n}) \in (\R_{+})^{n}, \sqrt[n]{x_{1} \cdots x_{n}} \leq  \frac{1}{n}\sum_{i=1}^{n}x_{i}
+       $$
+     %
 %
