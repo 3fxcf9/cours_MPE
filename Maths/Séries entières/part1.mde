@@ -1,0 +1,260 @@
+# Séries entières
+
+:date 20/01/2026
+
+%def
+  On appelle série entière associée à la suite complexe $(a_{n})_{n \geq n_{0}}$ la série de fonctions $\sum_{n \geq n_{0}}f_{n}$ avec
+  $$
+    f_{n}: \applic{\C}{\C}{z}{a_{n}z^{n}}
+  $$
+  Elle est notée arbitrairement $\sum_{n \geq n_{0}}a_{n}z^{n}$.
+%
+
+%eg
+  - $\sum_{n \geq 0}e^{in \theta}z^{n}, \sum_{n \geq 1}\frac{z^{n}}{n}$ et $\sum_{n \geq 0}z^{n}$ sont des séries entières.
+  - si $(a_{n})_{n \geq n_{0}}$ est une suite complexe, alors
+    $$
+      D = \left\{z \in \C \where \sum_{n \geq n_{0}}a_{n}z^{n} \text{ converge}\right\}
+    $$
+    Soit $A$ une partie de $D$. Il y a 4 modes de convergences pour les séries entières~:
+    - convergence _simple_
+    - convergence _absolue_ sur $A$~: $\sum_{n \geq n_{0}}\abs{a_{n}}\abs{z}^{n}$ converge pour $z \in A$.
+    - convergence _normale_ sur $A$~: $\sum_{n \geq n_{1}}\sup_{z \in A} \abs{a_{n}}\abs{z}^{n}$ converge (pour un entier $n^{1} \geq n_{0}$)
+    - convergence _uniforme_ sur $A$~: $\sum_{n \geq n_{0}}a_{n}z^{n}$ converge simplement sur $A$ et $\lim_{n\to+\infty}\norm{R_{n}}_{\infty, A} = 0$.
+    Sur $A$, la convergence normale implique la convergence uniforme et la convergence absolue, et les deux dernières impliquest la convergence simple.
+
+    Si $z_{0} \in \C$ est tel que $\sum_{n \geq n_{0}}a_{n}z_{0}^{n}$ soit absolument convergente, alors pour $z \in \C$ avec $\abs{z} \leq \abs{z_{0}}$, on a
+    $$
+      \forall n \in \N, \abs{a_{n}}\abs{z}^{n} \leq \abs{a_{n}}\abs{z_{0}}^{n}
+    $$
+    donc $\sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente. Il y a mieux~:
+%
+
+## Domaine d’absolue convergence d’une série entière
+
+%lemma Lemme d’Abel
+  Soit $(a_{n})_{n \geq n_{0}}$ une suite complexe.
+  1. S’il existe $z_{0} \in \C^{*}$ tel que la suite complexe $(a_{n}z^{n})_{n \geq n_{0}}$ soit bornée, alors pour tout $z \in \C$ avec $\abs{z} < \abs{z_{0}}$, la série $\sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente.
+  2. S’il existe $r > 0$ tel que la suite complexe $(a_{n}r^{n})_{n \geq n_{0}}$ soit bornée, alors pour tout $z \in \C$ avec $\abs{z} < r$, la série $\sum_{n \geq n_{0}}$ est absolument convergente.
+%
+
+%proof
+  1. $\exists M \in \R_{+}: \forall n \geq n_{0}, \abs{a_{n}z_{0}^{n}} \leq M$. Soit $z \in \C$ avec $\abs{z} < \abs{z_{0}}$. On a alors
+     $$
+       \forall n \geq n_{0}, \abs{a_{n}z^{n}} = \abs{a_{n}z_{0}^{n}}\times \abs{\frac{z}{z_{0}}}^{n} \leq M \abs{\frac{z}{z_{0}}}^{n}
+     $$
+     Comme $\abs{\frac{z}{z_{0}}} < 1$, la série $\sum_{n \geq n_{0}}\abs{\frac{z}{z_{0}}}^{n}$ converge donc $\sum_{n \geq n_{0}}\abs{a_{n}z^{n}}$ converge.
+%
+
+%def Définition-Proposition
+  Soit $(a_{n})_{n \geq n_{0}}$ une suite complexe. Posons $I_{a} = \{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$.
+  %rfig Rayon de convergence et cercle d’incertitude
+    @[./figures/rayon-convergence.svg]
+  %
+  - $I_{a}$ est un ++intervalle++ de $\R_{+}$ débutant en 0
+  - Posons $R_{a} = \sup I_{a} \in \R_{+} \cup \{+\infty\}$ ($I_{a} = \cc{0,R_{a}}$ ou $\co{0,R_{a}}$). On a
+    - $\abs{z} < R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente
+    - $\abs{z} > R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièremen-
+    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $D(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $D(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \%here \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
+%
+
+%proof
+  $(a_{n} 0^{n})_{n \geq 1}$ est la suite nulle donc elle est bornée, donc $0 \in I_{a}$. Soit $r \in I_{a}$. Soit $0 \leq r' \leq r$. On a $\forall n \geq n_{0}, \abs{a_{n}}r'^{n} \leq \abs{a_{n}}r^{n}$ (croissance de $t \longmapsto t^{n}$ sur $\R$) donc $(a_{n}r'^{n})_{n \geq n_{0}}$ est bornée donc $r' \in I_{a}$.
+  - Supposons $R_{a} = +\infty$. Soit $z \in \C$. La suite $\big(a_{n}(\abs{z} + 1)^{n}\big)_{n \geq n_{0}}$ est bornée car $\abs{z} + 1 \in I_{a} = \R_{+}$ donc d’après le _lemme d’Abel_, la série $\sum_{n \geq 0a_{n}z^{n}}$ converge absolument car $\abs{z} < \abs{z} + 1$.
+  - Supposons $R_{a} = 0$. Alors $I_{a} = \{0\}$ donc $\forall z \in \C^{*}, (a_{n}\abs{z}^{n})_{n \geq n_{0}}$ n’est pas bornée, i.e. $(a_{n}z^{n})_{n \geq n_{0}}$ n’est pas bornée. Elle ne tend donc pas vers 0: $\sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièrement.
+  - Supposons $R_{a} \in \oo{0,+\infty}$ (alors $I_{a} = \cc{0,R_{a}}$ ou $I_{a} = \co{0,R_{a}}$). Soit $z \in \C$.
+    - si $\abs{z} < R_{a}$, alors $(a_{n}\abs{z}^{n})_{n \geq n_{0}}$ n’est pas bornée donc (cf. supra) $\sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièrement.
+    - Supposons $\abs{z} < R_{a}$. Soit $r = \frac{\abs{z} + R_{a}}{2} \in I_{a}$. Alors, $(a_{n}r^{n})_{n \geq n_{0}}$ est bornée et $\abs{z} < r$ donc (lemme d’Abel), $\sum_{n \geq n_{0}}a_{n}z^{n}$ converge absolument.
+%
+
+%eg
+  1. $\sum_{n \geq 0}\frac{z^{n}}{n!}$ converge absolument pour tout $z \in \C$ (de somme $e^{z}$). Le rayon de convergence est infini.
+  2. $\sum_{n \geq 0}z^{n}$ converge absolument si $\abs{z} < 1$ et diverge grossièrement si $\abs{z} \geq 1$. Le rayon de convergence est égal à 1 et il y a divergence grossière sur le cercle d’incertitude.
+  3. %fig
+       @[./figures/diagramme-convergence-1.svg]
+     %
+     Considérons $\sum_{n \geq 1}\frac{z^{n}}{n}$. $\forall n \in \N^{*}, \abs{\frac{z^{n}}{n}} \leq \abs{z}^{n}$ donc pour $\abs{z} < 1$, la série $\sum_{n \geq 1}\frac{z^{n}}{n}$ converge absolument et pour $\abs{z} > 1$, $\abs{\frac{z^{n}}{n}} = \frac{\abs{z}^{n}}{n} \arrowlim{n\to+\infty}+\infty$ donc $\sum_{n \geq 1} \frac{z^{n}}{n}$ diverge grossièrement donc $\rho \left(\sum_{n \geq 1}\frac{z^{n}}{n}\right) = 1$ (rayon de convergence).
+     Sur le cercle d’incertitude~:
+     %offprog
+       - Soit $\theta \in \oo{0, 2 \pi}$. $\sum_{n \geq 1}\frac{e^{in \theta}}{n}$ converge. $\left(\frac{1}{n}\right)_{n \geq 1}$ est une suite réelle décroissante tendant vers 0 et pour tout $n \in \N$,
+         $$
+           \abs{1+e^{i \theta} + \cdots + e^{i n \theta}} = \abs{\frac{1-e^{i(n+1)\theta}}{1-e^{i \theta}}} = \abs{\frac{-2i\sin \left(\frac{n+1 \theta}{2}\right) e^{i\frac{(n+1)\theta}{2}}}{-2i\sin \frac{\theta}{2} e^{i \frac{\theta}{2}}}} \leq \frac{1}{\sin \theta}
+         $$
+         car $e^{i \theta} \ne 1$ et $\frac{\theta}{2} \in \oo{0, \pi}$ donc $\sin \frac{\theta}{2} > 0$.
+     %
+     - Preuve alternative~: Soit $z \in \U \setminus \{1\}$.
+       $$
+         (1-z) \sum_{n=1}^{N}\frac{z^{n}}{n} = \sum_{n=1}^{N}\frac{z^{n}}{n} - \sum_{n=1}^{N}\frac{z^{n+1}}{n} = \sum_{n=1}^{N}\frac{z^{n}}{n} - \sum_{n=2}^{N+1}\frac{z^{n}}{n-1} = z - \frac{z^{N+1}}{N} + \sum_{n=2}^{N}z^{n} \left(\frac{1}{n}-\frac{1}{n-1}\right)
+       $$
+       et $\abs{\frac{z^{N+1}}{N}} = \frac{1}{N} \arrowlim{N\to+\infty}0$ donc
+       $$
+         \abs{z^{n} \left(\frac{1}{n}- \frac{1}{n+1}\right)} = \frac{1}{n-1} - \frac{1}{n} = \frac{1}{n(n-1)} \usim{n\to+\infty} \frac{1}{n^{2}}
+       $$
+       donc $\sum_{n \geq 1}z^{n} \left(\frac{1}{n} - \frac{1}{n-1}\right)$ est absolument convergente à valeurs complexes donc convergentes, donc
+       $$
+         (1-z) \sum_{n=1}^{N} \frac{z^{n}}{n} \arrowlim{N\to+\infty}z - \sum_{n=2}^{+\infty}\frac{z^{n}}{n(n-1)}
+       $$
+       or $1-z \ne 0$ donc
+       $$
+         \sum_{n=1}^{N}\frac{z^{n}}{n}\arrowlim{N\to+\infty} \frac{z}{1-z} - \frac{1}{1-z} \sum_{n=2}^{+\infty}\frac{z^{n}}{n(n-1)}
+       $$
+       donc $\sum_{n \geq 1\frac{z^{n}}{n}}$ converge et
+       $$
+         \sum_{n=1}^{+\infty}\frac{z^{n}}{n} = \frac{z}{1-z} - \frac{1}{1-z} \sum_{n=2}^{+\infty}\frac{z^{n}}{n(n-1)}
+       $$
+%
+
+%rem
+  1. Soit $R_{a} = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$. On a
+     $$
+       \begin{align*}
+         R_{a}&\defeq \sup \big\{r \in \R_{+} \where (a_{n}r^{n})_{n \geq 0} \text{ est bornée}\big\} \\
+         &= \sup \left\{\abs{z} \where z \in \C \text{ et } \sum_{n \geq 0} a_{n}z^{n} \text{ converge absolument}\right\}\\
+         &= \sup \big\{\abs{z} \where z \in \C \text{ et } (a_{n}z^{n})_{n \in \N} \in \ell^{1}(\N)\big\}\\
+         &= \sup \big\{\abs{z} \where z \in \C \text{ et } a_{n}z^{n} \arrowlim{n\to+\infty}0\big\} \\
+         &= \sup \left\{\abs{z} \where z \in \C \text{ et } \sum_{n \geq 0} \text{ converge}\right\}
+       \end{align*}
+     $$
+  2. On a pour $\lambda \in \C^{*}$,
+     $$
+       \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \oeq{(1)} \rho \left(\sum_{n \geq 0}a_{n+n_{0}}z^{n}\right) \oeq{(2)} \rho \left(\sum_{n \geq 0} \abs{a_{n}}z^{n}\right) \oeq{(3)} \rho \left(\sum_{n \geq 0}\lambda a_{n}z^{n}\right)
+     $$
+     - Justifions (1)~: Soit $r > 0$. $(a_{n+n_{0}}r^{n})_{n \geq 0}$ est bornée si et seulement si $(a_{n+n_{0}}r^{n} \times r^{n_{0}})_{n \geq 0}$ est bornée (car $r^{n_{0}}\ne 0$), donc si et seulement si $(a_{n}r^{n})_{n \geq \color{yellow}n_{0}\color{reset}}$ est bornée, donc si et seulement si $(a_{n}r^{n})_{n \geq 0}$ est bornée. Ainsi,
+       $$
+         \big\{r \in \R_{+} \where (a_{n+n_{0}}r^{n})_{n \geq 0} \text{ est bornée}\big\} = \big\{r \in \R_{+} \%here (a_{n} r^{n})_{n \geq 0} \text{ est bornée}\big\}
+       $$
+       d’où les bornes supérieures de ces deux ensembles sont égales.
+     - Justifions (2)~: $(a_{n}r^{n})_{n \geq 0}$ est bornée si et seulement si $(\abs{a_{n}} r^{n})_{n \geq 0}$ est bornée
+     - Justifions (3)~: $(a_{n}z^{n})_{n \geq 0} \in \ell^{1}(\N) \iff (\lambda a_{n}z^{n})_{n \in \N} \in \ell^{1}(\N)$
+  3. Soit $(a_{n})_{n \in \N}$ une suite complexe. S’il existe $z_{0} \in \C^{*}$ tel que $\sum_{n \geq 0}a_{n}z_{0}^{n}$ soit _semi-convergente_ (convergente sans être absolument convergente), alors
+     $$
+       \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \abs{z_{0}}
+     $$
+     En effet, $\sum_{n \geq 0}a_{n}z_{0}^{n}$ converge donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \geq \abs{z_{0}}$ et $\sum_{n \geq 0}\abs{a_{n}z_{0}^{n}}$ diverge donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \leq \abs{z_{0}}$.
+     ~
+     Par exemple, $\sum_{n \geq 1}\frac{(-1)^{n}}{n}$ est semi-convergente donc $\rho \left(\sum_{n \geq 1}\frac{z^{n}}{n}\right) = 1$.
+%
+
+%prop Calcul du rayon de convergence
+  1. Soit $R_{a} = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$. On a
+     $$
+       R_{a} \defeq \big\{r \in \R_{+} \where (a_{n}r^{n})_{n \geq 0} \text{ est bornée}\big\}
+     $$
+  2. Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Notons $R_{a}$ et $R_{b}$ les rayons de convergence respectifs des séries $\sum_{n \geq 0}a_{n}z^{n}$ et $\sum_{n \geq 0}b_{n}z^{n}$.
+     1. $a_{n} \ueq{n\to+\infty}O(b_{n}) \implies R_{a} \geq R_{b}$
+     2. $a_{n} \usim{n\to+\infty}b_{n} \implies  R_{a} = R_{b}$
+     3. On a
+        $$
+          \rho \left(\sum_{n \geq 0} (a_{n}+b_{n})z^{p}\right) \geq \min\{R_{a}, R_{b}\}
+        $$
+        et si $R_{a}\ne R_{b}$, alors
+        $$
+          \rho \left(\sum_{n \geq 0}(a_{n}+b_{n})z^{p}\right) = \min \{R_{a}, R_{b}\}
+        $$
+     4. Pour $\lambda \in \C^{*}$, on a
+        $$
+          \rho \left(\sum_{n \geq 0} a_{n}\lambda^{n}z^{n}\right) = \frac{R_{a}}{\abs{\lambda}}
+        $$
+%
+
+%proof
+  2. 1. Il existe $M \in \R_{+}$ et $n_{0} \in \N$ tels que $\forall n \geq n_{0}, \abs{a_{n}} \leq M \abs{b_{n}}$ d’où
+        $$
+          \forall r \in \R_{+}, \forall n \geq n_{0}, \abs{a_{n}}r^{n} \leq M \abs{b_{n}}r^{n}
+        $$
+        donc $(b_{n}r^{n})_{n \geq n_{0}}$ est bornée seulement si $(a_{n}r^{n})_{n \geq n_{0}}$ est bornée, donc $r \in I_{b} \implies r \in I_{a}$ i.e. $I_{b} \subset I_{a}$. Ainsi, $\sup I_{b} \leq \sup I_{a}$, i.e. $R_{b} \leq R_{a}$.
+     2. On a
+        $$
+          a_{n} \usim{n\to+\infty} b_{n} \implies \begin{cases}a_{n}\ueq{n\to+\infty} O(b_{n}) \\ b_{n} \ueq n\to+\infty O(a_{n})\end{cases} \implies  R_{a} \geq R_{b} \geq R_{a} \implies  R_{a}=R_{b}
+        $$
+     3. Soit $z \in \C$. Si $\abs{z} < \min \{R_{a}, R_{b}\}$, alors $\abs{z} < R_{a}$ et $\abs{z} < R_{b}$ donc $(a_{n}z^{n})_{n \in \N}$ et $(b_{n}z^{n})_{n \in \N}$ sont sommables. Ainsi, $\big((a_{n}+b_{n})z^{n}\big)_{n \in \N}$ est sommable donc
+        $$
+          \rho \left(\sum_{n \geq 0}(a_{n}+b_{n})z^{n}\right) \geq \min \{R_{a}, R_{b}\}
+        $$
+        %eg
+          Pour $a_{n} = 1$ et $b_{n} = -1$, $\rho \left(\sum_{n \geq 0}z^{n}\right) = \rho \left(\sum_{n \geq 0}-z^{n}\right) = 1$ mais $\rho \left(\sum_{n \geq 0}(1-1)z^{n}\right) = \rho \left(\sum_{n \geq 0}0 \cdot z^{n}\right) = +\infty$.
+        %
+        Supposons $R_{a} < R_{b}$.
+        %rfig
+          @[./figures/diagramme-convergence-2.svg]
+        %
+        Soit $r \in \oo{R_{a}, R_{b}}$. La suite $(b_{n}r^{n})_{n \in \N}$ est bornée alors que $(a_{n}r^{n})_{n \in \N}$ ne l’est pas, donc $\big((a_{n}+b_{n}) r^{n}\big)_{n \in \N}$ n’est pas bornée, donc $\rho \left(\sum (a_{n}+b_{n})z^{n}\right) \leq R_{a}$. Or $\rho \left(\sum_{n \geq 0} (a_{n}+b_{n})z^{n}\right) \geq  \min \{R_{a}, R_{b}\} = R_{a}$ donc $\rho \left(\sum_{n \geq 0}(a_{n} + b_{n})z^{p}\right) = R_{a} = \min \{R_{a}, R_{b}\}$.
+%
+
+%prop Règle d’Alembert pour les séries entières
+  Soit $(a_{n})_{n \in \N}$ une suite complexe à termes non nuls à partir d’un certain rang. Si $\displaystyle \abs{\frac{a_{n+1}}{a_{n}}} \arrowlim{n\to+\infty}\ell \in \R_{+} \cup \{+\infty\}$, alors $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \frac{1}{\ell}$ (avec $\frac{1}{0^{+}} = +\infty$ et $\frac{1}{+\infty} = 0$).
+%
+
+%proof
+  Soit $z \in \C^{*}$. Posoons, pour tout $n \in \N$, $u_{n} = \abs{a_{n}z^{n}}$. On a $\forall n \geq n_{0}, u_{n} = \abs{a_{n}} \abs{z}^{n} > 0$. On applique la règle de d’Alembert pour les séries à termes strictement positifs $\sum_{n \geq n_{0}}$~:
+  $$
+    \frac{u_{n+1}}{u_{n}} = \abs{\frac{a_{n+1}}{a_{n}}}\abs{z}
+  $$
+  - si $\abs{\frac{a_{n+1}}{a_{n}}} \arrowlim{n\to+\infty}+\infty$, alors $\frac{u_{n+1}}{u_{n}} \arrowlim{n\to+\infty}+\infty > 1$ donc $\sum_{n \geq n_{0}}u_{n}$ diverge grossièrement, i.e $\sum_{n \geq 0}a_{n}z^{n}$ diverge grossièrement, donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = 0 = \frac{1}{+\infty}$.
+  - si $\abs{\frac{a_{n+1}}{a_{n}}} \arrowlim{n\to+\infty}0^{+}$, alors $\frac{u_{n+1}}{u_{n}} \arrowlim{n\to \infty} 0 \times  \abs{z} = 0 < 1$, donc $\sum_{n \geq  0}u_{n}$ converge donc $\sum_{n \geq 0} \abs{a_{n}z^{n}}$ converge, donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = +\infty = \frac{1}{0^{+}}$.
+  - si $\abs{\frac{a_{n+1}}{a_{n}}}\arrowlim{n\to+\infty}\ell \in \oo{0, +\infty}$, alors $\frac{u_{n+1}}{u_{n}} \arrowlim{n\to+\infty} \ell \abs{z}$.
+    - si $\ell \abs{z} < 1$, alors $\sum_{ n \geq 0} u_{n}$ converge, i.e. $\sum_{n \geq 0} \abs{a_{n}z^{n}}$ converge
+    - si $\ell \abs{z} > 1$, alors $\sum_{ n \geq 0}u_{n}$ diverge grossierement donc $\sum_{ n \geq 0}a_{n}z^{n}$ diverge grossièrement, donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \frac{1}{\ell}$.
+%
+
+%prop
+  Pour tout $\alpha \in \C$, on a
+  $$
+    \rho \left(\sum_{n \geq 1}n^\alpha z^{n}\right) = 1
+  $$
+%
+
+%proof
+  Notons $\alpha = a+ib$ avec $a$ et $b$ deux réels. $a_{n} = n^{\alpha}$ vaut par définition $e^{\alpha\ln n} \ne 0$.
+  $$
+    \abs{\frac{a_{n+1}}{a_{n}}} = \abs{\frac{(n+1)^{\alpha}}{n^{\alpha}}} = \frac{(n+1)^{\alpha}}{n^{\alpha}} = \left(1+\frac{1}{n}\right)^{a} \arrowlim{n\to+\infty} 1
+  $$
+  donc la règle d’Alembert permet d’affirmer
+  $$
+    \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \frac{1}{1} = 1
+  $$
+%
+
+%eg
+  1. Cherchons le rayon de convergence de la série $\sum_{n \geq 0}\tilde{F}(n)z^{n}$ avec $F \in \C(X) \setminus \{0\}$.
+     ~
+     Il existe $N \in \N$ tel que
+     $$
+       \forall n \geq N, n \notin Z(F) \cup P(F)
+     $$
+     donc $\forall n \geq N, \tilde{F}(n)\ne 0$. Il existe $\lambda \in \C^{*}$ tel que $\tilde{F}(n) \usim{n\to+\infty} \lambda n^{d}$ avec $d = \deg \tilde{F}$.
+     $$
+       \rho \left(\sum_{n \geq N}\tilde{F}(n) z^{n}\right) = \rho \left(\sum_{n \geq 1} \lambda n^{d}z^{n}\right) = \rho \left(\sum_{n \geq 1}n^{d}z^{n}\right) = 1
+     $$
+  2. Si $a_{n} \ueq{n\to+\infty} O(n^{\alpha})$, alors $\rho \left(\sum_{n \geq 1}a_{n}z^{n}\right) \geq 1$ (cela arrive fréquemment).
+  3. Cherchons le rayon de converegnce de la série $\sum_{n \geq 1}\frac{n^{2n}}{(2n)!}z^{n}$. Posons pour tout $n \in \N^{*}$, $a_{n} = \frac{n^{2n}}{(2n)!} \ne 0$.
+     $$
+       \abs{\frac{a_{n+1}}{a_{n}}} = \frac{a_{n+1}}{a_{n}} = \frac{(n+1)^{2n+2}}{(2n+2)!} \times  \frac{(2n)!}{n^{2n}} =  \left(1+\frac{1}{n}\right)^{2n} \frac{(n+1)^{2}}{(2n+2)(2n+1)}\usim{n\to+\infty} e^{2} \frac{n^{2}}{4n^{2}}
+     $$
+     donc $\lim_{n\to+\infty} \abs{\frac{a_{n+1}}{a_{n}}} = \frac{e^{2}}{4}$ donc $\rho \left(\sum_{n \geq 0}\frac{n^{2n}}{(2n)!}z^{n}\right) = \frac{4}{e^{2}}$. Pour $\abs{z} = \frac{4}{e^{2}}$,
+     $$
+       \frac{n^{2n}}{(2n)!}\abs{z}^{n} = \frac{n^{2n}}{(2n)!} \frac{4^{n}}{e^{2n}} \usim{n\to+\infty} \frac{n^{2n}}{\sqrt{4n \pi} \left(\frac{2n}{e}^{2n}\right)} \frac{4^{n}}{e^{2n}} = \frac{1}{\sqrt{4n \pi}}
+     $$
+     Il n’y a donc pas absolue convergence sur le cercle d’incertitude.
+%
+
+%callout Résultat à connaître
+  $n \ln \left(1+\frac{\alpha}{n}\right) \sim \alpha$ donc $n\ln \left(1+\frac{\alpha}{n}\right) \arrowlim{n\to+\infty}\alpha$ d’où par continuité
+  $$
+    \left(1+ \frac{\alpha}{n}\right)^{n} \arrowlim{n\to+\infty}e^{\alpha}
+  $$
+%
+
+%offprog
+  %def
+    On appelle série entière lacunaire toute série de fonctions $\sum_{n \geq 0}f_{n}$ avec
+    $$
+      f_{n}: \applic{\C}{\C}{z}{a_{n}z^{\varphi(n)}}
+    $$
+    avec $(a_{n})_{n \in \N}$ une suite complexe et $\varphi:\N \longrightarrow \N$ strictement croissante.
+  %
+
+  %eg
+    $\sum_{n \geq 0}n! z^{(n^{2})}$ et $\sum_{n \geq 0}a_{n}z^{(2n)}$ sont des séries entières lacunaires.
+  %
+%
