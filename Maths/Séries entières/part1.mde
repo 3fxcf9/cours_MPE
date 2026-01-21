@@ -249,12 +249,193 @@
   %def
     On appelle série entière lacunaire toute série de fonctions $\sum_{n \geq 0}f_{n}$ avec
     $$
-      f_{n}: \applic{\C}{\C}{z}{a_{n}z^{\varphi(n)}}
+      f_{n}: \applic{\C}{\C}{z}{b_{n}z^{\varphi(n)}}
     $$
-    avec $(a_{n})_{n \in \N}$ une suite complexe et $\varphi:\N \longrightarrow \N$ strictement croissante.
+    avec $(b_{n})_{n \in \N}$ une suite complexe et $\varphi:\N \longrightarrow \N$ strictement croissante.
   %
 
   %eg
-    $\sum_{n \geq 0}n! z^{(n^{2})}$ et $\sum_{n \geq 0}a_{n}z^{(2n)}$ sont des séries entières lacunaires.
+    $\sum_{n \geq 0}n! z^{(n^{2})}$ et $\sum_{n \geq 0}b_{n}z^{(2n)}$ sont des séries entières lacunaires.
   %
+
+  %prop Proposition-définition
+    Soit $(b_{n})_{n \in \N}$ une suite complexe. Soit $\varphi: \N \longrightarrow \N$ strictement croissante. Posons $R = \sup \big\{x \in \R_{+} \where (b_{n} r^{{\varphi(n)}})_{n \in \N} \text{ est bornée}\big\}$. Alors
+    - si $\abs{z} < R$, alors $\sum_{n \geq 0}b_{n}z^{\varphi(n)}$ converge absolument
+    - si $\abs{z} > R$, alors $\sum_{n \geq 0}b_{n}z^{\varphi(n)}$ diverge grossièrement
+    $R$ est appelé _rayon de convergence_ de la série lacunaire $\sum_{n \geq 0}b_{n}z^{\varphi(n)}$.
+  %
+
+  %proof
+    Posons, pour tout $n \in \N$, $a_{\varphi(n)} = b_{n}$ et $a_{n} = 0$ si $n\notin \varphi(\N)$. Pour $r > 0$, $(a_{n}r^{n})_{n \in \N}$ est botnée si et seulement si $(b_{n}r^{\varphi(n)})_{n \in \N}$ est bornée donc $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$. donc
+    $$
+      \abs{z} < R \implies (a_{n}z^{n})_{n \in \N} \in \ell^{1}(\N) \implies \left(\underbrace{a_{\varphi(n)}}_{b_{n}}z^{\varphi(n)})\right) \in \ell^{1}(\N)
+    $$
+    et
+    $$
+      \abs{z} > R \implies a_{n}z^{n} \cancel{\arrowlim{n\to+\infty}}0 \implies b_{n}z^{\varphi(n)} \cancel{\arrowlim{n\to+\infty}}0
+    $$
+  %
+%
+
+%eg
+  1. %callout
+       Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R$. Soit $p \in \N^{*}$. Cherchons le rayon de convergence de $\sum_{n \geq 0}a_{n}z^{pn}$.
+       - si $\abs{z^{p}} < R$, alors $\sum_{n \geq 0}a_{n} (z^{p})^{n}$ est absolument convergente.
+       - si $\abs{z^{p}} > R$, alors $\sum_{n \geq 0}a_{n}(z^{p})^{n}$ diverge grossièrement.
+       donc $\rho \left(semn \geq 0\right)a_{n}z^{pn} = \sqrt[p]{\rho \left(\sum_{n \geq 0}a_{n}z^{p}\right)}$
+     %
+  2. $\rho \left(\sum_{n \geq 0} \frac{n}{2^{p}}z^{3n}\right) = \sqrt[3]{\rho \left(\sum_{n \geq 0}\frac{n}{2^{n}}z^{p}\right)} = \sqrt[3]{2 \rho \left(\sum_{n \geq 0}n z^{n}\right)} = \sqrt[3]{2}$
+%
+
+## Continuité de la somme d’une série entière
+
+%prop
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$
+  1. La série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge absolument sur $D(0,R) = \big\{z \in \C \where \abs{z} < R\big\}$ mais ne converge pas uniformément sur $D(0,R)$ en général.
+  2. Si $0 \leq r < R$, alors la série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge normalement sur le disque fermé $\bar{D}(0,r) = \big\{z \in \C \%here \abs{z} \leq r\big\}$.
+  3. $f: z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est (au moins) continue sur $D(0,R)$.
+%
+
+%proof
+  1. $\rho \left(\sum_{n \geq 0}z^{n}\right) = 1$. Pour $\abs{z < 1}, R_{n}(z) = \sum_{k=n+1}^{+\infty}z^{k} = \frac{z^{n+1}}{1-z}$ vérifie $\abs{R_{n}(z)} \arrowlim{z\to 1}+\infty$ donc $R_{n}$ n’est pas borné sur $D(0,1)$.
+  2. Soit $0 \leq R < r$. Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\abs{f_{n}(z)} = \abs{a_{n}}\abs{z}^{n}$ d’où par croissance de $t \longmapsto t^{n}$ sur $\R_{+}$, $\norm{f_{n}}_{\infty, \bar{D}(0,r)} = \abs{a_{n}}r^{n}$ or $r < R$ donc $\sum_{n \geq 0}\abs{a_{n}}r^{n}$ converge. Ainsi, $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$.
+  3. $\forall n \in \N, f_{n} \in \Cont(D(0,r))$. Soit $z_{0} \in D(0,R)$. Posons $r = \frac{\abs{z_{0}} + R}{2}$. Alors $z_{0} \in \ring D(0,r)$ et donc $\bar{D}(0,r) \in \Vois_{D(0,R)}(z_{0})$. Or $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$ et les fonctions sont à valeurs complexes, donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\bar{D}(0,r)$. Ainsi, $f = \sum_{n=0}^{+\infty}f_{n} \in \Cont(D(0,R))$.
+%
+
+%eg
+  1. $z \longmapsto e^{z} = \sum_{n=0}^{+\infty}\frac{z^{n}}{n!}$ est continue sur $\C = D(0,+\infty)$.
+  2. $z \longmapsto \sum_{n=0}^{+\infty}\frac{z_{n}}{n}$ est au moins continue sur $D(0,1)$.
+%
+ %prop Seul résultat simple pour la variable complexe
+   Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R_{+}$. Si $\sum_{n \geq 0}a_{n}z^{n}$ converge **absolument** sur $\bar{D}(0,R)$, alors $z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est continue sur $\bar{D}(0,R)$.
+ %
+
+ %proof
+   Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\norm{f_{n}}_{\infty, \bar{D}(0,R)} = \abs{a_{n}}R^{n}$. Par hypothèse, $\sum_{n \geq 0}\abs{a_{n}}R^{n}$ converge donc $\sum_{n \geq 0}f_{n}$ converge normalement donc uniformément sur $\bar{D}(0,R)$.
+ %
+
+%eg
+  Soit $\alpha \in \R$. On a
+  $$
+    \rho \left(\sum_{n \geq 1}\frac{(-1)^{n}}{n^{\alpha}}z^{n}\right) = \rho \left(\sum_{n \geq 1}\abs{\frac{(-1)^{n}}{n^{\alpha}}}z^{n}\right) = \rho \left(\sum_{n \geq 1}n^{-\alpha} z^{n}\right) = 1
+  $$
+  Pour $\alpha > 1$, $\sum_{n \geq 1}\abs{\frac{(-1)^{n}}{n^{\alpha}}1^{n}}$ converge donc pour $\alpha > 1$, $z \longmapsto \sum_{n=1}^{+\infty}\frac{(-1)^{n}}{n^{\alpha}}z^{n}$ est continue sur $\bar{D}(0,1)$.
+%
+
+### Continuité en la variable réelle
+
+Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. La fonction $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ est alors au moins continue sur $\oo{-R,R}$ (mais elle peut être définie sur $\cc{-R,R}$, $\co{-R,R}$ ou $\oc{-R,R}$).
+
+%thm Théorème d’Abel radial
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. Si $R \in \R_{+}^{*}$ et si $\sum_{n \geq 0}a_{n}R^{n}$ conevrge, alors $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ admet une limite en $R$. Autrement dit,
+  $$
+    \lim_{x\to R^{-}} \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}R^{n}
+  $$
+%
+
+%proof
+  Posons $f_{n}: x \longmapsto a_{n}x^{n}$. Montrons la convergence uniforme de $\sum_{n \geq 0}f_{n}$ sur $\cc{0,R}$. Posons $\rho_{n} = \sum_{k=n}^{+\infty}a_{k}R^{k}$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \geq N, \abs{\rho_{n}} < \varepsilon$. Soit $x \in \co{0,R}$. Soit $n \geq N$.
+  $$
+    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty}a_{k}R^{k} \left(\frac{x}{R}\right)^{k} = \sum_{k=n}^{+\infty}\big(\rho_{k} - \lambda_{k+1}\big) \left(\frac{x}{R}\right)^{k}
+  $$
+  or $\rho_{k} \left(\frac{x}{R}\right)^{k} \ueq{k\to+\infty} o \left(\left(\frac{x}{R}\right)^{k}\right)$ et $\sum_{k \geq 0}\left(\frac{x}{R}\right)^{k}$ converge car $\abs{\frac{x}{R}} < 1$ donc $\sum_{k \geq 0}\rho_{k} \left(\frac{x}{R}\right)^{k}$ est absolument convergente. De même pour $\sum_{k \geq 0}\rho_{k+1} \left(\frac{x}{R}\right)^{k}$.
+  $$
+    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty} \rho_{k} \left(\frac{x}{R}^{k}\right) - \sum_{k=n+1}^{+\infty}\rho_{k+1}\left(\frac{x}{R}\right)^{k+1}
+  $$
+  d’où
+  $$
+    \begin{align*}
+      \sum_{k=n}^{+\infty}a_{k}x^{k} &= \sum_{k=n}^{+\infty}\rho_{k} \left(\frac{x}{R}\right)^{k} - \sum_{k=n+1}^{+\infty}\rho_{k} \left(\frac{x}{R}\right)^{k-1} \\
+      &= \rho_{n} \left(\frac{x}{R}\right)^{n} + \sum_{k=n+1}^{+\infty}\rho_{k} \left(\left(\frac{x}{R}\right)^{k} - \left(\frac{x}{R}\right)^{k-1}\right) \\
+    \end{align*}
+  $$
+  donc
+  $$
+    \begin{align*}
+      \abs{\sum_{k=n}^{+\infty}a_{k}x^{k}} &\leq \varepsilon \times  1 + \sum_{k=n+1}^{+\infty}\left(\left(\frac{x}{R}\right)^{k-1} - \left(\frac{x}{R}\right)^{k}\right)\\
+      &\leq \varepsilon + \varepsilon \sum_{k=n+1}^{+\infty} \left(\frac{x}{R}\right)^{k-1} - \left(\frac{x}{R}\right)^{k} = \varepsilon + \varepsilon \left(\frac{x}{R}\right)^{n} \leq 2 \varepsilon
+    \end{align*}
+  $$
+  et $\abs{\sum_{k=n}^{+\infty}a_{k}R^{k}} = \abs{\rho_{n}} < \varepsilon \leq 2 \varepsilon$ donc
+  $$
+    \forall x \in \cc{0,R}, \forall n \geq N, \abs{\sum_{k=n}^{+\infty}a_{k}x^{k}} <  2 \varepsilon
+  $$
+  donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\cc{0,R}$. Or $f_{n}_{|\cc{0,R}} \in \Cont(\cc{0,R})$ pour tout $n \in \N$. Ainsi, $x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est continue en $R$.
+%
+
+%eg
+  1. $$
+       \forall x \in \co{0,1}, \ln(1+x) = \sum_{0}^{x}\frac{\dd t}{1+t} = \sum_{0}^{x}\sum_{n=0}^{+\infty}(-t)^{n}\dd t
+     $$
+     $\rho \left(\sum_{n \geq 0}(-1)^{n}z^{n}\right) = 1$ donc $\sum_{n \geq 0}(-1)^{n}z^{n}$ converge normalement sur tout disque $\bar{D}(0,r)$ avec $0 \leq n < 1$ donc $\sum_{n \geq 0}(-1)^{n} x^{n}$ converge normalement sur $\cc{-x,x}$ avec $0 \leq x < 1$ donc uniformément sur $\cc{0,x}$.((On aurait aussi pu utiliser $\sum_{n \in \N} \int_{0}^{x}\abs{-t}^{n}\dd t = \sum_{n \in \N}\frac{x^{n+1}}{n+1} < +\infty$)). Ainsi
+     $$
+       \ln(1+x) = \sum_{n=0}^{+\infty}\int_{0}^{x} t^{n}\dd t = \sum_{n=0}^{+\infty}(-1)^{n} \frac{x^{n+1}}{n+1} = \sum_{n=1}^{+\infty}(-1)^{n-1}\frac{x^{n}}{n}
+     $$
+     et $\sum_{n \geq 1}(-1)^{n-1}\frac{1}{n}$ converge. D’après le _théorème d’Abel radial_, on a
+     $$
+       \lim{x\to 1}\big(\ln(1+x)\big) = \lim_{x\to 1} \sum_{n \geq 1}(-1)^{n-1} \frac{x^{n}}{n} = \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}
+     $$
+     donc $\ln 2 = \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}$.
+  2. Soit $\sum_{n \geq 0}a_{n}x^{n}$ une série entière de rayon de conevrgence $R \in \R_{+}^{*}$ telle que $\sum_{n \geq 0}a_{n}(-R)^{n}$ converge. Alors
+     $$
+       \lim_{x\to(-R)} \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}(-R)^{n}
+     $$
+     Posons $g: x \longmapsto \sum_{n=0}^{+\infty}(-1)^{n}a_{n}x^{n}$.
+     $$
+       \rho \left(\sum_{n \geq 0}(-1)^{n}a_{n}x^{n}\right) = \rho \left(\sum_{n \geq 0}\abs{a_{n}}x^{n}\right) = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) = R
+     $$
+     Comme $\sum_{n \geq 0}(-1)^{n}a_{n}R^{n}$ converge, alors on a
+     $$
+       \lim_{x\to R^{-}} \sum_{n=0}^{+\infty}(-1)^{n}a_{n}x^{n} = \sum_{n=0}^{+\infty}(-1)^{n}a_{n}R^{n}
+     $$
+     donc
+     $$
+       \lim_{x\to -R^{+}}\sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}(-R)^{n}
+     $$
+%
+
+%cor Spécifique à la variable réelle
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Si la fonction de la variable réelle $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ est définie sur $I$, alors $f$ est continue sur $I$ (et pas seulement sur son intérieur).
+%
+
+%eg
+  Pour $\alpha > 0$, la fonction $x \longmapsto \sum_{n=0}^{+\infty}\frac{x^{n}}{n^{\alpha}}$ est continue sur $\co{-1,1}$ et pour $\alpha > 1$, la fonction $x \longmapsto \sum_{n=0}^{+\infty}\frac{x^{n}}{n^{\alpha}}$ est continue sur $\cc{-1,1}$.
+%
+
+### Primitives de $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$
+
+%def Définition-Proposition
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$.
+  1. Pour tout $(a,b) \in \oo{-R,R}^{2}$, on a
+     $$
+       \int_{a}^{b}\sum_{n=0}^{+\infty}a_{n}t^{n}\dd t = \sum_{n=0}^{+\infty}a_{n}\int_{a}^{b}t^{n}\dd t
+     $$
+  2. (def) La série primitive de $\sum_{n \geq 0}a_{n}x^{n}$ est $\sum_{n \geq 0}a_{n} \frac{x^{n+1}}{n+1}$ et on a
+     $$
+       \rho \left(\sum_{n \geq 0}a_{n} \frac{x^{n+1}}{n+1}\right) = \rho \left(\sum_{n \geq 0} a_{n}x^{n}\right)
+     $$
+  3. Si $F$ est une primitive de $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ sur $\oo{-R,R}$, alors
+     $$
+       \forall x \in \oo{-R,R}, F(x) = F(0) + \sum_{n=0}^{+\infty}a_{n} \frac{x^{n+1}}{n+1}
+     $$
+  _Les résultats précédents sont aussi vrais avec des séries lacunaires_.
+%
+
+%proof
+  1. $\sum_{n \geq 0}a_{n}t^{n}$ converge normalement sur $\cc{a,b} \subset \cc{-\max\{\abs{a}, \abs{b}\}, \max \{\abs{a}, \abs{b}\}}$ donc uniformément.
+  2. $\frac{a_{n}}{n+1} = O(a_{n})$ donc $\underbrace{\rho \left(\sum_{n \geq 0}\frac{a_{n}}{n+1}x^{n}\right)}_{= \rho \left(\sum_{n \geq 0}\frac{a_{n}}{n+1}x^{n+1}\right)} \geq  \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$.
+     Soit $\tilde{R} = \rho \left(\sum_{n \geq 0} \frac{a_{n}}{n+1} x^{n+1}\right)$. On a $\tilde{R} \geq \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$.
+     - Soit $r < \tilde{R}$ quelconque. Si $(a_{n}r^{n})$ est bornée, alors $\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq \tilde{R}$. Soit $r' \in \oo{r, \tilde{R}}$.
+     $$
+       a_{n}r^{n} = \underbrace{\frac{a_{n}(r')^{n}}{n+1}}_{\text{bornée}} \times \underbrace{(n+1) \left(\frac{r}{r'}\right)^{n}}_{\text{tend vers }0}
+     $$
+     donc $a_{n}r^{n} \arrowlim{n\to+\infty}0$.
+  3. Pour tout $x \in \oo{-R,R}$,
+     $$
+       F(x) - F(0) = \int_{0}^{x}\sum_{n=0}^{+\infty}a_{n}t^{n}\dd t
+     $$
+     donc
+     $$
+       F(x) = F(0) + \sum_{n=0}^{+\infty}a_{n} \frac{x^{n+1}}{n+1}
+     $$
 %

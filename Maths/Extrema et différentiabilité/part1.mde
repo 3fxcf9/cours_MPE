@@ -718,7 +718,7 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
 %
 
 %proof
-  - Soit $x \in X = mmg^{-1}(\{c\})$. Alors, $g$ est constante donc admet en $x$ un extremum (global) et $g$ est différentiable en $x$, donc $T_{x}X \subset \ker (\dd g(x))$.
+  - Soit $x \in X = g^{-1}(\{c\})$. Alors, $g$ est constante donc admet en $x$ un extremum (global) et $g$ est différentiable en $x$, donc $T_{x}X \subset \ker (\dd g(x))$.
   - Si $g \in \Cont^{1}(\Omega)$ et si $\dd g(x)\ne 0_{\L(E,\R)}$, alors $T_{x} X = \ker (\dd g(x))$. _(Preuve dans le DM n°8)_.
 %
 
@@ -737,7 +737,7 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
      $$
      donc pour $x \in I$,
      $$
-       T_{(x, f(x))}\Gamma = \big\{\big(-f'(x), 1\big)\big\}\ortho f \Vect\left\{(1,f'(x))\right\}
+       T_{(x, f(x))}\Gamma = \big\{\big(-f'(x), 1\big)\big\}\ortho = \Vect\left\{(1,f'(x))\right\}
      $$
   3. Supposons $E$ euclidien. Posons $S = \{x \in E \where \norm{x} = 1\} = g^{-1}(\{1\})$ avec
      $$
@@ -810,12 +810,13 @@ Soit $E$ un $\R$-espace vectoriel normé de dimension finie.
     \exists \lambda \in \R: \dd f(x) = \lambda \dd g(x)
   $$
   $\lambda$ s’appelle multiplicateur de Lagrange.
+  ==FIGURE==
 %
 
 %proof
-  Supposons que $f_{|X}$ admette un extremum local N $x \in X = g^{-1}(\{0\})$. Comme $f$ est différentiable en $x$, on a: $X_{x}X \subset \ker (\dd f(x))$ or $X f g^{-1}(\{0\})$ et $\dd g(x)\ne 0$ pour $x \in X$, donc $X_{x}X = \ker (\dd f(x))$. Ainsi, $\ker  (\dd g(x)) \subset \ker (\dd f(x))$.
+  Supposons que $f_{|X}$ admette un extremum local en $x \in X = g^{-1}(\{0\})$. Comme $f$ est différentiable en $x$, on a: $T_{x}X \subset \ker (\dd f(x))$ or $X = g^{-1}(\{0\})$ et $\dd g(x)\ne 0$ pour $x \in X$, donc $T_{x}X = \ker (\dd f(x))$. Ainsi, $\ker  (\dd g(x)) \subset \ker (\dd f(x))$.
   - Si $\dd f(x) = 0_{\L(te,\R)}$, alors $\dd f(x) = 0 \cdot \dd g(x)$
-  - sinon, $\dd f(x)$ étant une forme linéaire non nulle, $\ker (\dd f(x))$ est un hyperplan vectoriel de $E$. C’est aussi le cas de $\ker (\dd g(x))$. Or $\ker (\dd g(x)) \subset \ker (\dd f(x))$ donc $T_{x}X = \ker (\dd g(x)) = \ker (\dd f(x)) = H$. Soit $x \in E \setminus H. On a mmE = H\oplus\R u$. Il existe $(\alpha, \beta) \in \R^{2}$  tels que
+  - sinon, $\dd f(x)$ étant une forme linéaire non nulle, $\ker (\dd f(x))$ est un hyperplan vectoriel de $E$. C’est aussi le cas de $\ker (\dd g(x))$. Or $\ker (\dd g(x)) \subset \ker (\dd f(x))$ donc $T_{x}X = \ker (\dd g(x)) = \ker (\dd f(x)) = H$. Soit $x \in E \setminus H$. On a $E = H\oplus\R u$. Il existe $(\alpha, \beta) \in \R^{2}$  tels que
     ~ $\dd g(x) \mdot u = \alpha\ne 0$  ~ $\dd f(x) \mdot u = \beta\ne 0$
     donc
     $$
