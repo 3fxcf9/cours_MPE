@@ -1,0 +1,136 @@
+# Semaine 16
+
+## Théorème d’optimisation
+
+%prop Condition nécessaire d’existence d’un extremum local pour $f_{|X}$.
+  %rfig
+    @[./figures/extremum-local-differentielle.svg]
+  %
+  Soit $f: \Omega \longrightarrow \R$ une appliction. Soit $X$ une partie non vide de $\Omega$ . Soit $x \in X$. Si $f_{|X}: X \longrightarrow \R$ possède un extremum local en $x$ et si $f$ est différentiable en $x$, alors $T_{x}X \subset \ker (\dd f(x))$.
+%
+
+%proof
+  Supposons $f$ différentiable en $x$ et $f_{|X}$ minimale localement en $x \in X$. Il existe alors $\delta > 0$ tel que $\Ball(x, \delta) \subset E$ et
+  $$
+    \forall y \in \Ball(x, \delta) \cap X, f(y) \geq f(x)
+  $$
+  Soit $v \in T_{x}X$. Il existe $\varepsilon > 0$ et $\gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow E$ avec $\gamma$ tracé sur $X$, $\gamma$ dérivable en 0, $\gamma(0) = x$ et $\gamma'(0) = v$. Alors, $\varphi = f\circ \gamma: \oo{-\varepsilon, \varepsilon} \longrightarrow \R$ est dérivable en 0 par composition. $\gamma$ est continue en 0 et $\gamma(0) = x$, donc il existe $\eta \in \oo{0, \varepsilon}$ tel que
+  ~ $\gamma(\oo{-\eta, \eta}) \subset \Ball(x, \delta)$  ~ $\gamma(\oo{-\varepsilon, \varepsilon})\subset X$
+  donc $\gamma(\oo{-\eta, \eta}) \subset \Ball(x, \delta) \cap X$, donc
+  $$
+    \forall t \in \oo{-\eta, \eta}, \varphi(t) = f_{|X} (\gamma(t)) \geq f_{|X}\big(\gamma(0)\big) = f \big(\gamma(0)\big)
+  $$
+  donc $\forall t \in \oo{-\eta, \eta}, \varphi(t) \geq \varphi(0)$, donc $\varphi'(0) = 0$, i.e. $\dd f \big(\gamma(0)\big) \mdot \gamma'(0) = 0$, i.e. $\dd f(x)\mdot v = 0$ donc $v \in \ker  \big(\dd f(x)\big)$.
+%
+
+## Théorème d’optimisation sous contrainte
+
+%thm Optimisation sous contrainte
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{1}$ sur un ouvert $\Omega$ de $E$. Soit $X = g^{-1}(\{0\})$ avec $g: \Omega \longrightarrow \R$ de classe $\Cont^{1}$. Si $f_{|X}$ admet un extremum local en $x \in X$ et si $\dd g(x)\ne 0_{\L(E,\R)}$ (« contrainte non critique »), alors
+  $$
+    \exists \lambda \in \R: \dd f(x) = \lambda \dd g(x)
+  $$
+  $\lambda$ s’appelle multiplicateur de Lagrange.
+  ==FIGURE==
+%
+
+%proof
+  Supposons que $f_{|X}$ admette un extremum local en $x \in X = g^{-1}(\{0\})$. Comme $f$ est différentiable en $x$, on a: $T_{x}X \subset \ker (\dd f(x))$ or $X = g^{-1}(\{0\})$ et $\dd g(x)\ne 0$ pour $x \in X$, donc $T_{x}X = \ker (\dd f(x))$. Ainsi, $\ker  (\dd g(x)) \subset \ker (\dd f(x))$.
+  - Si $\dd f(x) = 0_{\L(te,\R)}$, alors $\dd f(x) = 0 \cdot \dd g(x)$
+  - sinon, $\dd f(x)$ étant une forme linéaire non nulle, $\ker (\dd f(x))$ est un hyperplan vectoriel de $E$. C’est aussi le cas de $\ker (\dd g(x))$. Or $\ker (\dd g(x)) \subset \ker (\dd f(x))$ donc $T_{x}X = \ker (\dd g(x)) = \ker (\dd f(x)) = H$. Soit $x \in E \setminus H$. On a $E = H\oplus\R u$. Il existe $(\alpha, \beta) \in \R^{2}$  tels que
+    ~ $\dd g(x) \mdot u = \alpha\ne 0$  ~ $\dd f(x) \mdot u = \beta\ne 0$
+    donc
+    $$
+      \frac{\beta}{\alpha}\dd g(x) \mdot u = \beta = \dd f(x)\mdot u
+    $$
+    et $\forall x' \in H, \frac{\beta}{\alpha} \dd g(x)\mdot x' = \dd f(x)\mdot x' = 0$ donc $\dd f(x) = \frac{\beta}{\alpha}\dd g(x)$.
+%
+
+## Définition du rayon de convergence
+
+%def Définition-Proposition
+  Soit $(a_{n})_{n \geq n_{0}}$ une suite complexe. Posons $I_{a} = \{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$.
+  %rfig Rayon de convergence et cercle d’incertitude
+    @[./figures/rayon-convergence.svg]
+  %
+  - $I_{a}$ est un ++intervalle++ de $\R_{+}$ débutant en 0
+  - Posons $R_{a} = \sup I_{a} \in \R_{+} \cup \{+\infty\}$ ($I_{a} = \cc{0,R_{a}}$ ou $\co{0,R_{a}}$). On a
+    - $\abs{z} < R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente
+    - $\abs{z} > R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièremen-
+    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $D(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $D(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \where \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
+%
+
+%proof
+  $(a_{n} 0^{n})_{n \geq 1}$ est la suite nulle donc elle est bornée, donc $0 \in I_{a}$. Soit $r \in I_{a}$. Soit $0 \leq r' \leq r$. On a $\forall n \geq n_{0}, \abs{a_{n}}r'^{n} \leq \abs{a_{n}}r^{n}$ (croissance de $t \longmapsto t^{n}$ sur $\R$) donc $(a_{n}r'^{n})_{n \geq n_{0}}$ est bornée donc $r' \in I_{a}$.
+  - Supposons $R_{a} = +\infty$. Soit $z \in \C$. La suite $\big(a_{n}(\abs{z} + 1)^{n}\big)_{n \geq n_{0}}$ est bornée car $\abs{z} + 1 \in I_{a} = \R_{+}$ donc d’après le _lemme d’Abel_, la série $\sum_{n \geq 0a_{n}z^{n}}$ converge absolument car $\abs{z} < \abs{z} + 1$.
+  - Supposons $R_{a} = 0$. Alors $I_{a} = \{0\}$ donc $\forall z \in \C^{*}, (a_{n}\abs{z}^{n})_{n \geq n_{0}}$ n’est pas bornée, i.e. $(a_{n}z^{n})_{n \geq n_{0}}$ n’est pas bornée. Elle ne tend donc pas vers 0: $\sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièrement.
+  - Supposons $R_{a} \in \oo{0,+\infty}$ (alors $I_{a} = \cc{0,R_{a}}$ ou $I_{a} = \co{0,R_{a}}$). Soit $z \in \C$.
+    - si $\abs{z} < R_{a}$, alors $(a_{n}\abs{z}^{n})_{n \geq n_{0}}$ n’est pas bornée donc (cf. supra) $\sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièrement.
+    - Supposons $\abs{z} < R_{a}$. Soit $r = \frac{\abs{z} + R_{a}}{2} \in I_{a}$. Alors, $(a_{n}r^{n})_{n \geq n_{0}}$ est bornée et $\abs{z} < r$ donc (lemme d’Abel), $\sum_{n \geq n_{0}}a_{n}z^{n}$ converge absolument.
+%
+
+## Théorème d’Abel radial
+
+%thm Théorème d’Abel radial
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. Si $R \in \R_{+}^{*}$ et si $\sum_{n \geq 0}a_{n}R^{n}$ converge, alors $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ admet une limite en $R$. Autrement dit,
+  $$
+    \lim_{x\to R^{-}} \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}R^{n}
+  $$
+%
+
+%proof
+  Posons $f_{n}: x \longmapsto a_{n}x^{n}$. Montrons la convergence uniforme de $\sum_{n \geq 0}f_{n}$ sur $\cc{0,R}$. Posons $\rho_{n} = \sum_{k=n}^{+\infty}a_{k}R^{k}$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \geq N, \abs{\rho_{n}} < \varepsilon$. Soit $x \in \co{0,R}$. Soit $n \geq N$.
+  $$
+    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty}a_{k}R^{k} \left(\frac{x}{R}\right)^{k} = \sum_{k=n}^{+\infty}\big(\rho_{k} - \lambda_{k+1}\big) \left(\frac{x}{R}\right)^{k}
+  $$
+  or $\rho_{k} \left(\frac{x}{R}\right)^{k} \ueq{k\to+\infty} o \left(\left(\frac{x}{R}\right)^{k}\right)$ et $\sum_{k \geq 0}\left(\frac{x}{R}\right)^{k}$ converge car $\abs{\frac{x}{R}} < 1$ donc $\sum_{k \geq 0}\rho_{k} \left(\frac{x}{R}\right)^{k}$ est absolument convergente. De même pour $\sum_{k \geq 0}\rho_{k+1} \left(\frac{x}{R}\right)^{k}$.
+  $$
+    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty} \rho_{k} \left(\frac{x}{R}^{k}\right) - \sum_{k=n+1}^{+\infty}\rho_{k+1}\left(\frac{x}{R}\right)^{k+1}
+  $$
+  d’où
+  $$
+    \begin{align*}
+      \sum_{k=n}^{+\infty}a_{k}x^{k} &= \sum_{k=n}^{+\infty}\rho_{k} \left(\frac{x}{R}\right)^{k} - \sum_{k=n+1}^{+\infty}\rho_{k} \left(\frac{x}{R}\right)^{k-1} \\
+      &= \rho_{n} \left(\frac{x}{R}\right)^{n} + \sum_{k=n+1}^{+\infty}\rho_{k} \left(\left(\frac{x}{R}\right)^{k} - \left(\frac{x}{R}\right)^{k-1}\right) \\
+    \end{align*}
+  $$
+  donc
+  $$
+    \begin{align*}
+      \abs{\sum_{k=n}^{+\infty}a_{k}x^{k}} &\leq \varepsilon \times  1 + \sum_{k=n+1}^{+\infty}\left(\left(\frac{x}{R}\right)^{k-1} - \left(\frac{x}{R}\right)^{k}\right)\\
+      &\leq \varepsilon + \varepsilon \sum_{k=n+1}^{+\infty} \left(\frac{x}{R}\right)^{k-1} - \left(\frac{x}{R}\right)^{k} = \varepsilon + \varepsilon \left(\frac{x}{R}\right)^{n} \leq 2 \varepsilon
+    \end{align*}
+  $$
+  et $\abs{\sum_{k=n}^{+\infty}a_{k}R^{k}} = \abs{\rho_{n}} < \varepsilon \leq 2 \varepsilon$ donc
+  $$
+    \forall x \in \cc{0,R}, \forall n \geq N, \abs{\sum_{k=n}^{+\infty}a_{k}x^{k}} <  2 \varepsilon
+  $$
+  donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\cc{0,R}$. Or ${f_{n}}_{|\cc{0,R}} \in \Cont(\cc{0,R})$ pour tout $n \in \N$. Ainsi, $x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est continue en $R$.
+%
+
+## Obtention d’un développement en série entière avec une équation différentielle
+
+%eg
+  Considérons la fonction $f: x \longmapsto (1+x)^{a}$ avec $a \in \C$((le programme se limite à $a \in \R$)). Elle est de classe $\Cont^{\infty}$ sur $\oo{-,1+\infty}$ et
+  $$
+    \forall x \in \oo{-1,+\infty}, f'(x) = a(1+x)^{a-1}
+  $$
+  donc $f$ est l’unique solution sur $\oo{-1,+\infty}$ du problème de Cauchy $\begin{cases}(1+x)y' = ay\\ y(0) = 1\end{cases}$. Soit $(a_{n})_{n \in \N}$ une suite complexe. La fonction $y: x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est solution du problème sur $\oo{-r, r}$ (avec $r > 0$) si et seulement si
+  $$
+    \begin{align*}
+      \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r\\ a_{0}=1\\ \displaystyle\forall x \in \oo{-r,r}, (1+x) \sum_{n=1}^{+\infty}n a_{n}x^{n-1} = a \sum_{n=0}^{+\infty}a_{n}x^{n}\end{cases} &\iff  \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \displaystyle\forall x \in \oo{-r,r}, \sum_{n=0}^{+\infty}(n+1)a_{n+1} x^{n} + \sum_{n=\stress{0}}^{+\infty}na_{n}x^{n} = a \sum_{n=0}^{+\infty}a_{n}x^{n}\end{cases}\\
+      &\iff \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \displaystyle \forall n \in \N, (n+1)a_{n+1} + n a_{n} = a a_{n} \quad (1)\end{cases} \\
+      &\iff \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \forall n \in \N^{*}, a_{n} = \frac{a(a-1) \cdots (a-n+1)}{n!}\end{cases}
+    \end{align*}
+  $$
+  car $(1)$ est équivalente à $\forall n \in \N, a_{n+1} = \frac{a-n}{n+1}a_{n} = \frac{a-n}{n+1} \times \frac{a-(n-1)}{n} \times  \cdots \times \frac{(a+1)}{2} \times \frac{a}{1} \times a_{0}$.
+  - Si $a \in \N$, $a_{n} = 0$ donc le rayon de convergence de la série $\sum_{n \geq 0}a_{n}x^{n}$ vaut $+\infty$.
+  - sinon, $\forall n \geq 0, a_{n} \ne 0$ et $\abs{\frac{a_{n+1}}{a_{n}}} = \frac{\abs{a-n}}{n+1} \arrowlim{n\to+\infty}1$ donc $\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) = 1$. Ainsi, $y: x \in \oo{-1,1} \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ avec $a_{0}=1$ et pour tout $n \in \N^{*}$,
+    $$
+      a_{n} = \frac{a(a-1) \cdots (a-n-1)}{n!}
+    $$
+    si bien que par unicité de la solution du problème de Cauchy sur $\oo{-1,1}$,
+    $$
+      \boxed{\forall x \in \oo{-1,1}, (1+x)^{a} = 1+ \sum_{n=1}^{+\infty}\frac{a(a-1)\cdots(a-n+1)}{n!}x^{n} = \sum_{n=0}^{+\infty}\raisebox{2ex}{``}\binom{a}{n}\raisebox{2ex}{"}x^{n}}
+    $$
+%

@@ -96,10 +96,10 @@
         \begin{align*}
           \Delta(h) &= \sum_{i=1}^{n}\Big[\big(\varphi_{i}(1) - \varphi_{i}(0)\big)-h_{i} \partial_{i} f(a)\Big]\\
           &= \sum_{i=1}^{n} \left(\int_{0}^{1}\varphi_{i}' (t)\dd t\right) - h_{i}\partial_{i}f(a) \\
-          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{1} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
+          &= \sum_{i=1}^{n}h_{i} \int_{0}^{1}\Big(\partial_{i} f(\underbrace{\ldots}_{\text{éléments de }\Ball(a, \delta)}) - \partial_{i}f(a)\Big)\dd t
         \end{align*}
       $$
-      (la différence de $(…)$ et de $a$ vaut $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
+      (la différence de $(…)$ et de $a$ est, en norme, inférieure à $\abs{th_{i}} + \sum_{k=1}^{n}\abs{h_{k}} \leq  \norm{h} < \delta$) d’où
       $$
         \norm{\Delta(h)} \leq \sum_{i=1}^{n}\norm{h_{i}}\int_{0}^{1}\norm{\partial_{i} f(\ldots) - \partial_{i}f(a)}\dd t
       $$

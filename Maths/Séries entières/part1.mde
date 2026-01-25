@@ -55,7 +55,7 @@
   - Posons $R_{a} = \sup I_{a} \in \R_{+} \cup \{+\infty\}$ ($I_{a} = \cc{0,R_{a}}$ ou $\co{0,R_{a}}$). On a
     - $\abs{z} < R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente
     - $\abs{z} > R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièremen-
-    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $D(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $D(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \%here \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
+    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $D(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $D(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \where \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
 %
 
 %proof
@@ -86,7 +86,7 @@
        $$
          (1-z) \sum_{n=1}^{N}\frac{z^{n}}{n} = \sum_{n=1}^{N}\frac{z^{n}}{n} - \sum_{n=1}^{N}\frac{z^{n+1}}{n} = \sum_{n=1}^{N}\frac{z^{n}}{n} - \sum_{n=2}^{N+1}\frac{z^{n}}{n-1} = z - \frac{z^{N+1}}{N} + \sum_{n=2}^{N}z^{n} \left(\frac{1}{n}-\frac{1}{n-1}\right)
        $$
-       et $\abs{\frac{z^{N+1}}{N}} = \frac{1}{N} \arrowlim{N\to+\infty}0$ donc
+       et $\abs{\frac{z^{N+1}}{N}} = \frac{1}{N} \arrowlim{N\to+\infty}0$, et
        $$
          \abs{z^{n} \left(\frac{1}{n}- \frac{1}{n+1}\right)} = \frac{1}{n-1} - \frac{1}{n} = \frac{1}{n(n-1)} \usim{n\to+\infty} \frac{1}{n^{2}}
        $$
@@ -98,7 +98,7 @@
        $$
          \sum_{n=1}^{N}\frac{z^{n}}{n}\arrowlim{N\to+\infty} \frac{z}{1-z} - \frac{1}{1-z} \sum_{n=2}^{+\infty}\frac{z^{n}}{n(n-1)}
        $$
-       donc $\sum_{n \geq 1\frac{z^{n}}{n}}$ converge et
+       donc $\sum_{n \geq 1}\frac{z^{n}}{n}$ converge et
        $$
          \sum_{n=1}^{+\infty}\frac{z^{n}}{n} = \frac{z}{1-z} - \frac{1}{1-z} \sum_{n=2}^{+\infty}\frac{z^{n}}{n(n-1)}
        $$
@@ -112,16 +112,16 @@
          &= \sup \left\{\abs{z} \where z \in \C \text{ et } \sum_{n \geq 0} a_{n}z^{n} \text{ converge absolument}\right\}\\
          &= \sup \big\{\abs{z} \where z \in \C \text{ et } (a_{n}z^{n})_{n \in \N} \in \ell^{1}(\N)\big\}\\
          &= \sup \big\{\abs{z} \where z \in \C \text{ et } a_{n}z^{n} \arrowlim{n\to+\infty}0\big\} \\
-         &= \sup \left\{\abs{z} \where z \in \C \text{ et } \sum_{n \geq 0} \text{ converge}\right\}
+         &= \sup \left\{\abs{z} \where z \in \C \text{ et } \sum_{n \geq 0} a_{n}z^{n} \text{ converge}\right\}
        \end{align*}
      $$
   2. On a pour $\lambda \in \C^{*}$,
      $$
        \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \oeq{(1)} \rho \left(\sum_{n \geq 0}a_{n+n_{0}}z^{n}\right) \oeq{(2)} \rho \left(\sum_{n \geq 0} \abs{a_{n}}z^{n}\right) \oeq{(3)} \rho \left(\sum_{n \geq 0}\lambda a_{n}z^{n}\right)
      $$
-     - Justifions (1)~: Soit $r > 0$. $(a_{n+n_{0}}r^{n})_{n \geq 0}$ est bornée si et seulement si $(a_{n+n_{0}}r^{n} \times r^{n_{0}})_{n \geq 0}$ est bornée (car $r^{n_{0}}\ne 0$), donc si et seulement si $(a_{n}r^{n})_{n \geq \color{yellow}n_{0}\color{reset}}$ est bornée, donc si et seulement si $(a_{n}r^{n})_{n \geq 0}$ est bornée. Ainsi,
+     - Justifions (1)~: Soit $r > 0$. $(a_{n+n_{0}}r^{n})_{n \geq 0}$ est bornée si et seulement si $(a_{n+n_{0}}r^{n} \times r^{n_{0}})_{n \geq 0}$ est bornée (car $r^{n_{0}}\ne 0$), donc si et seulement si $(a_{n}r^{n})_{n \geq \stress{n_{0}}}$ est bornée, donc si et seulement si $(a_{n}r^{n})_{n \geq 0}$ est bornée. Ainsi,
        $$
-         \big\{r \in \R_{+} \where (a_{n+n_{0}}r^{n})_{n \geq 0} \text{ est bornée}\big\} = \big\{r \in \R_{+} \%here (a_{n} r^{n})_{n \geq 0} \text{ est bornée}\big\}
+         \big\{r \in \R_{+} \where (a_{n+n_{0}}r^{n})_{n \geq 0} \text{ est bornée}\big\} = \big\{r \in \R_{+} \where (a_{n} r^{n})_{n \geq 0} \text{ est bornée}\big\}
        $$
        d’où les bornes supérieures de ces deux ensembles sont égales.
      - Justifions (2)~: $(a_{n}r^{n})_{n \geq 0}$ est bornée si et seulement si $(\abs{a_{n}} r^{n})_{n \geq 0}$ est bornée
@@ -138,7 +138,7 @@
 %prop Calcul du rayon de convergence
   1. Soit $R_{a} = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$. On a
      $$
-       R_{a} \defeq \big\{r \in \R_{+} \where (a_{n}r^{n})_{n \geq 0} \text{ est bornée}\big\}
+       R_{a} \defeq \sup\big\{r \in \R_{+} \where (a_{n}r^{n})_{n \geq 0} \text{ est bornée}\big\}
      $$
   2. Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Notons $R_{a}$ et $R_{b}$ les rayons de convergence respectifs des séries $\sum_{n \geq 0}a_{n}z^{n}$ et $\sum_{n \geq 0}b_{n}z^{n}$.
      1. $a_{n} \ueq{n\to+\infty}O(b_{n}) \implies R_{a} \geq R_{b}$
@@ -186,7 +186,7 @@
 %
 
 %proof
-  Soit $z \in \C^{*}$. Posoons, pour tout $n \in \N$, $u_{n} = \abs{a_{n}z^{n}}$. On a $\forall n \geq n_{0}, u_{n} = \abs{a_{n}} \abs{z}^{n} > 0$. On applique la règle de d’Alembert pour les séries à termes strictement positifs $\sum_{n \geq n_{0}}$~:
+  Soit $z \in \C^{*}$. Posons, pour tout $n \in \N$, $u_{n} = \abs{a_{n}z^{n}}$. On a $\forall n \geq n_{0}, u_{n} = \abs{a_{n}} \abs{z}^{n} > 0$. On applique la règle de d’Alembert pour les séries à termes strictement positifs $\sum_{n \geq n_{0}}$~:
   $$
     \frac{u_{n+1}}{u_{n}} = \abs{\frac{a_{n+1}}{a_{n}}}\abs{z}
   $$
@@ -282,7 +282,7 @@
        Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R$. Soit $p \in \N^{*}$. Cherchons le rayon de convergence de $\sum_{n \geq 0}a_{n}z^{pn}$.
        - si $\abs{z^{p}} < R$, alors $\sum_{n \geq 0}a_{n} (z^{p})^{n}$ est absolument convergente.
        - si $\abs{z^{p}} > R$, alors $\sum_{n \geq 0}a_{n}(z^{p})^{n}$ diverge grossièrement.
-       donc $\rho \left(semn \geq 0\right)a_{n}z^{pn} = \sqrt[p]{\rho \left(\sum_{n \geq 0}a_{n}z^{p}\right)}$
+       donc $\rho \left(\sum_{n\geq 0}a_{n}z^{pn}\right) = \sqrt[p]{\rho \left(\sum_{n \geq 0}a_{n}z^{p}\right)}$
      %
   2. $\rho \left(\sum_{n \geq 0} \frac{n}{2^{p}}z^{3n}\right) = \sqrt[3]{\rho \left(\sum_{n \geq 0}\frac{n}{2^{n}}z^{p}\right)} = \sqrt[3]{2 \rho \left(\sum_{n \geq 0}n z^{n}\right)} = \sqrt[3]{2}$
 %
@@ -292,13 +292,13 @@
 %prop
   Soit $(a_{n})_{n \in \N}$ une suite complexe. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$
   1. La série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge absolument sur $D(0,R) = \big\{z \in \C \where \abs{z} < R\big\}$ mais ne converge pas uniformément sur $D(0,R)$ en général.
-  2. Si $0 \leq r < R$, alors la série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge normalement sur le disque fermé $\bar{D}(0,r) = \big\{z \in \C \%here \abs{z} \leq r\big\}$.
+  2. Si $0 \leq r < R$, alors la série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge normalement sur le disque fermé $\bar{D}(0,r) = \big\{z \in \C \where \abs{z} \leq r\big\}$.
   3. $f: z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est (au moins) continue sur $D(0,R)$.
 %
 
 %proof
   1. $\rho \left(\sum_{n \geq 0}z^{n}\right) = 1$. Pour $\abs{z < 1}, R_{n}(z) = \sum_{k=n+1}^{+\infty}z^{k} = \frac{z^{n+1}}{1-z}$ vérifie $\abs{R_{n}(z)} \arrowlim{z\to 1}+\infty$ donc $R_{n}$ n’est pas borné sur $D(0,1)$.
-  2. Soit $0 \leq R < r$. Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\abs{f_{n}(z)} = \abs{a_{n}}\abs{z}^{n}$ d’où par croissance de $t \longmapsto t^{n}$ sur $\R_{+}$, $\norm{f_{n}}_{\infty, \bar{D}(0,r)} = \abs{a_{n}}r^{n}$ or $r < R$ donc $\sum_{n \geq 0}\abs{a_{n}}r^{n}$ converge. Ainsi, $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$.
+  2. Soit $0 \leq r < R$. Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\abs{f_{n}(z)} = \abs{a_{n}}\abs{z}^{n}$ d’où par croissance de $t \longmapsto t^{n}$ sur $\R_{+}$, $\norm{f_{n}}_{\infty, \bar{D}(0,r)} = \abs{a_{n}}r^{n}$ or $r < R$ donc $\sum_{n \geq 0}\abs{a_{n}}r^{n}$ converge. Ainsi, $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$.
   3. $\forall n \in \N, f_{n} \in \Cont(D(0,r))$. Soit $z_{0} \in D(0,R)$. Posons $r = \frac{\abs{z_{0}} + R}{2}$. Alors $z_{0} \in \ring D(0,r)$ et donc $\bar{D}(0,r) \in \Vois_{D(0,R)}(z_{0})$. Or $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$ et les fonctions sont à valeurs complexes, donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\bar{D}(0,r)$. Ainsi, $f = \sum_{n=0}^{+\infty}f_{n} \in \Cont(D(0,R))$.
 %
 
@@ -306,13 +306,14 @@
   1. $z \longmapsto e^{z} = \sum_{n=0}^{+\infty}\frac{z^{n}}{n!}$ est continue sur $\C = D(0,+\infty)$.
   2. $z \longmapsto \sum_{n=0}^{+\infty}\frac{z_{n}}{n}$ est au moins continue sur $D(0,1)$.
 %
- %prop Seul résultat simple pour la variable complexe
-   Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R_{+}$. Si $\sum_{n \geq 0}a_{n}z^{n}$ converge **absolument** sur $\bar{D}(0,R)$, alors $z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est continue sur $\bar{D}(0,R)$.
- %
 
- %proof
-   Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\norm{f_{n}}_{\infty, \bar{D}(0,R)} = \abs{a_{n}}R^{n}$. Par hypothèse, $\sum_{n \geq 0}\abs{a_{n}}R^{n}$ converge donc $\sum_{n \geq 0}f_{n}$ converge normalement donc uniformément sur $\bar{D}(0,R)$.
- %
+%prop Seul résultat simple pour la variable complexe
+  Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R_{+}$. Si $\sum_{n \geq 0}a_{n}z^{n}$ converge **absolument** sur $\bar{D}(0,R)$, alors $z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est continue sur $\bar{D}(0,R)$.
+%
+
+%proof
+  Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\norm{f_{n}}_{\infty, \bar{D}(0,R)} = \abs{a_{n}}R^{n}$. Par hypothèse, $\sum_{n \geq 0}\abs{a_{n}}R^{n}$ converge donc $\sum_{n \geq 0}f_{n}$ converge normalement donc uniformément sur $\bar{D}(0,R)$.
+%
 
 %eg
   Soit $\alpha \in \R$. On a
@@ -327,7 +328,7 @@
 Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. La fonction $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ est alors au moins continue sur $\oo{-R,R}$ (mais elle peut être définie sur $\cc{-R,R}$, $\co{-R,R}$ ou $\oc{-R,R}$).
 
 %thm Théorème d’Abel radial
-  Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. Si $R \in \R_{+}^{*}$ et si $\sum_{n \geq 0}a_{n}R^{n}$ conevrge, alors $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ admet une limite en $R$. Autrement dit,
+  Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$. Si $R \in \R_{+}^{*}$ et si $\sum_{n \geq 0}a_{n}R^{n}$ converge, alors $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ admet une limite en $R$. Autrement dit,
   $$
     \lim_{x\to R^{-}} \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}R^{n}
   $$
@@ -360,14 +361,14 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
   $$
     \forall x \in \cc{0,R}, \forall n \geq N, \abs{\sum_{k=n}^{+\infty}a_{k}x^{k}} <  2 \varepsilon
   $$
-  donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\cc{0,R}$. Or $f_{n}_{|\cc{0,R}} \in \Cont(\cc{0,R})$ pour tout $n \in \N$. Ainsi, $x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est continue en $R$.
+  donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\cc{0,R}$. Or ${f_{n}}_{|\cc{0,R}} \in \Cont(\cc{0,R})$ pour tout $n \in \N$. Ainsi, $x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est continue en $R$.
 %
 
 %eg
   1. $$
-       \forall x \in \co{0,1}, \ln(1+x) = \sum_{0}^{x}\frac{\dd t}{1+t} = \sum_{0}^{x}\sum_{n=0}^{+\infty}(-t)^{n}\dd t
+       \forall x \in \co{0,1}, \ln(1+x) = \int_{0}^{x}\frac{\dd t}{1+t} = \int_{0}^{x}\sum_{n=0}^{+\infty}(-t)^{n}\dd t
      $$
-     $\rho \left(\sum_{n \geq 0}(-1)^{n}z^{n}\right) = 1$ donc $\sum_{n \geq 0}(-1)^{n}z^{n}$ converge normalement sur tout disque $\bar{D}(0,r)$ avec $0 \leq n < 1$ donc $\sum_{n \geq 0}(-1)^{n} x^{n}$ converge normalement sur $\cc{-x,x}$ avec $0 \leq x < 1$ donc uniformément sur $\cc{0,x}$.((On aurait aussi pu utiliser $\sum_{n \in \N} \int_{0}^{x}\abs{-t}^{n}\dd t = \sum_{n \in \N}\frac{x^{n+1}}{n+1} < +\infty$)). Ainsi
+     $\rho \left(\sum_{n \geq 0}(-1)^{n}z^{n}\right) = 1$ donc $\sum_{n \geq 0}(-1)^{n}z^{n}$ converge normalement sur tout disque $\bar{D}(0,r)$ avec $0 \leq r < 1$ donc $\sum_{n \geq 0}(-1)^{n} x^{n}$ converge normalement sur $\cc{-x,x}$ avec $0 \leq x < 1$ donc uniformément sur $\cc{0,x}$.((On aurait aussi pu utiliser $\sum_{n \in \N} \int_{0}^{x}\abs{-t}^{n}\dd t = \sum_{n \in \N}\frac{x^{n+1}}{n+1} < +\infty$)). Ainsi
      $$
        \ln(1+x) = \sum_{n=0}^{+\infty}\int_{0}^{x} t^{n}\dd t = \sum_{n=0}^{+\infty}(-1)^{n} \frac{x^{n+1}}{n+1} = \sum_{n=1}^{+\infty}(-1)^{n-1}\frac{x^{n}}{n}
      $$
@@ -376,7 +377,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
        \lim{x\to 1}\big(\ln(1+x)\big) = \lim_{x\to 1} \sum_{n \geq 1}(-1)^{n-1} \frac{x^{n}}{n} = \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}
      $$
      donc $\ln 2 = \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}$.
-  2. Soit $\sum_{n \geq 0}a_{n}x^{n}$ une série entière de rayon de conevrgence $R \in \R_{+}^{*}$ telle que $\sum_{n \geq 0}a_{n}(-R)^{n}$ converge. Alors
+  2. Soit $\sum_{n \geq 0}a_{n}x^{n}$ une série entière de rayon de convergence $R \in \R_{+}^{*}$ telle que $\sum_{n \geq 0}a_{n}(-R)^{n}$ converge. Alors
      $$
        \lim_{x\to(-R)} \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}a_{n}(-R)^{n}
      $$
@@ -438,4 +439,325 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
      $$
        F(x) = F(0) + \sum_{n=0}^{+\infty}a_{n} \frac{x^{n+1}}{n+1}
      $$
+%
+
+%eg
+  - $\boxed{\forall x \in \oo{-1,1}, \frac{1}{1-x} = \sum_{n=0}^{+\infty}x^{n}}$ (de rayon de convergence égal à 1) donc
+    $$
+      \forall x \in \oo{-1,1}, -\ln(1-x) = 0+\sum_{n=0}^{+\infty}\frac{x^{n+1}}{n+1}
+    $$
+    soit
+    $$
+      \boxed{\forall x \in \oo{-1,1}, \ln(1-x) = -\sum_{n=1}^{+\infty}\frac{x^{n}}{n}}
+    $$
+    et aussi
+    $$
+      \forall x \in \oo{-1,1}, \ln(1+x) = -\sum_{n=1}^{+\infty}\frac{(-1)^{n}x^{n}}{n}
+    $$
+    soit
+    $$
+      \boxed{\forall x \in \oo{-1,1}, \ln(1+x) = \sum_{n=1}^{+\infty}(-1)^{n-1}\frac{x^{n}}{n}}
+    $$
+    or la série $\sum_{n \geq 0}\frac{(-1)^{n-1}}{n}1^{n}$ converge donc (_Théorème d’Abel radial_) $x \longmapsto \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}x^{n}}{n}$ est continue sur $\oc{-1,1}$, tout comme $x \longmapsto \ln(1+x)$. Ces deux fonctions coïncidant sur l’ouvert $\oo{-1,1}$, on a
+    $$
+      \forall x \in \stress{\oc{-1,1}}, \ln(1+x) = \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}x^{n}}{n}
+    $$
+    On a aussi
+    $$
+      \forall x \in \oo{-1,1}, \sum_{n=0}^{+\infty}\frac{1}{1+x^{2}} = \sum_{n=0}^{+\infty}(-1)^{n}x^{2n}
+    $$
+    d’où
+    $$
+      \forall x \in \oo{-1,1}, \arctan x = \arctan 0 + \sum_{n=0}^{+\infty}\frac{(-1)^{n} x^{2n+1}}{2n+1}
+    $$
+    d’où
+    $$
+      \boxed{\forall x \in \oo{-1,1}, \arctan x = \sum_{n=0}^{+\infty} \frac{(-1)^{n} x^{2n+1}}{2n+1}}
+    $$
+    De plus, les séries $\sum_{n \geq 0} \frac{(-1)^{n}(-1)^{2n+1}}{2n+1} = \sum_{n \geq 0}\frac{(-1)^{n+1}}{n+1}$ et $\sum_{n \geq 0} \frac{(-1)^{n}}{2n+1}$ convergent et $\arctan \in \Cont(\cc{-1,1})$ donc
+    $$
+      \forall x \in \stress{\cc{-1,1}}, \arctan x = \sum_{n=0}^{+\infty}\frac{(-1)^{n} x^{2n+1}}{2n+1}
+    $$
+    En $x = 1$, cette formule donne
+    $$
+      \frac{\pi}{4} = \sum_{n=0}^{+\infty}\frac{(-1)^{n}}{2n+1}
+    $$
+    Par ailleurs,
+    $$
+      \forall x \in \R, \cos x = \Re (e^{ix}) = \Re \left(\sum_{n=0}^{+\infty}\frac{(ix)^{n}}{n!}\right)
+    $$
+    d’où
+    $$
+      \boxed{\forall x \in \R, \cos x = \sum_{p=0}^{+\infty}\frac{(-1)^{p}x^{2p}}{(2p)!}}
+    $$
+    d’où par intégration,
+    $$
+      \forall x \in \R, \sin x = \sin 0 + \sum_{p=0}^{+\infty}\frac{(-1)^{p} x^{2p+1}}{(2p+1)!}
+    $$
+    soit
+    $$
+      \boxed{\forall x \in R, \sin x = \sum_{p=0}^{+\infty} \frac{(-1)^{p}x^{2p-1}}{(2p+1)!}}
+    $$
+%
+
+### Dérivation de $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ sur $\oo{-R,R}$
+
+%prop
+  Soit $(a_{n})_{n \in \N}$ une suite complexe.
+  1. $\displaystyle\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \rho \left(\sum_{n \geq 0}na_{n}z^{n}\right) = \rho \left(\sum_{n \geq 0}(n+1)a_{n+1}z^{n}\right) = \rho \left(\sum_{n \geq 0}(n+p) (n+p-1)\cdots (n+1)a_{n+p}z^{n}\right)$ pour $p \in \N^{*}$.
+  2. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R_{+}^{*} \cup \{+\infty\}$. Soit $f: x \longmapsto \sum_{n =0}^{+\infty} a_{n}x^{n}$. On a $f \in \Cont^{\infty}(\oo{-R,R})$ et
+     $$
+       \forall x \in \oo{-R,R}, f'(x) = \sum_{n=\stress{1}}^{+\infty}na_{n}x^{n-1} = \sum_{n=0}^{+\infty}(n+1)a_{n+1}x^{n}
+     $$
+     et aussi
+     $$
+       \forall x \in \oo{-R,R}, f^{(p)}(x) = \sum_{n=p}^{+\infty}n(n-1) \cdots(n-p+1) a_{n}x^{n-p} = \sum_{n=0}^{+\infty}(n+p)(n+p-1) \cdots (n+1)a_{n+p}x^{n}
+     $$
+%
+
+%proof
+  1. $$
+       \begin{align*}
+         \rho \left(\sum_{n \geq 0}n a_{n}z^{n}\right) &= \rho \left(\sum_{n \geq 0}(n+1)a_{n+1}z^{n}\right) \\
+         &= \rho \left(\sum_{n \geq 0}(n+1)a_{n+1} \frac{z^{n+1}}{n+1}\right) \\
+         &= \rho \left(\sum_{n \geq 0}a_{n+1}z^{n+1}\right) \\
+         &= \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)
+       \end{align*}
+     $$
+     donc $\rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) = \rho \left(\sum_{n \geq 0}(n+1)a_{n+1}z^{n}\right)$ d’où
+     $$
+       \rho \left(\sum_{n \geq 0} a_{n}z^{n}\right) = \rho \left(\sum_{n \geq 0}(n+1)b_{n+1}z^{n}\right) = \rho \left(\sum_{n \geq 0}(n+2)(n+1)a_{n+2}z^{n}\right)
+     $$
+     d’où le résultat par récurrence.
+  2. Posons $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right) \in \R_{+}^{*} \cup \{+\infty\}$. Pour tout $n \in \N$, $f_{n}: x \longmapsto a_{n}x^{n} \in \Cont^{\infty}(\oo{-R,R})$ et pour $n \geq k$,
+     $$
+       f_{n}^{(k)}: x \longmapsto n(n-1) \cdots (n-k+1) a_{n}x^{n-k}
+     $$
+     or $\rho \left(\sum_{n \geq k}n(n-1) \cdots(n-k+1)x^{n-k}\right) = R$ donc $\sum_{n \geq k}f_{n}^{(k)}$ converge normalement sur tout segment $\cc{-r,r} \subset \oo{-R,R}$ donc sur tout segment. Les fonctions sont à valeurs complexes donc la convergence de $\sum_{n \geq k} f_{n}^{(k)}$ est uniforme sur tout segment donc $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ est de classe $\Cont^{\infty}$.
+%
+
+%cor
+  Si $(a_{n})_{n \in \N}$ est une suite complexe et si $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$, alors en notant $R > 0$ le rayon de convergence de la série $\sum_{n \geq 0}a_{n}x^{n}$,
+  ~ $f \in \Cont^{\infty}(\oo{-R,R})$  ~ $\forall n \in \N, a_{n} = \frac{f^{(n)}(0)}{n!}$
+%
+
+%proof
+  On a
+  $$
+    \forall p \in \N, \forall x \in \oo{-R,R}, f^{(p)}(x) = \sum_{n=0}^{+\infty}(n+p)(n+p-1) \cdots (n+1)a_{n+p}x^{n}
+  $$
+  donc $f^{(p)}(0) = p(p-1) \cdots 1 a_{p} = p! a_{p}$ d’où $a_{p} = \frac{f^{(p)}(0)}{p!}$.
+%
+
+%eg
+  $$
+   \forall x \in \oo{-1,1}, \frac{1}{1-x} = \sum_{n=0}^{+\infty}x^{n}
+  $$
+  d’où en dérivant,
+  $$
+    \forall x \in \oo{-1,1}, \frac{1}{(1-x)^{2}} = \sum_{n=1}^{+\infty}nx^{n-1} = \sum_{n=0}^{+\infty}(n+1)x^{n}
+  $$
+  pour $x = \frac{1}{2}$, $\sum_{n=0}^{+\infty}\frac{n+1}{2^{n}} = 4$. Soit $p \in \N$. Pour $x \in \oo{-1,1}$, on a
+  $$
+    \frac{p!}{(1-x)^{p+1}} = \sum_{n=\stress{p}}^{+\infty}n(n-1) \cdots (n-p+1)x^{n-p} = \sum_{n=0}^{+\infty}(n+p)(n+p-1) \cdots (n-1)x^{n}
+  $$
+  On en déduit la _formule du binôme négatif_~: pour $p \in \N$,
+  $$
+    \forall x \in \oo{-1,1}, \frac{1}{(1-x)^{p+1}}= \sum_{n=0}^{+\infty}\binom{n+p}{p} x^{n}
+  $$
+%
+
+
+%eg
+  Calcul de la somme de la série $\sum_{n > 0}\tilde{P}(n)x^{n}$ avec $P \in \C[X]$.
+  - utiliser la série géométrique et ses dérivées
+  - écrire $P$ dans la base $1, X, X(X-1), \ldots$
+  ~
+  Calculons par exemple la somme $S(x)$ de la série $\sum_{n \geq 0}(n^{2}+2n+3)x^{n}$ pour $\abs{x} < 1$. On a $n^{2}+2n+3 = n(n-1) + 3n+3$ d’où
+  $$
+    \begin{align*}
+      \sum_{n \in \N} (n^{2}+2n+3)x^{n} &= \sum_{n \in \stress{\ico{2,+\infty}}} n(n-1)x^{n} + 3 \sum_{n \in \stress{\N*}} nx^{n} + 3 \sum_{n \in \N}x^{n}\\
+      &= 3 \frac{1}{1-x} + 3x \sum_{n \in \N^{*}}nx^{n-1} + x^{2} \sum_{n \in \ico{2,+\infty}} n(n-1)x^{n-2}
+    \end{align*}
+  $$
+  si bien que
+  $$
+    S(x) = \frac{3}{1-x} + \frac{3x}{(1-x)^{2}} + \frac{2x^{2}}{(1-x)^{3}}
+  $$
+%
+
+%eg
+  $\rho \left(\sum_{n \geq 3}\frac{n+1}{n^{2}-3n+2}x^{n}\right) = \rho \left(\sum_{n \geq 1}\frac{1}{n}x^{n}\right) = 1$. Pour $n \geq 3$, $\frac{n+1}{n^{2}-3n+2} = \frac{-2}{n-1} + \frac{3}{n-2}$. Soit $x \in \oo{-1,1}$.
+  $$
+    \begin{align*}
+      T(x) &= \sum_{n = 3}^{+\infty}\frac{n+1}{n^{2}-3n+2}x^{n} = \sum_{n=3}^{+\infty}\frac{2}{n-1}x^{n} + \sum_{n=3}^{+\infty}\frac{3}{n-2}x^{n}\\
+      &= -2 \sum_{n=2}^{+\infty}\frac{1}{n}x^{n+1} + 3 \sum_{n=1}^{+\infty}\frac{x^{n+2}}{n} \\
+      &= 2x \left(- \sum_{n=2}^{+\infty}\frac{x^{n}}{n}\right) + 3x^{2} \sum_{n=1}^{+\infty}\frac{x^{n}}{n} \\
+      &= 2x \big[\ln(1-x) + x\big] - 3 x^{2} \ln(1-x)
+    \end{align*}
+  $$
+%
+
+%eg
+  On peut parfois utiliser les séries entières pour montrer qu’une fonction est de classe $\Cont^{\infty}$.
+  ~
+  Considérons par exemple la fonction
+  $$
+    f: \applic{\R}{\R}{x}{\begin{cases}\frac{e^{x} - 1}{x} \if x\ne 0\\ 1 \if x=0\end{cases}}
+  $$
+  Alors, $\forall x \in \R^{*}, \frac{e^{x}-1}{x} = \frac{\sum_{n=0}^{+\infty}\frac{x^{n}}{n!}-1}{x}$ donc
+  $$
+    \forall x \in \R^{*}, f(x) = \sum_{n=1}^{+\infty}\frac{x^{n-1}}{n!} = \sum_{n=0}^{+\infty}\frac{x^{n}}{(n+1)!}
+  $$
+  et $\sum_{n=0}^{+\infty} \frac{0^{n}}{(n+1)!} = \frac{1}{1!} = 1 = f(0)$ donc
+  $$
+    \forall x \in \R, f(x) = \sum_{n=0}^{+\infty}\frac{x^{n}}{(n+1)!}
+  $$
+  donc le rayon de convergence de la série $\sum_{n \geq 0}\frac{x^{n}}{(n+1)!}$ vaut $+\infty$, et $f \in \Cont^{\infty}(\R)$.
+%
+
+%eg
+  $\ln(1+x) \ueq{x\to 0^{+}} x + o(x) = x + x \varepsilon(x)$ or
+  $$
+    \begin{align*}
+      \ln(1+x) &= \sum_{n=1}^{+\infty}\frac{(-1)^{n-1}x^{n}}{n} \text{ pour } \abs{x} < 1\\
+      &= x + x \sum_{n=2}^{+\infty}\frac{(-1)^{n-1}x^{n-1}}{n}
+    \end{align*}
+  $$
+  donc
+  $$
+    \varepsilon(x) = \sum_{n=2}^{+\infty}\frac{(-1)^{n-1}x^{n-1}}{n}
+  $$
+  donc $\varepsilon \in \Cont^{\infty} (\oo{-1,1})$.
+%
+
+%cor Unicité du développement en série entière
+  Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. Si il existe $r > 0$ tel que
+  $$
+    \forall x \in \oo{0,r}, \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}b_{n}x^{n}
+  $$
+  alors
+  $$
+    \forall n \in \N, a_{n} = b_{n}
+  $$
+%
+
+%proof
+  On a $R_{a} \geq r$ et $R_{b} \geq r$. Notons
+  $$
+    f: \applic{\oo{-R_{a}, R_{a}}}{\C}{x}{\sum_{n=0}^{+\infty}a_{n}x^{n}} \quad\text{et}\quad g: \applic{\oo{-R_{b},R_{b}}}{\C}{x}{\sum_{n=0}^{+\infty}b_{n}x^{n}}
+  $$
+  Ces fonctoins sont continues sur $\oo{-r,r}$ donc en 0 et $f_{|\oo{0,r}} = g_{|\oo{0,r}}$ donc $f_{| \co{0,r}} = g_{| \co{0,r}} \in \Cont^{\infty}(\co{0,r})$ donc
+  $$
+    \forall n \in \N, \frac{f^{(n)}(0)}{n!} = \frac{g^{(n)}(0)}{n!}
+  $$
+  i.e. $a_{n} = b_{n}$ pour tout $n \in \N$.
+%
+
+%eg
+  Considérons la fonction $f: x \longmapsto (1+x)^{a}$ avec $a \in \C$((le programme se limite à $a \in \R$)). Elle est de classe $\Cont^{\infty}$ sur $\oo{-,1+\infty}$ et
+  $$
+    \forall x \in \oo{-1,+\infty}, f'(x) = a(1+x)^{a-1}
+  $$
+  donc $f$ est l’unique solution sur $\oo{-1,+\infty}$ du problème de Cauchy $\begin{cases}(1+x)y' = ay\\ y(0) = 1\end{cases}$. Soit $(a_{n})_{n \in \N}$ une suite complexe. La fonction $y: x \longmapsto \sum_{n=0}^{+\infty} a_{n}x^{n}$ est solution du problème sur $\oo{-r, r}$ (avec $r > 0$) si et seulement si
+  $$
+    \begin{align*}
+      \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r\\ a_{0}=1\\ \displaystyle\forall x \in \oo{-r,r}, (1+x) \sum_{n=1}^{+\infty}n a_{n}x^{n-1} = a \sum_{n=0}^{+\infty}a_{n}x^{n}\end{cases} &\iff  \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \displaystyle\forall x \in \oo{-r,r}, \sum_{n=0}^{+\infty}(n+1)a_{n+1} x^{n} + \sum_{n=\stress{0}}^{+\infty}na_{n}x^{n} = a \sum_{n=0}^{+\infty}a_{n}x^{n}\end{cases}\\
+      &\iff \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \displaystyle \forall n \in \N, (n+1)a_{n+1} + n a_{n} = a a_{n} \quad (1)\end{cases} \\
+      &\iff \begin{cases}\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq r \\ a_{0}=1 \\ \forall n \in \N^{*}, a_{n} = \frac{a(a-1) \cdots (a-n+1)}{n!}\end{cases}
+    \end{align*}
+  $$
+  car $(1)$ est équivalente à $\forall n \in \N, a_{n+1} = \frac{a-n}{n+1}a_{n} = \frac{a-n}{n+1} \times \frac{a-(n-1)}{n} \times  \cdots \times \frac{(a+1)}{2} \times \frac{a}{1} \times a_{0}$.
+  - Si $a \in \N$, $a_{n} = 0$ donc le rayon de convergence de la série $\sum_{n \geq 0}a_{n}x^{n}$ vaut $+\infty$.
+  - sinon, $\forall n \geq 0, a_{n} \ne 0$ et $\abs{\frac{a_{n+1}}{a_{n}}} = \frac{\abs{a-n}}{n+1} \arrowlim{n\to+\infty}1$ donc $\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) = 1$. Ainsi, $y: x \in \oo{-1,1} \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$ avec $a_{0}=1$ et pour tout $n \in \N^{*}$,
+    $$
+      a_{n} = \frac{a(a-1) \cdots (a-n-1)}{n!}
+    $$
+    si bien que par unicité de la solution du problème de Cauchy sur $\oo{-1,1}$,
+    $$
+      \boxed{\forall x \in \oo{-1,1}, (1+x)^{a} = 1+ \sum_{n=1}^{+\infty}\frac{a(a-1)\cdots(a-n+1)}{n!}x^{n} = \sum_{n=0}^{+\infty}\raisebox{2ex}{``}\binom{a}{n}\raisebox{2ex}{"}x^{n}}
+    $$
+  ~
+  $$
+    \begin{align*}
+      \forall x \in \oo{-1,1}, \frac{1}{\sqrt{1+x}} &= 1+\sum_{n=1}^{+\infty}\frac{\left(-\frac{1}{2}\right) \left(-\frac{1}{2}-1\right) \cdots \left(-\frac{1}{2}-n+1\right)}{n!}x^{n} \\
+      &= 1+ \sum_{n=1}^{+\infty} \frac{(-1)^{n} \times 1 \times 3 \times  \cdots \times (2n-1)}{2^{n}n!}x^{n} \\
+      &= 1+ \sum_{n=1}^{+\infty}\frac{(-1)^{n} (2n)!}{(2^{n}n!)^{2}} \\
+      &= 1+ \sum_{n=1}^{+\infty}\frac{(2n)!}{4^{n}(n!)^{2}}x^{n} \\
+      &= 1+ \sum_{n=1}^{+\infty}\frac{\binom{2n}{n}}{4^{n}}x^{n} \\
+      &= 1+ \sum_{n=0}^{+\infty}\frac{\binom{2n}{n}}{4^{n}}x^{n} \\
+    \end{align*}
+  $$
+  d’où
+  $$
+    \forall x \in \oo{-1,1}, \frac{1}{\sqrt{1-x^{2}}} = \sum_{n=0}^{+\infty}\frac{\binom{2n}{n}}{4^{n}}x^{2n}
+  $$
+  donc pour $x \in \oo{-1,1}$,
+  $$
+    \arcsin x = \sum_{n=0}^{+\infty}\frac{\binom{2n}{n}}{4^{n}} \frac{x^{2n+1}}{2n+1}
+  $$
+  %quote
+    Ces calculs sont le cœur du chapitre, il faut les refaire chez soi tranquillement (et pas) juste constater que Mr Brevet est capable de les faire. (…) En réalité j’étais capable de les faire dès qu’on me les a expliqués (…) j’ai compris tout de suite que c’était facile.
+  %
+%
+
+## Produit de Cauchy de séries entières
+
+%def Définition-Proposition
+  Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. On appelle produit de Cauchy de la série entière $\sum_{n \geq 0}a_{n}z^{n}$ par la série entière $\sum_{n \geq 0}b_{n}z^{n}$ la série entière $\sum_{n \geq 0}c_{n}z^{n}$ avec
+  $$
+    \forall n \in \N, c_{n} = \sum_{k=0}^{n}a_{k}b_{n-k} \, \left(= \sum_{\substack{k+\ell = n \\ k \geq 0, \ell \geq 0}}a_{k}b_{\ell}\right)
+  $$
+  On a $R_{c} \geq \min (R_{a},R_{b})$ et pour $\abs{z} < \min(R_{a}, R_{b})$, on a
+  $$
+    \sum_{n=0}^{+\infty}c_{n}z^{n} = \left(\sum_{n=0}^{+\infty}a_{n}z^{n}\right) \times  \left(\sum_{n=0}^{+\infty}b_{n}z^{n}\right)
+  $$
+%
+
+%proof
+  Soit $z$ avec $\abs{z} < \min (R_{a},R_{b})$. Alors
+  ~ $(a_{n}z^{n})_{n \in \N} \in \ell^{1}(\N)$  ~ $(b_{n}z^{n})_{n \in \N} \in \ell^{1}(\N)$
+  donc $(a_{n}z^{n} b_{m}z^{m})_{(n,m) \in \N^{2}} \in \ell^{1}(\N^{2})$ et
+  $$
+    \sum_{(m,n) \in \lnot ^{2}} a_{n}z^{n}b_{m}z^{m} = \sum_{n \in \N}b_{m}z^{m} \times \sum_{n \in \N} a_{n}z^{n}
+  $$
+  On a alors (sommation par paquet),
+  $$
+    \sum_{p \in \N} \left(\sum_{n+m = p}a_{n}z^{n}b_{m}z^{m}\right) = \sum_{n \in \N}a_{n}z^{n} \times  \sum_{m \in \N}b_{m}z^{m}
+  $$
+  donc
+  $$
+    \sum_{p \in \N} \left(\sum_{n+m = p}a_{n}b_{m}\right)z^{p} = \sum_{n \in \N}a_{n}z^{n} \times \sum_{m \in \N}b_{m}z^{m}
+  $$
+  donc $R_{c} \geq \min (R_{a},R_{b})$.
+%
+
+%eg
+  $$
+    \forall z \in \Disk(0,1), \frac{1}{1-z} = \sum_{n=0}^{+\infty}z^{n}
+  $$
+  donc par produit de Cauchy,
+  $$
+    \frac{1}{(1-z)^{2}} = \left(\sum_{n=0}^{+\infty}z^{n}\right)^{2} = \sum_{n=0}^{+\infty}c_{n}z^{n}
+  $$
+  avec $c_{n} = \sum_{k=0}^{n}1 \times 1 = n+1$, soit
+  $$
+    \forall z \in \Disk(0,1), \frac{1}{(1-z)^{2}} = \sum_{n=0}^{+\infty}(n+1)z^{n}
+  $$
+  Pour $p \in \N$,
+  $$
+    \left(\frac{1}{1-z}\right)^{p+1} = \sum_{n=0}^{+\infty}d_{n}z^{n}
+  $$
+  avec
+  $$
+    d_{n} = \sum_{k_{1} + \cdots + k_{p+1} = n}1 \times 1 \times \cdots \times 1 = \# \big\{(k_{1}, \ldots, k_{p+1}) \in \N^{p+1} \where k_{1} + \cdots + k_{p+1} = n\big\}
+  $$
+  (on a aussi $d_{n} = \dim H_{n}[X_{1}, \ldots, X_{p+1}]$). On peut calculer $d_{n}$ avec la méthode des allumettes et on trouve $d_{n} = \binom{n+p}{p}$. Pour $\abs{z} < 1$ et $p \in \N$,
+  $$
+    \frac{1}{(1-z)^{p+1}} = \sum_{n=0}^{+\infty}\binom{n+p}{p}z^{n}
+  $$
+  On a $\forall x \in \oo{-,1,1}, \frac{1}{(1-x)^{p+1}} = \sum_{p=0}^{+\infty}\binom{n+p}{p}x^{n} = \sum_{n=0}^{+\infty}d_{x}x^{n}$ (par dérivation réelle), d’où par unicité du développement en série entière, on a
+  $$
+    \forall n \in \N, d_{n} = \binom{n+p}{p}.
+  $$
 %
