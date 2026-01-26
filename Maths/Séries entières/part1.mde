@@ -55,7 +55,7 @@
   - Posons $R_{a} = \sup I_{a} \in \R_{+} \cup \{+\infty\}$ ($I_{a} = \cc{0,R_{a}}$ ou $\co{0,R_{a}}$). On a
     - $\abs{z} < R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ est absolument convergente
     - $\abs{z} > R_{a} \implies \sum_{n \geq n_{0}}a_{n}z^{n}$ diverge grossièremen-
-    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $D(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $D(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \where \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
+    $R_{a}$ est appelé rayon de convergence de la série entière ($R_{a} \defeq \sup\{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$). $\Disk(0,R_{a}) = \{z \in \C \where \abs{z} < R^{a}\}$ est appelé disque ouvert d’absolue convergence (avec $\Disk(0,+\infty) = \C$). Si $R_{a} \ne +\infty$, $C(0,R_{a}) = \{z \in \C \where \abs{z} = R_{a}\}$ est appelé cercle d’incertitude de la série entière.
 %
 
 %proof
@@ -291,20 +291,20 @@
 
 %prop
   Soit $(a_{n})_{n \in \N}$ une suite complexe. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}z^{n}\right)$
-  1. La série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge absolument sur $D(0,R) = \big\{z \in \C \where \abs{z} < R\big\}$ mais ne converge pas uniformément sur $D(0,R)$ en général.
+  1. La série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge absolument sur $\Disk(0,R) = \big\{z \in \C \where \abs{z} < R\big\}$ mais ne converge pas uniformément sur $\Disk(0,R)$ en général.
   2. Si $0 \leq r < R$, alors la série entière $\sum_{n \geq 0}a_{n}z^{n}$ converge normalement sur le disque fermé $\bar{D}(0,r) = \big\{z \in \C \where \abs{z} \leq r\big\}$.
-  3. $f: z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est (au moins) continue sur $D(0,R)$.
+  3. $f: z \longmapsto \sum_{n=0}^{+\infty}a_{n}z^{n}$ est (au moins) continue sur $\Disk(0,R)$.
 %
 
 %proof
-  1. $\rho \left(\sum_{n \geq 0}z^{n}\right) = 1$. Pour $\abs{z < 1}, R_{n}(z) = \sum_{k=n+1}^{+\infty}z^{k} = \frac{z^{n+1}}{1-z}$ vérifie $\abs{R_{n}(z)} \arrowlim{z\to 1}+\infty$ donc $R_{n}$ n’est pas borné sur $D(0,1)$.
+  1. $\rho \left(\sum_{n \geq 0}z^{n}\right) = 1$. Pour $\abs{z < 1}, R_{n}(z) = \sum_{k=n+1}^{+\infty}z^{k} = \frac{z^{n+1}}{1-z}$ vérifie $\abs{R_{n}(z)} \arrowlim{z\to 1}+\infty$ donc $R_{n}$ n’est pas borné sur $\Disk(0,1)$.
   2. Soit $0 \leq r < R$. Posons $f_{n}: z \longmapsto a_{n}z^{n}$. Alors $\abs{f_{n}(z)} = \abs{a_{n}}\abs{z}^{n}$ d’où par croissance de $t \longmapsto t^{n}$ sur $\R_{+}$, $\norm{f_{n}}_{\infty, \bar{D}(0,r)} = \abs{a_{n}}r^{n}$ or $r < R$ donc $\sum_{n \geq 0}\abs{a_{n}}r^{n}$ converge. Ainsi, $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$.
-  3. $\forall n \in \N, f_{n} \in \Cont(D(0,r))$. Soit $z_{0} \in D(0,R)$. Posons $r = \frac{\abs{z_{0}} + R}{2}$. Alors $z_{0} \in \ring D(0,r)$ et donc $\bar{D}(0,r) \in \Vois_{D(0,R)}(z_{0})$. Or $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$ et les fonctions sont à valeurs complexes, donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\bar{D}(0,r)$. Ainsi, $f = \sum_{n=0}^{+\infty}f_{n} \in \Cont(D(0,R))$.
+  3. $\forall n \in \N, f_{n} \in \Cont(\Disk(0,r))$. Soit $z_{0} \in \Disk(0,R)$. Posons $r = \frac{\abs{z_{0}} + R}{2}$. Alors $z_{0} \in \ring \Disk(0,r)$ et donc $\bar{D}(0,r) \in \Vois_{\Disk(0,R)}(z_{0})$. Or $\sum_{n \geq 0}f_{n}$ converge normalement sur $\bar{D}(0,r)$ et les fonctions sont à valeurs complexes, donc $\sum_{n \geq 0}f_{n}$ converge uniformément sur $\bar{D}(0,r)$. Ainsi, $f = \sum_{n=0}^{+\infty}f_{n} \in \Cont(\Disk(0,R))$.
 %
 
 %eg
-  1. $z \longmapsto e^{z} = \sum_{n=0}^{+\infty}\frac{z^{n}}{n!}$ est continue sur $\C = D(0,+\infty)$.
-  2. $z \longmapsto \sum_{n=0}^{+\infty}\frac{z_{n}}{n}$ est au moins continue sur $D(0,1)$.
+  1. $z \longmapsto e^{z} = \sum_{n=0}^{+\infty}\frac{z^{n}}{n!}$ est continue sur $\C = \Disk(0,+\infty)$.
+  2. $z \longmapsto \sum_{n=0}^{+\infty}\frac{z_{n}}{n}$ est au moins continue sur $\Disk(0,1)$.
 %
 
 %prop Seul résultat simple pour la variable complexe
@@ -759,5 +759,285 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
   On a $\forall x \in \oo{-,1,1}, \frac{1}{(1-x)^{p+1}} = \sum_{p=0}^{+\infty}\binom{n+p}{p}x^{n} = \sum_{n=0}^{+\infty}d_{x}x^{n}$ (par dérivation réelle), d’où par unicité du développement en série entière, on a
   $$
     \forall n \in \N, d_{n} = \binom{n+p}{p}.
+  $$
+%
+
+## Développements en série entière
+
+%def
+  Soit $z_{0} \in \C$. Soit $f: V \longrightarrow \C$ une application définie sur un voisinage complexe $V$ de $z_{0}$. On dit que $f$ est développable en série entière au voisinage de $z_{0}$ (i.e. sur $\Disk(z_{0}, r)$ avec $r > 0$) si il existe une suite complexe $(a_{n})_{n \in \N}$ et un réel $r > 0$ tel que $\Disk(z_{0}, r) \subset V$ et
+  $$
+    \forall z \in \Disk(z_{0}, r), f(z) = \sum_{n=0}^{+\infty}a_{n}(z-z_{0})^{n}
+  $$
+  i.e.
+  $$
+    \forall h \in \Disk(0,r), f(z_{0}+h) = \sum_{n=0}^{+\infty}a_{n}h^{n}
+  $$
+%
+
+%eg
+  - Soit $z_{0} \in \C$.
+    $$
+      \forall z \in \C, e^{z} = e^{z_{0}} \times e^{z-z_{0}} = \sum_{n=0}^{+\infty}\frac{e^{z_{0}}}{n!}(z-z_{0})^{n}
+    $$
+    donc $\exp$ est développable en série entière sur tout disque $\Disk(z_{0}, r)$ avec $r > 0$.
+  - La fonction $f: z \longmapsto \frac{1}{1-z}$ est définie sur l’ouvert $\C \setminus \{1\}$.
+    %rfig
+      @[./figures/developpement-eg-1.svg]
+    %
+    - Soit $z \in \Disk(0,1)$. Alors $f(z) = \sum_{n=0}^{+\infty}z^{n}$.
+    - Soit $z_{0} \in \C \setminus \{1\}$.
+      $$
+        f(z) = \frac{1}{1-z_{0}-(z-z_{0})} = \frac{1}{1-z_{0}} \times \frac{1}{1- \frac{z-z_{0}}{1-z_{0}}}
+      $$
+      pour $\abs{\frac{z-z_{0}}{1-z_{0}}} < 1$, on a~:
+      $$
+        f(z) = \frac{1}{1-z_{0}} \sum_{n=0}^{+\infty}\left(\frac{z-z_{0}}{1-z_{0}}\right)^{n} = \sum_{n=0}^{+\infty}\frac{(z-z_{0})^{n}}{(1-z_{0})^{n+1}}
+      $$
+      pour $z \in \Disk(z_{0}, \abs{1-z_{0}})$.
+  - %lemma
+      Si $f$ est paire (resp. impaire) et développable en série entière sur $\Disk(0,r)$, et si
+      $$
+        \forall z \in \Disk(0,r), f(z) = \sum_{n=0}^{+\infty}a_{n}z^{n}
+      $$
+      alors
+      $$
+        \forall n \in \N, a_{2n+1} = 0 \quad (\text{resp. } \forall n \in \N, a_{2n} = 0)
+      $$
+    %
+    %proof
+      $\forall x \in \oo{-r,r}, f(x) = f(-x)$ donc
+      $$
+        \forall x \in \oo{-r,r}, \sum_{n=0}^{+\infty}a_{n}x^{n} = \sum_{n=0}^{+\infty}(-1)^{n}a_{n}x^{n}
+      $$
+      si bien que par unicité du développement en série entière, on a
+      $$
+        \forall n \in \N, a_{n} = (-1)^{n}a_{n}
+      $$
+      soit $\forall n \in \N, a_{2n+1} = 0$.
+    %
+%
+
+%prop
+  Soit $r \in \R_{+}^{*}$. Posons
+  $$
+    A_{r} = \big\{f \in \Cont(\Disk(0,r)) \where f \text{ développable en série entière sur } \Disk(0,r)\big\}
+  $$
+  $A_{r}$ est une sous-algèbre de la $\C$-algèbre $\big(\Cont(\Disk(0,r)), +, \times x, \cdot \big)$.
+  %offprog
+    On appelle $A_{r}$ l’ensemble des fonctions analytiques complexes sur $\Disk(0,r)$.
+  %
+%
+
+%proof
+  - $\tilde{1} \in A_{r}$
+  - Soit $(f,g) \in (A_{r})^{2}$. Soit $(\lambda, \mu) \in \C^{2}$. Il existe alors $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes telles que pour tout $z \in \Disk(0,r)$,
+    ~ $f(z) = \sum_{n=0}^{+\infty}a_{n}z^{n}$  ~ $g(z) = \sum_{n=0}^{+\infty}b_{n}z^{n}$
+    d’où pour $z \in \Disk(0,r)$,
+    $$
+      (\lambda f+ \mu g) (z) = \lambda f(z) + \mu g(z) = \sum_{n=0}^{+\infty}(\lambda a_{n} + \mu b_{n})z^{n}
+    $$
+    donc $\lambda f + \mu g \in A_{r}$ et
+    $$
+      (f \times g)(z) \defeq f(z) \times g(z) = \sum_{n=0}^{+\infty} \left(\sum_{k=0}^{n}a_{k}b_{n-k}\right)z^{n}
+    $$
+    par produit de Cauchy de deux séries entières car $\rho \left(\sum_{n \geq 0} a_{n}z^{n}\right) \geq r$ et $\rho \left(\sum_{n \geq 0}b_{n}z^{n}\right)r$ donc $f \times g \in A_{r}$.
+%
+
+%eg
+  - On définie la fonction _cosinus hyporbolique_ par $ch: z \longmapsto \frac{e^{z} + e^{-z}}{2}$. On a
+    $$
+      \forall z \in \C, \ch z = \frac{1}{2}\sum_{n=0}^{+\infty}\frac{1+ (-1)^{n}}{n!}z^{n} = \frac{1}{2}\sum_{p=0}^{+\infty}\frac{2}{(2p)!} z^{2p}
+    $$
+    par produit de Cauchy de deux séries entières,
+    $$
+      \boxed{\forall x \in \R, \ch x = \sum_{n=0}^{+\infty}\frac{x^{2n}}{(n2)!}} \leq \sum_{n=0}^{+\infty}\frac{(x^{2})^{n}}{n!}  = e^{(x^{2})}
+    $$
+    On définit de même la fonction _sinus hyperbolique_ par
+    $$
+      \forall z \in \C, \sh z \defeq \frac{e^{z} - e^{-z}}{2} = \frac{1}{2}\sum_{n=0}^{+\infty}\frac{1 + (-1)^{n+1}}{n!}z^{n} = \sum_{p=0}^{+\infty}\frac{z^{2p+1}}{(2p+1)!}
+    $$
+    d’où
+    $$
+      \boxed{\forall x \in \R, \sh x = \sum_{n=0}^{+\infty}\frac{x^{2n+1}}{(2n+1)!}}
+    $$
+    On a l’identité
+    $$
+      \underbrace{\ch x}_{\text{termes pairs}} + \underbrace{\sh x}_{\text{termes impairs}} = e^{x} = \sum_{n=0}^{+\infty}\frac{x^{n}}{n!}
+    $$
+  - Soit $(P,Q) \in \C[X]^{2}$ avec $Q\ne 0$, $P \land Q = 1$ et $\tilde{Q}(0)\ne 0$. Posons $F = \frac{P}{Q} \in \C(X)$. La fonction $z \longmapsto \tilde{F}(z)$ est définie sur $\C \setminus P$ avec $P$ l’ensemble des pôles de $F$. Ici, $P \land Q = 1$ donc
+    $$
+      P = \left\{z \in \C \where \tilde{Q}(z) = 0\right\}
+    $$
+    On écrit la décomposition en éléments simples de $F$~:
+    $$
+      F = E + \sum_{\alpha \in P} \left(\sum_{k=0}^{m(\alpha)-1}\frac{\lambda_{\alpha, k}}{(X-\alpha)^{k+1}}\right)
+    $$
+    avec $E \in \C[X]$ et $\forall  \alpha \in P, \forall k \in \icc{0,m(\alpha)-1}, \lambda_{\alpha, k} \in \C$.
+    $$
+      z \longmapsto \tilde{F}(z) = \tilde{E}(z) + \sum_{\alpha \in P} \left(\sum_{k=0}^{m(\alpha)-1} \frac{\lambda_{\alpha,k}}{(z - \alpha)^{k+1}}\right)
+    $$
+    Or pour $\alpha \in P$,
+    $$
+      \frac{1}{(z-\alpha)^{k+1}} = \frac{1}{(-\alpha)^{k+1}} \frac{1}{(1- \frac{z}{\alpha})^{k+1}}
+    $$
+    pour $\abs{\frac{z}{\alpha}} < 1$, on a
+    $$
+      \frac{1}{(z-\alpha)^{k+1}} = \frac{1}{(-\alpha)^{k+1}} \sum_{n=0}^{+\infty}\binom{n+k}{k} \left(\frac{z}{\alpha}\right)^{n}
+    $$
+    donc $z \longmapsto  \tilde{F}(z)$ est développable en éléments simples sur $\Disk(0,r)$ avec $r = \min_{\alpha \in P} \abs{\alpha}$.
+    ~
+    Par exemple, développons pour $a > 0$ la fonction $f: z \longmapsto \frac{1}{z^{x} - 2(\ch a)z + 1}$. On a $z^{2} - 2(\ch a)z +1 = (z-e^{a}) \times (z- e^{-a})$ et $e^{-a} < 1 < e^{a}$ donc
+    $$
+      \frac{1}{X^{2} - 2(\ch a)X + 1} = \frac{\lambda}{X-e^{a}} + \frac{\mu}{X-e^{-a}}
+    $$
+    avec $(\lambda, \mu) \in \C^{2}$. On trouve
+    ~ $\lambda = \eval{\frac{1}{2X-2\ch a}}{X = e^{a}} = \frac{1}{2\sh a}$  ~ $\mu = \eval{\frac{1}{2X-2\ch a}}{X = e^{-a}} = -\frac{1}{2\sh a}$
+    donc pour tout $z \in \C \setminus \{e^{a}, e^{-a}\}$,
+    $$
+      f(z) = \frac{1}{2\sh a} \left[\frac{1}{z-e^{a}} - \frac{1}{z-e^{-a}}\right] = \frac{1}{2\sh a} \left[\frac{-e^{-a}}{1-z e^{-a}} + \frac{e^{a}}{1-ze^{a}}\right]
+    $$
+    pour $\abs{ze^{a}} < 1$ et $\abs{ze^{-a}} < 1$, on a
+    $$
+      f(z) = \frac{1}{2\sh a} \left[-e^{-a}\sum_{n=0}^{+\infty}e^{-na}z^{n} + e^{a}\sum_{n=0}^{+\infty}e^{na}z^{n}\right] = \sum_{n=0}^{+\infty}\frac{\sh \big((n+1)a\big)}{\sh a}z^{n}
+    $$
+    pour $\abs{z} < e^{-a}$ et $\abs{z} < e^{a}$, i.e. pour $\abs{z} < e^{-a}$, soit pour $z \in \Disk(0, e^{-a})$. On en déduit
+    $$
+      \rho \left(\sum_{n \geq 0}\frac{\sh \big((n+1)a\big)}{\sh a}z^{n}\right) \geq e^{-a}
+    $$
+    or
+    $$
+      \sh \big((n+1)a\big) = \frac{e^{(n+1)a} - e^{-(n+1)a}}{2} \usim{n\to+\infty} \frac{e^{(n+1)a}}{2}
+    $$
+    donc $\frac{\sh \big((n+1)a\big)}{\sh a}\usim{n\to+\infty} \frac{e^{a}}{2\sh a} e^{na}$ si bien que
+    $$
+      \rho \left(\sum_{n \geq 0} \big(e^{a}z\big)^{n}\right) = \frac{1}{e^{a}} = e^{-a}
+    $$
+%
+
+%def
+  Une application $f: A \longrightarrow \C$ est dite développable en série entière sur $\oo{-r,r}$ avec $r > 0$ si il existe une suite complexe $(a_{n})_{n \in \N}$ telle que
+  ~ $\oo{-r,r} \subset A$  ~ $\forall x \in \oo{-r,r}, f(x) = \sum_{n=0}^{+\infty}a_{n}x^{n}$
+  On dit que $f$ est développable en série entière au voisinage du réel $0$.
+%
+
+%eg
+  Considérons la fonction $f: x \longmapsto \min(1,x^{2}) \in \Cont(\R)$. Elle est développable en série entière sur $\oo{-1,1}$ car $\forall x \in \oo{-1,1}, f(x) = x^{2}$. Si $f$ est développable en série entière sur $\R$ avec $\forall x \in \R, f(x) = \sum_{n=0}^{+\infty}a_{n}x^{n}$, alors
+  $$
+    \forall x \in \oo{0,1}, \sum_{n=0}^{+\infty}a_{n}x^{n} = x^{2}
+  $$
+  d’où, par unicité du développement en série entière, on a
+  ~ $a_{2} = 1$  ~ $\forall n \in \N \setminus \{2\}, a_{n} = 0$
+  donc $\forall x \in \R, f(x) = x^{2}$ ce qui est faux.
+%
+
+%eg Recherche des développement en série entière en 0
+  - Considérons la fonction $f: x \longmapsto \cos x \cdot \ch x$.
+    - _Première méthode._
+      $$
+        \forall x \in R, f(x) = \sum_{n=0}^{+\infty}\frac{(-1)^{n} x^{2n}}{(2n)!} \times \sum_{n=0}^{+\infty}\frac{x^{2n}}{(2n)!} = \sum_{n=0}^{+\infty}\frac{(-1)^{n} (x^{2})^{n}}{(2n)!} \times \sum_{n=0}^{+\infty}\frac{(x^{2})^{n}}{(2n)!} = \sum_{n=0}^{+\infty} \left(\sum_{k=0}^{n}\frac{(-1)^{k}}{(2k)!} \times \frac{1}{(2n-2k)!}\right)(x^{2})^{n}
+      $$
+      ce qui ne permet pas de conclure.
+    - _Seconde méthode._
+      $$
+        \begin{align*}
+          \forall x \in R, f(x) = \frac{e^{ix} + e^{-ix}}{2} \times \frac{e^{x} + e^{-x}}{2} \\
+          &= \frac{1}{4} \left(e^{(1+i)x} + e^{-(1+i)x} + e^{(1+i)x} + e^{-(1-i)x}\right) \\
+          &= \frac{1}{4} \sum_{n \in \N}\frac{(1+i)^{n} + (-(1+i))^{n} + (1-i)^{n} + (-(1-i))^{n}}{n!}x^{n} \\
+          &= \frac{1}{4} \sum_{p=0}^{+\infty}\frac{2(1+i)^{2p} + 2(1-i)^{2p}}{(2p)!}x^{2p} \\
+          &= \frac{1}{2} \sum_{p=0}^{+\infty}\frac{(2i)^{p} + (-2i)^{p}}{(2p)!}x^{2p} \\
+          &= \frac{1}{2}\sum_{p=0}^{+\infty}\frac{2 (2i)^{2q}}{(4q)}x^{4q} = \sum_{q=0}^{+\infty}\frac{(-1)^{q} 4^{q}}{(4q)!}x^{4q}
+        \end{align*}
+      $$
+  - Considérons la fonction $g: x \longmapsto \ln(1+x+x^{2})$.
+    - _Première méthode: dériver pour retrouver une fraction rationnelle._
+      $$
+        \forall x \in \R, g'(x) = \frac{1+2x}{1+x+x^{2}}
+      $$
+      et $\frac{1+2X}{1+X+X^{2}} = \frac{\lambda}{X-j} + \frac{\mu}{X-j^{2}}$ avec
+      ~ $\lambda = \eval{\frac{1+2X}{1+2X}}{X=1} = 1$  ~ $\mu = \eval{\frac{1+2X}{1+2X}}{X=j^{2}} = 1$
+      $$
+        \forall x \in \R, g'(x) = \frac{1}{x-j} + \frac{1}{x-j^{2}} = \frac{-j^{2}}{1-j^{2}x} + \frac{-j}{1-jx}
+      $$
+      et $\abs{j^{2}x} = \abs{jx} < 1 \iff \abs{x} < 1$ donc
+      $$
+        \begin{align*}
+          \forall x \in \oo{-1,1}, g'(x) = -j^{2} \sum_{n=0}^{+\infty}(j^{2}x)^{n} - j \sum_{n=0}^{+\infty}(jx)^{n} \\
+          &= - \sum_{n=0}^{+\infty}\big(j^{n+1} + (j^{2})^{n+1}\big)x^{n} \\
+          &= -2 \sum_{n=0}^{+\infty}\Re(j^{n+1})x^{n} \\
+          &= -2 \sum_{n=0}^{+\infty}\cos \left(2(n+1)\frac{\pi}{3}\right)x^{n}
+        \end{align*}
+      $$
+      d’où
+      $$
+        \forall x \in \oo{-1,1}, g(x) = g(0) - 2 \sum_{n=0}^{+\infty}\cos \left(2(n+1) \frac{\pi}{3})\right) \frac{x^{n+1}}{n+1} = -2 \sum_{n=1}^{+\infty}\cos \big(2n \frac{\pi}{3}\big) \frac{x^{n}}{n}
+      $$
+    - _Seconde méthode._
+      $$
+        \forall x \in \R \setminus \{1\}, g(x) = \ln \big(\frac{1-x^{3}}{1-x}\big)
+      $$
+      donc pour tout $x \in \oo{-1,1}$,
+      $$
+        g(x) = \ln (1-x^{3}) - \ln(1-x) = - \sum_{n=1}^{+\infty}\frac{(x^{3})^{n}}{n} + \sum_{n=1}^{+\infty}\frac{x^{n}}{n} = \sum_{p=1}^{+\infty}a_{p}x^{p}
+      $$
+      avec $a_{p} = \begin{cases}\frac{1}{p} \if p\ne 3\N \\ -\frac{1}{n} + \frac{1}{3n} \if p \in 3\N\end{cases}$.
+  - Considérons la fonction $h: x \longmapsto \int_{0}^{\frac{\pi}{2}}\ch(x\cos t)\dd t$.
+    $$
+      \forall x \in \R, h(x) = \int_{0}^{\frac{\pi}{2}} \left(\sum_{p=0}^{+\infty} \frac{x^{2p} (\cos t)^{2p}}{(2p)!}\right)\dd t = \sum_{p=0}^{+\infty}\frac{x^{2p}}{(2p)!} \int_{0}^{\frac{\pi}{2}}(\cos t)^{2p}\dd t
+    $$
+    car $\forall (x,t) \in \R \times \cc{0, \frac{\pi}{2}}, \frac{x^{2p}(\cos t)^{2p}}{(2p)!} \geq 0$. Ainsi,
+    $$
+      \forall x \in \R, h(x) = \sum_{p=0}^{+\infty}\frac{W_{2p}}{(2p)!} x^{2p}
+    $$
+%
+
+%prop Proposition-définition
+  Soit $r > 0$. Soit $f: \oo{-r,r} \longrightarrow \C$ une application.
+  1. (def) Si $f \in \Cont^{\infty}(\oo{-r, r})$, alors la série entière $\sum_{n \geq 0} \frac{f^{(n)}(0)}{n!}x^{n}$ est appelée série de Taylor de $f$ en 0.
+  2. Si $f$ est développable en série entière sur $\oo{-r,r}$, alors $f \in \Cont^{\infty}(\oo{-r,r})$ et
+     $$
+       \forall x \in \oo{-r,r}, f(x) = \sum_{n=0}^{+\infty}\frac{f^{(n)}(0)}{n!}x^{n}
+     $$
+  3. Soit $f \in \Cont^{\infty}(\oo{-r,r})$. $f$ est développable en série entière sur $\oo{-r,r}$ si et seulement si pour tout $x \in \oo{-r,r}$,
+     $$
+       f(x) - \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!}x^{k} = \int_{0}^{x}\frac{(x-t)^{n}}{n!}f^{(n+1)}(t)\dd t \arrowlim{n\to+\infty}0
+     $$
+%
+
+%callout Attention
+  %rfig
+    ==Fonction plate==
+  %
+  La fonction _plate_ $f: x \longmapsto \begin{cases}e^{-\frac{1}{x}} \if x > 0 \\ 0 \if x=0\end{cases}$ est de classe $\Cont^{\infty}$ et vérifie
+  ~ $\forall n \in \N, f^{(n)}(0) = 0$  ~ $\forall x \in \R, \sum_{n=0}^{+\infty}\frac{f^{(n)}(0)}{n!}x^{n} = 0$
+  donc
+  $$
+    \forall x > 0, f(x) \ne \sum_{n=0}^{+\infty}\frac{f^{(n)}(0)}{n!}x^{n}
+  $$
+%
+
+%eg
+  Soit $f \in \Cont^{\infty}(\oo{-a,a})$ telle que
+  $$
+    \exists K > 0, \exists M > 0: \forall x \in \oo{-a,a}, \forall n \in \N, \abs{f^{(n)}(x)} \leq K n! M^{n}
+  $$
+  Soit $x \in \oo{\stress{-r,r}}$ avec $\stress{0 < r < a}$.
+  $$
+    \abs{\int_{0}^{x}\frac{(x-t)^{n}}{n!}f^{(n+1)}(t)\dd t} \leq K(n+1)! M^{n+1} \times \underbrace{\abs{\int_{0}^{x} \frac{\abs{x-t}^{n}}{n!}\dd t}}_{= \frac{\abs{x}^{n+1}}{(n+1)!}} \leq K \big(M \abs{x}\big)^{n+1} \leq K (Mr)^{n+1}
+  $$
+  si $r < \frac{1}{M}$, alors $(Mn)^{n+1} \arrowlim{n\to+\infty}0$ donc $f$ est développable en série entière sur $\oo{-\frac{1}{M}, \frac{1}{M}}$.
+  Réciproquement, supposons $f \in \Cont^{\infty}(\oo{-a,a})$ développable en série entière au voisinage de 0. Il existe alors $\varepsilon \in \oo{0,a}$ et une suite complexe $(a_{n})_{n \in \N}$ tels que
+  ~ $\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) \geq \varepsilon$  ~ $\forall x \in \oo{-\varepsilon, \varepsilon}, f(x) = \sum_{k=0}^{+\infty}a_{k}x^{k}$
+  Soit $0 < r < \varepsilon$. Alors $(a_{n}r^{n})_{n \in \N}$ est bornée, i.e. il existe $M \in \R_{+}$ tel que $\forall n \in \N, \abs{a_{n}e^{n}} \leq M$ i.e. $\abs{a_{n}} \leq \frac{M}{r^{n}}$.
+  $$
+    \forall n \in \N, \forall x \in \oo{-\varepsilon, \varepsilon}, f^{(n)}(x) = \sum_{k=0}^{+\infty}(n+k) \cdots (k+1)a_{n+k}x^{k}
+  $$
+  d’où
+  $$
+    \abs{f^{(n)}(x)} \leq \frac{M}{r^{n}}n! \sum_{k=0}^{+\infty}\binom{n+k}{n} \left(\frac{\abs{x}}{r}\right)^{k}
+  $$
+  Soit $x \in \oo{- \frac{r}{2}, \frac{r}{2}}$.
+  $$
+    \abs{f^{(n)}(x)} \leq \frac{M}{r^{n}}n! \sum_{k=0}^{+\infty}\binom{n+k}{n} \left(\frac{1}{2}\right)^{k} = \frac{M}{r^{n}}n! \frac{1}{\left(1-\frac{1}{2}\right)^{n+1}} = 2M n! \left(\frac{2}{r}\right)^{n}
   $$
 %
