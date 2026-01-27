@@ -1,0 +1,290 @@
+# Équations différentielles linéaires
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $F$ est un $\K$-espace vectoriel normé de dimension finie $n \in \N$ et $\L(F)$ est normé (par exemple avec la norme d’opérateur).
+
+## Généralités
+
+Soit $I$ un intervalle d’intérieur non vide. Soit $a_{0}, \ldots, a_{n-1}, b$ des applications continues sur $I$ à valeurs dans $K$. La fonction $f: I \longrightarrow \K$ est dite solution de l’équation différentielle linéaire scalaire d’ordre $n$
+$$
+  y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{1}(t)y' + b_{0}(t)
+$$
+si $f \in \Cont^{n}(I,\K)$ et
+$$
+  \forall t \in I, f^{(n)}(t) = a_{n-1}(t)f^{(n-1)}(t) + \cdots + a_{0}(t)f(t) + b(t)
+$$
+cette deuxième condition est équivalente à
+$$
+  \mtx{f\\f'\\\vdots\\f^{(n-1)}} = \underbrace{\mtx{0 & 1 & 0 & \cdots & \cdots & 0 \\
+                                        0 & 0 & 1 & 0 & \cdots & 0 \\
+                                        \vdots & & & & \ddots & \\
+                                        0 & \cdots & \cdots & \cdots & 0 & 1 \\
+                                        a_{0}(t) & \cdots & \cdots & \cdots & \cdots & a_{n-1}(t)}}_{A(t)} \mtx{f \\ f' \\ \vdots \\ f^{(n-1)}} + \underbrace{\mtx{0 \\ \vdots \\ 0 \\ b(t)}}_{B(t)}
+$$
+i.e. $\mtx{f \\ f' \\ \vdots \\ f^{(n-1)}} \in \Cont^{1}(I,\K^{n})$ est solution de
+$$
+  Y' = A(t)Y + B(t)
+$$
+On introduit
+$$
+  \applic{\Cont^{n}(I,\K)}{\Cont^{1}(I,\K^{n})}{f}{Y_{f} = \mtx{f \\ f' \\ \vdots \\ f^{(n-1)}}}
+$$
+
+%def
+  On étudie l’équation différentielle linéaire (vectorielle) à coefficients continus
+  $$
+    \tag{E} y' = a(t)\mdot y + b(t)
+  $$
+  avec $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ continues. Elle est dite à coefficients constants si $t \longmapsto a(t)$ est constante. Une solution de $(E)$ est un arc $\varphi: I \longrightarrow \F$ de classe $\Cont^{1}(E)$ tel que
+  $$
+    \forall t \in I, \varphi'(t) = a(t)\mdot \varphi(t) + b(t)
+  $$
+  L’ensemble des solutions de $E$ sur $I$ est noté $\Sol_{E,I}$ en général.
+  À $(E)$, on associe l’équation différentielle linéaire homogène
+  $$
+    \tag{H} y' = a(t)\mdot y
+  $$
+  On note $\Sol_{H,I}$ l’ensemble des solutions de $(H)$ sur $I$.
+%
+
+++Écriture matricielle~:++ Soit $\B = (e_{1}, \ldots, e_{n})$ une base de $F$. Notons
+~ $A(t) = \mtx{a_{i,j}(t)}_{1 \leq i,j \leq n} = \mat_{\B}\big(a(t)\big)$  ~ $\forall t \in I, b(t) = \sum_{i=1}^{n}b_{i}(t)e_{i}$ (donc $b_{i} = e_{i}^{*}\circ b$)  ~ $\forall t \in I, B(t) = \mtx{b_{1}(t) \\ \vdots \\ b_{n}(t)}$
+Soit $y: I \longrightarrow F$ de classe $\Cont^{1}$. Notons $\forall t \in I, y(t) = \sum_{i=1}^{n}y_{i}(t)e_{i}$. On a
+$$
+  \begin{align*}
+    \forall t \in I, y'(t) = a(t)\mdot y(t) + b(t) &\iff \forall t \in I, \mtx{y^{1}(t) \\ \vdots \\ y^{n}(t)} = A(t) \times  \mtx{y_{1}(t)\\ \vdots \\ y_{n}'(t)} + B(t) \\
+    &\iff \forall t \in I, \begin{cases}y_{1}'(t) = a_{1,1}(t)y_{1}(t) + \cdots + a_{1,n}(t)y_{n}(t) + b_{1}(t) \\ \vdots \\ y_{n}'(t) = a_{n,1}(t)y_{n}(t) + \cdots + a_{n,n}(t)y_{n}(t) + b_{n}(t)\end{cases}
+  \end{align*}
+$$
+
+%eg
+  Considérons le système différentiel linéaire du premier ordre
+  $$
+    \begin{cases}x' = tx - y + t\cos t \\ y' = x+ty + t\sin t\end{cases}
+  $$
+  Il correspond à une équation différentielle vectorielle linéaire du premier ordre
+  $$
+    z' = a(t)\mdot z + b(t)
+  $$
+  où $F = \R^{2}$, $b: t \longmapsto (t\cos t, t\sin t)$ et
+  $$
+    a: \applic{\R}{\L(\R^{2})}{t}{a(t): \applic{\R^{2}}{\R^{2}}{(\alpha, \beta)}{t \alpha- \beta, \alpha + t \beta}}
+  $$
+%
+
+%property Propriétés élémentaires
+  Considérons l’équation $(E): y' = a(t)\mdot y + b(t)$ et l’équation homogène associée $(H): y' = a(t)\mdot y$ où $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ sont continues.
+  1. $\Sol_{H,I}$ est un sous-espace vectoriel de $\Cont^{1}(I,F)$
+  2. Si $\varphi_{0} \in \Sol_{E,I}$, alors $\Sol_{E,I} = \varphi_{0} + \Sol_{H,I}$.
+  3. Si $b = \sum_{i=1}^{p}b_{i}$ avec chaque $b_{i}$ est continue de $I$ dans $F$, et si
+     $$
+       \forall i \in \icc{1,p}, \begin{cases}\varphi_{i} \in \Cont^{1}(I,F) \\ \forall t \in I, \varphi_{i}'(t) = a(t)\mdot \varphi_{i}(t) + b_{i}(t)\end{cases}
+     $$
+     alors $\varphi = \sum_{i=1}^{p}\varphi_{i} \in \Sol_{E,I}$ _(principe de superposition)_.
+%
+
+%proof
+  1. - $\tilde{0_{F}} \in \Sol_{H,I}$ car $\forall t \in I, a(t)\mdot 0_{F} = 0_{F} = (t \longmapsto \tilde{0_{F}})'(t)$
+     - Soit $(\varphi, \psi) \in \big(\Sol_{H,I}\big)^{2}$. Soit $(\lambda, \mu) \in \K^{2}$.
+       $$
+         (\lambda \varphi + \mu \psi)'(t) = \lambda \varphi'(t) + \mu \psi'(t) = \lambda a(t)\mdot \varphi(t) + \mu a(t)\mdot \psi(t) = a(t) \mdot (\lambda \varphi(t) + \mu \psi(t)) = a(t) \mdot \big((\lambda \varphi + \mu \psi)(t)\big)
+       $$
+       donc $\lambda \varphi + \mu \psi \in \Sol_{H,I}$.
+  2. $$
+       \begin{align*}
+         \varphi' = a(t)\mdot \varphi + b(t) &\iff \varphi' - a(t)\mdot \varphi = \varphi_{0}' - a(t) \mdot \varphi_{0} \\
+         &\iff (\varphi - \varphi_{0})' = a(t)\mdot (\varphi - \varphi_{0}) \\
+         &\iff \varphi - \varphi_{0} \in \Sol_{H,I} \iff \varphi \in \varphi_{0} + \Sol_{H,I}
+       \end{align*}
+     $$
+  3. $\displaystyle \underbrace{\sum_{i=1}^{p}\varphi_{i}'}_{\left(\sum_{i=1}^{p}\varphi_{i}\right)'} = \sum_{i=1}^{p}a(t)\mdot \varphi_{i} + b_{i} = a(t) \sum_{i=1}^{p}\varphi_{i} + \sum_{i=1}^{p}b_{i}$ donc $\varphi' = a(t) \mdot \varphi + b(t)$.
+%
+
+## Théorème de Cauchy linéaire
+
+%thm Théorème de Cauchy
+  Soient $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ continues sur $I$. Soient $t_{0} \in I$ et $y_{0} \in F$. Il existe une solution et une seule sur $I$ au problème de Cauchy
+  $$
+    \tag{C} \begin{cases}y' = a(t)\mdot y + b(t) \\ y(t_{0}) = y_{0}\end{cases}
+  $$
+%
+
+%rem
+  %prop Forme intégrale du problème de Cauchy
+    On a, pour $\varphi \in \Func(I,F)$,
+    $$
+      \begin{cases}\varphi \in \Cont^{1}(I,F) \\ \varphi \text{ solutoin de } (C)\end{cases} \iff \begin{cases}\varphi \in \Cont_{0}(I,F) \\ \forall t \in I, \varphi(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \varphi(s) + b(s)\big)\dd s\end{cases}
+    $$
+  %
+
+  %proof
+    - Supposons le membre de gauche vrai. Alors $\varphi \in \Cont^{0}(I,F)$, $\varphi(t_{0}) = y_{0}$ et
+      $$
+        \forall t \in I, \varphi'(t) = a(t)\mdot \varphi(t)+ b(t)
+      $$
+      $\varphi$ est continue donc $t \longmapsto a(t)\mdot \varphi(t) + b(t)$ l’est aussi, d’où
+      $$
+        \forall t \in I, \underbrace{\int_{t_{0}}^{t}\varphi'(s)\dd s}_{\varphi(t) - \varphi(t_{0})} = \int_{t_{0}}^{t}\big(a(s) \mdot \varphi(s) + b(s)\big)\dd s
+      $$
+      i.e.
+      $$
+        \forall t \in I, \varphi(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s)\mdot \varphi(s) + b(s)\big)\dd s
+      $$
+    - Supposons le membre de droite vrai. L’application $s \longmapsto \big(a(s), \varphi(s)\big) \in \L(F) \times F$ est continue, et l’application $\applic{\L(F) \times F}{F}{(\ell, u)}{\ell\mdot u}$ est bilinéaire donc continue car $F$ et $\L(F)$ sont de dimensions finies. Ainsi, par composition, $s \longmapsto a(s)\mdot \varphi(s)$ est continue sur $I$. De plus, $b \in \Cont(I,F)$ donc $s \longmapsto a(s)\mdot \varphi(s) + b(s) \in \Cont(I,F)$ donc $\varphi \in \Cont^{1}(I,F)$ et
+      $$
+        \begin{cases}\forall t \in I, \varphi'(t) = a(t)\mdot \varphi(t) + b(t) \\ \varphi(t_{0}) = y_{0} + \int_{t_{0}}^{t_{0}} \cdots = y_{0}\end{cases}
+      $$
+      donc $\varphi$ est solution de $(C)$.
+  %
+%
+
+%proof
+  - _Unicité._ Soient $\varphi$ et $\psi$ deux applications continues sur $I$ telles que pour tout $t \in I$,
+    ~ $\varphi(t) = y_{0} + \int_{t_{0}}^{t}a(s)\mdot \varphi(s)+b(s)\dd s$  ~ $\psi(t) = y_{0} + \int_{t_{0}}^{t}a(s)\mdot \psi(s) + b(s)\dd s$
+    Alors,
+    $$
+      \forall t \in I, \varphi(t) - \psi(t) = \int_{t_{0}}^{t}a(s)\mdot \big(\varphi(s) - \psi(s)\big)\dd s
+    $$
+    donc
+    $$
+      \forall \varepsilon > 0, \forall t \in \co{t_{0},+\infty}\cap I, \norm{\varphi(t) - \psi(t)} \leq \underbrace{\int_{t_{0}}^{t} \opnorm{a(s)} \times  \norm{\varphi(s) - \psi(s)} \dd s + \varepsilon}_{z(t)}
+    $$
+    soit
+    $$
+      \forall t \in \co{t_{0}, +\infty}\cap I, \frac{\opnorm{a(t)} \norm{\varphi(t) - \psi(t)}}{z(t)} \leq \opnorm{a(t)}
+    $$
+    i.e.
+    $$
+      \forall t \in \co{t_{0},+\infty}, \frac{z'(t)}{z(t)} \leq \opnorm{a(t)}
+    $$
+    d’où
+    $$
+      \forall t \in \co{t_{0},+\infty} \cap I, \underbrace{\int_{t_{0}}^{t}\frac{z'(s)}{z'(s)}\dd s}_{\ln \left(\frac{z(t)}{z(t_{0})}\right)} \leq \int_{t_{0}}^{t}\opnorm{a(s)} \dd s
+    $$
+    d’où
+    $$
+      \forall \varepsilon > 0, \forall t \in \co{t_{0},+\infty} \cap I, \alpha \leq z(t) \leq \underbrace{z(t_{0})}_{= \varepsilon} + e^{\int_{t_{0}}^{t} \opnorm{a(s)}\dd s}
+    $$
+    on fait tendre $\varepsilon$ vers 0, et on a
+    $$
+      \forall t \in \co{t_{0},+\infty} \cap I, \int_{t_{0}}^{t}\opnorm{a(s)} \times \norm{\varphi(s) - \psi(s)}\dd s = 0
+    $$
+    d’où
+    $$
+      \forall t \in \co{t_{0},+\infty}\cap  I, \norm{\varphi(t)\psi(t)} = 0
+    $$
+    d’où $\forall t \in \co{t_{0}, +\infty} \cap I, \varphi(t) = \psi(t)$.
+    On obtient la même conclusion sur $\oc{-\infty, t_{0} \cap I}$ en reprenant la démarche ci-dessus mais en intégrant de $t$ à $t_{0}$, ce qui va changer introduire un « $-$ » devant le quotient $\frac{z'(t)}{z(t)}$.
+  - _Existence._ Posons $\varphi_{0} = \tilde{y_{0}}$ la fonction constante de valeur $y_{0}$ et pour tout $n \in \N$,
+    $$
+      \forall t \in I, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s)\mdot \varphi_{n}(s) + b(s)\big)\dd s
+    $$
+    On a $\forall n \in \N, \varphi_{n} \in \Cont(I,F)$. Montrons que la suite $(\varphi_{n})_{n \in \N}$ converge uniformément sur tout segment $\cc{\alpha, \beta}$ de $I$ contenant $t_{0}$. Cela revientà prouver la convergence uniforme de la série téléscopique $\sum_{n \geq 0}\varphi_{n+1}- \varphi_{n}$ sur $\cc{\alpha, \beta}$. Notons $A = \sup_{t \in \cc{\alpha, \beta}} \opnorm{a(t)}$ et $\psi = \sup_{t \in \cc{\alpha, \beta}} \norm{\varphi_{1}(t) - \varphi_{0}(t)}$. On a
+    $$
+      \forall t \in \cc{\alpha, \beta}, \forall n \in \N, \varphi_{n+2}(t) - \varphi_{n+1}(t) = \int_{t_{0}}^{t}a(s)\mdot \big(\varphi_{n+1}(s) - \varphi_{n}(s)\big)\dd s
+    $$
+    %dimmed
+      Alors,
+      $$
+        \norm{\varphi_{2}(t) - \varphi_{1}(t)} \leq \abs{\int_{t_{0}}^{t}\opnorm{a(s)} \times  \norm{\varphi_{1}(s) - \varphi_{0}(s)}\dd s}
+      $$
+      donc
+      $$
+        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{2}(t) - \varphi_{1}(t)} \leq A \psi \underbrace{\abs{\int_{t_{0}}^{t}\dd s}}_{\abs{t-t_{0}}}
+      $$
+    %
+    Considérons la propriété $\Prop(n): « \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+1}(t) - \varphi_{n}(t)} \leq \psi  A^{n} \frac{\abs{t-t_{0}}^{n}}{n!} »$.
+    - $\norm{\varphi_{1}(t) - \varphi_{0}(t)} \leq \psi = \psi \cdot A_{0} \frac{\abs{t-t_{0}}^{0}}{0!}$ donc $\Prop(0)$ est vraie.
+    - Supposons $\Prop(n)$ vraie pour $n$ fixé dans $\N$.
+      $$
+        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+2}(t) - \varphi_{n}(t)} \leq \abs{\int_{t_{0}}^{t}A \cdot \psi A^{n} \frac{\abs{s - t_{0}}^{n}}{n!}\dd s} = \frac{\psi \cdot A^{n+1}}{n!} \underbrace{\abs{\int_{t_{0}}^{t}\abs{s-t_{0}}^{n} \dd s}}_{= \frac{\abs{t-t_{0}}^{n+1}}{n+1}}
+      $$
+      $\Prop(n+1)$ est donc vraie. Ainsi,
+      $$
+        \norm{\varphi_{n+1}(t) - \varphi_{n}(t)} \leq \psi \frac{\big(A(\beta- \alpha)\big)^{n}}{n!}
+      $$
+      donc $\norm{\varphi_{n+1} - \varphi_{n}}_{\infty, \cc{\alpha, \beta}} \leq \psi \frac{\big(A (\beta-\alpha)\big)^{n}}{n!}$ or $\sum_{n \geq 0} \frac{\big(A(\beta-\alpha)\big)^{n}}{n!}$ converge (de somme $e^{A(\beta-\alpha)}$) donc la série $\sum_{n \geq 0}\varphi_{n+1} - \varphi_{n}$ converge normalement sur tout segment $\cc{\alpha, \beta}$ de $I$ contenant $t_{0}$. Chaque $\varphi_{n+1} - \varphi_{n}$ est à valeurs dans le $\K$-espace vectoriel normé $F$ de dimension finie, donc la convergence est uniforme. Notons $\psi_{\alpha, \beta}$ la limite (uniforme) de la suite $(\varphi_{n})_{n \in \N}$ sur $\cc{\alpha,\beta}$. Comme
+      $$
+        \forall n \in \N, \forall t \in \cc{\alpha, \beta}, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}a(s) \mdot \varphi_{n}() + b(s)\dd s
+      $$
+      on a
+      $$
+        \begin{align*}
+          \forall s \in \cc{\alpha, \beta}, \norm{a(s)\mdot \varphi_{n}(s) - a(s) \mdot \psi_{\alpha, \beta}(s)} &\leq A \norm{\varphi_{n}(s) - \psi_{\alpha, \beta}(s)} \\
+          &\leq A \norm{\varphi_{n} - \psi_{\alpha, \beta}}_{\infty, \cc{\alpha, \beta}} \\
+        \end{align*}
+      $$
+      donc
+      $$
+        \norm{a(s)\mdot \varphi_{n}(s) - a(s) \mdot \psi_{\alpha, \beta}(s)}_{\infty, s \in \cc{\alpha, \beta}} \leq A \norm{\varphi_{n} - \psi_{\alpha, \beta}}_{\infty, \cc{\alpha, \beta}} \arrowlim{n\to+\infty}0
+      $$
+      donc la suite d’application continues $(s \longmapsto a(s) \mdot \psi_{n}(s) + b(s))_{n \in \N}$ converge uniformément vers $(s \longmapsto a(s) \mdot \psi_{\alpha, \beta}(s) + b(s))$ sur $\cc{\alpha, \beta}$, d’où par passage à la limite,
+      $$
+        \forall t \in \cc{\alpha, \beta}, \psi_{\alpha, \beta}(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \psi_{\alpha, \beta}(t) + b(s)\big)\dd s
+      $$
+      (or $\varphi_{n} \in \Cont(\cc{\alpha, \beta})$ pour tout $n \in \N$ donc $\psi_{\alpha, \beta} \in \Cont(\cc{\alpha, \beta}, F)$). Notons $I$ comme la réunion croissante d’une suite de segment~: $I = \bigcup_{p \in \N} \cc{\alpha_{p}, \beta_{p}}$ avec $(\cc{\alpha_{p}, \beta_{p}})$ une suite croissante de segment contenant $t_{0}$. Notons $\psi_{p} = \psi_{\alpha_{p}, \beta_{p}}$. Par unicité de la solution sur $\cc{\alpha_{p}, \beta_{p}} \subset \cc{\alpha_{p+1}, \beta_{p+1}}$ on a ${\psi_{p+1}}_{|\cc{\alpha_{p}, \beta_{p}}} = \psi_{p}$. On peut donc définir l’application
+      $$
+        \psi: \applic{I}{F}{t}{\psi_{p}(t) \text{ si }\exists p \in \N: t \in \cc{\alpha_{p}, \beta_{p}}}
+      $$
+      Par coontinuité des $\psi_{p}$, $\psi$ est un arc continu sur $I$ et pour tout $p \in \N$
+      $$
+        \forall t \in \cc{\alpha_{p}, \beta_{p}}, \psi(t) = \psi_{p}(t) = y_{0} + \int_{t_{0}}^{t}a(s)\mdot \psi_{p}(s) + b(s) = y_{0} + \int_{t_{0}}^{t}\big(a(s)\mdot \psi(s) + b(s)\big)\dd s
+      $$
+%
+
+
+%cor
+  1. Considérons l’équation homogène $(H): y' = a(t)\mdot y$ avec $a: I \longrightarrow \L(F)$ continue. Soit $t_{0} \in I$. L’application
+     $$
+       \applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t_{0})}
+     $$
+     est un isomorphisme d’espaces vCtoriels donc
+     $$
+       \dim \Sol_{H,I} = \dim F = n
+     $$
+  2. Considérons l’équation $(E): y' = a(t) \mdot y + b(t)$ avec $a: ei \longrightarrow \L(F)$ et $b: I \longrightarrow F$ continues. Alors $\Sol_{E,I}$ n’est pas vide et a une structure de sous-espace affine de dimension $n = \dim F$.
+%
+
+%proof
+  1. L’application $\applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t_{0})}$ est linéaire. Pour tout $y_{0} \in F$, d’après le théorème de Cauchy linéaire, comme $t \longmapsto a(t)$ est continue, il existe une unique solution au problème $\begin{cases}y' = a(t)\mdot y \\ y(t_{0}) = y_{0}\end{cases}$ donc $\applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t_{0})}$. En particulier,
+     $$
+       \begin{cases}y' = a(t)\mdot y \\ \varphi(t_{0}) = 0_{F}\end{cases} \implies \varphi = \tilde{0_{F}}
+     $$
+  2. Soit $t_{0} \in I$. Il existe $\varphi_{0} \in \Sol_{E,I}$ tel que $\varphi_{0}(t_{0}) = 0_{F}$ donc $\Sol_{E,I} \ne \emptyset$ d’où $\Sol_{E,I} = \varphi_{0} + \Sol_{H,I}$.
+
+%
+
+%def
+  Soit $a: I \longrightarrow \L(F)$ continue. Considérons l’application homogène
+  $$
+    \tag{H} y' = a(t)\mdot y
+  $$
+  1. Toute base $(\varphi_{1}, \ldots, \varphi_{n})$ de $\Sol_{H,I}$ est appelée système fondamental de solutions de $H$ sur $I$.
+  2. Si $\psi_{1}, \ldots, \psi_{n}$ sont $n$ solutions de $H$ sur $I$ (pas nécessairement un système fondamental) et si $\B$ est une base de $F$, alors
+     $$
+       t \longmapsto \det_{\B} \big(\psi_{1}(t), \ldots, \psi_{n}(t)\big) = W_{\psi_{1}, \ldots, \psi_{n}, \B}(t)
+     $$
+     est appelé _Wronskien_ de $\psi_{1}, \ldots, \psi_{n}$ relativement à $\B$.
+%
+
+%eg
+  $$
+    \begin{align*}
+      (H): \begin{cases}x' = tx - y \\ y' = x + ty\end{cases} &\iff \begin{cases}z = x+i y\\ z' = tx - y + i(x+ty) = tz + ix - y = tz + iz\end{cases} \\
+      &\iff \begin{cases}z = x+iy \\ z' = (t+i)z\end{cases} \\
+      &\iff \begin{cases}z = x+iy \\ \exists \lambda \in \C: \forall t \in \R, z(t) = \underbrace{\lambda}_{a+ib} e^{it + \frac{t^{2}}{2}}\end{cases} \\
+      &\iff \exists (a,b) \in \R^{2}: \forall t \in R, \begin{cases}x(t) = e^{\frac{t^{2}}{2}} (a\cos t - b\sin t) \\ y(t) = e^{\frac{t^{2}}{2}} (a\sin t + b\cos t)\end{cases}
+    \end{align*}
+  $$
+  donc
+  $$
+    \Sol_{H,\R} = \Vect\left\{\underbrace{t \longmapsto e^{\frac{t^{2}}{2}}\mtx{\cos t \\ \sin t}}_{\varphi_{1}}, \underbrace{t \longmapsto e^{\frac{t^{2}}{2}} \mtx{-\sin t\\\cos t}}_{\varphi_{2}}\right\}
+  $$
+  $(\varphi_{1}, \varphi_{2})$ est un système fondamental de solutions de $H$ sur $\R$ et
+  $$
+    \forall t \in \R, W_{\varphi_{1}, \varphi_{2}, \can}(t) = e^{\frac{t^{2}}{2}} \vmtx{\cos t & -\sin t \\ \sin t & \cos t} = e^{\frac{t^{2}}{2}}\ne 0
+  $$
+%
+
+%prop
+  Considérons l’équation homogène $(H): y' = a(t)\mdot y + b(t)$ avec $a: I \longrightarrow \L(F)$ continue.
+%
