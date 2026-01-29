@@ -286,5 +286,381 @@ $$
 %
 
 %prop
-  Considérons l’équation homogène $(H): y' = a(t)\mdot y + b(t)$ avec $a: I \longrightarrow \L(F)$ continue.
+  Considérons l’équation homogène $(H): y' = a(t)\mdot y$ avec $a: I \longrightarrow \L(F)$ continue ($\dim F = n$). Soit $\B$ une base de $F$. Si $\psi_{1}, \ldots, \psi_{n}$ sont $n$ solutions de $(H)$, il y a équivalence entre
+  1. $(\psi_{1}, \ldots, \psi_{n})$ est un système fondamental de solutions de $(H)$ sur $I$
+  2. $\forall t \in I, W_{\psi_{1}, \ldots, \psi_{n}, \B}(t) \ne 0$
+  3. $\stress{\exists} t \in I, W_{\psi_{1}, \ldots, \psi_{n}, \B}(t) \ne 0$
+%
+
+%proof
+  - Soit $(\psi_{1}, \ldots, \psi_{n})$ une base de $\Sol_{H,I}$. Pour tout $t \in I$, $\applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t)}$ est un isomorphisme donc $(\psi_{1}(t), \ldots, \psi_{v}(t))$ est une base de $E$, d’où $W_{\psi_{1}, \ldots, \psi_{n}, \B}(t) \ne 0$.
+  - On a l’implication $2 \implies 3$.
+  - Supposons qu’il existe donc $t \in I$ tel que $W_{\psi_{1}, \ldots, \psi_{n},\B}(t)\ne 0$. Alors $(\psi_{1}(t), \ldots, \psi_{n}(t))$ est une base de $F$. Or $\alpha: \applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t)}$ est un isomorphisme et $(\alpha(\psi_{1}), \ldots, \alpha(\psi_{n}))$ est une base de $F$ donc $(\psi_{1}, \ldots, \psi_{n})$ est une base de $\Sol_{H,I}$.
+%
+
+%eg
+  Considérons les applications $\varphi{1}: t \longmapsto \mtx{\cos t\\ \cos t}$ et $\varphi{2}: t \longmapsto \mtx{\sin t\\\sin t}$.
+  $$
+    \lambda_{1} \varphi_{1} + \lambda_{2} \varphi_{2} = \tilde{0} \implies \forall t \in \R, \lambda_{1}\cos t + \lambda_{2}\sin t = 0 \implies  \lambda_{1} \ueq{t=0, \frac{\pi}{2}} \lambda_{2}
+  $$
+  Ainsi, $(\varphi_{1}, \varphi_{2})$ est libre. Or
+  $$
+    \det_{\can}(\varphi_{1}(t), \varphi_{2}(t)) = \vmtx{\cos t & \sin t \\ \cos t & \sin t} = 0
+  $$
+  donc $(\varphi_{1}(t), \varphi_{2}(t))$ n’est pas une base de l’ensemble des solutions d’un système linéaire homogène
+  $$
+    \mtx{x'(t)\\ y'(t)} = A(t) \mtx{x(t)\\ y(t)}
+  $$
+%
+
+## Résolution de $(E): y' = a(t)\mdot y + b(t)$ lorsqu’on dispose d’un systeème fondamental $(\varphi_{1}, \ldots, \varphi_{n})$ de solutions de l’équation homogène sur $I$
+
+Dans cette parties, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ sont continues sur $I$.
+
+%lemma
+  Soit $\psi: I \longrightarrow F$ un arc. Il existe d’uniques applications $\lambda_{1}: ei \longrightarrow \K, \ldots, \lambda_{n}: I \longrightarrow \K$ telles que $\psi = \sum_{i=1}^{n}\lambda_{i}' \varphi_{i}$, i.e.
+  $$
+    \forall t \in I, \psi(t) = \sum_{i=1}^{n}\lambda_{i}(t)\varphi_{i}(t)
+  $$
+  De plus,
+  $$
+    \psi \in \Cont(I, F) \iff \forall i \in \icc{1,n}, \lambda_{i} \in \Cont(I,\K)
+  $$
+  et
+  $$
+    \psi \in \Cont^{1}(I,F) \iff  \forall i \in \icc{1,n}, \lambda_{i} \in \Cont^{1}(I,\K)
+  $$
+%
+
+%proof
+  Soit $\B$ une base de $F$. Comme $(\varphi_{1}, \ldots, \varphi_{n})$ est un système fondamental de solutions de l’équation homogène $(H)$ sur $I$, $\B_{t} = (\varphi_{1}(t), \ldots, \varphi_{n}(t))$ est une base de $F$ pour tout $t \in I$. Pour $t \in I$, il existe donc un unique n-uplet $(\lambda_{1}(t), \ldots, \lambda_{n}(t)) \in \K^{n}$ tel que $\forall t \in I, \psi(t) = \sum_{i=1}^{n}\lambda_{i}(t)\varphi_{i}(t)$. Le sens
+  $$
+    (\lambda_{1}, \ldots, \lambda_{n}) \in \Cont(I,\K)^{n} \implies \psi \in \Cont(I,F)
+  $$
+  (ou avec $\Cont^{1}$) est immédiat. Supposons $\psi \in \Cont^{k}(I,F)$ avec $k \in \{0,1\}$. Soit $i \in \icc{1,n}$.
+  $$
+    \det_{\B}(\varphi_{1}(t), \ldots, \underbrace{\psi(t)}_{\sum_{i=1}^{n}\lambda_{i}(t)\varphi_{i}(t)}, \ldots, \varphi_{n}(t)) = \lambda_{i}(t)\underbrace{\det_{\B}(\varphi_{1}(t), \ldots, \varphi_{n}(t))}_{\ne 0}
+  $$
+  $$
+    \lambda_{i}(t) = \frac{\det_{\B} \big(\varphi_{1}(t), \ldots, \psi(t), \ldots, \varphi_{n}(t)\big)}{\det_{\B} \big(\varphi_{1}(t), \ldots, \varphi_{n}(t)\big)}
+  $$
+  Alors $t \longmapsto \lambda_{1}(t) \in \Cont^{k}(I)$.
+%
+
+++Résolution de $(E): y' = a(t)\mdot y + b(t)$.++ Soit $\psi \in \Cont^{1}(I,F)$. Posons $\psi = \sum_{i=1}^{n}\lambda_{i} \varphi_{i}$ avec $\forall i \in \icc{1,n}, \lambda_{i} \in \Cont^{1}(I,\K)$.
+$$
+  \begin{align*}
+    \psi \in \Sol_{E,I} &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} + \sum_{i=1}^{n}\lambda_{i} \varphi_{i}' = \sum_{i=1}^{n}a(t)\mdot \varphi_{i} + b(t) \\
+    &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} f b(t)
+  \end{align*}
+$$
+et $b \in \Cont(I,F)$. On peut donc écrire
+$$
+  \forall t \in I, b(t) = \sum_{i=1}^{n}b_{i}(t)\varphi_{i}(t)
+$$
+avec $\forall i \in \icc{1,n}, b_{i} \in \Cont(I,\K)$. Soit $t_{0} \in I$.
+$$
+  \psi \in \Sol_{E,I} \iff \forall i \in \icc{1,n}, \lambda_{i}' = b_{i} \iff \forall i \in \icc{1,n}, \exists k_{i} \in \K, \forall t \in I, \lambda_{i}(t) = \sum_{t_{0}}^{t}b_{i}(s)\dd s
+$$
+Ainsi,
+$$
+  \Sol_{E,I} = \left\{t \longmapsto \sum_{i=1}^{n}k_{i}\varphi_{i}(t) + \sum_{i=1}^{n} \left(\int_{t_{0}}^{t}b_{i}(s)\dd s\right)\varphi_{i}(t) \where (k_{1}, \ldots, k_{n}) \in \K^{n}\right\}
+$$
+
+%eg
+  Considérons le système
+  $$
+    (E): \begin{cases}x' = tx - y + t\cos t \\ y' = x + ty + t\sin t\end{cases}
+  $$
+  Le système homogène associé est
+  $$
+    (H): \begin{cases}x' = tx - y \\ y' = x+ty\end{cases}
+  $$
+  L’ensemble de solution de ce système homogène est $\Sol_{H,\R} = \Vect\left\{\varphi_{1}, \varphi_{2}\right\}$ avec
+  ~ $\varphi_{1}: t \longmapsto e^{\frac{t^{2}}{2}}\mtx{\cos t\\\sin t}$  ~ $\varphi_{2}: t \longmapsto e^{\frac{t^{2}}{2}} \mtx{-\sin t \\ \cos t}$
+  Soit $\psi \in \Cont^{1}(\R,\R^{2})$. Posons $\psi = \lambda_{1}\varphi_{1} + \lambda_{2}\varphi_{2}$ avec $(\lambda_{1}, \lambda_{2}) \in \Cont^{1}(\R,\R)^{2}$.
+  $$
+    \psi \in \Sol_{E,\R} \iff \lambda_{1}' \varphi_{1} + \lambda_{2}' \varphi_{2} = A(t)\big(\lambda_{1} \varphi_{1} + \lambda_{1} \varphi_{1}' + \lambda_{2} \varphi_{2}' + \lambda_{2} \varphi_{2}\big) + B(t)
+  $$
+  avec $A(t) = \mtx{t & -1 \\ 1 & t}$ et $B(t) = \mtx{t\cos t \\ t\sin t}$.
+  $$
+    \begin{align*}
+      \psi \in \Sol_{E,\R} &\iff \lambda_{1}' \varphi_{1} + \lambda_{2}' \varphi_{2} = B(t) \\
+        &\iff \left[\lambda_{1} ' \mtx{\cos t\\ \sin t} + \lambda_{2}' \mtx{-\sin t\\\cos t}\right] = \mtx{t\cos t \\ t\sin t} \\
+        &\iff \mtx{e^{\frac{t^{2}}{2}}\cos t & - e^{\frac{t^{2}}{2}}\sin t \\ e^{\frac{t^{2}}{2}}\sin t & e^{\frac{t^{2}}{2}}\cos t} \mtx{\lambda_{1}'\\ \lambda_{2}'} = \mtx{t\cos t \\ t\sin t} \\
+        &\iff \mtx{\lambda_{1}' \\ \lambda_{2}'} = e^{- \frac{t^{2}}{2}} \mtx{\cos t & \sin t \\ -\sin t & \cos t} \mtx{t\cos t \\ t\sin t} \\
+        &\iff \exists (k_{1}, k_{2}) \in \R^{2}: \forall t \in \R, \begin{cases}\lambda_{1}(t) = k_{2} - e^{-\frac{t^{2}}{2}} \\ \lambda_{2}(t) = k_{2}\end{cases} \\
+        &\iff \mtx{\lambda_{1}' \\ \lambda_{2}'} = \mtx{t e^{- \frac{t^{2}}{2}}\\ 0}
+    \end{align*}
+  $$
+  Ainsi,
+  $$
+    \Sol_{E,\R} = \Big\{t \longmapsto k_{1} \varphi_{1}(t) + k_{2} \varphi_{2}(t) - e^{-\frac{t^{2}}{2}}\varphi_{1}(t) \where (k_{1}, k_{2}) \in \R^{2}\Big\}
+  $$
+  soit
+  $$
+    \Sol_{E,\R} = \Big\{t \longmapsto k_{1} \varphi_{1}(t) + k_{2} \varphi_{2}(t) - \mtx{\cos t \\ \sin t} \where (k_{1}, k_{2}) \in \R^{2}\Big\}
+  $$
+%
+
+## Équations différentielles linéaires scalaires d’ordre $n \in \N^{*}$
+
+Considérons l’équation
+$$
+  \tag{E} y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{1}(t)y' + a_{0}(t) y + b(t) + a_{0}(t)y
+$$
+donc l’équation homogène associée est
+$$
+  \tag{H} y^{(n)} = a_{n-1}(t) y^{(n-1)} + \cdots + a_{0}(t)y
+$$
+avec $a_{0}, \ldots, a_{n-1}, b$ des applications continues de $I$ dans $\K$. Les solutions de $(E)$ sont par définition
+$$
+  \Sol_{E,I} = \Big\{f \in \Cont^{n}(I,\K) \where \forall t \in I, f^{(n)}(t) = a_{n-1}(t) f^{(n-1)}(t) + \cdots + a_{0}(t)f(t) + b(t)\Big\}
+$$
+
+%recall
+  Résolvons l’équation $y' = a(t)y + b(t)$ avec $a$ et $b$ deux applications continues de $I$ dans $\K$. Soit $A$ une primitive de $a$ sur $I$. $y = \lambda(t)e^{A(t)}$ est solution de l’équation si et seulement si
+  $$
+    \lambda'(t) e^{A(t)} + a(t) \lambda(t)e^{A(t)} = a(t)\lambda(t)e^{A(t)}+ b(t)
+  $$
+  i.e.
+  $$
+    \forall t \in I, \lambda'(t) = b(t)e^{-A(t)}
+  $$
+  i.e.
+  $$
+    \exists k \in \K: \forall t \in I, \lambda(t) = k + \int_{t_{0}}^{t}e^{-k(s)}b(s)\dd s
+  $$
+  donc
+  $$
+    \Sol_{E,I} = \left\{t \longmapsto k e^{A(t)} + e^{A(t)} \int_{t_{0}}^{t}e^{-A(s)}b(s)\dd s \where k \in \K\right\}
+  $$
+%
+
+%prop
+  1. $\Sol_{H,I}$ est un sous-espace vectoriel de $\Cont^{n}(I,\K)$ de dimension $n$.
+  2. $\Sol_{E,I}$ n’est pas vide et $\Sol_{E,I}$ est un sous-espace affine de $\Cont^{n}(I,\K)$ de dimension $n$ (dirigé par $\Sol_{H,I}$).
+  3. Si $n \geq 2$, alors on ne sait résoudre ni $(H)$ ni $(E)$.
+%
+
+%proof
+  1. Considérons l’application
+     $$
+       \theta: \applic{\Cont^{1}(I,\K)}{\Cont^{1}(I,\K^{n})}{f}{Y_{f} = \mtx{f\\ f' \\ \vdots \\ f^{(n-1)}}}
+     $$
+     Elle est linéaire injective. De plus, $f \in \Sol_{H,I} \implies Y_{f} \in \Sol_{\tilde{H}, I}$ avec
+     $$
+       (\tilde{H}): Y' = A(t)Y \text{ avec } A(t) = \arrmtx{c}{\arr{c|ccc}{0 & &&\\ \vdots & & I_{n-1} & \\ 0 & & &}\\\hline a_{0}(t) \cdots a_{n-1}(t)}
+     $$
+     $\theta(\Sol_{H,I}) \subset \Sol_{\tilde{H}, I}$ et il y a mieux~: soit $Y \in \Sol_{\tilde{H}, I}$. Posons $Y = \mtx{y_{0} \\ y_{1} \\ \vdots \\ y_{n-1}}$.
+     $$
+       \begin{align*}
+         Y \in \Sol_{\tilde{H}\Psi} &\iff \mtx{y_{0}' \\ y_{1}' \\ \vdots \\ y_{n-1}'} = A(t) \mtx{y_{0} \\ y^{1} \\ \vdots \\ y_{n-1}} \\
+         &\iff \begin{cases}y_{0}' = y_{1} \\ y_{1}' = y_{2} \\ \vdots \\ y_{n-2}' = y_{n-1}\end{cases} \\
+         &\iff \begin{cases}y_{0}' = y_{1} \\ y_{0}'' = y_{2} \\ \vdots \\ y_{0}^{(n-1)} = y_{n-1} \\ y_{0}^(n) = a_0(t)y_0 + \cdots + a_{n-1}(t)y_{0}^(n-1)\end{cases} \\
+         &\iff Y = Y_{y_{0}} = \theta(y_{0})
+       \end{align*}
+     $$
+     donc $\theta (\Sol_{H,I}) = \Sol_{\tilde{H}, I}$ i.e.
+     $$
+       \Sol_{\tilde{H}, I} = \Big\{Y_{f} \where f \in \Sol_{H,I}\Big\}
+     $$
+     donc $\theta: \applic{\Sol_{H,I}}{\Sol_{\tilde{H}\Psi}}{f}{Y_{f}}$ est un isomorphisme donc
+     $$
+       \dim \big(\Sol_{H,I}\big) = \dim \big(\Sol_{\tilde{H}\Psi}\big) = \dim (\K^{n}) = n
+     $$
+  2. $\theta \big(\Sol_{E,I}\big) \subset \Sol_{\tilde{E}, I}$ avec
+     $$
+       (\tilde{E}): Y' = A(t)Y + B(t)
+     $$
+     où $B(t) = \mtx{0 \\ \vdots \\ 0 \\ b(t)}$. De même, $\theta(\Sol_{E,I}) = \Sol_{\tilde{E}, I}$ or $\Sol_{\tilde{E}, I}\ne\emptyset$ donc $\Sol_{E,I} \ne \emptyset$. Si $f_{0} \in \Sol_{E,I}$, alors $f \in \Sol_{E,I} \iff f-f_{0} \in \Sol_{H,I}$ donc
+     $$
+       \Sol_{E,I} = f_{0} + \Sol_{H,I}
+     $$
+%
+
+%thm Théorème de Cauchy pour les équations différentielles linéaires scalaires d’ordre $n$
+  1. Considérons l’équation homogène $(H): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y$ avec $a_{0}, \ldots, a_{n-1}$ des application continues sur $I$ à valeurs dans $\K$. Alors $\Sol_{H,I} = n$ et si $f_{1}, \ldots, f_{n}$ sont $n$ solutions de $(H)$, alors $(f_{1}, \ldots, f_{n})$ est une base de $\Sol_{H,I}$((on dit que $(f_{1}, \ldots, f_{n})$ est un système fondamental de solutio)) si et seulement si $(Y_{f_{1}}, \ldots, Y_{f_{n}})$ est une base de $\Sol_{\tilde{H}, I}$ avec $(\tilde{H}): Y' = A(t)Y$ où $A(t) = \arrmtx{c}{\arr{c|ccc}{0 & &&\\ \vdots & & I_{n-1} & \\ 0 & & &}\\\hline a_{0}(t) \cdots a_{n-1}(t)}$.
+     Autrement dit, $(f_{1}, \ldots, f_{n})$ est une base de $\Sol_{H,I}$ si et seulement si
+     $$
+       \forall t \in I, (\exists t \in I), \underbrace{\vmtx{f_{1}(t) & \cdots & f_{n}(t) \\ f_{1}'(t) & \cdots & f_{n}'(t) \\ \vdots & \ddots & \vdots \\ f_{1}^{(n-1)}(t) & \cdots & f_{n}^{(n-1)}(t)}}_{W_{f_{1}, \ldots, f_{n}}(t)} \ne 0
+     $$
+  2. Considérons l’équation $(E): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y + b(t)$ avec $b: ei \longrightarrow \K$ continue. Soit $t_{0} \in I$. Soit $(y_{0}, \ldots, y_{n-1}) \in \K^{n}$. Il existe une solution $f$ de $(E)$ sur $I$ et une seule vérifiant
+     $$
+       \big(f(t_{0}), f'(t_{0}), \ldots, f^{(n-1)}(t_{0})\big) = (y_{0}, y_{1}, \ldots, y_{n-1})
+     $$
+     Autrement dit,
+     $$
+       \applic{\Sol_{H,I}}{\K^{n}}{f}{\big(f(t_{0}), f'(t_{0}), \ldots, f^{(n-1)}(t_{0})\big)}
+     $$
+     est un isomorphisme d’espaces vectoriels, donc
+     $$
+       \applic{\Sol_{E,I}}{\K^{n}}{f}{\big(f(t_{0}), f'(t_{0}), \ldots, f^{(n-1)}(t_{0})\big)}
+     $$
+     est une bijection.
+%
+
+%proof
+  Démontrons le second point. Considérons $(\tilde{E}): Y' = A(t)Y + B(t)$ le sytème associé à $(E)$. $\applic{\Sol_{E,I}}{\Sol_{\tilde{E}, I}}{f}{Y_{f} = \mtx{f \\ f'} \\ \vdots \\ f^{(n-1)}}$ est une bijection. Or le système $\begin{cases}Y' = A(t)Y + B(t) \\ Y(t_{0}) = \mtx{y_{0} \\ y_{1} \\ \vdots \\ y_{n-1}}\end{cases}$ possède un unique arc solution (_théorème de Cauchy linéaire_) or pour tout $Y \in \Sol_{\tilde{E}, I}$, il existe un unique $f \in \Sol_{E,I}$ tel que $Y = Y_{f}$ et
+  $$
+    \begin{cases}f \in \Sol_{E,I} \\ \big(f(t_{0}), \ldots, f^{(n-1)}(t_{0})\big) = (y_{0}, \ldots, y_{n-1})\end{cases} \iff \begin{cases}Y_{f}' = A(t)Y_{f} + B(t) \\ Y_{f}(t_{0}) = \mtx{y_{0} \\ \vdots \\ y_{n-1}}\end{cases}
+  $$
+  donc $f$ existe et est unique.
+%
+
+Le cas le plus fréquent est pour $n=2$. Considérons l’équation
+$$
+  \tag{E} y'' = a(t)y' + b(t)y + c(t)
+$$
+avec $a: I \longrightarrow \K$, $b: I \longrightarrow \K$ et $c: I \longrightarrow \K$ continues sur $I$. L’équation homogène associée est
+$$
+  \tag{H} y'' = a(t)y' + b(t)y
+$$
+et on a
+$$
+  (E) \iff \mtx{y\\y'}' = \underbrace{\mtx{0 & 1 \\ a(t) & b(t)}}_{A(t)} \mtx{y\\y'} + \underbrace{\mtx{0\\c(t)}}_{B(t)}
+$$
+Appelons $(\tilde{E})$ l’équation $Y' = A(t)Y + B(t)$ et on a
+$$
+  \left\{\mtx{f\\f'} \in \Sol_{E, I}\right\} =  \Sol_{\tilde{E}, I}
+$$
+(l’inclusion directe est immédiate et l’inclusion réciproque s’établit en réfléchissant).
+- Soit $(f,g) \in \Cont^{2}(I,\K)$. On a
+  $$
+    (f,g) \text{ base de }\Sol_{H,I} \iff  (Y_{f}, Y_{g}) \text{ base de } \Sol_{\tilde{H}, I}
+  $$
+  et si $(f,g) \in \Sol_{H, I}^{2}$, alors
+  $$
+    (f,g) \text{ base de } \Sol_{H, I} \iff \exists t \in I, W_{f,g}(t) \vmtx{f(t) & g(t) \\ f'(t) & g'(t)}\ne 0
+  $$
+- Si $(f,g)$ est une base de $\Sol_{H, I}$, alors les solutions de $E$ sur $I$ sont les fonctions $\lambda f + \mu g$ avec
+  ~ $(\lambda, \mu) \in \Cont^{1}(I, \K)$  ~ $\mtx{f & g \\ f' & g'} \mtx{\lambda'\\ \mu'} = \mtx{0 \\ b(t)}$
+  (méthode de variation des constantes) en effet,
+  $$
+    \lambda f + \mu g \in \Sol_{E, I} \iff Y_{\lambda f + \mu g} \in \Sol_{\tilde{E}, I}
+  $$
+  et
+  $$
+     \begin{cases}\varphi \in \Sol_{\tilde{E}, I} \\ \varphi = \lambda Y_{f} + \mu Y_{g} \\ \lambda' Y_{f} + \lambda Y_{f}' + \mu' Y_{g} + \lambda Y_{g}' = A(t) \big(\lambda Y_{f} + \mu Y_{g}\big) + B(t)\end{cases} \iff \begin{cases}\varphi \in \Sol_{\tilde{E}, I} \\ \varphi = \lambda Y_{f} + \mu Y_{g} \\ \arrmtx{c|c}{Y_{f} & Y_{g}} \mtx{\lambda' \\ \mu'} = B(t)\end{cases} \iff \begin{cases}\lambda f + \mu g \in \Sol_{E, I} \\ \mtx{f & g \\ f' & g'} \mtx{\lambda' \\ \mu'} = B(t)\end{cases}
+  $$
+  car pour $\varphi \in \Sol_{\tilde{E}, I}$, $\varphi = \underbrace{\lambda Y_{f} + \mu Y_{g}}_{\mtx{\lambda f + \mu g \\ \lambda f' + \mu g'}} \iff \varphi = Y_{\lambda f + \mu g}$.
+
+%eg
+  Considéro l’équation différentielle linéaire scalaire d’ordre 2 à coefficients continus sur $\oo{0,+\infty}$
+  $$
+    \tag{E} y'' - \frac{2}{x^{2}}y = xe^{x} \sur \oo{0,+\infty}
+  $$
+  L’équation homogène associée est
+  $$
+    \tag{H} y'' - \frac{2}{x^{2}}y = 0
+  $$
+  $x \longmapsto x^{2}$ est solution de $H$ sur $\oo{0,+\infty}$. Soit $(f,g)$ une base de $\Sol_{H, \oo{0,+\infty}}$.
+  $$
+    W_{f,g}(x) = \vmtx{f(x) & g(x) \\ f'(x) & g'(x)} = \vmtx{f(x) & f'(x) \\ g(x) & g'(x)}
+  $$
+  donc
+  $$
+    \forall x \in \oo{0,+\infty}, W_{f,g}'(x) = \vmtx{f'(x) & f'(x) \\ y'(x) & g'(x)} + \vmtx{f(x) & f''(x) \\ g(x) & g''(x)} = 0 + \vmtx{f(x) & \frac{2}{x^{2}} f(x) \\ g(x) & \frac{2}{x^{2}}g(x)} = 0
+  $$
+  donc il existe $\lambda \in \R^{*}$ tel que pour tout $x > 0$, $W_{f,g}(x) = \lambda$. Quitte à prendre $\frac{g}{\lambda}$, on peut considérer $\forall x > 0, W_{f,g}(x) = 1$, soit $\forall x > 0, \vmtx{x^{2} & g(x) \\ 2x & g''(x)} = 1$ soit $\forall x > 0, x^{2} g'(x) - 2x g(x) = 1$ ou encore $\forall x > 0, g'(x) = \frac{2}{x}g(x) + \frac{1}{x^{2}}$. Posons pour tout $x > 0$, $g(x) = \lambda(x) e^{2\ln \abs{x}} = \lambda(x)x^{2}$.
+  $$
+    \forall x > 0, \lambda'(x) x^{2} + 2x \lambda (x) = 2x \lambda(x) + \frac{1}{x^{2}}
+  $$
+  i.e. $\forall x > 0, \lambda'(x) = \frac{1}{x^{4}}$ i.e. $\forall x > 0, \lambda(x) = - \frac{1}{3x^{3}} + k$ avec $k \in \R$, i.e. $\forall x > 0, g(x) = k x^{2} - \frac{1}{3x}$ or $x \longmapsto  x^{2} \in \Sol_{H, \oo{0,+\infty}}$ et cet ensemble en un espace vectoriel donc $x \longmapsto g(x) = + \frac{1}{x} \in \Sol_{\oo{0,+\infty}}$. Ainsi,
+  $$
+    \Sol_{H, \oo{0,+\infty}} = \left\{x \longmapsto  ax^{2} + \frac{b}{x} \where (a,b) \in \R^{2}\right\}
+  $$
+  Posons $y = \lambda x^{2} + \frac{\mu}{x}$ avec $(\lambda, \mu) \in \Cont^{1}(\oo{0,+\infty})$.
+  $$
+    \begin{align*}
+      y \in \Sol_E, \oo{0,+\infty} &\iff \mtx{x^{2} & \frac{1}{x} \\ 2x & -\frac{1}{x^{2}}} \mtx{\lambda' \\ \mu'} = \mtx{0 \\ xe^{x}} \\
+      &\iff \mtx{\lambda' \\ \mu'} = -\frac{1}{3} \mtx{-\frac{1}{x^{2}} & -\frac{1}{x} \\ -2x & x^{2}}\mtx{0 \\ xe^{x}} \\
+      &\iff \begin{cases}X' = \frac{1}{3}e^{x} \\ \mu' = -\frac{x^{3}}{3}e^{x}\end{cases} \\
+      &\iff \exists k \in \R, \exists \ell \in \R: \forall x > 0, \begin{cases}\lambda (x) = \frac{e^{x}}{3} + k \\ \mu(x) = \frac{-1}{3} \int x^{3} e^{x}\dd x + \ell\end{cases}
+    \end{align*}
+  $$
+  et
+  $$
+    \int x^{3} e^{x}\dd x = \big[x^{3} e^{x}\big] - \int 3x^{2} e^{x} \dd x = x^{3} e^{x} - \big[3x^{2} e^{2}\big] + \int 6xe^{x}\dd x = x^{3}e^{x} - 3x^{2}e^{x} + 6x e^{x} - \int 6e^{x}\dd
+  $$
+  donc
+  $$
+    y \in \Sol_{E, \oo{0,+\infty}} \iff \exists (k, \ell) \in \R^{2}: \forall x > 0, \begin{cases}\lambda(x) = \frac{e^{x}}{3} + k \\ \mu(x) = - \frac{1}{3} (x^{3} - 3x^{2} + 6x - 6)e^{x} + \ell\end{cases}
+  $$
+  d’où
+  $$
+    \Sol_{E, \oo{0,+\infty}} = \left\{x \longmapsto k x^{2} + \frac{\ell}{x} + \frac{1}{x} \big(x^{2} - 2x + 2\big)e^{x} \where (k, \ell) \in \R^{2}\right\}
+  $$
+%
+
+%rem Alternative au wronskien: méthode de Liouville
+  Étant donnée une équation $(H): y'' + a(t)y' + b(t)y = 0$, si $u$ est une solution de $(H)$ ne s’annulant pas sur $I$,
+  $$
+    \arr{r|l}{b(t) & y = uz \\ a(t) & y' = y' z + uz' \\ 1 & y'' = u'' z + 2u' z' + uz''}
+  $$
+  En ==TODO==, on trouve une équation différentielle linéaire du premier ordre en $z'$~:
+  $$
+    (2u' + a(t)u)z' + uz'' = 0
+  $$
+%
+
+%eg
+  Reprenons $(H): y'' - \frac{2}{x^{2}}y = 0$. $x \longmapsto \frac{1}{x}$ en est solution.
+  $$
+    \arr{r|l}{\frac{-2}{x^{2}} & y = \frac{z}{x} \\ 0 & y' = -\frac{1}{x^{2}}z + \frac{z'}{x} \\ 1 & y'' = \frac{2}{x^{3}}z - \frac{2}{x^{2}}z' + \frac{z''}{x}}
+  $$
+  donc $0 = \frac{-2}{x^{2}}z' + \frac{z''}{x}$ i.e. $z'' = \frac{2}{x}z'$ i.e. $z' = \lambda x^{2}$ i.e. $z = \lambda \frac{x^{3}}{3} + \mu$ i.e. $y = \lambda \frac{x^{2}}{3} + \frac{\mu}{x}$.
+%
+
+%def
+   Une équation différentielle linéaire d’ordre 1 ou 2 non normalisée est du type
+  $$
+    \tag{E} a(t)y' + b(t)y = c(t)
+  $$
+  ou
+  $$
+    \tag{E} a(t)y'' + b(t)y' + c(t)y = d(t)
+  $$
+  avec $a, b, c$ et $d$ continues sur $I$. Si $a$ s’annule sur $I$, on ne peut rien dire sur $\Sol_{E,I}$.
+%
+
+%eg
+  1. L’ensemble des solutions de $xy' = 1$ est vide car si $f$ est solution de cette équation, alors $0 \times f'(0) = 1$ ce qui est faux. Par contre, les solutions sur $\R_{+}^{*}$ sont les éléments de l’ensemble $\big\{x \longmapsto  \ln x + k \where k \in \R\big\}$ et celles sur $\R_{-}^{*}$ sont les éléments de l’ensemble $\big\{x \longmapsto \ln \abs{x} + k \where k \in \R\big\}$.
+  2. Considérons $(E): xy'' + 2y ' = 0$.
+     $$
+       (E) \iff \dvN{}{x}{(xy)} = 0 \iff \exists (\lambda, \mu) \in \R^{2}: \forall x \in \R, xy(x) = \lambda x + \mu
+     $$
+     donc
+     $$
+       \begin{align*}
+         f \in \Sol_{E,\R} &\implies  \begin{cases}\exists (\lambda, \mu) \in \R^{2}: \forall x \in \R^{*}, f(x) = \lambda + \frac{\mu}{x}\\ f \text{ continue en } 0\end{cases}\\ &\implies  \begin{cases}\exists \lambda \in \R: \forall x \in \R^{*}, f(x) = \lambda \\ f \text{ continue en } 0\end{cases} \\ &\implies \exists \lambda \in \R, \forall x \in \R, f(x) = \lambda
+       \end{align*}
+     $$
+     Réciproquement, toute fonction constante est solution de $E$ sur $\R$. Ainsi, $\Sol_{E,\R} = \Vect\left\{\tilde{1}\right\}$ et $\Sol_{E, \R_{+}^{*}} = \Vect\left\{x \longmapsto 1, x \longmapsto \frac{1}{x}\right\}$
+%
+
+%method Utilisation des séries entières
+  Si une équation différentielle linéaire scalaire (normalisée ou non)
+  $$
+    a_{n}(x) y^{(n)} + \cdots + a_{0}(x) y = b(x)
+  $$
+  a des coefficients tous polynomiaux, alors on peut cherche des solutions développables en série entière au voisinage de 0.
+%
+
+%eg
+  Considérons l’équation $(H): xy'' - (x-2)y' - y = 0$. Soit $(a_{n})_{n \in \N}$ une suite réelle telle que $\rho \left(\sum a_{n}x^{n}\right) > 0$. Posons $f: x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$. Soit $r > 0$.
+  $$
+    \begin{align*}
+      f \in \Sol_H, \oo{-r,r} &\iff  \begin{cases}\displaystyle\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) > r \\ \displaystyle\forall x \in \oo{-r,r}, x \sum_{n=2}^{+\infty}n(n-1)a_{n}x^{n-2} - (x-2)\sum_{n=1}^{+\infty}n a_{n}x^{n-1} - \sum_{n=0}^{+\infty}a_{n}x^{n} = 0\end{cases} \\
+      &\iff \begin{cases}\displaystyle\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) > 0 \\\displaystyle \forall x \in \oo{-r,r}, \sum_{n=0}^{+\infty}(n+1)na_{n+1} x^{n} - \sum_{n=0}^{+\infty}na_{n}x^{n} + 2 \sum_{n=0}^{+\infty}(n+1)a_{n+1}x^{n} - \sum_{n=0}^{+\infty}a_{n}x^{n}\end{cases} \\
+      &\iff \begin{cases}\displaystyle\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) > r \\\displaystyle \forall n \in \N, (n+1)(n+2)a_{n+1} = (n+1)a_{n}\end{cases} \\
+      &\iff \begin{cases}\displaystyle\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) > r \\\displaystyle \forall n \in \N, a_{n+1} = \frac{a_{n}}{n+2}\end{cases} \\
+      &\iff \begin{cases}\displaystyle\rho \left(\sum_{n \geq 0}a_{n}x^{n}\right) > r \\\displaystyle \forall n \in \N^{*}, a_{n} = \frac{1}{n+1} \times  \frac{1}{n} \times  \cdots \times  \frac{1}{2}a_{0} = \frac{a_{0}}{(n+1)!}\end{cases}
+    \end{align*}
+  $$
+  donc $f: x \longmapsto a_{0} \sum_{n=0}^{+\infty}\frac{x^{n}}{(n+1)!}$ et le rayon de converegnce de cette série est $+\infty$. Ainsi,
+  $$
+    \Sol_{H, \R} \cap A_{+\infty} = \Vect\left\{\varphi:x \longmapsto  \sum_{n=0}^{+\infty}\frac{x^{n}}{(n+1)!}\right\}
+  $$
+  avec $\varphi: x \longmapsto \begin{cases}\frac{e^{x}-1}{x} \if x \ne 0 \\ 1 \if x = 0\end{cases}$.
 %

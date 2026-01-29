@@ -823,7 +823,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
   $$
     A_{r} = \big\{f \in \Cont(\Disk(0,r)) \where f \text{ développable en série entière sur } \Disk(0,r)\big\}
   $$
-  $A_{r}$ est une sous-algèbre de la $\C$-algèbre $\big(\Cont(\Disk(0,r)), +, \times x, \cdot \big)$.
+  $A_{r}$ est une sous-algèbre de la $\C$-algèbre $\big(\Cont(\Disk(0,r)), +, \times, \cdot \big)$.
   %offprog
     On appelle $A_{r}$ l’ensemble des fonctions analytiques complexes sur $\Disk(0,r)$.
   %
@@ -845,7 +845,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
 %
 
 %eg
-  - On définie la fonction _cosinus hyporbolique_ par $ch: z \longmapsto \frac{e^{z} + e^{-z}}{2}$. On a
+  - On définie la fonction _cosinus hyperbolique_ par $ch: z \longmapsto \frac{e^{z} + e^{-z}}{2}$. On a
     $$
       \forall z \in \C, \ch z = \frac{1}{2}\sum_{n=0}^{+\infty}\frac{1+ (-1)^{n}}{n!}z^{n} = \frac{1}{2}\sum_{p=0}^{+\infty}\frac{2}{(2p)!} z^{2p}
     $$
