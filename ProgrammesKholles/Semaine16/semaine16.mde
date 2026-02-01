@@ -81,9 +81,9 @@
 %proof
   Posons $f_{n}: x \longmapsto a_{n}x^{n}$. Montrons la convergence uniforme de $\sum_{n \geq 0}f_{n}$ sur $\cc{0,R}$. Posons $\rho_{n} = \sum_{k=n}^{+\infty}a_{k}R^{k}$. Soit $\varepsilon > 0$. Il existe $N \in \N$ tel que $\forall n \geq N, \abs{\rho_{n}} < \varepsilon$. Soit $x \in \co{0,R}$. Soit $n \geq N$.
   $$
-    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty}a_{k}R^{k} \left(\frac{x}{R}\right)^{k} = \sum_{k=n}^{+\infty}\big(\rho_{k} - \lambda_{k+1}\big) \left(\frac{x}{R}\right)^{k}
+    \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty}a_{k}R^{k} \left(\frac{x}{R}\right)^{k} = \sum_{k=n}^{+\infty}\big(\rho_{k} - \rho{k+1}\big) \left(\frac{x}{R}\right)^{k}
   $$
-  or $\rho_{k} \left(\frac{x}{R}\right)^{k} \ueq{k\to+\infty} o \left(\left(\frac{x}{R}\right)^{k}\right)$ et $\sum_{k \geq 0}\left(\frac{x}{R}\right)^{k}$ converge car $\abs{\frac{x}{R}} < 1$ donc $\sum_{k \geq 0}\rho_{k} \left(\frac{x}{R}\right)^{k}$ est absolument convergente. De même pour $\sum_{k \geq 0}\rho_{k+1} \left(\frac{x}{R}\right)^{k}$.
+  or $\rho_{k} \left(\frac{x}{R}\right)^{k} \ueq{k\to+\infty} o \left(\left(\frac{x}{R}\right)^{k}\right)$ et $\sum_{k \geq 0}\abs{\frac{x}{R}}^{k}$ converge car $\abs{\frac{x}{R}} < 1$ donc $\sum_{k \geq 0}\rho_{k} \left(\frac{x}{R}\right)^{k}$ est absolument convergente. De même pour $\sum_{k \geq 0}\rho_{k+1} \left(\frac{x}{R}\right)^{k}$.
   $$
     \sum_{k=n}^{+\infty}a_{k}x^{k} = \sum_{k=n}^{+\infty} \rho_{k} \left(\frac{x}{R}^{k}\right) - \sum_{k=n+1}^{+\infty}\rho_{k+1}\left(\frac{x}{R}\right)^{k+1}
   $$
@@ -111,7 +111,7 @@
 ## Obtention d’un développement en série entière avec une équation différentielle
 
 %eg
-  Considérons la fonction $f: x \longmapsto (1+x)^{a}$ avec $a \in \C$((le programme se limite à $a \in \R$)). Elle est de classe $\Cont^{\infty}$ sur $\oo{-,1+\infty}$ et
+  Considérons la fonction $f: x \longmapsto (1+x)^{a}$ avec $a \in \C$((le programme se limite à $a \in \R$)). Elle est de classe $\Cont^{\infty}$ sur $\oo{-1,+\infty}$ et
   $$
     \forall x \in \oo{-1,+\infty}, f'(x) = a(1+x)^{a-1}
   $$
