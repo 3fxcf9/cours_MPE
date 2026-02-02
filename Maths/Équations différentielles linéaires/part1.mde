@@ -14,9 +14,10 @@ $$
 $$
 cette deuxième condition est équivalente à
 $$
-  \mtx{f\\f'\\\vdots\\f^{(n-1)}} = \underbrace{\mtx{0 & 1 & 0 & \cdots & \cdots & 0 \\
-                                        0 & 0 & 1 & 0 & \cdots & 0 \\
-                                        \vdots & & & & \ddots & \\
+  \mtx{f\\f'\\\vdots\\f^{(n-1)}}' = \underbrace{\mtx{0 & 1 & 0 & \cdots & \cdots & 0 \\
+                                        0 & 0 & 1 & 0 & \cdots & \vdots \\
+                                        \vdots & & \ddots & \ddots & \ddots & \vdots \\
+                                        \vdots & & & \ddots & \ddots & 0 \\
                                         0 & \cdots & \cdots & \cdots & 0 & 1 \\
                                         a_{0}(t) & \cdots & \cdots & \cdots & \cdots & a_{n-1}(t)}}_{A(t)} \mtx{f \\ f' \\ \vdots \\ f^{(n-1)}} + \underbrace{\mtx{0 \\ \vdots \\ 0 \\ b(t)}}_{B(t)}
 $$
@@ -51,7 +52,7 @@ $$
 Soit $y: I \longrightarrow F$ de classe $\Cont^{1}$. Notons $\forall t \in I, y(t) = \sum_{i=1}^{n}y_{i}(t)e_{i}$. On a
 $$
   \begin{align*}
-    \forall t \in I, y'(t) = a(t)\mdot y(t) + b(t) &\iff \forall t \in I, \mtx{y^{1}(t) \\ \vdots \\ y^{n}(t)} = A(t) \times  \mtx{y_{1}(t)\\ \vdots \\ y_{n}'(t)} + B(t) \\
+    \forall t \in I, y'(t) = a(t)\mdot y(t) + b(t) &\iff \forall t \in I, \mtx{y_{1}'(t) \\ \vdots \\ y_{n}'(t)} = A(t) \times  \mtx{y_{1}(t)\\ \vdots \\ y_{n}(t)} + B(t) \\
     &\iff \forall t \in I, \begin{cases}y_{1}'(t) = a_{1,1}(t)y_{1}(t) + \cdots + a_{1,n}(t)y_{n}(t) + b_{1}(t) \\ \vdots \\ y_{n}'(t) = a_{n,1}(t)y_{n}(t) + \cdots + a_{n,n}(t)y_{n}(t) + b_{n}(t)\end{cases}
   \end{align*}
 $$
@@ -112,7 +113,7 @@ $$
   %prop Forme intégrale du problème de Cauchy
     On a, pour $\varphi \in \Func(I,F)$,
     $$
-      \begin{cases}\varphi \in \Cont^{1}(I,F) \\ \varphi \text{ solutoin de } (C)\end{cases} \iff \begin{cases}\varphi \in \Cont_{0}(I,F) \\ \forall t \in I, \varphi(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \varphi(s) + b(s)\big)\dd s\end{cases}
+      \begin{cases}\varphi \in \Cont^{1}(I,F) \\ \varphi \text{ solution de } (C)\end{cases} \iff \begin{cases}\varphi \in \Cont_{0}(I,F) \\ \forall t \in I, \varphi(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \varphi(s) + b(s)\big)\dd s\end{cases}
     $$
   %
 
@@ -166,7 +167,7 @@ $$
     $$
     on fait tendre $\varepsilon$ vers 0, et on a
     $$
-      \forall t \in \co{t_{0},+\infty} \cap I, \int_{t_{0}}^{t}\opnorm{a(s)} \times \norm{\varphi(s) - \psi(s)}\dd s = 0
+      \forall \varepsilon > 0, \forall t \in \co{t_{0},+\infty} \cap I, 0 \leq z(t) \leq \underbrace{z(t_{0})}_{= \varepsilon} e^{\int_{t_{0}}^{t} \opnorm{a(s)}\dd s}
     $$
     d’où
     $$
@@ -196,7 +197,7 @@ $$
     - $\norm{\varphi_{1}(t) - \varphi_{0}(t)} \leq \psi = \psi \cdot A_{0} \frac{\abs{t-t_{0}}^{0}}{0!}$ donc $\Prop(0)$ est vraie.
     - Supposons $\Prop(n)$ vraie pour $n$ fixé dans $\N$.
       $$
-        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+2}(t) - \varphi_{n}(t)} \leq \abs{\int_{t_{0}}^{t}A \cdot \psi A^{n} \frac{\abs{s - t_{0}}^{n}}{n!}\dd s} = \frac{\psi \cdot A^{n+1}}{n!} \underbrace{\abs{\int_{t_{0}}^{t}\abs{s-t_{0}}^{n} \dd s}}_{= \frac{\abs{t-t_{0}}^{n+1}}{n+1}}
+        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+2}(t) - \varphi_{n+1}(t)} \leq \abs{\int_{t_{0}}^{t}A \cdot \psi A^{n} \frac{\abs{s - t_{0}}^{n}}{n!}\dd s} = \frac{\psi \cdot A^{n+1}}{n!} \underbrace{\abs{\int_{t_{0}}^{t}\abs{s-t_{0}}^{n} \dd s}}_{= \frac{\abs{t-t_{0}}^{n+1}}{n+1}}
       $$
       $\Prop(n+1)$ est donc vraie. Ainsi,
       $$
@@ -204,7 +205,7 @@ $$
       $$
       donc $\norm{\varphi_{n+1} - \varphi_{n}}_{\infty, \cc{\alpha, \beta}} \leq \psi \frac{\big(A (\beta-\alpha)\big)^{n}}{n!}$ or $\sum_{n \geq 0} \frac{\big(A(\beta-\alpha)\big)^{n}}{n!}$ converge (de somme $e^{A(\beta-\alpha)}$) donc la série $\sum_{n \geq 0}\varphi_{n+1} - \varphi_{n}$ converge normalement sur tout segment $\cc{\alpha, \beta}$ de $I$ contenant $t_{0}$. Chaque $\varphi_{n+1} - \varphi_{n}$ est à valeurs dans le $\K$-espace vectoriel normé $F$ de dimension finie, donc la convergence est uniforme. Notons $\psi_{\alpha, \beta}$ la limite (uniforme) de la suite $(\varphi_{n})_{n \in \N}$ sur $\cc{\alpha,\beta}$. Comme
       $$
-        \forall n \in \N, \forall t \in \cc{\alpha, \beta}, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}a(s) \mdot \varphi_{n}() + b(s)\dd s
+        \forall n \in \N, \forall t \in \cc{\alpha, \beta}, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}a(s) \mdot \varphi_{n}(s) + b(s)\dd s
       $$
       on a
       $$
@@ -217,7 +218,7 @@ $$
       $$
         \norm{a(s)\mdot \varphi_{n}(s) - a(s) \mdot \psi_{\alpha, \beta}(s)}_{\infty, s \in \cc{\alpha, \beta}} \leq A \norm{\varphi_{n} - \psi_{\alpha, \beta}}_{\infty, \cc{\alpha, \beta}} \arrowlim{n\to+\infty}0
       $$
-      donc la suite d’application continues $(s \longmapsto a(s) \mdot \psi_{n}(s) + b(s))_{n \in \N}$ converge uniformément vers $(s \longmapsto a(s) \mdot \psi_{\alpha, \beta}(s) + b(s))$ sur $\cc{\alpha, \beta}$, d’où par passage à la limite,
+      donc la suite d’application continues $(s \longmapsto a(s) \mdot \varphi_{n}(s) + b(s))_{n \in \N}$ converge uniformément vers $(s \longmapsto a(s) \mdot \psi_{\alpha, \beta}(s) + b(s))$ sur $\cc{\alpha, \beta}$, d’où par passage à la limite,
       $$
         \forall t \in \cc{\alpha, \beta}, \psi_{\alpha, \beta}(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \psi_{\alpha, \beta}(t) + b(s)\big)\dd s
       $$
@@ -225,7 +226,7 @@ $$
       $$
         \psi: \applic{I}{F}{t}{\psi_{p}(t) \text{ si }\exists p \in \N: t \in \cc{\alpha_{p}, \beta_{p}}}
       $$
-      Par coontinuité des $\psi_{p}$, $\psi$ est un arc continu sur $I$ et pour tout $p \in \N$
+      Par continuité des $\psi_{p}$, $\psi$ est un arc continu sur $I$ et pour tout $p \in \N$
       $$
         \forall t \in \cc{\alpha_{p}, \beta_{p}}, \psi(t) = \psi_{p}(t) = y_{0} + \int_{t_{0}}^{t}a(s)\mdot \psi_{p}(s) + b(s) = y_{0} + \int_{t_{0}}^{t}\big(a(s)\mdot \psi(s) + b(s)\big)\dd s
       $$
@@ -237,11 +238,11 @@ $$
      $$
        \applic{\Sol_{H,I}}{F}{\varphi}{\varphi(t_{0})}
      $$
-     est un isomorphisme d’espaces vCtoriels donc
+     est un isomorphisme d’espaces vectoriels donc
      $$
        \dim \Sol_{H,I} = \dim F = n
      $$
-  2. Considérons l’équation $(E): y' = a(t) \mdot y + b(t)$ avec $a: ei \longrightarrow \L(F)$ et $b: I \longrightarrow F$ continues. Alors $\Sol_{E,I}$ n’est pas vide et a une structure de sous-espace affine de dimension $n = \dim F$.
+  2. Considérons l’équation $(E): y' = a(t) \mdot y + b(t)$ avec $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ continues. Alors $\Sol_{E,I}$ n’est pas vide et a une structure de sous-espace affine de dimension $n = \dim F$.
 %
 
 %proof
@@ -299,7 +300,7 @@ $$
 %
 
 %eg
-  Considérons les applications $\varphi{1}: t \longmapsto \mtx{\cos t\\ \cos t}$ et $\varphi{2}: t \longmapsto \mtx{\sin t\\\sin t}$.
+  Considérons les applications $\varphi_{1}: t \longmapsto \mtx{\cos t\\ \cos t}$ et $\varphi_{2}: t \longmapsto \mtx{\sin t\\\sin t}$.
   $$
     \lambda_{1} \varphi_{1} + \lambda_{2} \varphi_{2} = \tilde{0} \implies \forall t \in \R, \lambda_{1}\cos t + \lambda_{2}\sin t = 0 \implies  \lambda_{1} \ueq{t=0, \frac{\pi}{2}} \lambda_{2}
   $$
@@ -315,10 +316,10 @@ $$
 
 ## Résolution de $(E): y' = a(t)\mdot y + b(t)$ lorsqu’on dispose d’un systeème fondamental $(\varphi_{1}, \ldots, \varphi_{n})$ de solutions de l’équation homogène sur $I$
 
-Dans cette parties, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ sont continues sur $I$.
+Dans cette partie, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ sont continues sur $I$.
 
 %lemma
-  Soit $\psi: I \longrightarrow F$ un arc. Il existe d’uniques applications $\lambda_{1}: ei \longrightarrow \K, \ldots, \lambda_{n}: I \longrightarrow \K$ telles que $\psi = \sum_{i=1}^{n}\lambda_{i}' \varphi_{i}$, i.e.
+  Soit $\psi: I \longrightarrow F$ un arc. Il existe d’uniques applications $\lambda_{1}: I \longrightarrow \K, \ldots, \lambda_{n}: I \longrightarrow \K$ telles que $\psi = \sum_{i=1}^{n}\lambda_{i}' \varphi_{i}$, i.e.
   $$
     \forall t \in I, \psi(t) = \sum_{i=1}^{n}\lambda_{i}(t)\varphi_{i}(t)
   $$
@@ -350,17 +351,17 @@ Dans cette parties, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ son
 ++Résolution de $(E): y' = a(t)\mdot y + b(t)$.++ Soit $\psi \in \Cont^{1}(I,F)$. Posons $\psi = \sum_{i=1}^{n}\lambda_{i} \varphi_{i}$ avec $\forall i \in \icc{1,n}, \lambda_{i} \in \Cont^{1}(I,\K)$.
 $$
   \begin{align*}
-    \psi \in \Sol_{E,I} &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} + \sum_{i=1}^{n}\lambda_{i} \varphi_{i}' = \sum_{i=1}^{n}a(t)\mdot \varphi_{i} + b(t) \\
-    &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} f b(t)
+    \psi \in \Sol_{E,I} &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} + \sum_{i=1}^{n}\lambda_{i} \varphi_{i}' = \sum_{i=1}^{n}\lambda_{i}a(t)\mdot \varphi_{i} + b(t) \\
+    &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} = b(t)
   \end{align*}
 $$
-et $b \in \Cont(I,F)$. On peut donc écrire
+Par ailleurs, $b \in \Cont(I,F)$ donc
 $$
   \forall t \in I, b(t) = \sum_{i=1}^{n}b_{i}(t)\varphi_{i}(t)
 $$
-avec $\forall i \in \icc{1,n}, b_{i} \in \Cont(I,\K)$. Soit $t_{0} \in I$.
+avec $\forall i \in \icc{1,n}, b_{i} \in \Cont(I,\K)$ donc, pour $t_{0} \in I$.
 $$
-  \psi \in \Sol_{E,I} \iff \forall i \in \icc{1,n}, \lambda_{i}' = b_{i} \iff \forall i \in \icc{1,n}, \exists k_{i} \in \K, \forall t \in I, \lambda_{i}(t) = \sum_{t_{0}}^{t}b_{i}(s)\dd s
+  \psi \in \Sol_{E,I} \iff \forall i \in \icc{1,n}, \lambda_{i}' = b_{i} \iff \forall i \in \icc{1,n}, \exists k_{i} \in \K, \forall t \in I, \lambda_{i}(t) = \int_{t_{0}}^{t}b_{i}(s)\dd s + k_{i}
 $$
 Ainsi,
 $$
@@ -409,7 +410,7 @@ Considérons l’équation
 $$
   \tag{E} y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{1}(t)y' + a_{0}(t) y + b(t) + a_{0}(t)y
 $$
-donc l’équation homogène associée est
+dont l’équation homogène associée est
 $$
   \tag{H} y^{(n)} = a_{n-1}(t) y^{(n-1)} + \cdots + a_{0}(t)y
 $$
@@ -480,12 +481,12 @@ $$
 %
 
 %thm Théorème de Cauchy pour les équations différentielles linéaires scalaires d’ordre $n$
-  1. Considérons l’équation homogène $(H): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y$ avec $a_{0}, \ldots, a_{n-1}$ des application continues sur $I$ à valeurs dans $\K$. Alors $\Sol_{H,I} = n$ et si $f_{1}, \ldots, f_{n}$ sont $n$ solutions de $(H)$, alors $(f_{1}, \ldots, f_{n})$ est une base de $\Sol_{H,I}$((on dit que $(f_{1}, \ldots, f_{n})$ est un système fondamental de solutio)) si et seulement si $(Y_{f_{1}}, \ldots, Y_{f_{n}})$ est une base de $\Sol_{\tilde{H}, I}$ avec $(\tilde{H}): Y' = A(t)Y$ où $A(t) = \arrmtx{c}{\arr{c|ccc}{0 & &&\\ \vdots & & I_{n-1} & \\ 0 & & &}\\\hline a_{0}(t) \cdots a_{n-1}(t)}$.
+  1. Considérons l’équation homogène $(H): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y$ avec $a_{0}, \ldots, a_{n-1}$ des application continues sur $I$ à valeurs dans $\K$. Alors $\dim \Sol_{H,I} = n$ et si $f_{1}, \ldots, f_{n}$ sont $n$ solutions de $(H)$, alors $(f_{1}, \ldots, f_{n})$ est une base de $\Sol_{H,I}$((on dit que $(f_{1}, \ldots, f_{n})$ est un système fondamental de solutions)) si et seulement si $(Y_{f_{1}}, \ldots, Y_{f_{n}})$ est une base de $\Sol_{\tilde{H}, I}$ avec $(\tilde{H}): Y' = A(t)Y$ où $A(t) = \arrmtx{c}{\arr{c|ccc}{0 & &&\\ \vdots & & I_{n-1} & \\ 0 & & &}\\\hline a_{0}(t) \cdots a_{n-1}(t)}$.
      Autrement dit, $(f_{1}, \ldots, f_{n})$ est une base de $\Sol_{H,I}$ si et seulement si
      $$
        \forall t \in I, (\exists t \in I), \underbrace{\vmtx{f_{1}(t) & \cdots & f_{n}(t) \\ f_{1}'(t) & \cdots & f_{n}'(t) \\ \vdots & \ddots & \vdots \\ f_{1}^{(n-1)}(t) & \cdots & f_{n}^{(n-1)}(t)}}_{W_{f_{1}, \ldots, f_{n}}(t)} \ne 0
      $$
-  2. Considérons l’équation $(E): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y + b(t)$ avec $b: ei \longrightarrow \K$ continue. Soit $t_{0} \in I$. Soit $(y_{0}, \ldots, y_{n-1}) \in \K^{n}$. Il existe une solution $f$ de $(E)$ sur $I$ et une seule vérifiant
+  2. Considérons l’équation $(E): y^{(n)} = a_{n-1}(t)y^{(n-1)} + \cdots + a_{0}(t)y + b(t)$ avec $b: I \longrightarrow \K$ continue. Soit $t_{0} \in I$. Soit $(y_{0}, \ldots, y_{n-1}) \in \K^{n}$. Il existe une solution $f$ de $(E)$ sur $I$ et une seule vérifiant
      $$
        \big(f(t_{0}), f'(t_{0}), \ldots, f^{(n-1)}(t_{0})\big) = (y_{0}, y_{1}, \ldots, y_{n-1})
      $$
@@ -522,7 +523,7 @@ $$
 $$
 Appelons $(\tilde{E})$ l’équation $Y' = A(t)Y + B(t)$ et on a
 $$
-  \left\{\mtx{f\\f'} \in \Sol_{E, I}\right\} =  \Sol_{\tilde{E}, I}
+  \left\{\mtx{f\\f'} \where f \in \Sol_{E, I}\right\} =  \Sol_{\tilde{E}, I}
 $$
 (l’inclusion directe est immédiate et l’inclusion réciproque s’établit en réfléchissant).
 - Soit $(f,g) \in \Cont^{2}(I,\K)$. On a
@@ -531,7 +532,7 @@ $$
   $$
   et si $(f,g) \in \Sol_{H, I}^{2}$, alors
   $$
-    (f,g) \text{ base de } \Sol_{H, I} \iff \exists t \in I, W_{f,g}(t) \vmtx{f(t) & g(t) \\ f'(t) & g'(t)}\ne 0
+    (f,g) \text{ base de } \Sol_{H, I} \iff \exists t \in I, W_{f,g}(t) = \vmtx{f(t) & g(t) \\ f'(t) & g'(t)}\ne 0
   $$
 - Si $(f,g)$ est une base de $\Sol_{H, I}$, alors les solutions de $E$ sur $I$ sont les fonctions $\lambda f + \mu g$ avec
   ~ $(\lambda, \mu) \in \Cont^{1}(I, \K)$  ~ $\mtx{f & g \\ f' & g'} \mtx{\lambda'\\ \mu'} = \mtx{0 \\ b(t)}$
@@ -546,7 +547,7 @@ $$
   car pour $\varphi \in \Sol_{\tilde{E}, I}$, $\varphi = \underbrace{\lambda Y_{f} + \mu Y_{g}}_{\mtx{\lambda f + \mu g \\ \lambda f' + \mu g'}} \iff \varphi = Y_{\lambda f + \mu g}$.
 
 %eg
-  Considéro l’équation différentielle linéaire scalaire d’ordre 2 à coefficients continus sur $\oo{0,+\infty}$
+  Considérons l’équation différentielle linéaire scalaire d’ordre 2 à coefficients continus sur $\oo{0,+\infty}$
   $$
     \tag{E} y'' - \frac{2}{x^{2}}y = xe^{x} \sur \oo{0,+\infty}
   $$
@@ -596,9 +597,9 @@ $$
 %rem Alternative au wronskien: méthode de Liouville
   Étant donnée une équation $(H): y'' + a(t)y' + b(t)y = 0$, si $u$ est une solution de $(H)$ ne s’annulant pas sur $I$,
   $$
-    \arr{r|l}{b(t) & y = uz \\ a(t) & y' = y' z + uz' \\ 1 & y'' = u'' z + 2u' z' + uz''}
+    \arr{r|l}{b(t) & y = uz \\ a(t) & u' = y' z + uz' \\ 1 & y'' = u'' z + 2u' z' + uz''}
   $$
-  En ==TODO==, on trouve une équation différentielle linéaire du premier ordre en $z'$~:
+  En effectuant une combinaison linéaire des dérivées de $y$ affectées des coefficients de la colonne de gauche, on trouve une équation différentielle linéaire du premier ordre en $z'$~:
   $$
     (2u' + a(t)u)z' + uz'' = 0
   $$
@@ -663,4 +664,141 @@ $$
     \Sol_{H, \R} \cap A_{+\infty} = \Vect\left\{\varphi:x \longmapsto  \sum_{n=0}^{+\infty}\frac{x^{n}}{(n+1)!}\right\}
   $$
   avec $\varphi: x \longmapsto \begin{cases}\frac{e^{x}-1}{x} \if x \ne 0 \\ 1 \if x = 0\end{cases}$.
+%
+
+## Équations différentielles linéaires scalaires à coefficients constants d’ordre $n$
+
+%offprog
+  Considérons l’équation homogène
+  $$
+    \tag{H} a_{n}y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_{n}y' + a_{0} y = 0
+  $$
+  avec $(a_{0}, \ldots, a_{n}) \in \C^{n+1}$ et $a_{n}$ non nul. Si l’équation caractéristique $a_{n}r^{n} + a_{n-1}r^{n-1} + \cdots + a_{1}r + a_{0} = 0$ a pour racines complexes $\alpha_{1}, \ldots, \alpha_{d}$ de multiplicités respectives $n_{1}, \ldots, n_{d}$, alors les solutions à valeurs complexes de $H$ sur $\R$ sont toutes les fonctions du type
+  $$
+    x \longmapsto  \tilde{P_{1}}(x) e^{\alpha_{1} x} + \cdots + \tilde{P}_{d}(x) e^{\alpha_{d} x}
+  $$
+  avec $P_{1} \in \C_{n_{1}-1}\C[X], \ldots, P_{d} \in \Cont_{n_{d}-1}[X]$.
+%
+
+%proof
+  Posons
+  - $P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{1}X + a_{0} = a_{n} \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$
+  - $D: \applic{\Cont^{\infty}(\R,\C)}{\C^{\infty}(\R,\C)}{y}{y'}$
+  Alors
+  $$
+    y \in \Sol_{H,\R} \iff \underbrace{P(D)}_{\text{opérateur différentiel}}(y) = \tilde{0}
+  $$
+  et
+  $$
+    \Sol_{H,\R} = \ker  \big(P(D)\big) = \ker \big(Q(D)\big)
+  $$
+  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décorposition des noyaux, on a
+  $$
+    \Sol_{H,D} = \bigoplus_{k=1}^{d} \ker \Big((D - \alpha_{k} \id)^{n_{k}}\Big)
+  $$
+  et $\ker \Big((D-\alpha_{k} \id)^{n_{k}}\Big) = \Sol_{H_{k}, \R}$ avec $(H_{k}): (D-\alpha_{k} \id)^{n_{k}}(y) = 0$.
+  $$
+    \begin{align*}
+      y \in \Sol_{H, \R} &\iff  \sum_{p=0}^{n_{k}} \binom{n_{k}}{p}(-\alpha_{k} \id)^{n_{k}-p} D^{p} (y) = 0 \\
+      &\iff \sum_{p=0}^{n_{k}} \binom{n_{k}}{p}(-\alpha_{k})^{n_{k}-p}y^{(p)} = 0 \\
+      &\iff \forall t \in \R, \sum_{p=0}^{n_{k}}\binom{n_{k}}{p} (-\alpha_{k})^{n_{k} - p} e^{-n_{k}t}y^{(p)}(t) = 0 \\
+      &\iff \dvN{}{t}{n_{k}} \big(e^{-\alpha_{k} t}y\big) = 0 \\
+      &\iff \exists P_{k} \in \C_{n_{k}-1}[X]: \forall t \in \R, e^{-\alpha_{k} t}y(t) = P_{k}(t)
+    \end{align*}
+  $$
+%
+
+%eg
+  1. Considérons l’équation $(E): ay' + by = 0$ avec $a$ et $b$ deux complexes, $a$ étant non nul. L’équation caractéristique associée est $ar + b = 0 \iff r = -\frac{b}{a}$ donc
+     $$
+       \Sol_{E_{1}} = \big\{x \longmapsto  \lambda e^{- \frac{t}{n^{x}}} \where \lambda \in \R\big\}
+     $$
+  2. L’équation caractéristique associée à l’équation $(E_{2}): ay'' + by' + cy = 0$ (avec $a\ne 0,b,c$ complexes) est $aX^{2} + bX + c = a(X-\lambda)(X-\mu)$. Si $\lambda \ne \mu$, alors
+     $$
+       \Sol_{E_{2}} = \big\{x \longmapsto  \alpha e^{\lambda x} + \beta e^{\mu x} \where (\alpha, \beta) \in \C^{2}\big\}
+     $$
+     et si $\lambda = \mu$,
+     $$
+       \Sol_{E_{2}} = \big\{x \longmapsto  (\alpha x + \beta)e^{\lambda x} \where (\alpha, \beta) \in \C^{2}\big\}
+     $$
+  3. L’équation caractéristique associée à l’équation $(E_{3}): y^{(6)} - 2y^{(3)} + y = 0$ est $r^{6} - 2r^{3} + 1 = (r^{3} - 1)^{2} = (r-1)^{2}(r-j)^{2}(r-j^{2})^{2}$ et
+     $$
+       \Sol_{E_{3}} = \big\{x \longmapsto  (Ax + B) e^{x} + (Cx + D)e^{jx} + (Ex + F) e^{j^{2}x} \where (A,B,C,D,E,F) \in \C^{6}\big\}
+     $$
+%
+
+++Solutions à valeurs réelles~:++ Si $f: I \longrightarrow \C$ est une solution de l’équation $y^{(n)} + a_{n-1}(x)y^{(n-1)} + \cdots + a_{1}(x) y' + a_{0}(x) y = b(x)$ avec $a_{0}, \ldots, a_{n-1}, b$ continues sur $I$ à valeurs  réelles, alors $\Re(f): I \longrightarrow \C$ est une solution à valeurs réelles (comme $\Im(f)$), donc
+$$
+  \left\{\Re(f) \where f \in \Sol_H^\C\right\} \subset \Sol_{H}^{\R}
+$$
+De plus, $\Sol_{H}^{\R} \subset \Sol_{H}^{\C}$ donc
+$$
+  \Sol_H^\R, \Re(f) \where f \in \Sol_{H}^{\C}
+$$
+
+%offprog
+  %rem
+    Pour $\lambda \in \C \setminus \R$, $\lambda = a+ib$ avec $(a,b) \in \R \times \R^{*}$.
+    $$
+      \left\{x \longmapsto  \tilde{P}(x) e^{\lambda x} + \tilde{Q}(x) e^{\bar{\lambda}x} \where (P,Q) \in \C_{n}[X]^{2}\right\} = \left\{x \longmapsto  \big(\tilde{S}(x)\cos bx + \tilde{T}(x) \sin bx\big) e^{ax} \where (S,T) \in \Cont_{n}[X]\right\}.
+    $$
+  %
+  %proof
+    $e^{\lambda x = e^{ax} (\cos bx + i\sin bx)}  \subset e^{\bar{\lambda}x} (\cos xbx - i\sin bx)$ et contient $\cos bx = \frac{e^{ib^{x}} + e^{-ibx}}{2}$ et $\sin bx = \frac{e^{ibx} - e^{-ibx}}{2i}$ donc
+    $$
+      \left\{x \longmapsto \Re \big(\tilde{P}(x) e^{\lambda x} + \tilde{Q}(x) e^{\bar{\lambda}x}\big) \where (P,Q) \in \C_{n}[X]^{2}\right\} = \left\{x \longmapsto  \big(A(x) \cos (bx) + B(x)\sin bx\big)e^{ax} \where (A,B) \in \R_{n}[X]^{2}\right\}
+    $$
+    donc
+    $$
+      \Sol_{E_{3},\R} = \left\{x \longmapsto  (Ax + B)e^{x} + \big((Cx + D)\cos \left(\frac{\sqrt{3}}{2}x\right) + (Ex + F)\sin \left(\frac{\sqrt{3}}{2}x\right)\big) e^{-\frac{1}{2}x} \%here (A,B,C,D,E,F) \in \R^{6}\right\}
+    $$
+  %
+%
+
+%offprog
+  ## Étude qualitative des solutoins d’une équation différentielle linéaire scalaire d’ordre $n$
+
+  Comme on ne sait pas résoudre une telle équation si $n \geq 2$, on cherche des propriétés sru les solutions (bornées, limites aux bornes, parité, périodiques, …)
+
+  %rem
+    Considérons l’équation $(E): y'' = a(x) y' + b(x) y  + c(x)$ avec $a,b$ et $c$ continues sur $I$ à valeurs dans $\K$. On peut toujours, via un changement de fonction, se ramener à une équation de la forme $z'' + q(x)z = r(x)$ (forme réduite).
+    Cherchons $\varphi$ de classe $\Cont^{2}$ telle que
+    $$
+      \arr{r|l}{b(x) & y = e^{\varphi}z \\ a(x) & y' = \varphi' e^{\varphi}z + e^{\varphi}z' \\ 1 & y'' = \varphi'' e^{\varphi}z + \varphi'^{2} e^{\varphi}z + 2 \varphi' e^{\varphi}z' + e^{\varphi}z''}
+    $$
+    donc
+    $$
+      z'' + (2 \varphi' + a) z' + (\varphi'' + \varphi'^{2} + a \varphi' + b)z = e^{-\varphi(x)}c(x)
+    $$
+    En prenant $2 \varphi' + a = 0$, i.e. $\varphi' = \frac{-a}{2}$.
+  %
+
+  %eg
+    L’équation $(H): y'' + q(x)y$ avec $q \in \L^{1}(\R_{+}) \cap \Cont(\R_{+})$ possède des solutions non vornées.
+    En effet, soit $(f,g)$ une base de $\Sol_{H, \R_{+}}$.
+    $$
+      W_{f,g} = \vmtx{f & g \\ f' & g'} = \vmtx{f & f' \\ g & g'}
+    $$
+    donc
+    $$
+      W_{f,g}' = \vmtx{f' & f'\\ g' & g'} + \vmtx{f  & -qf \\ g & -qg} = 0
+    $$
+    donc il existe $c \in \R_{*}$ tel que $W_{f,g} = c$. Supposons $f$ et $g$ bornées. Alors
+    $$
+      \abs{f''} = \abs{-qf} \leq \norm{f}_{\infty,\R_{+}} \abs{q}
+    $$
+    or $q \in \L^{1}(\R_{+})$ donc $f'' \in \L^{1}(\R_{+})$.
+    $$
+      f'(x) - f'(0) = \int_{0}^{x}f''(x)\dd t \arrowlim{x\to+\infty}\ell \in \R
+    $$
+    donc $f'(x) \arrowlim{n\to+\infty} \lambda \in \R$. Si $\lambda \ne 0$, alors $f'(x) \usim{x\to+\infty} \lambda 1$ et $\int_{0}^{+\infty}1 \dd t$ diverge donc $\int_{0}^{x}f'(t)\dd t \sim \lambda \int_{0}^{x}1$ soit
+    $$
+      \abs{f(x) - f(0)} \usim{x\to+\infty} \abs{\lambda x} \arrowlim{+\infty}
+    $$
+    ce qui contredit $f$ bornée. Ainsi, $\lim_{x\to+\infty}f'(x) = 0$ et de même, $\lim_{x\to+\infty} g'(x) = 0$. Or
+    $$
+      \forall x \in \R_{+}, f(x)g'(x) - f'(x)g(x) = c
+    $$
+    d’où par passage à la limite, $0 = c$ ce qui est faux. Ainsi, ($f$ n’est pas bornée) ou ($g$ n’est pas bornée).
+  %
 %

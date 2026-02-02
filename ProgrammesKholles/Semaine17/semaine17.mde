@@ -1,5 +1,7 @@
 # Semaine 17
 
+:date 01/02/2026
+
 ## Majoration de la dérivée d’ordre $n$ d’une fonction développable en série entière
 
 Supposons $f \in \Cont^{\infty}(\oo{-a,a})$ développable en série entière au voisinage de 0. Il existe alors $\varepsilon \in \oo{0,a}$ et une suite complexe $(a_{n})_{n \in \N}$ tels que
@@ -80,7 +82,7 @@ $$
     $$
     d’où
     $$
-      \forall \varepsilon > 0, \forall t \in \co{t_{0},+\infty} \cap I, \alpha \leq z(t) \leq \underbrace{z(t_{0})}_{= \varepsilon} + e^{\int_{t_{0}}^{t} \opnorm{a(s)}\dd s}
+      \forall \varepsilon > 0, \forall t \in \co{t_{0},+\infty} \cap I, 0 \leq z(t) \leq \underbrace{z(t_{0})}_{= \varepsilon} e^{\int_{t_{0}}^{t} \opnorm{a(s)}\dd s}
     $$
     on fait tendre $\varepsilon$ vers 0, et on a
     $$
@@ -114,7 +116,7 @@ $$
     - $\norm{\varphi_{1}(t) - \varphi_{0}(t)} \leq \psi = \psi \cdot A_{0} \frac{\abs{t-t_{0}}^{0}}{0!}$ donc $\Prop(0)$ est vraie.
     - Supposons $\Prop(n)$ vraie pour $n$ fixé dans $\N$.
       $$
-        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+2}(t) - \varphi_{n}(t)} \leq \abs{\int_{t_{0}}^{t}A \cdot \psi A^{n} \frac{\abs{s - t_{0}}^{n}}{n!}\dd s} = \frac{\psi \cdot A^{n+1}}{n!} \underbrace{\abs{\int_{t_{0}}^{t}\abs{s-t_{0}}^{n} \dd s}}_{= \frac{\abs{t-t_{0}}^{n+1}}{n+1}}
+        \forall t \in \cc{\alpha, \beta}, \norm{\varphi_{n+2}(t) - \varphi_{n+1}(t)} \leq \abs{\int_{t_{0}}^{t}A \cdot \psi A^{n} \frac{\abs{s - t_{0}}^{n}}{n!}\dd s} = \frac{\psi \cdot A^{n+1}}{n!} \underbrace{\abs{\int_{t_{0}}^{t}\abs{s-t_{0}}^{n} \dd s}}_{= \frac{\abs{t-t_{0}}^{n+1}}{n+1}}
       $$
       $\Prop(n+1)$ est donc vraie. Ainsi,
       $$
@@ -122,7 +124,7 @@ $$
       $$
       donc $\norm{\varphi_{n+1} - \varphi_{n}}_{\infty, \cc{\alpha, \beta}} \leq \psi \frac{\big(A (\beta-\alpha)\big)^{n}}{n!}$ or $\sum_{n \geq 0} \frac{\big(A(\beta-\alpha)\big)^{n}}{n!}$ converge (de somme $e^{A(\beta-\alpha)}$) donc la série $\sum_{n \geq 0}\varphi_{n+1} - \varphi_{n}$ converge normalement sur tout segment $\cc{\alpha, \beta}$ de $I$ contenant $t_{0}$. Chaque $\varphi_{n+1} - \varphi_{n}$ est à valeurs dans le $\K$-espace vectoriel normé $F$ de dimension finie, donc la convergence est uniforme. Notons $\psi_{\alpha, \beta}$ la limite (uniforme) de la suite $(\varphi_{n})_{n \in \N}$ sur $\cc{\alpha,\beta}$. Comme
       $$
-        \forall n \in \N, \forall t \in \cc{\alpha, \beta}, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}a(s) \mdot \varphi_{n}() + b(s)\dd s
+        \forall n \in \N, \forall t \in \cc{\alpha, \beta}, \varphi_{n+1}(t) = y_{0} + \int_{t_{0}}^{t}a(s) \mdot \varphi_{n}(s) + b(s)\dd s
       $$
       on a
       $$
@@ -135,7 +137,7 @@ $$
       $$
         \norm{a(s)\mdot \varphi_{n}(s) - a(s) \mdot \psi_{\alpha, \beta}(s)}_{\infty, s \in \cc{\alpha, \beta}} \leq A \norm{\varphi_{n} - \psi_{\alpha, \beta}}_{\infty, \cc{\alpha, \beta}} \arrowlim{n\to+\infty}0
       $$
-      donc la suite d’application continues $(s \longmapsto a(s) \mdot \psi_{n}(s) + b(s))_{n \in \N}$ converge uniformément vers $(s \longmapsto a(s) \mdot \psi_{\alpha, \beta}(s) + b(s))$ sur $\cc{\alpha, \beta}$, d’où par passage à la limite,
+      donc la suite d’application continues $(s \longmapsto a(s) \mdot \varphi_{n}(s) + b(s))_{n \in \N}$ converge uniformément vers $(s \longmapsto a(s) \mdot \psi_{\alpha, \beta}(s) + b(s))$ sur $\cc{\alpha, \beta}$, d’où par passage à la limite,
       $$
         \forall t \in \cc{\alpha, \beta}, \psi_{\alpha, \beta}(t) = y_{0} + \int_{t_{0}}^{t}\big(a(s) \mdot \psi_{\alpha, \beta}(t) + b(s)\big)\dd s
       $$
@@ -143,7 +145,7 @@ $$
       $$
         \psi: \applic{I}{F}{t}{\psi_{p}(t) \text{ si }\exists p \in \N: t \in \cc{\alpha_{p}, \beta_{p}}}
       $$
-      Par coontinuité des $\psi_{p}$, $\psi$ est un arc continu sur $I$ et pour tout $p \in \N$
+      Par continuité des $\psi_{p}$, $\psi$ est un arc continu sur $I$ et pour tout $p \in \N$
       $$
         \forall t \in \cc{\alpha_{p}, \beta_{p}}, \psi(t) = \psi_{p}(t) = y_{0} + \int_{t_{0}}^{t}a(s)\mdot \psi_{p}(s) + b(s) = y_{0} + \int_{t_{0}}^{t}\big(a(s)\mdot \psi(s) + b(s)\big)\dd s
       $$
@@ -187,17 +189,17 @@ Dans cette parties, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ son
 ++Résolution de $(E): y' = a(t)\mdot y + b(t)$.++ Soit $\psi \in \Cont^{1}(I,F)$. Posons $\psi = \sum_{i=1}^{n}\lambda_{i} \varphi_{i}$ avec $\forall i \in \icc{1,n}, \lambda_{i} \in \Cont^{1}(I,\K)$.
 $$
   \begin{align*}
-    \psi \in \Sol_{E,I} &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} + \sum_{i=1}^{n}\lambda_{i} \varphi_{i}' = \sum_{i=1}^{n}a(t)\mdot \varphi_{i} + b(t) \\
-    &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} f b(t)
+    \psi \in \Sol_{E,I} &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} + \sum_{i=1}^{n}\lambda_{i} \varphi_{i}' = \sum_{i=1}^{n}\lambda_{i}a(t)\mdot \varphi_{i} + b(t) \\
+    &\iff \sum_{i=1}^{n}\lambda_{i}' \varphi_{i} = b(t)
   \end{align*}
 $$
-et $b \in \Cont(I,F)$. On peut donc écrire
+Par ailleurs, $b \in \Cont(I,F)$ donc
 $$
   \forall t \in I, b(t) = \sum_{i=1}^{n}b_{i}(t)\varphi_{i}(t)
 $$
-avec $\forall i \in \icc{1,n}, b_{i} \in \Cont(I,\K)$. Soit $t_{0} \in I$.
+avec $\forall i \in \icc{1,n}, b_{i} \in \Cont(I,\K)$ donc, pour $t_{0} \in I$.
 $$
-  \psi \in \Sol_{E,I} \iff \forall i \in \icc{1,n}, \lambda_{i}' = b_{i} \iff \forall i \in \icc{1,n}, \exists k_{i} \in \K, \forall t \in I, \lambda_{i}(t) = \sum_{t_{0}}^{t}b_{i}(s)\dd s
+  \psi \in \Sol_{E,I} \iff \forall i \in \icc{1,n}, \lambda_{i}' = b_{i} \iff \forall i \in \icc{1,n}, \exists k_{i} \in \K, \forall t \in I, \lambda_{i}(t) = \int_{t_{0}}^{t}b_{i}(s)\dd s + k_{i}
 $$
 Ainsi,
 $$
