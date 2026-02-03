@@ -1,0 +1,299 @@
+# Tribus et probabilités sur un univers fini ou infini
+
+:date 03/02/2026
+
+On admet l’axiome du choix dans sa forme la plus générale.
+
+- ++Expérience aléatoire n°1~:++ On lance une pièce (pile: 0 / face: 1) jusqu’à obtenir face. L’univers est
+  $$
+    \Omega_{1} = \{(0)_{n \in \N^{*}}\} \cup \{(1)\} \cup \bigcup_{n \in \N^{*}}\{0\}^{n} \times \{1\}
+  $$
+  c’est l’ensemble des résultats ou « issues » possibles. Il est ici dénombrable.
+- ++Expérience aléatoire n°2~:++ On lance une pièce de façon infinie. L’univers est $\Omega_{2} f \{0,1\}^{\N^{*}}$. On a $\Omega_{2} \approx \Part(\N^{*}) \approx \R$ donc $\Omega_{2}$ n’est pas dénombrable. On définit l’événement $A_{n}$: « ne pas obtenir face avant le n-ième lancer » soit $A_{n} = \{0\}^{n-1} \times  \{0,1\}^{\ico{n,+\infty}} \in \Part(\Omega_{2})$.
+
+## Tribus
+
+%def Axiomatique de Colmodorov
+  Soit $\Omega$ un ensemble. Une partie $\Tribu$ de $\Part(\Omega)$ de $\Part(\Omega)$ est appelée _tribu_ sur $\Omega$ (ou $\sigma$-algèbre) si~:
+  - $\Omega \in \Tribu$
+  - $\forall A \in \Tribu, A^{\complement} = \bar{A} \in A$
+  - Si $(A_{n})_{n \in \N}$ est une suite de partie de $\Tribu$, alors $\bigcup_{n \in \N} A_{n} \in \Tribu$.
+  On dit que $(\Omega, \Tribu)$ est un _espace probabilisable_.
+%
+
+%eg
+  1. $\Part(\Omega)$ est une tribu sur $\Omega$ appelée _tribu discrète_ sur $\Omega$. C! est celle que l’on considére systématiquement si $\Omega$ est au plus dénombrable. On ne la considère jamais si $\Omega$ n’est pas au plus dénombrable.
+  2. $\{\emptyset, \Omega\}$ est une tribu sur $\Omega$ appelée _tribu grossière_ et est rarement considérée.
+  3. Soit $f: \Omega \longrightarrow \Omega'$ une application entre deux ensembles. Soit $A'$ une tribu sur $\Omega$. Posons $A = \big\{f^{-1}(A') \where A' \in \Tribu\big\}$.
+     - Comme $\Omega' \in \Tribu$ et $f^{-1}(\Omega') \in \Omega$, on a $\Omega \in \Tribu$.
+     - Soit $A \in \Tribu$. Il existe $A' \in \Tribu$ tel que $A = f^{-1}(A')$. Alors, $A^{\complement} = f^{-1}(A'^{\complement})$ or $A'$ est une tribu donc $A'^{\complement} \in \Tribu'$ d’où $A^{\complement} \in \Tribu$.
+     - Soit $(A_{n})_{n \in \N}$ une suite d’éléments de $\Tribu$. Il existe alors une suite $(A_{n}')_{n \in \N}$ d’éléments de $\Tribu'$ telle que $\forall n \in \N, A_{n} = f^{-1}(A'_{n})$ d’où
+       $$
+         \bigcup_{n \in \N}A_{n} = f^{-1} \left(\bigcup_{n \in \N} A'_{n}\right)
+       $$
+       or $\Tribu'$ est une tribu donc $\bigcup_{n \in \N}A'_{n} \in \Tribu'$ donc $\bigcup_{n \in \N} A_{n} \in \Tribu$ donc $\Tribu$ est une tribu sur $\Omega$.
+%
+
+%property
+  Soit $(\Omega, \Tribu)$ un espace probabilisable. On a
+  - $\emptyset \in \Tribu$
+  - $\Tribu$ est stable par intersection dénombrable
+  - $\Tribu$ est stable par réunion et intersection finie
+  - $\Tribu$ est stable par différence et différence symétrique
+  %offprog
+    - $\Tribu$ est stable par limite inférieure et supérieure
+  %
+%
+
+%proof
+  - $\Omega \in \Tribu$ et $\Tribu$ est stable par passage au complémentaire donc $\Omega^{\complement} = \emptyset  \in \Tribu$.
+  - Soit $(A_{n})_{n \in \N}$ une suite d’éléments de $\Tribu$. Comme $\Tribu$ est une tribu, on a $\forall n \in \N, A_{n}^{\complement} \in \Tribu$ et $\bigcup_{n \in \N} \left(A_{n}^{\complement}\right) \in \Tribu$ donc $\left(\bigcup_{n \in \N} \big(A_{n}^{\complement}\big)\right)^{\complement} \in \Tribu$ i.e. $\bigcap_{n \in \N} A_{n} \in \Tribu$.
+  - Soit $n \in \N^{*}$. Soit $(A_{1}, \ldots, A_{n}) \in \Tribu^{n}$. Posons, pour $k \geq n+1$, $A_{k} = \emptyset \in \Tribu$. On a alors $\bigcup_{k \in \N^{*}}A_{k} \in \Tribu$ i.e. $\bigcup_{k \in \icc{1,n}} A_{k} \in \Tribu$. En prenant pour $k \geq n+1$, $A_{k} = \Omega$, on a
+    $$
+      \bigcap_{k \in \N^{*}} A_{k} = \bigcap_{k \in \icc{1,n}}A_{k} \in \Tribu
+    $$
+  - Soit $(A,B) \in \Tribu^{2}$.
+    ~ $A \setminus B = A \cap B^{\complement} \in \Tribu$  ~ $A \Delta B = (A \setminus B) \cup (B \setminus A) \in \Tribu$
+  %offprog
+    - Soit $(A_{n})_{n \in \N}$ une suite d’éléments de $\Tribu$. On pose
+      - $\limsup_{n \in \N} A_{n} \defeq \bigcap_{n \in \N} \bigcup_{k \geq n} A_{k} \in \Tribu$
+      - $\liminf_{n \in \N} A_{n} \defeq \bigcup_{n \in \N} \bigcap_{k \geq n} A_{k} \in \Tribu$
+      et on a
+      $$
+        \omega \in \limsup_{n \in \N}A_{n} \iff \forall n \in \N, \exists k \geq n: \omega \in A_{k}
+      $$
+      soit $\limsup_{n \in \N}A_{n}$: « appartenir à une infinité de $A_{n}$ » et
+      $$
+        \omega \in \liminf_{n \in \N}A_{n} \iff \exists n \in \N, \exists k \geq n: \omega \in A_{k}
+      $$
+      soit $\limsup_{n \in \N}A_{n}$: « appartenir à tous les $A_{n}$ à partir d’un certain rang ».
+  %
+%
+
+%def
+  Soit $(\Omega, \Tribu)$ un espace probabilisable.
+  - On appelle _événement_ tout élément de $\Tribu$
+  - $\emptyset$ est l’_événement impossible_ et $\Omega$ est l’_événement certain_.
+  - Si $(\Omega_{i})_{i \in I}$ est une « partition »((pouvant contenir l’ensemble vide contrairement à une partition ensembliste.)) de $\Omega$ avec $\forall i \in I, \Omega_{i} \in \Tribu$, alors $(\Omega_{i})_{i \in I}$ est appelé _système complet d’événements_.
+  - Pour $\omega \in \Omega$, on peut ne pas avoir $\{\omega\} \in \Tribu$. Si $\{\omega\} \in \Tribu$, alors $\{\omega\}$ est appelé _événement élémentaire_.
+%
+
+%offprog
+  %prop
+    Toute intersection de tribus sur $\Omega$ est une tribu sur $\Omega$.
+  %
+
+  %proof
+    Soit $(\Tribu_{i})_{i \in I}$ une famille de tribus sur $\Omega$ indexée par un ensemble quelconque $I$. ($\bigcap_{i \in \emptyset} \Tribu_{i} = \Part(\Omega)$ est bien une tribu sur $\Omega$).
+    - $\forall i \in I, \Omega \in \Tribu_{i}$ donc $\Omega \in \bigcap_{i \in I}\Tribu_{i}$
+    - Soit $A \in \bigcap_{i \in I} \Tribu_{i}$. On a $\forall i \in I, A \in \Tribu_{i}$. Chaque $\Tribu_{i}$ est une tribu sur $\Omega$ donc $\forall i \in I, A^{\complement} \in \Tribu_{i}$ d’où $A^{\complement} \in \bigcap_{i \in I}\Tribu_{i}$.
+    - Soit $(A_{n})_{n \in \N}$ une suite d’éléments de $\bigcap_{i \in I}\Tribu_{i}$. On a $\forall i \in I, \forall n \in \N, A_{n} \in \Tribu_{i}$ donc $\forall i \in I, \bigcup_{n \in \N}A_{n} \in \Tribu_{i}$ d’où $\bigcup_{n \in \N}A_{n} \in \bigcap_{i \in I}\Tribu_{i}$.
+  %
+
+  %def
+    Soit $\Omega$ un ensemble. Soit $\G$ une partie de $\Part(\Omega)$. On pose
+    $$
+      \sigma(\G) = \bigcap_{\substack{\Tribu \text{ tribu sur } \Omega\\ \G \subset \Tribu}}\Tribu
+    $$
+    C’est la plus petite tribu (au sens de l’inclusion) sur $\Omega$ contenant $\G$: c’est la _tribue engendrée_ par $\G$.
+  %
+
+  %eg
+    Soit $\Omega$ un ensemble.
+    - $\sigma(\{\emptyset\}) = \{\emptyset, \Omega\}$
+    - Soit $A \in \Part(\Omega)$. $\sigma(\{A\}) = \{\emptyset, A, A^{\complement}, \Omega\}$.
+    - Soit $(A,B) \in \Part(\Omega)^{2}$.
+      $$
+        \sigma(\{A,B\}) = \left\{\bigcup_{D \in I} D \where I \subset \{A \setminus B, B \setminus A, A \cap B, (A \cap B)^{\complement}\}\right\}
+      $$
+    - Soit $(E, \norm{\cdot})$ un $\K$-espace vectoriel normé non nul. Notons $\T$ la topologie de $E$, i.e. l’ensemble des ouverts de $E$. Elle n’est pas stable par passage au complémentaire. $\sigma(\T) = \B(E)$ est la _tribu des boréliens_.
+      - $\B(E) \supset F_{\sigma}$ (union dénombrable de fermés)
+      - $\B(E) \supset G_{\delta}$ (intersection dénombrable d’ouverts)
+    Par exemple,
+    $$
+      \co{0,1} = \bigcap_{n \in \N^{*}} \oo{- \frac{1}{n}, 1} \in G_{\delta}
+    $$
+    et
+    $$
+      \co{0,1} \in \bigcup_{n \in \N^{*}} \cc{0, 1-\frac{1}{n}} \in F_{\sigma}
+    $$
+  %
+%
+
+## Probabilité
+
+%def Espace probabilisé, (loi de) probabilité
+  On appelle espace probabilisé tout triplet $(\Omega, \Tribu, \P)$ où $\Tribu$ est une tribu sur un ensemble $\Omega$ et $\P$ une (loi de) probabilté sur $(\Omega, \Tribu)$, à savoir $\P$ est une application de $\Tribu$ dans $\cc{0,1}$ telle que
+  - $\P(\Omega) = 1$
+  - Pour toute suite d’événements $A_{n} \in \Tribu$ deux à deux disjointes, la suite $\big(\P(A_{n})\big)_{n \in \N}$ est sommable et
+    $$
+      \sum_{n \in \N}\P(A_{n}) = \P \left(\biguplus_{n \in \N}A_{n}\right)
+    $$
+%
+
+%eg
+  Soit $\omega \in \Omega$. Posons
+  $$
+    \delta_{\omega}: \applic{\Tribu}{\cc{0,1}}{A}{\begin{cases}1 \if \omega \in A \\ 0 \else\end{cases}}
+  $$
+  - $\delta$ est à valeurs dans $\cc{0,1}$ et définie sur $\Tribu$
+  - $\delta_{\omega}(\Omega) = 1$ car $\omega \in \Omega$
+  - Soit $(A_{n})_{n \in \N}$ une suite d’éléments deux à deux disjoints de la tribu $\Tribu$.
+    - si $\omega \in \biguplus_{n \in \N}A_{n}$, alors
+      $$
+        \delta_{\omega} \left(\biguplus_{n \in \N}A_{n}\right) = 1
+      $$
+      Il existe donc $n_{0} \in \N$ tel que $\omega \in A_{n_{0}}$ et $\forall n \in \N \setminus \{n_{0}\}, \omega \notin A_{n}$. Alors $\delta_{\omega}(A_{n_{0}}) = 1$ et $\delta_{\omega}(A_{n}) = 0$ pour $n\ne n_{0}$ donc $\big(\delta_{\omega}(A_{n})\big)_{n \in \N}$ est sommable et
+      $$
+        \sum_{n \in \N}\delta_{\omega}(A_{n}) = 1 = \delta_{\omega} \left(\biguplus_{n \in \N} A_{n}\right)
+      $$
+    - sinon, $\omega \notin \biguplus_{n \in \N}A_{n}$. Alors $\forall n \in \N, \delta_{\omega}(A_{n}) = 0$ donc $\big(\delta_{\omega}(A_{n})\big)_{n \in \N}$ est sommable et
+      $$
+        \sum_{n \in \N}\delta_{\omega}(A_{n}) = 0 = \delta_{\omega} \left(\biguplus_{n \in \N} A_{n}\right)
+      $$
+    Ainsi, $\delta_{\omega}$ est une probabilité sur $(\Omega,\Tribu)$.
+%
+
+%prop
+  Soit $(\Omega, \Tribu, \P)$ un espace probabilisé.
+  1. $\P(\emptyset) = 0$
+  2. Si la suite $(A_{d})_{d \in D}$ est une famille d’événements deux à deux disjoints indexée par un ensemble au plus dénombrable $D$, alors $\big(\P(A_{d})\big)_{d \in D}$ est sommable et
+     $$
+        \sum_{d \in D}\P(A_{d}) = \P \left(\biguplus_{d \in D}A_{d}\right)
+     $$
+  3. $\forall A \in \Tribu, \P(A^{\complement}) = 1-P(A)$
+  4. $\P$ **est croissante**, i.e.
+     $$
+       \forall (A,B) \in \Tribu^{2}, A \subset B \implies \P(A) \leq \P(B)
+     $$
+     Précisément, si $A \subset B$, alors
+     $$
+       \P(B) - \P(A) = \P(B \setminus A)
+     $$
+  5. %callout
+       Si $(A_{n})_{n \in \N}$ est une suite croissante d’événements, alors
+       $$
+         \P \left(\upbigcup_{n \in \N}A_{n}\right) = \lim_{n \to +\infty}\P(A_{n})
+       $$
+       (propriété de continuité croissante d’une probabilité).
+     %
+  6. Si $(B_{n})_{n \in \N}$ est une suite décroissante d’événements, alors
+     $$
+       \P \left(\downbigcap_{n \in \N}B_{n}\right) = \lim_{n\to+\infty}\P(B_{n})
+     $$
+     (propriété de continuité décroissante d’une probabilité).
+  7. De façon plus générale, si $(A_{n})_{n \in \N}$ est une suite d’événements, alors
+     $$
+       \P \left(\bigcup_{n \in \N} A_{n}\right) = \lim_{N\to+\infty} \left(\bigcup_{n \in \icc{0,N}} A_{n}\right)
+     $$
+     et
+     $$
+       \P \left(\bigcap_{n \in \N} A_{n}\right) = \lim_{N\to+\infty} \P \left(\bigcap_{n \in \icc{0,N}}A_{n}\right)
+     $$
+  8. Si $(A_{n})_{n \in \N}$ est une suite d’événements, alors
+     $$
+       \P \left(\bigcup_{n \in \N} A_{n}\right) \leq \sum_{n \in \N}\P(A_{n})
+     $$
+     (inégalité de Boole dans $\bar{\R_{+}}$).
+%
+
+%proof
+  1. $\emptyset \in \Tribu$ et $\emptyset \cap \emptyset = \emptyset$ donc $\big(\P(\emptyset)\big)_{n \in \N}$ est sommable. Nécessairement, $\P(\emptyset) = 0$.
+  2. - Si $D$ est dénombrable, alors pour une bijection $\varphi: \N \longrightarrow D$,
+       $$
+         \big(\P(A_{d})\big)_{d \in D} \in \ell^{1}(D) \iff \big(\P(A_{\varphi(n)})\big)_{n \in \N} \in \ell^{1}(\N)
+       $$
+       donc $\big(\P(A_{d})\big)_{d \in D} \in \ell^{1}(\D)$ et
+       $$
+         \sum_{d \in D}\P(A_{d}) = \sum_{n \in \N}\P(A_{\varphi(n)}) = \P \left(\biguplus_{n \in \N}A_{\varphi_{n}}\right) = \P \left(\biguplus_{d \in D}A_{d}\right)
+       $$
+     - Si $D$ est finie, notons $D = \{d_{1}, \ldots, d_{n}\}$ et $B_{i} = A_{d_{i}}$. Posons pour $k \geq n+1, B_{k+1} = \emptyset \in \Tribu$. On a
+       $$
+         \forall (n,m) \in \N^{*}, \big(n\ne m \implies  B_{n} \cap B_{m} = \emptyset\big)
+       $$
+       donc
+       $$
+         \sum_{n \in \N^{*}} \P(B_{n}) = \P \left(\biguplus_{n \in \N^{*}}B_{n}\right)
+       $$
+  3. $\P(\Omega) = \P(A \biguplus A^{\complement}) = \P(A) + \P(A^{\complement})$ d’où $\P(A^{\complement}) = 1 - \P(A)$
+  4. Soit $(A,B) \in \Tribu^{2}$ avec $A \subset B$. On a $B = (B \setminus  A)\uplus A$ d’où
+      $$
+        \P(B) = \P(B \setminus A) + \P(A) \geq \P(A)
+      $$
+      et $\P(B) - \P(A) = \P(B \setminus A)$.
+  5. Soit $(A_{n})_{n \in \N}$ une suite croissante d’événements.
+     $$
+       \upbigcup_{n \in \N}A_{n} = A_{0} \uplus \left(\biguplus_{n \in \N}(A_{n+1} \setminus A_{n})\right)
+     $$
+     donc
+     $$
+       \P \left(\upbigcup_{n \in \N} A_{n}\right) = \P(A_{0}) + \sum_{n \in \N}\P(A_{n+1} \setminus A_{n})
+     $$
+     or $\forall n \in \N, A_{n} \subset A_{n+1}$ donc
+     $$
+       \P \left(\upbigcup_{n \in \N}A_{n}\right) = \P(A_{0}) + \sum_{n \in \N}\P(A_{n+1}) - \P(A_{n}) = \lim_{N\to+\infty} \P(A_{0}) + \sum_{n=1}^{N} \P(A_{n+1}) - \P(A_{n})
+     $$
+     Ainsi,
+     $$
+       \P \left(\upbigcup_{ n \in \N}A_{n}\right) = \lim_{N\to+\infty}\P(A_{n+1})
+     $$
+  6. $\P \left(\downbigcap_{n \in \N}B_{n}\right) = 1 - \P \left(\upbigcup_{n \in \N} B_{n}^{\complement}\right) = \lim_{n\to+\infty} \left(1- \P(B_{n}^{\complement})\right) = \lim_{n\to+\infty} \P(B_{n})$
+  7. $\P \left(\bigcup_{n \in \N} A_{n}\right) = \P \left(\upbigcup_{n \in \N} \left(\bigcup_{ k \in \icc{0,n}}A_{k}\right)\right) = \lim_{n\to+/nff}\P \left(\bigcup_{k \in \icc{0,n}A_{k}}\right)$ donc
+     $$
+       \P \left(\bigcap_{n \in \N}A_{n}\right) = 1 - \P \left(\bigcup_{n \in \N}A_{n}^{\complement}\right) = \lim_{n\to+\infty} 1 - \P \left(\bigcup_{k \in \icc{1,n}}A_{k}^{\complement}\right)
+     $$
+  8. $\forall (A,B) \in \Tribu^{2}, \P(A \cup B) + P(A \cup B) = \P(A) + \P(B)$ or $A \cup B = (A \setminus B)\uplus (B \setminus A) \cup (A \cap B)$ donc
+     $$
+       \P(A \cup B) = \P(A \setminus B) + \P(B \setminus A) + \P(A \cap B) = \P(A \setminus (A \cap B)) + \P(B \setminus (A \cap B)) + \P(A \cap B) = \P(A) - \P(A \cap B) + \P(B)-\P(A \cap B) + \P( \cap B)
+     $$
+     - Soit $(A_{n})_{n \in \N}$ une suite d’événements.
+       $$
+         \forall (A,B) \in \Tribu^{2}, \P(A \cup B) = \P(A) + \P(B) - \P(A \cap B) \leq \P(A) + \P(B)
+       $$
+       Par récurrence, on a (la première inégalité est dans $\R_{+}$ et la seconde dans $\bar{\R_{+}}$)~:
+       $$
+         \forall n \in \N, \P \left(\bigcup_{k = 0}^{n} A_{k}\right) \leq \sum_{k \in \icc{0,n}}\P(A_{k}) \leq \sum_{k \in \N}\P(A_{k})
+       $$
+       On ppasse à la limite lorsque $n$ tend vers $+\infty$~:
+       $$
+         \P \left(\bigcap_{k \in \N}A_{k}\right) \leq \sum_{k \in \N}\P(_{k}) \dans \bar{\R_{+}}
+       $$
+%
+
+## Distribution de probabilté discrète
+
+%def
+  Soit $\Omega$ un ensemble. On appelle _distribution de probabilité discrète_ sur $\Omega$ toute famille $(q_{\omega})_{\omega \in \Omega}$ de réels positifs telle que
+  ~ $(q_{\omega})_{\omega \in \Omega} \in \ell^{1}(\Omega)$  ~ $\sum_{\omega \in \Omega} q_{\omega} = 1$
+  Le _support_ de $(q_{\omega})$, à savoir $S = \{\omega \in \Omega \%here q_{\omega} > 0\}$ est au plus dénombrable !
+%
+
+%proof
+  On a
+  $$
+    S = \bigcup_{n \in \N^{*}} \underbrace{\{\omega \in \Omega \where q_{\omega} > \frac{1}{n}\}}_{S_{n}}
+  $$
+  donc
+  $$
+    (q_{\omega})_{\omega \in \Omega} \in \ell^{1}(\Omega) \implies (q_{\omega})_{\omega \in S_{n}} \in \ell^{1}(S_{n}) \implies  \left(\frac{1}{n}\right)_{\omega \in S_{n}} \in \ell^{1}(S_{n}) \implies  S_{n} \text{ fini}
+  $$
+%
+
+%eg
+  Posons, pour tout $x \in \R \setminus \N^{*}$, $q_{x} = 0$ et pour tout entier $n$ non nul, $q_{x} = \frac{6}{\pi^{2}x^{2}}$. On a pour tout réel $x$, $q_{x} \geq 0$ et
+  $$
+    \sum_{x \in \R} q_{x} = \sum_{n \in \N^{*}}\frac{6}{\pi^{2} x^{2}} = 1
+  $$
+  donc $(q_{x})$ est une distribution de probabilité sur $\R$.
+%
+
+%prop
+  Soit $\Omega$ une distrbution de probabilité discrète $(q_{\omega})_{\omega \in \Omega}$. L’application
+  $$
+    \P: \applic{\Part(\Omega)}{\cc{0,1}}{A}{\sum_{\omega \in A} q_{\omega}}
+  $$
+  est une probabilité sur $(\Omega, \Part(\Omega))$ appelé probabilité associée à $(q_{\omega})_{\omega \in \Omega}$. On a en particulier
+  $$
+    \forall \omega \in \Omega, \P(\{\omega\}) = q_{\omega}
+  $$
+%
