@@ -129,6 +129,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
     $$
       \sum_{n \in \N}\P(A_{n}) = \P \left(\biguplus_{n \in \N}A_{n}\right)
     $$
+    (propriété de _$\sigma$-additivité_).
 %
 
 %eg
@@ -265,7 +266,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %def
   Soit $\Omega$ un ensemble. On appelle _distribution de probabilité discrète_ sur $\Omega$ toute famille $(q_{\omega})_{\omega \in \Omega}$ de réels positifs telle que
   ~ $(q_{\omega})_{\omega \in \Omega} \in \ell^{1}(\Omega)$  ~ $\sum_{\omega \in \Omega} q_{\omega} = 1$
-  Le _support_ de $(q_{\omega})$, à savoir $S = \{\omega \in \Omega \%here q_{\omega} > 0\}$ est au plus dénombrable !
+  Le _support_ de $(q_{\omega})$, à savoir $S = \{\omega \in \Omega \where q_{\omega} > 0\}$ est au plus dénombrable !
 %
 
 %proof
@@ -296,4 +297,291 @@ On admet l’axiome du choix dans sa forme la plus générale.
   $$
     \forall \omega \in \Omega, \P(\{\omega\}) = q_{\omega}
   $$
+  et c’est la seule à vérifier cette propriété.
+%
+
+%proof
+  _Analyse._ Soit $\P: \Part(\Omega) \longrightarrow \cc{0,1}$ une probabilité vérifiant $\forall \omega \in \Omega, \P(\{\omega\}) = q_{\omega}$. Soit $S = \{\omega \in \Omega \where q_{\omega} > 0\}$. C’est un ensemble au plus dénombrable. Soit $A \in \Part(\Omega)$. On a
+  $$
+    A = \big(A \cap S\big) \uplus \big(A \cap S^{\complement}\big)
+  $$
+  Par additivité de $\P$, on a
+  $$
+    \P(A) = \P(A \cap S) + \P(A \cap S^{\complement})
+  $$
+  or $\P(A \cap S^{\complement}) \leq \P(S^{\complement})$ par croissance de $\P$ et
+  $$
+    \begin{align*}
+      \P(S^{\complement}) &= 1-\P(S) \\ &= 1-\P \left(\biguplus_{\omega \in S}\{\omega\}\right) \\ &= 1- \sum_{\omega \in S}q_{\omega} & \text{($\sigma$-additivité)} \\ &= 1- \sum_{\omega \in \Omega}q_{\omega} = 0
+    \end{align*}
+  $$
+  Par positivité de $\P$, on a $\P(A \cap S^{\complement}) = 0$ donc $\P(A) = \P(A \cap S) = \sum_{\omega \in A \cap S} \P(\{\omega\})$ car $A \cap S$ est au plus dénombrable, d’où
+  $$
+    \P(A) = \sum_{\omega \in A \cap S}q_{\omega} = \sum_{\omega \in A}q_{\omega}
+  $$
+
+  _Synthèse._ Soit $A \in \P(\Omega)$. On a $(q_{\omega})_{\omega \in \Omega} \in \ell^{1}(\Omega)$ donc $(q_{\omega})_{\omega \in A} \in \ell^{1}(A)$ et
+  $$
+    0 \leq \sum_{\omega \in A}q_{\omega} \leq \sum_{\omega \in \Omega} q_{\omega} = 1
+  $$
+  donc
+  $$
+    \P: \applic{\Part(\Omega)}{\cc{0,1}}{A}{\P(A) = \sum_{\omega \in A} q_{\omega}}
+  $$
+  est correctement définie.
+  - $\P(\Omega) = \sum_{\omega \in \Omega}q_{\omega} = 1$
+  - Soit $(A_{n})_{n \in \N}$ une suite de parties de $\Omega$ deux à deux disjointes.
+    $$
+      \begin{align*}
+        \P \left(\biguplus_{n \in \N}A_{n}\right) &= \sum_{\omega \in \biguplus_{n \in \N}A_{n}}q_{\omega} \\
+        &= \sum_{\omega \in \biguplus_{n \in \N} (A_{n} \cap S)}q_{\omega} \\
+        &= \sum_{n \in \N} \left(\sum_{\omega \in A_{n}}q_{\omega}\right) = \sum_{n \in \N}\P(A_{n})
+      \end{align*}
+    $$
+%
+
+%prop
+  1. Si $\Omega$ est un ensemble au plus dénombrable, alors toutes les probabilités sur $(\Omega, \Part(\Omega))$ sont des probabilités associées à des distributions de probabilité discrètes sur $\Omega$.
+  %offprog
+    2. On peut remplacer $\Omega$ par $\R$ ci-dessus. Alors, si $(q_{\omega})_{\omega \in \R} \in \ell^{1}(\R)$, il existe un ensemble $D$ au plus dénombrable tel que $\forall x \in \R \setminus D, q_{x} = 0$. Ces probabilités ne sont pas intéressantes. C’est la raison pour laquelle on rejette l’étude de la tribu $\P(\R)$. _(Ulam, 1930)._
+  %
+%
+
+%proof
+  1. Soit $\Omega$ au plus dénombrable. Soit $\P: \Part(\Omega) \longrightarrow \cc{0,1}$ une probabilité sur $(\Omega, \Part(\Omega))$. Posons, pour tout $\omega \in \Omega$, $\P(\{\omega\}) = q_{\omega}$. On a pour tout $\omega \in \Omega$, $q_{\omega} \geq 0$ et
+     $$
+       \sum_{\omega \in \Omega}q_{\omega} = \sum_{\omega \in \Omega}\P(\{\omega\}) = \P \left(\biguplus_{\omega \in \Omega}\{\omega\}\right) = \P(\omega) = 1
+     $$
+     donc $(q_{\omega})_{\omega \in \Omega}$ est une distribution de probabilité discrète sur $\Omega$. Pour $A \in \Part(\Omega)$, on a
+     $$
+       \sum_{\omega \in A}q_{\omega} = \sum_{\omega \in A}\P(\{\omega\}) = \P \left(\biguplus_{\omega \in A}\{\omega\}\right) = \P(A)
+     $$
+  %offprog
+    2. Le résultat découle de l’axiome du choix.
+  %
+%
+
+++Lois de probabilité usuelles sur les ensembles au plus dénombrables.++
+- $(\Omega f \{0,1\}, \Part(\Omega))$. Soit $p \in \oo{0,1}$. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associée à la distribution discrète $(1-p,p)$ sur $\Omega$ est appeléè _loi de Bernoulli de paramètre $p$_ et on note $\P = \B(p)$. On a donc
+  ~ $\P(\{1\}) = p$  ~ $\P({0}) = 1-p$
+- Soit $\Omega$ fini de cardinal non nul. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associéè à la distribution $\left(\frac{1}{\abs{\Omega}}\right)_{\omega \in \Omega}$ est appelée _loi uniforme sur $\Omega$_. On la note $\P = \Unif(\Omega)$.. On a
+  $$
+    \forall \omega \in \Omega, \P(\{\omega\}) = \frac{1}{\abs{\Omega}}
+  $$
+- Soit $n \in \N^{*}$. Soit $p \in \oo{0,1}$. Considérons $\Omega = \icc{0,n}$. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associée à la distribution
+  $$
+    \left(\binom{n}{k}p^{k}(1-p)^{n-k}\right)_{k \in \icc{0,n}}
+  $$
+  est appelée _loi binomiale de paramètres $(n,p)$_. Elle est notée $\P = \B(n,p)$ et on a
+  $$
+    \forall k \in \icc{0,n}, \P(\{k\}) = \binom{n}{k}p^{k}(1-p)^{n-k}
+  $$
+  On a $\B(1,p) = \B(p)$.
+- Considérons $\Omega = \N^{*}$. Soit $p \in \oo{0,1}$. $\left(p(1-p)^{k-1}\right)_{n \in \N^{*}}$ est une distribution de probabilité sur $\N^{*}$. La probabilté $\P$ sur $(\N^{*}, \Part(\N^{*}))$ associée à cette distribution est appelée _loi géométrique_ de paramètre $p$ et notée $\P = \mathscr G(p)$. On a donc
+  $$
+    \forall k \in \N^{*}, \P(\{k\}) = p(1-p)^{k-1}
+  $$
+  %proof
+    Pour tout $n \in \N^{*}$, $p(1-p)^{k-1} \geq 0$ et
+    $$
+      \sum_{k \in \N^{*}}p(1-p)^{k-1} = \sum_{k \in \N}p(1-p)^{k} = p \times \frac{1}{1-(1-p)} = 1
+    $$
+  %
+  %eg
+    Pour $\P = \mathscr G(p)$ où $p \in \oo{0,1}$,
+    $$
+      \P(2\N*) = \sum_{k \in \N^{*}}p(1-p)^{2k-1} = \frac{p}{1-p} \sum_{k \in \N^{*}} \big[(1-p)^{2}\big]^{k} = \frac{p}{1-p} \times \frac{(1-p)^{2}}{1-(1-p)^{2}} = \frac{1-p}{2-p}
+    $$
+  %
+- Pour $\Omega = \N$, soit $\lambda \in \lambda \in \R_{+}^{*}$. $\left(e^{-\lambda} \frac{\lambda^{k}}{k!}\right)_{k \in \N}$ est une distribution de probabilité sur $\N$. La probabilité $\P$ sur $(\N, \Part(\N))$ associée à cette distribution est appelée _loi de Poisson de paramètre $\lambda$_. Elle est notée $\P = \Poisson(\lambda)$. On a alors
+  $$
+    \forall k \in \N, \P(\{k\}) = e^{-\lambda}\frac{\lambda^{k}}{k!}
+  $$
+  %eg
+    $$
+      \P(2\N) = \sum_{k \in \N} e^{-\lambda}\frac{\lambda^{2k}}{(2k)!} = e^{-\lambda}\ch \lambda = \frac{1+e^{-2 \lambda}}{2}
+    $$
+    et
+    $$
+      \P(2\N+1) = \frac{1-e^{-2 \lambda}}{2}
+    $$
+    donc $\P(2\N+1) < \P(2\N)$.
+  %
+
+## Événements indépendants
+
+%def
+  Soit $(\Omega, \Tribu, \P)$ un espace probabilité.
+  1. Soit $(A,B) \in \Tribu^{2}$. On dit que $A$ et $B$ sont $\P$-indépendants si
+     $$
+       \P(A \cap B) = \P(A)\P(B)
+     $$
+  2. Soit $(A_{i})_{i \in I}$ une famille d’événements indexée par un ensemble non vide $I$.
+     - $(A_{i})_{i \in I}$ est une famille d’événements 2 à 2 $\P$-indépendants si
+       $$
+         \forall (i,j) \in I^{2}, i \ne j \implies \P(A_{i} \cap A_{j}) = \P(A) \P(A_{j})
+       $$
+     - $(A_{i})_{i \in I}$ est une famille d’événements $\P$-mutuellement indépendants si pour toute famille **finie** (non vide) $J$ de $I$, on a
+       $$
+         \P \left(\bigcap_{i \in J}A_{n}\right) = \prod_{i \in J} \P(A_{i})
+       $$
+%
+
+%callout Attention
+  L’indépendance mutuelle implique l’indépendance 2 à 2 mais la réciproque est fausse.
+%
+
+%eg
+  Considérons $\Omega = \icc{1,4}$ et $\P = \Unif(\Omega)$. Soient $A = \{1,2\}$, $B = \{1,3\}$ et $C = \{2,4\}$.
+  $$
+    \P(A \cap B) = \P(\{1\}) = \frac{1}{4} = \P(A) \times \P(B)
+  $$
+  et de même, $\P(A \cap C) = \P(A)\P(C)$ et $\P(B \cap C) = \P(B)\P(C)$. Or
+  $$
+    \P(A \cap B \cap C) = \P(\{1\}) = \frac{1}{4} \ne \P(A)\P(B)\P(C)
+  $$
+%
+
+%property
+  Soit $(\Omega, \Tribu, \P)$ un espace probabilisé.
+  1. Si $A$ et $B$ sont deux événements indépendants, alors $A$ et $\bar{B}$ le sont aussi.
+  2. Soit $(A_{i})_{i \in I}$ une famille d’événements mutuellement indépendants. Alors
+     - Si $J$ et $K$ sont deux parties finies disjointes de $I$, alors les événements $\bigcap_{i \in J}A_{i}$ et $\bigcap_{i \in K}A_{i}$ sont indépendants.
+     - La famille $(B_{i})_{i \in I}$ avec $B_{i} \in \{A_{i}, \bar{A_{i}}\}$ est constituée d’événements mutuellement indépendants.
+%
+
+%proof
+  1. On a $A = (A \cap B)\uplus (A \cap \bar{B})$ donc
+     $$
+       \P(A) = \P(A \cap B) + \P(A \cap \bar{B}) = \P(A)\P(B) + \P(A \cap \bar{B})
+     $$
+     donc
+     $$
+       \P(A \cap  \bar{B}) = \P(A)(1-\P(B)) = \P(A)\P(\bar{B})
+     $$
+  2. - $$
+         \begin{align*}
+           \P \left(\bigcap_{i \in J} A_{i} \cap  \bigcap_{i \in K}A_{i}\right) &= \P \left(\bigcap_{i \in I \uplus K}A_{i}\right) \\
+           &= \prod_{i \in J \uplus K}\P(A_{i}) & \text{(mutuelle indépendance)}\\
+           &= \prod_{i \in J}\P(A_{i}) \times \prod_{i \in K}\P(A_{i})\\
+           &= \P \left(\bigcap_{i \in I}A_{i}\right) \times  \P \left(\bigcap_{i \in K}A_{i}\right)
+         \end{align*}
+       $$
+     - Considérons la propriété
+       $$
+        \Prop(k): « \begin{cases}\P \left(\bigcap_{j \in J} A_{j} \cap \bigcap_{\ell \in K}\bar{A_{\ell}}\right) = \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K}\P(\bar{A_{ell}}) \\ \text{$J \subset I$ fini et $K \subset I$ non disjoints tels que $\abs{K} = k$}\end{cases} »
+       $$
+       - $\Prop(0)$ est vraie par indépendance mutuelle des $A_{i}$.
+       - Supposons $\Prop(0), \ldots, \Prop(k)$ vrsies pour $k < \abs{I}$ fixé dans $\N$. Soit $J$ fini et $\K$ de cardinal $k+1$ tels que $J \cap K = \emptyset$. Soit $i \in K$. $(A_{i}) \cup (A_{j})_{j \in J} \cup \big(\bar{A_{\ell}}\big)_{\ell \in K \setminus \{i\}}$ est une famille d’événements _mutuellement indépendants_ d’après $\Prop(0), \ldots, \Prop(k)$ donc $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $A_{i}$ sont des événements indépendants donc les événements $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $\bar{A_{i}}$ sont indépendants. Ainsi,
+         $$
+           \begin{align*}
+             \P \left( \left(\bigcap_{j \in J} A_{j} \cap  \bigcap_{\ell \in K \setminus \{i\}} \bar{A_{\ell}}\right) \cap \bar{A_{i}}\right) &= \P \left(\bigcap_{j \in J}A_{j} \cap \bigcap_{\ell \in K \setminus \{i\}}\bar{A_{\ell}}\right) \times \P(\bar{A_{i}}) \\
+             &\ueq{\Prop(k)} \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K \setminus \{i\}}\P(\bar{A_{\ell}}) \times \P(\bar{A_{i}})
+           \end{align*}
+         $$
+%
+
+%callout Attention
+  Soit $(A_{n})_{n \in \N}$ une famille d’événements. L’indépendance mutuelle des $A_{n}$ n’est pas équivalente à
+  $$
+    \forall n \in \N, \P \left(\bigcap_{k=0}^{n}A_{k}\right) = \prod_{k=0}^{n}\P(A_{k})
+  $$
+  %eg
+    Par exemple pour $\Omega = \icc{1,8}$ et $\P = \Unif(\Omega)$, si on pose $A_{1} = \{1,2,3,4\}$, $A_{2} = \{3,4,5,6\}$ et $A_{3} = \{1,2,3,5\}$, on a
+    - $\P(A_{1} \cap A_{2}) = \frac{1}{4} = \P(A_{1})\P(A_{2})$
+    - $\P(A_{1} \cap  A_{2} \cap A_{3}) = \P(\{3\}) = \frac{1}{8} = \P(A_{1})\P(A_{2})\P(A_{3})$
+    - $\P(A_{1} \cap A_{3}) = \frac{3}{8} \ne \P(A_{1})\P(A_{3})$
+  %
+%
+
+%rem
+  Soit $(\Omega, \Tribu, \P)$ un espace probabilisé. Soit $A$ un événement.
+  $$
+    \P(\Omega \cap A) = \P(A) = \P(A)\P(\Omega)
+  $$
+  donc $\Omega$ et $A$ sont indépendants donc $\emptyset$ et $A$ le sont aussi.
+  $$
+    \P(A \cap A) = \P(A)^{2} \iff \P(A) = \P(A)^{2} \iff \P(A) \in \{0,1\}
+  $$
+%
+
+## Événements de probabilité 0 ou 1
+
+Soit $\Omega_{1} = \{(0)_{n \in \N}\} \cup \{(1)\} \cup \{(0, \ldots, 0,1) \where n \in \N^{*}\}$. On pose $\P_{1}(\{(1)\})= \frac{1}{2}$ et
+$$
+  \forall n \in \N^{*}, \P_{1}(\{(0, \ldots, 0,1)\}) = \left(\frac{1}{2}\right)^{n+1}
+$$
+On peut alors étendre $\P_{1}$ de façon unique en une probabilité sur $(\Omega_{1}, \Part(\Omega_{1}))$ si on pose
+$$
+  \P_{1}(\{(0)_{n \in \N^{*}}\}) = 1- \frac{1}{2} - \sum_{n \in \N^{*}} \left(\frac{1}{2}\right)^{n+1} = 1- \sum_{k \in \N^{*}} \left(\frac{1}{2}\right)^{n} = 1 - \frac{1}{2} \times  \frac{1}{1-\frac{1}{2}} = 0
+$$
+
+%def
+  Soit $(\tauw, \Tribu,\P)$ un espace probabilisé.
+  1. $A \in \Tribu$ est appelé événement _$\P$-négligeable_ si $\P(A) = 0$.
+  2. $A \in \Tribu$ est appelé événement _$\P$-presque sûr_ si $\P(A) = 1$.
+  On a alors $A$ presque sûr si et seulement si $A^{\complement}$ négligeable.
+  3. Soit $\varphi(\omega)$ une assertion dépendante de $\omega \in \Omega$. Si $A = \{\omega \in \Omega \where \varphi(\omega)\}$ est un événement $\P$-presque sûr, alors on dit que $\varphi$ est une propriété _vraie $\P$-presque sùrement_.
+%
+
+%eg
+  Les événements $\P_{1}$-négligeables de $\P(\Omega_{1})$ sont $\emptyset$ et $\{(0)_{n \in \N^{*}}\}$ donc les événemente $\P_{1}$-presque sûrs sont $\Omega_{1}$ et $\Omega_{1} \setminus \{(0)_{n \in \N^{*}}\}$.
+  $$
+    \Omega_{1} \setminus \{(0)_{n \in \N^{*}}\} = \{\omega \in \Omega_{1} \where \abs{\omega} < +\infty\}
+  $$
+  est un événement $\P$-presque sûr. Avoir une suite de lancers de longueur finie est une propriété vraie $\P_{1}$-presque sûrement. On peut donc dire « le jeu se termine presque sûrement ».
+%
+
+%prop
+  Soit $(\Omega, \Tribu, \P)$ un espace probabilisé.
+  1. Toute réunion au plus dénombrable d’événements $\P$-négligeables est $\P$-négligeable.
+  2. Toute intersection au plus dénombrable d’événements $\P$-presque sûrs est un événement $\P$-presque sûr.
+%
+
+%proof
+  Soit $D$ un ensemble au plus dénombrable. Soit $(A_{d})_{d \in D}$ une famille d’événements.
+  1. Supposons $\forall d \in D, \P(A_{d})=0$. On a
+     $$
+       0 \leq \tp \left(\bigcup_{d \in D}A_{d}\right) \leq \sum_{d \in D}\P(A_{d}) = 0
+     $$
+     donc $\P \left(\bigcup_{d \in D}A_{d}\right) = 0$.
+  2. Supposons $\forall d \in D, \tp(A_{d}) = 1$ donc $\forall d \in D, \P(\bar{A_{d}}) = 0$ donc $\bigcup_{d \in D}\bar{A_{d}}$ est négligeable donc $\bigcap_{d \in D} A_{d}$ est presque sûr.
+%
+
+%offprog
+  %lemma Lemme de Borel-Cantelli
+    Soit $(\Omega, \Tribu, \P)$ un espace probabilisé. Soit $(A_{n})_{n \in \N}$ une famille d’événements.
+    1. Si $\sum_{n \geq 0}\P(A_{n})$ converge, alors
+       $$
+         \P \left(\limsup_{n \in \N}A_{n}\right) = 0
+       $$
+    2. Si les événements $(A_{n})$ sont mutuellement indépendants et $\sum_{n \geq 0}\P(A_{n})$ diverge, alors
+       $$
+         \P \left(\limsup_{n \in \N} A_{n}\right) = 1
+       $$
+       i.e. une infinité de $A_{n}$ est réalisé $\P$-presque sûrement.
+  %
+
+  %proof
+    $\limsup_{n \in \N} A_{n} = \downbigcap_{n \in \N}\bigcup_{k \geq n}A_{k}$ donc
+    $$
+      \P \left(\limsup_{n \in \N}A_{n}\right) = \lim_{n\to+\infty} \P \left(\bigcup_{k \geq n}A_{k}\right)
+    $$
+    1. $$
+         0 \leq \P \left(\bigcup_{k \geq n} A_{k}\right) \leq \sum_{k \in \icc{n,+\infty}}\P(A_{k}) = \sum_{k=n}^{+\infty}\P(A_{k}) \arrowlim{n\to+\infty} 0
+       $$
+       donc $\P \left(\limsup_{n \in \N}A_{n}\right) = 0$.
+    2. $\P \left(\bigcup_{k \geq n}A_{k}\right) = \lim_{N \to+\infty}\P \left(\bigcup_{k=n}^{N}A_{k}\right)$ or
+       $$
+         \P \left(\bigcap_{k=n}^{N}\bar{A_{k}}\right) = \prod_{k=n}^{N}\P (\bar{A_{k}}) = \prod_{k=n}^{N}(1-\P(A_{k}))
+       $$
+       $\forall x \in \R, e^{x} \geq 1+x$ donc $\forall x \in \cc{0,1}, e^{-x} \geq 1 - x \geq 0$ d’où
+       $$
+         \P \left(\bigcap_{k=n}^{N}\bar{A_{k}}\right) \leq \prod_{k=n}^N e^{-\P(A_{k})} = e^{-\sum_{k=n}^{N}\P(A_{k})} \arrowlim{N\to+\infty}0
+       $$
+       donc $\lim_{N\to+\infty}\P \left(\bigcup_{k=n}^{N} A_{k}\right) = 1$, i.e. $\P \left(\bigcup_{k \geq n} A_{k}\right) = 1$ pour tout entier $n \in \N$, donc
+       $$
+         \P \left(\limsup_{n \in \N}A_{n}\right) = 1
+       $$
+  %
 %
