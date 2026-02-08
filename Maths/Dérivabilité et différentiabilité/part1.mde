@@ -46,8 +46,8 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
 %
 
 %def
-  Soit $f: I \longrightarrow E$ un arc paramétré. Soit $t_{0} \in I$. On dit que $f$ est dérivable en $t_{0}$ si l’une des conditions équivalentes suivantes est vériiée :
-  1. $t \longmapsto \frac{f(t)-f(t_{0})}{t-t_{0}} \in E$ (définie sur $I \setminus \{t_{0}\}$) admet une limite dans $E$ en $t_{0}$ (on note cette limite $f'(t_{0})$).
+  Soit $f: I \longrightarrow E$ un arc paramétré. Soit $t_{0} \in I$. On dit que $f$ est dérivable en $t_{0}$ si l’une des conditions équivalentes suivantes est vérifiée :
+  1. $\displaystyle t \longmapsto \frac{f(t)-f(t_{0})}{t-t_{0}} \in E$ (définie sur $I \setminus \{t_{0}\}$) admet une limite dans $E$ en $t_{0}$ (on note cette limite $f'(t_{0})$).
   2. $f$ possède un développement limité à l’ordre 1 en $t_{0}$ : il existe $u \in E$ et $\varepsilon \in \Func(I,E)$ tels que
      $$
        \forall t \in I, f(t) = f(t_{0}) + (t-t_{0})u + (t-t_{0})\varepsilon(t)

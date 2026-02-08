@@ -9,20 +9,20 @@ On admet l’axiome du choix dans sa forme la plus générale.
     \Omega_{1} = \{(0)_{n \in \N^{*}}\} \cup \{(1)\} \cup \bigcup_{n \in \N^{*}}\{0\}^{n} \times \{1\}
   $$
   c’est l’ensemble des résultats ou « issues » possibles. Il est ici dénombrable.
-- ++Expérience aléatoire n°2~:++ On lance une pièce de façon infinie. L’univers est $\Omega_{2} f \{0,1\}^{\N^{*}}$. On a $\Omega_{2} \approx \Part(\N^{*}) \approx \R$ donc $\Omega_{2}$ n’est pas dénombrable. On définit l’événement $A_{n}$: « ne pas obtenir face avant le n-ième lancer » soit $A_{n} = \{0\}^{n-1} \times  \{0,1\}^{\ico{n,+\infty}} \in \Part(\Omega_{2})$.
+- ++Expérience aléatoire n°2~:++ On lance une pièce de façon infinie. L’univers est $\Omega_{2} = \{0,1\}^{\N^{*}}$. On a $\Omega_{2} \approx \Part(\N^{*}) \approx \R$ donc $\Omega_{2}$ n’est pas dénombrable. On définit l’événement $A_{n}$: « ne pas obtenir face avant le n-ième lancer » soit $A_{n} = \{0\}^{n-1} \times  \{0,1\}^{\ico{n,+\infty}} \in \Part(\Omega_{2})$.
 
 ## Tribus
 
-%def Axiomatique de Colmodorov
+%def Axiomatique de Kolmogorov
   Soit $\Omega$ un ensemble. Une partie $\Tribu$ de $\Part(\Omega)$ de $\Part(\Omega)$ est appelée _tribu_ sur $\Omega$ (ou $\sigma$-algèbre) si~:
   - $\Omega \in \Tribu$
   - $\forall A \in \Tribu, A^{\complement} = \bar{A} \in A$
-  - Si $(A_{n})_{n \in \N}$ est une suite de partie de $\Tribu$, alors $\bigcup_{n \in \N} A_{n} \in \Tribu$.
+  - Si $(A_{n})_{n \in \N}$ est une suite de parties de $\Tribu$, alors $\bigcup_{n \in \N} A_{n} \in \Tribu$.
   On dit que $(\Omega, \Tribu)$ est un _espace probabilisable_.
 %
 
 %eg
-  1. $\Part(\Omega)$ est une tribu sur $\Omega$ appelée _tribu discrète_ sur $\Omega$. C! est celle que l’on considére systématiquement si $\Omega$ est au plus dénombrable. On ne la considère jamais si $\Omega$ n’est pas au plus dénombrable.
+  1. $\Part(\Omega)$ est une tribu sur $\Omega$ appelée _tribu discrète_ sur $\Omega$. C’est celle que l’on considére systématiquement si $\Omega$ est au plus dénombrable. On ne la considère jamais si $\Omega$ n’est pas au plus dénombrable.
   2. $\{\emptyset, \Omega\}$ est une tribu sur $\Omega$ appelée _tribu grossière_ et est rarement considérée.
   3. Soit $f: \Omega \longrightarrow \Omega'$ une application entre deux ensembles. Soit $A'$ une tribu sur $\Omega$. Posons $A = \big\{f^{-1}(A') \where A' \in \Tribu\big\}$.
      - Comme $\Omega' \in \Tribu$ et $f^{-1}(\Omega') \in \Omega$, on a $\Omega \in \Tribu$.
@@ -31,7 +31,8 @@ On admet l’axiome du choix dans sa forme la plus générale.
        $$
          \bigcup_{n \in \N}A_{n} = f^{-1} \left(\bigcup_{n \in \N} A'_{n}\right)
        $$
-       or $\Tribu'$ est une tribu donc $\bigcup_{n \in \N}A'_{n} \in \Tribu'$ donc $\bigcup_{n \in \N} A_{n} \in \Tribu$ donc $\Tribu$ est une tribu sur $\Omega$.
+       or $\Tribu'$ est une tribu donc $\bigcup_{n \in \N}A'_{n} \in \Tribu'$ donc $\bigcup_{n \in \N} A_{n} \in \Tribu$.
+     $\Tribu$ est donc une tribu sur $\Omega$.
 %
 
 %property
@@ -95,7 +96,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
     $$
       \sigma(\G) = \bigcap_{\substack{\Tribu \text{ tribu sur } \Omega\\ \G \subset \Tribu}}\Tribu
     $$
-    C’est la plus petite tribu (au sens de l’inclusion) sur $\Omega$ contenant $\G$: c’est la _tribue engendrée_ par $\G$.
+    C’est la plus petite tribu (au sens de l’inclusion) sur $\Omega$ contenant $\G$: c’est la _tribu engendrée_ par $\G$.
   %
 
   %eg
@@ -125,7 +126,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %def Espace probabilisé, (loi de) probabilité
   On appelle espace probabilisé tout triplet $(\Omega, \Tribu, \P)$ où $\Tribu$ est une tribu sur un ensemble $\Omega$ et $\P$ une (loi de) probabilté sur $(\Omega, \Tribu)$, à savoir $\P$ est une application de $\Tribu$ dans $\cc{0,1}$ telle que
   - $\P(\Omega) = 1$
-  - Pour toute suite d’événements $A_{n} \in \Tribu$ deux à deux disjointes, la suite $\big(\P(A_{n})\big)_{n \in \N}$ est sommable et
+  - Pour toute suite d’événements $A_{n} \in \Tribu$ deux à deux disjoints, la suite $\big(\P(A_{n})\big)_{n \in \N}$ est sommable et
     $$
       \sum_{n \in \N}\P(A_{n}) = \P \left(\biguplus_{n \in \N}A_{n}\right)
     $$
@@ -272,7 +273,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %proof
   On a
   $$
-    S = \bigcup_{n \in \N^{*}} \underbrace{\{\omega \in \Omega \where q_{\omega} > \frac{1}{n}\}}_{S_{n}}
+    S = \bigcup_{n \in \N^{*}} \underbrace{\left\{\omega \in \Omega \where q_{\omega} > \frac{1}{n}\right\}}_{S_{n}}
   $$
   donc
   $$
@@ -350,7 +351,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %proof
   1. Soit $\Omega$ au plus dénombrable. Soit $\P: \Part(\Omega) \longrightarrow \cc{0,1}$ une probabilité sur $(\Omega, \Part(\Omega))$. Posons, pour tout $\omega \in \Omega$, $\P(\{\omega\}) = q_{\omega}$. On a pour tout $\omega \in \Omega$, $q_{\omega} \geq 0$ et
      $$
-       \sum_{\omega \in \Omega}q_{\omega} = \sum_{\omega \in \Omega}\P(\{\omega\}) = \P \left(\biguplus_{\omega \in \Omega}\{\omega\}\right) = \P(\omega) = 1
+       \sum_{\omega \in \Omega}q_{\omega} = \sum_{\omega \in \Omega}\P(\{\omega\}) = \P \left(\biguplus_{\omega \in \Omega}\{\omega\}\right) = \P(\Omega) = 1
      $$
      donc $(q_{\omega})_{\omega \in \Omega}$ est une distribution de probabilité discrète sur $\Omega$. Pour $A \in \Part(\Omega)$, on a
      $$
@@ -362,9 +363,9 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %
 
 ++Lois de probabilité usuelles sur les ensembles au plus dénombrables.++
-- $(\Omega f \{0,1\}, \Part(\Omega))$. Soit $p \in \oo{0,1}$. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associée à la distribution discrète $(1-p,p)$ sur $\Omega$ est appeléè _loi de Bernoulli de paramètre $p$_ et on note $\P = \B(p)$. On a donc
+- $(\Omega = \{0,1\}, \Part(\Omega))$. Soit $p \in \oo{0,1}$. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associée à la distribution discrète $(1-p,p)$ sur $\Omega$ est appelée _loi de Bernoulli de paramètre $p$_ et on note $\P = \B(p)$. On a donc
   ~ $\P(\{1\}) = p$  ~ $\P({0}) = 1-p$
-- Soit $\Omega$ fini de cardinal non nul. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associéè à la distribution $\left(\frac{1}{\abs{\Omega}}\right)_{\omega \in \Omega}$ est appelée _loi uniforme sur $\Omega$_. On la note $\P = \Unif(\Omega)$.. On a
+- Soit $\Omega$ fini de cardinal non nul. L’unique probabilité $\P$ sur $(\Omega, \Part(\Omega))$ associéè à la distribution $\left(\frac{1}{\abs{\Omega}}\right)_{\omega \in \Omega}$ est appelée _loi uniforme sur $\Omega$_. On la note $\P = \Unif(\Omega)$. On a
   $$
     \forall \omega \in \Omega, \P(\{\omega\}) = \frac{1}{\abs{\Omega}}
   $$
@@ -517,7 +518,7 @@ $$
 $$
 
 %def
-  Soit $(\tauw, \Tribu,\P)$ un espace probabilisé.
+  Soit $(\Omega, \Tribu,\P)$ un espace probabilisé.
   1. $A \in \Tribu$ est appelé événement _$\P$-négligeable_ si $\P(A) = 0$.
   2. $A \in \Tribu$ est appelé événement _$\P$-presque sûr_ si $\P(A) = 1$.
   On a alors $A$ presque sûr si et seulement si $A^{\complement}$ négligeable.
@@ -542,10 +543,10 @@ $$
   Soit $D$ un ensemble au plus dénombrable. Soit $(A_{d})_{d \in D}$ une famille d’événements.
   1. Supposons $\forall d \in D, \P(A_{d})=0$. On a
      $$
-       0 \leq \tp \left(\bigcup_{d \in D}A_{d}\right) \leq \sum_{d \in D}\P(A_{d}) = 0
+       0 \leq \P \left(\bigcup_{d \in D}A_{d}\right) \leq \sum_{d \in D}\P(A_{d}) = 0
      $$
      donc $\P \left(\bigcup_{d \in D}A_{d}\right) = 0$.
-  2. Supposons $\forall d \in D, \tp(A_{d}) = 1$ donc $\forall d \in D, \P(\bar{A_{d}}) = 0$ donc $\bigcup_{d \in D}\bar{A_{d}}$ est négligeable donc $\bigcap_{d \in D} A_{d}$ est presque sûr.
+  2. Supposons $\forall d \in D, \P(A_{d}) = 1$ donc $\forall d \in D, \P(\bar{A_{d}}) = 0$ donc $\bigcup_{d \in D}\bar{A_{d}}$ est négligeable donc $\bigcap_{d \in D} A_{d}$ est presque sûr.
 %
 
 %offprog
@@ -584,4 +585,294 @@ $$
          \P \left(\limsup_{n \in \N}A_{n}\right) = 1
        $$
   %
+
+  %eg
+    Considérons l’espace probabilisé $(\N^{*},\Part(\N^{*}))$. Peut-on trouver une probabilité $\P$ sur cet espace telle que $\forall \in n\N, \P(n \N^{*}) = \frac{1}{n}$ ?
+    ~
+    Soient $p_{1} < \cdots < p_{k}$ des nombres premiers. Supposons l’existence de $\P$.
+    $$
+      \P \big(p_{1}\N^{*} \cap  \cdots \cap p_{k}\N^{*}\big) = \P \big((p_{1} \cdots p_{k})\N^{*}\big) = \frac{1}{p_{1} \cdots p_{k}} = \prod_{i=1}^{k}\P(p_{i}\N^{*})
+    $$
+    donc $(p\N^{*})_{p \in \Prime}$ est une famille d’événements mutuellement indépendants. Or
+    $$
+      \left(\P(p\N^{*})\right)_{p \in \Prime} = \left(\frac{1}{p}\right)_{p \in \P} \notin \ell^{1}(\Prime)
+    $$
+    en effet,((Résultat démontré dans le DS n°4))
+    $$
+      \sum_{\substack{p \in \Prime \\ p \leq n}}\frac{1}{p} = \ln(\ln n) + O(1)
+    $$
+    donc $\P(\limsup_{p \in \Prime} (p\N^{*}))=1$ donc $\limsup_{p \in \Prime} (p\N^{*}) \ne\emptyset$ donc il existe un entier $n \in \N^{*}$ divisible par une infinité de nombres premiers, ce qui est faux. $\P$ n’existe donc pas.
+  %
+%
+
+## Probabilité conditionnelle
+
+Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
+
+%def Définition-Proposition
+  Soit $B \in \Tribu$ avec $\P(B) > 0$. L’application
+  $$
+    \P_{B}: \applic{\Tribu}{\cc{0,1}}{A}{\P_{B}(A) = \frac{\P(A \cap B)}{\P(B)}}
+  $$
+  est une probabilité sur $(\Omega, \Tribu)$ appelée _probabilité conditionnelle sachant $B$_. On note aussi((Attention, $A\mid B$ n’existe pas, ce n’est pas un événement mais une notation.))
+  $$
+    \forall A \in \Tribu, \P_{B} = ``P(A\mid B)"
+  $$
+  d’où
+  $$
+    \P(A \cap B) = ``\P(A\mid B)" \times \P(B)
+  $$
+%
+
+%proof
+  - $\forall A \in \Tribu, A \cap B \subset B$ donc $\forall A \in \Tribu, 0 \leq \P(A \cap B) \leq \P(B)$ donc $\forall A \in \Tribu, 0 \leq \frac{\P(A \cap B)}{\P(B)} \leq 1$
+  - $\P_{B}(\Omega) = \frac{\P(\Omega \cap B)}{\P(B)} = \frac{\P(B)}{\P(B)} = 1$
+  - Soit $(A_{n})_{n \in \N}$ une famille d’événements deux à deux disjoints.
+    $$
+      \P_{B} \left(\biguplus_{n \in \N}A_{n}\right) = \frac{\P  \left(\left(\biguplus_{n \in \N}A_{n}\right) \cap B\right)}{\P(B)} = \frac{\P \left(\biguplus_{n \in \N}(A_{n} \cap B)\right)}{\P(B)} = \frac{1}{\P(B)} \sum_{n \in \N}\P(A_{n} \cap B) = \sum_{n \in \N}\P_{B}(A_{n})
+    $$
+%
+
+### Formule des probabiltés composées
+
+%prop
+  Soient $n \geq 2$ et $A_{n}, \ldots, A_{n}$ des événements tels que $\P(A_{2} \cap  \cdots \cap A_{n}) > 0$. Alors,
+  $$
+    \begin{align*}
+      \P(A_{1} \cap \cdots \cap A_{n}) &= \P(A_{1} \mid A_{2} \cap \cdots \cap A_{n}) \\
+      &\times  \P(A_{2} \mid A_{3} \cap \cdots \cap A_{n})\\
+      &\vdots\\
+      &\times \P(A_{n-1} \mid A_{n}) \times \P(A_{n})
+    \end{align*}
+  $$
+%
+
+%proof
+  Pour tout $k \in \icc{2,n}$, $(A_{k} \cap \cdots \cap A_{n}) \supset (A_{2} \cap  \cdots \cap A_{n})$ donc $\P(A_{k} \cap \cdots \cap A_{n}) > 0$.
+  $$
+    \begin{align*}
+      \left[\prod_{k=1}^{n-1}\P(A_{k} \mid A_{k+1} \cap \cdots \cap A_{n})\right] \times \P(A_{n}) &= \left[\prod_{k=1}^{n}\frac{\P(A_{k} \cap A_{k-1} \cap  \cdots \cap A_{n})}{\P(A_{k+1} \cap \cdots \cap A_{n})}\right] \times \P(A_{n}) \\
+        &= \frac{\P(A_{1} \cap \cdots \cap A_{n})}{\P(A_{n})} \times \P(A_{n}) \\
+        &= \P(A_{1} \cap \cdots \cap A_{n})
+    \end{align*}
+  $$
+%
+
+%eg Trousseau de clés
+  On dispose de $n$ clés. Une seule ouvre la porte. Les clés sont identiques. On teste les clés les unes après les autres. Calculons la probabilité que la $k$-ième tentative ouvre la porte. Notons $A_{i}$ l’événement « le $i$-ième essai est un échec » et notons $\pi_{k} = \P(A_{1} \cap \cdots \cap A_{k-1} \cap \bar{A_{k}})$. On a
+  $$
+    \begin{align*}
+      \pi_{k} &= \P(\bar{A_{k}} \mid A_{k-1} \cap \cdots \cap A_{1}) \times \P(A_{k-1}\mid A_{k-1} \cap \cdots \cap  A_{1}) \times \cdots \\
+      &= \frac{1}{n-(k-1)} \times \frac{n-(k-2)-1}{n-(k-2)} \times  \cdots \times \frac{n-2}{n-1} \times  \frac{n-1}{n} \\
+      &= \frac{1}{n}
+    \end{align*}
+  $$
+%
+
+### Formule des probabilités totales
+
+%def
+  Soit $D$ un ensemble au plus dénombrable. Une famille d’événements $(A_{d})_{d \in D}$ est appelé _système quasi-complet_ (d’événements) si
+  - Les $A_{d}$ sont incompatibles (disjoints) deux à deux
+  - $\P \left(\biguplus_{d \in D} A_{d}\right) = 1$
+%
+
+%rem
+  Tout système complet au plus dénombrable d’événements est un système quasi-complet.
+%
+
+%prop Formule des probabilités totales
+  Soit $(\Omega_{d})_{d \in D}$ un système quasi-complet d’événements. On a
+  $$
+    \forall A \in \Tribu, P(A) = \sum_{d \in D}\P(A \cap \Omega_{d}) = \sum_{\substack{d \in D\\ \P(\Omega_{d})>0}}\P(A \mid \Omega_{d})\P(\Omega_{d})
+  $$
+%
+
+%proof
+  On a
+  $$
+    A = \left(A \cap \biguplus_{d \in D} \Omega_{d}\right) \uplus \underbrace{\left(A \cap \bar{\biguplus_{d \in D}\Omega_{d}}\right)}_{A'}
+  $$
+  donc
+  $$
+    \P(A) = \P \left(\biguplus_{d \in D}A \cap \Omega_{d}\right) + \P(A')
+  $$
+  or $A' \subset \bar{\biguplus_{d \in D}\Omega_{d}}$ d’où $\P(A') \leq 1-\P \left(\biguplus_{d \in D}\Omega_{d}\right) = 0$ donc $\P(A')=0$. Ainsi,
+  $$
+    \P(A) = \sum_{d \in D}\P(A \cap \Omega_{d}) = \sum_{\substack{d \in D \\ \P(\Omega_{d}) > 0}}\P(A \cap \Omega_{d}) = \sum_{\substack{d \in D \\ \P(\Omega_{d}) > 0}}\P(A \mid \Omega_{d}) \P(\Omega_{d})
+  $$
+%
+
+%eg
+  Considérons un jeu de pile ou face infini. $\Omega_{2} = \{0,1\}^{\N^{*}}$ (0 pour pile et 1 pour face). La pièce est équilibrée ainsi~:
+  ~ probabilité $p \oo{0,1}$ d’obtenir pile  ~ probabilité $q=1-p$ d’obtenir face.
+  Notons $A_{n}$ l’événement « obtenir pour la première fois deux faces consécutives au n-ième lancer » et posons pour $n \in \N^{*}$, $a_{n} = \P(A_{n})$. On a
+  ~ $a_{1} = \P(\emptyset) = 0$  ~ $a_{2} = q^{2}$  ~ $a_{3} = pq^{2}$
+  Notons $P_{i}$ l’événement « obtenir pile au i-ème lancer » et $F_{i}$ l’événement « obtenir face au i-ème lancer ». $(P_{1}\Phi_{1})$ est un système complet d’événements, tout comme $(P_{1}, F_{1} \cap P_{2}, F_{1} \cap F_{2})$. Soit $n \geq 2$.
+  $$
+    \begin{align*}
+      a_{n+2} = \P(A_{n+1}) &= \P(A_{n+2}\mid P_{1}) \times \P(P_{1}) \\
+      &+ \P(A_{n+2} \mid F_{1} \cap P_{2}) \times \P(F_{1} \cap P_{2}) \\
+      &+ \P(A_{n+2} \mid F_{1} \cap F_{2}) \times \P(F_{1} \cap F_{2}) \\
+      &= \P(A_{n+1}) \times p + \P(A_{n})\times q \times p + 0
+    \end{align*}
+  $$
+  donc $\forall n \geq 2, a_{n+2} = pa_{n+1} + pqa_{n}$ et cette formule est aussi vraie pour $n=1$ donc
+  $$
+    \forall n \in \N^{*}, a_{n+2} = p a_{n+1}+pqa_{n}
+  $$
+  On souhaite calculer
+  $$
+    s = \P \left(\biguplus_{n \geq 2}A_{n}\right) = \sum_{n=2}^{+\infty}\P(A_{n})
+  $$
+  On a
+  $$
+    s = a_{2} + \sum_{n=3}^{+\infty}p a_{n-1} + pqa_{n-2}
+  $$
+  soit $s = a_{2} + ps + pq \sum_{n=1}^{+\infty}a_{n}$ d’où $s = q^{2} + (p+pq)s$ donc $(q-pq)s = q^{2}$ i.e. $q^{2}s = q^{2}$ soit $s=1$. On obtient deux faces consécutifs $\P$-presque sûrement.
+%
+
+### Formule de Bayes
+
+%prop
+  Soit $(\Omega_{d})_{d \in D}$ un système quasi-complet. Soit $A \in \Tribu$ avec $\P(A) > 0$. On a, pour tout $d \in D$,
+  $$
+    \P(\Omega_{d} \mid  A) = \frac{\P(\Omega_{d} \cap A)}{\P(A)} = \frac{\P(\Omega_{d} \cap A)}{\sum_{d \in D}\P(\Omega_{d} \cap A)}
+  $$
+%
+
+## Variables aléatoires réelles
+
+%def
+  Soit $(\Omega,\Tribu)$ un espace probabilisable. Soit $E$ un ensemble quelconque. Une application $X: \applic{\Omega}{E}{\omega}{X(\omega)}$ est appelée _variable aléatoire discrète_ sur $(\Omega, \Tribu)$ si
+  - $X(\Omega)$ est une partie au plus dénombrable de $E$
+  - $\forall x \in X(\Omega), \underbrace{X^{-1}(\{x\})}_{(X=x)} = \{\omega \in \Omega \where X(\omega) = x\} \in \Tribu$
+  Si $E=\N$ (resp. $\Z,\R,\C$), alors $X$ est une variable aléatoire discrète entière (resp. entière, réelle, complexe) sur $(\Omega,\Tribu)$. On écrit alors $X \in L^{0}(\Omega,\Tribu)$.
+%
+
+%eg
+  - Soit $A$ un événement. Considérons
+    $$
+      \1_{A}: \applic{\Omega}{\R}{\omega}{\begin{cases}1 \if \omega \in A \\ 0 \else\end{cases}}
+    $$
+    - $\1_{A}(\Omega) \subset \{0,1\}$
+    - $\1_{A}^{-1}(\{1\}) = A \in \Tribu$ et $(\1_{A} = 0) = A^{\complement} \in \Tribu$
+    donc $\1_{A} \in L^{0}(\Omega,\Tribu)$.
+  - Soit $(A_{n})_{n \in \N^{*}}$ une suite d’événements deux à deux disjoints. Posons
+    $$
+      X: \applic{\Omega}{\R}{\omega}{\sum_{n=1}^{+\infty}\frac{1}{n}\1_{A_{n}}(\omega)}
+    $$
+    - $X(\Omega) \subset \{0\} \times \left\{\frac{1}{n}\where n \in \N^{*}\right\} \approx\N$ donc $X(\Omega)$ est au plus dénombrable.
+    - pour tout $n \in \N^{*}$, $\left(X = \frac{1}{n}\right) = A_{n} \in \Tribu$ et
+      $$
+        (X=0) = \left(\bigcup_{n \in \N^{*}}A_{n}\right)^{\complement} = \bigcap_{n \in \N^{*}}A_{n}^{\complement} \in \Tribu
+      $$
+      donc $X \in L^{0}(\Omega,\Tribu)$.
+%
+
+%rem
+  1. Si $X: \Omega \longrightarrow E$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$, alors
+     $$
+       \forall A \in \Part(E), X^{-1}(A) \{\omega \in \Omega \where X(\omega) \in A\} \in \Tribu
+     $$
+     En effet,
+     $$
+       (X \in A) = \Big(X \in \big(A \cap X(\omega)\big)\Big) = \bigcup_{x \in \underbrace{A \cap X(\omega)}_{\text{au plus dénombrable}}}(X=x) \in \Tribu
+     $$
+  2. Si $X: \Omega \longrightarrow \R$ est une variable aléatoire (discrète) sur $(\Omega, \Tribu)$, alors
+     $$
+       \forall x \in \R, (X \leq x) = (X \in \oc{-\infty, x}) \in \Tribu
+     $$
+     et si $a < b$ sont deux réels, alors $(a < X < b) = (X \in \oo{a,b}) \in \Tribu$.
+%
+
+%prop
+    Soit $X: (\Omega,\Tribu) \longrightarrow E$ une variable aléatoire discrète. Si $f: X(\Omega) \longrightarrow F$ est une application définie sur $X(\Omega)$, alors $f\circ X = ``f(X)": \applic{\Omega}{F}{\omega}{f(X(\omega))}$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$.
+%
+
+%proof
+  - $X(\Omega)$ est au plus dénombrable donc $``f(X)(\Omega)"=f(X(\Omega))$ est une partie au plus dénombrable de $F$.
+  - Soit $x \in "f(X)"(\Omega)$.
+    $$
+      \big("f(X)" = x\big) = (f\circ X = x) = (X \in \underbrace{f^{-1}(\{x\})}_{\in \Part(E)}) \in \Tribu
+    $$
+%
+
+%prop
+  Soient $X_{1}, \ldots, X_{n}$ des applications de $\Omega$ dans respectivment $E_{1}, \ldots, E_{n}$. Posons
+  $$
+    Z: \applic{\Omega}{E_{1} \times \cdots \times E_{n}}{\omega}{\big(X_{1}(\omega), \ldots, X_{n}(\omega)\big)}
+  $$
+  Alors $Z$ est une variable aréatoire discrète sur $(\Omega,\Tribu)$ si et seulement si $X_{1}, \ldots, X_{n}$ le sont. Si tel est le cas, alors $Z$ est appelé _vecteur aléatoire_ de composante aléatoire $X_{1}, \ldots, X_{n}$.
+%
+
+%proof
+  - Supposons que $Z$ est une variable aléatoire discrète. Soit $k \in \icc{1,n}$. Posons $\pi_{k}: \applic{E_{1} \times \cdots \times E_{n}}{E_{k}}{(x_{1}, \ldots, x_{n})}{x_{k}}$. Alors $\pi_{k}(Z) = X_{k}$ est alors une variable aléatoire discrète sur $(\Omega,\Tribu)$.
+  - Supposons que $X_{1}, \ldots, X_{n}$ sont des variables aléatoires discrètes sur $(\Omega,\Tribu)$.
+    - $Z(\Omega) \subset X_{1}(\Omega) \times \cdots \times X_{n}(\Omega)$ donc $X_{1}(\Omega) \times  \cdots \times X_{n}(\Omega)$ étant au plus dénombrable, $Z(\Omega)$ l’est également.
+    - Soit $x \in Z(\Omega)$. Il existe $(x_{1}, \ldots, x_{n}) \in X_{1}(\Omega) \times \cdots \times X_{n}(\Omega)$ tel que $x = (x_{1}, \ldots, x_{n})$.
+      $$
+        (Z=x) = \big((X_{1}, \ldots, X_{n}) = (x_{1}, \ldots, x_{n})\big) = (X_{1}=x_{1}) \cap \cdots \cap (X_{n} = x_{n}) \in \Tribu
+      $$
+    donc $Z$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$.
+%
+
+%cor
+  1. $L^{0}_{\K}(\Omega,\Tribu)$ est une sous-algèbre de $(\K^{\Omega},+, \times, \cdot)$.
+  2. Si $(X_{1}, \ldots, X_{n}) \in L^{0}_{\R}(\Omega,\Tribu)$, alors
+     ~ $X_{1} + \cdots + X_{n}$  ~ $\abs{X_{1} + \cdots + X_{n}}$  ~ $\max(X_{1}, \ldots, X_{n})$  ~ $\min(X_{1}, \ldots, X_{n})$  ~ $\lambda_{1} X_{1} + \cdots + \lambda_{n}X_{n}$  ~ $X_{1} \times \cdots \times X_{n}$
+     sont des variables aléatoires discrètes sur $(\Omega,\Tribu)$.
+%
+
+%proof
+  1. $\1_{\Omega} = \tilde{1} \in L^{0}_{\K}(\Omega,\Tribu)$. Soit $(X,Y) \in L^{0}_{\K}(\Omega,\Tribu)^{2}$. Soit $(\lambda, \mu) \in \K^{2}$. Alors $Z = (X,Y) : \omega \longmapsto \big(X(\omega), Y(\omega)\big) \in \K^{2}$ est une variable aléatoire discrète. Si
+     ~ $f: \applic{\K^{2}}{\K}{(x,y)}{\lambda x + \mu y}$  ~ $g: \applic{\K^{2}}{\K}{(x,y)}{x \times y}$
+     alors $f(Z) = \lambda X + \mu Y \in L^{0}(\Omega,\Tribu)$ et $g(Z) = X \times Y \in L^{0}(\Omega,\Tribu)$.
+  2. $Z = (X_{1}, \ldots, X_{n}): \Omega \longrightarrow \R^{n}$ est une variable aléatoire discrète si $h: \applic{\R^{n}}{\R}{(x_{1}, \ldots, x_{n})}{\min(x_{1}, \ldots, x_{n})}$ alors $h(2) = \min(X_{1}, \ldots, X_{n}) \in L^{0}(\Omega,\Tribu)$.
+%
+
+
+%def Définition-Proposition
+  Soit $(\Omega,\Tribu,\P)$ un espace probabilisé. Soit $X: \Omega \longrightarrow E$ une variable aléatoire discrète sur $(\Omega,\Tribu)$. Alors,
+  1. $\big((X=x)\big)_{x \in X(\Omega)}$ est un système complet (au plus dénombrable) d’événements de $\Tribu$.
+  2. $\big(\P(X=x)\big)_{x \in X(\Omega)}$ est une distribution de probabilité discrète sur $X(\Omega)$.
+  3. La probabilité sur $\big(X(\Omega), \Part(X(\Omega))\big)$ associée à cette distribution est appelée _loi de $X$_ et est notée $\P_{X}$. C’est donc l’unique probabilité sur $(X(\Omega), \Part(X(\Omega)))$ telle que
+     $$
+       \forall x \in X(\Omega), \P_{X}(\{x\}) \defeq \P(X=x)
+     $$
+     On a alors
+     $$
+       \forall A \in \Part(X(\Omega)), \P_{X}(A) = \P(X \in A)
+     $$
+%
+
+%proof
+  1. $\Omega = \biguplus_{x \in X(\Omega)} X^{-1}(\{x\}) = \biguplus_{x \in X(\Omega)}(X=x)$
+  2. $\forall x \in X(\Omega), \P(X=x)\geq 0$ et
+     $$
+       \sum_{x \in X(\Omega)}\P(X=x) = \P \left(\biguplus_{x \in X(\Omega)}(X=x)\right) = \P(\Omega)=1
+     $$
+  3. $\P: \Tribu \longrightarrow \cc{0,1}$. $\P_{X}: \Part(X(\Omega)) \longrightarrow \cc{0,1}$. Soit $A \in \P(X(\Omega))$.
+     $$
+       \P_{X}(A) = \sum_{x \in A}\P(X=x) = \P \left(\biguplus_{x \in A}(X=x)\right) = \P(X \in A)
+     $$
+%
+
+
+%eg
+  Soit $A \in \Tribu \setminus \{\emptyset, \Omega\}$. $\1_{A}: \Omega \longrightarrow \R \in L^{0}(\Omega,\Tribu)$. $\P_{\1_{A}}$ est une probabilité sur $(\1_{A}(\Omega), \Part(\1_{A}(\Omega))) = (\{0,1\}, \Part(\{0,1\}))$ caractérisée par
+  ~ $\P(\{0\}) = \P(\1_{A} = 0) = \P(A^{\complement})$  ~ $\P_{\1_{A}}(\{1\}) = \P(\1_{A} = 1) = \P(A)$
+  donc $\P_{\1_{A}} = \B \big(\P(A)\big)$ ce qu’on écrit $\1_{A} \leadsto \P(A)$ et on dit que « $\1_{A}$ est la loi de Bernoulli de paramètre $\P(A)$ »
+%
+
+%prop
+  Soit $(p_{x})_{x \in D}$ une distribution de probabilité discrète sur un ensemble au plus dénombrable $D$. Alors il existe une variable aléatoire $X$ dont la loi est la probabilité associée à cette distribution.
+%
+
+%proof
+  Soit $\P$ la probabilité associée à cette distribution. Prenons
+  $$
+    X: \applic{(D,\Part(D),\P)}{D}{d}{d}
+  $$
+  Alors $X(D) = D$ est au plus dénombrable et $\forall d \in X(D), (X=d) = \{d\} \in \Part(D)$ donc $X$ est une variable aléatoire discrète. On a $\forall x \in X(D) = D$, $\P_{X}(\{x\}) = \P(X=x) = p_{x}$ donc  $\P_{X} = \P$.
 %

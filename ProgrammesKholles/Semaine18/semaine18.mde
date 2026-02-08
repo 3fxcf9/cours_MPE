@@ -1,0 +1,152 @@
+# Semaine 18
+
+:date 09/02/2026
+
+## Résolution des EDL scalaires à coefficients constants d’ordre $n$
+
+%offprog
+  Considérons l’équation homogène
+  $$
+    \tag{H} a_{n}y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_{1}y' + a_{0} y = 0
+  $$
+  avec $(a_{0}, \ldots, a_{n}) \in \C^{n+1}$ et $a_{n}$ non nul. Si l’équation caractéristique $a_{n}r^{n} + a_{n-1}r^{n-1} + \cdots + a_{1}r + a_{0} = 0$ a pour racines complexes $\alpha_{1}, \ldots, \alpha_{d}$ de multiplicités respectives $n_{1}, \ldots, n_{d}$, alors les solutions à valeurs complexes de $H$ sur $\R$ sont toutes les fonctions du type
+  $$
+    x \longmapsto  \tilde{P_{1}}(x) e^{\alpha_{1} x} + \cdots + \tilde{P}_{d}(x) e^{\alpha_{d} x}
+  $$
+  avec $P_{1} \in \C_{n_{1}-1}[X], \ldots, P_{d} \in \C_{n_{d}-1}[X]$.
+%
+
+%proof
+  Posons
+  - $P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{1}X + a_{0} = a_{n} \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$
+  - $D: \applic{\Cont^{\infty}(\R,\C)}{\C^{\infty}(\R,\C)}{y}{y'}$
+  Alors
+  $$
+    y \in \Sol_{H,\R} \iff \underbrace{P(D)}_{\text{opérateur différentiel}}(y) = \tilde{0}
+  $$
+  et
+  $$
+    \Sol_{H,\R} = \ker  \big(P(D)\big) = \ker \big(Q(D)\big)
+  $$
+  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décomposition des noyaux, on a
+  $$
+    \Sol_{H,D} = \bigoplus_{k=1}^{d} \ker \Big((D - \alpha_{k} \id)^{n_{k}}\Big)
+  $$
+  et $\ker \Big((D-\alpha_{k} \id)^{n_{k}}\Big) = \Sol_{H_{k}, \R}$ avec $(H_{k}): (D-\alpha_{k} \id)^{n_{k}}(y) = 0$.
+  $$
+    \begin{align*}
+      y \in \Sol_{H, \R} &\iff  \sum_{p=0}^{n_{k}} \binom{n_{k}}{p}(-\alpha_{k} \id)^{n_{k}-p} D^{p} (y) = 0 \\
+      &\iff \sum_{p=0}^{n_{k}} \binom{n_{k}}{p}(-\alpha_{k})^{n_{k}-p}y^{(p)} = 0 \\
+      &\iff \forall t \in \R, \sum_{p=0}^{n_{k}}\binom{n_{k}}{p} (-\alpha_{k})^{n_{k} - p} e^{-n_{k}t}y^{(p)}(t) = 0 \\
+      &\iff \dvN{}{t}{n_{k}} \big(e^{-\alpha_{k} t}y\big) = 0 \\
+      &\iff \exists P_{k} \in \C_{n_{k}-1}[X]: \forall t \in \R, e^{-\alpha_{k} t}y(t) = P_{k}(t)
+    \end{align*}
+  $$
+%
+
+## Continuité croissante et décroissante d’une probabilité
+
+%prop
+  - %callout
+      Si $(A_{n})_{n \in \N}$ est une suite croissante d’événements, alors
+      $$
+        \P \left(\upbigcup_{n \in \N}A_{n}\right) = \lim_{n \to +\infty}\P(A_{n})
+      $$
+      (propriété de continuité croissante d’une probabilité).
+    %
+  - Si $(B_{n})_{n \in \N}$ est une suite décroissante d’événements, alors
+    $$
+      \P \left(\downbigcap_{n \in \N}B_{n}\right) = \lim_{n\to+\infty}\P(B_{n})
+    $$
+    (propriété de continuité décroissante d’une probabilité).
+%
+
+%proof
+  - Soit $(A_{n})_{n \in \N}$ une suite croissante d’événements.
+    $$
+      \upbigcup_{n \in \N}A_{n} = A_{0} \uplus \left(\biguplus_{n \in \N}(A_{n+1} \setminus A_{n})\right)
+    $$
+    donc
+    $$
+      \P \left(\upbigcup_{n \in \N} A_{n}\right) = \P(A_{0}) + \sum_{n \in \N}\P(A_{n+1} \setminus A_{n})
+    $$
+    or $\forall n \in \N, A_{n} \subset A_{n+1}$ donc
+    $$
+      \P \left(\upbigcup_{n \in \N}A_{n}\right) = \P(A_{0}) + \sum_{n \in \N}\P(A_{n+1}) - \P(A_{n}) = \lim_{N\to+\infty} \P(A_{0}) + \sum_{n=1}^{N} \P(A_{n+1}) - \P(A_{n})
+    $$
+    Ainsi,
+    $$
+      \P \left(\upbigcup_{ n \in \N}A_{n}\right) = \lim_{N\to+\infty}\P(A_{n+1})
+    $$
+  - $\P \left(\downbigcap_{n \in \N}B_{n}\right) = 1 - \P \left(\upbigcup_{n \in \N} B_{n}^{\complement}\right) = \lim_{n\to+\infty} \left(1- \P(B_{n}^{\complement})\right) = \lim_{n\to+\infty} \P(B_{n})$
+%
+
+
+## Propriété sur une famille d’événements mutuellement indépendants
+
+%property
+  Si $(A_{i})_{i \in I}$ est une famille d’événements mutuellement indépendants, alors la famille $(B_{i})_{i \in I}$ avec $B_{i} \in \{A_{i}, \bar{A_{i}}\}$ est constituée d’événements mutuellement indépendants.
+%
+
+%proof
+  - $$
+      \begin{align*}
+        \P \left(\bigcap_{i \in J} A_{i} \cap  \bigcap_{i \in K}A_{i}\right) &= \P \left(\bigcap_{i \in I \uplus K}A_{i}\right) \\
+        &= \prod_{i \in J \uplus K}\P(A_{i}) & \text{(mutuelle indépendance)}\\
+        &= \prod_{i \in J}\P(A_{i}) \times \prod_{i \in K}\P(A_{i})\\
+        &= \P \left(\bigcap_{i \in I}A_{i}\right) \times  \P \left(\bigcap_{i \in K}A_{i}\right)
+      \end{align*}
+    $$
+  - Considérons la propriété
+    $$
+     \Prop(k): « \begin{cases}\P \left(\bigcap_{j \in J} A_{j} \cap \bigcap_{\ell \in K}\bar{A_{\ell}}\right) = \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K}\P(\bar{A_{ell}}) \\ \text{$J \subset I$ fini et $K \subset I$ non disjoints tels que $\abs{K} = k$}\end{cases} »
+    $$
+    - $\Prop(0)$ est vraie par indépendance mutuelle des $A_{i}$.
+    - Supposons $\Prop(0), \ldots, \Prop(k)$ vrsies pour $k < \abs{I}$ fixé dans $\N$. Soit $J$ fini et $\K$ de cardinal $k+1$ tels que $J \cap K = \emptyset$. Soit $i \in K$. $(A_{i}) \cup (A_{j})_{j \in J} \cup \big(\bar{A_{\ell}}\big)_{\ell \in K \setminus \{i\}}$ est une famille d’événements _mutuellement indépendants_ d’après $\Prop(0), \ldots, \Prop(k)$ donc $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $A_{i}$ sont des événements indépendants donc les événements $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $\bar{A_{i}}$ sont indépendants. Ainsi,
+      $$
+        \begin{align*}
+          \P \left( \left(\bigcap_{j \in J} A_{j} \cap  \bigcap_{\ell \in K \setminus \{i\}} \bar{A_{\ell}}\right) \cap \bar{A_{i}}\right) &= \P \left(\bigcap_{j \in J}A_{j} \cap \bigcap_{\ell \in K \setminus \{i\}}\bar{A_{\ell}}\right) \times \P(\bar{A_{i}}) \\
+          &\ueq{\Prop(k)} \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K \setminus \{i\}}\P(\bar{A_{\ell}}) \times \P(\bar{A_{i}})
+        \end{align*}
+      $$
+%
+
+%offprog
+  ## Lemme de Borel-Cantelli
+
+  %lemma Lemme de Borel-Cantelli
+    Soit $(\Omega, \Tribu, \P)$ un espace probabilisé. Soit $(A_{n})_{n \in \N}$ une famille d’événements.
+    1. Si $\sum_{n \geq 0}\P(A_{n})$ converge, alors
+       $$
+         \P \left(\limsup_{n \in \N}A_{n}\right) = 0
+       $$
+    2. Si les événements $(A_{n})$ sont mutuellement indépendants et $\sum_{n \geq 0}\P(A_{n})$ diverge, alors
+       $$
+         \P \left(\limsup_{n \in \N} A_{n}\right) = 1
+       $$
+       i.e. une infinité de $A_{n}$ est réalisé $\P$-presque sûrement.
+  %
+
+  %proof
+    $\limsup_{n \in \N} A_{n} = \downbigcap_{n \in \N}\bigcup_{k \geq n}A_{k}$ donc
+    $$
+      \P \left(\limsup_{n \in \N}A_{n}\right) = \lim_{n\to+\infty} \P \left(\bigcup_{k \geq n}A_{k}\right)
+    $$
+    1. $$
+         0 \leq \P \left(\bigcup_{k \geq n} A_{k}\right) \leq \sum_{k \in \icc{n,+\infty}}\P(A_{k}) = \sum_{k=n}^{+\infty}\P(A_{k}) \arrowlim{n\to+\infty} 0
+       $$
+       donc $\P \left(\limsup_{n \in \N}A_{n}\right) = 0$.
+    2. $\P \left(\bigcup_{k \geq n}A_{k}\right) = \lim_{N \to+\infty}\P \left(\bigcup_{k=n}^{N}A_{k}\right)$ or
+       $$
+         \P \left(\bigcap_{k=n}^{N}\bar{A_{k}}\right) = \prod_{k=n}^{N}\P (\bar{A_{k}}) = \prod_{k=n}^{N}(1-\P(A_{k}))
+       $$
+       $\forall x \in \R, e^{x} \geq 1+x$ donc $\forall x \in \cc{0,1}, e^{-x} \geq 1 - x \geq 0$ d’où
+       $$
+         \P \left(\bigcap_{k=n}^{N}\bar{A_{k}}\right) \leq \prod_{k=n}^N e^{-\P(A_{k})} = e^{-\sum_{k=n}^{N}\P(A_{k})} \arrowlim{N\to+\infty}0
+       $$
+       donc $\lim_{N\to+\infty}\P \left(\bigcup_{k=n}^{N} A_{k}\right) = 1$, i.e. $\P \left(\bigcup_{k \geq n} A_{k}\right) = 1$ pour tout entier $n \in \N$, donc
+       $$
+         \P \left(\limsup_{n \in \N}A_{n}\right) = 1
+       $$
+  %
+%

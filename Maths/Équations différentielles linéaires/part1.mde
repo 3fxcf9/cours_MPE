@@ -314,7 +314,7 @@ $$
   $$
 %
 
-## Résolution de $(E): y' = a(t)\mdot y + b(t)$ lorsqu’on dispose d’un systeème fondamental $(\varphi_{1}, \ldots, \varphi_{n})$ de solutions de l’équation homogène sur $I$
+## Résolution de $(E): y' = a(t)\mdot y + b(t)$ lorsqu’on dispose d’un système fondamental $(\varphi_{1}, \ldots, \varphi_{n})$ de solutions de l’équation homogène sur $I$
 
 Dans cette partie, $a: I \longrightarrow \L(F)$ et $b: I \longrightarrow F$ sont continues sur $I$.
 
@@ -671,13 +671,13 @@ $$
 %offprog
   Considérons l’équation homogène
   $$
-    \tag{H} a_{n}y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_{n}y' + a_{0} y = 0
+    \tag{H} a_{n}y^{(n)} + a_{n-1}y^{(n-1)} + \cdots + a_{1}y' + a_{0} y = 0
   $$
   avec $(a_{0}, \ldots, a_{n}) \in \C^{n+1}$ et $a_{n}$ non nul. Si l’équation caractéristique $a_{n}r^{n} + a_{n-1}r^{n-1} + \cdots + a_{1}r + a_{0} = 0$ a pour racines complexes $\alpha_{1}, \ldots, \alpha_{d}$ de multiplicités respectives $n_{1}, \ldots, n_{d}$, alors les solutions à valeurs complexes de $H$ sur $\R$ sont toutes les fonctions du type
   $$
     x \longmapsto  \tilde{P_{1}}(x) e^{\alpha_{1} x} + \cdots + \tilde{P}_{d}(x) e^{\alpha_{d} x}
   $$
-  avec $P_{1} \in \C_{n_{1}-1}\C[X], \ldots, P_{d} \in \Cont_{n_{d}-1}[X]$.
+  avec $P_{1} \in \C_{n_{1}-1}[X], \ldots, P_{d} \in \C_{n_{d}-1}[X]$.
 %
 
 %proof
@@ -692,7 +692,7 @@ $$
   $$
     \Sol_{H,\R} = \ker  \big(P(D)\big) = \ker \big(Q(D)\big)
   $$
-  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décorposition des noyaux, on a
+  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décomposition des noyaux, on a
   $$
     \Sol_{H,D} = \bigoplus_{k=1}^{d} \ker \Big((D - \alpha_{k} \id)^{n_{k}}\Big)
   $$
@@ -733,7 +733,7 @@ $$
 $$
 De plus, $\Sol_{H}^{\R} \subset \Sol_{H}^{\C}$ donc
 $$
-  \Sol_H^\R, \Re(f) \where f \in \Sol_{H}^{\C}
+  \Sol_H^\R = \{\Re(f) \where f \in \Sol_{H}^{\C}\}
 $$
 
 %offprog
@@ -744,7 +744,7 @@ $$
     $$
   %
   %proof
-    $e^{\lambda x = e^{ax} (\cos bx + i\sin bx)}  \subset e^{\bar{\lambda}x} (\cos xbx - i\sin bx)$ et contient $\cos bx = \frac{e^{ib^{x}} + e^{-ibx}}{2}$ et $\sin bx = \frac{e^{ibx} - e^{-ibx}}{2i}$ donc
+    $e^{\lambda x} = e^{ax} (\cos bx + i\sin bx)  \subset e^{\bar{\lambda}x} (\cos xbx - i\sin bx)$ et contient $\cos bx = \frac{e^{ib^{x}} + e^{-ibx}}{2}$ et $\sin bx = \frac{e^{ibx} - e^{-ibx}}{2i}$ donc
     $$
       \left\{x \longmapsto \Re \big(\tilde{P}(x) e^{\lambda x} + \tilde{Q}(x) e^{\bar{\lambda}x}\big) \where (P,Q) \in \C_{n}[X]^{2}\right\} = \left\{x \longmapsto  \big(A(x) \cos (bx) + B(x)\sin bx\big)e^{ax} \where (A,B) \in \R_{n}[X]^{2}\right\}
     $$
@@ -774,7 +774,7 @@ $$
   %
 
   %eg
-    L’équation $(H): y'' + q(x)y$ avec $q \in \L^{1}(\R_{+}) \cap \Cont(\R_{+})$ possède des solutions non vornées.
+    L’équation $(H): y'' + q(x)y$ avec $q \in \L^{1}(\R_{+}) \cap \Cont(\R_{+})$ possède des solutions non bornées.
     En effet, soit $(f,g)$ une base de $\Sol_{H, \R_{+}}$.
     $$
       W_{f,g} = \vmtx{f & g \\ f' & g'} = \vmtx{f & f' \\ g & g'}
