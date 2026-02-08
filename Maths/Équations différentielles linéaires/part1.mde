@@ -683,7 +683,7 @@ $$
 %proof
   Posons
   - $P = a_{n}X^{n} + a_{n-1}X^{n-1} + \cdots + a_{1}X + a_{0} = a_{n} \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$
-  - $D: \applic{\Cont^{\infty}(\R,\C)}{\C^{\infty}(\R,\C)}{y}{y'}$
+  - $D: \applic{\Cont^{\infty}(\R,\C)}{\Cont^{\infty}(\R,\C)}{y}{y'}$
   Alors
   $$
     y \in \Sol_{H,\R} \iff \underbrace{P(D)}_{\text{opérateur différentiel}}(y) = \tilde{0}
@@ -692,7 +692,7 @@ $$
   $$
     \Sol_{H,\R} = \ker  \big(P(D)\big) = \ker \big(Q(D)\big)
   $$
-  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décomposition des noyaux, on a
+  avec $Q = \frac{P}{a_{n}} = \prod_{k=1}^{d}(X-\alpha_{k})^{n_{k}}$ et $(X-\alpha_{k})^{n_{k}} \land(X-\alpha_{\ell})^{n_{\ell}} = 1$ si $k\ne\ell$. D’après le lemme de décomposition des noyaux, on a
   $$
     \Sol_{H,D} = \bigoplus_{k=1}^{d} \ker \Big((D - \alpha_{k} \id)^{n_{k}}\Big)
   $$

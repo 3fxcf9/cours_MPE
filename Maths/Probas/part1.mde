@@ -470,10 +470,10 @@ On admet l’axiome du choix dans sa forme la plus générale.
        $$
      - Considérons la propriété
        $$
-        \Prop(k): « \begin{cases}\P \left(\bigcap_{j \in J} A_{j} \cap \bigcap_{\ell \in K}\bar{A_{\ell}}\right) = \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K}\P(\bar{A_{ell}}) \\ \text{$J \subset I$ fini et $K \subset I$ non disjoints tels que $\abs{K} = k$}\end{cases} »
+         \Prop(k): « \begin{cases}\P \left(\bigcap_{j \in J} A_{j} \cap \bigcap_{\ell \in K}\bar{A_{\ell}}\right) = \prod_{j \in J}\P(A_{j}) \times \prod_{\ell \in K}\P(\bar{A_{\ell}}) \\ \text{$J \subset I$ fini et $K \subset I$ disjoints tels que $\abs{K} = k$}\end{cases} »
        $$
        - $\Prop(0)$ est vraie par indépendance mutuelle des $A_{i}$.
-       - Supposons $\Prop(0), \ldots, \Prop(k)$ vrsies pour $k < \abs{I}$ fixé dans $\N$. Soit $J$ fini et $\K$ de cardinal $k+1$ tels que $J \cap K = \emptyset$. Soit $i \in K$. $(A_{i}) \cup (A_{j})_{j \in J} \cup \big(\bar{A_{\ell}}\big)_{\ell \in K \setminus \{i\}}$ est une famille d’événements _mutuellement indépendants_ d’après $\Prop(0), \ldots, \Prop(k)$ donc $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $A_{i}$ sont des événements indépendants donc les événements $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $\bar{A_{i}}$ sont indépendants. Ainsi,
+       - Supposons $\Prop(0), \ldots, \Prop(k)$ vraies pour $k < \abs{I}$ fixé dans $\N$. Soit $J$ fini et $K$ de cardinal $k+1$ tels que $J \cap K = \emptyset$. Soit $i \in K$. $(A_{i}) \cup (A_{j})_{j \in J} \cup \big(\bar{A_{\ell}}\big)_{\ell \in K \setminus \{i\}}$ est une famille d’événements _mutuellement indépendants_ d’après $\Prop(0), \ldots, \Prop(k)$ donc $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $A_{i}$ sont des événements indépendants donc les événements $\left(\bigcap_{j \in J}A_{j}\right) \cap \left(\bigcap_{\ell \in k \setminus \{i\}}\bar{A_{\ell}}\right)$ et $\bar{A_{i}}$ sont indépendants. Ainsi,
          $$
            \begin{align*}
              \P \left( \left(\bigcap_{j \in J} A_{j} \cap  \bigcap_{\ell \in K \setminus \{i\}} \bar{A_{\ell}}\right) \cap \bar{A_{i}}\right) &= \P \left(\bigcap_{j \in J}A_{j} \cap \bigcap_{\ell \in K \setminus \{i\}}\bar{A_{\ell}}\right) \times \P(\bar{A_{i}}) \\
