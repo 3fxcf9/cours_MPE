@@ -36,6 +36,7 @@
   2. Soit $(X_{n})_{n \in \N}$ une suite de variables aléatoires (toutes définies sur $(\Omega, \Tribu, \P)$). Les deux propriétés suivantes sont équivalentes
      - $(X_{n})_{n \in \N}$ est une suite de variables aléatoires indépendantes
      -  $\forall p \in \N$, $(X_{k})_{k \in \icc{0,p}}$ est une suite de variables aléatoires indépendantes((Ce qui est faux avec les événements.))
+     - $\displaystyle\forall p \in \N, \forall (B_{i})_{i \in \icc{0,p}} \in \prod_{i=0}^{p}\Part(X(\Omega)), \P \left(\bigcap_{i=0}^{p}(X_{i} \in B_{i})\right) = \prod_{i=0}^{p}\P(X_{i} \in B_{i})$
   3. Soient $X_{1}, \ldots, X_{n}$ des variables aléatoires discrètes définies sur $(\Omega,\Tribu,\P)$ à valeurs respectivement dans $E_{1}, \ldots, E_{n}$. Alors, $X_{1}, \ldots, X_{n}$ sont indépendantes si et seulement si
      $$
        \forall (x_{1}, \ldots, x_{n}) \in X_{1}(\Omega) \times  \cdots \times X_{n}(\Omega), \P(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = \prod_{i=1}^{n}\P(X_{i}=x_{i})
@@ -48,8 +49,332 @@
      ~ $B_{i}' = B_{i}$ si $i \in J$  ~ $B_{i}' = X_{i}(\Omega)$ si $i \in I \setminus J$
      On a alors
      $$
-       \P \left(\bigcap_{i \in J} (X_{i} \in B_{i})\right) \oeq{(1)} \P \left(\bigcap_{i \in I}(X_{i} \in B_{i}')\right) = \prod_{i \in I} \P(tx_{i} \in B_{i}') \oeq{(2)} \prod_{i \in J} \P(X_{i} \in B_{i})
+       \P \left(\bigcap_{i \in J} (X_{i} \in B_{i})\right) \oeq{(1)} \P \left(\bigcap_{i \in I}(X_{i} \in B_{i}')\right) = \prod_{i \in I} \P(X_{i} \in B_{i}') \oeq{(2)} \prod_{i \in J} \P(X_{i} \in B_{i})
      $$
      (1) car $(X_{i} \in X_{i}(\Omega)) = \Omega$ et (1) car $\P(X_{i} \in X_{1}(\Omega))$.
+  3. - Supposons $X_{1}, \ldots, X_{n}$ indépendantes. Alors pour tout $(x_{1}, \ldots, x_{n}) \in X_{1}(\Omega) \times \cdots \times X_{n}(\Omega)$,
+       $$
+         \P(X_{1} \in \{x_{1}\}, \ldots, X_{n} \in \{x_{n}\}) = \prod_{i=1}^{n}\P(X_{i} \in \{x_{i}\})
+       $$
+     - Supposons que pour tout $(x_{1}, \ldots, x_{n}) \in X_{1}(\Omega)\times \cdots \times X_{n}(\Omega)$, on a
+       $$
+         \P(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = \prod_{i=1}^{n}\P(X_{i} = x_{i})
+       $$
+       Soit $J$ une partie finie de $\icc{1,n}$ et $(B_{i})_{i \in J} \in \prod_{innJ} \Part(X_{i}(\Omega))$. On a
+       $$
+         \P \left(\bigcap_{i \in J}(X_{i} \in B_{i})\right) = \P \left(\bigcap_{i \in \icc{1,n}}(X_{i} \in B_{i}')\right)
+       $$
+       avec $B_{i}' = \begin{cases}B_{i} \if i \in J \\ X_{i}(\Omega) \if i \in \icc{1,n}\end{cases}$.
+       $$
+         \begin{align*}
+           \P \left(\bigcap_{i \in J}(X_{i} \in B_{i})\right) &= \P \left(\biguplus_{(x_{1}, \ldots, x_{n}) \in B_{1}' \times \cdots \times B_{n}'}(X_{1}=x_{1}) \cap \cdots \cap (X_{n} = x_{n})\right) \\
+             &= \sum_{(x_{1}, \ldots, x_{n}) \in B_{1}' \times  \cdots \times  B_{n}'}\P(X_{1} = x_{1}, \ldots, X_{n}=x_{n}) \\
+             &= \sum_{(x_{1}, \ldots, x_{n}) \in B_{1}' \times \cdots \times B_{n}'}\P(X_{1} = x_{1}) \times \cdots \times \P(X_{n}=x_{n}) \\
+             &= \sum_{x_{1} \in B_{1}'}\P(X_{1} = x_{1}) \times \cdots \times \P(X_{n} = x_{n}) \\
+             &= \P(X_{1} \in B_{1}') \times \cdots \times \P(X_{n} \in B_{n}') \\
+             &= \prod_{i \in J}\P(X_{1} \in B_{i})
+         \end{align*}
+       $$
+%
 
+%prop
+  Si $X_{1} \sim X_{2} \sim \cdots\sim X_{n}$ sont des variables aléatoires indépendantes suivant une loi de Bernoulli de paramètre $p \in \oo{0,1}$((Noté usuellement v.a.i.i.d (variables aléatoires indépendantes identiquement distribuées))). Alors
+  $$
+    X_{1} + \cdots + X_{n} \leadsto \B(n,p)
+  $$
+%
+
+%eg
+  1. Si $X\leadsto \mathscr P(\lambda)$, $Y\leadsto \mathscr P(\mu)$ et $X\indep Y$, alors $X + Y\leadsto \mathscr P(\lambda+\mu)$.
+     ~
+     Soit $k \in \N$.
+     $$
+       \begin{align*}
+         \P(X+Y=k) &= \P \left(\biguplus_{x \in X(\Omega)}(X=x) \cap (Y = k-x)\right) \\
+         &= \sum_{x \in X(\Omega)}\P(X=x,Y=k-x) \\
+         &\ueq{X\indep Y} \sum_{x \in X(\Omega)}\P(X=x)\P(Y=k-x) \\
+         &= \sum_{\ell=0}^{k} e^{-\lambda} \frac{\lambda^{k}}{\ell!} \times e^{-\mu}\frac{\mu^{k-\ell}}{(k-\ell)!} \\
+         &= \frac{e^{-(\lambda+\mu)}}{k!}\sum_{\ell=0}^{k}\binom{\ell}{k}\lambda^{\ell}\mu^{k-\ell} \\
+         &= \frac{e^{-(\lambda+\mu)}}{k!}(\lambda + \mu)^{k}
+       \end{align*}
+     $$
+     donc $X + Y \leadsto \mathscr P(\lambda + \mu)$.
+  2. Si $X\leadsto \mathscr G(p) = \mathscr P(1,p)$, $Y\leadsto \mathscr G(p)$ et $X\indep Y$, alors $X + Y \leadsto \mathscr P(1,p)$ (loi de Pascal de paramètres 1 et $p$).
+     ~
+     Si $X(\Omega) = \N^{*} = Y(\Omega)$, on a $(X + Y)(\Omega) \subset \ico{2,+\infty}$. Soit $k \in \ico{2,+\infty}$.
+     $$
+       \begin{align*}
+         \P(X+Y = k) &= \P \left(\biguplus_{\ell=1}^{k-1}(X=\ell) \cap (Y = k-\ell)\right) \\
+         &\ueq{X\indep Y} \sum_{\ell=1}^{k-1}\P(X=\ell)\P(Y = k-\ell) \\
+         &= \sum_{\ell=1}^{k-1}p(1-p)^{\ell-1} \times p(1-p)^{k-\ell-1} \\
+         &= p^{2} \sum_{\ell=1}^{k-1}(1-p)^{k-2} = (k-1)p^{2}(1-p)^{k-2}
+       \end{align*}
+     $$
+     donc $X+Y \leadsto \mathscr P(1,p)$.
+%
+
+%prop
+  1. Soient $X: (\Omega,\Tribu,\P) \longrightarrow E$ et $X': (\Omega,\Tribu,\P) \longrightarrow E'$ deux variables aléatoires discrètes. Soient $f: X(\Omega) \longrightarrow F$ et $g: X'(\Omega) \longrightarrow F'$ deux applications. On a
+     $$
+       X\indep Y \implies f(X)\indep g(Y)
+     $$
+  2. _(Lemme des coalitions)_ Soient $X_{1}, \ldots, X_{n}$ une suite finie de variables aléatoires doutes définies sur $(\Omega,\Tribu,\P)$ **indépendantes**. Soit $(I_{k})_{k \in \icc{1,p}}$ une partition de $\icc{1,n}$. Alors
+     - les vecteurs aléatoires $(X_{i})_{i \in I_{1}}, \ldots, (X_{i})_{i \in I_{p}}$ sont indépendants.
+     - les variables aléatoires $f_{1}\big((X_{i})_{i \in I_{1}}\big), \ldots, f_{p} \big((X_{i})_{i \in I_{p}}\big)$ sont indépendants où $f_{k}: (X_{i})_{i \in I_{k}}(\Omega) \longrightarrow E_{k}$ est une application.
+%
+
+%proof
+  2. Supposons $X_{1}, \ldots, X_{n}$ indépendants. Soit $\big((x_{i})_{i \in I}, \ldots, (x_{i})_{i \in I_{p}}\big) \in (X_{i})_{i \in I_{1}}(\Omega) \times \cdots \times (X_{i})_{i \in I_{p}}(\Omega)$.
+     $$
+       \begin{align*}
+         \P \Big((X_{i})_{i \in I_{1}} = (x_{i})_{i \in I_{1}}, \ldots, (X_{i})_{i \in I_{p}} = (x_{i})_{i \in I_{p}}\Big) &= \P(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) \\
+        &= \prod_{i=1}^{n}\P(X_{i} = x_{i}) \\
+        &= \prod_{k=1}^{p} \left(\prod_{i \in I_{k}}\P (tx_{i} = x_{i})\right)
+       \end{align*}
+     $$
+     Comme $X_{1}, \ldots, X_{n}$ sont indépendantes, $(X_{i})_{i \in I_{k}}$ est une famille de variables aléatoires indépendantes d’où
+     $$
+       \prod_{i \in I_{k}}\P(X_{i} = x_{i}) = \P \left(\bigcap_{i \in I_{k}}(X_{i} = x_{i})\right)
+     $$
+     d’où le résultat.
+     - Soient $\alpha_{1} \in f_{1} \big((X_{i})_{i \in I_{1}}\big)(\Omega)$, …, $\alpha_{p} \in f_{p} \big((X_{i})_{i \in I_{p}}\big)(\Omega)$
+       $$
+         \begin{align*}
+           \P \Big(f_{1}\big((X_{i})_{i \in I_{1}}\big) = \alpha_{1}, \ldots, f_{p} \big((X_{i})_{i \in I_{p}}\big)(\Omega) = \alpha_{p}\Big) &= \P \big((X_{i})_{i \in I_{1}} \in f^{-1}_{1}(\{\alpha_{1}\}), \ldots, (X_{i})_{i \in I_{p}} \in f_{p}^{-1}(\{\alpha_{p}\})\big) \\
+            &= \prod_{k=1}^{p}\P \Big((X_{i})_{i \in I_{k}} \in f_{k}^{-1}\big(\{\alpha_{k}\}\big)\Big) \\
+            &= \prod_{k=1}^{p} \P \Big(f_{k} \big((X_{i})_{i \in I_{k}}\big) = \alpha_{k}\Big)
+         \end{align*}
+       $$
+%
+
+%eg
+  1. Si $X$ et $Y$ sont deux variables aléatoires discrètes réelles indépendantes, alors $X^{k}$ et $Y^{\ell}$ sont indépendantes pour tout $(k,\ell) \in \N^{2}$.
+  2. Si $X_{1}, \ldots, X_{2n}$ est une suite de variables aléatoires discrètes réelles **indépendantes**, alors $X_{1} + X_{2n}, X_{2} + Y_{2n-1} , \ldots, X_{n}+X_{n+1}$ est une suite de variables aléatoires indépendantes.
+  3. Si $(X_{n})_{n \in \N^{*}}$ est une suite de variables aléatoires **indépendantes** telle que $\forall n \in \N^{*}, X_{n} \leadsto \mathscr P(\lambda_{n})$ avec $(\lambda_{n})_{n \in \N^{*}}$ une bamille de réels strictement positifs, alors
+     $$
+       \forall k \in \N^{*}, X_{1} + \cdots + X_{k} \leadsto \mathscr P(\lambda_{1} + \cdots + \lambda_{k})
+     $$
+     ~
+     Considérons la propriété définie pour $k \in \N^{*}$ par
+     $$
+       \Prop(k): « X_{1} + \cdots + X_{k} \leadsto \mathscr P(\lambda_{1} + \cdots + \lambda_{k}) »
+     $$
+     - $\Prop(1)$ est vraie
+     - Supposons $\Prop(k)$ vraie pour $k \in \N^{*}$. Les variables $X_{1}, \ldots, X_{k+1}$ sont indépendantes donc d’après le _lemme des coalitions_, $(X_{1} + \cdots + X_{k})\indep X_{k+1}$ or $X_{1} + \cdots + X_{k}\leadsto \mathscr P(\lambda_{1} + \cdots + \lambda_{k})$ et $X_{k+1}\leadsto \mathscr P(\lambda_{k+1})$ donc $\Prop(2)$ permet d’affirmer~:
+       $$
+         (X_{1} + \cdots + X_{k})+X_{k+1} \leadsto \mathscr P(\lambda_{1} + \cdots + \lambda_{k+1})
+       $$
+%
+
+## Espérance d’une variable aléatoire complexe
+
+Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
+
+%def
+  Soit $X: \Omega \longrightarrow \R_{+} \cup \{+\infty\}$ une variable aléatoire «positive». On appelle _espérance de $X$_ le «réel»
+  $$
+    E(X) = \sum_{x \in X(\Omega)}x\P(X=x) \in \bar{\R_{+}}
+  $$
+  avec les conventions
+  ~ $(+\infty)\times \lambda = +\infty$ si $\lambda \in \oc{0,1}$  ~ $(+\infty) \times 0 = 0$
+%
+
+%eg
+  - Si $X(\Omega) \subset A \subset \big(\R_{+} \cup \{+\infty\}\big)$, alors
+    $$
+      E(X) = \sum_{x \in A}x\P(X=x) = \sum_{x \in \R_{+} \cup \{+\infty\}}
+    $$
+  - Si $X$ et $Y$ sont deux variables aléatoires «positives» suivant la même loi, alors $E(X) = E(Y) \in \bar{\R_{+}}$. En effet,
+    $$
+      E(X) =\sum_{x \in X(\Omega)}x \P(X=x) = \sum_{x \in X (\Omega) \cup Y(\Omega)}x\P(X=x) = \sum_{x \in X(\Omega) \cup Y(\Omega)}y\P(Y=x) = E(Y)
+    $$
+  - %callout
+      Soit $A$ un événement. $\1_{A}$ est une variable aléatoire **positive** et $\1_{A}(\Omega) \subset \{0,1\}$.
+      $$
+        E(\1_{A}) = \sum_{x \in \{0,1\}}x\P(\1_{A}=x) = \P(\1_{A} = 1) = \P(A)
+      $$
+      donc
+      $$
+        \boxed{\forall A \in \Tribu, \P(A) = E(\1_{A})}
+      $$
+    %
+%
+
+%prop
+  Soit $X: (\Omega,\Tribu,\P) \longrightarrow \R_{+}$ une variable aléatoire discrète, $p \in \oo{0,1}$ et $\lambda > 0$.
+  1. si $X \leadsto \B(p)$, alors $E(X) = p$.
+  2. si $X \leadsto \B(n,p)$, alors $E(X) = np$.
+  3. si $X \leadsto \mathscr P(\lambda)$, alors $E(X) = \lambda$.
+%
+
+%proof
+  1. $X \sim \1_{(X=1)}$ (on écrit parfois $X = \1_{(X=1)}$) donc $E(X) = E(\1_{(X=1)}) = \P(X=1) = p$.
+  2. Soit $X \leadsto \B(n,p)$.
+     $$
+       \begin{align*}
+         E(X) &= \sum_{x \in X(\Omega)}x\P(X=x)  \\
+         &= \sum_{k=0}^{n}k\P(X=k) & \text{car } \forall x \in \R_{+} \setminus \icc{0,n}, \P(X=x) = 0 \\
+         &= \sum_{k=\stress 1}^{n}k \binom{n}{k}p^{k}(1-p)^{n-k} \\
+         &= \sum_{k=1}^{n}k \frac{n}{k}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+         &= n \sum_{k=1}^{n} \binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+         &= n \sum_{k=0}^{n-1} \binom{n-1}{k}p^{k+1}(1-p)^{n-1-k} \\
+         &= np \underbrace{\sum_{k=0}^{n-1} \binom{n-1}{k}p^{k}(1-p)^{n-1-k}}_{(p+1-p)^{n-1}} \\
+         &= np
+       \end{align*}
+     $$
+  3. Soit $X \leadsto \mathscr P(\lambda)$ une variable aléatoire discrète positive.
+     $$
+       \begin{align*}
+         E(X) &= \sum_{k \in \N} k\P(X=k) \\
+         &= \sum_{k \in \N}k e^{-\lambda}\frac{\lambda^{k}}{k!} \\
+         &= \sum_{k \in \N^{*}}e^{-\lambda}\frac{\lambda^{k}}{(k-1)!} \\
+         &= \lambda e^{-\lambda} \sum_{k \in \N^{*}} \frac{\lambda^{k-1}}{(k-1)!} \\
+         &= \lambda e^{-\lambda}e^{\lambda} = \lambda
+       \end{align*}
+     $$
+%
+
+%prop
+  Si $X: \Omega \longrightarrow \N \cup \{+\infty\}$ est une variable aléatoire entière «positive», alors
+  $$
+    E(X) = \sum_{n \in \N^{*}}\P(X \geq n) \in \bar{\R_{+}}
+  $$
+%
+
+%proof
+  - Si $X(\Omega) \subset \N$, alors
+    $$
+      \begin{align*}
+        E(X) &\defeq \sum_{k \in \N}k\P(X=k) \\
+        &= \sum_{k \in \N^{*}}k\P(X=k) \\
+        &= \sum_{k \in \N^{*}} \left(\sum_{\ell=1}^{k}\P(X=k)\right) \\
+        &= \sum_{\ell \in \N^{*}} \left(\sum_{k \in \ico{\ell,+\infty}} \P(X=k)\right) & \text{dans }\bar{\R_{+}} \\
+        &= \sum_{\ell \in \N^{*}}\P(X \geq \ell) & \text{par $\sigma$-additivité}
+      \end{align*}
+    $$
+  - Sinon, $(+\infty) \in X(\Omega)$.
+    - si $\P(X=+\infty) = 0$, alors $(+\infty) \times \P(X=+\infty) = 0$ et
+      $$
+        E(X) = \sum_{k \in \N}k\P(X=k) = \sum_{\ell \in \N^{*}}\P(X \in \ico{\ell,+\infty}) = \sum_{\ell \in \N^{*}}\P(X \in \icc{\ell,+\infty}) = \sum_{\ell \in \N^{*}}\P(X \geq \ell)
+      $$
+    - sinon, $(+\infty)\P(X=+\infty) = +\infty$ donc $E(X) \geq (+\infty)\P(X=+\infty)$ donc $E(X) = +\infty$ et
+      $$
+        \sum_{n \in \N^{*}}\P(X \geq n) \geq \sum_{n \in \N^{*}}\P(X \in \icc{n,+\infty}) \geq \sum_{n \in \N^{*}}\P(X=+\infty) = +\infty
+      $$
+%
+
+%prop
+  Si $X$ est une variable aléatoire suivant une loi géométrique $\mathscr G(p)$ et est telle que $X(\Omega) \subset \bar{\R_{+}}$, alors $E(X) = \frac{1}{p}$.
+%
+
+%proof
+  On a $X \sim Y$ avec $Y$ suivant la loi $\mathscr G(p)$ telle que $Y(\Omega) = \N^{*}$, donc
+  $$
+    \begin{align*}
+      E(X) &= E(Y) \\
+        &= \sum_{n \in \N^{*}}\P(Y \geq n) \\
+        &= \sum_{n \in \N^{*}} \P(Y > n-1) \\
+        &= \sum_{n \in \N^{*}} (1-p)^{n-1} \\
+        &= \sum_{n \in \N} (1-p)^{n} \\
+        &= \frac{1}{1-(1-p)} = \frac{1}{p}
+    \end{align*}
+  $$
+%
+
+%def
+  Soit $X: (\Omega,\Tribu,\P) \longrightarrow \C$ une variable aléatoire discrète complexe. On dit que $X$ est d’_espérance finie_ si la famille $\big(x\P(X=x)\big)_{x \in X(\Omega)}$ est sommable et on écrit $X \in L^{1}(\Omega,\Tribu,\P)$, $X \in L^{1}(\Omega)$ ou si aucune confusion n’est possible, $X \in L^{1}$.
+  $$
+    X \in L^{1} \overset{\text{def}}\iff \big(x\P(X=x)\big)_{i \in X(\Omega)} \in \ell^{1}\big(X(\Omega)\big)
+  $$
+  On pose alors
+  $$
+    E(X) = \sum_{x \in X(\Omega)}x\P(X=x) \in \C
+  $$
+  On dit que $X$ est _centrée_ si elle est d’espérance nulle.
+%
+
+%eg
+  - Si $X(\Omega)$ est fini, alors $X \in L^{1}(\Omega)$
+  - Si $X\leadsto \mathscr G(p)$ ou $X\leadsto \mathscr P(\lambda)$, alors $X \in L^{1}(\Omega)$
+%
+
+%lemma
+  Si $X$ est une variable aléatoire discrète bornée $\P$-presque sûrement, alors $X$ est d’espérence finie.
+%
+
+%proof
+  Il existe $M \in \R_{+}$ tel que $\P(\abs{X} \leq M) = 1$. On calcule dans $\bar{\R_{+}}$~:
+  $$
+    \sum_{x \in X(\Omega)}\abs{x}\P(X=x) = \sum_{\substack{x \in X(\Omega) \\ \abs{x} \leq M}} \abs{x}\P(X=x) + \sum_{\substack{x \in X(\Omega) \\ \abs{x} > M}}\abs{x} \P(X=x)
+  $$
+  si $\abs{x} > M$, alors $(X=x) \subset (\abs{X} > M)$ d’où $\P(X=x) \leq 1-\P(\abs{X} \leq M) = 0$ donc $\P(X=x) = 0$. Ainsi,
+  $$
+    \sum_{x \in X(\Omega)}\abs{x}\P(X=x) = \sum_{\substack{x \in X(\Omega) \\ \abs{x} \leq M}}\abs{x} \P(X=x) \leq M \sum_{x \in X(\Omega)}\P(X=x) = M \times 1 = M < +\infty
+  $$
+%
+
+%eg
+  Soit $X \leadsto \mathscr G(p)$ avec $X(\Omega) \subset \N^{*}$. Posons $Y = \frac{(-1)^{X}}{X}$. On a $ey = f(X)$ avec $f: \applic{\N^{*}}{\R}{n}{\frac{(-1)^{n}}{n}}$ donc $Y \in L^{0}(\Omega)$. On a $\abs{Y} f \frac{1}{X} \leq 1$ i.e. $Y$ est bornée, donc $Y \in L^{1}(\Omega)$.
+  $$
+    Y(\Omega) = \left\{\frac{(-1)^{n}}{n} \where n \in \N^{*}\right\}
+  $$
+  On a
+  $$
+    E(Y) = \sum_{y \in Y(\Omega)}y \P(Y=y) = \sum_{n \in \N^{*}}\frac{(-1)^{n}}{n}\P \left(Y = \frac{(-1)^{n}}{n}\right)
+  $$
+  or $\left(Y=\frac{(-1)^{n}}{n}\right) = (X=n)$  donc
+  $$
+    \begin{align*}
+      E(X) &= \sum_{n \in \N^{*}}\frac{(-1)^{n}}{n} \P(X=n) \\
+          &= \sum_{n \in \N^{*}}\frac{(-1)^{n}}{n}p(1-p)^{n-1} \\
+          &= \frac{p}{1-p}(-1) \sum_{n \in \N^{*}}(-1)^{n-1}\frac{(1-p)^{n}}{n} \\
+    \end{align*}
+  $$
+  or $1-p \in \oo{0,1}$ et $\forall x \in \oo{-1,1}, \ln(1+x) = \sum_{n=1}^{+\infty}(-1)^{n-1\frac{x^{n}}{n}}$ d’où
+  $$
+    E(Y) = \frac{p}{p-1}\ln(1+1-p) = \frac{p\ln(2-p)}{p-1} < 0
+  $$
+%
+
+%eg
+  Soit $X \leadsto \mathscr P(\lambda)$ telle que $X(\Omega)= \N$. Soit $N \in \N^{*}$. Posons $Y = e^{\frac{2i \pi X}{N}} = g(X)$ avec $g: \applic{\N}{\C}{k}{e^{\frac{2i \pi k}{N}}}$ donc $Y \in L^{0}(\Omega)$. De plus, $\abs{Y} = 1$ donc $Y \in L^{1}(\Omega)$. On a $Y(\Omega) = \left\{e^{\frac{2ik \pi}{N}} \where k \in \N\right\} = \U_{N}$ donc
+  $$
+    E(Y) = \sum_{\omega \in \U_{N}} \omega\P(Y=\omega)
+  $$
+  Pour $k \in \N$,
+  $$
+    \begin{align*}
+      \P \left(Y = e^{\frac{2ik \pi}{N}}\right) &=\P \left(e^{\frac{2i \pi X}{N}} = e^{\frac{2ik \pi}{N}}\right) \\
+      &= \P \big(X \in k+N\N\big)
+    \end{align*}
+  $$
+  donc
+  $$
+    E(Y) = \sum_{k=0}^{N-1} e^{\frac{2i \pi k}{N}} \left(\sum_{\ell \in k+N\N} e^{-\lambda} \frac{\lambda^{\ell}}{\ell!}\right)
+  $$
+  Il faut un autre résultat: le théorème de transfert.
+%
+
+%thm Théorème de Transfert
+  _(Permet le calcul de l’espérance de $f(X)$ à partir de la loi de $X$ et non de celle de $f(X)$)._ Soit $X : (\Omega, \Tribu,\P) \longrightarrow E$ une variable aléatoire discrète. Soit $f: X(\Omega) \longrightarrow \C$ une application. Alors
+  1. _(Théorème de Transfert (T.T))_
+     $$
+       f(X) \in L^{1}(\Omega) \iff \Big(f(x) \P(X=x)\Big)_{x \in X(\Omega)} \in \ell^{1} \big(X(\Omega)\big)
+     $$
+     le membre de gauche étant par définition équivalent à $\Big(y\P(f(X) = y)\Big)_{y \in f(X)(\Omega)} \in \ell^{1} \big(f(X)(\Omega)\big)$.
+  2. _(Formule de transfert)_ Si $f(X) \in L^{1}(\Omega)$, alors
+     $$
+       \underbrace{E (f(X))}_{\sum_{k\in f(X)(\Omega)}y\P(f(X) = y)} = \sum_{x \in X(\Omega)} f(x) \P(X=x)
+     $$
+%
+
+%custom Application
+  Soit $Y = e^{\frac{2i \pi X}{N}} = g(X)$ où $X \leadsto \mathscr P(\lambda)$. $\abs{Y} = 1$ donc $Y = g(X) \in L^{1}(\Omega)$. Ainsi, d’après la formule de transfert,
+  $$
+    \begin{align*}
+      E(Y) &= \sum_{k \in \N} e^{\frac{2i \pi k}{N}} \P(X=k) = \sum_{k \in \N}e^{\frac{2i \pi k}{N}}e^{-\lambda} \frac{\lambda^{k}}{k!} \\
+      &= e^{-\lambda}e^{\lambda e^{\frac{2i \pi}{N}}} \\
+      &= \exp \left(\lambda\left(e^{\frac{2i \pi}{N}}-1\right)\right)
+    \end{align*}
+  $$
 %
