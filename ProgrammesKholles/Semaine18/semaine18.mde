@@ -124,7 +124,8 @@
     $$
       \P \left(\limsup_{n \in \N}A_{n}\right) = \lim_{n\to+\infty} \P \left(\bigcup_{k \geq n}A_{k}\right)
     $$
-    1. $$
+    1. On a
+       $$
          0 \leq \P \left(\bigcup_{k \geq n} A_{k}\right) \leq \sum_{k \in \icc{n,+\infty}}\P(A_{k}) = \sum_{k=n}^{+\infty}\P(A_{k}) \arrowlim{n\to+\infty} 0
        $$
        donc $\P \left(\limsup_{n \in \N}A_{n}\right) = 0$.

@@ -1,0 +1,55 @@
+# Indépendance et espérence de variables aléatoires
+
+:date 09/02/2026
+
+## Indépendance de variables aléatoires toutes définies sur le même espace probabilisé $(\Omega,\Tribu, \P)$
+
+%def
+  - Soient $X: (\Omega,\Tribu,\P) \longrightarrow E$ et $Y: (\Omega,\Tribu,\P) \longrightarrow E'$ deux variables aléatoires discrètes. On dit que $X$ et $Y$ sont indépendantes si
+    $$
+      \forall (A,B) \in \Part(X(\Omega)) \times \Part(Y(\Omega)) , \P \big((X \in A) \cap (Y \in B)\big) = \P(X \in A)\P(Y \in B)
+    $$
+    et on note $X \indep Y$.
+  - $\big(X_{i}: (\Omega, \Tribu,\P) \longrightarrow E_{i}\big)_{i \in I}$ est une famille de variables aléatoires (mutuellement) indépendantes si pour toute famille $(B_{i})_{i \in I} \in \prod_{i \in I}\Part(X_{i}(\Omega))$, une des deux propositions équivalentes ci-dessous est vérifiée
+    - pour toute partie finie non vide $J$ de $I$, on a
+      $$
+        \P \left(\bigcap_{i \in J} (X_{i} \in B_{i})\right) = \prod_{i \in J}\P(X_{i} \in B_{i})
+      $$
+    - $(X_{i} \in B_{i})_{i \in I}$ est une famille d’événements $\P$-mutuellement indépendants.
+%
+
+%eg
+  1. Soit $A \in \Tribu$ avec $\P(A) \in \oo{0,1}$. A-t-on $\1_{A} \indep \1_{\bar{A}}$ ?
+     ~
+     $\P(\1_{A} \in \{1\}, \1_{\bar{A}} \in \{0\}) = \P(\1_{A} \in \{1\}) = \P(A)$ et $\P(\1_{A} \in \{1\}) \times  \P(\1_{\bar{A}} \in \{0\}) = \P(A)^{2}$ or $\P(A) \notin \{0,1\}$ donc $\P(A) \ne \P(A)^{2}$.
+  2. Soit $(A_{i})_{i \in I}$ une famille d’événements. $(\1_{A_{i}})_{i \in I}$ est une famille de variables aléatoires indépendantes si et seulement si $(A_{i})_{i \in I}$ est une famille d’événements mutuellement indépendants.
+     ~
+     - Supposons $(A_{A_{i}})_{i \in I}$ une famille de variables aléatoires indépendantes. Soit $J$ une partie finie de $I$.
+       $$
+         \P \left(\bigcap_{i \in J} A_{i}\right) = \P \left(\bigcap_{i \in J} \big(\1_{A_{i}} \in \{1\}\big)\right) = \prod_{i \in J} \P(\1_{A_{i}} \in \{1\}) = \prod_{i \in J}\P(A_{i})
+       $$
+     - Le sens réciproque est laissé en exercice.
+%
+
+%prop
+  1. Si $(X_{i})_{i \in I}$ est une famille de variables aléatoires discrètes indépendantes, alors pour toute partie $J$ de $I$ (non vide), $(X_{i})_{i \in J}$ est une famille de variables aléatoires indépendantes.
+  2. Soit $(X_{n})_{n \in \N}$ une suite de variables aléatoires (toutes définies sur $(\Omega, \Tribu, \P)$). Les deux propriétés suivantes sont équivalentes
+     - $(X_{n})_{n \in \N}$ est une suite de variables aléatoires indépendantes
+     -  $\forall p \in \N$, $(X_{k})_{k \in \icc{0,p}}$ est une suite de variables aléatoires indépendantes((Ce qui est faux avec les événements.))
+  3. Soient $X_{1}, \ldots, X_{n}$ des variables aléatoires discrètes définies sur $(\Omega,\Tribu,\P)$ à valeurs respectivement dans $E_{1}, \ldots, E_{n}$. Alors, $X_{1}, \ldots, X_{n}$ sont indépendantes si et seulement si
+     $$
+       \forall (x_{1}, \ldots, x_{n}) \in X_{1}(\Omega) \times  \cdots \times X_{n}(\Omega), \P(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = \prod_{i=1}^{n}\P(X_{i}=x_{i})
+     $$
+%
+
+%proof
+  1. Par définition.
+  2. Le premier point donne le sens direct. Supposons $(X_{k})_{k \in \icc{0,p}}$ indépendante pour tout $p \in \N$. Soit $J$ une partie finie de $\N$. Soit $(B_{i})_{i \in J} \in \prod_{i \in J}X_{i}(\Omega)$. On a $J \subset \icc{0,\max J} =I$. Posons, pour tout $i \in I$,
+     ~ $B_{i}' = B_{i}$ si $i \in J$  ~ $B_{i}' = X_{i}(\Omega)$ si $i \in I \setminus J$
+     On a alors
+     $$
+       \P \left(\bigcap_{i \in J} (X_{i} \in B_{i})\right) \oeq{(1)} \P \left(\bigcap_{i \in I}(X_{i} \in B_{i}')\right) = \prod_{i \in I} \P(tx_{i} \in B_{i}') \oeq{(2)} \prod_{i \in J} \P(X_{i} \in B_{i})
+     $$
+     (1) car $(X_{i} \in X_{i}(\Omega)) = \Omega$ et (1) car $\P(X_{i} \in X_{1}(\Omega))$.
+
+%

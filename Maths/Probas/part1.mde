@@ -54,7 +54,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
       \bigcap_{k \in \N^{*}} A_{k} = \bigcap_{k \in \icc{1,n}}A_{k} \in \Tribu
     $$
   - Soit $(A,B) \in \Tribu^{2}$.
-    ~ $A \setminus B = A \cap B^{\complement} \in \Tribu$  ~ $A \Delta B = (A \setminus B) \cup (B \setminus A) \in \Tribu$
+    ~ $A \setminus B = A \cap B^{\complement} \in \Tribu$  ~ $A \sym B = (A \setminus B) \cup (B \setminus A) \in \Tribu$
   %offprog
     - Soit $(A_{n})_{n \in \N}$ une suite d’éléments de $\Tribu$. On pose
       - $\limsup_{n \in \N} A_{n} \defeq \bigcap_{n \in \N} \bigcup_{k \geq n} A_{k} \in \Tribu$
@@ -568,7 +568,8 @@ $$
     $$
       \P \left(\limsup_{n \in \N}A_{n}\right) = \lim_{n\to+\infty} \P \left(\bigcup_{k \geq n}A_{k}\right)
     $$
-    1. $$
+    1. On a
+       $$
          0 \leq \P \left(\bigcup_{k \geq n} A_{k}\right) \leq \sum_{k \in \icc{n,+\infty}}\P(A_{k}) = \sum_{k=n}^{+\infty}\P(A_{k}) \arrowlim{n\to+\infty} 0
        $$
        donc $\P \left(\limsup_{n \in \N}A_{n}\right) = 0$.
@@ -875,4 +876,157 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
     X: \applic{(D,\Part(D),\P)}{D}{d}{d}
   $$
   Alors $X(D) = D$ est au plus dénombrable et $\forall d \in X(D), (X=d) = \{d\} \in \Part(D)$ donc $X$ est une variable aléatoire discrète. On a $\forall x \in X(D) = D$, $\P_{X}(\{x\}) = \P(X=x) = p_{x}$ donc  $\P_{X} = \P$.
+%
+
+%term
+  Soient $X : (\Omega,\Tribu, \P) \longrightarrow E$ et $X': (\Omega', \Tribu', \P') \longrightarrow E'$ deux variables aléatoires discrètes. On dit que $X$ et $X'$ suivent la même loi si
+  $$
+    \forall x \in X(\Omega) \cap X'(\Omega'), \P(X=x) = \P'(X'=x)
+  $$
+  et
+  $$
+    \forall x \in X(\Omega) \sym X'(\Omega'), \P(X=x) = \P'(X'=x) = 0
+  $$
+  Ou, dans le cas $E = E'$ et $X(\Omega) = X'(\Omega')$, si $\P_{X} = \P_{X'}$.
+  On écrit $X \sim X'$.
+%
+
+%eg
+  1. Soit $X: (\Omega,\Tribu, \P) \longrightarrow \R$ une variable aléatoire discrète telle que $\P(X=1) = \P(X=-1) = \frac{1}{2}$ (variable aléatoire de _Rademacker_). Alors, $X \sim (-X)$.
+  2. Soit $X$ une variable aléatoire réelle discrète. $X\leadsto \B(n,p)$ signifie qu’il existe un espace probabilisé $(\Omega,\Tribu,\P)$ telle que $X: (\Omega,\Tribu,\P) \longrightarrow \R$ soit une variable aléatoire discrète vérifiant
+     $$
+       \forall k \in \icc{0,n}, \P(X=k) = \binom{n}{k}p^{k}(1-p)^{n-k}
+     $$
+     (et donc $\forall x \in \R \setminus \icc{0,n}, \P(X=x) = 0$).
+  3. $(\Omega_{1},\Part(\Omega_{1}), \P_{1})$ avec $\P_{1}$ définie par $\P\Big(\big\{(0)_{n \in \N^{*}}\big\}\Big)$ et $\P_{1}\Big(\big\{(0, \ldots, 0,1)\big\}\Big) = \left(\frac{1}{2}\right)^{n+1}$ pour tout $n \in \N$. Posons
+     $$
+       N: \applic{\Omega_{1}}{\N^{*} \cup \{\infty\}}{\omega}{\abs{\omega} \quad \text{(longueur de $\omega$)}}
+     $$
+     Alors
+     - $N(\Omega_{1}) = \N^{*} \cup \{\infty\}$ est un ensemble dénombrable
+     - $\forall \ell \in \N^{*} \cup \{\infty\}, (N=\ell) \in \Part(\Omega_{1})$
+     donc $N$ est une variable aléatoire discrète sur $(\Omega_{1}, \Part(\Omega_{1}))$. Déterminons sa loi. On a $\P_{N}(\{\infty\}) = \P_{1}(N=\infty) = \P_{1}(\{(0)_{n \in \N}\}) = 0$ et
+       $$
+         \forall n \in \N^{*}, \P_{N}(\{n\}) = \P_{1}(N=n) = \P_{1}(\{(0, \ldots, 0, 1)\}) = \left(\frac{1}{2}\right)^{n}
+       $$
+       donc
+       $$
+         \forall n \in \N^{*}, \P(N=n) = \frac{1}{2}\left(1-\frac{1}{2}\right)^{n-1}
+       $$
+       donc $N \leadsto \mathscr G \left(\frac{1}{2}\right)$.
+%
+
+%prop
+  Soit $\Big(X_{n}: (\Omega_{n},\Tribu_{n},\P_{n}) \longrightarrow \R\Big)_{n \in \N}$ une suite de variables aléatoires réelles discrètes.(($X_{n}$ compte le nombre de succès dans une succession de $n$ épreuves de Bernoulli indépendantes de probabilité de succès $p$.)) Soit $(p_{n})_{n \in \N} \in \oo{0,1}^{\N}$. Supposons
+  ~ $\forall n \in \N, X_{n} \leadsto \B(n,p_{n})$  ~ $\exists \lambda > 0: n p_{n} \arrowlim{n\to+\infty} \lambda$
+  Alors
+  $$
+    \forall k \in \N, \P_{n}(X_{n} = k) \arrowlim{n\to+\infty} e^{-\lambda} \frac{\lambda^{k}}{k!}
+  $$
+  i.e $\P_{X_{n}} \sarrowlim{n\to+\infty} \mathscr P(\lambda)$.
+  $\mathscr P$ est appelée _loi des événements rares_: elle compte le nombre de succès dans une succession d’un grand nombre d’épreuves de Bernoulli indépendantes de probabilité de succès très faible.
+%
+
+%proof
+  Soit $k \in \N$. Pour tout $n \geq k$,
+  $$
+    \begin{align*}
+      P_{n}(X_{n} = k) &= \binom{n}{k}p_{n}^{k}(1-p_{n})^{n-k} \\
+      &= \frac{n(n-1) \cdots (n-k+1)}{k!} p_{n}^{k} \frac{(1-p_{n})^{n}}{(1-p_{n})^{k}} \\
+      &\usim{n\to+\infty} \frac{n^{k}}{k!}p_{n}^{k} \frac{(1-p_{n})^{n}}{1} \\
+      &\usim{n\to+\infty} \frac{\lambda^{k}}{k!} e^{n\ln(1-p_{n})}
+    \end{align*}
+  $$
+  car $p_{n} \sim \frac{\lambda}{n} \arrowlim{n\to+\infty}0$. Or $p_{n} \longrightarrow 0$ donc $n\ln(1-p_{n})\usim{n\to+\infty}-np_{n} \arrowlim{n\to+\infty}-\lambda$ donc par convexité de $\exp$, on a $e^{n\ln(1-p_{n})} \arrowlim{n\to+\infty}e^{-\lambda}$ d’où
+  $$
+    \P_{n}(X_{n} = k) \arrowlim{n\to+\infty} e^{-\lambda}\frac{\lambda^{k}}{k!}
+  $$
+%
+
+%eg
+  Une maladie rare touche en france chaque année 10 personnes en moyenne. Quelle est la probabilité pour qu’elle touche plus de 15 personnes en 2026 ?
+  ~
+  On peut considérer $X \leadsto \mathscr P(10)$ et on a alors
+  $$
+    \P(X > 15) = 1- \P(X \leq 15) = 1 - \sum_{k=0}^{15}e^{-10}\frac{10^{k}}{k!} \simeq 0.049
+  $$
+  Le calcul exact serait
+  $$
+    \sum_{k=16}^{66 \cdot 10^{6}}\binom{66 \cdot 10^{6}}{k}p^{k}(1-p)^{66 \cdot 10^{6} - k}
+  $$
+  avec $p = \frac{10}{66 \cdot 10^{6}}$.
+%
+
+%prop
+  Soient $X: (\Omega, \Tribu, \P) \longrightarrow E$ et $Y: (\Omega', \Tribu', \P') \longrightarrow E$ deux variables aléatoires discrètes. Soit $f: E \longrightarrow F$ une application. On a
+  $$
+    X \sim Y \implies f(X) \sim f(Y)
+  $$
+%
+
+%proof
+  Supposons $X \sim Y$. Soit $x \in f(X)(\Omega) \cap f(Y)(\Omega)$. Montrons $\P(f(X) = x) = \P'(f(Y) = x)$. On a
+  $$
+    \begin{align*}
+      \P(f(X) = x) &= \P(X \in f^{-1}(\{x\})) \\
+      &= \P \left(\biguplus_{y \in f^{-1}(\{x\})}(X=y)\right) \\
+      &= \P \left(\biguplus_{y \in \underbrace{f^{-1}(\{x\}) \cap X(\Omega)}_{\text{au plus dénombrable}}}(X=y)\right) \\
+      &= \sum_{y \in f^{-1}(\{x\}) \cap X(\Omega)} \P(X=y) \\
+      &= \sum_{k \in f^{-1}(\{x\}) \cap X(\Omega) \cap Y(\Omega)} \P(X=y) \\
+      &= \sum_{y \in f^{-1}(\{x\}) \cap X(\Omega), \cap Y(\Omega)} \P'(Y=y) \\
+      &= \P' \left(f(Y) = x\right)
+    \end{align*}
+  $$
+  Soit $x \in f(X)(\Omega) \sym f(Y)(\Omega)$. Si $x \notin f(X)(\Omega)$, alors $0 = \P(f(X) = x) = \P(f(Y) = x)$.
+%
+
+%def
+  Soit $X: (\Omega, \Tribu,\P) \longrightarrow E$ une variable aléatoire discrète. Soit $A$ un événement de probabilité non nulle. La loi de $X: (\Omega, \Tribu, \stress{\P_{A}}) \longrightarrow E$ est parfois notée $\P_{X\mid A}$ et s’appelle _loi conditionnelle de $X$ sachant $A$_. Elle est donc définie par
+  $$
+    \P_{X\mid A} : \applic{\Part(X(\Omega))}{\cc{0,1}}{B}{\P_{X\mid A}(B) = \P_{A}(X \in B) = \P(X \in B \mid A)}
+  $$
+%
+
+%eg
+  Soit $X \leadsto \mathscr G(p)$. $\P_{X\mid (X>n)}$ est caractérisée par la donnée de la distribution $\big(\P_{X\mid (X>n)}(\{k\})\big)_{k \in \N^{*}}$. On a, pour tout $k \in \N^{*}$,
+  $$
+    \P_{X\mid (X>n)} (\{k\}) = \P(X=k\mid X>n) = \begin{cases}0 \if k \in \icc{0,n} \\ \frac{\P((X=k) \cap (X>n))}{\P(X>n)} = \frac{\P(X=k)}{\P(X>n)} \if k \geq n+1\end{cases}
+  $$
+  donc
+  $$
+    \P_{X\mid (X>n)} (\{k\}) = \begin{cases}0 \if k \in \icc{0,n} \\ \frac{p(1-p)^{k-1}}{(1-p)^{n}} = p(1-p)^{k-n-1} \if k \geq n+1\end{cases}
+  $$
+%
+
+%def
+  Soit $Z = (X_{1}, \ldots, X_{n}): (\Omega, \Tribu,\P) \longrightarrow E_{1} \times  \cdots \times E_{n}$ un vecteur aléatoire discret. La loi de $Z$, notée $\P_{Z}$ est appelée _loi conjointe du vecteur aléatoire_ $(X_{1}, \ldots, X_{n})$. Elle est caractérisée par la donnée de la distribution
+  $$
+    \Big(\P\big(Z=(x_{1}, \ldots, x_{n})\big)\Big)_{(x_{1}, \ldots, x_{n}) \in Z(\Omega)} = \Big(\underbrace{\P \big((X_{1} = x_{1}) \cap  \cdots \cap (X_{n}=x_{n})\big)}_{\text{notée } \P(X_{1}=x_{1}, \ldots, X_{n}=x_{n})}\Big)_{(x_{1}, \ldots, x_{n}) \in Z(\Omega)}
+  $$
+  Les lois $\P_{X_{1}}, \ldots, \P_{X_{n}}$ sont appelées _lois marginales_.
+%
+
+%eg
+  On a par exemple pour $x_{1} \in X_{1}(\Omega)$~:
+  $$
+    \begin{align*}
+      \P_{X_{1}}(\{x_{1}\}) &= \P(X_{1} = x_{1}) \\&= \P \left(\biguplus_{(x_{2}, \ldots, x_{n}) \in X_{2}(\Omega) \times  \cdots \times X_{n}(\Omega)} (X_{1}=x_{1}, X_{2} = x_{2}, \ldots, X_{n} = x_{n})\right) \\&= \sum_{(x_{2}, \ldots, x_{n}) \in X_{2}(\Omega)\times  \cdots \times X_{n}(\Omega)}\P(Z=(x_{1}, \ldots, x_{n}))
+    \end{align*}
+  $$
+  **La loi conjointe détermine les lois marginales mais la réciproque est fausse.** En effet, soient $(X,Y)$ et $(X',Y')$ deux couples aléatoires dont les lois conjointes sont déterminées par
+
+
+  ```
+    ┌─────┬─────┬─────┐  ┌─────┬─────┬─────┐
+    │ X/Y │ y1  │ y2  │  │X'/Y'│ y1  │ y2  │
+    ├─────┼─────┼─────┤  ├─────┼─────┼─────┤
+    │ x1  │ 1/4 │ 1/4 │  │ x1  │ 1/8 │ 3/8 │
+    ├─────┼─────┼─────┤  ├─────┼─────┼─────┤
+    │ x2  │ 1/4 │ 1/4 │  │ x2  │ 3/8 │ 1/8 │
+    └─────┴─────┴─────┘  └─────┴─────┴─────┘
+  ```
+
+  Alors
+  ~ $\P(X=x_{1}) = \frac{1}{2} = \P(X=x_{2})$  ~ $\P(Y=y_{1}) = \frac{1}{2}= \P(Y=y_{2})$  ~ $\P(X' = x_{1}) = \frac{1}{8} + \frac{3}{8} = \frac{1}{2} = \P(X' = x_{2})$  ~ $\P(Y' = y_{1}) = \frac{1}{2} = \P(Y' = y^{2})$
+  donc $X \sim X' \leadsto \mathscr \Unif(\{x_{1}, x_{2}\})$ et $Y \sim Y' \leadsto \Unif(\{y_{1}, y_{2}\})$ or $(X,Y) \not\sim (X',Y')$.
 %
