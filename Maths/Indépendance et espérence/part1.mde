@@ -129,7 +129,7 @@
        \begin{align*}
          \P \Big((X_{i})_{i \in I_{1}} = (x_{i})_{i \in I_{1}}, \ldots, (X_{i})_{i \in I_{p}} = (x_{i})_{i \in I_{p}}\Big) &= \P(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) \\
         &= \prod_{i=1}^{n}\P(X_{i} = x_{i}) \\
-        &= \prod_{k=1}^{p} \left(\prod_{i \in I_{k}}\P (tx_{i} = x_{i})\right)
+        &= \prod_{k=1}^{p} \left(\prod_{i \in I_{k}}\P (X_{i} = x_{i})\right)
        \end{align*}
      $$
      Comme $X_{1}, \ldots, X_{n}$ sont indépendantes, $(X_{i})_{i \in I_{k}}$ est une famille de variables aléatoires indépendantes d’où
@@ -377,4 +377,314 @@ Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
       &= \exp \left(\lambda\left(e^{\frac{2i \pi}{N}}-1\right)\right)
     \end{align*}
   $$
+%
+
+%proof
+  On a $f(X): \Omega \xrightarrow{X} X(\Omega) \xrightarrow{f} \C$. Posons $D = f \big(X(\Omega)\big)$ au plus dénombrable.
+  $$
+    f(X) \in L^{1} \overset{\text{def}}\iff \big(y\P(f(X) = y)\big)_{y \in D} \in \ell^{1}(D) \iff \big(f(x)\P(X=x)\big)_{x \in X(\Omega)} \in \ell^{1}(X(\Omega))
+  $$
+  On se prace dans $\bar{\R_{+}}$~:
+  $$
+    \begin{align*}
+      \sum_{y \in D}\abs{y}\P \big(f(X) = y\big) &= \sum_{y \in D}\abs{y}\P \big(X \in f^{-1}(\{y\})\big) \\
+      &= \sum_{y \in D}\abs{y}\sum_{x \in f^{-1}(\{y\})}\P(X=x) \\
+      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\P(X=x)\right) \\
+      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\P(X=x)\right)
+    \end{align*}
+  $$
+  On a $X(\Omega) = \biguplus_{y \in D}f^{-1}(\{y\})$ donc
+  $$
+    \sum_{y \in D}\abs{y}\P \big(f(X) = y\big) = \sum_{x \in X(\Omega)}\abs{f(x)}\P(X=x)
+  $$
+  donc
+  $$
+    \Big(y \P \big(f(X) = y\big)\Big)_{y \in D}\in \ell^{1}(D) \iff \Big(f(x)\P(X=1)\Big)_{x \in X(\Omega)} \in \ell^{1}(X(\Omega))
+  $$
+  et si $f(X) \in L^{1}$, alors
+  $$
+    E \big(f(X)\big) = \sum_{y \in D}y\P \big(f(X) = y\big) = \sum_{y \in D}y \P \big(X \in f^{-1}(\{y\})\big) = \cdots = \sum_{x \in X(\Omega)f(x) \P(X=1)}
+  $$
+%
+
+%eg
+  Soit $X \leadsto \mathscr \P(\lambda)$. Posons $Y = \frac{(-2)^{X}}{X+1} = f(X)$ avec $f: \applic{\N}{\R}{n}{\frac{(-2)^{n}}{n+1}}$. $Y$ est bien une variable aléatoire.
+  $$
+    Y \in L^{1}(\Omega) \iff \left(\frac{(-2)^{n}}{n+1}\P(X=n)\right)_{n \in \N} \in \ell^{1}(\N)
+  $$
+  or
+  $$
+    \abs{\frac{(-2)^{n}}{n+1}e^{-\lambda} \frac{\lambda^{n}}{n!}} = \frac{e^{-\lambda} (2 \lambda)^{n+1}}{2 \lambda \cdot (n+1)!}
+  $$
+  et $\left(\frac{(2 \lambda)^{n+1}}{n+1} e^{-\lambda} \frac{\lambda^{n}}{n!}\right)_{n \in \N} \in \ell^{1}(\N)$ donc $Y \in L^{1}(\Omega)$ (_théorème de transfert_). D’après la _formule de transfert_, on a
+  $$
+    \begin{align*}
+      E(Y) &= \sum_{n \in \N}\frac{(-2)^{n}}{n+1}\P(X=n) \\
+            &= \sum_{n \in \N}\frac{(-2)^{n}}{n+1}e^{-\lambda}\frac{\lambda^{n}}{n!} \\
+            &= \sum_{n \in \N}\frac{e-\lambda}{(-2 \lambda)}\frac{(-2 \lambda)^{n+1}}{(n+1)!} \\
+            &= \frac{e^{-\lambda}}{(-2 \lambda)}\big(e^{-2 \lambda}-1\big) \\
+            &= \frac{e^{-2 \lambda}}{2 \lambda}\big(e^{\lambda} - e^{-\lambda}\big) \\
+            &= e^{-2 \lambda} \frac{\sh \lambda}{\lambda}
+    \end{align*}
+  $$
+%
+
+%rem
+  Si $X: (\Omega, \Tribu,\P) \longrightarrow \E$ est une variable aléatoire discrète et si $f: X(\Omega) \longrightarrow \R_{+}$ est une application positive, alors $f(X)$ est une variable aléatoire discrète positive et dans $\bar{\R_{+}}$. De plus, on a la _formule de transfert dans $\bar{\R_{+}}$_~:
+  $$
+    E \big(f(X)\big) = \sum_{x \in X(\Omega)}f(x)\P(X=x)
+  $$
+  En effet, en posant $D \in f(X)(\Omega)$,
+  $$
+    E \big(f(X)\big) \underset{\bar{\R_{+}}}\defeq \sum_{y \in D}y \P \big(f(X) = y\big) \ueq{\bar{\R_{+}}} \sum_{x \in X(\Omega)}f(x) \P(X=x)
+  $$
+%
+
+%prop
+  $L^{0}(\Omega)$ est l’ensemble des variable aléatoires discrètes réelles ou complexes.
+  1. Si $X \in \stress{L^{1}(\Omega)}$ suit la même loi que $Y \in \stress{L^{0}(\Omega')}$, alors $Y \in L^{1}(\Omega')$ et $E(X) = E(Y)$.
+  2. Pour $X \in L^{0}(\Omega)$, on a
+     $$
+       X \in L^{1} \iff \abs{X} \in L^{1}
+     $$
+     et pour $X \in L^{1}$, on a
+     $$
+       \abs{E(X)} \leq E(\abs{X})
+     $$
+     _(inégalité triangulaire)_
+  3. Si $X: \Omega \longrightarrow \R_{+}$ est une variable aléatoire discrète positive d’espérence finie et $Y \in L^{0}(\Omega)$ est telle que $\abs{Y} \leq X$, alors $Y \in L^{1}(\Omega)$.
+  4. $L^{1}(\Omega)$ est un sous-espace vectoriel de $(\Func(\Omega,\K), +, \cdot)$ et $E: L^{1}(\Omega) \longrightarrow \K$ est une forme linéaire sur $L^{1}(\Omega)$.
+  5. Si $X$ et $Y$ sont deux variables aléatoires discrètes de $L^{1}(\Omega)$ telles que $X \leq Y$, alors $E(X) \leq E(Y)$ _(croissance de l’espérence)_.
+  6. Si $X: \Omega \longrightarrow \R_{+}$ est une variable aléatoire discrète positive, alors
+     ~ $E(X) \in \cc{0,+\infty}$  ~ $E(X) = 0 \iff X=0 \ps$
+%
+
+%rem
+  On peut ajouter «$\P$-presque sûrement» à toutes les relation de comparaison dans les propriétés ci-dessus.
+  En réalité, $L^{1}(\Omega)$ est défini comme l’ensemble $L^{1}(\Omega)$ défini plus haut quotienté par la relation d’égalité $\P$-presque sûre.
+%
+
+%rem
+  - Si $X: \Omega \longrightarrow \C$ et $Y: \Omega \longrightarrow \C$ deux variables aléatoires discrètes. $X = Y \ps$ signifie $\P(X=Y) = 1$.
+  - Si $X: \Omega \longrightarrow \C$ et $Y : \Omega' \longrightarrow \C$ sont deux variables aléatoires discrètes, on a
+    $$
+      X \sim Y \iff \forall x \in X(\Omega) \cup Y(\Omega'), \P(X=x) = \P'(Y=x)
+    $$
+    Dans le cas où $\Omega' = \Omega$,
+    $$
+      X=Y \ps \implies X\sim Y
+    $$
+    En effet, en posant $\Omega_{1} = \Big\{\omega \in \Omega \where X(\omega) = Y(\omega)\Big\}$, on a $\P(\Omega_{1}) = 1$. Soit $x \in X(\Omega) \cap Y(\Omega)$
+    $$
+      \P(X=x) = \P \big((X=x) \cap \Omega_{1}\big) + \underbrace{\P \big((X=x) \cap \bar{\Omega_{1}}\big)}_{\leq \P(\bar{\Omega_{1}}) = 0}
+    $$
+    donc
+    $$
+      \P(X=x) = \P \big((X=x) \cap \Omega_{1}\big) = \P \big((Y=x) \cap \Omega_{1}\big) = \P(Y=x)
+    $$
+
+%
+
+%proof
+  1. Soient $X \in L^{0}(\Omega)$ suivant la même loi que $Y \in L^{0}(\Omega')$.
+     $$
+       \sum_{x \in X(\Omega)}\abs{x}\P(X=x) = \sum_{x \in X(\Omega) \cup Y(\Omega')}\abs{x}\P(X=x) = \sum_{x \in X(\Omega) \cup Y(\Omega')}\abs{x}\P'(Y=x) = \sum_{x \in Y(\Omega')}\abs{x}\P'(Y=x)
+     $$
+     donc $X \in L^{1}(\Omega) \iff Y \in L^{1}(\Omega')$ et si $X \in L^{1}(\Omega)$, alors
+     $$
+       E(X) = \sum_{x \in X(\Omega)}x\P(X=x) = \sum_{x \in Y(\Omega')}x\P'(Y=x) = E(Y)
+     $$
+  2. Soit $X \in L^{0}(\Omega)$.
+     $$
+       \begin{align*}
+         X \in L^{1}(\Omega) &\defiff \Big(x\P(X=x)\Big)_{x \in X(\Omega)} \in \ell^{1}\big(X(\Omega)\big) \\
+         & \defiff \Big(\abs{x}\P(X=x)\Big)_{x \in X(\Omega)} \in \ell^{1}(X(\Omega)) \\
+         & \oiff{T.T} \abs{X} \in L^{1}(\Omega)
+       \end{align*}
+     $$
+     et pour $X \in L^{1}(\Omega)$,
+     $$
+       \abs{E(X)} = \abs{\sum_{x \in X(\Omega)} x\P(X=x)} \leq \sum_{x \in X(\Omega)}\abs{x}\P(X=x) \oeq{F.T}E(\abs{X})
+     $$
+  3. Soit $X$ une variable aléatoire discrète d’espérance finie et $Y \in L^{0}(\Omega)$ telle que $\abs{Y} \leq X$. Alors
+     $$
+       \sum_{y \in Y(\Omega)} \abs{y}\P(Y=y) = \sum_{y \in Y(\Omega)}\abs{y} \left(\sum_{x \in X(\Omega)}\P(Y =y, X=x)\right)
+     $$
+     car $(X=x)_{x \in X(\Omega)}$ est un système complet d’événements d’où
+     $$
+       \sum_{y \in Y(\Omega)}\abs{y}\P(Y=y) = \sum_{(x,y) \in X(\Omega)\times Y(\Omega)} \abs{y}\P(X=x,Y=y) = \sum_{\substack{(x,y) \in X(\Omega) \times Y(\Omega)\\\abs{y} \leq x}}\cdots  + \sum_{\substack{(x,y) \in X(\Omega)\times Y(\Omega)\\ \abs{y} > x}}\cdots
+     $$
+     or si $\abs{y} > x$, alors $(X=x) \cap (Y=x) \subset (\abs{Y} > X)$
+     %offprog
+       or $\abs{Y} \leq X \ps$ donc $\P \big(\abs{Y} > X\big) = 0$ d’où $\P(X=x, Y=y) = 0$
+     %
+     d’où
+     $$
+       \begin{align*}
+         \sum_{y \in Y(\Omega)} \abs{y}\P(Y=x) &= \sum_{(x,y) \in X(\Omega)\times Y(\Omega)}\abs{y}\P(X=x,Y=y) \\
+         &\leq \sum_{x \in X(\Omega)}\abs{x}\sum_{y \in Y(\Omega)}\P(X=x,Y=y) = \sum_{x \in X(\Omega)}\abs{x}\P(X=x) < +\infty
+       \end{align*}
+     $$
+  4. - $\1_{\emptyset} \in L^{1}(\Omega)$.
+     - Soient $X$ et $Y$ deux variables aléatoires discrètes de $L^{1}$. Soient $(\lambda, \mu) \in \K^{2}$. On a $\lambda X  + \mu Y = f(X,Y)$ avec $f: \applic{\K^{2} }{\K}{(x,y)}{\lambda x + \mu y}$.
+       $$
+         \lambda X + \mu Y \in L^{1} \oiff{T.T} \Big((\lambda x + \mu y) \P(X=x,Y=y)\Big)_{(x,y) \in (X,Y)(\Omega)} \in \ell^{1} \big((X,Y)(\Omega)\big) \\
+       $$
+       On se prace dans $\bar{\R_{+}}$~:
+       $$
+         \begin{align*}
+           \sum_{(x,y) \in (X,Y)(\Omega)} \abs{\lambda x + \mu y} \P(X=x,Y=y) &= \sum_{(x,y) \in X(\Omega) \times Y(\Omega)} \abs{\lambda x + \mu y} \P(X=x,Y=y) \\
+           &\leq \sum_{x \in X(\Omega)} \abs{\lambda}\abs{x} \left(\sum_{y \in Y(\Omega)}\P(X=x,Y=y)\right) + \sum_{y \in Y(\Omega)}\abs{\mu}\abs{y} \left(\sum_{x \in X(\Omega)}\P(X=x,Y=y)\right) \\
+           &= \abs{\lambda} \sum_{x \in X(\Omega)} \abs{x}\P(X=x) + \abs{\mu} \sum_{y \in Y(\Omega)}\abs{y}\P(Y=y) < +\infty
+         \end{align*}
+       $$
+       D’après le _théorème de transfert_, $\lambda X + \mu Y \in L^{1}(\Omega)$ et
+       $$
+         \begin{align*}
+           E(\lambda X + \mu Y) &\oeq{F.T} \sum_{(x,y) \in (X,Y)(\Omega)} (\lambda x + \mu y)\P(X=x,Y=y)\\
+           &= \sum_{(x,y) \in X(\Omega)\times Y(\Omega)}\cdots \\
+           &= \lambda E (X) + \mu E(Y)
+         \end{align*}
+       $$
+  5. Soient $X$ et $Y$ deux variables aléatoires discrètes d’espérances finies telles que $X \leq Y$ $\P$-presque sûrement. On a $Y - X \geq 0 \ps$ et $Y-X \in L^{1}$ d’où $E(Y-X) \in \co{0,+\infty}$. Par linéarité, $E(Y) - E(X) \geq 0$ d’où $E(X) \leq E(X)$.
+  6. Soit $X: \Omega \longrightarrow \R_{+}$ une variable aléatoire discrète positive. ALors $E(X) \in \cc{0,+\infty}$ et
+     $$
+       \begin{align*}
+         E(X) = 0 &\iff \sum_{x \in X(\Omega)}\underbrace{x\P(X=x)}_{\geq 0} = 0\\
+         &\iff \forall x \in X(\Omega), x\P(X=x) = 0 \\
+         &\iff \forall x \in X(\Omega) \cap \R_{+}^{*}, \P(X=x) = 0\\
+         &\iff \P(X=0) = 1
+       \end{align*}
+     $$
+%
+
+%eg
+  - Soit $a \in \K$.
+    $$
+      E(``a") = E(a \1_{\Omega}) = aE(\1_{\Omega}) = a\P(\Omega) = a
+    $$
+    Soit $X \in L^{1}$. Soit $(a,b) \in \K^{2}$. Par linéarité,
+    $$
+      E(aX+b) = a E(X) + b
+    $$
+  - La variable aléatoire _centrée_ associée à $X \in L^{1}$ est
+    $$
+      \tilde{X} = X-E(X) = X-E(X)1_{\Omega}
+    $$
+    Elle est d’espérance nulle.
+  - Soient $A_{1}, \ldots, A_{n}$ des événements. Posons $B = \bigcup_{i \in 1}^{n}A_{i}$. On a $\bar{B} = \bigcap_{i=1}^{n}\bar{A_{i}}$ et
+    $$
+      \1_{\bar{B}} = \1_{\bigcap_{i=1}^n\bar{A_{i}}} = \prod_{i=1}^{n}\1_{\bar{A_{i}}}
+    $$
+    $$
+      \begin{align*}
+        \1_{\Omega} - \1_{B} &= \prod_{i=1}^{n}(\1_{\Omega} - \1_{A_{i}}) \\
+        &= \1_{\Omega} - \sum_{i=1}^{n}\1_{A_{i}} + \sum_{1 \leq i < j \leq n} \1_{A_{i}} \1_{A_{j}} + (-1)^{n} \1_{A_{1}} \times \cdots \times \1_{A_{n}}
+      \end{align*}
+    $$
+    d’où
+    $$
+      \1_{B} = \sum_{i=1}^{n}\1_{A_{i}} - \sum_{1 \leq i < j \leq n}\1_{A_{i} \cap A_{j}} + \cdots + (-1)^{n-1}\1_{A_{1} \cap  \cdots \cap  A_{n}}
+    $$
+    Par linéarité de l’espérance, $E(\1_{A}) = \P(A)$ pour tout événement $A$, donc
+    $$
+      \P(B) = \sum_{i=1}^{n}\P(A_{i}) - \sum_{1 \leq i < j \leq n} \P(A_{i} \cap A_{j}) + \cdots + (-1)^{n-1}\P(A_{1} \cap  \cdots \cap A_{n})
+    $$
+    On retrouve enfin la _formule du crible de Poincaré_~:
+    $$
+      \P \left(\bigcup_{i=1}^{n}B_{i}\right) = \sum_{k=1}^{n}(-1)^{k-1} \left(\sum_{\substack{I \in \Part(\icc{1,n}) \\ \abs{I} =k}}\P \left(\bigcap_{i \in I} A_{i}\right)\right)
+    $$
+%
+
+%rem
+  - Soit $X \leadsto Z(3)$ positive. Dans $\bar{\R_{+}}$, on a
+    $$
+      E(X) = \sum_{k \in \N^{*}}k \frac{1}{\zeta(3)k^{3}} = \frac{\zeta(2)}{\zeta(3)} < +\infty
+    $$
+    donc $X \in L^{1}(\Omega)$. Or $X^{2} \geq 0$ et
+    $$
+      E(X^{2}) \oeq{F.T} \sum_{k \in \N^{*}}k^{2} \frac{1}{\zeta(3)k^{3}} = \frac{1}{\zeta(3)} \sum_{k \in \N^{*}}\frac{1}{k} = +\infty
+    $$
+    donc $X \times X \notin L^{1}$.
+  - Si $X \in L^{1}$ et $Y$ est une variable aléatoire bornée presque sûrement, alors il existe $em \in \R_{+}$ tel que $\abs{Y} \leq M$ $\P$-presque sûrement d’où $\abs{XY} \leq M \abs{X}$ presque sûrement or $M \abs{X} \in \L^{1}$ donc $XY \in L^{1}$. En particulier~:
+    %callout
+      Pour $X \in L^{1}$ et $A$ un événement, on a $X\1_{A} \in L^{1}$.
+    %
+%
+
+%prop
+  1. Si $X$ et $Y$ sont deux variables aléatoires discrètes indépendantes de $\L^{1}$, alors $XY \in L^{1}$ et $E(XY) = E(X) E(Y)$.
+  2. Si $X_{1}, \ldots, X_{n}$ sont des variables aléatoires discrètes indépendantes de $L^{1}$, alors $(X_{1}X_{2} \cdots X_{n}) \in L^{1}$ et $E(X_{1} X_{2} \cdots X_{n}) = \prod_{i=1}^{n}E(X_{i})$.
+%
+
+%proof
+  1. Soient $X \in L^{1}$ et $Y \in L^{1}$ indépendantes. $XY = f(X,Y)$ avec $f: \applic{\K^{2}}{\K}{(x,y)}{xy}$. D’après le _théorème de transfert_, on a
+     $$
+       XY \in L^{1} \iff \Big(xy\P \big((X,Y)=(x,y)\big)\Big)_{(x,y) \in (X,Y)(\Omega)} \in \ell^{1} \big((X,Y)(\Omega)\big)
+     $$
+     Dans $\bar{\R_{+}}$,
+     $$
+       \begin{align*}
+         \sum_{(x,y) \in (X,Y)(\Omega)} \abs{xy}\P \big((X,Y)=(x,y)\big) &\ueq{X\indep Y}  \sum_{(x,y) \in X(\Omega)\times Y(\Omega)} \P(X=x) \P(Y=y) \\
+         &= \sum_{x \in X(\Omega)}\abs{x}\P(X=x) \times \sum_{y \in Y(\Omega)}\abs{y} \P(Y=y) < +\infty
+       \end{align*}
+     $$
+     donc $XY \in L^{1}$. De plus,
+     $$
+       \begin{align*}
+         E(XY) &\oeq{T.T} \sum_{(x,y) \in (X,Y)(\Omega)} xy \P(X=x,Y=y) \\
+         &= \sum_{x \in X(\Omega)}x \P(X=x) \times \sum_{y \in Y(\Omega)}y\P(Y=y) \\
+         &= E(X)E(Y)
+       \end{align*}
+     $$
+  2. Considérons la propriété $\Prop(n)$: «si $X_{1}, \ldots, X_{n}$ sont $n$ variables aléatoires discrètes indépendantes de $L^{1}(\Omega)$, alors $(X_{1}, \ldots, X_{n}) \in L^{1}(\Omega)$ et $E(X_{1}, \ldots, X_{n}) = \prod_{i=1}^{n}E(X_{i})$» définie pour $n \in \N^{*}$.
+     - $\Prop(1)$ est vraie et $\Prop(2)$ aussi
+     - Supposons $\P(n)$ vraie pour $n$ fixé dans $\N^{*}$. Soient $X_{1}, \ldots, X_{n+1}$ des variables aléatoires discrètes indépendantes de $L^{1}$. D’après le _lemme des coalitions_, $(X_{1} \cdots X_{n})$ et $X_{n+1}$ sont indépendantes et d’après $\Prop(n)$, $(X_{1} \cdots X_{n}) \in L^{1}$ donc d’après $\Prop(2)$, $(X_{1} \cdots X_{n}) \times X_{n+1} \in L^{1}$ et
+       $$
+         E \big((X_{1} \cdots X_{n}) \times X_{n+1}\big) = E(X_{1} \cdots X_{n})E(X_{n+1}) = \prod_{i=1}^{n}E(X_{i}) \times E_{X_{n+1}} = \prod_{i=1}^{n+1}E(X_{i})
+       $$
+       donc $\Prop(n+1)$ est vraie.
+%
+
+%custom Cas d’utilisatoin fréquent
+  Si $(X_{1}, \ldots, X_{n})$ est une suite de variables aléatoires indépendantes identiquement distribuées de $L^{1}(\Omega)$, alors $X_{1} \times \cdots \times X_{n} \in L^{1}(\Omega)$ et $E(X_{1} \times  \cdots \times X_{n}) = E(X_{1})^{n}$
+%
+
+%prop Inégalité de Markov
+  1. Si $X: (\Omega,\Tribu,\P) \longrightarrow \R_{+}$ est une variable aléatoire discrète positive (d’espérance finie)((Hypothèse non nécessaire.)), alors
+     $$
+       \forall a > 0,\P(X \geq a) \leq \frac{E(X)}{a}
+     $$
+  2. Si $X: (\Omega,\Tribu,\P) \longrightarrow \C$ est une variable aléatoire discrète de $L^{1}(\Omega)$, alors
+     $$
+       \forall a > 0,\P \big(\abs{X} \geq a\big) < \frac{E(\abs{X})}{a}
+     $$
+%
+
+%proof
+  1. On a ==$X \geq \1_{(X \geq a)} \geq a \1_{(X \geq a)}$== d’où
+     $$
+       E(X) \geq E(a \1_{(X \geq a)}) = a\P(X \geq a)
+     $$
+  2. $X \in L^{1}(\Omega) \iff \abs{X}\in L^{1}(\Omega)$
+%
+
+%rem
+  - Si $X \geq 0$ et $E(X)\ne 0$, alors
+    $$
+      \forall a > 0, \P(X \geq a E(X)) \leq \frac{E(X)}{aE(X)}
+    $$
+    Par exemple, $\P(X \geq 2 E(X)) \leq \frac{1}{2}$.
+  - Soit $X: (\Omega,\Tribu,\P) \longrightarrow \R$ une variable aléatoire discrète.
+    $$
+      \forall a > 0, \P(\abs{X} \leq a) \leq e^{a^{2}} E(e^{-X^{2}})
+    $$
+    Soit $a > 0$.
+    $$
+      \P(\abs{X} \leq a) = \P(X^{2}\leq a^{2}) = \P(e^{-X^{2}} \geq e^{-a^{2}})
+    $$
+    or $0 \leq e^{-X^{2}} \leq 1$ donc $e^{-X^{2}} \geq 0$((Non nécessaire.)) et $e^{-X^{2}} \in L^{1}$ d’où
+    $$
+      \P(\abs{X} \leq a) \leq \frac{E(e^{-X^{2}})}{e^{-a^{2}}}
+    $$
 %
