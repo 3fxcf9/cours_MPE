@@ -380,17 +380,12 @@ Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
 %
 
 %proof
-  On a $f(X): \Omega \xrightarrow{X} X(\Omega) \xrightarrow{f} \C$. Posons $D = f \big(X(\Omega)\big)$ au plus dénombrable.
-  $$
-    f(X) \in L^{1} \overset{\text{def}}\iff \big(y\P(f(X) = y)\big)_{y \in D} \in \ell^{1}(D) \iff \big(f(x)\P(X=x)\big)_{x \in X(\Omega)} \in \ell^{1}(X(\Omega))
-  $$
-  On se place dans $\bar{\R_{+}}$~:
+  On a $f(X): \Omega \xrightarrow{X} X(\Omega) \xrightarrow{f} \C$. Posons $D = f \big(X(\Omega)\big)$ au plus dénombrable. On se place dans $\bar{\R_{+}}$~:
   $$
     \begin{align*}
       \sum_{y \in D}\abs{y}\P \big(f(X) = y\big) &= \sum_{y \in D}\abs{y}\P \big(X \in f^{-1}(\{y\})\big) \\
       &= \sum_{y \in D}\abs{y}\sum_{x \in f^{-1}(\{y\})}\P(X=x) \\
-      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\P(X=x)\right) \\
-      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\P(X=x)\right)
+      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\abs{f(x)}\P(X=x)\right)
     \end{align*}
   $$
   On a $X(\Omega) = \biguplus_{y \in D}f^{-1}(\{y\})$ donc
@@ -726,11 +721,12 @@ l’ensemble des variable aléatoires d’ordre 1.
   - si $X \leadsto \mathscr{P}(\lambda)$, alors on a dans $\bar{\R_{+}}$~:
     $$
       \begin{align*}
-        E(X) &= \sum_{k \in \N}k^{2}\P(X=k) \\
+        E(X^{2}) &= \sum_{k \in \N}k^{2}\P(X=k) \\
         &= \sum_{k \in \stress{\N^{*}}} k^{2}e^{-\lambda} \frac{\lambda^{k}}{k!} \\
         &= \sum_{k \in \N^{*}} \big[k(k-1) + k\big] e^{-\lambda}\frac{\lambda^{k}}{k!} \\
         &= \sum_{k \in \ico{2,+\infty}} e^{-\lambda} \frac{\lambda^{k}}{(k-2)!} + \sum_{k \in \N^{*}} k e^{-\lambda}\frac{\lambda^{k}}{k!} \\
-        &= e^{-\lambda}\lambda^{2} \sum_{k=0}^{+\infty}\frac{\lambda^{n}}{n!} + E(X) + \lambda^{2} + \lambda < +\infty
+        &= e^{-\lambda}\lambda^{2} \sum_{k=0}^{+\infty}\frac{\lambda^{n}}{n!} + E(X) \\
+        &= \lambda^{2} + \lambda < +\infty
       \end{align*}
     $$
   - si $X \leadsto \mathscr{G}(p)$, alors on a dans $\bar{\R_{+}}$~:
@@ -740,7 +736,7 @@ l’ensemble des variable aléatoires d’ordre 1.
         &= \sum_{k \in \N^{*}}k^{2}p(1-p)^{k-1} \\
         &= \sum_{k \in \ico{2,+\infty}}k(k-1)p(1-p)^{k-1} + \sum_{k \in \N^{*}} kp(1-p)^{k-1} \\
         &= p(1-p)\sum_{k \in \ico{2,+\infty}}k(k-1)(1-p)^{k-2} + E(X) \\
-        &= p(1-p) \eval{\dvN{}{x}{2} \left(\sum_{n=0}^{+\infty}x^{3}\right)}{x=1-p \in \oo{0,1}} + \frac{1}{p} \\
+        &= p(1-p) \eval{\dvN{}{x}{2} \left(\sum_{n=0}^{+\infty}x^{n}\right)}{x=1-p \in \oo{0,1}} + \frac{1}{p} \\
         &= p(1-p) \eval{\frac{2}{(1-x)^{3}}}{x=1-p} + \frac{1}{p} \\
         &= p(1-p)\frac{2}{p^{3}} + \frac{1}{p} = \frac{2}{p^{2}} - \frac{1}{p} < +\infty
       \end{align*}
