@@ -4,7 +4,41 @@
 
 
 ## Modélisation d’un schéma de Bernoulli de paramètre $p$ à $n$ épreuves
-
+%def Schéma de Bernoulli
+  Soit $n \in \N^{*}$. $\big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\big)$ est un espace probabilisable (fini). Considérons la famille
+  $$
+    \Big(p^{\varepsilon_{1} + \cdots + \varepsilon_{n}} (1-p)^{(1-\varepsilon_{1}) + \cdots + (1-\varepsilon_{n})}\Big)_{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}}
+  $$
+  C’est une distribution de probabilité sur $\{0,1\}^{n}$, une famille de réels positifs, et
+  $$
+    \sum_{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}} p^{\varepsilon_{1} + \cdots + \varepsilon_{n}}(1-p)^{(1-\varepsilon_{1}) + \cdots + (1-\varepsilon_{n})} = \left(\sum_{\varepsilon_{1} = 0}^{1}p^{\varepsilon_{1}}(1-p)^{1-\varepsilon_{1}}\right) \times  \cdots \times \left(\sum_{\varepsilon_{n} = 0}^{1} p^{\varepsilon_{n}} (1-p)^{1-\varepsilon_{n}}\right) = (1-p+p)^{n} = 1
+  $$
+  Notons $\P$ la probabilité associée à cette distribution sur $\Big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\Big)$.
+  Notons pour $i \in \icc{1,n}$
+  $$
+    X_{i}: \applic{\{0,1\}^{n}}{\{0,1\}}{(\varepsilon_{i})_{1 \leq i \leq n}}{\varepsilon_{i}}
+  $$
+  C’est une variable aléatoire discrète. Soit $\varepsilon \in \{0,1\}$. On a
+  $$
+    \begin{align*}
+      \P(X_{i} = \varepsilon) &= \P \big(\{0,1\}^{i-1} \times \{\varepsilon\} \times \{0,1\}^{n-i}\big) \\
+        &= \sum_{\substack{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}\\ \varepsilon_{i} = \varepsilon}}p^{\varepsilon_{1} + \cdots + \varepsilon_{n}}(1-p)^{(1-\varepsilon_{1}) \cdots (1-\varepsilon_{n})} \\
+        &= \prod_{\substack{k=1\\k\ne 1}}^{n}\left(\sum_{\varepsilon_{k} = 0}^{1}p^{\varepsilon_{k}}(1-p)^{1-\varepsilon_{k}}\right) \times p^{\varepsilon} (1-p)^{1-\varepsilon} \\
+        &= p^{\varepsilon}(1-p)^{1-\varepsilon} \\
+        &= \begin{cases}p \if \varepsilon=1 \\ 1-p \if \varepsilon=0\end{cases}
+    \end{align*}
+  $$
+  donc $\forall i \in \icc{1,n}, X_{i}\leadsto \B(p)$. Soit $(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}$.
+  $$
+    \begin{align*}
+      \P(X_{1} = \varepsilon_{1} , \ldots, X_{n} = \varepsilon_{n}) &= \P \big(\{(\varepsilon_{1}, \ldots, \varepsilon_{n})\}\big) \\
+      &= p^{\varepsilon_{1} + \cdots + \varepsilon_{n}} (1-p)^{(1-\varepsilon_{i}) + \cdots + (1-\varepsilon_{n})} \\
+      &= \prod_{i=1}^{n}p^{\varepsilon_{i}}(1-p)^{1-\varepsilon_{i}} \\
+      &= \prod_{i=1}^{n}\P(X_{i} = \varepsilon_{i})
+    \end{align*}
+  $$
+  donc $(X_{1}, \ldots, X_{n})$ est une suite de variables aléatoires (aka. $n$-échantillon) indépendantes identiquement distribuées.
+%
 
 ## Expression de l’espérance
 
@@ -86,7 +120,7 @@
     \forall t \in \R, t^{2}E(X^{2}) + 2tE(XY) + E(Y^{2}) \geq 0
   $$
   - Si $E(X^{2}) = 0$, alors $X^{2}=0 \ps$ donc $X = 0 \ps$ donc $XY = 0 \ps$ donc $E(XY) = \sqrt{E(X^{2})} \times \sqrt{E(Y^{2})}$ donc $(\star)$ est une égalité.
-  - Supposons $E(X^{2}) > 0$. Alors $\Delta' = E(XY)^{2} - 2 E(X^{2})E(Y^{2}) \leq 0$((Discriminant réduit: pour les polynômes de la forme $ax^{2} + 2bx + c = 0$, il vaut $\Delta' = b^{2} - ac$ et les racines sont $x = \frac{-b' \pm \sqrt{\Delta'}}{a}$)) donc $E(XY)^{2} \leq E(X^{2})E(Y^{2})$. Si l’inégalité ci-dessus est une égalité, alors il existe $t_{0} \in \R$ tel que $E \big((t_{0} X + Y)^{2}\big) = 0$ donc $t_{0}X + Y = 0 \ps$.
+  - Supposons $E(X^{2}) > 0$. Alors $\Delta' = E(XY)^{2} - E(X^{2})E(Y^{2}) \leq 0$((Discriminant réduit: pour les polynômes de la forme $ax^{2} + 2bx + c = 0$, il vaut $\Delta' = b^{2} - ac$ et les racines sont $x = \frac{-b' \pm \sqrt{\Delta'}}{a}$)) donc $E(XY)^{2} \leq E(X^{2})E(Y^{2})$. Si l’inégalité ci-dessus est une égalité, alors il existe $t_{0} \in \R$ tel que $E \big((t_{0} X + Y)^{2}\big) = 0$ donc $t_{0}X + Y = 0 \ps$.
 %
 
 ## Variance pour une loi de Poisson et géométrique
