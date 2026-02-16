@@ -765,7 +765,7 @@ l’ensemble des variable aléatoires d’ordre 1.
        \forall t \in \R, t^{2}E(X^{2}) + 2tE(XY) + E(Y^{2}) \geq 0
      $$
      - Si $E(X^{2}) = 0$, alors $X^{2}=0 \ps$ donc $X = 0 \ps$ donc $XY = 0 \ps$ donc $E(XY) = \sqrt{E(X^{2})} \times \sqrt{E(Y^{2})}$ donc $(\star)$ est une égalité.
-     - Supposons $E(X^{2}) > 0$. Alors $\Delta' = E(XY)^{2} - 2 E(X^{2})E(Y^{2}) \leq 0$((Discriminant réduit: pour les polynômes de la forme $ax^{2} + 2bx + c = 0$, il vaut $\Delta' = b^{2} - ac$ et les racines sont $x = \frac{-b' \pm \sqrt{\Delta'}}{a}$)) donc $E(XY)^{2} \leq E(X^{2})E(Y^{2})$. Si l’inégalité ci-dessus est une égalité, alors il existe $t_{0} \in \R$ tel que $E \big((t_{0} X + Y)^{2}\big) = 0$ donc $t_{0}X + Y = 0 \ps$.
+     - Supposons $E(X^{2}) > 0$. Alors $\Delta' = E(XY)^{2} - E(X^{2})E(Y^{2}) \leq 0$((Discriminant réduit: pour les polynômes de la forme $ax^{2} + 2bx + c = 0$, il vaut $\Delta' = b^{2} - ac$ et les racines sont $x = \frac{-b' \pm \sqrt{\Delta'}}{a}$)) donc $E(XY)^{2} \leq E(X^{2})E(Y^{2})$. Si l’inégalité ci-dessus est une égalité, alors il existe $t_{0} \in \R$ tel que $E \big((t_{0} X + Y)^{2}\big) = 0$ donc $t_{0}X + Y = 0 \ps$.
 %
 
 %def
