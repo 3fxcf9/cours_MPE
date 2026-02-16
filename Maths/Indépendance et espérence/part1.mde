@@ -657,7 +657,7 @@ Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
 %
 
 %proof
-  1. On a ==$X \geq X\1_{(X \geq a)} \geq a \1_{(X \geq a)}$== d’où
+  1. On a ++$X \geq X\1_{(X \geq a)} \geq a \1_{(X \geq a)}++ d’où
      $$
        E(X) \geq E(a \1_{(X \geq a)}) = a\P(X \geq a)
      $$
@@ -969,7 +969,7 @@ l’ensemble des variable aléatoires d’ordre 1.
   $$
     \sum_{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}} p^{\varepsilon_{1} + \cdots + \varepsilon_{n}}(1-p)^{(1-\varepsilon_{1}) + \cdots + (1-\varepsilon_{n})} = \left(\sum_{\varepsilon_{1} = 0}^{1}p^{\varepsilon_{1}}(1-p)^{1-\varepsilon_{1}}\right) \times  \cdots \times \left(\sum_{\varepsilon_{n} = 0}^{1} p^{\varepsilon_{n}} (1-p)^{1-\varepsilon_{n}}\right) = (1-p+p)^{n} = 1
   $$
-  Notons $\P$ la probabilité sur $\Big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\Big)$
+  Notons $\P$ la probabilité associée à cette distribution sur $\Big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\Big)$.
   Notons pour $i \in \icc{1,n}$
   $$
     X_{i}: \applic{\{0,1\}^{n}}{\{0,1\}}{(\varepsilon_{i})_{1 \leq i \leq n}}{\varepsilon_{i}}
@@ -1038,4 +1038,211 @@ l’ensemble des variable aléatoires d’ordre 1.
     \forall \varepsilon > 0, \P \left(\abs{\frac{S_{n}}{n} - E(X_{1})} < \varepsilon\right) \arrowlim{n\to+\infty}1
   $$
   L’écart entre la moyenne empirique et la moyenne théorique peut être rendu aussi petit que l’on veut avec une probabilité aussi grande que l’on veut.
+%
+
+## Jeu de pile ou face infini
+
+%thm
+  Soit $(\Omega_{n},\Part(\Omega_{n}), \P)_{n \in \N}$ une suite d’espace probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$. Alors il existe une tribu $\Tribu$ sur $\Omega$ et une probabilité $Q$ sur $(\Omega,\Tribu)$ telle que les applications $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N}}{x_{i}}$ soient des variables aléatoires indépendantes vérifiant $\forall i \in \N^{*}, X_{i}\leadsto \P_{i}$.
+%
+
+%proof
+  On pose
+  $$
+    \mathscr{C} = \left\{\prod_{i=1}^{n} A_{i} \times \prod_{k \geq n+1}\Omega_{k} \where n \in \N^{*}, \forall i \in \icc{1,n}, A_{i} \in \Part(\Omega_{i})\right\}
+  $$
+  l’ensemble des cylindres de $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$. Leur réunion n’est pas un cylindre. On pose $\Tribu  = \sigma(\mathscr{C})$ la _tribu cylindrique_. On pose
+  $$
+    Q(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}) \defeq \prod_{i=1}^{n}P_{i}(A_{i})
+  $$
+  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
+  - $X_{i}(\Omega) = \Omega_{i}$ est au plus dénombrable
+  - Soit $X_{i} \in \Omega_{i}$.
+    $$
+      (X_{i}=x_{i}) = \Omega_{1} \times \cdots \times \Omega_{i-1}\times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k} \in \mathscr{C}
+    $$
+    donc $(X_{i} = x_{i}) \in \Tribu$.
+  Donc chaque $X_{i}$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$ et
+  $$
+    Q(X_{i}=x_{i}) = Q(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}) = P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
+  $$
+  donc $X_{i} \leadsto \P_{i}$.
+  - Soit $n \in \N^{*}$. Soit $(x_{1}, \ldots, x_{n}) \in \Omega_{1} \times \cdots \Omega_{n}$.
+    $$
+      \begin{align*}
+        Q \big((X_{1} = x_{1}) \cap \cdots \cap (X_{n} = x_{n})\big) &= Q \left(\{x_{1}\} \times \cdots \times \{x_{n}\} \times \prod_{k \geq n+1}\Omega_{k}\right) \\
+        &=\P_{1}(\{x_{1}\}) \times  \cdots \times  \P_{n}(\{x_{n}\})\\
+        &= Q(X_{1} = x_{1}) \times  \cdots \times Q(X_{n}=x_{n})
+      \end{align*}
+    $$
+    donc $(X_{n})_{n \in \N^{*}}$ est une suite de variables indépendantes.
+%
+
+%rem
+  Soit $(A_{i})_{i \in \N^{*}} \in \prod_{i \in \N^{*}}\Part(\Omega_{i})$.
+  $$
+    \prod_{i \in \N^{*}} A_{i} = \downbigcap_{k \in \N} \left[(A_{1} \times  \cdots \times  A_{k}) \times \prod_{\ell \geq k+1}\Omega_{\ell}\right] \in \Tribu
+  $$
+  donc
+  $$
+    \forall (x_{i})_{i \in \N^{*}} \in \prod_{i \in \N^{*}}\Omega_{i}, \Big\{(x_{i})_{i \in \N^{*}}\Big\} \in \Tribu
+  $$
+%
+
+%cor Jeu de pile ou pace infini
+  Soit $p \in \oo{0,1}$. Il existe un espace probabilisé $\big(\{0,1\}^{\N^{*}},\Tribu,Q\big)$ tel que les applicatios $X_{i}: \applic{\{0,1\}^{\N^{*}}}{\{0,1\}}{(x_{n})_{n \in \N}}{x_{i}}$ soient des variables aléatoires indépendantes telles que $\forall i \in \N^{*}, X_{i}\leadsto\B(p)$. $(X_{i})_{i \in \N^{*}}$ est appelé _jeu de pile ou face infini_.
+%
+
+%proof
+  _Analyse._ On a pour tout $i \in \N^{*}, \forall A_{i} \in \Part(\{0,1\}), (X_{i} \in A_{i}) \in \Tribu$, i.e.
+  $$
+    \forall A_{i} \in \Part(\{0,1\}),\{0,1\}^{i-1} \times A_{i} \times \prod_{k \geq i+1}\{0,1\} \in \Tribu
+  $$
+  $\Tribu$ étant stable par intersection dénombrable, pour tout $n \in \N^{*}$,
+  $$
+    \forall (A_{1}, \ldots, A_{n}) \in \Part(\{0,1\})^{n}, \underbrace{\bigcap_{i=1}^{n}\{0,1\}^{i-1} \times A_{i} \times \prod_{k \geq i+1}\{0,1\}}_{A_{1} \times \cdots \times A_{n} \times \prod_{k \geq i+1}\{0,1\} \in \Tribu} \in \Tribu
+  $$
+  donc l’ensemble des cylindres de $\{0,1\}^{\N^{*}}$ est inclus dans $\Tribu$. Ainsi, la tribu cylindrique $\sigma(\mathscr{C})$ est incluse dans $\Tribu$.
+
+  _Synthèse._ On pose $\Tribu = \sigma(\mathscr{C})$ où on a considéré la suite d’espaces probabilisés $\big(\{0,1\}, \Part(\{0,1\}),\B(p)\big)_{n \in \N^{*}}$ et on prend $Q$ la probabilité produit. Alors $(X_{n})_{n \in \N^{*}}$ vérifie les conditions attendues.
+%
+
+Posons
+$$
+  \begin{align*}
+    \pi &= Q \left(\big\{(x_{n})_{n \in \N^{*}}\big\}\right) \\
+      &= Q \left(\downbigcap_{i \in \N^{*}}\{x_{1}\} \times \cdots \times \{x_{i}\} \times \prod_{k \geq i+1}\{0,1\}\right) \\
+      &= \lim_{i\to+\infty}\P(\{x_{1}\}) \times \cdots \times  \P(\{x_{i}\}) \\
+      &= \lim_{i\to+\infty}\prod_{k=1}^{i}p_{k}
+  \end{align*}
+$$
+avec $\P=\B(p)$ et $p_{k} \in \{p,1-p\}$. On a $0 \leq \pi_{0} \leq \lim_{i \to+\infty} \alpha^{i}$ avec $\alpha = \max(p,1-p)$. Or les seules probabilités sur $(\R,\Part(\R))$ sont associées à des lois de probabilité discrètes. Or
+$$
+  \{0,1\}^{\N^{*}} \approx \Part(\N^{*}) \approx \R
+$$
+or la probabilité d’un événement élémentaire par $Q$ est nulle donc $Q$ n’est pas associée à une loi de probabilité discrète, donc $\Tribu \ne \Part(\{0,1\}\N^{*})$ d’où l’intérêt d’introduire les tribus.
+
+++Jeu de pile ou face infini.++ Soit $(X_{n})_{n \in \N^{*}}$ le jeu de pile ou face infini. Si $Z$ est le rang (aléatoire) du premier succès,
+$$
+    Z: \applic{\{0,1\}^{\N^{*}}}{\N^{*} \cup \{\infty\}}{\omega}{\begin{cases}\min \{n \in \N^{*} \where X_{n}(\Omega) = 1\} \if \text{le l’ensemble n’est pas vide}\\ \infty \else\end{cases}}
+$$
+- $Z(\{0,1\}^{\N^{*}}) = \N^{*} \cup \{\infty\}$ est dénombrable
+- $(Z=\infty) = \bigcap_{n \in \N^{*}}(X_{n}=0) \in \Tribu$
+- Pour $n \in \N^{*}$, $(Z=n) = \bigcap_{i \in \icc{1,n-1}}(X_{i} = 0) \cap  (X_{n}=1) \in \Tribu$
+donc $Z$ est une variable aléatoire. $Q(Z=\infty) = Q \left(\big\{(0)_{n \in \N^{*}}\big\}\right) = 0$ et par indépendance de $X_{1}, \ldots, X_{n}$
+$$
+  Q(Z=n)= Q(X_{1}= 0) \times  \cdots \times  Q(X_{n-1} = 0) \times Q(X_{n} = 1) = p(1-p)^{n-1}
+$$
+donc $Z \leadsto \mathcal{G(p)}$. $Z$ est le rang d’apparition du premier succès dans une succession infinie d’épreuves de Bernoulli indépendantes de paramètre $p$.
+
+%thm Théorème de Weierstrass (1885)
+  Soient $a < b$ deux réels. Soit $f: \cc{a,b} \longrightarrow \K$ une application **continue** sur le **segment** $\cc{a,b}$. Alors il existe une suite de polynômes de $\K[X]$ convergeant uniformément vers $f$ sur $\cc{a,b}$.
+%
+
+%proof Bernstein 1913 pour $\cc{a,b} = \cc{0,1}$
+  - Soit $f: \cc{0,1} \longrightarrow \C$ continue. Pour $h \geq 0$, on pose
+    $$
+      \omega(h) = \sup_{\substack{(u,v) \in \cc{0,1}^{2}\\ \abs{u-v} \leq h}} \abs{f(u) - f(v)}
+    $$
+    le module de continuité de $f$ sur $\cc{0,1}$. La partie
+    $$
+      T_{h} = \big\{(u,v) \in \cc{0,1}^{2} \where \abs{u-v} \leq h\big\}
+    $$
+    est un ompacte de $\R^{2}$ et $(u,v) \longmapsto f(u) - f(v)$ est continue sur $T_{h}$ donc $\omega(h)$ existe et est un maximum.
+
+    %dimmed Autre rédaction
+      $\forall (u,v) \in T_{h}, \abs{f(u) - f(v)} \leq 2 \norm{f}_{\infty,\cc{0,1}}$ car $f$ est continue sur me segment $\cc{0,1}$ donc $\big\{\abs{f(u) - f(v)} \where (u,v) \in \cc{0,1}^{2} \text{ et } \abs{u-v} \leq h\big\}$ est non vide et majorée dans $\R$.
+    %
+
+  - Or $f$ est uniformément continue sur $\cc{0,1}$ donc pour $\varepsilon > 0$ donné, il existe $\delta > 0$ tel que
+    $$
+      \begin{cases}(u,v) \in \cc{0,1}^{2} \\ \abs{u-v} \leq \delta\end{cases} \implies  \abs{f(u) - f(v)} < \varepsilon
+    $$
+    donc pour $h \in \cc{0, \delta}$, on a
+    $$
+      \begin{cases}(u,v) \in \cc{0,1}^{2} \\ \abs{u-v} \leq h\end{cases} \implies  \abs{f(u) - f(v)} < \varepsilon
+    $$
+    d’où $0 \leq \omega(h) \leq \varepsilon$. Ainsi, $\omega$ est continue en 0: $\lim_{h\to 0}\omega(h) = 0$.
+
+  - Posons, pour $n \in \N^{*}$,
+    $$
+      B_{n}(f) = \sum_{k=0}^{n}\binom{n}{k} f \left(\frac{k}{n}\right)X^{k}(1-X)^{n-k} \in \C_{n}[X]
+    $$
+    Soit $x \in \oo{0,1}$. Soit $(X_{n})_{n \in \N^{*}}$ le jeu de pile ou face infini avec
+    ~ $\forall n \in \N^{*}, X_{n} \leadsto B(x)$  ~ $(X_{n})_{n \in \N^{*}}$ indépendantes
+    Posons $S_{n} = X_{1} + \cdots + X_{n} \leadsto B(n,x)$.
+    $$
+      \begin{align*}
+        f(x) - \tilde{B_{n}}(f)(x) &= f(x) - \sum_{k=0}^{p}\binom{n}{k}f \left(\frac{k}{n}\right)x^{k}(1-x)^{n-k} \\
+        &= E \left(f(x) \1_{\Omega} - f \left(\frac{S_{n}}{n}\right)\right)
+      \end{align*}
+    $$
+    en effet, $E \left(f \left(\frac{S_{n}}{n}\right)\right) = \sum_{k=0}^{n} f \left(\frac{k}{n}\right)\P(S_{n} = k)$ (formule de transfert). Soit $\varepsilon > 0$. Soit $\delta > 0$ tel que $\omega(\delta) < \frac{\varepsilon}{2}$. Pour $x \in \oo{0,1}$, on a
+    $$
+      \begin{align*}
+        \abs{f(x) - \tilde{B_{n}}(f)(x)} &= \abs{E \left(f(x) - f \left(\frac{S_{n}}{n}\right)\right)} \\
+        &\leq E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)}\right) &= E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)} \1_{\left(\abs{\frac{S_{n}}{n} - x} \leq \delta\right)}\right) + E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)}\1_{\left(\abs{\frac{S_{n}}{n}-x} > \delta\right)}\right) \\
+        &&\leq \omega(\delta) E \left(\1_{\abs{\frac{S_{n}}{n} - x} \leq \delta}\right) + 2 \norm{f}_{\infty}E \left(\1_{\left(\abs{\frac{S_{n}}{n} - x} > \delta\right)}\right) \\
+        &&\leq \omega(\delta) + \underbrace{2 \norm{f}_{\infty} \P \left(\abs{\frac{S_{n}}{n}- \underbrace{x}_{E(X_{1})}} \geq \delta\right)}_{\arrowlim{n\to+\infty}0 \text{ loi faible des grands nombres}} \\
+        &&\leq \omega(\delta) + 2 \norm{f}_{\infty} \frac{V \left(\frac{S_{n}}{n}\right)}{\delta^{2}}
+      \end{align*}
+    $$
+    car $E \left(\frac{S_{n}}{n}\right) = \frac{1}{n}nE(X_{1}) = x$. Or $V(S_{n}) = nx(1-x) \leq \frac{n}{4}$ donc
+    $$
+      \forall x \in \oo{0,1}, \abs{f(x) - \tilde{B_{n}}(f)(x)} \leq \omega(\delta) + \frac{\norm{f}_{\infty}}{2n \delta^{2}}
+    $$
+    or $\frac{\norm{f}_{\infty}}{4n \delta^{2}} \arrowlim{n\to+\infty}0$ donc il existe $n \in  \in \N^{*}$ tel que
+    $$
+      \forall n \geq n_{0}, \frac{\norm{f}_{\infty}}{2 n \delta^{2}} < \frac{\varepsilon}{2}
+    $$
+    d’où
+    $$
+      \forall x \in \oo{0,1}, \abs{f(x) - \tilde{B_{n}}(f)(x)} < \varepsilon
+    $$
+    or $f(0) = \tilde{B_{n}}(f)(0)$ et $f(1) = \tilde{B_{n}}(f)(1)$ d’où
+    $$
+      \forall n \geq n_{0}, \norm{f-\tilde{B_{n}}(f)}_{\infty, \cc{0,1}} < \varepsilon
+    $$
+    donc $\big(\tilde{B_{n}}(f)\big)_{n \in \N}$ converge uniformément vers $f$ sur $\cc{0,1}$.
+
+    ++Cas général.++ Pour $f: \cc{a,b} \longrightarrow \C$ continue, posons
+    $$
+      g: \applic{\cc{0,1}}{\C}{t}{f(\underbrace{a+t(b-a)}_{u})}
+    $$
+    On a $\sup_{t \in \cc{0,1}} \abs{g(t) - \tilde{B_{n}}(g)(t)} \arrowlim{n\to+\infty}0$ d’où
+    $$
+      \sup_{u \in \cc{a,b}} \abs{f(u) - \tilde{B_{n}}(g)\left(\frac{u-a}{b-a}\right)} \arrowlim{n\to+\infty}0
+    $$
+    et $P_{n} = B_{n}(g) \circ \left(\frac{X-a}{b-a}\right) \in \C[X]$.
+%
+
+%eg
+  Soit $f \in \Cont(\cc{a,b},\C)$ telle que
+  $$
+    \forall n \in \N, \int_{a}^{b}t^{n}f(t)\dd t = 0
+  $$
+  Il existe une suite $(P_{n})$ de polynômes de $\C[X]$ qui converge uniformément vers $f$ sur $\cc{a,b}$. Par linéarité,
+  $$
+    \forall n \in \N, \int_{a}^{b}\bar{\tilde{P_{n}(t)}}f(t)\dd t = 0
+  $$
+  or $f$ est bornée sur $\cc{a,b}$ et $\bar{\tilde{P_{n}}}$ converge uniformément vers $\bar{f}$ sur $\cc{a,b}$ donc
+  $$
+    \bar{\tilde{P_{n}}} \times f \uarrowlim{n\to+\infty}f \times \bar{f} = \abs{f}^{2} \sur \cc{a,b}
+  $$
+  d’où
+  $$
+    0 = \lim_{n\to+\infty}\int_{a}^{b}\bar{\tilde{P_{n}}}(t)f(t)\dd t = \int_{a}^{b}\abs{f(t)}^{2}\dd t
+  $$
+  or $\abs{f}^{2} \geq 0$ et $\abs{f}^{2} \in \Cont([a,b])$ donc $\abs{f} = \tilde{0}$ donc $f = \tilde{0}$. Ceci constitue le théorème des moments.
+%
+
+%eg
+  Soit $f: \R \longrightarrow \K$ continue. Montrons qu’il existe une suite $(P_{n})_{n \in \N^{*}}$ de polynômes de $\K[X]$ convergeant uniformément vers $f$ sur tout segment de $\R$. Soit $n \in \N^{*}$. D’après le théorème de _Weierstrass_, il existe un polynôme $P_{n} \in \K[X]$ tel que $\norm{f-\tilde{P_{n}}}_{\infty,\cc{-n,n}} < \frac{1}{n}$. On dispose donc d’une suite $(P_{n})_{n \in \N^{*}}$ vérifiant
+  $$
+    \forall n \in \N^{*}, \norm{f-\tilde{P_{n}}}_{\infty,\cc{-n,n}} ( \frac{1}{n})
+  $$
+  Soit $S$ un segment de $\R$. Comme $S$ est borné, il existe $n_{0} \in \N^{*}$ tel que $S \subset \cc{-n_{0}, n_{0}}$ donc
+  $$
+    \norm{f-\tilde{P_{k}}}_{\infty,S} \leq \norm{f - \tilde{P_{k}}}_{\infty,\cc{-k,k}} < \frac{1}{k} \arrowlim{k\to+\infty}0
+  $$
 %
