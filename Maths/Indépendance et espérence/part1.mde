@@ -1246,3 +1246,4 @@ donc $Z \leadsto \mathcal{G(p)}$. $Z$ est le rang d’apparition du premier succ
     \norm{f-\tilde{P_{k}}}_{\infty,S} \leq \norm{f - \tilde{P_{k}}}_{\infty,\cc{-k,k}} < \frac{1}{k} \arrowlim{k\to+\infty}0
   $$
 %
+
