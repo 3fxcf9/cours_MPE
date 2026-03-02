@@ -1,0 +1,78 @@
+name: Generate and deploy github pages
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Checkout SSG
+        uses: actions/checkout@v4
+        with:
+          repository: 3fxcf9/mde_ssg
+          path: mde_ssg
+
+      - name: Checkout MDE Parser
+        uses: actions/checkout@v4
+        with:
+          repository: 3fxcf9/custom_markdown_parser
+          path: mde_parser
+
+      - name: Use OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 5
+          dune-cache: true
+
+      - name: Install just
+        uses: taiki-e/install-action@just
+
+      - name: Setup dependencies and assets
+        run: |
+          eval $(opam env)
+
+          opam pin add -y ./mde_parser
+
+          cd mde_ssg
+          opam install . --deps-only -y
+          just download_assets
+
+      - name: Build SSG
+        run: |
+          eval $(opam env)
+
+          cd mde_ssg
+          just build
+
+      - name: Run SSG
+        run: |
+          eval $(opam env)
+
+          mkdir output
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          ./mde_ssg/_build/default/course_manager.exe ssg ./source ./output --http-root="$REPO_NAME"
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./output
+
+  deploy:
+    needs: build-and-deploy
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

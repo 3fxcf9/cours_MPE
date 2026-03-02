@@ -1,6 +1,10 @@
 # Réductions des endomorphismes en dimension finie
 
-:date 29/09/2025
+:::
+card:
+  title: Réductions des endomorphismes en dimension finie
+  date: 29/09/2025
+:::
 
 Dans ce chapitre, $(\K, +, \times )$ est un corps et $E$ désigne un $\K$-espace vectoriel de dimension finie $n \in \N^{*}$.
 
@@ -407,7 +411,7 @@ $$
     $$
       E = \bigoplus_{k=1}^{r} E_{\lambda_{i_{k}}}(f) = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)
     $$
-  - Supposons le spectre de $f$ non vide et $E = \bigoplus_{\lambda \in \sp f} E_{\lambda}(f)$. Pour tout $\lambda \in \sp f$, noto $\mathscr B_{\lambda}$ une base de $E_{\lambda}(f)$. Comme les $E_{\lambda}$ est une somme directe, $\mathscr B = \bigcup_{\lambda \in \sp f}\mathscr B_{\lambda}$ est une base de $E$ et $\mathscr B$ est formée de vecteurs propres de $f$.
+  - Supposons le spectre de $f$ non vide et $E = \bigoplus_{\lambda \in \sp f} E_{\lambda}(f)$. Pour tout $\lambda \in \sp f$, notons $\mathscr B_{\lambda}$ une base de $E_{\lambda}(f)$. Comme les $E_{\lambda}$ sont en somme directe, $\mathscr B = \bigcup_{\lambda \in \sp f}\mathscr B_{\lambda}$ est une base de $E$ et $\mathscr B$ est formée de vecteurs propres de $f$.
   - Si $(e_{1}, \ldots, e_{n})$ est une base de $E$ formée de vecteurs propres de $f$, alors il existe $(\lambda_{1}, \ldots, \lambda_{n}) \in \K^{n}$ tels que
     $$
       \forall i \in \icc{1,n}, f(e_{i}) = \lambda_{i} e_{i}
@@ -497,7 +501,7 @@ $$
        $$
 %
 
-%prop
+%prop Caractérisation de la diagonalisabilité
   Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$. Il y a équivalence entre
   1. $f$ est diagonalisable
   2. $\chi_{f}$ est scindé dans $\K[X]$ et pour tout $\lambda \in \sp f$, $\dim  E_{\lambda}(f) = m(\lambda)$, i.e.

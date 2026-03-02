@@ -1,0 +1,7 @@
+[card]
+title = "Œuvres"
+date = "Cours sur les œuvres"
+
+[page]
+template = "list"
+title = "Œuvres"

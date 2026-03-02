@@ -1,6 +1,10 @@
 # Continuité et linéarité
 
-:date 18/11/2025
+:::
+card:
+  title: Continuité et linéarité
+  date: 18/11/2025
+:::
 
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\cdot_{F})$ sont deux $\K$-espaces vectoriels normés, et la boule $B_{\norm\cdot_{E}}(a, \delta)$ sera notée $B_{E}(a, \delta)$ ou encore $B(a, \delta)$.
 

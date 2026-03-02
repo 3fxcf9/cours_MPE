@@ -1,5 +1,11 @@
 # Équations différentielles linéaires
 
+:::
+card:
+  title: Équations différentielles linéaires
+  date: 27/01/2026
+:::
+
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $F$ est un $\K$-espace vectoriel normé de dimension finie $n \in \N$ et $\L(F)$ est normé (par exemple avec la norme d’opérateur).
 
 ## Généralités

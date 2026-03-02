@@ -1,6 +1,10 @@
 # Tribus et probabilités sur un univers fini ou infini
 
-:date 03/02/2026
+:::
+card:
+  title: Tribus et probabilités sur un univers fini ou infini
+  date: 03/02/2026
+:::
 
 On admet l’axiome du choix dans sa forme la plus générale.
 
@@ -742,7 +746,7 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
   $$
 %
 
-## Variables aléatoires réelles
+## Variables aléatoires discrètes
 
 %def
   Soit $(\Omega,\Tribu)$ un espace probabilisable. Soit $E$ un ensemble quelconque. Une application $X: \applic{\Omega}{E}{\omega}{X(\omega)}$ est appelée _variable aléatoire discrète_ sur $(\Omega, \Tribu)$ si
@@ -774,7 +778,7 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
 %rem
   1. Si $X: \Omega \longrightarrow E$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$, alors
      $$
-       \forall A \in \Part(E), X^{-1}(A) \{\omega \in \Omega \where X(\omega) \in A\} \in \Tribu
+       \forall A \in \Part(E), X^{-1}(A) = \{\omega \in \Omega \where X(\omega) \in A\} \in \Tribu
      $$
      En effet,
      $$
@@ -800,7 +804,7 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
 %
 
 %prop
-  Soient $X_{1}, \ldots, X_{n}$ des applications de $\Omega$ dans respectivment $E_{1}, \ldots, E_{n}$. Posons
+  Soient $X_{1}, \ldots, X_{n}$ des applications de $\Omega$ dans respectivement $E_{1}, \ldots, E_{n}$. Posons
   $$
     Z: \applic{\Omega}{E_{1} \times \cdots \times E_{n}}{\omega}{\big(X_{1}(\omega), \ldots, X_{n}(\omega)\big)}
   $$

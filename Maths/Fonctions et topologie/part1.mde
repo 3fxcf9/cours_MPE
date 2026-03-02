@@ -1,6 +1,10 @@
 # Fonctions et topologie
 
-:date 02/12/2025
+:::
+card:
+  title: Fonctions et topologie
+  date: 02/12/2025
+:::
 
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \norm{\cdot}_{E'})$ sont deux $\K$-espaces vectoriels normés.
 

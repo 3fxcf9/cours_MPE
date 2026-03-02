@@ -1,6 +1,10 @@
 # Intégration des fonctions vectorielles
 
-:date 17/12/2025
+:::
+card:
+  title: Intégration des fonctions vectorielles
+  date: 17/12/2025
+:::
 
 Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel normé de dimension finie $n \in \N^{*}$. On munit $\M_{n}(\K)$ d’une norme sous-multiplicative et $\L(E)$ de la norme d’opérateur (sous-multiplicative).
 

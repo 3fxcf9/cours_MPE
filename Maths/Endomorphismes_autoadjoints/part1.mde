@@ -1,0 +1,429 @@
+# Endomorphismes autoadjoints
+
+:::
+card:
+  title: Endomorphismes autoadjoints
+  date: 18/02/2026
+:::
+
+Dans ce chapitre, $(E, \scalar{\cdot}{\cdot})$ est un espace euclidien de dimension $n \in \N^{*}$.
+
+%recall
+  1. Pour $(y,z) \in E^{2}$,
+     $$
+       \Big[\forall x \in E, \scalar{x}{y}  = \scalar{x}{z}\Big]\iff y = z
+     $$
+     En effet, en supposant le premier membre,
+     $$
+       \forall x \in E, \scalar{x}{y-z}  = 0 \implies \norm{y-z}^{2} = 0 \implies y=z
+     $$
+  2. Pour $(y,z) \in E$, on a
+     $$
+       x = 0_{E} \iff \forall y \in E, \scalar{x}{y} = 0
+     $$
+     En effet, en supposant le membre de droite, on a $\norm{x}^{2} = 0$ donc $x=0$.
+  3. Pour un sous-espace vectoriel $F$ de $E$, on a $\big(F\ortho\big)\ortho = F$.
+  4. Soit $f \in \L(E)$. Soit $\Bon = (e_{1}, \ldots, e_{n})$ une base orthonomale de $E$.
+     $$
+       \forall x \in E, x = \sum_{i=1}^{n} \scalar{x_{i}}{e_{i}} e_{i}
+     $$
+     En effet, si $x = \sum_{i=1}^{n}\alpha_{i} e_{i}$, alors $\scalar{x}{e_{i}} = \alpha_{k} \scalar{e_{k}}{e_{k}} = \alpha_{k}$ donc
+     $$
+       \mat_{\Bon}(f) = \Big(\scalar{f(e_{j})}{e_{i}} \Big)_{1 \leq i,j \leq n}
+     $$
+  5. Si $\varphi: \R \longrightarrow \R$ est une forme linéaire, alors il existe un unique vecteur $x_{0}$ tel que $\forall x \in E, \varphi(x) = \scalar{x}{x_{0}}$.
+%
+
+## Adjoint d’un endomorphisme
+
+%def Définition-proposition
+  Soit $f \in \L(E)$. Il existe un endomorphisme $g \in \L(E)$ et un seul tel que
+  $$
+    \forall (x,y) \in E^{2}, \scalar{f(x)}{y} = \scalar{x}{g(y)}
+  $$
+  $g$ est appelé _endomorphisme adjoint de $f$_ (relativement à $\scalar{\cdot}{\cdot}$) et on note $g = f^{*}$.
+%
+
+%proof
+  Soit $y \in E$ fixé. L’application
+  $$
+    \varphi: \applic{E}{\R}{x}{\scalar{f(x)}{y}}
+  $$
+  est une forme linéaire. Il existe alors un unique vecteur noté $f^{*}(y)$ tel que
+  $$
+    \forall x \in E, \varphi(x) = \scalar{x}{f^{*}(y)}
+  $$
+  donc
+  $$
+    \forall (x,y) \in E^{2}, \scalar{f(x)}{y} = \scalar{x}{f^{*}(y)}
+  $$
+  - Soient $(y,z) \in E^{2}$ et $(\lambda, \mu) \in \R^{2}$. Pour tout $x \in E$,
+    $$
+      \begin{align*}
+        \underbrace{\scalar{f(x)}{\lambda y + \mu z}}_{\scalar{x}{f^{*}(\lambda y + \mu z)}} &= \lambda \scalar{f(x)}{y}  + \mu \scalar{f(x)}{z}\\
+        &= \lambda \scalar{x}{f^{*}(y)} + \mu \scalar{x}{f^{*}(z)} \\
+        &= \scalar{x}{\lambda f^{*}(y) + \mu f^{*}(z)}
+      \end{align*}
+    $$
+    d’où
+    $$
+      f^{*}(\lambda y + \mu z) = \lambda f^{*}(y) + \mu f^{*}(z)
+    $$
+    donc $f^{*}$ est linéaire.
+%
+
+%eg
+  - Soit $(a,b) \in E^{2}$ et $f: \applic{E}{E}{x}{\scalar{x}{a} b} \in \L(E)$. Déterminons $f^{*}$.
+    Soit $(x,y) \in E^{2}$.
+    $$
+      \begin{align*}
+        \scalar{f(x)}{y} &= \scalar{\scalar{x}{a} b}{y} \\
+        &= \scalar{x}{a} \scalar{b}{y} \\
+        &= \scalar{x}{\scalar{b}{y} a}
+      \end{align*}
+    $$
+    si bien que
+    $$
+      f^{*}: \applic{E}{E}{y}{\scalar{y}{b} a}
+    $$
+    ($f^{*}$ est linéaire).
+  - Considérons le produit scalaire canonique sur $\M_{n}(\R)$~:
+    $$
+      \applic{\M_{n}(\R)}{\R}{(A,B)}{\scalar{A}{B} = \tr (A\transp B)}
+    $$
+    Soit $M \in \M_{n}(\R)$ fixé. Considérons $f: \applic{\M_{n}(\R)}{\M_{n}(\R)}{A}{MA} \in \L \big(\M_{n}(\R)\big)$. Soit $(A,B) \in \big(\M_{n}(\R)\big)^{2}$.
+    $$
+      \begin{align*}
+        \scalar{f(A)}{B} &= \scalar{MA}{B} \\
+        &= \tr \big((MA)\transp B\big) \\
+        &= \tr  \big(A\transp M\transp B\big) \\
+        &= \scalar{A}{M\transp B}
+      \end{align*}
+    $$
+    Donc $f^{*}: B \longmapsto M\transp B$ (qui est linéaire).
+%
+
+%prop
+  1. $0_{\L(E)}^{*} = 0_{\L(E)}$ et
+     $$
+       \forall \lambda \in \R, (\lambda \id_{E})^{*} = \lambda \id_{E}
+     $$
+  2. $\applic{\L(E)}{\L(E)}{f}{f^{*}}$ est un automorphisme involutif d’espaces vectoriels, i.e.
+     ~ $f \longmapsto  f^{*}$ est linéaire  ~ $\forall f \in \L(E), (f^{*})^{*} = f$.
+  3. $\forall (f,g) \in \L(E), (f\circ g)^{*} = g^{*} \circ f^{*}$
+  %offprog
+    4. $\forall f \in \GL(E), (f^{-1})^{*} = (f^{*})^{-1}$
+  %
+  5. Soit $f \in \L(E)$. Soit $\Bon$ une base orthonormale de $E$. Si $A = \mat_{\Bon}(f)$, alors $\mat_{\Bon} (f^{*}) = A\transp$.
+%
+
+%proof
+  1. Pour $(x,y) \in E^{2}$,
+     $$
+       \scalar{(\lambda \id_{E})(x)}{y}  = \scalar{\lambda x}{y} = \scalar{x}{\lambda y} = \scalar{x}{(\lambda \id_{E})(y)}
+     $$
+     donc $(\lambda \id_{E})^{*} = \lambda \id_{E}$.
+  2. Soit $(f,g) \in \big(\L(E)\big)^{2}$. Soit $(\lambda, \mu) \in \R^{2}$.
+     - Pour tout $(x,y) \in E^{2}$, on a d’une part
+       $$
+         \scalar{(\lambda f + \mu g)(x)}{y} = \scalar{x}{(\lambda f + \mu g)^{*}(y)}
+       $$
+       et d’autre part
+       $$
+         \scalar{(\lambda f + \mu g)(x)}{y}  = \lambda \scalar{f(x)}{y} + \mu \scalar{g(x)}{y} = \lambda \scalar{x}{f^{*}(y)}
+       $$
+       d’où
+       $$
+         (\lambda f + \mu g)^{*} = \lambda f^{*} + \mu g^{*}
+       $$
+     - Pour tout $(x,y) \in E^{2}$,
+       $$
+         \scalar{f(x)}{y}  = \scalar{x}{f^{*}(y)} = \scalar{f^{*}(y)}{x}  = \scalar{y}{(f^{*})^{*}(x)}
+       $$
+       donc $(f^{*})^{*}(x) = f(x)$ d’où $f = (f^{*})^{*}$ d’où
+       $$
+         \mu \scalar{x}{g^{*}(y)}  = \scalar{x}{(\lambda f^{*} + \mu g^{*})(y)}
+       $$
+  3. Soit $(f,g) \in \big(L(E)\big)^{2}$. Soit $(x,y) \in E^{2}$.
+     $$
+       \scalar{(f\circ g)(x)}{y}  = \scalar{f(g(x))}{y} = \scalar{g(x)}{f^{*}(y)} = \scalar{x}{g^{*}\big(f^{*}(y)\big)} = \scalar{x}{(g^{*}\circ f^{*})(y)}
+     $$
+     donc $(f\circ g)^{*} = g^{*} \circ f^{*}$.
+  4. Si $f \in \GL(E)$, alors $f\circ f^{-1} f \id_{E}$ donc $(f\circ f^{-1})^{*} = \id_{E}^{*} = \id_{E}$ i.e. $(f^{-1})^{*} \circ f^{*} = \id_{E}$ donc, comme $E$ est de dimension finie, $f^{*} \in \GL(E)$ et $(f^{*})^{-1} = (f^{-1})^{*}$.
+  5. Notons $A = \mat_{\Bon}(f) = \Big(\scalar{f(e_{j})}{e_{i}} \Big)_{1 \leq i,j \leq n}$. Alors
+     $$
+       \mat_{\Bon}(f^{*}) = \Big(\scalar{f^{*}(e_{j})}{e_{i}}\Big)_{1 \leq i,j \leq n} = \Big(\scalar{e_{j}}{f(e_{i})}\Big)_{1 \leq i,j \leq n} = A\transp
+     $$
+%
+
+%eg
+  Soit $f: \applic{\R^{2}}{\R^{2}}{(x,y)}{(x+y,-x+y)} \in \L(\R^{2})$. Munissons $\R^{2}$ du produit scalaire canonique $\scalar{\cdot}{\cdot}$. La base canonique $\Bon$ est alors othonormale. Or $\mat_{\Bon}(f) = \mtx{1 & 1 \\ -1 & 1}$. Comme $\Bon$ est orthonormale, on a $\mat_{\Bon}(f^{*}) = \mtx{1 & -1 \\ 1 & 1}$ donc
+  $$
+    f^{*}: \applic{\R^{2}}{\R^{2}}{(x,y)}{(x-y, x+y)}
+  $$
+  _Vérification~:_ on vérifie bien
+  $$
+    \scalar{\mtx{x+y \\ -x+y}}{\mtx{u\\v}} = \scalar{\mtx{x\\y}}{\mtx{u-v\\u+v}}
+  $$
+%
+
+%property
+  Soit $f \in \L(E)$. On a
+  1. $\rg (f) = \rg (f^{*})$
+  2. $\det (f) = \det (f^{*})$
+  3. $\tr  (f) = \tr (f^{*})$
+  4. $f$ et $f^{*}$ ont le même polynome caractéristique et le même polynôme minimal
+  5. $f$ est diagonalisable (resp. trigonalisable) si et seulement si $f^{*}$ est diagonalisable (resp. trigonalisable).
+%
+
+%proof
+  Soit $\Bon$ une base orthonormale de $E$. Si $A = \mat_{\Bon}(f)$, alors $A\transp = \mat_{\Bon}(f^{*})$ donc les 3 premiers points découlent des propriétés de la transposition.
+  4. L’égalité des polynômes caractéristiques est connue. Soit $P \in \R[X]$
+     $$
+       P(f) = 0_{\L(E)} \iff P(f)^{*} = 0_{\L(E)} \iff  P(f^{*}) = 0_{\L(E)}
+     $$
+     car $(f^{k})^{*} = (f^{*})^{k}$, d’où l’égalité des polynômes minimaux.
+  5. Le polynôme minimal de $f$ est (simplement) scindé dans $\R[X]$ si et seulement si celui de $f^{*}$ est (simplement) scindé dans $\R[X]$.
+%
+
+%prop
+  Soit $f \in \L(E)$. Si $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors $F\ortho$ est un sous-espace vectoriel de $E$ stable par $f^{*}$.
+%
+
+%proof
+  Soit $x \in F\ortho$. Montrons $f^{*}(x) \in F\ortho$. Soit $y \in F$. On a $\scalar{f^{*}(x)}{y} = \scalar{x}{f(y)}$ or $F$ est stable par $f$ donc $f(y) \in F$, donc $\scalar{f^{*}(x)}{y} = \scalar{x}{f(y)} = 0$ donc $f^{*}(x) \in F\ortho$.
+%
+
+%offprog
+  %prop Résultat classique
+    Soit $f \in \L(E)$. On a
+    ~ $\ker (f^{*}) = (\img f)\ortho$  ~ $\img (f^{*}) = (\ker f)\ortho$
+  %
+
+  %proof
+    Soit $x \in E$.
+    $$
+      x \in \ker (f^{*}) \iff f^{*}(x) =0_{E} \iff \forall y \in E, \scalar{f^{*}(x)}{y} = 0 \iff \forall y \in E, \scalar{x}{f(y)} =0 \iff x \in (\img f)\ortho
+    $$
+    donc $\ker (f^{*}) = (\img f)\ortho$. On en déduit
+    $$
+      \ker (f^{*})^{*} = (\img (f^{*}))\ortho
+    $$
+    i.e. $\ker  f = (\img (f^{*}))\ortho$ soit $\img (f^{*}) = (\ker f)\ortho$.
+  %
+%
+
+%def
+  On appelle projecteur orthogonal de $E$ toute projection de $E$ sur un sous-espace vectoriel $F$ de $E$ parallèlement à $F\ortho$, ou encore $f \in \L(E)$ tel que
+  ~ $f^{2} = f$  ~ $(\ker f) \perp (\img f)$
+%
+
+%prop
+  Un endomorphisme est un projecteur **orthogonal** si et seulement si c’est un projecteur **autoadjoint** (i.e. $f^{*}=f$).
+%
+
+%proof
+  - Supposons que $f$ soit un projecteur autoadoint. Alors
+    $$
+      \ker f = \ker (f^{*}) = (\img f)\ortho
+    $$
+    donc $f$ est orthogonal.
+  - Supposons que $f$ soit un projecteur orthogonal. Soit $F = \img f$ la base de projection. On a $E = F \oplusortho F\ortho$. Soit $(x,y) \in E^{2}$. Posons
+    ~ $x = x_{1} + x_{2}$  ~ $y = y_{1} + y_{2}$
+    avec $(x_{1},y_{1}) \in F^{2}$ et $(x_{2}, y_{2}) \in (F\ortho)^{2}$ . Alors
+    $$
+      \scalar{f(x)}{y} = \scalar{x_{1}}{y_{1} + y_{2}} = \scalar{x_{1}}{y_{1}}
+    $$
+    et $\scalar{f(y)}{x} = \scalar{y_{1}}{x_{1}}$ donc
+    $$
+      \scalar{f(x)}{y}  = \scalar{f(y)}{x}
+    $$
+    donc $f^{*} = f$.
+%
+
+%def
+  %rfig Symétries et projections orthogonales
+    @[./figures/proj-ortho_optimized.svg]
+  %
+  On appelle symétrie orthogonale de $E$ toute symétrie vectorielle par rapport à un sous-espace $F$ parallèlement à $F\ortho$. $f \in \L(E)$ est donc une symétrie orthogonale si
+  ~ $f^{*} = \id_{E}$  ~ $\ker (f- \id_{E}) \perp \ker (f+ \id_{E})$
+  Notons
+  $$
+    s_{F} = p_{t}f - p_{F\ortho} = p_{F} - (\id_{E} - p_{F}) = 2p_{F} - \id_{E}
+  $$
+  On a $p_{F} + p_{F\ortho} = \id_{E}$ donc $s_{F} = \id_{E} - 2 p_{F\ortho}$.
+%
+
+%prop
+  Un endomorphisme est une symétrie orthogonale si et seulement si c’est une symétrie vectorielle autoadjointe.
+%
+
+%proof
+  - Soit $s_{t}f$ la symétrie orthogonale par rapport à $F$. On a $s_{F}^{2} = \id_{E}$. De plus, $s_{F} = p_{F} - p_{F\ortho}$ d’où
+    $$
+      s_{t}f^{*} = p_{F}^{*} - p_{F\ortho}^{*} = p_{F} - p_{F\ortho} = s_{F}
+    $$
+  - Soit $f \in \L(E)$ une symétrie autoadjointe.
+    $$
+      E \oeq{LDN} \ker (f-\id)\oplus \ker (f+\id)
+    $$
+    Soit $(x,y) \in \ker (f- \id ) \times \ker (f+ \id)$.
+    $$
+      \scalar{x}{y}  = \scalar{f(x)}{y}  = \scalar{x}{f^{*}(y)} = \scalar{x}{f(y)} = \scalar{x}{-y}  = - \scalar{x}{y}
+    $$
+    donc $\scalar{x}{y} = 0$ donc $\ker (f-\id)\perp \ker (f+\id)$.
+%
+
+%def
+  Soit $H$ un hyperplan vectoriel de $E$. On appelle réflexion d’hyperplan $H$ la syméthie orthogonale par rapport à $H$.
+%
+
+%recall
+  - Si $F$ est un sous-espace vectoriel de $E$ dont une base orthonormale est $(\varepsilon_{1}, \ldots, \varepsilon_{p})$, alors $p_{F}$ désigne la projection orthogonale sur $F$, on a
+    $$
+      \forall x \in E, p_{F}(x) = \sum_{i=1}^{p}\scalar{x}{\varepsilon_{i}} \varepsilon_{i}
+    $$
+    On a aussi
+    $$
+      d(x,F) = \norm{x - p_{F}(x)}
+    $$
+  - Si $D = \Vect\left\{a\right\}$ avec $a \in E \setminus \{0\}$, alors
+    $$
+      \forall x \in E, p_{D}(x) = \scalar{x}{\frac{a}{\norm{a}}} \frac{a}{\norm{a}} = \frac{\scalar{x}{a}}{\norm{a}^{2}}a
+    $$
+  - Si $s_{H}$ est la symétrie orthogonale d’hyperplan $H$, alors
+    $$
+      s_{H} = p_{H} - p_{H\ortho} = 2 p_{H} - \id_{E} = \id_{E} - 2 p_{H}
+    $$
+    et si $H\ortho = \Vect\left\{a\right\}$,
+    $$
+      \forall x \in E, s_{H}(x) = x-2 \frac{\scalar{x}{a}}{\norm{a}^{2}}a
+    $$
+%
+
+## Matrices orthogonales
+
+Soit $\Bon = (e_{1}, \ldots, e_{n})$ une base orthogonale de $E$. Soit $\mathscr{C} = (\varepsilon_{1}, \ldots, \varepsilon_{n})$ une famille de $n$ vecteurs de $E$ dont la matrice dans la base $\Bon$ est $P$. Peut-on trouver une condition nécessaire et suffisante sur $P$ pour que $\mathscr{C}$ soit une base orthonormale ?
+
+Soit $f \in \L(E)$ telle que $\mat_{\Bon}(f) = P$ i.e. tel que $\forall i \in \icc{1,n}, f(e_{i}) = \varepsilon_{i}$. Comme $\Bon$ est orthonormale, on a $P\transp = \mat_{\Bon}(f^{*})$ et
+$$
+  \begin{align*}
+    P\transp \times P &= \mat_{\Bon}(f^{*}\circ f) \\
+      &= \Big(\scalar{(f^{*}\circ f)(e_{j})}{e_{i}} \Big)_{1 \leq i,j \leq n} \\
+      &= \Big(\scalar{f(e_{j})}{f(e_{i})}\Big)_{1 \leq i,j \leq n} \\
+      &= \Big(\scalar{\varepsilon_{i}}{\varepsilon_{j}} \Big)_{1 \leq i,j \leq n}
+  \end{align*}
+$$
+donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_{n}$.
+
+%prop
+  Soit $\Bon$ une base orthonormale de $E$. Soit $\mathscr{C}$ une famille de $n$ vecteurs de $E$. Posons $P = \mat_{\Bon}(\mathscr{C})$. Alors, $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp \times P = I_{n}$.
+%
+
+%def
+  Sot $A \in \M_{n}(\R)$. $A$ est dite orthogonale si
+  $$
+    A\transp \times A = I_{n}
+  $$
+  On pose $\O(n) = O_{n}(\R) = \{A \in \M_{n}(\R) \where A\transp A = I_{n}\}$.
+%
+
+%rem
+  1. $I_{n}$ et $-I_{n}$ sont orthogonales (ce sont les seules matrices scalaires orthogonales).
+  2. $A \in \O(n) \iff A\transp A = I_{n} \iff \begin{cases}A \in \GL_{n}(\R) \\ A^{-1} = A\transp\end{cases} \iff A \times A\transp = I_{n}$.
+  3. En général, $A\transp \times A \ne A \times A\transp$. Par exemple,
+     $$
+       \mtx{0&1\\0&0} \mtx{0&0\\1&0} = \mtx{1&0\\0&0} \ne \mtx{0&0\\0&1} = \mtx{0&0\\1&0} \mtx{0&1\\0&0}
+     $$
+  4. $A \in \O(n) \iff A\transp \in \O(n)$
+%
+
+%prop
+  Soit $A \in \M_{n}(\R)$. Notons
+  $$
+    A = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}} = \arrmtx{c}{L_{1} \\\hline \vdots \\\hline L_{n}}
+  $$
+  $A$ est orthogonale si et seulement si $(C_{1}, \ldots, C_{n})$ est une famille orthonormale de $(\M_{n,1}(\R), \scalar{\cdot}{\cdot}_{\can})$ où $\scalar{X}{Y}_{\can} = X\transp Y$ ou encore, $(L_{1}, \ldots, L_{n})$ est une famille orthonormale de $(\M_{1,n}(\R), \scalar{\cdot}{\cdot}_{\can})$ où $\scalar{L}{M}_{\can} = L M\transp$.
+%
+
+%proof
+  Soit $(E_{1}, \ldots, E_{n})$ la base canonique de $\M_{n,1}(\R)$. $(C_{1}, \ldots, C_{n})$ est une base orthogonale de $(\M_{n,1}(\R), \scalar{\cdot}{\cdot}_{\can})$ si et seulement si ($(E_{1}, \ldots, E_{n})$ base orthonormale) $\mat_{(E_{1}, \ldots, E_{n})}(C_{1}, \ldots, C_{n}) = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}} = A$ est orthogonale, donc si et seulement si $\arrmtx{c|c|c}{L_{1}\transp & \cdots & L_{n}\transp} = A\transp$ est orthogonale, donc si et seulement si $(L_{1}\transp, \ldots, L_{n}\transp)$ est une base orthonormale de $\M_{n,1}(\R)$, donc si et seulement si $(L_{1}, \ldots, L_{n})$ est une base orthonormale de $\M_{1,n}(\R)$.
+%
+
+%eg
+  - Soit $A = \frac{1}{5} \mtx{3&4\\4&-3} \in \M_{2}(\R)$. Ses colonnes sont $C_{1} = \frac{1}{5}\mtx{3\\4}$ et $C_{2} = \frac{1}{5}\mtx{4\\-3}$. On a
+    - $\norm{C_{1}}_{2}^{2} = \frac{1}{25} (9+16) = 1$
+    - $\norm{C_{2}}_{2}^{2} = \frac{1}{25} (9+16) = 1$
+    donc $\scalar{C_{1}}{C_{2}}  = \frac{1}{25}(12-12) = 0$, i.e. $(C_{1}, C_{2})$ est une base orthonormale de $\M_{2,1}(\R)$ euclidien canonique donc $A \in \O(2)$.
+  - Soit $A = \mtx{0&0&1\\1&0&0\\0&1&0} \in \M_{3}(\R)$. Notons $A = \arrmtx{c|c|c}{E_{2} & E_{3} & E_{1}}$. $(E_{2}, E_{3},E_{1})$ est une base orthonormale de $\M_{3,1}(\R)$ euclidien canonique donc $A \in \O(3)$.
+  - Soit $\sigma \in S_{n}$. Notons
+    $$
+      P(\sigma) = \Big(\delta_{i, i, \sigma(j)}\Big)_{1 \leq i,j \leq n} = \arrmtx{c|c|c}{E_{\sigma(1)} & \cdots & E_{\sigma(n)}}
+    $$
+    $(E_{\sigma(1)}, \ldots, E_{\sigma(n)})$ étant orthonormale, on a $P(\sigma) \in \O(n)$ et $P^{-1} = P\transp$ et $\det  P(\sigma) = \varepsilon(\sigma)$.
+  - Soit $A \in \O(n)$. Soit $\lambda \in \sp_{\R}(A)$. Il existe alors $X \in \M_{n,1}(\R)\setminus \{0\}$ tel que $AX = \lambda X$ d’où $X\transp A\transp = \lambda X\transp$ d’où $X\transp \underbrace{A\transp A}_{=I_{n}}X = \lambda^{2} X\transp X$ or $\norm{X}^{2} \ne 0$ donc $X^{2} = 1$ donc $\sp_{\R}(A) \subset \{1,-1\}$.
+  - Soit $A = \Big(a_{i,j}\Big)_{1 \leq i, j \leq n} \in \O(n)$. Notons $A = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}}$. On a
+    $$
+      \forall (x,y) \in (i,j) \in \icc{1,n}^{2} , a_{i,j}^{2} \leq \big(\norm{C_{j}}_{2}\big)^{2} = 1
+    $$
+    donc
+    $$
+      \forall (i,j) \in \icc{1,n}^{2}, a_{i,j} \in \cc{-1,1}
+    $$
+  - Soit $A \in \O(n)$. On a $A\transp \times A = I_{n}$ donc $\det (A\transp \times A) = 1$ donc $\det (A\transp) \times \det (A) = 1$ donc $(\det A)^{2} = 1$. Ainsi
+    $$
+      \forall A \in \O(n), \det (A) \in \{1,-1\}
+    $$
+    Par exemple, $\det (I_{n})=1$ et $A = \arrmtx{c|c}{-1 & 0 \\\hline 0 & I_{n-1}}$ vérifiant $A\transp \times A = I_{n}$  est de déterminant $-1$.
+%
+
+%def Définition-proposition
+  L’ensemble
+  $$
+    (\O(n), \times) = \left(\Big\{A \in \M_{n}(\R) \where A\transp A = I_{n}\Big\}, \times\right)
+  $$
+  est un sous-groupe multiplicatif de $(\GL_{n}(\R), \times)$ appelé _groupe des matrices orthogonales_.
+  $$
+    \O^{+}(n) = SO(n) = \Big\{A \in \M_{n}(\R) \where A \in \O(n) \text{ et } \det A = 1\Big\} = SL_{n} \cap \O(n)
+  $$
+  est un sous-groupe de $(\O(n), \times )$ appelé _groupe des matrices orthogonales directes_ (ou _positives_), ou _groupe spécial orthogonal_ et
+  $$
+    \O^{-}(n) = \Big\{A \in \M_{n}(\R) \where A \in \O(n) \text{ et }\det A = -1\Big\}
+  $$
+  est l’_ensemble des matrices orthogonales indirectes_ (ou _négatives_). Il n’est pas stable par $\times$.
+%
+
+%proof
+  $\O(n) \subset \GL_{n}(\R)$, $I_{n} \in \O(n)$ et $(\GL_{n}(\R), \times)$ est un groupe. Soit $(A,B) \in \big(\O(n)\big)^{2}$.
+  $$
+    (AB)\transp AB = B\transp A\transp A B = B\transp I_{n} B = B\transp B = I_{n}
+  $$
+  donc $AB \in \O(n)$. De plus, $A^{-1} = A\transp \in O(n)$.
+  ~
+  $\det : \applic{(\O(n), \times )}{(\{-1,1\}, \times )}{A}{\det A}$ est un morphisme de groupes donc $\O^{+}(n) = \ker (\det)$ est un sous-groupe (distingué) de $O(n)$.
+%
+
+%callout Attention !
+  - $\det (-I_{n}) = (-1)^{n}$ donc $(-I_{n}) \in \O^{+}(n) \iff n \in 2\Z$.
+  - $A \in \mtx{1&0\\1&1}$ est de déterminant 1 donc appartient à $SL_{2}(\R)$ or $A\notin \O(2)$
+%
+
+%prop
+  Munissons $\M_{n}(\R)$ d’une norme. $\O(n)$ et $\O^{+}(n)$ sont des groupes compacts dans $\M_{n}(\R)$.
+%
+
+%proof
+  Les normes sont équivalentes dasn $\M_{n}(\R)$ donc on note $\norm{\cdot}$ la norme euclidienne canonique sur $\M_{n}(\R)$.
+  $$
+    f: \applic{\M_{n}(\R)}{\M_{n}(\R)}{A}{A \times A\transp}
+  $$
+  est la composée de l’application linéaire $L: (A, A\transp)$ ($\M_{n}(\R)$ est de dimension finie) et de l’application bilinéaire $B: (A, A\transp) \longmapsto A \times A\transp$. Elle est donc continue. $\det : \M_{n}(\R) \longrightarrow \R$ est continue (application polynomiale). $\O(n) = f^{-1}(\{I_{n}\})$ et
+  $$
+    \O^{+}(n) = f^{-1}(\{9_{n}\}) \cap \det^{-1}(\{1\})
+  $$
+  $\O(n)$ et $\O^{+}(n)$ sont donc des parties fermées de $\M_{n}(\R)$. De plus,
+  $$
+    \forall A \in \O(n), \norm{A} = \sqrt{\tr (A\transp A)} = \sqrt{n}
+  $$
+  donc $\O(n) \subset \bar{B}(0_{n}, \sqrt{n})$. $\O(n)$ est une partie fermée et bornée de l’espace vectoriel $\R_{n}(\R)$ de dimension finie; c’est donc une partie compacte. $\O^{+}(n)$ est une partie fermée incluse dans le compacet $\O(n)$; c’est donc une partie compacte.
+%

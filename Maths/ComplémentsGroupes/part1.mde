@@ -1,6 +1,10 @@
 # Compléments sur les groupes
 
-:date 01/09/2025
+:::
+card:
+  title: Compléments sur les groupes
+  date: 01/09/2025
+:::
 
 ## Rappels
 
@@ -608,7 +612,7 @@
 %
 
 %property
-  Soient $(G, \star)$ et $(G', \star')$ deux groupes de noutres respectifs $e$ et $e'$. Soit $f$ un morphisme de $G$ dans $G'$. On a
+  Soient $(G, \star)$ et $(G', \star')$ deux groupes de neutres respectifs $e$ et $e'$. Soit $f$ un morphisme de $G$ dans $G'$. On a
   1. $f(e) = e'$ (car $f(e) = f(e\star e) = f(e)\star' f(e)$)
   2. $\forall n \in \Z, \forall x \in G, f(x^{n}) = f(x)^{n}$
   3. Si $H < G$, alors $f(H) < G'$ (l’image de $f$ est un sous-groupe de $G'$)

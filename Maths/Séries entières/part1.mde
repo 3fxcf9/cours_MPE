@@ -1,6 +1,10 @@
 # Séries entières
 
-:date 20/01/2026
+:::
+card:
+  title: Séries entières
+  date: 20/01/2026
+:::
 
 %def
   On appelle série entière associée à la suite complexe $(a_{n})_{n \geq n_{0}}$ la série de fonctions $\sum_{n \geq n_{0}}f_{n}$ avec

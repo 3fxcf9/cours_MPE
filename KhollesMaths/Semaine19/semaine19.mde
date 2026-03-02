@@ -1,0 +1,230 @@
+# Semaine 19
+
+:::
+card:
+  title: Semaine 19
+  date: 16/02/2026
+:::
+
+## Modélisation d’un schéma de Bernoulli de paramètre $p$ à $n$ épreuves
+%def Schéma de Bernoulli
+  Soit $n \in \N^{*}$. $\big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\big)$ est un espace probabilisable (fini). Considérons la famille
+  $$
+    \Big(p^{\varepsilon_{1} + \cdots + \varepsilon_{n}} (1-p)^{(1-\varepsilon_{1}) + \cdots + (1-\varepsilon_{n})}\Big)_{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}}
+  $$
+  C’est une distribution de probabilité sur $\{0,1\}^{n}$, une famille de réels positifs, et
+  $$
+    \sum_{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}} p^{\varepsilon_{1} + \cdots + \varepsilon_{n}}(1-p)^{(1-\varepsilon_{1}) + \cdots + (1-\varepsilon_{n})} = \left(\sum_{\varepsilon_{1} = 0}^{1}p^{\varepsilon_{1}}(1-p)^{1-\varepsilon_{1}}\right) \times  \cdots \times \left(\sum_{\varepsilon_{n} = 0}^{1} p^{\varepsilon_{n}} (1-p)^{1-\varepsilon_{n}}\right) = (1-p+p)^{n} = 1
+  $$
+  Notons $\P$ la probabilité associée à cette distribution sur $\Big(\{0,1\}^{n}, \Part(\{0,1\}^{n})\Big)$.
+  Notons pour $i \in \icc{1,n}$
+  $$
+    X_{i}: \applic{\{0,1\}^{n}}{\{0,1\}}{(\varepsilon_{i})_{1 \leq i \leq n}}{\varepsilon_{i}}
+  $$
+  C’est une variable aléatoire discrète. Soit $\varepsilon \in \{0,1\}$. On a
+  $$
+    \begin{align*}
+      \P(X_{i} = \varepsilon) &= \P \big(\{0,1\}^{i-1} \times \{\varepsilon\} \times \{0,1\}^{n-i}\big) \\
+        &= \sum_{\substack{(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}\\ \varepsilon_{i} = \varepsilon}}p^{\varepsilon_{1} + \cdots + \varepsilon_{n}}(1-p)^{(1-\varepsilon_{1}) \cdots (1-\varepsilon_{n})} \\
+        &= \prod_{\substack{k=1\\k\ne 1}}^{n}\left(\sum_{\varepsilon_{k} = 0}^{1}p^{\varepsilon_{k}}(1-p)^{1-\varepsilon_{k}}\right) \times p^{\varepsilon} (1-p)^{1-\varepsilon} \\
+        &= p^{\varepsilon}(1-p)^{1-\varepsilon} \\
+        &= \begin{cases}p \if \varepsilon=1 \\ 1-p \if \varepsilon=0\end{cases}
+    \end{align*}
+  $$
+  donc $\forall i \in \icc{1,n}, X_{i}\leadsto \B(p)$. Soit $(\varepsilon_{1}, \ldots, \varepsilon_{n}) \in \{0,1\}^{n}$.
+  $$
+    \begin{align*}
+      \P(X_{1} = \varepsilon_{1} , \ldots, X_{n} = \varepsilon_{n}) &= \P \big(\{(\varepsilon_{1}, \ldots, \varepsilon_{n})\}\big) \\
+      &= p^{\varepsilon_{1} + \cdots + \varepsilon_{n}} (1-p)^{(1-\varepsilon_{i}) + \cdots + (1-\varepsilon_{n})} \\
+      &= \prod_{i=1}^{n}p^{\varepsilon_{i}}(1-p)^{1-\varepsilon_{i}} \\
+      &= \prod_{i=1}^{n}\P(X_{i} = \varepsilon_{i})
+    \end{align*}
+  $$
+  donc $(X_{1}, \ldots, X_{n})$ est une suite de variables aléatoires (aka. $n$-échantillon) indépendantes identiquement distribuées.
+%
+
+## Expression de l’espérance
+
+%prop
+  Si $X: \Omega \longrightarrow \N \cup \{+\infty\}$ est une variable aléatoire entière «positive», alors
+  $$
+    E(X) = \sum_{n \in \N^{*}}\P(X \geq n) \in \bar{\R_{+}}
+  $$
+%
+
+%proof
+  - Si $X(\Omega) \subset \N$, alors
+    $$
+      \begin{align*}
+        E(X) &\defeq \sum_{k \in \N}k\P(X=k) \\
+        &= \sum_{k \in \N^{*}}k\P(X=k) \\
+        &= \sum_{k \in \N^{*}} \left(\sum_{\ell=1}^{k}\P(X=k)\right) \\
+        &= \sum_{\ell \in \N^{*}} \left(\sum_{k \in \ico{\ell,+\infty}} \P(X=k)\right) & \text{dans }\bar{\R_{+}} \\
+        &= \sum_{\ell \in \N^{*}}\P(X \geq \ell) & \text{par $\sigma$-additivité}
+      \end{align*}
+    $$
+  - Sinon, $(+\infty) \in X(\Omega)$.
+    - si $\P(X=+\infty) = 0$, alors $(+\infty) \times \P(X=+\infty) = 0$ et
+      $$
+        E(X) = \sum_{k \in \N}k\P(X=k) = \sum_{\ell \in \N^{*}}\P(X \in \ico{\ell,+\infty}) = \sum_{\ell \in \N^{*}}\P(X \in \icc{\ell,+\infty}) = \sum_{\ell \in \N^{*}}\P(X \geq \ell)
+      $$
+    - sinon, $(+\infty)\P(X=+\infty) = +\infty$ donc $E(X) \geq (+\infty)\P(X=+\infty)$ donc $E(X) = +\infty$ et
+      $$
+        \sum_{n \in \N^{*}}\P(X \geq n) \geq \sum_{n \in \N^{*}}\P(X \in \icc{n,+\infty}) \geq \sum_{n \in \N^{*}}\P(X=+\infty) = +\infty
+      $$
+%
+
+## Théorème de transfert
+
+%thm Théorème de Transfert
+  Soit $X : (\Omega, \Tribu,\P) \longrightarrow E$ une variable aléatoire discrète. Soit $f: X(\Omega) \longrightarrow \C$ une application. Alors
+  $$
+    f(X) \in L^{1}(\Omega) \iff \Big(f(x) \P(X=x)\Big)_{x \in X(\Omega)} \in \ell^{1} \big(X(\Omega)\big)
+  $$
+  le membre de gauche étant par définition équivalent à $\Big(y\P(f(X) = y)\Big)_{y \in f(X)(\Omega)} \in \ell^{1} \big(f(X)(\Omega)\big)$.
+%
+
+%proof
+  On a $f(X): \Omega \xrightarrow{X} X(\Omega) \xrightarrow{f} \C$. Posons $D = f \big(X(\Omega)\big)$ au plus dénombrable. On se place dans $\bar{\R_{+}}$~:
+  $$
+    \begin{align*}
+      \sum_{y \in D}\abs{y}\P \big(f(X) = y\big) &= \sum_{y \in D}\abs{y}\P \big(X \in f^{-1}(\{y\})\big) \\
+      &= \sum_{y \in D}\abs{y}\sum_{x \in f^{-1}(\{y\})}\P(X=x) \\
+      &= \sum_{y \in D} \left(\sum_{x \in f^{-1}(\{y\})}\abs{f(x)}\P(X=x)\right)
+    \end{align*}
+  $$
+  On a $X(\Omega) = \biguplus_{y \in D}f^{-1}(\{y\})$ donc
+  $$
+    \sum_{y \in D}\abs{y}\P \big(f(X) = y\big) = \sum_{x \in X(\Omega)}\abs{f(x)}\P(X=x)
+  $$
+  donc
+  $$
+    \Big(y \P \big(f(X) = y\big)\Big)_{y \in D}\in \ell^{1}(D) \iff \Big(f(x)\P(X=1)\Big)_{x \in X(\Omega)} \in \ell^{1}(X(\Omega))
+  $$
+%
+
+## Inégalité de Cauchy-Schwarz pour l’espérance
+
+%prop Inégalité de Cauchy-Schwarz
+  Si $(X,Y) \in L^{2} \times L^{2}$, alors $X \times Y \in L^{1}$ et
+  $$
+    \abs{E(XY)} \leq \sqrt{E(X^{2})}\sqrt{E(Y^{2})}
+  $$
+  i.e.
+  $$
+    \tag{$\star$} \left[E(XY)\right]^{2} \leq E(X^{2})E(Y^{2})
+  $$
+  et $(\star)$ est une égalité si et seulement si $(X,Y)$ est une famille liée de $L^{2}(\Omega)$ $\P$-presque sûrement.
+%
+
+%proof
+  $\abs{XY} \leq \frac{X^{2} + Y^{2}}{2}$ et $\frac{X^{2} + Y^{2}}{2} \in L^{1}$ donc $XY \in L^{1}$. On a $\forall t \in \R, E \big((tX+Y)^{2}\big) \geq 0$ donc
+  $$
+    \forall t \in \R, t^{2}E(X^{2}) + 2tE(XY) + E(Y^{2}) \geq 0
+  $$
+  - Si $E(X^{2}) = 0$, alors $X^{2}=0 \ps$ donc $X = 0 \ps$ donc $XY = 0 \ps$ donc $E(XY) = \sqrt{E(X^{2})} \times \sqrt{E(Y^{2})}$ donc $(\star)$ est une égalité.
+  - Supposons $E(X^{2}) > 0$. Alors $\Delta' = E(XY)^{2} - E(X^{2})E(Y^{2}) \leq 0$((Discriminant réduit: pour les polynômes de la forme $ax^{2} + 2bx + c = 0$, il vaut $\Delta' = b^{2} - ac$ et les racines sont $x = \frac{-b' \pm \sqrt{\Delta'}}{a}$)) donc $E(XY)^{2} \leq E(X^{2})E(Y^{2})$. Si l’inégalité ci-dessus est une égalité, alors il existe $t_{0} \in \R$ tel que $E \big((t_{0} X + Y)^{2}\big) = 0$ donc $t_{0}X + Y = 0 \ps$.
+%
+
+## Variance pour une loi de Poisson et géométrique
+
+Soient $X$ une variable aléatoire discrète, $p \in \oo{0,1}$ et $\lambda > 0$.
+
+- Si $X \leadsto \mathcal{P}(\lambda)$, alors
+  $$
+    \begin{align*}
+      E(X) &= \sum_{k \in \N} k\P(X=k) \\
+      &= \sum_{k \in \N}k e^{-\lambda}\frac{\lambda^{k}}{k!} \\
+      &= \sum_{k \in \N^{*}}e^{-\lambda}\frac{\lambda^{k}}{(k-1)!} \\
+      &= \lambda e^{-\lambda} \sum_{k \in \N^{*}} \frac{\lambda^{k-1}}{(k-1)!} \\
+      &= \lambda e^{-\lambda}e^{\lambda} = \lambda
+    \end{align*}
+  $$
+  et dans $\bar{\R_{+}}$~:
+  $$
+    \begin{align*}
+      E(X^{2}) &= \sum_{k \in \N}k^{2}\P(X=k) \\
+      &= \sum_{k \in \stress{\N^{*}}} k^{2}e^{-\lambda} \frac{\lambda^{k}}{k!} \\
+      &= \sum_{k \in \N^{*}} \big[k(k-1) + k\big] e^{-\lambda}\frac{\lambda^{k}}{k!} \\
+      &= \sum_{k \in \ico{2,+\infty}} e^{-\lambda} \frac{\lambda^{k}}{(k-2)!} + \sum_{k \in \N^{*}} k e^{-\lambda}\frac{\lambda^{k}}{k!} \\
+      &= e^{-\lambda}\lambda^{2} \sum_{k=0}^{+\infty}\frac{\lambda^{n}}{n!} + E(X) \\
+      &= \lambda^{2} + \lambda
+    \end{align*}
+  $$
+  donc
+  $$
+    V(X) = E(X^{2}) - E(X)^{2} = \lambda^{2} + \lambda - \lambda^{2} = \lambda
+  $$
+- Si $X \leadsto \mathscr{G}(p)$, alors on a $X \sim Y$ avec $Y$ suivant la loi $\mathscr G(p)$ telle que $Y(\Omega) = \N^{*}$, donc
+  $$
+    \begin{align*}
+      E(X) &= E(Y) \\
+        &= \sum_{n \in \N^{*}}\P(Y \geq n) \\
+        &= \sum_{n \in \N^{*}} \P(Y > n-1) \\
+        &= \sum_{n \in \N^{*}} (1-p)^{n-1} \\
+        &= \sum_{n \in \N} (1-p)^{n} \\
+        &= \frac{1}{1-(1-p)} = \frac{1}{p}
+    \end{align*}
+  $$
+  et dans $\bar{\R_{+}}$~:
+  $$
+    \begin{align*}
+      E(X^{2}) &= \sum_{k \in \N^{*}}k^{2}\P(X=k) \\
+      &= \sum_{k \in \N^{*}}k^{2}p(1-p)^{k-1} \\
+      &= \sum_{k \in \ico{2,+\infty}}k(k-1)p(1-p)^{k-1} + \sum_{k \in \N^{*}} kp(1-p)^{k-1} \\
+      &= p(1-p)\sum_{k \in \ico{2,+\infty}}k(k-1)(1-p)^{k-2} + E(X) \\
+      &= p(1-p) \eval{\dvN{}{x}{2} \left(\sum_{n=0}^{+\infty}x^{n}\right)}{x=1-p \in \oo{0,1}} + \frac{1}{p} \\
+      &= p(1-p) \eval{\frac{2}{(1-x)^{3}}}{x=1-p} + \frac{1}{p} \\
+      &= p(1-p)\frac{2}{p^{3}} + \frac{1}{p} = \frac{2}{p^{2}} - \frac{1}{p} < +\infty
+    \end{align*}
+  $$
+  d’où
+  $$
+    V(X) = E(X^{2}) - E(X)^{2} = \frac{2}{p^{2}} - \frac{1}{p} - \frac{1}{p^{2}} = \frac{1}{p^{2}} - \frac{1}{p} = \frac{1-p}{p^{2}} = \frac{q}{p^{2}}
+  $$
+
+## Inégalité de Bienaymé-Tchebychev et loi faible des grands nombres
+
+%prop Inégalité de Bienaymé-Tchebychev
+  Si $X: \Omega \longrightarrow \R$ est une variable aléatoire réelle discrète de $L^{2}(\Omega)$, alors
+  $$
+    \forall  \varepsilon> 0, \P(\abs{X-E(X)} \geq \varepsilon) \leq \frac{V(X)}{\varepsilon^{2}}
+  $$
+%
+
+%proof
+  $\big(\abs{X-E(X)} \geq \varepsilon\big) = \big((X-E(X))^{2} \geq \varepsilon^{2}\big)$ or $X \in L^{2}$ donc $(X-E(X))^{2} \in L^{1}$ d’où d’après _l’inégalité de Markov_, on a
+  $$
+    \P \big(\abs{X-E(X)} \geq \varepsilon\big) \leq \frac{E \big((E-E(X))^{2}\big)}{\varepsilon^{2}} = \frac{V(X)}{\varepsilon^{2}}
+  $$
+%
+
+%cor Loi faible des grands nombres
+  Si $(X_{n})_{n \in \N^{*}}$ est une suite de variables aléatoires **indépendantes identiquement distribuées** de $L^{2}(\Omega)$, alors si on pose $S_{n} = \sum_{k=1}^{n}X_{k}$, on a
+  $$
+    \forall \varepsilon > 0, \P \left(\abs{\underbrace{\frac{S_{n}}{n}}_{\text{moy. empirique}} - \underbrace{E(X_{1})}_{\text{moy. théorique}}} \geq \varepsilon\right) \arrowlim{n\to+\infty}0
+  $$
+%
+
+%proof
+  $\frac{S_{n}}{n} = \frac{1}{n}\sum_{k=1}^{n}X_{k} \in L^{2}$ car $L^{2}$ est un sous-espace vectoriel de $L^{1}$.
+  $$
+    E \left(\frac{S_{n}}{n}\right) = \frac{1}{n} \sum_{k=1}^{n}E(V_{k}) = \frac{1}{n}\sum_{k=1}^{n}E(X_{1}) = E(X_{1})
+  $$
+  et par indépendance de $(X_{1}, \ldots, X_{n})$,
+  $$
+    V \left(\frac{S_{n}}{n}\right) = \frac{1}{n^{2}} V(S_{n}) = \frac{1}{n^{2}} \sum_{k=1}^{n}V(X_{k}) = \frac{1}{n^{2}} nV(X_{1}) = \frac{V(X_{1})}{n}
+  $$
+  D’après l’inégalité de _Bienaymé-Tchébychev_, on a
+  $$
+    \forall \varepsilon > 0, \P \left(\abs{\frac{S_{n}}{n} - E(X_{1})} \geq \varepsilon\right) \leq \frac{V(X_{1})}{n \varepsilon^{2}} \arrowlim{n\to+\infty} 0
+  $$
+%
+
+%rem
+  Interprétation: on a
+  $$
+    \forall \varepsilon > 0, \P \left(\abs{\frac{S_{n}}{n} - E(X_{1})} < \varepsilon\right) \arrowlim{n\to+\infty}1
+  $$
+  L’écart entre la moyenne empirique et la moyenne théorique peut être rendu aussi petit que l’on veut avec une probabilité aussi grande que l’on veut.
+%
