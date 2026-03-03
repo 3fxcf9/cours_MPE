@@ -27,7 +27,7 @@ $$
   E = \bigoplus_{i=1}^{r}\ker  \big((f-\lambda_{i} \id_{E})^{m(\lambda_{i})}\big)
 $$
 
-%def Définition-proposition
+%defprop
   Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Soit $\lambda$ une valeur propre de $f$ de multiplicité notée $m(\lambda)$.
   $$
     F_{\lambda}(f) = \ker  \big((f-\lambda \id_{E})^{m(\lambda)}\big)
@@ -387,7 +387,7 @@ $$
 
 ## Diagonalisation
 
-%def Proposition-définition
+%defprop
   $f$ est dite diagonalisable si l’une des conditions équivalentes suivantes est vérifiée :
   1. Il existe une base $\mathscr B$ de $E$ dans laquelle la matrice de $f$ soit diagonale
   2. $\sp f \ne\emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$

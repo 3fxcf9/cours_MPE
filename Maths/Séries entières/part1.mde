@@ -50,7 +50,7 @@ card:
      Comme $\abs{\frac{z}{z_{0}}} < 1$, la série $\sum_{n \geq n_{0}}\abs{\frac{z}{z_{0}}}^{n}$ converge donc $\sum_{n \geq n_{0}}\abs{a_{n}z^{n}}$ converge.
 %
 
-%def Définition-Proposition
+%defprop
   Soit $(a_{n})_{n \geq n_{0}}$ une suite complexe. Posons $I_{a} = \{r \in \R_{+}\where (a_{n}r^{n})_{n \geq n_{0}} \text{ est bornée}\}$.
   %rfig Rayon de convergence et cercle d’incertitude
     @[./figures/rayon-convergence.svg]
@@ -262,7 +262,7 @@ card:
     $\sum_{n \geq 0}n! z^{(n^{2})}$ et $\sum_{n \geq 0}b_{n}z^{(2n)}$ sont des séries entières lacunaires.
   %
 
-  %prop Proposition-définition
+  %defprop
     Soit $(b_{n})_{n \in \N}$ une suite complexe. Soit $\varphi: \N \longrightarrow \N$ strictement croissante. Posons $R = \sup \big\{x \in \R_{+} \where (b_{n} r^{{\varphi(n)}})_{n \in \N} \text{ est bornée}\big\}$. Alors
     - si $\abs{z} < R$, alors $\sum_{n \geq 0}b_{n}z^{\varphi(n)}$ converge absolument
     - si $\abs{z} > R$, alors $\sum_{n \geq 0}b_{n}z^{\varphi(n)}$ diverge grossièrement
@@ -409,7 +409,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
 
 ### Primitives de $x \longmapsto \sum_{n=0}^{+\infty}a_{n}x^{n}$
 
-%def Définition-Proposition
+%defprop
   Soit $(a_{n})_{n \in \N}$ une suite complexe. Soit $R = \rho \left(\sum_{n \geq 0}a_{n}x^{n}\right)$.
   1. Pour tout $(a,b) \in \oo{-R,R}^{2}$, on a
      $$
@@ -707,7 +707,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
 
 ## Produit de Cauchy de séries entières
 
-%def Définition-Proposition
+%defprop
   Soient $(a_{n})_{n \in \N}$ et $(b_{n})_{n \in \N}$ deux suites complexes. On appelle produit de Cauchy de la série entière $\sum_{n \geq 0}a_{n}z^{n}$ par la série entière $\sum_{n \geq 0}b_{n}z^{n}$ la série entière $\sum_{n \geq 0}c_{n}z^{n}$ avec
   $$
     \forall n \in \N, c_{n} = \sum_{k=0}^{n}a_{k}b_{n-k} \, \left(= \sum_{\substack{k+\ell = n \\ k \geq 0, \ell \geq 0}}a_{k}b_{\ell}\right)
@@ -995,7 +995,7 @@ Soit $(a_{n})_{n \in \N}$ une suite complexe. Posons $R = \rho \left(\sum_{n \ge
     $$
 %
 
-%prop Proposition-définition
+%defprop
   Soit $r > 0$. Soit $f: \oo{-r,r} \longrightarrow \C$ une application.
   1. (def) Si $f \in \Cont^{\infty}(\oo{-r, r})$, alors la série entière $\sum_{n \geq 0} \frac{f^{(n)}(0)}{n!}x^{n}$ est appelée série de Taylor de $f$ en 0.
   2. Si $f$ est développable en série entière sur $\oo{-r,r}$, alors $f \in \Cont^{\infty}(\oo{-r,r})$ et

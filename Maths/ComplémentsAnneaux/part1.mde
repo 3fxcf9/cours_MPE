@@ -73,7 +73,7 @@ $$
   a^{n+1} - b^{n+1} = (a-b)\sum_{k=0}^{n}a^{k}b^{n-k}
 $$
 
-%def Proposition-définition
+%defprop
   Si $(A,+, \times )$ est un anneau unitaire, un élément $x$ est dit *inversible* (ou une *unité*) si
   $$
     \exists x' \in A: x \times x' = x' \times x = 1_{A}
@@ -91,7 +91,7 @@ $$
     $$
 %
 
-%def Définition-proposition
+%defprop
   Soit $(A,+ \times )$ un anneau unitaire. Soit $x \in A$.
   - $x$ est dit *idempotent* si $x^{2} = x$
   - $x$ est dit *nilpotent* si $\exists n \in \N^{*}: x^{n} = 0_{A}$. Son *indice de nilpotence* est $\min\{n \in \N / x^{n} = 0_{A}\}$
@@ -208,7 +208,7 @@ $$
   %
 %
 
-%def Proposition-définition
+%defprop
   Soit $(A,+, \times )$ un anneau (resp. corps) unitaire. Une partie $B$ de $A$ est un *sous-anneau* (resp. *sous-corps*) de $A$ si
   ~  $B$ est stable pour $+$ et $\times $  ~ $(B,+, \times )$ est un anneau (resp. corps)  ~ l’élément unité de $B$ est $1_{A}$
   ce qui revient pour un ensemble $B$ à
@@ -1139,7 +1139,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
   $$
 %
 
-%def Proposition-définition
+%defprop
   Soit $(A,+, \times )$ un anneau commutatif unitaire intègre.
   1. Soit $(a,b) \in A^{2}$. On dit que $a$ divise $b$ s’il existe $c \in A$ tel que $b = a \times c$ et on note $a\mid b$. On a alors
      $$
@@ -1191,7 +1191,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 
 ## Anneau $(\K[X],+, \times )$ avec $\K$ un corps
 
-%def Proposition-définition
+%defprop
   Soit $n \in \N$ avec $n \geq  2$. Soient $(P_{1}, \ldots, P_{n}) \in (\K[X])^{n}$
   - Si $(P_{1}, \ldots, P_{n})\neq(0,\ldots, 0)$, alors il existe un unique polynôme **unitaire** $D \in \K[X]$ tel que
     $$

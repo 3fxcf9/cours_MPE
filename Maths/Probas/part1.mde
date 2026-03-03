@@ -614,7 +614,7 @@ $$
 
 Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
 
-%def Définition-Proposition
+%defprop
   Soit $B \in \Tribu$ avec $\P(B) > 0$. L’application
   $$
     \P_{B}: \applic{\Tribu}{\cc{0,1}}{A}{\P_{B}(A) = \frac{\P(A \cap B)}{\P(B)}}
@@ -837,7 +837,7 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
 %
 
 
-%def Définition-Proposition
+%defprop
   Soit $(\Omega,\Tribu,\P)$ un espace probabilisé. Soit $X: \Omega \longrightarrow E$ une variable aléatoire discrète sur $(\Omega,\Tribu)$. Alors,
   1. $\big((X=x)\big)_{x \in X(\Omega)}$ est un système complet (au plus dénombrable) d’événements de $\Tribu$.
   2. $\big(\P(X=x)\big)_{x \in X(\Omega)}$ est une distribution de probabilité discrète sur $X(\Omega)$.

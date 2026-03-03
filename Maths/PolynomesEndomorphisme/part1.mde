@@ -1232,7 +1232,7 @@ $$
   XA - I_{2} = \mtx{0 & X^{3} \\ -\frac{1}{X} & 0} \in \M_{2}(\K(X))
 $$
 
-%def Définition-proposition
+%defprop
   Soit $A \in \M_{n}(\K)$.
   $$
     X \cdot I_{n} - A = \mtx{X-a_{1 1} & -a_{12} & \cdots & -a_{1n}\\
@@ -1443,7 +1443,7 @@ $$
   %
 %
 
-%def Proposition-définition
+%defprop
   Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$. Soit $\lambda \in \sp f$. On appelle multiplicité *(algébrique)* de $\lambda$ l’ordre de multiplicité de $\lambda$ comme racine de $\chi_{f}$. Si on le note $m(\lambda)$, alors on a
   $$
     \chi_{f} = (X-\lambda)^{m(\lambda)}Q
@@ -1564,7 +1564,7 @@ $$
 ## Lien entre $\pi_{A}$ et $\chi_{A}$
 
 %offprog
-  %def Proposition-définition
+  %defprop
     Soit $(a_{0}, \ldots, a_{n-1})\in \K^{n}$. Posons $P = a_{0} + a_{1}T + \cdots + a_{n-1}T^{n-1} + T^{n}$. La *matrice compagnon* associée à $P$ est
     $$
       C(P) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)} \in \M_{n}(\K)

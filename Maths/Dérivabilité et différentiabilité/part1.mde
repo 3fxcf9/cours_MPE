@@ -241,7 +241,7 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
   $$
 %
 
-%def Proposition-définition
+%defprop
   - Un arc $f: I \longrightarrow  E$ est dit de classe $\Cont^{k}$ avec $k \in \N^{*}$ si $f$ est $k$ fois dérivable et si $f^{(k)}$ est continue sur $I$. On pose
     $$
       \Cont^{\infty}(I, E) = \bigcap_{k \in \N^{*}}\Cont^{k}(I,E)

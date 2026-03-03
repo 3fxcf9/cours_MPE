@@ -584,7 +584,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      Ainsi, $O_{1} \times  \cdots \times  O_{p}$ est un ouvert.
 %
 
-%def Définition-propositions — intérieur d’une partie
+%defprop intérieur d’une partie
   Soit $A$ une partie de $E$. Notons $\ring A$ la plus grande partie ouverte de $E$ incluse dans $A$. On a
   1. $\ring A$ est la réunion de toutes les parties ouvertes de $E$ incluses dans $A$
   2. $\ring A$ est l’ensemble des points intérieurs à $A$, i.e.
@@ -735,7 +735,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     la boule relative de centre $a$ et de rayon $r$.
 %
 
-%def Définition-proposition
+%defprop
   Soit $A$ une partie de l’espace vectoriel normé $(E, \norm{\cdot})$. Soient $V'$ une partie de $A$ et $a$ un point de $A$. On dit que $V'$ est un voisinage relatif de $a$ dans $A$ si
   $$
     \exists r > 0: B_{A}(a,r) \subset V'
@@ -757,7 +757,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   - Soit $V' \in \Vois_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \Vois_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$
 %
 
-%def Définition-proposition
+%defprop
   Soit $A$ une partie de $E$.
   - Une partie $O'$ de $A$ est appelé *ouvert relatif de $A$* si $O'$ est un voisinage relatif de chacun de ses points, i.e.
     $$
@@ -806,7 +806,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   - Les partie ouvertes relatives de $\R_{+}^{*}$ sont les parties ouvertes de $\R$ incluses dans $\R_{+}^{*}$.
 %
 
-%def Définition-proposition
+%defprop
   Soit $A$ une partie de $E$. Soit $F'$ une partie de $A$. On dit que $F'$ est un *fermé relatif* de $A$ si l’une des condition équivalentes suivantes est vérifiée
   1. $A \setminus F'$ est un ouvert relatif de $A$.
   2. Il existe une partie fermée $F$ de $E$ telle que

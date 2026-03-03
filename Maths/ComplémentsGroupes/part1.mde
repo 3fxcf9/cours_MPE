@@ -399,7 +399,7 @@ card:
      - Si $a_{1} \cdot sa_{n} = 0$, alors il existe $i_{0} \in \icc{1,n}$ tel que $a_{i_{0}} = 0$. Donc $a_{i_{0}} \Z = \{0\}$ d’où $\bigcap_{i \in \icc{1,n}}a_{i}\Z = \{0\}$, donc $m = 0$.
 %
 
-%def Définition-proposition
+%defprop
   Soit $(G,\star)$ un groupe.
   1. Soit $X$ une partie de $G$. On appelle sous-groupe de $G$ engendré par $X$ le sous-groupe suivant~:
      $$

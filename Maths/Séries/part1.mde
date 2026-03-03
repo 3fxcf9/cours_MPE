@@ -196,7 +196,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
   $$
 %
 
-%def Proposition-définition
+%defprop
   1. Soit $d \in \N^{*}$. Soit $A \in \M_{d}(\K)$ ($\M_{d}(\K)$ est normé). La série $\sum_{n \geq 0}\frac{A^{n}}{n!}$ est absolument convergente, donc convergente (car $\dim_{\K} \M_{d}(\K) = d^{2} < +\infty$). On appelle *exponentielle de $A$* la matrice
      $$
        \exp(A) = \sum_{n=0}^{+\infty}\frac{A^{n}}{n!}

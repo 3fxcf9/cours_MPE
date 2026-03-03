@@ -109,7 +109,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
   car $\big[ta, -t_{0}a\big] = 0_{\L(E)}$.
 %
 
-%def Définition-proposition: solutions matriciell d’un problème de Cauchy
+%defprop solutions matriciell d’un problème de Cauchy
   Soit $A \in \M_{n}(\K)$. Les arcs solutions de l’équation homogène
   $$
     \tag{H} Y' = AY
@@ -220,7 +220,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
 
 Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et $(e_{1}, \ldots, e_{n})$ est une base du $\K$-espace vectoriel normé E.
 
-%def Définition-proposition
+%defprop
   Soit $f: I \longrightarrow E$ un arc.
   - On dit que $f$ est continue par morceaux sur $I$ si pour tout segment $S \subset I$, il existe une subdivision $\sigma = (a_{k})_{0 \leq k \leq n}$ de $S$ telle que pour tout $k \in \icc{0,n-1}$, $f_{|\oo{a_{k}, a_{k+1}}}$ se prolonge en un arc continu sur $\cc{a_{k}, a_{k+1}}$. On note alors $f \in \Cont_{m}(I, E)$.
   - Posons, pour $i \in \icc{1,n}$, $f_{i} = e_{i}^{*}\circ f$, i.e.

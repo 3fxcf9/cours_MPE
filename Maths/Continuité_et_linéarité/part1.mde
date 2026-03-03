@@ -556,7 +556,7 @@ Il y a mieux:
   2. $\norm{\id _{E}} = \sup_{\norm{x}_{E} = 1} \norm{\id (x)} = \sup_{\norm{x}_{E} = 1}\norm{x}_{E} = 1$
 %
 
-%def Définition-proposition: « Norme matricielle »
+%defprop « Norme matricielle »
   Soit $\norm{\cdot}$ une norme sur $\M_{n}(\K)$. Soit $A \in \M_{n}(\K)$. Notons $\varphi_{A}: \applic{\M_{n,1}(\K)}{\M_{n,1}(\K)}{X}{AX}$ l’endomorphisme canoniquement associé à $A$.
   $$
     \applic{(\M_{n}(\K), +, \times , \cdot)}{(\L(\M_{n,1}(\K)), +, \circ , \cdot)}{A}{\varphi_{A}}

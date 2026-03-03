@@ -36,7 +36,7 @@ Dans ce chapitre, $(E, \scalar{\cdot}{\cdot})$ est un espace euclidien de dimens
 
 ## Adjoint d’un endomorphisme
 
-%def Définition-proposition
+%defprop
   Soit $f \in \L(E)$. Il existe un endomorphisme $g \in \L(E)$ et un seul tel que
   $$
     \forall (x,y) \in E^{2}, \scalar{f(x)}{y} = \scalar{x}{g(y)}
@@ -377,7 +377,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
     Par exemple, $\det (I_{n})=1$ et $A = \arrmtx{c|c}{-1 & 0 \\\hline 0 & I_{n-1}}$ vérifiant $A\transp \times A = I_{n}$  est de déterminant $-1$.
 %
 
-%def Définition-proposition
+%defprop
   L’ensemble
   $$
     (\O(n), \times) = \left(\Big\{A \in \M_{n}(\R) \where A\transp A = I_{n}\Big\}, \times\right)

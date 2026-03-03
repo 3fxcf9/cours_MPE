@@ -1260,7 +1260,7 @@ $$
 $$
 donc la série $\sum_{n \geq 0}P(X=n)1^{n}$ est convergente (et $\sum_{n \geq 0}P(X=n)(-1)^{n}$ est absolument convergente) donc $\rho \left(\sum_{n \geq 0}P(X=n)z^{n}\right) \geq 1$.
 
-%def Définition-proposition
+%defprop
   Soit $X: (\Omega,\Tribu,\P) \longrightarrow \N$ une variable aléatoire entière. On appelle fonction génératrice de $X$ la fonction
   $$
     G_{X}: \applic{\bar{D(0,1)}}{\C}{z}{\sum_{n=0}^{+\infty}P(X=n)z^{n}}

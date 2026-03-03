@@ -333,7 +333,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 
 ## Connexité par arcs
 
-%def Définition-proposition
+%defprop
   Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$.
   1. Soit $(x,y) \in X^{2}$. On appelle *chemin* (ou *arc*) *continu* joignant $x$ à $y$ tracé sur $X$ teute application continue $\gamma: \cc{a,b} \longrightarrow E$ avec $a \leq b$ deux réels telle que
      ~ $\gamma(\cc{a,b}) \subset X$  ~ $\gamma(a) = x$ et $\gamma(b) = y$
@@ -593,7 +593,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
   Les segments de $\R$ sont les parties compactes et connexes par arcs de $\R$. Ce sont aussi les parties convexes de $\R$.
 %
 
-%def Définition-proposition
+%defprop
   1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées *composantes connexes par arcs de $X$*.
   2. Pour $x \in X$, notons
      $$
@@ -840,7 +840,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 
 Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectoriels normés.
 
-%def Définition-proposition
+%defprop
   Soit $A$ une partie non vide de $E$. Soit $f: A\longrightarrow E'$ une application. Soit $\alpha \in \bar{A}$. Soit $\ell \in E'$. On dit que $f$ admet $\ell$ pour limite en $\alpha$ si l’une des propositions équivalentes suivantes :
   1. $\forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-\alpha}_{E} \leq \delta\end{cases} \implies \norm{f(x) - \ell}_{E'} < \varepsilon$
   2. $\forall W \in \Vois_{E'}(\ell), \exists V \in \Vois_{E}(\alpha): f(A \cap V) \subset W$ (($V$ n’est pas forcément un voisinage de $\alpha$ car $\alpha$ n’appartient pas forcément à $A$))
