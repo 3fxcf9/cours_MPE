@@ -751,7 +751,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   %fig Exemple de voisinage relatif
     @[./figures/voisinage-relatif.svg]
   %
-  ~ $V' \in \Vois_{A}(a_{1})$  ~ $V' \in \Vois_{A}(a_{2})$  ~ $V' \notin \Vois_{A}(a_{3})$  ~ $V' \notin \nois_{A} (a_{4})$
+  ~ $V' \in \Vois_{A}(a_{1})$  ~ $V' \in \Vois_{A}(a_{2})$  ~ $V' \notin \Vois_{A}(a_{3})$  ~ $V' \notin \vois_{A} (a_{4})$
   En effet,
   - Soit $V \in \Vois_{A}(a)$. Posons $V' = V \cap A$. Alors il existe $r > 0$ tel que $B_{E}(a,r) \subset V$ donc $B_{E}(a,r) \cap A \subset V'$ donc $V' \in \Vois_{A}(a)$
   - Soit $V' \in \Vois_{A}(a)$. Il existe $r > 0$ tel que $B(a,r) \cap A = B_{A}(a,r) \subset V'$. Posons $V = V' \cup B(a,r)$. Alors, $V \in \Vois_{E}(a)$ et $A \cap V = (V' \cap A)\cup (B(a,r) \cap A) = V' \cup B_{A}(a,r) = V'$

@@ -1,0 +1,196 @@
+# Semaine 20
+
+:::
+card:
+  title: Semaine 20
+  date: 09/03/2026
+:::
+
+## Probabilité produit, probabilité des événements élémentaires, loi d’une variable aléatoire donnant le rang du premier succès
+
+%thm
+  Soit $(\Omega_{n},\Part(\Omega_{n}), \P)_{n \in \N}$ une suite d’espaces probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$.
+  Il existe alors une tribu $\Tribu$ sur $\Omega$ et une probabilité $Q$ sur $(\Omega,\Tribu)$ telle que les applications $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N}}{x_{i}}$ soient des variables aléatoires indépendantes vérifiant $\forall i \in \N^{*}, X_{i}\leadsto \P_{i}$.
+%
+
+%proof
+  On pose
+  $$
+    \mathscr{C} = \left\{\prod_{i=1}^{n} A_{i} \times \prod_{k \geq n+1}\Omega_{k} \where n \in \N^{*}, \forall i \in \icc{1,n}, A_{i} \in \Part(\Omega_{i})\right\}
+  $$
+  l’ensemble des cylindres de $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$. Leur réunion n’est pas un cylindre. On pose $\Tribu  = \sigma(\mathscr{C})$ la _tribu cylindrique_. On pose
+  $$
+    Q\left(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}\right) \defeq \prod_{i=1}^{n}P_{i}(A_{i})
+  $$
+  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
+  - $X_{i}(\Omega) = \Omega_{i}$ est au plus dénombrable
+  - Soit $X_{i} \in \Omega_{i}$.
+    $$
+      (X_{i}=x_{i}) = \Omega_{1} \times \cdots \times \Omega_{i-1}\times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k} \in \mathscr{C}
+    $$
+    donc $(X_{i} = x_{i}) \in \Tribu$.
+  Donc chaque $X_{i}$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$ et
+  $$
+    Q(X_{i}=x_{i}) = Q(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}) = P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
+  $$
+  donc $X_{i} \leadsto \P_{i}$.
+  - Soit $n \in \N^{*}$. Soit $(x_{1}, \ldots, x_{n}) \in \Omega_{1} \times \cdots \Omega_{n}$.
+    $$
+      \begin{align*}
+        Q \big((X_{1} = x_{1}) \cap \cdots \cap (X_{n} = x_{n})\big) &= Q \left(\{x_{1}\} \times \cdots \times \{x_{n}\} \times \prod_{k \geq n+1}\Omega_{k}\right) \\
+        &=\P_{1}(\{x_{1}\}) \times  \cdots \times  \P_{n}(\{x_{n}\})\\
+        &= Q(X_{1} = x_{1}) \times  \cdots \times Q(X_{n}=x_{n})
+      \end{align*}
+    $$
+    donc $(X_{n})_{n \in \N^{*}}$ est une suite de variables indépendantes.
+%
+
+---
+
+Soit $(X_{n})_{n \in \N^{*}}$ le jeu de pile ou face infini. Si $Z$ est le rang (aléatoire) du premier succès,
+$$
+    Z: \applic{\{0,1\}^{\N^{*}}}{\N^{*} \cup \{\infty\}}{\omega}{\begin{cases}\min \{n \in \N^{*} \where X_{n}(\Omega) = 1\} \if \text{l’ensemble n’est pas vide}\\ \infty \else\end{cases}}
+$$
+- $Z(\{0,1\}^{\N^{*}}) = \N^{*} \cup \{\infty\}$ est dénombrable
+- $(Z=\infty) = \bigcap_{n \in \N^{*}}(X_{n}=0) \in \Tribu$
+- Pour $n \in \N^{*}$, $(Z=n) = \bigcap_{i \in \icc{1,n-1}}(X_{i} = 0) \cap  (X_{n}=1) \in \Tribu$
+donc $Z$ est une variable aléatoire. $Q(Z=\infty) = Q \left(\big\{(0)_{n \in \N^{*}}\big\}\right) = 0$ et par indépendance de $X_{1}, \ldots, X_{n}$
+$$
+  Q(Z=n)= Q(X_{1}= 0) \times  \cdots \times  Q(X_{n-1} = 0) \times Q(X_{n} = 1) = p(1-p)^{n-1}
+$$
+donc $Z \leadsto \mathcal{G(p)}$. $Z$ est le rang d’apparition du premier succès dans une succession infinie d’épreuves de Bernoulli indépendantes de paramètre $p$.
+
+## Théorème de Weierstrass polynomial pour 𝑓 ∶ [0,1] → 𝐂 continue
+
+%thm Théorème de Weierstrass (1885)
+  Soient $a < b$ deux réels. Soit $f: \cc{a,b} \longrightarrow \K$ une application **continue** sur le **segment** $\cc{a,b}$. Alors il existe une suite de polynômes de $\K[X]$ convergeant uniformément vers $f$ sur $\cc{a,b}$.
+%
+
+%proof Bernstein 1913 pour $\cc{a,b} = \cc{0,1}$
+  - Soit $f: \cc{0,1} \longrightarrow \C$ continue. Pour $h \geq 0$, on pose
+    $$
+      \omega(h) = \sup_{\substack{(u,v) \in \cc{0,1}^{2}\\ \abs{u-v} \leq h}} \abs{f(u) - f(v)}
+    $$
+    le module de continuité de $f$ sur $\cc{0,1}$. La partie
+    $$
+      T_{h} = \big\{(u,v) \in \cc{0,1}^{2} \where \abs{u-v} \leq h\big\}
+    $$
+    est un compacte de $\R^{2}$ et $(u,v) \longmapsto f(u) - f(v)$ est continue sur $T_{h}$ donc $\omega(h)$ existe et est un maximum.
+
+    %dimmed
+      _Autre rédaction:_ $\forall (u,v) \in T_{h}, \abs{f(u) - f(v)} \leq 2 \norm{f}_{\infty,\cc{0,1}}$ car $f$ est continue sur me segment $\cc{0,1}$ donc $\big\{\abs{f(u) - f(v)} \where (u,v) \in \cc{0,1}^{2} \text{ et } \abs{u-v} \leq h\big\}$ est non vide et majorée dans $\R$.
+    %
+
+  - Or $f$ est uniformément continue sur $\cc{0,1}$ donc pour $\varepsilon > 0$ donné, il existe $\delta > 0$ tel que
+    $$
+      \begin{cases}(u,v) \in \cc{0,1}^{2} \\ \abs{u-v} \leq \delta\end{cases} \implies  \abs{f(u) - f(v)} < \varepsilon
+    $$
+    donc pour $h \in \cc{0, \delta}$, on a
+    $$
+      \begin{cases}(u,v) \in \cc{0,1}^{2} \\ \abs{u-v} \leq h\end{cases} \implies  \abs{f(u) - f(v)} < \varepsilon
+    $$
+    d’où $0 \leq \omega(h) \leq \varepsilon$. Ainsi, $\omega$ est continue en 0: $\lim_{h\to 0}\omega(h) = 0$.
+
+  - Posons, pour $n \in \N^{*}$,
+    $$
+      B_{n}(f) = \sum_{k=0}^{n}\binom{n}{k} f \left(\frac{k}{n}\right)X^{k}(1-X)^{n-k} \in \C_{n}[X]
+    $$
+    Soit $x \in \oo{0,1}$. Soit $(X_{n})_{n \in \N^{*}}$ le jeu de pile ou face infini avec
+    ~ $\forall n \in \N^{*}, X_{n} \leadsto \B(x)$  ~ $(X_{n})_{n \in \N^{*}}$ indépendantes
+    Posons $S_{n} = X_{1} + \cdots + X_{n} \leadsto \B(n,x)$.
+    $$
+      \begin{align*}
+        f(x) - \tilde{B_{n}}(f)(x) &= f(x) - \sum_{k=0}^{p}\binom{n}{k}f \left(\frac{k}{n}\right)x^{k}(1-x)^{n-k} \\
+        &= E \left(f(x) \1_{\Omega} - f \left(\frac{S_{n}}{n}\right)\right)
+      \end{align*}
+    $$
+    en effet, $E \left(f \left(\frac{S_{n}}{n}\right)\right) = \sum_{k=0}^{n} f \left(\frac{k}{n}\right)\P(S_{n} = k)$ (formule de transfert). Soit $\varepsilon > 0$. Soit $\delta > 0$ tel que $\omega(\delta) < \frac{\varepsilon}{2}$. Pour $x \in \oo{0,1}$, on a
+    $$
+      \begin{align*}
+        \abs{f(x) - \tilde{B_{n}}(f)(x)} &= \abs{E \left(f(x) - f \left(\frac{S_{n}}{n}\right)\right)} \\
+        &\leq E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)}\right) &= E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)} \1_{\left(\abs{\frac{S_{n}}{n} - x} \leq \delta\right)}\right) + E \left(\abs{f(x) - f \left(\frac{S_{n}}{n}\right)}\1_{\left(\abs{\frac{S_{n}}{n}-x} > \delta\right)}\right) \\
+        &&\leq \omega(\delta) E \left(\1_{\abs{\frac{S_{n}}{n} - x} \leq \delta}\right) + 2 \norm{f}_{\infty}E \left(\1_{\left(\abs{\frac{S_{n}}{n} - x} > \delta\right)}\right) \\
+        &&\leq \omega(\delta) + \underbrace{2 \norm{f}_{\infty} \P \left(\abs{\frac{S_{n}}{n}- \underbrace{x}_{E(X_{1})}} \geq \delta\right)}_{\arrowlim{n\to+\infty}0 \text{ loi faible des grands nombres}} \\
+        &&\leq \omega(\delta) + 2 \norm{f}_{\infty} \frac{V \left(\frac{S_{n}}{n}\right)}{\delta^{2}}
+      \end{align*}
+    $$
+    car $E \left(\frac{S_{n}}{n}\right) = \frac{1}{n}nE(X_{1}) = x$. Or $V(S_{n}) = nx(1-x) \leq \frac{n}{4}$ donc
+    $$
+      \forall x \in \oo{0,1}, \abs{f(x) - \tilde{B_{n}}(f)(x)} \leq \omega(\delta) + \frac{\norm{f}_{\infty}}{2n \delta^{2}}
+    $$
+    or $\frac{\norm{f}_{\infty}}{4n \delta^{2}} \arrowlim{n\to+\infty}0$ donc il existe $n \in \N^{*}$ tel que
+    $$
+      \forall n \geq n_{0}, \frac{\norm{f}_{\infty}}{2 n \delta^{2}} < \frac{\varepsilon}{2}
+    $$
+    d’où
+    $$
+      \forall x \in \oo{0,1}, \abs{f(x) - \tilde{B_{n}}(f)(x)} < \varepsilon
+    $$
+    or $f(0) = \tilde{B_{n}}(f)(0)$ et $f(1) = \tilde{B_{n}}(f)(1)$ d’où
+    $$
+      \forall n \geq n_{0}, \norm{f-\tilde{B_{n}}(f)}_{\infty, \cc{0,1}} < \varepsilon
+    $$
+    donc $\big(\tilde{B_{n}}(f)\big)_{n \in \N}$ converge uniformément vers $f$ sur $\cc{0,1}$.
+
+    ++Cas général.++ Pour $f: \cc{a,b} \longrightarrow \C$ continue, posons
+    $$
+      g: \applic{\cc{0,1}}{\C}{t}{f(\underbrace{a+t(b-a)}_{u})}
+    $$
+    On a $\sup_{t \in \cc{0,1}} \abs{g(t) - \tilde{B_{n}}(g)(t)} \arrowlim{n\to+\infty}0$ d’où
+    $$
+      \sup_{u \in \cc{a,b}} \abs{f(u) - \tilde{B_{n}}(g)\left(\frac{u-a}{b-a}\right)} \arrowlim{n\to+\infty}0
+    $$
+    et $P_{n} = B_{n}(g) \circ \left(\frac{X-a}{b-a}\right) \in \C[X]$.
+%
+
+## Dérivabilité en 1 de la fonction génératrice
+
+%prop
+  Si une variable aléatoire $X: (\Omega,\Tribu,\P) \longrightarrow \N$ est dérivable en 1, alors $X \in L^{1}(\Omega)$.
+%
+
+%proof
+  Supposons $G_{X}$ dérivable en 1. Soit $x \in \co{0,1}$.
+  $$
+    \frac{G_{X}(x) - G_{X}(1)}{x-1}= \sum_{n=0}^{+\infty}P(X=n)\frac{x^{n} - 1^{n}}{x-1} = \sum_{n=1}^{+\infty}P(X=n)(1+x+ \cdots + x^{n-1})
+  $$
+  donc
+  $$
+    \forall n \in \N^{*}, \frac{G_{X}(x) - G_{X}(1)}{x-1} \geq \sum_{n=1}^{N}P(X=n)(1+x+\cdots + x^{n-1})
+  $$
+  On fait alors tendre $x$ vers $1^{-}$. On a
+  $$
+    \forall N \in \N^{*}, G_{X}'(1) \geq \sum_{n=1}^{N}n\P(X=n)
+  $$
+  donc la suite des sommes partielles de la série à termes positifs $\sum_{n \geq 1}nP(X=n)$ est majoré (par $G_{X}'(1)$) donc la série $\sum_{n \geq 1}nP(X=1)$ est convergente, i.e. $X \in L^{1}(\Omega)$.
+%
+
+%offprog
+  ## Double dérivabilité en 1 de la fonction génératrice
+
+  %prop
+    Si $X \in L^{2}(\Omega)$, alors ${G_{X}}_{|\cc{-1,1}}$ est deux fois dérivable en 1 (i.e. elle est dérivable **au voisinage** de 1 et de dérivée dérivable en 1). Si tel est le cas,
+    $$
+      V(X) = G_{X}''(1) + G_{X}'(1) - G_{X}'(1)^{2}
+    $$
+  %
+
+  %proof
+    Supposons $X \in L^{2}$. Alors $X \in L^{1}$ donc ${G_{X}}_{|\cc{-1,1}} \in \Cont^{1}(\cc{-1,1})$ et
+    $$
+      \forall x \in \cc{-1,1}, G_{X}'(x) = \sum_{n=1}^{+\infty}nP(X=n)x^{n-1}
+    $$
+    De plus,
+    $$
+      \forall x \in \oo{-1,1}, G_{X}'' (x) = \sum_{n=2}^{+\infty}n(n-1)P(X=n)x^{n-2}
+    $$
+    or $\sum_{n \in \ico{2,+\infty}}n(n-1)P(X=n) \underset{\bar{\R_{+}}}{\oeq{T.T}} E \big(X(X-1)\big) = E(X^{2}-X)$. Or $(X^{2}, X) \in L^{1}$ donc $X^{2} - X \in L^{1}$ donc $\sum_{n \in \ico{2,+\infty}}n(n-1)P(X=n) < +\infty$. On a donc aussi la convergence de $\sum_{n \geq 2}n(n-1)tp(X=n)(-1)^{n-2}$ et donc l’absolue convergence de a série, d’où ${G_{X}}_{|\cc{-1,1}}$ est de classe $\Cont^{2}(\cc{-1,1})$ et
+    $$
+      G_{X}''(1) = E \big(X(X-1)\big) = E(X^{2} - X)
+    $$
+    or $V(X) = E(X^{2}) - E(X)^{2} = E(X^{2} - X) + E(X) - E(X)^{2}$. Ainsi,
+    $$
+      V(X) = G_{X}''(1) + G_{X}'(1) - G_{X}'(1)^{2}
+    $$
+  %
+%

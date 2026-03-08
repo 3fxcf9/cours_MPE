@@ -321,7 +321,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
 %
 
 %def
-  Sot $A \in \M_{n}(\R)$. $A$ est dite orthogonale si
+  Soit $A \in \M_{n}(\R)$. $A$ est dite orthogonale si
   $$
     A\transp \times A = I_{n}
   $$
