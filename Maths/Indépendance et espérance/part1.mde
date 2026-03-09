@@ -371,7 +371,7 @@ Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
      $$
 %
 
-%custom Application
+%eg Application
   Soit $Y = e^{\frac{2i \pi X}{N}} = g(X)$ où $X \leadsto \mathscr P(\lambda)$. $\abs{Y} = 1$ donc $Y = g(X) \in L^{1}(\Omega)$. Ainsi, d’après la formule de transfert,
   $$
     \begin{align*}
@@ -644,7 +644,7 @@ Soit $(\Omega,\Tribu,\P)$ un espace probabilisé.
        donc $\Prop(n+1)$ est vraie.
 %
 
-%custom Cas d’utilisatoin fréquent
+%eg Cas d’utilisatoin fréquent
   Si $(X_{1}, \ldots, X_{n})$ est une suite de variables aléatoires indépendantes identiquement distribuées de $L^{1}(\Omega)$, alors $X_{1} \times \cdots \times X_{n} \in L^{1}(\Omega)$ et $E(X_{1} \times  \cdots \times X_{n}) = E(X_{1})^{n}$
 %
 

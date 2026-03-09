@@ -426,3 +426,131 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
   $$
   donc $\O(n) \subset \bar{B}(0_{n}, \sqrt{n})$. $\O(n)$ est une partie fermée et bornée de l’espace vectoriel $\R_{n}(\R)$ de dimension finie; c’est donc une partie compacte. $\O^{+}(n)$ est une partie fermée incluse dans le compacet $\O(n)$; c’est donc une partie compacte.
 %
+
+%prop
+  1. $O(1) = \big\{\mtx{1}, \mtx{-1}\big\}$
+  2. $O(2) = \left\{\mtx{a & -b \\ b & a} \where (a,b) \in \R^{2} \and  a^{2}+b^{2} = 1\right\} \cup \left\{\mtx{a & b \\ b & -a} \where (a,b) \in \R^{2} \and  a^{2}+b^{2} = 1\right\}$
+  3. Pour $n \geq 3$ on ne connait pas de description de $O(n)$.
+%
+
+%proof
+  2. On a
+     $$
+       \begin{align*}
+         \mtx{a & c \ b & d} \in O(2) &\iff \begin{cases}a^{2} + b^{2} = c^{2} + d^{2} = 1 \\ ac + bd = 0\end{cases} \\
+          &\iff \begin{cases}a^{2} + b^{2} = c^{2} + d^{2} = 1 \\ \mtx{c\\d} \in \Big(\R \mtx{a\\b}\Big)\ortho\end{cases} \\
+          &\iff \begin{cases}a^{2} + b^{2} = c^{2} + d^{2} = 1 \\ \underbrace{\mtx{c\\d}}_{\text{unitaire}} \in \R \underbrace{\mtx{-b\\a}}_{\text{unitaire}}\end{cases}
+       \end{align*}
+     $$
+     donc
+     $$
+       \mtx{a & c \\ b & d}  \in O(2) \iff \begin{cases}a^{2} + b^{2} = 1 \\ \mtx{c\\d} \in \left\{\mtx{-b \\ a}, \mtx{b\\-a}\right\}\end{cases}
+     $$
+%
+
+%prop
+  1. $SO(1) = \{\mtx{1}\}$
+  2. $SO(2) = \left\{\mtx{a & -b\\b&a} \where (a,b) \in \R^{2} \and a^{2} + b^{2} = 1\right\} = \left\{\underbrace{\mtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}}_{R(\theta)} \where \theta \in \R\right\}$
+  3. $(SO(2), \times ) \simeq (\U, \times)$: ce sont des groupes commutatifs.
+  4. pour $n \geq 3$, $(SO(n), \times)$ n’est pas abélien.
+%
+
+%proof
+  3. L’application
+     $$
+       f: \applic{(\U, \times )}{(SO(2), \times)}{z}{\mtx{\Re z & -\Im z \\ \Im z & \Re z}}
+     $$
+     est correctement définie car $\det f(z) = (\Re z)^{2} + (\Im z)^{2} = \abs{z}^{2} = 1$. Soient $(z,z') \in \U^{2}$. Notons $z = a+ib$ et $z' = a' + ib'$ avec $a, a', b, b'$ des réels. Alors, $zz' = a a' + b b' + i(a' b + ab')$, donc
+     $$
+       f(zz') = \mtx{a a' - b b' & -(a' b + ab') \\ a' b + ab' & a a' - b b'}
+     $$
+     et
+     $$
+       f(z) \times f(z') = \mtx{a & -b \\ b & a} \mtx{a' & -b' \\ b' & a'} = \mtx{a a' - b b' & -(a' b + ab') \\ a' b - a b' & a a' + b b'}
+     $$
+     donc $f$ est un morphisme de groupes. De plus, $f$ est surjectif (cf. description de $SO(2)$) donc
+     $$
+       z \in \ker  f \iff f(z) \in I_{2} \iff \begin{cases}\Re z = 1 \\ \Im z = 0\end{cases} \iff z=1
+     $$
+     Comme $(\U, \times )$ est commutatif, $(SO(2), \times)$ l’est également. En effet, pour tous $\theta, \theta' \in \R$,
+     $$
+       R(\theta) \times R(\theta') = f(e^{i \theta}) \times f(e^{i \theta}) = f(e^{i (\theta + \theta')}) = R(\theta + \theta') = R(\theta') \times R(\theta)
+     $$
+  4. Posons $A = \mtx{0&0&1\\0&1&0\\-1&0&0} \in SO(3)$ et $B = \mtx{0&0&1\\0&-1&0\\1&0&0} \in SO(3)$. Alors
+     ~ $AB = \mtx{1&&\\&*&\\&&}$  ~ $BA = \mtx{-1&&\\&*&\\&&}$
+     donc $AB\ne BA$. Pour $n \geq 4$, posons
+     ~ $A_{n} = \arrmtx{c|c}{A & 0\\\hline 0&I_{n-3}}$  ~ $B_{n} = \arrmtx{c|c}{B & 0\\\hline 0 & I_{n-3}}$
+     Alors, $(A_{n}, B_{n}) \in SO(n)^{2}$ mais $[A_{n}, B_{n}] \ne 0_{n}$.
+%
+
+%offprog
+  %prop Décomposition $QR$
+    Pour tout matrice inversible $P \in \GL_{n}(\R)$, il existe un couple $(Q,R) \in O(n) \times \T_{n}^{+}(\R)$ tel que
+    $$
+      P = QR
+    $$
+    Cette décomposition est unique si on fixe le signe des coefficients diagonaux de $R$.
+  %
+
+  %proof
+    - _Existence._ Soit $P \in \GL_{n}(\R)$. Munissons $\R^{n}$ de la norme euclidienne canonique. Notons $(e_{1}, \ldots, e_{n})$ la base canonique de $\R^{n}$. Elle est orthonormale. Notons $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ la famille de vecteurs de $\R^{n}$ telle que $P = \mat_{(e_{1}, \ldots, e_{n})(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. $P$ étant inversible, $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ est une base de $\R^{n}$ et $P = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. Soit $(\varepsilon_{1}', \ldots, \varepsilon_{n}')$ la base orthonormale de Schmidt associée à $(\varepsilon_{1}, \ldots, \varepsilon_{n})$.
+      $$
+        \begin{align*}
+          P &= \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})} \times \Pass{(\varepsilon_{1}', \ldots, \varepsilon_{n}')}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}\\
+            &= \underbrace{\mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}', \ldots, \varepsilon_{n}')}_{Q} \times \underbrace{\mtx{\scalar{\varepsilon_{1}'}{\varepsilon_{1}} & \scalar{\varepsilon_{1}'}{\varepsilon_{2}} & \cdots & \scalar{\varepsilon_{1}'}{\varepsilon_{n}} \\ 0 & \scalar{\varepsilon_{2}'}{\varepsilon_{2}} & & \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \scalar{\varepsilon_{n}'}{\varepsilon_{n}}}}_{R \in \T_{n}^{+}(\R)}
+        \end{align*}
+      $$
+      et $Q \in O(n)$ car $(\varepsilon_{1}', \ldots, \varepsilon_{n}')$ est aussi orthonormale.
+    - _Unicité._ Soit $P = QR = Q_{1}R_{1}$ avec $(Q, Q_{1}) \in O(n)^{2}$, $(R, R_{1}) \in \T_{n}^{+}(\R)^{2}$ et $\forall i \in \icc{1,n}, R_{ii} \times (R_{1})_{ii} > 0$. Alors $\Omega = Q_{1}^{-1} Q = R_{1} R^{-1}$ d’où comme $(O(n), \times )$ est un groupe, on a $\Omega \in O(n)$ donc $\Omega^{-1} = \Omega\transp$ et $\Omega \in \T_{n}^{+} (\R)$ d’où
+      ~ $\Omega^{-1} = \Omega\transp \in \T_{n}^{-}(\R)$  ~ $\Omega^{-1} \in \T_{n}^{+}(\R)$
+      Posons $\Omega = \diag(\omega_{1}, \ldots, \omega_{n})$ d’où
+      $$
+        \forall i \in \icc{1,n}, \omega_{i} = (R_{1})_{ii} (R^{-1})_{ii} = \frac{(R_{1})_{ii}}{R_{ii}} > 0
+      $$
+      Or $\Omega\transp \Omega = I_{n}$ i.e. $\diag (\omega_{1}^{2}, \ldots, \omega_{n}^{2}) = I_{n}$ d’où $\forall i \in \icc{1,n}, \omega_{i}^{2} = 1$ d’où $\forall i \in \icc{1,n}, \omega_{i} = 1$ donc $\Omega^{-1}$ est diagonale donc $\Omega$ aussi d’où $Q = Q_{1}$ et $R = R_{1}$.
+  %
+
+  %eg Application
+    1. Soient $P \in \GL_{n}(\R)$ et $tb \in \M_{n,1}(\R)$. On veut résoudre le système linéaire $PX = B \quad (\star)$. Posons $P = QR$ avec $Q \in O(n)$ et $R \in \T_{n}^{+}(\R)$.
+      $$
+        (\star) \iff QRX = B \iff RX = Q^{-1}B = Q\transp B
+      $$
+      Cela revient donc à résoudre un système triangulaire, ce qui se fait en cascade en partant de la dernière ligne.
+  %
+
+  %cor Inégalité de Hadamar
+    Soit $A = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}} \in \R_{n}(\R)$. On a
+    $$
+      \abs{\det A} \leq \prod_{i=1}^{n}\norm{C_{i}}_{\can}
+    $$
+  %
+
+  %proof
+    Supposons $A \in \GL_{n}(\R)$ (le cas $\det A = 0$ est immédiat). Posons $A =QR$ où $Q = \Pass_{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}', \ldots, \varepsilon_{n}')}$ et $R = \Pass{(\varepsilon_{1}', \ldots, \varepsilon_{n}')}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$ avec les notations ci-dessus. On a $\det  A = \det Q \times \det R$ or $\det Q \in \{1,-1\}$ d’où
+    $$
+      \begin{align*}
+        \abs{\det A} &= \abs{\det R} \\
+        &= \abs{\det \mtx{\scalar{\varepsilon_{1}'}{\varepsilon_{1}} & & * \\ & \ddots & \\ 0 & & \scalar{\varepsilon_{n}'}{\varepsilon_{n}}}} \\
+        &= \prod_{i=1}^{n}\scalar{\varepsilon_{i}'}{\varepsilon_{i}} \\
+        &\leq \prod_{i=1}^{n}\norm{\varepsilon_{i}'}_\can \times \norm{\varepsilon_{i}}_\can \\
+        &\leq  \prod_{i=1}^{n}\norm{\varepsilon_{i}}_\can
+      \end{align*}
+    $$
+    avec $A = \mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$ d’où $\norm{\varepsilon_{i}}_{\can} = \norm{C_{i}}_{\can}$.
+  %
+%
+
+%def
+  Soit $F$ un $\R$-espace vectoriel de dimension finie $n \in \N^{*}$. On dit que deux bases $\B$ et $\B'$ de $E$ ont la même orientation si $\det_{\B}(\B') > 0$. La relation « avoir la même orientation que » est une relation d’équivalence sur l’ensemble des bases de $F$. Il y a deux classes d’équivalence. Orienter $F$, c’est choisir l’une des deux classes. Toute base appartenant à cette classe est alors dite _directe_ et les autres sont dites _indirectes_.
+%
+
+%prop
+  Soit $E$ un espace euclidien de dimension $n$.
+  1. $O(n)$ est l’ensemble des matrices de passage entre deux bases orthonormale de $E$.
+  2. $SO(n)$ est l’ensemble des matrices de passage entre deux bases orthonormales de même orientation de $E$.
+%
+
+%proof
+  1. Soit $A \in O(n)$. Notons $(e_{1}, \ldots, e_{n})$ une base orthonormale de $(E, \scalar{\cdot}{\cdot})$. Notons $A = \mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme $A \in O(n)$ et $(e_{1}, \ldots, e_{n})$ est orthonormale, la famille $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ est une base orthonormale de $E$ et $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$.
+  2. Soit $(e_{1}, \ldots, e_{n})$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ deux bases orthonormales de $E$. Soit $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. On a $A = M_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme les deux bases sont orthonormales, on a $A \in O(n)$.
+%
