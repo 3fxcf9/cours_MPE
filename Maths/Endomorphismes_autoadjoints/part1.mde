@@ -540,8 +540,18 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
   %
 %
 
-%def
-  Soit $F$ un $\R$-espace vectoriel de dimension finie $n \in \N^{*}$. On dit que deux bases $\B$ et $\B'$ de $E$ ont la même orientation si $\det_{\B}(\B') > 0$. La relation « avoir la même orientation que » est une relation d’équivalence sur l’ensemble des bases de $F$. Il y a deux classes d’équivalence. Orienter $F$, c’est choisir l’une des deux classes. Toute base appartenant à cette classe est alors dite _directe_ et les autres sont dites _indirectes_.
+%defprop
+  Soit $F$ un $\R$-espace vectoriel de dimension finie $n \in \N^{*}$. On dit que deux bases $\B$ et $\B'$ de $E$ ont la même orientation si $\det_{\B}(\B') > 0$.
+  La relation « avoir la même orientation que » est une relation d’équivalence sur l’ensemble des bases de $F$. Il y a deux classes d’équivalence, appelées _orientations_.
+  Orienter $F$, c’est choisir l’une de ces deux classes. Toute base appartenant à cette classe est alors dite _directe_ et les autres sont dites _indirectes_.
+%
+
+%proof
+  Soient $\B$, $\B'$ et $\B''$ trois bases de $F$.
+  - $\det_{\B}\B = 1 > 0$
+  - $\det_{\B}\B' > 0 \implies  \det_{\B'}\B = \frac{1}{\det_{\B}\B'} > 0$
+  - $\begin{cases}\det_{\B}\B' > 0 \\ \det_{\B'}\B'' > 0\end{cases} \implies  \det_{\B}\B'' = \det_{\B}\B' \times \det_{\B'}\B'' > 0$
+  - Soit $\B_{0}$ une base de $F$. Comme $\B$ est une base de $F$, on a $\det_{\B_{0}}\B \in \R^{*}$ donc $\det_{\B_{0}}\B > 0$ ou $\det_{\B_{0}} < 0$. On a aussi $\det_{\hat{\B_{0}}}\B < 0$ avec $\hat{\B_{0}} = (-e_{1}, e_{2}, \ldots, e_{n})$ si $\B_{0} = (e_{1}, \ldots, e_{n})$. Il y a donc au moins deux classes.
 %
 
 %prop
@@ -551,6 +561,233 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
 %
 
 %proof
-  1. Soit $A \in O(n)$. Notons $(e_{1}, \ldots, e_{n})$ une base orthonormale de $(E, \scalar{\cdot}{\cdot})$. Notons $A = \mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme $A \in O(n)$ et $(e_{1}, \ldots, e_{n})$ est orthonormale, la famille $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ est une base orthonormale de $E$ et $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$.
-  2. Soit $(e_{1}, \ldots, e_{n})$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ deux bases orthonormales de $E$. Soit $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. On a $A = M_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme les deux bases sont orthonormales, on a $A \in O(n)$.
+  1. - Soit $A \in O(n)$. Notons $(e_{1}, \ldots, e_{n})$ une base orthonormale de $(E, \scalar{\cdot}{\cdot})$. Notons $A = \mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme $A \in O(n)$ et $(e_{1}, \ldots, e_{n})$ est orthonormale, la famille $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ est une base orthonormale de $E$ et $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$.
+     - Soit $(e_{1}, \ldots, e_{n})$ et $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ deux bases orthonormales de $E$. Soit $A = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. On a $A = M_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}, \ldots, \varepsilon_{n})$. Comme les deux bases sont orthonormales, on a $A \in O(n)$.
+  2. Les matrices de $SO(n)$ sont de déterminant positif (églal à 1), donc ce sont les matrices de passage entre deux bases orthonormales de même orientation.
+%
+
+%eg
+  $\R$ est muni de sa structure euclidienne canonique et orienté en déclarant directe la base canonique. Soit $(e_{1}, e_{2}) \in (\R^{2})^{2}$
+  - $(e_{1}, e_{2})$ est orthonormale si et seulement si $\mat_{\can}(e_{1}, e_{2}) \in O(2)$.
+  - $(e_{1}, e_{2})$ est orthonormale directe si et seulement si $\mat_{\can}(e_{1}, e_{2}) \in SO(2)$, donc si et seulement si $\mat_{\can}(e_{1}, e_{2}) = R(\theta) = \mtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}$, donc si et seulement si
+    $$
+      \exists \theta \in \R: (e_{1}, e_{2}) = \big(u(\theta), v(\theta)\big)
+    $$
+    avec $u(\theta) = (\cos \theta, \sin \theta)$ et $v(\theta) = (-\sin \theta, \cos \theta)$.
+%
+
+## Endomorphisme autoadjoints d’un espace vectoriel euclidien
+
+%def Endomorphismes autoadjoints
+  On dit qu’un endomorphisme $f$ d’un espace vectoriel euclidien $(E, \scalar{\cdot}{\cdot})$ est _autoadjoint_ (ou _symétrique_) si $f^{*} = f$, i.e. si
+  $$
+    \forall (x,y) \in E^{2}, \scalar{f(x)}{y} = \scalar{x}{f(y)}
+  $$
+  et on note
+  $$
+    \Sym(E) = \Big\{f \in \L(E) \where f^{*} = f\Big\}
+  $$
+%
+
+%eg
+  1. $\forall \lambda \in \R, \lambda \id_{E} \in \Sym(E)$
+  2. - Tout projecteur orthogonal est autoadjoint.
+     - Toute symétrie orthogonale est autoadjointe.
+%
+
+%prop
+  Soit $E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
+  1. $\Sym(E)$ est un sous-espace vectoriel de $(\L(E), +, \cdot)$.
+  2. Soit $f \in \L(E)$. Soit $\Bon$ une base orthonormale de $E$. Notons $A = \mat_{\Bon} f$. Alors
+     $$
+       f \in \Sym(E) \iff A\transp = A \iff A \in \Sym_{n}(\R)
+     $$
+  3. $\dim \L(E) = n^{2}$ et $\dim \Sym(E) = \frac{n(n+1)}{2}$.
+  %offprog
+    4. Si $f \in \Sym(E)$, alors $E = \ker f \oplusortho \img f$
+    5. - Si $f \in \Sym(E)$, alors $\forall p \in \N$, $f^{p} \in \Sym(E)$.
+       - Soit $(f,g) \in \big(\Sym(E)\big)^{2}$.
+         $$
+           (f\circ g) \in \Sym(E) \iff \big[f,g\big] = 0_{\L(E)}
+         $$
+  %
+%
+
+%proof
+  1. $\varphi: \applic{\L(E)}{\L(E)}{f}{f^{*} - f}$ est $\R$-linéaire donc $\Sym(E) = \ker \varphi$ est un sous-espace vectoriel de $(\L(E), +, \cdot)$.
+  2. $f \in \Sym(E) \iff  f^{*} = f \iff \mat_{\Bon}f^{*} = \mat_{\Bon} f \iff A\transp = A$ donc $f \in \Sym(E) \iff A \in \Sym_{n}(\R)$.
+  3. Si $\Bon$ est une base orthonormale de $E$, alors $\applic{\Sym(E)}{\Sym_{n}(\R)}{f}{\mat_{\Bon}f}$ est un isomorphisme de $\R$-espaces vectoriels donc $\dim \Sym(te) = \dim \Sym_{n}(\R) = \frac{n(n+1)}{2}$.
+  %offprog
+    4. Soit $f \in \Sym(E)$. On a $\ker f \oplusortho (\ker f)\ortho$, i.e. $E = \ker  f \oplusortho \img (f^{*}) = \ker f\oplusortho \img f$.
+    5. Soit $(f,g) \in \Sym(E)^{2}$.
+       $$
+         f\circ g \in \Sym(E) = (f\circ g)^{*} = f\circ g \iff g^{*}\circ f^{*} = f\circ g \iff  g\circ f = f\circ g
+       $$
+  %
+%
+
+%rem
+  Notons $\Antisym(E) = \big\{f \in \L(E) \where f^{*} = -f\big\}$. On a $\L(E) = \Sym(E) \oplus \Antisym(E)$ (car $f = g+h = \frac{f+f^{*}}{2} + \frac{f-f^{*}}{2}$ avec $g^{*} = \frac{1}{2}(f^{*} + (f^{*})^{*}) = \frac{1}{2}(f^{*} + f) = g$ et $h^{*} = -h$, et si $f \in \Sym(E) \cap \Antisym(E)$, alors $f^{*} = f = -f$ donc $f = 0_{\L(E)}$).
+%
+
+%eg
+  - Soit $a \in \R$. Soit $v_{0} \in E$. Soit $\varphi: \applic{E}{E}{u}{u+a \scalar{u}{u_{0}} u_{0}}$. On a $\varphi \in \L(E)$.
+    - si $u_{0} = 0_{E}$, alors $\varphi = \id_{E} \in \Sym(E)$
+    - si $u_{0}\ne 0_{E}$, alors
+      $$
+        \forall u \in E, \varphi(u) = u+a \norm{u_{0}}^{2} \scalar{u}{\frac{u_{0}}{\norm{u_{0}}}}\frac{u_{0}}{\norm{u_{0}}}
+      $$
+      donc $\varphi = \id_{E} + a \norm{u_{0}}^{2} p$ avec $p$ le projecteur orthogonal sur $\Vect\left\{u_{0}\right\}$. Or $\id  \in \Sym(E)$, $p \in \Sym(E)$ et $\Sym(E)$ est un sous-espace vectoriel de $\L(E)$ donc $\varphi \in \Sym(E)$.
+  - - On munit $\R^{2}$ de sa structure euclidienne canonique. Déterminons $\Sym(\R^{2})$. Si $\can$ est la base canonique de $\R^{2}$, alors comme celle-ci est orthogonale,
+      $$
+        \varphi \in \Sym(\R^{2}) \iff \mat_{\can}\varphi \in \Sym_{2}(\R) \iff \exists (a,b,c) \in \R^{3}: \mat_{\can}\varphi = \mtx{a&b \\ b & c}
+      $$
+      donc
+      $$
+        \Sym(\R^{2}) = \Big\{(x,y) \longmapsto (ax + by, bx + cy) \where (a,b,c) \in \R^{3}\Big\}
+      $$
+    - On munit $\R^{2}$ du produit scalaire
+      $$
+        \big((x,y), (x', y')\big) \longmapsto \scalar{(x,y)}{(x', y')} = x x' + 2y y'
+      $$
+      Déterminons $\Sym \big((\R^{2}, \scalar{\cdot}{\cdot} )\big)$. Posons $\can = (e_{1}, e_{2})$. On a donc $\scalar{e_{1}}{e_{2}} = 0$, $\norm{e_{1}} = 1$ et $\norm{e_{2}} = \sqrt{2}$. $\Bon = \left(e_{1}, \frac{e_{2}}{\sqrt{2}}\right)$ est une base orthonormale de $(\R^{2}, \scalar{\cdot}{\cdot})$. Soit $\varphi \in \L(\R^{2})$.
+      $$
+        \varphi \in \Sym(\R^{2}) \iff \mat_{\Bon}\varphi = \Sym_{2}(\R) \iff \exists (a,b,c) \in \R^{3}, \mat_{\Bon}\varphi = \mtx{a&b\\b&c}\tag{$\star$}
+      $$
+      or $\varphi(e_{1}) = a e_{1} + b \frac{e_{2}}{\sqrt{2}}$ et $\varphi \left(\frac{e_{2}}{\sqrt{2}}\right) = be_{1} + c \frac{e_{2}}{\sqrt{2}}$ donc
+      $$
+        (\star) \iff \exists (a,b,c) \in \R^{3}: \mat_{(e_{1}, e_{2})}\varphi = \mtx{a & b \sqrt{2} \\ \frac{b}{\sqrt{2}} & c}\notin \Sym_{2}(\R)
+      $$
+      Ainsi,
+      $$
+        \Sym \big((\R^{2}, \scalar{\cdot}{\cdot})\big) = \left\{(x,y) \longmapsto \left(ax + b \sqrt{2}y, \frac{b}{\sqrt{2}}x + cy\right) \where (a,b,c) \in \R^{3}\right\}
+      $$
+%
+
+%callout Exemple important
+  %eg
+    Soit $f \in \L(E)$. Soit $\Bon$ une base orthonormale de $E$. Notons $A f \mat_{\Bon}f$.
+    - $f$ est un projecteur orthogonal si et seulement si
+      ~ $f^{2} = f$  ~ $f^{*} = f$
+      donc si et seulement si
+      ~ $A^{2} = A$  ~ $A\transp = A$
+    - $f$ est une symétrie orthogonale si et seulement si
+      ~ $f^{2} = \id$  ~ $f^{*} = f$
+      donc si et seulement si
+      ~ $A^{2} = I_{n}$  ~ $A\transp = A$
+      donc si et seulement si
+      $$
+        A = A\transp = A^{-1}
+      $$
+  %
+%
+
+%prop
+  Soit $f \in \Sym(E)$.
+  - Si $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors
+    ~ $F\ortho$ est stable par $f$  ~ $f_{|F} \in \Sym(F)$ et $f_{|F\ortho} \in \Sym(F\ortho)$
+%
+
+%proof
+  - $F\ortho$ est stable par $f^{*} = f$. Or $\forall (x,y) \in E^{2}, \scalar{f(x)}{y} = \scalar{x}{f(y)}$ d’où
+    $$
+      \forall (x,y) \in F^{2}, \scalar{\underbrace{f(x)}_{f_{|F}(x)}}{y} = \scalar{x}{\underbrace{f(y)}_{f_{p}(y)}}
+    $$
+    donc $f_{|F} \in \Sym(F)$. De même, $f_{|F\ortho} \in \Sym(F\ortho)$.
+  - Soient $\lambda$ et $\mu$ deux valeurs propres distinctes de $f \in \Sym(E)$. Soit $(x,y) \in E_{\lambda}(f) \times E_{\mu}(f)$. On a $\scalar{f(x)}{y} = \scalar{x}{f(y)}$ i.e. $\lambda \scalar{x}{y} = \mu \scalar{x}{y}$ i.e. $(\lambda - \mu) \scalar{x}{y} = 0$. Comme $\lambda - \mu \ne 0$, on a $\scalar{x}{y} = 0$ donc $E_{\lambda}(f) \perp E_{\mu}(f)$.
+%
+
+%thm Théorème spectral
+  Si $f$ est un endomorphisme autoadjoint d’un espace euclidien $E$ (de dimension non nulle), alors $f$ est diagonalisable et il existe une base orthonormale de $E$ formée de vecteurs propres de $f$.
+%
+
+%proof
+  - _Première étape : $f \in \Sym(E) \implies \sp f \ne \emptyset$_((Voir DS n°8 pour une preuve utilisant l’optimisation sous contrainte.)). Soit $\Bon$ une base orthonormale de $E$ avec $\dim E = n \in \N^{*}$. Notons $A = \mat_{\Bon}f \in \Sym_{n}(\R)$. Soit $\lambda \in \sp_{\C}A$ ($\chi_{A}$ est scindé dans $\C[X]$). Soit $X \in \M_{n,1}(\C) \setminus \{0\}$ tel que $AX = \lambda X$. Alors, $\bar{X}\transp A X = \lambda \bar{X}\transp X$. Si $X = \mtx{z_{1}\\ \cdots\\ z_{n}}\ne 0$, alors
+    $$
+      \scalar{X}{X}_{\substack{\can\\\text{herm.}}} = \bar{X}\transp = \mtx{\bar{z_{1}} & \cdots & \bar{z_{n}}} \mtx{z_{1} \\ \vdots \\ z_{n}} = \sum_{i=1}^{n}\abs{z_{i}}^{2} \in \R_{+}^{*}
+    $$
+    $X\transp AX$ est une matrice complexe (1,1) s’identifiant à un réel donc égale à sa transposée. Or
+    $$
+      \lambda = \frac{\bar{X}\transp AX}{\bar{X}\transp X} = \frac{\big(\bar{X}\transp A X\big)\transp}{\bar{X}\transp X} = \frac{X\transp  A\transp \bar{X}}{\bar{X}\transp X} = \frac{X\transp A \bar{X}}{\bar{X}\transp X} = \bar{\lambda}
+    $$
+    donc $\lambda \in \R$ donc $\chi_{A} = \chi_{f}$ est scindé dans $\R[X]$.
+  - _Seconde étape._ Considérons la propriété $\Prop(k)$: « le théorème spectral est vrai dans tout espace euclidien de dimension $k$ ».
+    - Soit $E_{1}$ un espace euclidien de dimension 1. Soit $f \in \Sym(E_{1}) = \L(E_{1})$. Il existe $\lambda \in \R$ tel que $f = \lambda \id_{E_{1}}$. Si $e$ est un vecteur unitaire de $E_{1}$, alors $(e)$ est une base orthonormale de $E_{1}$ formée d’un vecteur propre de $f$.
+    - Supposons $\Prop(1), \ldots, \Prop(k)$ vraies pour $k \in \N^{*}$. Soient $E_{k+1}$ un espace euclidien de dimension $k+1$ et $f \in \Sym(E_{k+1})$. On a $\sp f \ne \emptyset$. Soit $\lambda \in \sp f$.
+      - si $E_{\lambda}(f) = E_{k+1}$, alors $f = \lambda \id_{E_{k+1}}$ donc toute base orthonormale de $E_{k+1}$ est formée de vecteurs propres de $f$.
+      - sinon, $E_{\lambda}(f) \ne E_{k+1}$. On a donc $E_{k+1} = E_{\lambda}(f) \oplusortho E_{\lambda}(f)\ortho$. Or
+        + $E_{\lambda}(f)\ortho$ est stable par $f$ car $f \in \Sym(E_{k+1})$,
+        + $\tilde{f} = f_{|E_{\lambda}(f)} \in \Sym(E_{\lambda}(f)\ortho)$,
+        + $\dim \big(E_{\lambda}(f)\big)\ortho \in \icc{1,k}$
+        D’après l’hypothèse de récurrence, il existe une base $\tilde{\B}$ te $E_{\lambda}(f)\ortho$ formée de vecteurs propres de $\tilde{f}$ donc de $f$. Soit $\B$ une base orthonormale de $E_{\lambda}(f)$. En concaténant $\B$ et $\tilde{\B}$, on obtient une base orthonormale de vecteurs propres de $f$.
+%
+
+%thm Théomème spectral (bis)
+  Soit $f$ un endomorphisme d’un espace euclidien $E$. Il y a équivalence entre
+  1. $f \in \Sym(E)$
+  2. $\sp f \ne \emptyset$ et
+     $$
+       E = \overset{\perp}{\bigoplus_{\lambda \in \sp f}} E_{\lambda}(f)
+     $$
+  3. Il existe une base **orthnormale** de $E$ formée de vecteurs propres de $f$.
+%
+
+%proof
+  - Supposons le premier point. Alors $f$ est diagonalisable donc $\sp f \ne \emptyset$ et $E = \bigoplus_{\lambda \in \sp f}E_{\lambda}(f)$. De plus, comme $f \in \Sym(E)$, les sous-espaces propres sont orthogonaux.
+  - Supposons le deuxième point. Par concaténation des bases orthonormales des sous-espaces propres, on obtient le troisième point.
+  - Supposons le troisième point. Soit $\Bon = (e_{1}, \ldots, e_{n})$ une base orthnormale de $E$ formée de vecteurs propres de $f$. Il existe donc $(\lambda_{1}, \ldots, \lambda_{n}) \in \R^{n}$ tels que $\forall i \in \icc{1,n}, f(e_{i}) = \lambda_{i} e_{i}$, d’où $\mat_{\Bon}(f) = \diag(\lambda_{1}, \ldots, \lambda_{n}) \in \Sym_{n}(\R)$. Comme $\Bon$ est orthnormale, $f \in \Sym(E)$.
+%
+
+%eg
+  Soit $E$ euclidien et $f \in \L(E)$ telle que $f^{*} = f$ et $f^{2} = 0$. Alors $f$ est diagonalisable et nilpotente donc $f = 0_{\L(E)}$.
+%
+
+%def Matrices orthosemblables
+  Soit $(A,B) \in \M_{n}(\R)^{2}$. On dit que $A$ est _orthogonalement semblable_ (ou _orthosemblable_) à $\B$ si il existe $P \in O(n)$ tel que $A = PB \underbrace{P^{-1}}_{P\transp}$. C’est le cas si et seulement si $A$ et $B$ représentent le même endomorphisme d’un espace euclidien $E$ relativement à deux bases orthonormales de $E$. On note parfois $A \ossim B$.
+%
+
+%rem
+  $\ossim$ est une relation d’équivalence car
+  - $A = I_{n} A I_{n}^{-1}$ et $I_{n} \in O(n)$
+  - $\begin{cases}A = PB P^{-1} \\ P \in O(n)\end{cases} \implies B = Q A Q^{-1}$ avec $Q = P^{-1} \in O(n)$
+  - $\begin{cases}A = PBP^{-1} \\ B = QCQ^{-1} \\ (P,Q) \in O(n)^{2}\end{cases} \implies  A = RCR^{-1}$ avec $R = PQ \in O(n)$.
+%
+
+%thm Théorème spectral (version matricielle)
+  Soit $A \in \M_{n}(\stress\R)$. $A$ est une matrice symétrique réelle **si et seulement si** elle est orthosemblable à une matrice diagonale, i.e.
+  $$
+    \exists P \in O(n), \exists (\lambda_{1}, \ldots, \lambda_{p})\in \R^{n}: A = P\diag(\lambda_{1}, \ldots, \lambda_{n})\underbrace{P^{-1}}_{P\transp}
+  $$
+  %quote
+    Toute matrice symétrique réelle est diagonalisable (et il existe une base orthonormale de vecteurs propres).
+  %
+%
+
+%rem
+  Attention, ce résultat est faux pour les matrices symétriques complexes((Il est cependant vrai pour une matrice hermitienne ($\bar{A}\transp = A$).))~: considérons $A = \mtx{1 & i \\ i & -1} \in \Sym_{2}(\C)$. Alors $\chi_{A} = X^{2}$ donc $A$ est nilpotente. Comme $A\ne 0$, $A$ n’est pas diagonalisable.
+%
+
+%proof
+  - Si $A = P\diag(\lambda_{1}, \ldots, \lambda_{n}) P^{-1}$ avec $P \in O(n)$, alors $A\transp = (P^{-1})\transp \diag(\lambda_{1}, \ldots, \lambda_{n})P\transp$. Or $P^{-1} = P\transp$ donc $A\transp = P\diag(\lambda_{1}, \ldots, \lambda_{n})P^{-1} = A$ donc $A \in \Sym_{n}(\R)$.
+  - Soit $A \in \Sym_{n}(\R)$. Soit $f: \R^{n} \longrightarrow \R^{n}$ l’endomorphisme canoniquement associé à $A$. Munissons $\R^{n}$ de sa structure euclidienne canonique. Notons $A = \mat_{\can}(f)$. Comme $\can$ est orthonormale et $A \in \Sym_{n}(\R)$, on a $f \in \Sym(\R^{n})$. Il existe donc une base orthonormale $\mathscr{C}$ de $\R^{n}$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in \R^{n}$ tel que $A = P\diag(\lambda_{1}, \ldots, \lambda_{n})P^{-1}$ avec $P = \Pass{\B}{\mathscr{C}} \in O(n)$.
+%
+
+%eg
+  Soit $A \in \Sym_{n}(\R)$. Il existe $P \in O(n)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in \R^{n}$ tel que $A = P\diag(\lambda_{1}, \ldots, \lambda_{n})P^{-1}$. Notons $P = \arrmtx{c|c|c}{C_{1} & \cdots & C_{n}}$. On a $\forall i \in \icc{1,n}$, $ACi = \lambda_{i}C_{i}$. Si $\det  P = -1$, alors pour $Q = \arrmtx{c|c|c|c}{-C_{1} & C_{2} & \cdots & C_{n}}$. On a $Q \in SO(n)$. $A = Q\diag(\lambda_{1}, \ldots, \lambda_{n})Q^{-1}$ avec $A(-C_{1}) = -\lambda_{1} C_{1} = \lambda_{1}(-C_{1})$.
+%
+
+%method
+  Comment orthodiagonaliser $A \in \Sym_{n}(\R)$ ?
+  + déterminer ses valeurs propres
+  + déterminer une base orthonormale de chaque sous-espace propre (par le procédé de Schmidt).
+
+  %eg
+    Considérons la matrices $A = \mtx{2&1&1\\1&2&1\\1&1&2}$. $A \in \Sym_{3}(\R)$ donc $A$ est diagonalisable.
+    $$
+      \chi_{A}(X) = \vmtx{X-2 & -1&-1\\ -1 & X-2 & -1 \\ -1&-1&X-2} = \vmtx{X-4 & -1&-1\\X-4&X-2&-1\\X-4&-1&X-2}
+    $$
+    $$
+      \chi_{A}(X) = (X-4)\vmtx{1&-1&-1\\1&X-2&-1\\1&-1&X-2} = (X-4)\vmtx{1&-1&-1\\0&X-1&0\\0&0&X-1} = (X-4)(X-1)^{2}
+    $$
+  %
 %
