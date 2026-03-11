@@ -1,0 +1,216 @@
+%offprog
+  %prop Coorthodiagonalisabilité
+    Si deux endomorphismes symétriques $s$ et $t$ commutent, alors il existe une base orthonormale de $E$ formée de vecteurs propres communs à $s$ et $t$. On dit que $s$ et $t$ sont _coorthodiagonalisables_.
+  %
+
+  %proof
+    $s$ est autoadjoint donc $\sp(s)\ne\emptyset$ et $E = \overset{\perp}{\bigoplus_{\lambda \in \sp(s)}}E_{\lambda}(s)$. Soit $\lambda \in \sp(s)$. Comme $s$ et $t$ commutent, $s-\lambda \id_{E}$ et $t$ commutent donc $E_{\lambda}(s) = \ker (s - \lambda \id_{E})$ est stable par $t$ donc $t_{|E_{\lambda}(s)} \in \sym(E_{\lambda}(s))$. Soit $\B_{\lambda}$ une base orthonormale de $E_{\lambda}(s)$ formée de vecteurs propres de $t_{|E_{\lambda}(s)}$ i.e. de $t$. $\B = \bigcup_{\lambda \in \sp(s)} \B_{\lambda}$ est alors une base orthonormale de $E$ formée de vecteurs propres communs à $s$ et $t$.
+  %
+
+  %prop Coorthodiagonalisabilité, version matricielle
+    Si $S \in \Sym(\R)$ et $T \in \Sym(\R)$ commutent, alors il existe $P \in O(n)$ telle que $P^{-1}SP$ et $P^{-1}TP$ soient diagonales soient diagonales.
+  %
+%
+
+## Endomorphismes autoadjoints positifs
+
+%def
+  Un endomorphisme $f$ d’un espace vectoriel euclidien $E$ est dit _autoadjoint positif_ si
+  ~ $f^{*} = f$  ~ $\forall x \in E, \scalar{f(x)}{x} \geq 0$
+  Il est dit _autoadjoint défini positif_ si $f^{*} = f$ et
+  $$
+    \forall x \in E \setminus \{0\}, \scalar{f(x)}{x} > 0
+  $$
+  ou de façon équivalente, si $f^{*}=f$ et
+  $$
+    \forall x \in E, \begin{cases}\scalar{f(x)}{x}  \geq 0 \\ \scalar{f(x)}{x}  = 0 \implies x=0_{E}\end{cases}
+  $$
+  On note $\Sym^{+}(E)$ (resp. $\Sym^{++}(E)$) l’ensemble des endomorphisme autoadjoints de $E$ positifs (resp. définis positifs).
+%
+
+%eg
+  - $\forall \lambda \in \R, \lambda \id_{E} \in \Sym(E)$
+  - $\lambda \id_{E} \in \Sym^{+}(E) \iff \forall x \in te, \scalar{\lambda x}{x} = \lambda \norm{x}^{2} \geq 0 \implies \lambda \geq 0$
+  - $\lambda \id_{E} \in \Sym^{++}(E) \iff \lambda > 0$
+%
+
+%eg
+  Soit $p$ une projection ortohogonale sur $F$. $p$ est alors symétrique. Soit $x \in E$. Posons $x = x_{1} + x_{2}$ avec $(x_{1}, x_{2}) \in F \times F\ortho$. Alors
+  $$
+    \scalar{p(x)}{x}  = \scalar{x_{1}}{x_{1} + x_{2}}  = \norm{x_{1}}^{2} \geq 0
+  $$
+  donc $p \in \Sym^{+}(E)$ et si $p\ne \id_{E}$, alors $p \notin \Sym^{++}(E)$.
+%
+
+%eg
+  Un endomorphisme $f \in \L(E)$ est autoadjoint défini positif si et seulement si $(x,y) \longmapsto \scalar{f(x)}{y}$ est un produit scalaire sur $E$.
+  ~
+  Posons $\varphi: \applic{E^{2}}{\R}{(x,y)}{\scalar{f(x)}{y}}$. Comme $f \in \L(E)$, $\varphi$ est une forme multilinéaire sur $E$.
+  Elle est bilinéaire symétrique et et seulement si $\forall (x,y), \varphi(x,y) = \scalar{f(x)}{y} = \scalar{f(y)}{x} = \varphi(y,x)$, i.e. $f=f^{*}$ donc si et seulement si $f$ est autoadjoint.
+  $\varphi$ est un produit scalaire si et seulement si $f$ est autoadjoint et si
+  $$
+    \forall x \in E, \begin{cases}\varphi(x,x) \geq 0 \\ \varphi(x,x) = 0 \implies x = 0\end{cases}
+  $$
+  donc si et seulement si $f \in \Sym^{++}(E)$.
+%
+
+%prop Caractérisation spectrale
+  Soit $f$ un endomorphisme **symétrique**.
+  - $f \in \Sym^{+}(E) \iff  \sp f \subset \R_{+}$
+  - $f \in \Sym^{++}(E) \iff \sp f \subset \R_{+}^{*}$
+%
+
+%proof
+  Soit $f$ un endomorphisme symétrique.
+  - Supposons $f$ autoadjoint positif. Soit $\lambda \in \sp f$. Soit $x \in E_{\lambda}(f) \setminus \{0\}$. Comme $f \in \Sym^{+}(E)$, on a $\scalar{f(x)}{x} \stress\geq 0$ i.e. $\scalar{\lambda x}{x}  \stress\geq 0$ i.e. $\lambda \norm{x}^{2} \stress\geq 0$. Or $x \ne 0$ donc $\norm{x}^{2} > 0$ d’où $\lambda \stress\geq 0$. Ainsi, $\sp f \subset \R_{+}$.
+  - Supposons $\sp f \subset \R_{+}$. Notons $\varphi = \prod_{i=1}^{n}(X - \lambda_{i})$ avec $\lambda_{1} \leq  \cdots \leq  \lambda_{n}$. On a (hors-programme) $\forall x \in E, \scalar{f(x)}{x} \geq \lambda_{1} \norm{x}^{2}$, d’où
+    $$
+      \begin{cases}\lambda_{1} \stress \geq 0 \\ \norm{x}^{2} \stress \geq 0\end{cases} \implies  \scalar{f(x)}{x}  \stress \geq 0
+    $$
+    donc $f \in \Sym^{+}(E)$.
+  On montre le second point en rendant strictes les inégalités en couleur.
+%
+
+%offprog
+  %prop Autre caractérisation
+    - $\Sym^{+}(E) = \Big\{f^{*}\circ f \where f \in \L(E)\Big\}$
+    - $\Sym^{++}(E) = \Big\{f^{*}\circ f \where f \in \GL(E)\Big\}$
+  %
+
+  %proof
+    - Soit $f \in \L(E)$.
+      $$
+        (f^{*}\circ f)^{*} = f^{*}\circ (f^{*})^{*} = f^{*}\circ f
+      $$
+      donc $f^{*}\circ f \in \Sym(E)$. Soit $x \in E \stress{\setminus \{0\}}$.
+      $$
+        \scalar{(f^{*}\circ f)(x)}{x}  = \scalar{f(x)}{f(x)} = \norm{f(x)}^{2} \geq \stress{(>)} 0
+      $$
+      donc $\big\{f^{*}\circ f \where f \in \L(E)\big\} \subset \Sym^{+}(E) \stress{(\Sym^{++}(E))}$.
+    - Soit $g \in \Sym^{+}(E)\stress{(\Sym^{++}(E))}$. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$ formée de vecteurs propres de $g$. Posons pour tout $i \in \icc{1,n}$, $g(e_{i}) = \lambda_{i} e_{i}$ où $\lambda_{i} \geq \stress{(>)} 0$. Soit $f \in \L(E)$ défini par
+      $$
+        \forall i \in \icc{1,n}, f(e_{i}) = \sqrt{\lambda_{i}}e_{i}
+      $$
+      $(e_{1}, \ldots, e_{n})$ est donc une base orthonormale de vecteurs propres de $f$ donc $f^{*}=f$. ==Et $\sp f = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\}$ ne contient pas 0 donc $f \in \GL(E)$==. Or $f^{*}\circ f = f^{2}$ et $g$ coïncident sur cette base donc $g = f^{2} = f^{*}\circ f$ donc
+      $$
+        \Sym^{+}(E) \subset \big\{f^{*}\circ f \where f \in \L(E) \stress{(\GL(E))}\big\}
+      $$
+  %
+%
+
+%def
+  - Une matrice $M \in \M_{n}(\R)$ est dite _symétrique positive_ si $M \in \Sym_{n}(\R)$ et si
+    $$
+      \forall X \in \M_{n,1}(\R), \scalar{X}{MX}_{\can} \geq 0
+    $$
+  - Une matrice $M \in \M_{n}(\R)$ est dite _définie positive_ si $M \in \Sym_{n}(\R)$ et si
+    $$
+      \forall X \in \M_{n,1}(\R)\setminus \{0\}, \scalar{X}{MX}_{\can} > 0
+    $$
+  Ces définitio reviennent à dire que
+  $$
+    f_{M}: \applic{\M_{n,1}(\R)}{\M_{n,1}(\R)}{X}{MX}
+  $$
+  est autoadjoint positif (resp. défini positif) pour $\M_{n,1}(\R)$ muni du produit scalaire canonique.
+  On note $\Sym_{n}^{+}(\R)$ (resp. $\Sym_{n}^{++}(\R)$) l’ensemble des matrices symétriques positives (resp. définies positifes).
+%
+
+%proof
+  En effet, $\mat_{E_{1}, \ldots, E_{n}}(f_{M}) = M$ et $f_{M} \in \Sym(\M_{n,1}(\R)) \iff M \in \Sym_{n}(\R)$ (la base $(E_{1}, \ldots, E_{n})$ est orthonormale) et $\scalar{f_{M}(X)}{X}_{\can} = \scalar{MX}{X}_{\can}$.
+%
+
+%prop Caractérisation
+  Une matrice $M \in \M_{n}(\R)$ est symétrique définie positive si et seulement si l’application $(X,Y) \longmapsto \scalar{X}{MY}_{\can} = X\transp M Y$ est un produit scalaire sur $\M_{n,1}(\R)$.
+%
+
+%prop Caractérisation spectrale
+  Soit $A \in \Sym_{n}(\R)$.
+  - $A \in \Sym_{n}^{+}(\R) \iff  \sp A \subset \R_{+}$
+  - $A \in \Sym_{n}^{++}(\R) \iff  \sp A \subset \R_{+}^{*}$
+%
+
+%proof
+  $\mat_{(E_{1}, \ldots, E_{n})}(f_{A}) = A$.
+%
+
+%rem
+  Pour $A \in \M_{n}(\R)$,
+  $$
+    A \in \Sym_{n}^{++}(\R) \iff \begin{cases}A \in \Sym_{n}(\R) \\ \forall X \in \M_{n,1}(\R) \setminus \{0\}, X\transp AX > 0\end{cases}
+  $$
+  Notons $A = \mtx{a_{i,j}}_{1 \leq i,j \leq n}$ et $X = \mtx{x_{1} \\ \vdots \\ x_{n}}$.
+  $$
+    X\transp AX = \sum_{i=1}^{n}x_{i}(AX)_{i} = \sum_{i=1}^{n}x_{i} \left(\sum_{j=1}^{n}a_{i,j}x_{j}\right) = \sum_{(i,j) \in \icc{1,n}^{2}}a_{i,j}x_{i}x_{j}
+  $$
+  $q_{A}: X = \mtx{x_{1} \\ \vdots \\ x_{n}} \longmapsto \sum_{(i,j) \in \icc{1,n}^{2}} a_{i,j}x_{i}x_{j}$ est une forme quadratique (polynôme homogène de degré 2) associé à $A$.
+%
+
+%eg
+  - $A = \mtx{\alpha} \in \Sym_{1}(\R)$ et $\sp A = \{\alpha\}$ donc $A \in \Sym_{1}^{+}(\R) \iff \alpha \geq 0$ et $A \in \Sym_{1}^{++}(\R) \iff \alpha > 0$.
+  - Considérons $A = \mtx{a & b \\ b & c} \in \Sym_{2}(\R)$ avec $a$, $b$ et $c$ réels. Notons $\chi_{A} = (X-\lambda_{1})(X-\lambda_{2})$.
+    $$
+      A \in \Sym_{2}^{+}(\R) \iff \begin{cases}\lambda_{1} \geq 0 \\ \lambda_{2} \geq 0\end{cases} \iff \begin{cases}\lambda_{1} + \lambda_{2} \geq 0 \\ \lambda_{1}\lambda_{2} \geq 0\end{cases} \iff \begin{cases}a+c \geq 0 \\ ac - b^{2} \geq 0\end{cases}
+    $$
+    et
+    $$
+      A \in \Sym_{2}^{++}(\R) \iff \begin{cases}\lambda_{1} > 0 \\ \lambda_{2} > 0\end{cases} \iff \begin{cases}\lambda_{1} + \lambda_{2} > 0 \\ \lambda_{1} \lambda_{2} > 0\end{cases} \iff \begin{cases}a+c > 0 \\ ac - b^{2} > 0\end{cases} \iff \begin{cases}a > 0 \\ ac > b^{2}\end{cases}
+    $$
+    donc
+    $$
+      \mtx{a & b \\ b & c} \iff \begin{cases}a > 0 \\ ac - b^{2} > 0\end{cases}
+    $$
+    Attention, on a pas en général
+    $$
+      \begin{cases}a \geq 0 \\ ac - b^{2} \geq 0\end{cases} \implies  A \in \Sym_{2}^{+}(\R)\transp
+    $$
+    (par exemple pour $\mtx{0&0\\0&-1} \notin \Sym_{2}^{+}(\R)$).
+  - Considérona la matrice $H = \mtx{\frac{1}{i+j-1}}_{1 \leq i,j \leq n} \in \Sym_{n}(\R)$. Soit $X \in \mtx{x_{1} \\ \vdots \\ x_{n}}$.
+    $$
+      \begin{align*}
+        \scalar{X}{HX}_\can &= X\transp HX \\
+        &= \sum_{(i,j) \in \icc{1,n}^{2}} \frac{x_{i} x_{j}}{i+j-1} \\
+        &= \sum_{(i,j) \in \icc{1,n}}x_{i}x_{j} \int_{0}^{1}t^{i+j-2}\dd t\\
+        &= \int_{0}^{1}\left(\sum_{(i,j) \in \icc{1,n}^{2}}x_{i} t^{i-1}x_{j} t^{j-1}\right) \dd t \\
+        &= \int_{0}^{1}\left(\sum_{i=1}^{n}x_{i}t^{i-1}\right)^{2} \dd t \geq 0
+      \end{align*}
+    $$
+    donc $H \in \Sym_{n}^{+}(\R)$. De plus,
+    $$
+      X\transp H X = 0 \implies \forall t \in \cc{0,1}, \sum_{i=1}^{n}x_{i}t^{x-1} = 0 \implies \forall i \in \icc{1,n}, x_{i} = 0 \implies X=0
+    $$
+    donc $H \in \Sym_{n}^{++}(\R)$.
+%
+
+%offprog
+  %prop
+    Soit $A \in \Sym_{n}^{+}(\R)$. Il existe une unique matrice $B \in \Sym_{n}^{+}(\R)$ telle que $B^{2} = A$ (on note $B = \sqrt{A}$). De plus, si $A \in \Sym_{n}^{++}(\R)$, alors $B \in \Sym_{n}^{++}(\R)$.
+  %
+
+  %proof
+    Soit $A \in \Sym_{n}^{+}(\R)$.
+    - _Existence._ Il existe $P \in O(n)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in (\R_{+})^{n}$ tels que $A = P\diag (\lambda_{1}, \ldots, \lambda_{n})P^{-1}$. Posons $B_{1} = P\diag(\sqrt{\lambda_{1}, \cdots, \sqrt{\lambda_{n}}})\underbrace{P^{-1}}_{P\transp}$. On a $B_{1}\transp = B_{1}$ et $\sp B_{1} = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\} \subset \R_{+}$ donc $B_{1} \in \Sym_{n}^{+}(\R)$ et $B_{1}^{2} = A$.
+    - _Unicité._ Soit $Q \in \R[X]$ tel que $\forall i \in \icc{1,n}, Q(\lambda_{i}) = \sqrt{\lambda_{i}}$. Par exemple,
+      $$
+        Q = \sum_{\lambda \in \sp(A)}\sqrt{\lambda} \prod_{\mu \in \sp(A)\setminus \{\lambda\}}\frac{X-\mu}{\lambda-\mu}
+      $$
+      d’où $Q(A) = P\diag \big(Q(\lambda_{1}), \ldots, Q(\lambda_{n})\big)P^{-1} = B$ donc $B_{1} \in \R[A]$.
+      Soit $B_{2} \in \Sym_{n}^{+}(\R)$ tel que $B_{2}^{2} = A$. Les matrices $B_{2}$ et $A = B_{2}^{2}$ commutent donc $\big[B_{2}, Q(A)\big] = 0_{n}$ d’où $\big[B_{2}, B_{1}\big] = 0_{n}$. $B_{1}$ et $B_{2}$ sont donc coorthodiagonalisables: il existe $R \in O(n)$ telle que
+      ~ $B_{1} = R\diag(d_{1}, \ldots, d_{n})R^{-1}$  ~ $B_{2} = R\diag(\delta_{1}, \ldots, \delta_{n})R^{-1}$
+      avec $d_{1}, \ldots, d_{n}, \delta_{1}, \ldots, \delta_{n}$ des réels positifs. Ainsi,
+      $$
+        R\diag(d_{1}^{2}, \ldots, d_{n}^{2})R^{-1} = R\diag(\delta_{1}^{2}, \ldots, \delta_{n}^{2})R^{-1}
+      $$
+      d’où
+      $$
+        \forall i \in \icc{1,n}, \begin{cases}d_{i}^{2} = \delta_{i}^{2} \\ d_{i} \geq 0 \\ \delta_{i} \geq 0\end{cases}
+      $$
+      On a donc pour tout $i \in \icc{1,n}, d_{i} = \delta_{i}$ donc $B_{1} = B_{2}$.
+  %
+
+  %callout Attention
+    $-I_{n} \in \Sym_{n}(\R)$. Soit $A \in \Sym_{n}(\R)$ avec $A^{2} = -I_{n} \quad (\star)$. $A = P\diag(\lambda_{1}, \ldots, \mu_{n})P^{-1}$ avec $P \in O(n)$ donc
+    $$
+      (\star) \iff \diag(\lambda_{1}^{2}, \ldots, \lambda_{n}^{2}) = -I_{n} \iff \forall i \in \icc{1,n}, \lambda_{i}^{2} = -1
+    $$
+  %
+%
