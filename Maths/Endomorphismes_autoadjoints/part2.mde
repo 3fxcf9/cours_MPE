@@ -188,12 +188,12 @@
 
   %proof
     Soit $A \in \Sym_{n}^{+}(\R)$.
-    - _Existence._ Il existe $P \in O(n)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in (\R_{+})^{n}$ tels que $A = P\diag (\lambda_{1}, \ldots, \lambda_{n})P^{-1}$. Posons $B_{1} = P\diag(\sqrt{\lambda_{1}, \cdots, \sqrt{\lambda_{n}}})\underbrace{P^{-1}}_{P\transp}$. On a $B_{1}\transp = B_{1}$ et $\sp B_{1} = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\} \subset \R_{+}$ donc $B_{1} \in \Sym_{n}^{+}(\R)$ et $B_{1}^{2} = A$.
+    - _Existence._ Il existe $P \in O(n)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in (\R_{+})^{n}$ tels que $A = P\diag (\lambda_{1}, \ldots, \lambda_{n})P^{-1}$. Posons $B_{1} = P\diag(\sqrt{\lambda_{1}}, \cdots, \sqrt{\lambda_{n}})\underbrace{P^{-1}}_{P\transp}$. On a $B_{1}\transp = B_{1}$ et $\sp B_{1} = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\} \subset \R_{+}$ donc $B_{1} \in \Sym_{n}^{+}(\R)$ et $B_{1}^{2} = A$.
     - _Unicité._ Soit $Q \in \R[X]$ tel que $\forall i \in \icc{1,n}, Q(\lambda_{i}) = \sqrt{\lambda_{i}}$. Par exemple,
       $$
         Q = \sum_{\lambda \in \sp(A)}\sqrt{\lambda} \prod_{\mu \in \sp(A)\setminus \{\lambda\}}\frac{X-\mu}{\lambda-\mu}
       $$
-      d’où $Q(A) = P\diag \big(Q(\lambda_{1}), \ldots, Q(\lambda_{n})\big)P^{-1} = B$ donc $B_{1} \in \R[A]$.
+      d’où $Q(A) = P\diag \big(Q(\lambda_{1}), \ldots, Q(\lambda_{n})\big)P^{-1} = B_{1}$ donc $B_{1} \in \R[A]$.
       Soit $B_{2} \in \Sym_{n}^{+}(\R)$ tel que $B_{2}^{2} = A$. Les matrices $B_{2}$ et $A = B_{2}^{2}$ commutent donc $\big[B_{2}, Q(A)\big] = 0_{n}$ d’où $\big[B_{2}, B_{1}\big] = 0_{n}$. $B_{1}$ et $B_{2}$ sont donc coorthodiagonalisables: il existe $R \in O(n)$ telle que
       ~ $B_{1} = R\diag(d_{1}, \ldots, d_{n})R^{-1}$  ~ $B_{2} = R\diag(\delta_{1}, \ldots, \delta_{n})R^{-1}$
       avec $d_{1}, \ldots, d_{n}, \delta_{1}, \ldots, \delta_{n}$ des réels positifs. Ainsi,
@@ -213,4 +213,247 @@
       (\star) \iff \diag(\lambda_{1}^{2}, \ldots, \lambda_{n}^{2}) = -I_{n} \iff \forall i \in \icc{1,n}, \lambda_{i}^{2} = -1
     $$
   %
+%
+
+%offprog
+  %prop Décomposition polaire
+    Soit $A \in \GL_{n}(\R)$. Il existe un unique couple $(Q,S) \in O(n) \times \Sym_{n}^{++}(\R)$ et un unique couple $(Q', S') \in O(n) \times \Sym_{n}^{++}(\R)$ tels que
+    $$
+      A = QS = S' Q'
+    $$
+  %
+
+  %rem
+    Soit $z \in \C^{*}$. Notons $z = a+ib$ avec $a$ et $b$ deux réels. Il existe $\rho > 0$ et $\theta \in \R$ tels que $z = a+ib + \rho e^{i \theta}$, i.e.
+    $$
+      \mtx{a & -b \\ b & a} = \rho \mtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta} = \underbrace{\sqrt{a^{2} + b^{2}}I_{2}}_{\in \Sym_{2}^{++}(\R)} \times \underbrace{\R(\theta)}_{\in O(2)}
+    $$
+  %
+
+  %proof
+    - _Analyse._ Supposons $A = QS$ avec $Q \in O(n)$ et $S \in \Sym_{n}^{++}(\R)$. Alors $A\transp A = S\transp Q\transp QS = S\transp S = S^{2}$ donc $S= \sqrt{A\transp A}$ et $Q = AS^{-1}$.
+    - _Synthèse._ Soit $A \in \GL_{n}(\R)$.
+      - $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$ donc $A\transp A \in \Sym_{n}(\R)$
+      - Soit $X \in \M_{n,1}(\R)$.
+        $$
+          X\transp A\transp A X = (AX)\transp AX = \norm{AX}_{\can}^{2} \geq 0
+        $$
+        et $X\transp A\transp AX = 0 \implies  AX = 0 \implies X=0$ (car $A \in \GL_{n}(\R)$) donc $A\transp A \in \Sym_{n}^{++}(\R)$.
+      Il existe ainsi une unique matrice $S \in \Sym_{n}^{++}(\R)$ telle que $S^{2} = A\transp A$. Comme $S \in \GL_{n}(\R)$, on pose $Q = A S^{-1}$ de sorte que $A = QS$ et
+        $$
+          Q\transp Q = (S^{-1})\transp A\transp A S^{-1} = (S^{-1})\transp S^{2} S^{-1} = S^{-1} S^{2} S^{-1} = I_{n}
+        $$
+        ($S \times S^{-1} = I_{n}$ donc $(S^{-1})\transp S\transp = I_{n}$ donc $(S^{-1})\transp = S^{-1}$) donc $Q \in O(n)$.
+    - _Seconde écriture._
+      $$
+        \begin{cases}A = S' Q' \\ Q' \in O(n) \\ S' \in \Sym_{n}^{++}(\R)\end{cases} \iff \begin{cases}A\transp = (Q')\transp S' \\ Q' \in O(n) \\ S' \in \Sym_{n}^{++}(\R)\end{cases} \iff (Q')\transp \in O(n)
+      $$
+      ce qui donne l’unicité de $Q'$ et $S'$ par la première décomposition polaire.
+  %
+
+  %offprog
+    Considérons la matrice $M = \mtx{0 & -2 \\ 1 & 0} \in \GL_{2}(\R)$. $M\transp M = \mtx{1 & 1 \\ -2 & 0}\mtx{0 & -2 \\ 1 & 0} = \mtx{1 & 0 \\ 0 & 4}$. Posons $S = \sqrt{M\transp M} = \mtx{1 & 0 \\ 0 & 2} \in \Sym_{2}^{++}(\R)$. Posons $Q = \mtx{0 & -1 \\ 1 & 0} \mtx{1 & 0 \\ 0 & 1/2} = \mtx{0 & 1 \\ 1 & 0}$.
+    $$
+      \mtx{0 & -2 \\ 1 & 0} = \underbrace{\mtx{0 & -1 \\ 1 & 0}}_{=R(\pi/2) \in O(2)} \underbrace{\mtx{1 & 0 \\ 0 & 2}}_{\in \Sym_{2}^{++}(\R)}
+    $$
+    $(M\transp)\transp M\transp = \mtx{0&-2\\1&0} \mtx{0&1\\-2&0} = \mtx{4&0\\0&1}$. Posons $S' = \sqrt{(M\transp)\transp M\transp} = \mtx{2 & 0 \\ 0 & 1}$ et $Q^{T}T = \mtx{0&1\\-2&0}\mtx{1/2 & 0 \\ 0 & 1} = \mtx{0&1\\-1&0}$ soit $Q' = \mtx{0&-1\\1&0}$. Alors,
+    $$
+      \mtx{0&-2 \\ 1&0} = \underbrace{\mtx{2 & 0 \\ 0 & 1}}_{\in \Sym_{2}^{++}} \underbrace{\mtx{0 & -1 \\ 1 & 0}}_{R(\pi/2) \in O(2)}
+    $$
+    On a de plus
+    $$
+      \chi_{S^{2}} = \chi_{M\transp M} = \chi_{M M\transp} = \chi_{(M\transp)\transp M\transp} = \chi_{(S')^{2}}
+    $$
+    Notons $\chi_{S^{2}} = \prod_{i=1}^{n}(X-\lambda_{i})$. On a alors $S = P\diag(\lambda_{1}, \ldots, \lambda_{n})P^{-1}$ et $S' = Q\diag(\lambda_{1}, \ldots, \lambda_{n})Q^{-1}$ avec $(P,Q) \in O(n)^{2}$, donc $P^{-1}SP = Q^{-1}S' Q$ donc $S = PQ^{-1} S' QP^{-1}$ donc comme $O(n)$ est un groupe, $S$ et $S'$ sont orthosemblables.
+  %
+%
+
+## Applications de classe $\Cont^{2}$
+
+Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie. Soit $\B = (e_{1}, \ldots, e_{n})$ une base de $E$.
+
+%def
+  Soit $f: \Omega \longrightarrow F$ une application définie sur un ouvert non vide de $E$. Soit $a \in \Omega$. Soient $(i,j) \in \icc{1,n}^{2}$. Supposons que $D_{e_{i}}f(x) = \partial_{i} f(x)$ existe pour tout $x$ dans un voisinage $\Omega_{a}$ de $a$ dans $\Omega$. On a $\partial_{i} f: \Omega_{a} \longrightarrow F$. Si $D_{e_{j}}(\partial_{i} f)(a)$ existe, alors ce vecteur est noté $\partial_{j}\partial_{i}f(a)$ (plutôt que $\partial_{j}(\partial_{i} f)(a)$) ou encore $\frac{\partial^{2}f}{\partial x_{j}\partial x_{i}}(a)$ si $x = \sum_{i=1}^{n}x_{i}e_{i}$. C’est la _dérivée partielle d’ordre 2 en $a$ selon la base $\B$_.
+%
+
+%rem
+  Si $E$ est de dimension $n$, il y a alors $n^{2}$ dérivées partielles d’ordre deux à considérer éventuellement. _A priori_, $\partial_{i}\partial_{j}f(a) \ne\partial_{j}\partial_{i}f(a)$.
+%
+
+%eg À savoir refaire
+  Considérons l’application
+  $$
+    f: \applic{\R^{2}}{\R}{(x,y)}{\begin{cases}xy \frac{x^{2}-y^{2}}{x^{2}+y^{2}} \if (x,y)\ne (0,0) \\ 0 \if (x,y) = (0,0)\end{cases}}
+  $$
+  $U = \R^{2} \setminus \{(0,0)\}$ est un ouvert de $\R^{2}$. $f_{|U}$ est continue sur $U$ en tant que fonction rationnelle, donc $f$ est au moins continue en tout point de $U$.
+  $$
+    \forall (x,y) \in U, \abs{f(x,y)} \leq \abs{xy} \frac{x^{2} + y^{2}}{x^{2} + y^{2}} = \abs{xy}
+  $$
+  et $\forall (x,y) \in \R^{2}, \abs{f(x,y)} \leq \abs{xy}$ or $\abs{xy} \arrowlim{(x,y) \to (0,0)} 0$ donc $f(x,y) \arrowlim{(x,y) \to(0,0)}0 = f(0,0)$ donc $f$ est continue sur $\R^{2}$. $f_{|U}$ est de classe $\Cont^{1}$ sur l’ouvert $U$, donc $\partial_{1} f$ et $\partial_{2} f$ existent en tout point de $U$ (relativement à la base canonique), et
+  $$
+    \forall (x,y) \in U, \partial_{1} f(x,y) = \frac{(3x^{2} y - y^{3})(x^{2} + y^{2}) - 2x^{2}y(x^{2} - y^{2})}{(x^{2} + y^{2})^{2}}
+  $$
+  $x \longmapsto f(x,0) = 0$ donc $\partial_{1}f(0,0)$ existe et $\partial_{1} f(0,0) = 0$.
+  _Existence de $\partial_{2}\partial_{1}f(0,0)$._ $y \longmapsto \partial_{1} f(0,y) = \begin{cases}-y \if y\ne 0 \\ 0 \if y = 0\end{cases} = -y$ est dérivable en $(0,0)$ donc $\partial_{2}\partial_{1}f(0,0)$ existe et $\partial_{2}\partial_{1}f(0,0) = -1$.
+  Pour tout $(x,y) \in \R^{2}$, $f(x,y) = -f(x,y)$ donc $\partial_{2} f(x,y) = -\partial_{1} f(y,x)$ donc $\partial_{2} f(x,0) = -\partial_{1} f(0,2)$ et $x \longmapsto \partial_{2} f(x,0) = -\partial_{1} f(0,x)$ est dérivable en 0 de dérivée $-(-1)$ donc $\partial_{1}\partial_{2} f(0,0) = +1$.
+%
+
+%prop Théorème de Schwarz
+  Soit $f: \Omega \longrightarrow F$ définie sur un ouvert non vide $\Omega$ de $E$ (de dimension $n$). Soit $(i,j) \in \icc{1,n}^{2}$. Si $\partial_{i} f: \Omega \longrightarrow F$ et $\partial_{j} f: \Omega \longrightarrow F$ sont définies sur $\Omega$ et si $\partial_{j}\partial_{i}f : \Omega \longrightarrow F$ et $\partial_{i}\partial_{j}f: \Omega \longrightarrow F$ sont définies et **continues** sur $\Omega$, alors
+  $$
+    \forall x \in \tauw, \partial_{j}\partial_{i}f(x) = \partial_{i}\partial_{j}f(x)
+  $$
+%
+
+%proof
+  Soit $(\varepsilon_{1}, \ldots, \varepsilon_{q})$ une base de $F$. Posons $f = \sum_{k=1}^{q}f_{k} \varepsilon_{k}$ où $f_{k} = \varepsilon_{k}^{*}\circ f$. Cela revient à faire l’hypothèse sur chacune des composante $f_{k}$. On peut donc se limiter aux fonctions $f: \Omega \longrightarrow \R$.
+  Soit $a \in \Omega$. Montrons que $\partial_{i}\partial_{j} f(a) = \partial_{j}\partial_{i}f(a) \in \R$. Supposons $\partial_{i}\partial_{j}f(a) > \partial_{j}\partial_{i}f(a)$. Posons $\varphi: x \longmapsto \partial_{i}\partial_{j}f(x) - \partial_{j}\partial_{i}f(x)$. Par continuité en $a$, il existe $n$ segments $S_{1}, \ldots, S_{n}$ de $\R$ tels que
+  $$
+    \forall (x_{1}, \ldots, x_{n})\in S_{1} \times  \cdots \times S_{n}, \underbrace{\varphi \left(\sum_{i=1}^{n}x_{i}e_{i}\right)}_{= \varphi(x_{1}, \ldots, x_{n})} > 0
+  $$
+  et $a = \sum_{i=1}^{n}a_{i}e_{i}$ et $(a_{1}, \ldots, a_{n}) \in \ring{S_{1}} \times  \cdots \times \ring{S_{n}}$. Soit $(x_{1}, \ldots, x_{n}) \in S_{1} \times \cdots \times S_{n}$(($S_{1} \times \cdots \times S_{n}$ est un _pavé_ (produit de segments).))
+  $$
+    \int_{S_{i}}\left[\int_{S_{j}} \varphi(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n})\dd x_{j}\right]\dd x_{i} > 0
+  $$
+  i.e. (en utilisant le théorème de Fubini sur un rectangle démentré dans l’exercice 6 du chapitre 12)
+  $$
+    \int_{S_{j}} \left[\int_{S_{i}}\partial_{i}\partial_{j}f \big(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n}\big)\dd x_{i}\right]\dd x_{j} > \int_{S_{j}} \left[\int_{S_{j}} \partial_{j}\partial_{i} f(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n})\dd x_{j}\right]\dd x_{i}
+  $$
+  Notons $S_{i} = \cc{\alpha, \beta}$ et $S_{j} = \cc{\gamma, \delta}$.
+  $$
+    \int_{S_{j}}\Big(\partial_{j} f(\beta, x_{j}) - \partial_{j} f(\alpha, x_{j})\Big)\dd x_{j} > \int_{S_{i}}\Big(\partial_{i}f(x_{i}, \delta) - \partial_{i} f(x_{i}, \gamma)\Big)\dd x_{i}
+  $$
+  d’où
+  $$
+    \underbrace{f (\beta, \delta)}_{= f(a_{1}, \ldots, \beta, \ldots, \delta, \ldots, a_{n})} - f(\beta, \gamma) - \big[f(\alpha, \delta) - f(\alpha, \gamma)\big] > f(\beta, \delta) - f(\alpha, \delta) - \big[f(\beta, \delta) - f(\alpha, \gamma)\big]
+  $$
+  On a donc pour tout $a \in \Omega$~:
+  $$
+    \partial_{i}\partial_{j}f(a) = \partial_{j}\partial_{i}f(a)
+  $$
+%
+
+%defprop
+  Soit $f: \Omega \longrightarrow F$ une application définie sur un ouvert non vide $\Omega$ de $E$. On dit que $f$ est de classe $\Cont^{2}$ sur $\Omega$ si
+  + $f$ est de classe $\Cont^{1}$ sur $\Omega$
+  + $\dd f: \Omega \longrightarrow \L(E,F)$ est de classe $\Cont^{1}$ sur $\Omega$
+  Cela revient à dire que $f$ possède $n^{2}$ dérivées partielles d’ordre 2 définies et continues sur $\Omega$ (relativement à une base de $E$).
+%
+
+%rem
+  Si $f$ possède $n^{2}$ dérivées partialles d’ordre 2 continues, alors
+  + $\partial_{1}\partial_{1}f, \partial_{2}(\partial_{1}f), \ldots, \partial_{n}(\partial_{1}f)$ sont continues donc $\partial_{1} f \in \Cont^{1}(\Omega,F) \subset \Cont(\Omega, F)$
+  + $\vdots$
+  + $\partial_{1}(\partial_{n}f), \ldots, \partial_{n}(\partial_{n} f)$ sont continues donc $\partial_{n}f \in \Cont^{1}(\Omega, F) \subset \Cont(\Omega, F)$
+  donc $f \in \Cont^{1}(\Omega,F)$.
+  $$
+    x \longmapsto (\underbrace{\dd f(x)\mdot e_{1}}_{\partial_{1}f(x)}, \ldots, \underbrace{\dd f(x)\mdot e_{n}}_{\partial_{n}f(x)}) \in F^{n} = \big(\dd f: x \longmapsto \dd f(x) \in \L(E,F)\big)\circ \varphi
+  $$
+  Or $\varphi$ est un isomorphisme donc un diffémorphisme de classe $\Cont^{1}$, donc
+  $$
+    \dd f \in \Cont^{1}(\Omega, \L(E,F)) \iff \forall i \in \icc{1,n}, \partial_{i} f \in \Cont^{1}(\Omega,F) \iff \forall (i,j) \in \icc{1,n}, \partial_{j}\partial_{i} \text{ existe et est continue sur } \Omega
+  $$
+%
+
+%prop Théorème de Schwarz (version officielle)
+  Si $f: \Omega \longrightarrow F$ est de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $E$, alors
+  $$
+    \forall (i,j) \in \icc{1,n}^{2}, \forall x \in \Omega, \partial_{i}\partial_{j}f(x) = \partial_{j}\partial_{i} f(x)
+  $$
+%
+
+%rem
+  - $\Cont^{2}(\Omega, F) \subset \Cont^{1}(\Omega, F) \subset \Cont_{0}(\Omega, F)$.
+  - Toute application polynomiale $f: E \longrightarrow \R$ en les coordonées dans une base de $E$ est de classe $\Cont^{2}$ sur $E$, par exemple $\det  \in \Cont^{2}(\M_{n}(\R))$.
+    Toute fonction rationnelle est de classe $\Cont^{2}$ sur son ouvert de définition.
+  - Toute restriction d’une application linéaire à un ouvert est de classe $\Cont^{2}$. En effet, si $\ell f L_{|\Omega}$ avec $L \in \L(E,F)$, alors $\ell \in \Cont^{1}(\Omega)$ et $x \longmapsto \dd \ell(x) = L$ est constante donc de classe $\Cont^{1}$.
+%
+
+%prop
+  1. $\Cont^{2}(\Omega, F)$ est un sous-espace vectoriel de $\Cont^{1}(\Omega, F)$
+  2. Si $F$ est une $\R$-algèbre, alors $\Cont^{2}(\Omega, F)$ est une sous-algèbre de $\Cont^{1}(F)$.
+  3. Si, pour un ouvert non vide $\Omega_{E}$ de $E$ et un ouvert non vide $\Omega_{F}$ de $F$,
+     ~ $f \in \Cont^{2}(\Omega_{E},F)$  ~ $g \in \Cont^{2}(\Omega_{F}, G)$  ~ $f(\Omega_{E}) \subset \Omega_{F}$
+     alors $g\circ f \in \Cont^{2}(\Omega_{E}, G)$.
+  4. Si $f: \applic{\Omega}{F_{1}\times \cdots \times F_{q}}{x}{\big(f_{1}(x), \ldots, f_{q}(x)\big)}$ est une application, alors
+     $$
+       f \in \Cont^{2}(\Omega) \iff \forall i \in \icc{1,q}, f_{i} \in \Cont^{2}(\Omega, F_{i})
+     $$
+  5. Si $f: \Omega \longrightarrow F$ est $f = \sum_{k=1}^{q}f_{k}\varepsilon_{k}$ avec $(\varepsilon_{1}, \ldots, \varepsilon_{k})$ une base de $F$, alors
+     $$
+       f \in \Cont^{2}(\Omega) \iff \forall k \in \icc{1,q}, f_{k} \in \Cont^{2}(\Omega,\R)
+     $$
+%
+
+%proof
+  1. $x \longmapsto 0_{F} \in \Cont^{2}(\Omega, F)$, et pour $(f,g) \in \Cont^{2}(\Omega,F)^{2}$ et $(\lambda, \mu) \in \R^{2}$, on a $\lambda f + \mu g \in \Cont^{1}(\Omega, F)$ et
+     $$
+       \dd (\lambda f + \mu g) = \lambda \dd f + \mu \dd g \in \Cont^{1}(\Omega F)
+     $$
+     donc $\lambda f + \mu g \in \Cont^{2}(\Omega, F)$.
+  2. $\partial_{i}(f \times g) = \partial_{i} f \times g + f \times \partial_{i} g$ et
+     $$
+       \partial_{j}\partial_{i}(f \times g) = \partial_{j}\partial_{i}f \times g + \partial_{i} f \times  \partial_{j} g + \partial_{j} f \times \partial_{i} g + f \times \partial_{j} \partial_{i} g
+     $$
+     est continue comme somme et produit de fonctions continues.
+  3. $g\circ f \in \Cont^{1}(\Omega_{E}, G)$ et
+     $$
+       \forall x \in te, \dd (g\circ f)(x) = \dd g(f(x)) \circ \dd f(x)
+     $$
+     De plus,
+     $$
+       \Big[x \longmapsto \dd (g\circ f)(x) \in \L(E,G)\Big] = \underbrace{\Big[x \longmapsto \big(\dd g(f(x)), \dd f(x)\big) \in \L(F,G) \times \L(te,F)\Big]}_{\text{de classe }\Cont^{1}} \circ \underbrace{\Big[\big(\dd g(f(x)), \dd f(x)\big) \longmapsto \dd (g\circ f)(x) \in \L(E,G)\Big]}_{\text{bilinéaire donc de classe } \Cont^{1}}
+     $$
+     donc $\dd (g\circ f) \in \Cont^{1}(\Omega)$.
+  4. On a $f \in \Cont^{1}(\Omega) \iff \forall i \in \icc{1,q}, f_{i}\in \Cont^{1}(\Omega, F)$ et
+     $$
+       \forall x \in \Omega, \forall h \in E, \dd f(x)\mdot h = \big(\dd f_{1}(x)\mdot h , \ldots, \dd f_{q}(x)\mdot h\big)
+     $$
+     donc
+     $$
+       \dd f: x \longmapsto \Big[h \longmapsto \big(\dd f_{1}(x)\mdot h, \ldots, \dd f_{k}(x)\mdot h\big)\Big] = \big(\dd f_{1}(x), \ldots, \dd f_{q}(x)\big)
+     $$
+     On peut dire « $\dd f = (\dd f_{1}, \ldots, \dd f_{q})$ » donc $\dd f \in \Cont^{1}(\Omega,F) \iff \forall i \in \icc{1,q}, \dd f_{i} \in \Cont^{1}(\Omega, F_{i})$.
+%
+
+%eg
+  Considérons l’équation
+  $$
+    \pdvN{f}{x}{2} = \pdvN{f}{y}{2} \tag{E}
+  $$
+  On effectue le changement de variable $u = x +y$ et $v = x-y$. On pose pour cela
+  $$
+    \varphi: \applic{\R^{2}}{\R^{2}}{(x,y)}{(x+y,x-y)}
+  $$
+  $\varphi \in \GL(\R^{2})$ donc $\varphi$ est un difféomorphisme de classe $\Cont^{2}$. On pose « $F(u,v) = f(x,y) = F(x+y, x-y)$ ». On pose $f = F\circ \varphi$ et $f \in \Cont^{2}(\R^{2}) \iff F \in \Cont^{2}(\R^{2})$. On a $f(x,y) = F(\underbrace{x+y}_{u}, \underbrace{x-y}_{v})$ donc
+  $$
+    \pdv{f}{x}(x,y) = \underbrace{\pdv{F}{u}}_{G}(x+y, x-y) \times \underbrace{1}_{\pdv{u}{x}} + \underbrace{\pdv{F}{v}}_{H}(x+y, x-y) \times \underbrace{1}_{\pdv{v}{x}}
+  $$
+  donc
+  $$
+    \begin{align*}
+      \pdvN{f}{x}{2} &= \left[\pdv{G}{u}(x+y, x-y)\times 1 + \pdv{G}{v}(x+y, x-y) \times 1\right] \times 1 \\
+          &+ \left[\pdv{H}{u}(x+y, x-y)\times 1 + \pdv{H}{v}(x+y, x-y)\times 1\right]\times 1 \\
+          &= \pdvN{F}{u}{2} + \frac{\partial^{2} F}{\partial v\partial u} + \frac{\partial^{2}}{\partial u\partial v} + \pdvN{F}{v}{2}
+    \end{align*}
+  $$
+  or $\pdv{f}{u} = \pdv{F}{u} + \pdv{F}{v}(-1)$ donc
+  $$
+    \begin{align*}
+      \pdvN{f}{y}{2} = \left(\pdvN{F}{u}{2}1 + \frac{\partial^{2} F}{\partial v\partial u}(-1)\right) + \left(\frac{\partial^{2} F}{\partial u\partial v}1 + \pdvN{F}{v}{2}(-1)\right)(-1) \\
+      &= \pdvN{F}{u}{2} - \frac{\partial^{2}F}{\partial v\partial u} - \frac{\partial^{2} F}{\partial u \partial v} + \pdvN{F}{v}{2}
+    \end{align*}
+  $$
+  Ainsi, $(E) \iff 4 \frac{\partial^{2} F}{\partial u\partial v} = 0$ par le théorème de Schwarz car $F \in \Cont^{2}(\R^{2})$, donc
+  $$
+    (E) \iff \pdv{}{u}\left(\pdv{F}{v}\right) = 0 \iff \exists \lambda \in \Cont^{1}(\R): \forall (u,v) \in \R^{2}, \pdv{F}{v}(u,v) = \lambda(v)
+  $$
+  soit
+  $$
+    (E) \iff \exists \Lambda \in \Cont^{2}(\R), \exists M \in \Cont^{2}(\R): \forall (u,v) \in \R^{2}, F(u,v) = \Lambda(v) + M(u)
+  $$
+  donc $M(u) = f(u,0) - \Lambda(0)$. Ainsi,
+  $$
+    \Sol = \Big\{(x,y) \longmapsto  M(x+y) + \Lambda(x-y) \where (M, \Lambda) \in \Cont^{2}(\R)\Big\}
+  $$
 %
