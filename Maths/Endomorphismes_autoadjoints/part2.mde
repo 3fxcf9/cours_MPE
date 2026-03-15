@@ -301,7 +301,7 @@ Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie. Soit 
 %prop Théorème de Schwarz
   Soit $f: \Omega \longrightarrow F$ définie sur un ouvert non vide $\Omega$ de $E$ (de dimension $n$). Soit $(i,j) \in \icc{1,n}^{2}$. Si $\partial_{i} f: \Omega \longrightarrow F$ et $\partial_{j} f: \Omega \longrightarrow F$ sont définies sur $\Omega$ et si $\partial_{j}\partial_{i}f : \Omega \longrightarrow F$ et $\partial_{i}\partial_{j}f: \Omega \longrightarrow F$ sont définies et **continues** sur $\Omega$, alors
   $$
-    \forall x \in \tauw, \partial_{j}\partial_{i}f(x) = \partial_{i}\partial_{j}f(x)
+    \forall x \in \Omega, \partial_{j}\partial_{i}f(x) = \partial_{i}\partial_{j}f(x)
   $$
 %
 

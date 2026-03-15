@@ -8,29 +8,29 @@ card:
 ## Probabilité produit, probabilité des événements élémentaires, loi d’une variable aléatoire donnant le rang du premier succès
 
 %thm
-  Soit $(\Omega_{n},\Part(\Omega_{n}), \P)_{n \in \N}$ une suite d’espaces probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$.
+  Soit $(\Omega_{n},\Part(\Omega_{n}), \P_{n})_{n \in \N}$ une suite d’espaces probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$.
   Il existe alors une tribu $\Tribu$ sur $\Omega$ et une probabilité $Q$ sur $(\Omega,\Tribu)$ telle que les applications $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N}}{x_{i}}$ soient des variables aléatoires indépendantes vérifiant $\forall i \in \N^{*}, X_{i}\leadsto \P_{i}$.
 %
 
 %proof
   On pose
   $$
-    \mathscr{C} = \left\{\prod_{i=1}^{n} A_{i} \times \prod_{k \geq n+1}\Omega_{k} \where n \in \N^{*}, \forall i \in \icc{1,n}, A_{i} \in \Part(\Omega_{i})\right\}
+    \mathscr{C} = \bigcup_{n \in \N} \left\{A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k} \where (A_{1}, \ldots, A_{n}) \in \Part(\Omega_{1}) \times \cdots \times \Part(\Omega_{n})\right\}
   $$
   l’ensemble des cylindres de $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$. Leur réunion n’est pas un cylindre. On pose $\Tribu  = \sigma(\mathscr{C})$ la _tribu cylindrique_. On pose
   $$
-    Q\left(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}\right) \defeq \prod_{i=1}^{n}P_{i}(A_{i})
+    Q\left(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}\right) \defeq \prod_{i=1}^{n}\P_{i}(A_{i})
   $$
-  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
+  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}\P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
   - $X_{i}(\Omega) = \Omega_{i}$ est au plus dénombrable
-  - Soit $X_{i} \in \Omega_{i}$.
+  - Soit $x_{i} \in \Omega_{i}$.
     $$
       (X_{i}=x_{i}) = \Omega_{1} \times \cdots \times \Omega_{i-1}\times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k} \in \mathscr{C}
     $$
     donc $(X_{i} = x_{i}) \in \Tribu$.
   Donc chaque $X_{i}$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$ et
   $$
-    Q(X_{i}=x_{i}) = Q(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}) = P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
+    Q(X_{i}=x_{i}) = Q\left(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}\right) = \P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
   $$
   donc $X_{i} \leadsto \P_{i}$.
   - Soit $n \in \N^{*}$. Soit $(x_{1}, \ldots, x_{n}) \in \Omega_{1} \times \cdots \Omega_{n}$.
@@ -145,7 +145,7 @@ donc $Z \leadsto \mathcal{G(p)}$. $Z$ est le rang d’apparition du premier succ
 ## Dérivabilité en 1 de la fonction génératrice
 
 %prop
-  Si une variable aléatoire $X: (\Omega,\Tribu,\P) \longrightarrow \N$ est dérivable en 1, alors $X \in L^{1}(\Omega)$.
+  Si la fonction génératrice $G_{X|\cc{-1,1}}$ d’une variable aléatoire $X: (\Omega,\Tribu,\P) \longrightarrow \N$ est dérivable en 1, alors $X \in L^{1}(\Omega)$.
 %
 
 %proof

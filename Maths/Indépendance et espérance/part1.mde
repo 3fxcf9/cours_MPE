@@ -838,22 +838,6 @@ l’ensemble des variable aléatoires d’ordre 1.
   | $\B(n,p)$ | $np$ | $npq$ |
   | $\mathscr{P}(\lambda)$ | $\lambda$ | $\lambda$ |
   | $\mathscr{G}(p)$ | $\frac{1}{p}$ | $\frac{q}{p^{2}}$ |
-
-  ~
-
-  ```
-    ┌──────────┬──────┬────────┐
-    │  X ↝     │ E(X) │  V(X)  │
-    ├──────────┼──────┼────────┤
-    │  B(p)    │  p   │   pq   │
-    ├──────────┼──────┼────────┤
-    │  B(n,p)  │  np  │  npq   │
-    ├──────────┼──────┼────────┤
-    │  P(λ)    │  λ   │   λ    │
-    ├──────────┼──────┼────────┤
-    │  G(p)    │ 1/p  │  q/p²  │
-    └──────────┴──────┴────────┘
-  ```
 %
 
 %proof
@@ -1046,7 +1030,7 @@ l’ensemble des variable aléatoires d’ordre 1.
 ## Jeu de pile ou face infini
 
 %thm
-  Soit $(\Omega_{n},\Part(\Omega_{n}), \P)_{n \in \N}$ une suite d’espaces probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$.
+  Soit $(\Omega_{n},\Part(\Omega_{n}), \P_{n})_{n \in \N}$ une suite d’espaces probabilisés au plus dénombrables. On pose $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$.
   Il existe alors une tribu $\Tribu$ sur $\Omega$ et une probabilité $Q$ sur $(\Omega,\Tribu)$ telle que les applications $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N}}{x_{i}}$ soient des variables aléatoires indépendantes vérifiant $\forall i \in \N^{*}, X_{i}\leadsto \P_{i}$.
 %
 
@@ -1057,18 +1041,18 @@ l’ensemble des variable aléatoires d’ordre 1.
   $$
   l’ensemble des cylindres de $\Omega = \prod_{n \in \N^{*}} \Omega_{n}$. Leur réunion n’est pas un cylindre. On pose $\Tribu  = \sigma(\mathscr{C})$ la _tribu cylindrique_. On pose
   $$
-    Q\left(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}\right) \defeq \prod_{i=1}^{n}P_{i}(A_{i})
+    Q\left(A_{1} \times \cdots \times A_{n} \times \prod_{k \geq n+1}\Omega_{k}\right) \defeq \prod_{i=1}^{n}\P_{i}(A_{i})
   $$
-  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
+  On admet que $Q$ se prolonge en une probabilité sur $(\Omega,\Tribu)$ appelée probabilité-produit et notée $Q = \bigotimes_{i \in \N^{*}}\P_{i}$. On pose $X_{i}: \applic{\Omega}{\Omega_{i}}{(x_{n})_{n \in \N^{*}}}{x_{i}}$ pour $i \in \N^{*}$.
   - $X_{i}(\Omega) = \Omega_{i}$ est au plus dénombrable
-  - Soit $X_{i} \in \Omega_{i}$.
+  - Soit $x_{i} \in \Omega_{i}$.
     $$
       (X_{i}=x_{i}) = \Omega_{1} \times \cdots \times \Omega_{i-1}\times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k} \in \mathscr{C}
     $$
     donc $(X_{i} = x_{i}) \in \Tribu$.
   Donc chaque $X_{i}$ est une variable aléatoire discrète sur $(\Omega,\Tribu)$ et
   $$
-    Q(X_{i}=x_{i}) = Q(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}) = P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
+    Q(X_{i}=x_{i}) = Q\left(\Omega_{1} \times \cdots \times \Omega_{i-1} \times \{x_{i}\} \times \prod_{k \geq i+1}\Omega_{k}\right) = \P_{1}(\Omega_{1})\times  \cdots \times \P_{i-1}(\Omega_{i-1}) \times \P_{i}(\{x_{i}\}) = \P_{i}(\{x_{i}\})
   $$
   donc $X_{i} \leadsto \P_{i}$.
   - Soit $n \in \N^{*}$. Soit $(x_{1}, \ldots, x_{n}) \in \Omega_{1} \times \cdots \Omega_{n}$.
@@ -1296,17 +1280,11 @@ donc la série $\sum_{n \geq 0}P(X=n)1^{n}$ est convergente (et $\sum_{n \geq 0}
 
 %eg
   | $X \leadsto$ | $G_{X}(z) =$ |
-
   | --- | --- | --- |
-
   | $\B(p)$ | $q+pz$ |
-
   | $\B(n,p)$ | $(q+pz)^{n}$ |
-
   | $\mathscr{P(\lambda)}$ | $e^{\lambda(z-1)}$ |
-
   | $\mathscr{G(p)}$ | $\frac{pz}{1-qz}$ |
-
   | $\Unif (\{n_{1}, \ldots, n_{p}\})$ ($n_{1} < \cdots < n_{p}$ dans $\N$) | $\frac{z^{n_{1}} + \cdots + z^{n_{p}}}{p}$ |
   ~
   - Si $X \leadsto \Unif(\{n_{1}, \ldots, n_{p}\})$, alors

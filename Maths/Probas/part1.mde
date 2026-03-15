@@ -347,7 +347,7 @@ On admet l’axiome du choix dans sa forme la plus générale.
 %prop
   1. Si $\Omega$ est un ensemble au plus dénombrable, alors toutes les probabilités sur $(\Omega, \Part(\Omega))$ sont des probabilités associées à des distributions de probabilité discrètes sur $\Omega$.
   %offprog
-    2. On peut remplacer $\Omega$ par $\R$ ci-dessus. Alors, si $(q_{\omega})_{\omega \in \R} \in \ell^{1}(\R)$, il existe un ensemble $D$ au plus dénombrable tel que $\forall x \in \R \setminus D, q_{x} = 0$. Ces probabilités ne sont pas intéressantes. C’est la raison pour laquelle on rejette l’étude de la tribu $\P(\R)$. _(Ulam, 1930)._
+    2. On peut remplacer $\Omega$ par $\R$ ci-dessus. Alors, si $(q_{\omega})_{\omega \in \R} \in \ell^{1}(\R)$, il existe un ensemble $D$ au plus dénombrable tel que $\forall x \in \R \setminus D, q_{x} = 0$. Ces probabilités ne sont pas intéressantes. C’est la raison pour laquelle on rejette l’étude de la tribu $\Part(\R)$. _(Ulam, 1930)._
   %
 %
 

@@ -1,0 +1,195 @@
+# Semaine 21
+
+:::
+card:
+  date: 16/03/2026
+:::
+
+%offprog
+  ## Décomposition QR d’une matrice inversible
+
+  %prop Décomposition $QR$
+    Pour tout matrice inversible $P \in \GL_{n}(\R)$, il existe un couple $(Q,R) \in O(n) \times \T_{n}^{+}(\R)$ tel que
+    $$
+      P = QR
+    $$
+    Cette décomposition est unique si on fixe le signe des coefficients diagonaux de $R$.
+  %
+
+  %proof
+    - _Existence._ Soit $P \in \GL_{n}(\R)$. Munissons $\R^{n}$ de la norme euclidienne canonique. Notons $(e_{1}, \ldots, e_{n})$ la base canonique de $\R^{n}$. Elle est orthonormale. Notons $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ la famille de vecteurs de $\R^{n}$ telle que $P = \mat_{(e_{1}, \ldots, e_{n})(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. $P$ étant inversible, $(\varepsilon_{1}, \ldots, \varepsilon_{n})$ est une base de $\R^{n}$ et $P = \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}$. Soit $(\varepsilon_{1}', \ldots, \varepsilon_{n}')$ la base orthonormale de Schmidt associée à $(\varepsilon_{1}, \ldots, \varepsilon_{n})$.
+      $$
+        \begin{align*}
+          P &= \Pass{(e_{1}, \ldots, e_{n})}{(\varepsilon_{1}, \ldots, \varepsilon_{n})} \times \Pass{(\varepsilon_{1}', \ldots, \varepsilon_{n}')}{(\varepsilon_{1}, \ldots, \varepsilon_{n})}\\
+            &= \underbrace{\mat_{(e_{1}, \ldots, e_{n})}(\varepsilon_{1}', \ldots, \varepsilon_{n}')}_{Q} \times \underbrace{\mtx{\scalar{\varepsilon_{1}'}{\varepsilon_{1}} & \scalar{\varepsilon_{1}'}{\varepsilon_{2}} & \cdots & \scalar{\varepsilon_{1}'}{\varepsilon_{n}} \\ 0 & \scalar{\varepsilon_{2}'}{\varepsilon_{2}} & & \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \scalar{\varepsilon_{n}'}{\varepsilon_{n}}}}_{R \in \T_{n}^{+}(\R)}
+        \end{align*}
+      $$
+      et $Q \in O(n)$ car $(\varepsilon_{1}', \ldots, \varepsilon_{n}')$ est aussi orthonormale.
+    - _Unicité._ Soit $P = QR = Q_{1}R_{1}$ avec $(Q, Q_{1}) \in O(n)^{2}$, $(R, R_{1}) \in \T_{n}^{+}(\R)^{2}$ et $\forall i \in \icc{1,n}, R_{ii} \times (R_{1})_{ii} > 0$. Alors $\Omega = Q_{1}^{-1} Q = R_{1} R^{-1}$ d’où comme $(O(n), \times )$ est un groupe, on a $\Omega \in O(n)$ donc $\Omega^{-1} = \Omega\transp$ et $\Omega \in \T_{n}^{+} (\R)$ d’où
+      ~ $\Omega^{-1} = \Omega\transp \in \T_{n}^{-}(\R)$  ~ $\Omega^{-1} \in \T_{n}^{+}(\R)$
+      Posons $\Omega = \diag(\omega_{1}, \ldots, \omega_{n})$ d’où
+      $$
+        \forall i \in \icc{1,n}, \omega_{i} = (R_{1})_{ii} (R^{-1})_{ii} = \frac{(R_{1})_{ii}}{R_{ii}} > 0
+      $$
+      Or $\Omega\transp \Omega = I_{n}$ i.e. $\diag (\omega_{1}^{2}, \ldots, \omega_{n}^{2}) = I_{n}$ d’où $\forall i \in \icc{1,n}, \omega_{i}^{2} = 1$ d’où $\forall i \in \icc{1,n}, \omega_{i} = 1$ donc $\Omega^{-1}$ est diagonale donc $\Omega$ aussi d’où $Q = Q_{1}$ et $R = R_{1}$.
+  %
+%
+
+## Théorème spectral
+
+%thm Théorème spectral
+  Si $f$ est un endomorphisme autoadjoint d’un espace euclidien $E$ (de dimension non nulle), alors $f$ est diagonalisable et il existe une base orthonormale de $E$ formée de vecteurs propres de $f$.
+%
+
+%proof
+  - _Première étape : $f \in \Sym(E) \implies \sp f \ne \emptyset$_((Voir DS n°8 pour une preuve utilisant l’optimisation sous contrainte.)). Soit $\Bon$ une base orthonormale de $E$ avec $\dim E = n \in \N^{*}$. Notons $A = \mat_{\Bon}f \in \Sym_{n}(\R)$. Soit $\lambda \in \sp_{\C}A$ ($\chi_{A}$ est scindé dans $\C[X]$). Soit $X \in \M_{n,1}(\C) \setminus \{0\}$ tel que $AX = \lambda X$. Alors, $\bar{X}\transp A X = \lambda \bar{X}\transp X$. Si $X = \mtx{z_{1}\\ \cdots\\ z_{n}}\ne 0$, alors
+    $$
+      \scalar{X}{X}_{\substack{\can\\\text{herm.}}} = \bar{X}\transp = \mtx{\bar{z_{1}} & \cdots & \bar{z_{n}}} \mtx{z_{1} \\ \vdots \\ z_{n}} = \sum_{i=1}^{n}\abs{z_{i}}^{2} \in \R_{+}^{*}
+    $$
+    $X\transp AX$ est une matrice complexe (1,1) s’identifiant à un réel donc égale à sa transposée. Or
+    $$
+      \lambda = \frac{\bar{X}\transp AX}{\bar{X}\transp X} = \frac{\big(\bar{X}\transp A X\big)\transp}{\bar{X}\transp X} = \frac{X\transp  A\transp \bar{X}}{\bar{X}\transp X} = \frac{X\transp A \bar{X}}{\bar{X}\transp X} = \bar{\lambda}
+    $$
+    donc $\lambda \in \R$ donc $\chi_{A} = \chi_{f}$ est scindé dans $\R[X]$.
+  - _Seconde étape._ Considérons la propriété $\Prop(k)$: « le théorème spectral est vrai dans tout espace euclidien de dimension $k$ ».
+    - Soit $E_{1}$ un espace euclidien de dimension 1. Soit $f \in \Sym(E_{1}) = \L(E_{1})$. Il existe $\lambda \in \R$ tel que $f = \lambda \id_{E_{1}}$. Si $e$ est un vecteur unitaire de $E_{1}$, alors $(e)$ est une base orthonormale de $E_{1}$ formée d’un vecteur propre de $f$.
+    - Supposons $\Prop(1), \ldots, \Prop(k)$ vraies pour $k \in \N^{*}$. Soient $E_{k+1}$ un espace euclidien de dimension $k+1$ et $f \in \Sym(E_{k+1})$. On a $\sp f \ne \emptyset$. Soit $\lambda \in \sp f$.
+      - si $E_{\lambda}(f) = E_{k+1}$, alors $f = \lambda \id_{E_{k+1}}$ donc toute base orthonormale de $E_{k+1}$ est formée de vecteurs propres de $f$.
+      - sinon, $E_{\lambda}(f) \ne E_{k+1}$. On a donc $E_{k+1} = E_{\lambda}(f) \oplusortho E_{\lambda}(f)\ortho$. Or
+        + $E_{\lambda}(f)\ortho$ est stable par $f$ car $f \in \Sym(E_{k+1})$,
+        + $\tilde{f} = f_{|E_{\lambda}(f)} \in \Sym(E_{\lambda}(f)\ortho)$,
+        + $\dim \big(E_{\lambda}(f)\big)\ortho \in \icc{1,k}$
+        D’après l’hypothèse de récurrence, il existe une base $\tilde{\B}$ te $E_{\lambda}(f)\ortho$ formée de vecteurs propres de $\tilde{f}$ donc de $f$. Soit $\B$ une base orthonormale de $E_{\lambda}(f)$. En concaténant $\B$ et $\tilde{\B}$, on obtient une base orthonormale de vecteurs propres de $f$.
+%
+
+
+%offprog
+  ## Quotient de Rayleigh
+
+  %prop
+    Soient $E$ un espace vectoriel euclidien de dimension $n$ et $f \in \Sym(E)$. Posons $\chi_{f} = \prod_{i=1}^{n}(X-\lambda_{i})$ avec $\lambda_{1} \leq  \cdots \leq \lambda_{n}$. On a
+    1. $\forall x \in E, \lambda_{1} \norm{x}^{2} \leq \scalar{f(x)}{x} \leq \lambda_{n} \norm{x}^{2}$
+    2. $\max_{x \in E \setminus \{0\}} \underbrace{\frac{\scalar{f(x)}{x}}{\norm{x}^{2}}}_{\text{quotient de Rayleigh}} = \lambda_{n} = \max \sp(f)$
+  %
+
+  %proof
+    Notons $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$ formée de vecteurs propres de $f$ avec
+    $$
+      \forall i \in \icc{1,n}, f(e_{i}) = \lambda_{i} e_{i}
+    $$
+    1. Soit $x \in E$. Posons $x = \sum_{i=1}^{n} x_{i}e_{i}$ avec $x_{i} = \scalar{x}{e_{i}}$. Alors
+       $$
+         \scalar{f(x)}{e}  = \scalar{\sum_{i=1}^{n}\lambda_{i} x_{i} e_{i}}{\sum_{j=1}^{n}e_{j}e_{j}} = \sum_{(i,j) \in \icc{1,n}^{2}} \lambda_{i} x_{i} x_{j}\delta_{i,j} = \sum_{i=1}^{n}\lambda_{i} x_{i}^{2}
+       $$
+       or $\forall i \in \icc{1,n}, \begin{cases}\lambda_{1} \leq \lambda_{i} \leq \lambda_{n} \\ x_{i}^{2} \geq 0\end{cases}$ donc $\forall x \in \icc{1,n}, \lambda_{1} x_{i}^{2} \leq \lambda_{i} x_{i}^{2} \leq \lambda_{n} x_{i}^{2}$ d’où
+       $$
+         \lambda_{1} \sum_{i=1}^{n}x_{i}^{2} \leq \sum_{i=1}^{n}\lambda_{i} x_{i}^{2} \leq \lambda_{n} \sum_{i=1}^{n}x_{i}^{2}
+       $$
+       i.e. $\lambda_{1} \norm{x}^{2} \leq \scalar{f(x)}{x} \leq \lambda_{n} \norm{x}^{2}$.
+    2. $\forall x \in E \setminus \{0\}, \lambda_{1} \leq \frac{\scalar{f(x)}{x}}{\norm{x}^{2}} \leq \lambda_{n}$ donc
+       $$
+         \frac{\scalar{f(e_{1})}{e_{1}}}{\norm{e_{1}}^{2}} = \lambda_{1} \frac{\norm{e_{1}}^{2}}{\norm{e_{1}}^{2}} = \lambda_{1}
+       $$
+       et de même, $\lambda_{n} = \frac{\scalar{f(e_{n})}{e_{n}}}{\norm{e_{n}}^{2}}$.
+  %
+%
+
+
+%offprog
+  ## Racine carrée d’une matrice symétrique positive
+
+  %prop
+    Soit $A \in \Sym_{n}^{+}(\R)$. Il existe une unique matrice $B \in \Sym_{n}^{+}(\R)$ telle que $B^{2} = A$ (on note $B = \sqrt{A}$). De plus, si $A \in \Sym_{n}^{++}(\R)$, alors $B \in \Sym_{n}^{++}(\R)$.
+  %
+
+  %proof
+    Soit $A \in \Sym_{n}^{+}(\R)$.
+    - _Existence._ Il existe $P \in O(n)$ et $(\lambda_{1}, \ldots, \lambda_{n}) \in (\R_{+})^{n}$ tels que $A = P\diag (\lambda_{1}, \ldots, \lambda_{n})P^{-1}$. Posons $B_{1} = P\diag(\sqrt{\lambda_{1}}, \cdots, \sqrt{\lambda_{n}})\underbrace{P^{-1}}_{P\transp}$. On a $B_{1}\transp = B_{1}$ et $\sp B_{1} = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\} \subset \R_{+}$ donc $B_{1} \in \Sym_{n}^{+}(\R)$ et $B_{1}^{2} = A$.
+    - _Unicité._ Soit $Q \in \R[X]$ tel que $\forall i \in \icc{1,n}, Q(\lambda_{i}) = \sqrt{\lambda_{i}}$. Par exemple,
+      $$
+        Q = \sum_{\lambda \in \sp(A)}\sqrt{\lambda} \prod_{\mu \in \sp(A)\setminus \{\lambda\}}\frac{X-\mu}{\lambda-\mu}
+      $$
+      d’où $Q(A) = P\diag \big(Q(\lambda_{1}), \ldots, Q(\lambda_{n})\big)P^{-1} = B_{1}$ donc $B_{1} \in \R[A]$.
+      Soit $B_{2} \in \Sym_{n}^{+}(\R)$ tel que $B_{2}^{2} = A$. Les matrices $B_{2}$ et $A = B_{2}^{2}$ commutent donc $\big[B_{2}, Q(A)\big] = 0_{n}$ d’où $\big[B_{2}, B_{1}\big] = 0_{n}$. $B_{1}$ et $B_{2}$ sont donc coorthodiagonalisables: il existe $R \in O(n)$ telle que
+      ~ $B_{1} = R\diag(d_{1}, \ldots, d_{n})R^{-1}$  ~ $B_{2} = R\diag(\delta_{1}, \ldots, \delta_{n})R^{-1}$
+      avec $d_{1}, \ldots, d_{n}, \delta_{1}, \ldots, \delta_{n}$ des réels positifs. Ainsi,
+      $$
+        R\diag(d_{1}^{2}, \ldots, d_{n}^{2})R^{-1} = R\diag(\delta_{1}^{2}, \ldots, \delta_{n}^{2})R^{-1}
+      $$
+      d’où
+      $$
+        \forall i \in \icc{1,n}, \begin{cases}d_{i}^{2} = \delta_{i}^{2} \\ d_{i} \geq 0 \\ \delta_{i} \geq 0\end{cases}
+      $$
+      On a donc pour tout $i \in \icc{1,n}, d_{i} = \delta_{i}$ donc $B_{1} = B_{2}$.
+  %
+%
+
+
+%offprog
+  ## Décomposition polaire
+
+  %prop Décomposition polaire
+    Soit $A \in \GL_{n}(\R)$. Il existe un unique couple $(Q,S) \in O(n) \times \Sym_{n}^{++}(\R)$ et un unique couple $(Q', S') \in O(n) \times \Sym_{n}^{++}(\R)$ tels que
+    $$
+      A = QS = S' Q'
+    $$
+  %
+
+  %proof
+    - _Analyse._ Supposons $A = QS$ avec $Q \in O(n)$ et $S \in \Sym_{n}^{++}(\R)$. Alors $A\transp A = S\transp Q\transp QS = S\transp S = S^{2}$ donc $S= \sqrt{A\transp A}$ et $Q = AS^{-1}$.
+    - _Synthèse._ Soit $A \in \GL_{n}(\R)$.
+      - $(A\transp A)\transp = A\transp (A\transp)\transp = A\transp A$ donc $A\transp A \in \Sym_{n}(\R)$
+      - Soit $X \in \M_{n,1}(\R)$.
+        $$
+          X\transp A\transp A X = (AX)\transp AX = \norm{AX}_{\can}^{2} \geq 0
+        $$
+        et $X\transp A\transp AX = 0 \implies  AX = 0 \implies X=0$ (car $A \in \GL_{n}(\R)$) donc $A\transp A \in \Sym_{n}^{++}(\R)$.
+      Il existe ainsi une unique matrice $S \in \Sym_{n}^{++}(\R)$ telle que $S^{2} = A\transp A$. Comme $S \in \GL_{n}(\R)$, on pose $Q = A S^{-1}$ de sorte que $A = QS$ et
+        $$
+          Q\transp Q = (S^{-1})\transp A\transp A S^{-1} = (S^{-1})\transp S^{2} S^{-1} = S^{-1} S^{2} S^{-1} = I_{n}
+        $$
+        ($S \times S^{-1} = I_{n}$ donc $(S^{-1})\transp S\transp = I_{n}$ donc $(S^{-1})\transp = S^{-1}$) donc $Q \in O(n)$.
+    - _Seconde écriture._
+      $$
+        \begin{cases}A = S' Q' \\ Q' \in O(n) \\ S' \in \Sym_{n}^{++}(\R)\end{cases} \iff \begin{cases}A\transp = (Q')\transp S' \\ Q' \in O(n) \\ S' \in \Sym_{n}^{++}(\R)\end{cases} \iff (Q')\transp \in O(n)
+      $$
+      ce qui donne l’unicité de $Q'$ et $S'$ par la première décomposition polaire.
+  %
+%
+
+## Théorème de Schwarz
+
+%prop Théorème de Schwarz
+  Soit $f: \Omega \longrightarrow F$ définie sur un ouvert non vide $\Omega$ de $E$ (de dimension $n$). Soit $(i,j) \in \icc{1,n}^{2}$. Si $\partial_{i} f: \Omega \longrightarrow F$ et $\partial_{j} f: \Omega \longrightarrow F$ sont définies sur $\Omega$ et si $\partial_{j}\partial_{i}f : \Omega \longrightarrow F$ et $\partial_{i}\partial_{j}f: \Omega \longrightarrow F$ sont définies et **continues** sur $\Omega$, alors
+  $$
+    \forall x \in \Omega, \partial_{j}\partial_{i}f(x) = \partial_{i}\partial_{j}f(x)
+  $$
+%
+
+%proof
+  Soit $(\varepsilon_{1}, \ldots, \varepsilon_{q})$ une base de $F$. Posons $f = \sum_{k=1}^{q}f_{k} \varepsilon_{k}$ où $f_{k} = \varepsilon_{k}^{*}\circ f$. Cela revient à faire l’hypothèse sur chacune des composante $f_{k}$. On peut donc se limiter aux fonctions $f: \Omega \longrightarrow \R$.
+  Soit $a \in \Omega$. Montrons que $\partial_{i}\partial_{j} f(a) = \partial_{j}\partial_{i}f(a) \in \R$. Supposons $\partial_{i}\partial_{j}f(a) > \partial_{j}\partial_{i}f(a)$. Posons $\varphi: x \longmapsto \partial_{i}\partial_{j}f(x) - \partial_{j}\partial_{i}f(x)$. Par continuité en $a$, il existe $n$ segments $S_{1}, \ldots, S_{n}$ de $\R$ tels que
+  $$
+    \forall (x_{1}, \ldots, x_{n})\in S_{1} \times  \cdots \times S_{n}, \underbrace{\varphi \left(\sum_{i=1}^{n}x_{i}e_{i}\right)}_{= \varphi(x_{1}, \ldots, x_{n})} > 0
+  $$
+  et $a = \sum_{i=1}^{n}a_{i}e_{i}$ et $(a_{1}, \ldots, a_{n}) \in \ring{S_{1}} \times  \cdots \times \ring{S_{n}}$. Soit $(x_{1}, \ldots, x_{n}) \in S_{1} \times \cdots \times S_{n}$(($S_{1} \times \cdots \times S_{n}$ est un _pavé_ (produit de segments).))
+  $$
+    \int_{S_{i}}\left[\int_{S_{j}} \varphi(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n})\dd x_{j}\right]\dd x_{i} > 0
+  $$
+  i.e. (en utilisant le théorème de Fubini sur un rectangle démentré dans l’exercice 6 du chapitre 12)
+  $$
+    \int_{S_{j}} \left[\int_{S_{i}}\partial_{i}\partial_{j}f \big(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n}\big)\dd x_{i}\right]\dd x_{j} > \int_{S_{j}} \left[\int_{S_{j}} \partial_{j}\partial_{i} f(a_{1}, \ldots, x_{i}, \ldots, x_{j}, \ldots, a_{n})\dd x_{j}\right]\dd x_{i}
+  $$
+  Notons $S_{i} = \cc{\alpha, \beta}$ et $S_{j} = \cc{\gamma, \delta}$.
+  $$
+    \int_{S_{j}}\Big(\partial_{j} f(\beta, x_{j}) - \partial_{j} f(\alpha, x_{j})\Big)\dd x_{j} > \int_{S_{i}}\Big(\partial_{i}f(x_{i}, \delta) - \partial_{i} f(x_{i}, \gamma)\Big)\dd x_{i}
+  $$
+  d’où
+  $$
+    \underbrace{f (\beta, \delta)}_{= f(a_{1}, \ldots, \beta, \ldots, \delta, \ldots, a_{n})} - f(\beta, \gamma) - \big[f(\alpha, \delta) - f(\alpha, \gamma)\big] > f(\beta, \delta) - f(\alpha, \delta) - \big[f(\beta, \delta) - f(\alpha, \gamma)\big]
+  $$
+  On a donc pour tout $a \in \Omega$~:
+  $$
+    \partial_{i}\partial_{j}f(a) = \partial_{j}\partial_{i}f(a)
+  $$
+%
