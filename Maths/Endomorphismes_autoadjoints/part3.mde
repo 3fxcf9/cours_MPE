@@ -1,0 +1,181 @@
+## Optimisation à l’ordre 2
+
+Plaçons-nous dans $\R^{n}$, euclidien canonique (les dérivées partielles sont calculées par rapport à la base canonique). Soit $f: \Omega \longrightarrow \R$ une fonction de classe $\Cont^{2}$ sur un ouvert non vide $\Omega$ de $\R^{n}$. Soit $a f (a_{1}, \ldots, a_{n}) \in \Omega$. Il existe $r > 0$ tel que $B'(a,2r)\subset \Omega$. Soit $h = (h1, \ldots, h_{n}) \in B'(0,r)$. $\varphi: t \longmapsto  f(a+th)$ est de classe $\Cont^{2}$ sur $\oo{-2,2}$ comme composée de l’application $t \longmapsto a+th$ de classe $\Cont^{2}$ et $f$. On a, pour tout $t \in \cc{0,1}, \varphi(t) = f(a+th) = f(a_{1} + th_{1}, \ldots, a_{n} + th_{n})$ d’où
+$$
+  \forall t \in \cc{0,1}, \varphi'(t) = \dd f(a+th)\mdot h = \scalar{\nabla f(a+th)}{h} = \sum_{i=1}^{n}h_{i}\partial_{i} f(a+th)
+$$
+et
+$$
+  \forall t \in \cc{0,1}, \varphi''(t) = \sum_{i=1}^{n}h_{i} \left(\sum_{j=1}^{n}h_{j}\partial_{j}\partial_{i}f(a+th)\right) = \sum_{(i,j) \in \icc{1,n}^{2}}h_{i}h_{j}\partial_{i}\partial_{j}f(a+th)
+$$
+
+%def
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R_{n}$. Soit $a \in \Omega$. On appelle _matrice hessienne_ de $f$ en $a$ la matrice
+  $$
+    H_{f}(a) = \mtx{\partial_{i}\partial_{j}f(a)}_{i \leq i,j\leq n}
+  $$
+  D’après le théorème de Schwarz, on a $H_{f}(a) \in \Sym_{n}(\R)$.
+%
+
+On a alors, en notant $H = \mtx{h1 \\ \cdots \\ h_{n}}$ et $H_{f}(a):\R^{n} \longrightarrow \R^{n}$ l’endomorphisme adjoint canoniquement associé à la matrice symétrique $H_{f}(a)$~:
+$$
+  \forall t \in \cc{0,1}, \varphi''(t) = H\transp H_{f}(a+th)H = \scalar{H_{f}(a+th)\mdot h}{h}
+$$
+Or $\varphi \in \Cont^{2}(\cc{0,1})$ d’où d’après la formule de Taylor avec reste intégral,
+$$
+  \varphi(1+h) = \varphi(a) + \dd f(a)\mdot h + \int_{0}^{1}(1-t)\varphi''(t)\dd t
+$$
+On a $\int_{0}^{1}(1-t)\dd t = \left[- \frac{(1-t)^{2}}{2}\right]_{0}^{1} = \frac{1}{2}$ et
+$$
+  f(a+h) = f(a) + \dd f(a)\mdot h + \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \underbrace{\int_{0}^{1}(1-t)\scalar{H_{f}(a+th)\mdot h}{h} - \scalar{H_{f}(a)\mdot h}{h} \dd t}_{\defeq \delta(h)}
+$$
+L’application $\applic{\Omega}{\L(\R^{n})}{x}{H_{f}(x)} = \applic{\Omega}{\M_{n}(\R)}{x}{H_{f}(x)} \circ \applic{\M_{n}(\R)}{\L(\R^{n})}{H_{f}(x)}{H_{f}(x)}$ est continue car $f$ est de classe $\Cont^{2}$ donc $x \longmapsto H_{f}(x)$ est continue en $a$.
+Soit $\varepsilon > 0$. Il existe $r_{0} > 0$ avec $r_{0} < r$ tel que $\forall x \in B'(a,r_{0}), \opnorm{H_{f}(x) - H_{f}(a)} < \varepsilon$ d’où
+$$
+  \abs{\delta(h)} \leq \int_{0}^{1}(1-t)\abs{\scalar{\big(H_{f}(a+th) - H_{f}(a)\big)\mdot h}{h}}\dd t \leq \int_{0}^{1}(1-t)\varepsilon \norm{h}^{2}\dd t = \frac{1}{2}\varepsilon \norm{h}^{2}
+$$
+
+%prop Formule de Taylor-Young à l’ordre 2
+  Si $f: \Omega \longrightarrow \R$ si de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$ et si $a \in \Omega$, alors il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et
+  $$
+    \forall h \in B(0, \delta), f(a+h) = f(a) + \underbrace{\dd f(a)\mdot h}_{\scalar{\nabla f(a)}{h}} + \frac{1}{2}\scalar{H_{f}(a) \mdot h}{h} + \norm{h}^{2}\varepsilon(h)
+  $$
+  avec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}} 0_{\R}$.
+%
+
+%rem Écriture matricielle
+  $$
+    J_{f}(a) = \mtx{\partial_{1}f(a) & \cdots & \partial_{n} f(a)} \in \M_{1,n}(\R)
+  $$
+  avec $H f \mtx{h_{1} \\ \cdots \\ h_{n}}$ donc
+  $$
+    f(a+h) = f(a) + J_{f}(a)H + \frac{1}{2}H\transp H_{f}(a)H + \norm{h}^{2}\varepsilon(h)
+  $$
+  avvec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}}$.
+%
+
+%rem En coordonnées
+  $$
+    f(a+h) = f(a) + \sum_{i=1}^{n}h_{i}\pdv{f}{x_{i}}(a) + \frac{1}{2}\sum_{(i,j) \in \icc{1,n}^{2}} h_{i}h_{j} \frac{\partial^{2}f}{\partial x_{i}\partial x_{j}}(a) + \norm{h}^{2} \varepsilon(h)
+  $$
+%
+
+%rem Écriture de Monge
+  Pour $n=2$, prenons $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ et $(a,b) \in \Omega$. On pose $p = \pdv{f}{x}(a,b)$ et $q = \pdv{f}{y}(a,b)$ et on note $H_{f}(a,b) = \mtx{r&s\\s&t}$. Alors,
+  $$
+    f(a+h, b+k) = f(a,b) + ph + qk + \frac{1}{2}\underbrace{\big(rh^{2} + 2shk + tk^{2}\big)}_{\mtx{h\\k}\transp H_{f}(a,b)\mtx{h\\k}}
+  $$
+  avec $\varepsilon(h,k) \arrowlim{(h,k) \to (0,0)} 0$
+%
+
+%prop Condition nécessaire d’ordre 2 à l’existence d’un extremum local
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$.
+  - Si $f$ présente un minimum local en $a$, alors
+    ~ $\dd f(a) = 0_{\L(\R^{n},\R)}$
+    ~ $H_{f}(a) \in \Sym_{n}^{+}(\R)$
+  - Si $f$ présente un maximum local
+    ~ $\dd f(a) = 0_{\L(\R^{n},\R)}$
+    ~ $-H_{f}(a) \in \Sym_{n}^{+}(\R)$
+%
+
+%proof
+  - Supposons qu’il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et $\forall h \in B(0,\delta), f(a+h) - f(a) \geq 0$. Alors $\dd f(a) = 0$ et
+    $$
+      \forall h \in \B(a, \delta), \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2} \varepsilon(h) \geq 0
+    $$
+    avec $\varepsilon(u)\arrowlim{u\to 0_{\R^{n}}}0$, d’où
+    $$
+      \forall h \in B(0,\delta), \forall t \in \cc{0,1}, \frac{1}{2}\underbrace{\scalar{H_{f}(a)\mdot th}{th}}_{t^{2} \scalar{H_{f}(a)\mdot h}{h}}  + t^{2} \norm{h}^{2} \varepsilon(th) \geq 0
+    $$
+    d’où
+    $$
+      \forall h \in B(0,\delta), \forall t \in \oc{0,1}, \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2} \varepsilon(th) \geq 0
+    $$
+    On fait alors tendre $t$ vers $0^{+}$ et on obtient
+    $$
+      \forall h \in tb(0, \delta), \scalar{H_{f}(a) \mdot h}{h} \geq 0
+    $$
+    Soit $h \in \R^{n}$.
+    $$
+      \scalar{H_{f}(a)\mdot h}{h} = \frac{\big(\norm{h}+1\big)^{2}}{\delta^{2}} \scalar{H_{f}(a)\mdot \underbrace{\delta \frac{h}{\norm{h}+1}}_{\in B(0, \delta)}}{\delta \frac{h}{\norm{h}+1}}
+    $$
+    donc $H_{f}(a) \in \Sym^{+}(\R^{n})$ donc $H_{f}(a) \in \Sym_{n}^{+}(\R)$.
+  - Si $f$ présente un maximum local en $a$, alors $-f$ présente un minimum local en $a$ donc $\dd (-f)(a) = 0$ et $H_{-f}(a) \in \Sym_{n}^{+}(\R)$, i.e. $\dd f(a) = 0$ et $-H_{f}(a) \in \Sym_{n}^{+}(\R)$ (on écrit aussi $H_{f}(a) \in \Sym_{n}^{-}\R$).
+%
+
+%eg
+  - Considérons la fonction $f: \applic{\R^{3}}{\R}{(x,y,z)}{\frac{x^{2}}{2} + xyz - z+y}$. Cherchons ses extrema. $f$ est polynomiale donc $f \in \Cont^{2}(\R^{3})$.
+    - _Points critiques._ $\nabla f(x,y,z) = (x+yz, xz + 1, xy-1)$ donc
+      $$
+        \nabla f(x,y,z) = 0 \iff \begin{cases}x = -zy\\ xy = -1 \\ xy = +1\end{cases} \iff \begin{cases}x = -yz \\ xy = -1 \\ x^{2}yz = -1\end{cases} \iff \begin{cases}x = -yz \\ xz=-1 \\ x^{3}=1\end{cases}
+      $$
+      donc $f$ possède un seul point critique: $(1,1,-1)$.
+    - _Hessienne._ On a
+      $$
+        H_{f}(x,y,z) = \mtx{1 & z & y \\ z & 0 & x \\ y & x & 0} \in \Sym_{3}(\R)
+      $$
+      donc $H_{f}(1,1,-1) = \mtx{1 & -1 & 1 \\ -1 & 0 & 1 \\ 1 & 1 & 0}$. De plus, $\det H_{f}(1,1,-1) = \vmtx{-1 & 0 \\ 1 & 1} - \vmtx{1&-1\\1&1} = -3 < 0$ et $\tr H_{f}(1,1,-1) = 1 > 0$ donc il existe $\lambda_{1} > 0, mm,l_{2} > 0$ et $\lambda_{3} < 0$ tel que $\chi_{H_{f}(1,1,-1)} = (X-\lambda_{1})(X-\lambda_{2})(X-\lambda_{3})$ donc $H_{f}(1,1,-1)$ n’est pas ni négative, ni positive, donc $f$ ne possède pas d’extremum local.
+  - Soit $g: \applic{\R^{2}}{\R}{(x,y)}{x^{2} - xy^{2} = x(x-y'2)}$.
+    - _Points critiques._ $\nabla g(x,y) = (2x -y^{2}, -2xy)$. Le seul proint critique est $(0,0)$.
+    - _Hessienne._ $H_{g}(x,y) = \mtx{2&-2y\\-2y & -2x} \in \Sym_{2}^{+}(\R)$ et en particiculier $H_{g}(0,0) = \mtx{2&0\\0&0} \in \Sym_{n}2(\R).$
+    - _Minimum local._ $g(y^{3},y) = y^{6} - y^{3} \usim{0^{+}} -y^{5}$ qui change de signe en 0 donc $g$ ne présente pas d’extremum local.
+  - Considérons $h: \R^{3} \longrightarrow \R$. $\nabla h(x,y) = (2x,0)$. Les points critiques sont $(0,y)$ avec $y \in \R$ et
+    $$
+      H_{h}(x,y) = \mtx{2&0\\0&0} \in \Sym_{2}^{+}(\R)
+    $$
+    On a $h(0,y) = 0 \leq h(x,y)$ donc $h$ présente un minimum local en tout point $(0,y)$ avec $y \in \R$ et ce minimum vaut 0.
+%
+
+%prop Condition suffisante d’ordre 2 à l’existence d’un extremum
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$.
+  1. Si $a$ est un point critique de $f$ en lequel $H_{f}(a) \in \Sym_{n}^{++}(\R)$, alors $f$ présente un minimum local strict en $a$.
+  1. Si $a$ est un point critique de $f$ en lequel $-H_{f}(a) \in \Sym_{n}^{++}(\R)$, alors $f$ présente un maximum local strict en $a$.
+%
+
+%proof
+  1. $f(a+h) = f(a) + \dd f(a) \mdot h + \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2} \varepsilon(h)$ avec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}} 0$ d’où $f(a+h) - f(a) = \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2}\varepsilon(h)$. Soit $\lambda_{1} = \min \sp(H_{f}(a)) > 0$. Alors $\forall h \in \R^{n}, \scalar{H_{f}(a)\mdot h}{h} \geq \lambda_{1} \norm{h}^{2}$. Or $\varepsilon(h)\arrowlim 0$ donc il existe $\delta > 0$ tel que $\forall h \in B(0, \delta), \varepsilon(h) > -\frac{\lambda_{1}}{4}$ d’où
+     $$
+       \forall h \in B(0, \delta) \setminus \{0\}, f(a+h) - f(a) \geq \frac{\lambda_{1}}{4} \norm{h}^{2} > 0
+     $$
+  2. On a
+     $$
+       \begin{cases}\dd f(a) = 0 \\ -H_{f}(a) \in \Sym_{n}^{++}(\R)\end{cases} \iff \begin{cases}\dd (-f)(a) = 0 \\ H_{-f}(a) \in \Sym_{n}^{++}(\R)\end{cases}
+     $$
+     donc $-f$ prrésente un minimum local strict en $a$ donc $f$ présente un maximum local strict en $a$.
+%
+
+%prop
+  Pour $f: \Omega \longrightarrow \R^{2} \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{2}$ et pour $(a,b) \in \Omega$ point critique de $f$, on a
+  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr (H_{f}(a,b))\end{cases}$, alors $f$ présente un minimum local strict en $(a,b)$.
+  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr  (H_{f}(a,b))\end{cases}$, alors $f$ présente un maximum local strict en $(a,b)$.
+  - si $H_{f}(a,b) < 0$, alors $f$ ne présente pas d’extremum local en $(a,b)$.
+  - si $\det H_{f}(a,b) = 0$, alors on ne peut pas conclure directement (on étudie le signe de $f(a+h, b+h) - f(a,b)$).
+%
+
+%proof
+  Soit $\chi_{H_{f}}(a) = (X-\lambda_{1})(X-\lambda_{2})$. On a
+  $$
+    \begin{cases}\det H_{f}(a) > 0 \\ \tr H_{f}(a) > 0\end{cases} \iff  \begin{cases}\lambda_{1} \lambda_{2} > 0 \\ \lambda_{1} + \lambda_{2} > 0\end{cases} \iff \begin{cases}\lambda_{1} > 0 \\ \lambda_{2} > 0\end{cases} \iff H_{f}(a) \in \Sym^{++}_{2}(\R)
+  $$
+%
+
+%eg
+  Considérons la fonction $f: \applic{\R^{2}}{\R}{(x,y)}{x^{4} + y^{4} - (x-y)^{2}}$. On a $f \in \Cont^{2}(\R^{2})$.
+  - _Points critiques._ $\nabla f(x,y) = (4x^{3} - 2(x-y), 4 y^{3} + 2(x-y))$ donc
+    $$
+      \nabla f(x,y) = (0,0) \iff \begin{cases}x-y = 2x^{3} \\ x-y = -2y^{3}\end{cases} \iff  \begin{cases}x=-y \\ 2x = 2x^{3}\end{cases}
+    $$
+    Il y a que 3 points critiques~: $(0, 0), (1,-1), (-1,1)$ et $f(0,0) = 0, f(1,-1) = f(-1,1) = 1+1 - 2^{2} = -2$
+  - _Hessienne._ On a $H_{f}(x,y) = \mtx{12x^{2} - 2 & 2 \\ 2 & 12y^{2}-2}$.
+    - $H_{f}(0,0) = \mtx{-2&2\\2&-2}$ et $\det  H_{f}(0,0) = 0$. De plus, $f(x,x) = 2x^{4} > 0$ pour $x \ne 0$ et $f(x,0) = x^{4} - x^{2} \usim{0^{+}} -x^{2} < 0$ pour $x \ne 0$. Ainsi, $f$ ne présente pas d’extremum local en $(0,0)$.
+    - $H_{f}(1,-1) = H_{f}(-1,1) = \mtx{10 & 2 \\ 2 & 10}$ donc $\det H_{f}(1,-1) = 1_{0} - 4 = 96 > 0$ et $\tr H_{f}(1,-1) = 20 > 0$ donc $f$ présente un minimum local strict égal à $-2$ en $(1,-1)$ et $(-1,1)$.
+    - Pour $(x,y) \in \R^{2}$,
+      $$
+        f(x,y) - (x^{2}-1)^{2} - (y^{2}-1)^{2} = x^{4}+y^{4} - (x-y)^{2} - x^{4}-y^{4} -2+2x^{2} + 2y^{2} = -2+x^{2} + y^{2} + 2xy = -2 + (x+y)^{2}
+      $$
+      donc
+      $$
+        f(x,y) = -2 + (x^{2} -1)^{2} + (y^{2}-1)^{2} + (x+y)^{2} \geq -2
+      $$
+      donc $\min_{\R^{2}}f = - 2$.
+%
