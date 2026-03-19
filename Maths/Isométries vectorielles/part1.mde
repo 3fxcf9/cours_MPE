@@ -1,0 +1,356 @@
+# Isométries vectorielles
+
+:::
+card:
+  date: 17/03/2026
+:::
+
+Dans ce chapitre, $E=E_{n}$ désigne un espace vectoriel euclidien de dimension $n \in \N^{*}$. Le produit scalaire est noté $\scalar{\cdot}{\cdot}$ et la norme euclidienne associée $\norm{\cdot}$.
+
+## Groupe orthogonal de $E$.
+
+%def
+  Pour un endomorphisme $f \in \L(E)$, il y a équivalence entre
+  1. $\forall x \in E, \norm{f(x)} = \norm{x}$
+  2. $\forall (x,y) \in E^{2}, \scalar{f(x)}{f(y)} = \scalar{x}{y}$
+  Si l’une de ces conditions est vérifiée, alors on dit que $f$ est une _isométrie vectorielle_ et on note
+  $$
+    O(E) = \big\{f \in \L(E) \where \forall x \in E, \norm{f(x)} = \norm{x}\big\}
+  $$
+%
+
+%proof
+  - Supposons que $f \in \L(E)$ vérifie $\forall x \in E, \norm{f(x)} = \norm{x}$. Soit $(x,y) \in E^{2}$.
+    $$
+      \begin{align*}
+        \scalar{f(x)}{f(y)} &= \frac{1}{4}\Big(\norm{f(x) + f(y)}^{2} - \norm{f(x) - f(y)}^{2}\Big) \\
+        &= \frac{1}{4}\Big(\norm{f(x+y)}^{2} - \norm{f(x-y)}^{2}\Big) \\
+        &= \frac{1}{4} \Big(\norm{x+y}^{2} - \norm{x-y}^{2}\Big) \\
+        &= \scalar{x}{y}
+      \end{align*}
+    $$
+  - Supposons $\forall (x,y) \in E^{2}, \scalar{f(x)}{f(y)} = \scalar{x}{y}$. Alors, $\forall x \in E, \scalar{f(x)}{f(y)} = \scalar{x}{x}$ donc $\forall x \in E, \sqrt{\scalar{f(x)}{f(x)}} = \sqrt{\scalar{x}{x}}$ i.e. $\forall x \in E, \norm{f(x)} = \norm{x}$.
+%
+
+%eg
+  - Soit $\lambda \in \R$.
+    $$
+      \lambda \id_{E} \in O(E) \iff \forall x \in E, \norm{\lambda x} = \norm{x} \iff \forall x \in E, \abs{\lambda} \cdot \norm{x} = \norm{x} \iff \abs{\lambda} = 1
+    $$
+    donc $O(E)\cap \Vect\left\{\id_{E}\right\} = \{\id_{E}, -\id_{E}\}$. Donc comme $\L(E_{1}) = \Vect\left\{\id_{E_{1}}\right\}$, on a $O(E_{1}) = \{\id_{E_{1}}, -\id_{E_{1}}\}$.
+  - %rfig
+      @[./figures/sym-ortho.svg]
+    %
+    Soit $F$ un sous-espace vectoriel de $E$. Soit $\sigma_{F}$ la symétrie orthogonale par rapport à $F$. Soit $(y,z) \in F \times F\ortho$.
+    $$
+      \norm{\sigma_{F}(y+z)}^{2} = \norm{y-z}^{2} = \norm{y}^{2} + \norm{z}^{2} = \norm{y+z}^{2}
+    $$
+    donc toute symétrie orthogonale est une isométrie vectorielle.
+%
+
+%prop
+  1. Toute isométrie vectorielle est un automorphisme de $E$.
+  2. $(O(E), \circ)$ est un sous-groupe de $(GL(E), \circ)$ appelé _groupe des isométries vectorielles_ de $E$ ou _groupe orthogonal de $E$_.
+%
+
+%proof
+  1. Soit $f \in O(E)$. Soit $x \in \ker f$. On a $\norm{x} = \norm{f(x)} = \norm{0_{E}} = 0$ donc $x=0_{E}$ donc $\ker f = \{0_{E}\}$ donc comme $E$ est de dimension finie, $f \in \GL(E)$.
+  2. On a $O(E) \subset \GL(E)$ et $\id_{E} \in O(E)$ donc $O(E)$ est une partie non vide du groupe $(\GL(E),\circ)$. Soit $(f,g) \in O(E)^{2}$. On a, comme $f \in O(E)$ et $g \in O(E)$
+     $$
+       \forall x \in E, \norm{(f\circ g)(x)} = \norm{f(g(x))} = \norm{g(x)} = \norm{x}
+     $$
+     donc $f\circ g \in O(E)$. De plus, comme $f \in O(E)$,
+     $$
+       \forall x \in E, \norm{x} = \norm{f(f^{-1}(x))} = \norm{f^{-1}(x)}
+     $$
+%
+
+%rem
+  - On parle parfois au lieu d’isométrie vectorielle d’_automorphisme orthogonal_, d’où la notation $O(E)$.
+  - Si $p$ est un projecteur distinct de $\id_{E}$ et de $-\id_{E}$, alors $p \notin \GL(E)$ donc $p\notin O(E)$.
+%
+
+%prop Première caractérisation
+  Soit $f \in \L(E)$.
+  $$
+    f \in O(E) \iff f^{*}\circ f = \id_{E} \iff \begin{cases}f \in \GL(E) \\ f^{-1}=f^{*}\end{cases}
+  $$
+%
+
+%proof
+  Soit $f \in \L(E)$.
+  $$
+    \begin{align*}
+      f \in O(E) &\iff \forall (x,y) \in E^{2}, \scalar{f(x)}{f(y)} = \scalar{x}{y} \\
+        &\iff \forall (x,y) \in E^{2}, \scalar{f^{*}(f(x))}{y} = \scalar{x}{y} \\
+        &\iff \forall x \in E, f^{*}(f(x)) = x \\
+        &\iff f^{*}\circ f = \id_{E} \\
+        &\big(\iff f\circ f^{*}=\id _{E}\big)
+    \end{align*}
+  $$
+%
+
+%eg
+  Soit $s \in \L(E)$.
+  $$
+    \begin{cases}s^{2} = \id_{E} \\ s \in O(E)\end{cases} \iff \begin{cases}s^{2} = \id_{E} \\ s^{*}\circ s = \id_{E}\end{cases} \iff \begin{cases}s^{2} = \id_{E} \\ s=s^{*}\end{cases}
+  $$
+  **Les seules symétries qui soient des isométries sont les symétries orthogonales.**
+%
+
+%def Réflexion
+  %rfig
+    @[./figures/sym-ortho-2.svg]
+  %
+  On appelle réflexion d’hyperplan $H$ la symétrie **orthogonale** $\sigma_{H}$ par rapport à un hyperplan $H$ de $E$. C’est une isométrie vectorielle.
+%
+
+<carac_2>%prop Seconde caractérisation
+  Soit $f \in \L(E)$. Soit $\Bon$ une base orthonormale de $E$. Il y a équivalence entre
+  1. $f \in O(E)$
+  2. $\mat_{\Bon}f \in O(n)$
+  3. L’image de n’importe quelle base orthnormale de $E$ par $f$ est une base orthonormale de $E$.
+%
+
+%proof
+  Soit $f \in \L(E)$.
+  $$
+    \begin{align*}
+      f \in O(E) &\iff f^{*}\circ f = \id_{E} \\
+      &\iff \mat_{\Bon} (f^{*}) \times \mat_{\Bon}f = I_{n} \\
+      &\iff \mat_{\Bon}(f)\transp \times \mat_{\Bon}f = I_{n} & \text{($\Bon$ est orthonormale)}\\
+      &\iff \mat_{\Bon}f \in O(n) \\
+      &\iff \mat_{\Bon}\big(f(e_{1}), \ldots, f(e_{n})\big) \in O(n) & \text{avec $\Bon = (e_{1}, \ldots, e_{n})$} \\
+      &\iff \big(f(e_{1}, \ldots, f(e_{n}))\big) \text{ base orthonormale} & \text{($\Bon$ est orthonormale)}
+    \end{align*}
+  $$
+%
+
+%property
+  1. Si $\Bon$ est une base orthonormale de $E$, alors
+     $$
+       \theta: \applic{\big(O(E),\circ\big)}{\big(O(n), \times \big)}{f}{\mat_{\Bon}f}
+     $$
+     est une isomorphisme de groupes.
+  2. Si $f \in O(E)$, alors $\det f \in \{1,-1\}$ et $\sp f \subset \{1,-1\}$.
+  3. Posons $SO(E) = \{f \in \L(E) \where f^{*}\circ f = \id_{E} \and \det f = 1\}$. C! est un sous-groupe de $\big(O(E),\circ\big)$ appelé _groupe spécial_ de $E$ ou _groupe des isométries directes_.
+  4. $O^{-}(E) = \{f \in \L(E) \where f \in O(E) \and \det f=-1\}$ est l’ensemble des _isométries indirectes_.
+%
+
+%proof
+  1. v. #[carac_2]
+  2. $\det f = \det  \big(\underbrace{\mat_{\Bon}f}_{\in O(n)}\big) \in \{1,-1\}$ et $\sp f = \sp \big(\mat_{\Bon}f\big) \subset \{1,-1\}$.
+  3. $SO(E) = \theta^{-1}\big(SO(n)\big) < O(E)$
+%
+
+%rem
+  Une isométrie directe est un endomorphisme transformant toute base orthonormale directe en une base orthonormale directe.
+%
+
+%eg
+  - + $\id_{E} \in SO(E)$
+    + $-\id_{E} \in O(E)$ et $\det (-\id_{E}) = (-1)^{n}$
+    + $-\id_{E} \in SO(E) \iff n \text{ pair}$
+  - Soit $\sigma_{H}$ la réflexion d’hyperplan $H$. Soit $\Bon$ une base orthonormale adaptée à la somme directe $E = H\oplus H\ortho$. On a
+    $$
+      \mat_{\Bon} (\sigma_{H}) = \arrmtx{c|c}{\emtx{&&\\&I_{n-1} &\\ &&} & \emtx{0 \\ \vdots \\ 0} \\\hline \emtx{0&\cdots&0} & -1}
+    $$
+    donc $\det \sigma_{H} = -1$. **Toute réflexion est une isométrie indirecte.**
+  - A la différence des endomorphismes autoadjoints, les isométries ne sont pas nécessairement diagonalisables. Soit $\Bon = (e_{1}, \ldots, e_{n})$ une base orthnormale de $E$ (avec $\dim E = n \geq 2$). Soit $f \in \L(E)$ tel que $\mat_{\Bon}f = \arrmtx{c|c}{\emtx{0&-1\\1&0} & 0 \\\hline \emtx{&&\\&0&\\&&} & \emtx{&&\\&I_{n-2}&\\&&}}$. Alors $\big(f(e_{1}), f(e_{2}), f(e_{3}), \ldots, f(n_{n})\big) = (e_{2}, -e_{1}, e_{3}, \ldots, e_{n})$ est aussi une base orthonormale donc $f \in O(E)$. De plus,
+    $$
+      \sigma_{f}(X) = \arrvmtx{c|c}{\emtx{X & 1 \\ -1 & X} & 0 \\\hline 0 & \emtx{X-1 &&\\&\ddots&\\&&X-1}} = (X^{2}+1)(X-1)^{n-2}
+    $$
+    $\chi_{f}$ n’est pas scindé dans $\R[X]$ donc $f$ n’est pas trigonalisable.
+%
+
+## Isométries vectorielles de $E_{2}$
+
+Soit $E$ un plan euclidien orienté.
+
+%prop
+  Toute isométrie indirecte $f$ de $E_{2}$  est une réflexion (symétrie orthogonale par rapport à une droite vectorielle) et il existe une base orthonormale $\Bon$ de $E_{2}$ telle que $\mat_{\Bon}f = \mtx{1&0\\0&-1}$.
+%
+
+%proof
+  Soit $f \in O^{-}(E_{2})$. Soit $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale de $E_{2}$. On a $\mat_{\mathscr{C}} f \in O^{-(2)}$ donc il existe $(a,b) \in \R^{2}$ avec $a^{2} + b^{2} = 1$ tels que $\mat_{\mathscr{C}} f = \mtx{a&b\\b&-a}$. On a donc $\mat_{\mathscr{C}}f \in \Sym_{2}(\R)$ or $\mathscr{C}$ est orthnormale donc $f \in \Sym(E_{2})$ donc
+  ~ $f^{*}=f$  ~ $f^{*}\circ f = \id_{E}$
+  i.e.
+  ~ $f^{*} = f$  ~ $f^{2} = \id_{E_{2}}$
+  Ainsi, $f$ est une symétrie orthogonale; c’est donc $\id_{E_{2}}$, $-\id_{E_{2}}$ ou une réflexion par rapport à un axe. Or $\det (\id_{E_{2}}) = \det (-\id_{E_{2}}) = 1$ donc $f$ est une réflexion.
+  Réciproquement, toute réflexion est une isométrie indirecte.
+  %rfig
+    @[./figures/base-ve1-ve2_optimized.svg]
+  %
+  Si $f$ est la réflexion d’axe $D = \Vect\left\{\varepsilon_{1}\right\}$ avec $\norm{\varepsilon_{1}} = 1$ et si $\Bon = (\varepsilon_{1}, \varepsilon_{2})$ est une base orthonormale, alors $\mat_{\Bon}f = \mtx{1 & 0 \\ 0 & -1}$.
+%
+
+%rem
+  - Concidérons $\mat_{\mathscr{C}}f = \mtx{a&b\\b&-a}$ avec $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale. $D = E_{1}(f)$ a pour équation $ax + by = x$ dans $\mathscr{C}$.
+  - Si $\mat_{\mathscr{C}} f = \mtx{\cos \theta & \sin \theta \\ \sin \theta & -\cos \theta} = S(\theta)$. C’est la réflexion d’axe $D$ qui a pour équation
+    $$
+      (1-\cos \theta)x - \sin \theta y = 0
+    $$
+    soit
+    $$
+      2\sin^{2} \left(\frac{\theta}{2}\right) x - 2\sin \left(\frac{\theta}{2}\right)\cos \left(\frac{\theta}{2}\right) y = 0
+    $$
+    donc $D = \Vect\left\{\cos \left(\frac{\theta}{2}\right)e_{1} + \sin \left(\frac{\theta}{2}\right)e_{2}\right\}$.
+    %fig
+      @[./figures/eg-sym-1.svg]
+    %
+    pour toute base orthonormale $\mathscr{C}$ de $E_{2}$, $\mat_{\Bon}f$ est de la forme $S(\theta)$ mais $\theta$ dépend de $\mathscr{C}$.
+    - pour $\mathscr{C} = (e_{1}, e_{2})$, on a $\mat_{\mathscr{C}} f = S(\theta)$
+    - pour $\mathscr{C'} = (\cos \frac{\theta}{2}e_{1} + \sin \frac{\theta}{2}e_{2})$, on a $\mat_{\mathscr{C'}}f = \mtx{1 & 0 \\ 0 & -1} = S(\theta)$
+%
+
+%prop
+  Soit $f \in SO(E_{2})$. Il existe un unique réel $\theta \in \co{0,2 \pi}$ tel que la matrice de $f$ dans toute base orthonormale directe soit
+  $$
+    R(\theta) = \mtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}
+  $$
+  On dit que $f$ est la rotation d’angle $\theta$, parfois notée $r_{\theta}$.
+%
+
+%proof
+  %rfig
+    @[./figures/isometrie-directe-image.svg]
+  %
+  Soient $\Bon$ et $\Bon'$ deux bases orthonormales directes de $E_{2}$. On a $\big(\mat_{\Bon}f, \mat_{\Bon'}f\big) \in SO(2)^{2}$. Il existe donc $(\theta, \theta') \in \R^{2}$ tels que $\mat_{\Bon}f = R(\theta)$ et $\mat_{\B'}(f) = R(\theta')$. Or $\mat_{\Bon}f = \Pass{\Bon}{\Bon'} \times \mat_{\Bon'} f \times \Pass{\Bon}{\Bon'}^{-1}$ or $\Bon$ et $\Bon'$ sont deux bases orthonormales de même orientation donc $\Pass{\Bon}{\Bon'} \in SO(2)$ donc $\Pass{\Bon}{\Bon'}^{-1} \in SO(2)$. Or $(SO(2), \times )$ est un groupe commutatif donc $\mat_{\Bon}f = \mat_{\Bon'} f \times \Pass{\Bon}{\Bon'} \times \Pass{\Bon}{\Bon'}^{-1}$. D’où $R(\theta) = R(\theta')$ donc $\theta \cgm{\theta'}{2,p}$. Si $\Bon=(e_{1}, e_{2})$, alors $f(e_{1}) = \cos \theta e_{1} + \sin \theta e_{2}$ et $f(e_{2}) = -\sin \theta e_{1} + \cos \theta e_{2}$.
+%
+
+%rem
+  - Pour une rotation: $\chi_{R(\theta)} = (X-\cos \theta)^{2} + \sin^{2}\theta = (X-\cos \theta - i\sin \theta)(X-\cos \theta + i\sin \theta) = (X-e^{i \theta})(X-e^{-i \theta})$.
+  - Pour une réflexion $f = \mtx{1&0\\0&-1}$: $\chi_{f} = (X-1)(X+1)$.
+  Ainsi,
+  $$
+    \begin{cases}f \in O(E_{2}) \\ \sp f = \emptyset\end{cases} \implies f = r_{\theta} \text{ avec } \theta \in \R\setminus \pi\Z
+  $$
+  ($r_{0}$, $r_{\pi}$, … sont des réflexions). On appelera donc $SO(E_{2}) = \{r_{\theta} \where \theta \in \R\}$ le groupe des rotations vectorielles de $E_{2}$.
+  Dans $(O(E_{2}), \circ)$,
+  %fig
+    | $\circ$ | rotation | réflexion |
+    | --- | --- | --- |
+    | **rotation** | rotation | réflexion |
+    | **réflexion** | réflexion | rotation |
+  %
+  Plus précisément,
+  - $R(\theta) \times R(\theta') = R(\theta + \theta')$ car $e^{i \theta} \times e^{i \theta'} = e^{i(\theta + \theta')}$.
+  - $S(\theta' ) \times S(\theta) = \mtx{\cos \theta' & \sin \theta' \\ \sin \theta' & -\cos \theta'} \times \mtx{\cos \theta & \sin \theta \\ \sin \theta & -\cos \theta} = \mtx{\cos(\theta'-\theta) & -\sin(\theta' - \theta) \\ \sin(\theta' - \theta) & \cos(\theta' - \theta)} = R(\theta'-\theta)$
+    %fig
+      @[./figures/composition-reflexion.svg]
+    %
+  - On a
+    $$
+      R(\theta) = \mtx{\cos \theta & - \sin \theta \\ \sin \theta & -\cos \theta} \times \mtx{1 & 0 \\ 0 & -1} = S(\theta) \times  S(0)
+    $$
+    Donc ++$O(E_{2})$ est engendré par les réflexions++.
+%
+
+%prop
+  Soit $(\vec{u}, \vec{v}) \in (E_{2} \setminus \{0\})^{2}$ où $E_{2}$ est euclidien orienté.
+  - Il existe une unique rotation $r \in SO(E_{2})$ telle que
+    $$
+      r \left(\frac{u}{\norm{u}}\right) = \frac{v}{\norm{v}}
+    $$
+  - Il existe une unique réflexion $s \in O^{-}(E_{2})$ telle que
+    $$
+      s \left(\frac{u}{\norm{u}}\right) = \frac{v}{\norm{v}}
+    $$
+  Si l’angle de $r$ est $\theta \in \co{0,2 \pi}$, alors on dit que la mesure de l’angle orienté de vecteurs $(\ang{\vec{u}, \vec{v}})$ est $\theta$ modulo $2 \pi$ et on écrit $(\ang{\vec{u}, \vec{v}})$.
+%
+
+%proof
+  Posons $u' = \frac{u}{\norm{u}}$ et $v' = \frac{v}{\norm{v}}$. Soit $(u', w')$ une base orthonormale. Il existe un unique couple $(a,b) \in \R^{2}$ tel que $v' = au' + bw'$ or $\norm{v'} = 1 = a^{2} + b^{2}$. Donc
+  $$
+    \begin{cases}r \in SO(E_{2}) \\ r(u') = v'\end{cases} \iff \mat_{(u'\omega')}(r) = \mtx{a & -b \\ b & a}
+  $$
+  et
+  $$
+    \begin{cases}s \in O^{-}(E_{2}) \\ s(u') = v'\end{cases} \iff \mat_{(u', w')}(s) = \mtx{a & b \\ b & -a}
+  $$
+  donc $r$ existe, est unique et si $E_{2}$ est orienté, alors par définition, $\cos(\ang{u,v}) = a$ et $\sin(\ang{u,v}) = b$.
+%
+
+%offprog
+  %rem
+    Avec les notations de la preuve ci-dessus,
+    $s(u') = v'$ d’où $u' = s(v')$ donc $s(u' + v') = u' + v'$.
+    + si $u' + v' \ne 0$, alors $s$ est la réflexion d’axe $\Vect\left\{u' + v'\right\}$.
+    + si $u' + v' = 0$, alors $s$ est la réflexion d’axe $\Vect\left\{u\right\}\ortho$.
+  %
+%
+
+%defprop produit mixte
+  Soit $E_{n}$ un espace vectoriel euclidien orienté de dimension $n \in \N^{*}$. Soit $(u_{1}, \ldots, u_{n})$ une famille de vecteurs de $E$. On appelle _produit mixte_ de cette famille de réels le scalaire
+  $$
+    [u_{1}, \ldots, u_{n}] = \det_{\Bon^{+}}(u_{1}, \ldots, u_{n})
+  $$
+  où $\Bon^{+}$ est une base orthonormale directe de $E_{n}$. Ce réel est indépendant de la base orthonormale directe choisie.
+%
+
+%proof
+  Soient $\Bon^{+}$ et $\Bon'^{+}$ deux bases orthonormales directes de $E_{n}$. Alors
+  $$
+    \det_{\Bon^{+}}(u_{1}, \ldots, u_{n}) = \det_{\Bon^{+}}(\Bon'^{+}) \times \det_{\Bon'^{+}}(u_{1}, \ldots, u_{n})
+  $$
+  or $\det_{\Bon^{+}}(\Bon'^{+}) = \det \Pass{\Bon^{+}}{\Bon'^{+}}$ et $\Pass{\Bon^{+}}{\Bon'^{+}} \in SO(n)$ donc $\det_{\Bon^{+}}(\Bon'^{+}) = 1$.
+%
+
+%prop
+  Soit $(u,v,w) \in (E_{2} \setminus \{0\})^{3}$ avec $E_{2}$ euclidien orienté.
+  1. $(\ang{u,w}) \equiv (\ang{u,v}) + (\ang{v,w}) [2 \pi]$
+  2. $\scalar{u}{v} = \norm{u}\times \norm{v} \times \cos (\ang{u,v}\})$
+  3. $[u,v] = \norm{u} \times \norm{v} \times \sin (\ang{u,v})$
+%
+
+%proof
+  1. Notons $u', v'$ et $w'$ les vecteurs $u,v$ et $w$ normalisés. Soient $\theta$ et $\theta'$ deux réels tels que $r_{\theta}(u') = v'$ et $r_{\theta'}(v') = w'$. On a alors $(r_{\theta'} \circ r_{\theta})(u') = w'$ i.e. $r_{\theta + \theta'}(u') = w'$. Ainsi, $(\ang{u,w}) \equiv \theta + \theta' \equiv (\ang{u,v}) + (\ang{v,w})[2 \pi]$
+  2. Soit $(u', u_{1}')$ une base orthonormale directe de $E_{2}$. Posons $v' = au' + b u_{1}'$ avec $a\cos(\ang{u,v})$ et $b = \sin(\ang{u,v})$. On a alors
+     $$
+       \scalar{u'}{v'} = a \scalar{u'}{u'} + b \underbrace{\scalar{u_{1}'}{u'}}_{=0} = a = \cos(\ang{u,v})
+     $$
+     soit $\scalar{\frac{u}{\norm{u}}}{\frac{v}{\norm{v}}} = \cos(\ang{u,v})$ i.e.
+     $$
+       \scalar{u}{v} = \norm{u} \times  \norm{v} \times \cos(\ang{u,v})
+     $$
+  3. On a
+     $$
+       [u,v] = \det_{(u', u_{1}')}(u,v) = \vmtx{\norm{u} & a \norm{v} \\ u & b \norm{v}} = b \norm{u} \norm{v}
+     $$
+     i.e.
+     $$
+       [u,v] = \norm{u}\norm{v} \sin(\ang{u,v})
+     $$
+     Cette quantité est l’aire algébrique du parallélogramme construit sur $u$ et $v$.
+     %fig
+       @[./figures/aire-produit-mixte_optimized.svg]
+     %
+%
+
+%eg
+  Soit $(u,v) \in (te_{2} \setminus \{0\})^{2}$. Soit $r \in SO(te_{2})$. Soit $s \in O^{-}(E_{2})$.
+  $$
+    \scalar{r(u)}{r(v)} = \norm{r(u)}\times \norm{r(v)} \times \cos(\ang{r(u), r_{v}})
+  $$
+  or $r \in O(E_{2})$ donc
+  $$
+    \scalar{r(u)}{r(v)} = \scalar{u}{v} = \norm{u} \times \norm{v} \times \cos(\ang{u,v})
+  $$
+  donc $\cos(\ang{r(u), r(v)}) = \cos(\ang{u,v})$. Par ailleurs,
+  $$
+    [r(u), r(v)] = \norm{r(u)} \times \norm{r(v)} \times \sin (\ang{r(u), r(v)})
+  $$
+  %recall
+    $\det_{\B}(f(u_{1}), \ldots, f(u_{n})) = \det f \det_{\B}(u_{1}, \ldots, u_{n})$
+  %
+  $$
+    [r(u), r(v)] = \det r [u,v] = \norm{u} \times \norm{v} \times \sin(\ang{u,v})
+  $$
+  d’où $\sin(\ang{r(u), r(v)}) = \sin(\ang{u,v})$.
+  On peut remplacer $r$ par $s$ dans l’exemple ci-dessus, à la seule différence que $\det s = -1$. On obtient alors $\sin(\ang{s(u), s(v)}) = -\sin(\ang{u,v})$.
+  Ainsi,
+  + $(\ang{r(u), r(v)}) \equiv (\ang{u,v})[2 \pi]$
+  + $(\ang{s(u), s(v)}) \equiv - (\ang{u,v})[2 \pi]$
+  Les rotations de $E_{2}$ sont les endomorphismes qui conservent la norme et la mesure des angles orientés de vecteurs.
+%
+

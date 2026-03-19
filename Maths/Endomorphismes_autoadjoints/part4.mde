@@ -1,0 +1,65 @@
+## Applications de classe $\Cont^{k}$
+
+Soient $E$ et $F$ deux $\R$-espaces vectoriels normés de dimension finie. Soit $\B=(e_{1}, \ldots, e_{n})$ une base de $E$.
+
+%def
+  Soit $f: \Omega \longrightarrow F$ une application définie sur un ouvert non vide $\Omega$ de $E$. Soit $a \in \Omega$. Soit $k \in \N^{*}$. Soit $(i_{1}, \ldots, i_{k+1}) \in \icc{1,n}^{k+1}$.
+  Si $D_{e_{i_{k}}}\cdots D_{e_{i_{1}}}f(x) = \partial_{i_{k}}\cdots\partial_{i_{1}}f(x)$ existe pour tout $x$ appartenant à un voisinage ouvert $\Omega_{a}$ de $a$ dans $\Omega$, et si $\partial_{i_{k}} \cdots \partial_{i_{1}}f : \Omega_{a} \longrightarrow F$ possède une dérivée en $a$ selon le vecteur $e_{i_{k+1}}$, alors cette dernière est notée $\partial_{i_{k+1}} \partial_{i_{k}} \cdots \partial_{i_{1}} f(a)$. C’est une dérivée partielle de $f$ en $a$ d’ordre $k+1$ relativement à la base $\B$. Il y a $n^{k+1}$ dérivées du type.
+%
+
+%def
+  Soit $f: \Omega \longrightarrow F$ définie sur un ouvert $\Omega$ de $E$. Soit $k \in \N^{*}$. On dit que $f$ est de classe $\Cont^{k}$ si
+  - $f$ est de classe $\Cont^{1}$ sur $\Omega$
+  - $\dd f: \Omega \longrightarrow \L(E,F)$ est de classe $\Cont^{k-1}$
+  On note alors $f \in \Cont^{k}(\Omega, F)$. C’est le cas si et seulement si $f$ possède $n^{k}$ dérivées partielles d’ordre $k$ définies et continues sur $\Omega$.
+%
+
+%proof
+  A écrire…
+%
+
+%eg
+  - Toute application polynomiale $f: E \longrightarrow \R$ en les coordonnées dans une base de $E$ est de classe $\Cont^{\infty}$ sur $E$. Par exemple $\det  \in \Cont^{\infty}(\M_{n}(\R),\R)$.
+  - Toute fonction rationnelle est de classe $\Cont^{\infty}$ sur son ouvert de définition.
+  - Toute application multilinéaire est de classe $\Cont^{\infty}$.
+%
+
+%property Opérations sur les fonctions de classe $\Cont^k$
+  Elles sont analogues à celles possibles dans le cas $k=1$ ou $k=2$~:
+  - $\Cont^{k+1}(\Omega,F)$ est un sous-espace vectoriel de $\Cont^{k}(\Omega, F)$.
+  - $\Cont^{k+1}(\Omega, F)$ est stable pour la composition.
+  - Une fonction à valeurs dans un produit d’espaces vectoriels normés est de classe $\Cont^{k}$ si toutes ses composantes sont de classe $\Cont^{k}$.
+  - Une fonction est de classe $\Cont^{k}$ si toutes ses coordonnées sont de classe $\Cont^{k}$.
+%
+
+%thm Théorème de Schwarz
+  Si $f: \Omega \longrightarrow \R$ est de classe $\Cont^{k}$ (avec $k \geq 2$) sur un ouvert non vide $\Omega$ de $E$, alors pour toute permutation $\sigma \in S_{k}$, pour tous $(i_{1}, \ldots, i_{k}) \in \icc{1,n}^{k}$ et pour tout $x \in \Omega$,
+  $$
+    \partial_{i_{1}}\cdots\partial_{i_{k}}f(x) = \partial_{i_{\sigma(1)}}\cdots\partial_{i_{\sigma(k)}}f(x)
+  $$
+%
+
+%proof
+  Consdérons l’ensemble $G=\Big\{\sigma \in \Sym_{k} \where \forall (i_{1}, \ldots, i_{k})\in \icc{1,n}^{k}, \partial_{i_{1}}\cdots\partial_{i_{k}} f = \partial_{i_{\sigma(1)}} \cdots \partial_{i_{\sigma(1)}}\cdots\partial_{i_{\sigma(k)}}f\Big\}$. C’est une partie non vide du groupe symétrique $(S_{n},\circ)$ car $\id_{\icc{1,k}} \in G$. Soit $(\sigma, \tau) \in G^{2}$. Soit $(i_{1}, \ldots, i_{k}) \in \icc{1,k}^{k}$.
+  $$
+    \begin{align*}
+      \partial_{i_{(\sigma\circ \tau)(1)}}\cdots\partial_{i_{(\sigma\circ \tau)(k)}}f &= \partial_{i_{\sigma(\tau(1))}}\cdots\partial_{i_{\sigma(\tau(k))}}f \\
+      &= \partial_{i_{\tau(1)}} \cdots \partial_{i_{\tau(k)}} f & \text{car $\sigma \in G$}\\
+      &= \partial_{i_{1}}\cdots\partial_{i_{k}}f & \text{car $\tau \in G$}
+    \end{align*}
+  $$
+  donc $\sigma\circ \tau \in G$.
+  $$
+    \partial_{i_{\sigma^{-1}(1)}} \cdots \partial_{i_{\sigma^{-1}(k)}}f = \partial_{i_{\sigma(\sigma^{-1}(1))}} \cdots \partial_{i_{\sigma(\sigma^{-1}(k))}}f = \partial_{i_{1}} \cdots \partial_{i_{k}}f
+  $$
+  Donc $\sigma^{-1}\in G$. Ainsi, $G$ est un sous-groupe de $(S_{k}, \sigma)$.
+  - Soit $\ell \in \icc{1,k-1}$. Soit $(i_{1}, \ldots, i_{k}) \in \icc{1,n}^{k}$. $\partial_{i_{\ell+2}} \cdots \partial_{i_{k}}f \in \Cont^{\ell+1}(\Omega) \subset \Cont^{2}(\Omega)$ donc
+    $$
+      \partial_{i_{\ell}}\partial_{i_{\ell+1}}\partial_{i_{\ell+2}} \cdots \partial_{i_{k}}f = \partial_{i_{\ell+1}}\partial_{i_{\ell}}\partial_{i_{\ell+2}} \cdots \partial_{i_{k}}f
+    $$
+    d’où
+    $$
+      \partial_{i_{1}}\cdots\partial_{i_{k}}f = \partial_{i_{1}} \cdots \partial_{i_{\ell-1}}\partial_{i_{\ell+1}}\partial_{i_{\ell}} \partial_{i_{\ell+2}} \cdots \partial_{i_{k}}f
+    $$
+    donc la transposition $(\ell, \ell+1)$ est élément de $G$, d’où comme $G < (S_{k}, \circ)$, on a $\grp{\{(\ell,\ell+1) \where \ell \in \icc{1,k-1}\}} \subset G$, i.e. $S_{k} \subset G$ (cf. chapitres sur les groupes) donc $G = S_{k}$.
+%

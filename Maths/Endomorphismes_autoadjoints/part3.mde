@@ -1,6 +1,6 @@
 ## Optimisation à l’ordre 2
 
-Plaçons-nous dans $\R^{n}$, euclidien canonique (les dérivées partielles sont calculées par rapport à la base canonique). Soit $f: \Omega \longrightarrow \R$ une fonction de classe $\Cont^{2}$ sur un ouvert non vide $\Omega$ de $\R^{n}$. Soit $a f (a_{1}, \ldots, a_{n}) \in \Omega$. Il existe $r > 0$ tel que $B'(a,2r)\subset \Omega$. Soit $h = (h1, \ldots, h_{n}) \in B'(0,r)$. $\varphi: t \longmapsto  f(a+th)$ est de classe $\Cont^{2}$ sur $\oo{-2,2}$ comme composée de l’application $t \longmapsto a+th$ de classe $\Cont^{2}$ et $f$. On a, pour tout $t \in \cc{0,1}, \varphi(t) = f(a+th) = f(a_{1} + th_{1}, \ldots, a_{n} + th_{n})$ d’où
+Plaçons-nous dans $\R^{n}$, euclidien canonique (les dérivées partielles sont calculées par rapport à la base canonique). Soit $f: \Omega \longrightarrow \R$ une fonction de classe $\Cont^{2}$ sur un ouvert non vide $\Omega$ de $\R^{n}$. Soit $a = (a_{1}, \ldots, a_{n}) \in \Omega$. Il existe $r > 0$ tel que $B'(a,2r)\subset \Omega$. Soit $h = (h_{1}, \ldots, h_{n}) \in B'(0,r)$. $\varphi: t \longmapsto  f(a+th)$ est de classe $\Cont^{2}$ sur $\oo{-2,2}$ comme composée de l’application $t \longmapsto a+th$ de classe $\Cont^{2}$ et $f$. On a, pour tout $t \in \cc{0,1}, \varphi(t) = f(a+th) = f(a_{1} + th_{1}, \ldots, a_{n} + th_{n})$ d’où
 $$
   \forall t \in \cc{0,1}, \varphi'(t) = \dd f(a+th)\mdot h = \scalar{\nabla f(a+th)}{h} = \sum_{i=1}^{n}h_{i}\partial_{i} f(a+th)
 $$
@@ -10,20 +10,20 @@ $$
 $$
 
 %def
-  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R_{n}$. Soit $a \in \Omega$. On appelle _matrice hessienne_ de $f$ en $a$ la matrice
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$. On appelle _matrice hessienne_ de $f$ en $a$ la matrice
   $$
     H_{f}(a) = \mtx{\partial_{i}\partial_{j}f(a)}_{i \leq i,j\leq n}
   $$
   D’après le théorème de Schwarz, on a $H_{f}(a) \in \Sym_{n}(\R)$.
 %
 
-On a alors, en notant $H = \mtx{h1 \\ \cdots \\ h_{n}}$ et $H_{f}(a):\R^{n} \longrightarrow \R^{n}$ l’endomorphisme adjoint canoniquement associé à la matrice symétrique $H_{f}(a)$~:
+On a alors, en notant $H = \mtx{h_{1} \\ \vdots \\ h_{n}}$ et $H_{f}(a):\R^{n} \longrightarrow \R^{n}$ l’endomorphisme adjoint canoniquement associé à la matrice symétrique $H_{f}(a)$~:
 $$
   \forall t \in \cc{0,1}, \varphi''(t) = H\transp H_{f}(a+th)H = \scalar{H_{f}(a+th)\mdot h}{h}
 $$
 Or $\varphi \in \Cont^{2}(\cc{0,1})$ d’où d’après la formule de Taylor avec reste intégral,
 $$
-  \varphi(1+h) = \varphi(a) + \dd f(a)\mdot h + \int_{0}^{1}(1-t)\varphi''(t)\dd t
+  \varphi(a+h) = \varphi(a) + \dd f(a)\mdot h + \int_{0}^{1}(1-t)\varphi''(t)\dd t
 $$
 On a $\int_{0}^{1}(1-t)\dd t = \left[- \frac{(1-t)^{2}}{2}\right]_{0}^{1} = \frac{1}{2}$ et
 $$
@@ -47,11 +47,11 @@ $$
   $$
     J_{f}(a) = \mtx{\partial_{1}f(a) & \cdots & \partial_{n} f(a)} \in \M_{1,n}(\R)
   $$
-  avec $H f \mtx{h_{1} \\ \cdots \\ h_{n}}$ donc
+  avec $H = \mtx{h_{1} \\ \vdots \\ h_{n}}$ donc
   $$
     f(a+h) = f(a) + J_{f}(a)H + \frac{1}{2}H\transp H_{f}(a)H + \norm{h}^{2}\varepsilon(h)
   $$
-  avvec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}}$.
+  avec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}} 0$.
 %
 
 %rem En coordonnées
@@ -146,9 +146,9 @@ $$
 
 %prop
   Pour $f: \Omega \longrightarrow \R^{2} \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{2}$ et pour $(a,b) \in \Omega$ point critique de $f$, on a
-  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr (H_{f}(a,b))\end{cases}$, alors $f$ présente un minimum local strict en $(a,b)$.
-  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr  (H_{f}(a,b))\end{cases}$, alors $f$ présente un maximum local strict en $(a,b)$.
-  - si $H_{f}(a,b) < 0$, alors $f$ ne présente pas d’extremum local en $(a,b)$.
+  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr (H_{f}(a,b))>0\end{cases}$, alors $f$ présente un minimum local strict en $(a,b)$.
+  - si $\begin{cases}\det H_f(a,b) > 0 \\ \tr  (H_{f}(a,b))<0\end{cases}$, alors $f$ présente un maximum local strict en $(a,b)$.
+  - si $\det H_{f}(a,b) < 0$, alors $f$ ne présente pas d’extremum local en $(a,b)$.
   - si $\det H_{f}(a,b) = 0$, alors on ne peut pas conclure directement (on étudie le signe de $f(a+h, b+h) - f(a,b)$).
 %
 

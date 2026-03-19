@@ -616,7 +616,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
 %proof
   1. $\varphi: \applic{\L(E)}{\L(E)}{f}{f^{*} - f}$ est $\R$-linéaire donc $\Sym(E) = \ker \varphi$ est un sous-espace vectoriel de $(\L(E), +, \cdot)$.
   2. $f \in \Sym(E) \iff  f^{*} = f \iff \mat_{\Bon}f^{*} = \mat_{\Bon} f \iff A\transp = A$ donc $f \in \Sym(E) \iff A \in \Sym_{n}(\R)$.
-  3. Si $\Bon$ est une base orthonormale de $E$, alors $\applic{\Sym(E)}{\Sym_{n}(\R)}{f}{\mat_{\Bon}f}$ est un isomorphisme de $\R$-espaces vectoriels donc $\dim \Sym(te) = \dim \Sym_{n}(\R) = \frac{n(n+1)}{2}$.
+  3. Si $\Bon$ est une base orthonormale de $E$, alors $\applic{\Sym(E)}{\Sym_{n}(\R)}{f}{\mat_{\Bon}f}$ est un isomorphisme de $\R$-espaces vectoriels donc $\dim \Sym(E) = \dim \Sym_{n}(\R) = \frac{n(n+1)}{2}$.
   %offprog
     4. Soit $f \in \Sym(E)$. On a $\ker f \oplusortho (\ker f)\ortho$, i.e. $E = \ker  f \oplusortho \img (f^{*}) = \ker f\oplusortho \img f$.
     5. Soit $(f,g) \in \Sym(E)^{2}$.
@@ -686,6 +686,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
   Soit $f \in \Sym(E)$.
   - Si $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors
     ~ $F\ortho$ est stable par $f$  ~ $f_{|F} \in \Sym(F)$ et $f_{|F\ortho} \in \Sym(F\ortho)$
+  - Si $\lambda$ et $\mu$ sont deux valeurs propres distinctes de $f$, alors $E_{\lambda}(f) \perp E_{\mu}(f)$.
 %
 
 %proof
@@ -702,7 +703,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
 %
 
 %proof
-  - _Première étape : $f \in \Sym(E) \implies \sp f \ne \emptyset$_((Voir DS n°8 pour une preuve utilisant l’optimisation sous contrainte.)). Soit $\Bon$ une base orthonormale de $E$ avec $\dim E = n \in \N^{*}$. Notons $A = \mat_{\Bon}f \in \Sym_{n}(\R)$. Soit $\lambda \in \sp_{\C}A$ ($\chi_{A}$ est scindé dans $\C[X]$). Soit $X \in \M_{n,1}(\C) \setminus \{0\}$ tel que $AX = \lambda X$. Alors, $\bar{X}\transp A X = \lambda \bar{X}\transp X$. Si $X = \mtx{z_{1}\\ \cdots\\ z_{n}}\ne 0$, alors
+  - _Première étape : $f \in \Sym(E) \implies \sp f \ne \emptyset$_((Voir DS n°8 pour une preuve utilisant l’optimisation sous contrainte.)). Soit $\Bon$ une base orthonormale de $E$ avec $\dim E = n \in \N^{*}$. Notons $A = \mat_{\Bon}f \in \Sym_{n}(\R)$. Soit $\lambda \in \sp_{\C}A$ ($\chi_{A}$ est scindé dans $\C[X]$). Soit $X \in \M_{n,1}(\C) \setminus \{0\}$ tel que $AX = \lambda X$. Alors, $\bar{X}\transp A X = \lambda \bar{X}\transp X$. Si $X = \mtx{z_{1}\\ \vdots\\ z_{n}}\ne 0$, alors
     $$
       \scalar{X}{X}_{\substack{\can\\\text{herm.}}} = \bar{X}\transp = \mtx{\bar{z_{1}} & \cdots & \bar{z_{n}}} \mtx{z_{1} \\ \vdots \\ z_{n}} = \sum_{i=1}^{n}\abs{z_{i}}^{2} \in \R_{+}^{*}
     $$
@@ -729,7 +730,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
      $$
        E = \overset{\perp}{\bigoplus_{\lambda \in \sp f}} E_{\lambda}(f)
      $$
-  3. Il existe une base **orthnormale** de $E$ formée de vecteurs propres de $f$.
+  3. Il existe une base **orthonormale** de $E$ formée de vecteurs propres de $f$.
 %
 
 %proof
@@ -743,7 +744,7 @@ donc $\mathscr{C}$ est une base orthonormale si et seulement si $P\transp P = I_
 %
 
 %def Matrices orthosemblables
-  Soit $(A,B) \in \M_{n}(\R)^{2}$. On dit que $A$ est _orthogonalement semblable_ (ou _orthosemblable_) à $\B$ si il existe $P \in O(n)$ tel que $A = PB \underbrace{P^{-1}}_{P\transp}$. C’est le cas si et seulement si $A$ et $B$ représentent le même endomorphisme d’un espace euclidien $E$ relativement à deux bases orthonormales de $E$. On note parfois $A \ossim B$.
+  Soit $(A,B) \in \M_{n}(\R)^{2}$. On dit que $A$ est _orthogonalement semblable_ (ou _orthosemblable_) à $B$ si il existe $P \in O(n)$ telle que $A = PB \underbrace{P^{-1}}_{P\transp}$. C’est le cas si et seulement si $A$ et $B$ représentent le même endomorphisme d’un espace euclidien $E$ relativement à deux bases orthonormales de $E$. On note parfois $A \ossim B$.
 %
 
 %rem

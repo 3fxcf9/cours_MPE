@@ -30,7 +30,7 @@
 
 %eg
   - $\forall \lambda \in \R, \lambda \id_{E} \in \Sym(E)$
-  - $\lambda \id_{E} \in \Sym^{+}(E) \iff \forall x \in te, \scalar{\lambda x}{x} = \lambda \norm{x}^{2} \geq 0 \implies \lambda \geq 0$
+  - $\lambda \id_{E} \in \Sym^{+}(E) \iff \forall x \in E, \scalar{\lambda x}{x} = \lambda \norm{x}^{2} \geq 0 \implies \lambda \geq 0$
   - $\lambda \id_{E} \in \Sym^{++}(E) \iff \lambda > 0$
 %
 
@@ -46,7 +46,7 @@
   Un endomorphisme $f \in \L(E)$ est autoadjoint défini positif si et seulement si $(x,y) \longmapsto \scalar{f(x)}{y}$ est un produit scalaire sur $E$.
   ~
   Posons $\varphi: \applic{E^{2}}{\R}{(x,y)}{\scalar{f(x)}{y}}$. Comme $f \in \L(E)$, $\varphi$ est une forme multilinéaire sur $E$.
-  Elle est bilinéaire symétrique et et seulement si $\forall (x,y), \varphi(x,y) = \scalar{f(x)}{y} = \scalar{f(y)}{x} = \varphi(y,x)$, i.e. $f=f^{*}$ donc si et seulement si $f$ est autoadjoint.
+  Elle est bilinéaire symétrique et seulement si $\forall (x,y), \varphi(x,y) = \scalar{f(x)}{y} = \scalar{f(y)}{x} = \varphi(y,x)$, i.e. $f=f^{*}$ donc si et seulement si $f$ est autoadjoint.
   $\varphi$ est un produit scalaire si et seulement si $f$ est autoadjoint et si
   $$
     \forall x \in E, \begin{cases}\varphi(x,x) \geq 0 \\ \varphi(x,x) = 0 \implies x = 0\end{cases}
@@ -74,7 +74,7 @@
 %offprog
   %prop Autre caractérisation
     - $\Sym^{+}(E) = \Big\{f^{*}\circ f \where f \in \L(E)\Big\}$
-    - $\Sym^{++}(E) = \Big\{f^{*}\circ f \where f \in \GL(E)\Big\}$
+    - $\Sym^{++}(E) = \Big\{f^{*}\circ f \where f \in \GL(E)\Big\}$ (prouvé en $\stress{\text{couleur}}$)
   %
 
   %proof
@@ -86,14 +86,14 @@
       $$
         \scalar{(f^{*}\circ f)(x)}{x}  = \scalar{f(x)}{f(x)} = \norm{f(x)}^{2} \geq \stress{(>)} 0
       $$
-      donc $\big\{f^{*}\circ f \where f \in \L(E)\big\} \subset \Sym^{+}(E) \stress{(\Sym^{++}(E))}$.
-    - Soit $g \in \Sym^{+}(E)\stress{(\Sym^{++}(E))}$. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$ formée de vecteurs propres de $g$. Posons pour tout $i \in \icc{1,n}$, $g(e_{i}) = \lambda_{i} e_{i}$ où $\lambda_{i} \geq \stress{(>)} 0$. Soit $f \in \L(E)$ défini par
+      donc $\big\{f^{*}\circ f \where f \in \L(E)\big\} \subset \Sym^{+\stress +}(E)$.
+    - Soit $g \in \Sym^{+\stress +}(E)$. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$ formée de vecteurs propres de $g$. Posons pour tout $i \in \icc{1,n}$, $g(e_{i}) = \lambda_{i} e_{i}$ où $\lambda_{i} \geq \stress{(>)} 0$. Soit $f \in \L(E)$ défini par
       $$
         \forall i \in \icc{1,n}, f(e_{i}) = \sqrt{\lambda_{i}}e_{i}
       $$
-      $(e_{1}, \ldots, e_{n})$ est donc une base orthonormale de vecteurs propres de $f$ donc $f^{*}=f$. ==Et $\sp f = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\}$ ne contient pas 0 donc $f \in \GL(E)$==. Or $f^{*}\circ f = f^{2}$ et $g$ coïncident sur cette base donc $g = f^{2} = f^{*}\circ f$ donc
+      $(e_{1}, \ldots, e_{n})$ est donc une base orthonormale de vecteurs propres de $f$ donc $f^{*}=f$. (second point: Et $\sp f = \{\sqrt{\lambda_{1}}, \ldots, \sqrt{\lambda_{n}}\}$ ne contient pas 0 donc $f \in \GL(E)$). Or $f^{*}\circ f = f^{2}$ et $g$ coïncident sur cette base donc $g = f^{2} = f^{*}\circ f$ donc
       $$
-        \Sym^{+}(E) \subset \big\{f^{*}\circ f \where f \in \L(E) \stress{(\GL(E))}\big\}
+        \Sym^{+\stress +}(E) \subset \big\{f^{*}\circ f \where f \in \L(E) \stress{(\GL(E))}\big\}
       $$
   %
 %
@@ -107,7 +107,7 @@
     $$
       \forall X \in \M_{n,1}(\R)\setminus \{0\}, \scalar{X}{MX}_{\can} > 0
     $$
-  Ces définitio reviennent à dire que
+  Ces définitions reviennent à dire que
   $$
     f_{M}: \applic{\M_{n,1}(\R)}{\M_{n,1}(\R)}{X}{MX}
   $$

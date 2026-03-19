@@ -1,0 +1,98 @@
+## Isométries vectorielles en dimension 3
+
+%def orientation induite sur un hyperplan
+  %rfig
+    @[./figures/orientation-hyperplan.svg]
+  %
+  Soit $D$ une droite incluse dans l’espace vectoriel orienté $E_{n}$ ($n \geq 2$). Orienter l’hyperplan $D\ortho$ par le choix d’un vecteur directeur $k$ de $D$, c’est choisir pour orientation de $D\ortho$ l’ensemble eds bases $(e_{2}, \ldots, e_{n})$ telles que la base $(e_{2}, \ldots, e_{n}, k)$ soit directe dans $E_{n}$ orienté. C’est l’**orientation induite** par $D$ sur $D\ortho$.
+%
+
+%rem
+  Dans le cas $n=3$, $(e_{2}, e_{3})$ est une base directe du plan $D\ortho = (\Vect\left\{k\right\})\ortho$ si et seulement si $(e_{2}, e_{3}, k)$ est directe dans $E_{3}$ ou si et seulement si $(k, e_{2}, e_{3})$ (image par le cycle $\sigma = (1,2,3)$ de signature 1).
+%
+
+Soit $f \in SO(E_{3})$. ALors $\dim E_{-1}(f)$ est pair donc $\dim E_{-1}(f) \in \{0,2\}$. donc $\dim E_{-1} = 0$. Il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ de $E_{3}$ telle que $\mat_{\Bon} f = I_{3}$ i.e. $f = \id_{E_{3}}$. Or il existe $\theta \in \R$ tel que $\mat_{\Bon} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(\theta)} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}}$. Si $\Bon = (e_{1}, e_{2}, e_{3})$ est indirecte, alors $\Bon' = (e_{1}, e_{3}, e_{2})$ est directe et $\mat_{\Bon'} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(-\theta)}$
+- si $\dim E_{-1}(f) = 2$, il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{2})$ de $E_{3}$ telle que $\mat_{\Bon}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & \emtx{-1&0\\0&-1}} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\pi)}$.
+
+%prop
+  Soit $f$ une isométrie directe de $E_{3}$ orienté. Il existe une base orthonormale directe $\Bon^{+} = (e_{1}, e_{2}, e_{3})$ et $\theta \in \R$ tels que
+  $$
+    \mat_{\Bon^{+}}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & \emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)}
+  $$
+  Si $\theta\notin 2 \pi\Z$ ($\theta \in 2 \pi \Z \iff f = \id_{E_{3}}$) et si on oriente $E_{1}(f) = \Vect\left\{e_{1}\right\}$ selon $e_{1}$, alors $f$ est appelée rotation d’axe $\Vect\left\{e_{1}\right\}$ (orienté selon $e_{1}$) et d’angle de mesure $\theta$. On note parfois $f = r_{e_{1}, \theta}$ (si le plan $\Vect\left\{e_{1}\right\}\ortho$ reçoit l’orientation induite par le choix de $e_{1}$ dirigeant $\Vect\left\{e_{1}\right\}$).
+  %fig
+    @[./figures/rotations-e3_optimized.svg]
+  %
+  (si on choisit $(-e_{1})$ pour déterminer l’orientation induite sur $\Vect\left\{e_{2}, e_{3}\right\}$, alors $(-e_{1}, e_{2}, e_{3})$ est indirecte et $\Bon' = (-e_{1}, e_{3}, e_{2})$ est orthonormale directe, et dans cette base, $\mat_{\Bon'}f = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(-\theta)}$, i.e. $f = e_{-e_{1}, -\theta}$)
+  $(SO(E_{3}), \theta)$ est le groupe des rotations de $E_{3}$.
+%
+
+%prop
+  Soit $f \in SO(E_{3})$ avec $E_{3}$ orienté. Si $f$ est la rotation d’axe $D$ et d’angle de mesure $\theta$, alors
+  ~ $D = E_{1}(f)$  ~ $\tr  f = 1+2\cos \theta$
+  Si $e_{1}$ est un vecteur dirigeant et orientant l’axe $D$ et si $u \in E_{3} \setminus D$, alors $[e_{1}, u, f(u)]$ a le même signe que $\sin \theta$.
+%
+
+$[e_{1}, u, f(u)]$ a le même signe que $\left[\frac{e_{1}}{\norm{e_{1}}}, u, f(u)\right]$ donc on peut considérer $e_{1}$ unitaire. Si $\Bon^{+} = (e_{1}, e_{2}, e_{3})$ est une base orthonormale directe, alors
+$$
+  \mat_{\Bon^{+}}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & \emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}}
+$$
+Soit $u \in E_{3} \setminus D$. Posons $u \in xe_{1} + y e_{2} + ze_{3}$ avec $(x,y,z) \in \R^{3}$ et $(y,z) \ne (0,0)$.
+$$
+  \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & \emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}} \mtx{x\\y\\z} = \mtx{x \\ y\cos \theta - z\sin \theta\\ y\sin \theta + z\cos \theta}
+$$
+donc
+$$
+  \begin{align*}
+    \Big[e_{1}, u, f(u)\Big] &= \det_{\Bon^{+}}(e_{1}, u, f(u)) \\
+    &= \vmtx{1&x&x\\0&y&y\cos \theta - z\sin \theta \\ 0 & z & y\sin \theta + z\cos \theta} \\
+    &= y^{2}\sin \theta + yz\cos \theta - yz\cos \theta + z^{2}\sin \theta \\
+    &= \underbrace{(z^{2} + y^{2})}_{>0}\sin \theta \text{ est du signe de $\sin \theta$}
+  \end{align*}
+$$
+
+%eg
+  Dans $\R^3$ euclidien canonique orienté en déclarant directe la base canonique $\Bon^{+} = (i,j,k)$
+  - $\mat_{\Bon^{+}}(f) = \frac{1}{3} \mtx{2&-2&-1\\1&2&-2\\2&1&2} = P = \arrmtx{c|c|c}{C_{1} & C_{2} & C_{3}}$.
+    + $\norm{C_{1}}_{\can}^{2} = \norm{C_{2}}_{\can}^{2} = \norm{C_{3}}_{\can}^{2} = \frac{1}{9}(4+1+4) = 1$
+    + $\scalar{C_{1}}{C_{2}} = \frac{1}{9}(-4+2+2) = 0$
+    + $\scalar{C_{1}}{C_{3}} = \frac{1}{9}(-2-2+4) = 0$
+    + $\scalar{C_{2}}{C_{3}} = \frac{1}{9}(2-4+2) = 0$
+    donc $F \in O(3)$.
+    $$
+      \det F = \frac{1}{27}\left(2 \vmtx{2&-2\\1&2} - \vmtx{-2&-1\\1&2} + 2 \vmtx{-2&-1\\2&-2}\right) = \frac{1}{27} (12+3+12) = 1
+    $$
+    donc $F \in SO(3)$. Comme $\Bon^{+}$ est une base orthonormale, on a $f \in SO(\R^{3})$ et $F\ne I_{3}$ donc $f\ne \id_{\R^{3}}$ donc $f$ est une rotation propre de $\R^{3}$. Notons $D$ son axe et $\theta$ son angle.
+    $$
+      \begin{align*}
+        (x,y,z) \in D &\iff \begin{cases}2x - 2y - z = 3x \\ x + 2y - 2z = 3y \\ 2x + y + 2z = 3z\end{cases} \\
+        &\iff \begin{cases}x+2y + z = 0 \\ x - y - 2z = 0\end{cases}\\
+        &\iff \begin{cases}x+2y + z = 0 \\ 3y + 3z = 0\end{cases} \\
+        &\iff \begin{cases}x=z\\y=-z\end{cases}
+      \end{align*}
+    $$
+    donc $D = \Vect\left\{\mtx{1\\-1\\1}\right\}$. On a $\tr f = \tr A = 1+2\cos \theta = -\frac{6}{3}=2$, i.e $\cos \theta = \frac{1}{2}$. $\delta = \left[\mtx{1\\-1\\1}, i,f(i)\right] = \left[\mtx{1\\-1\\1}, \mtx{1\\0\\0}, \mtx{2\\1\\2}\right]$ a le même signe que $\sin \theta$. Or $\Bon^{+}$ est orthonormale directe donc
+    $$
+      \delta = \vmtx{1&1&2\\-1&0&1\\1&0&2} = -\vmtx{-1&1\\1&2} = -(-3)=3
+    $$
+    donc $\sin \theta > 0$. Ainsi, $f = r_{i-j+k, \frac{\pi}{3}}$.
+  - Considérons $\mat_{\Bon^{+}} (g) = \mtx{-1&0&0\\0&0&1\\0&1&0}=G$. $(g(i), g(j), g(k)) = (-i,k,j)$ est une base orthonormale directe, donc $g \in SO(R^{3})$. $G \in \Sym_{3}(\R)$ donc $\Bon$ étant orthonormale, $g \in \Sym(\R^{3})$.
+    $$
+      \begin{cases}g \in SO(\R^{3}) \\ g \in \Sym(\R^{3}) \\ g\ne \id_{\R^{3}}\end{cases} \iff \begin{cases}\det g>0\\g^{*}\circ g = \id_{\R^{3}} \\ g=g^{*}\end{cases} \iff \det g > 0 \\ g \text{ symétrie orthogonale}
+    $$
+    $g$ est donc une rotation d’angle $\pi$ autour de $D$, appelée _retournement d’axe $D$_, avec $D = \Vect\left\{j+k\right\}$ car $g(j+k) = k+j$.
+  - %rfig
+      @[./figures/eg-rot-e3-3.svg]
+    %
+    Considérons $\mat_{\Bon^{+}}(h) = \mtx{0&1&0\\0&0&1\\1&0&0} = H$. On a $\big(h(i), h(j), h(k)\big) = (k,i,j)$ est une base orthonormale directe donc $h \in SO(\R^{3})$. $h = r_{i+j+k, -\frac{2 \pi}{3}}$: $h$ est le tiers de tour négatif autour de $i+j+k$. En effet, $\tr H = 1+2\cos \theta = 0$ donc $\cos \theta = -\frac{1}{2}$ et $\vmtx{1&1&0\\1&0&0\\1&0&1} = -1$ donc $\sin \theta < 0$ donc $\theta \cgm{-\frac{2 \pi}{3}}{2 \pi}$.
+%
+
+%offprog
+  Soit $f \in O^{-}(E_{3})$. Alors $\dim E_{-1} (f) \in \{1,3\}$.
+  - si $\dim E_{-1}(f) = 3$, alors $f = -\id_{\R^{3}}$
+  - si $\dim E_{-1}(f) = 1$, alors il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ telle que $\mat_{\Bon}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)}$.  Alors
+    $$
+      \mat_{\Bon}(f) = \arrmtx{c|c}{-1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}} \times \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} \times \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}}
+    $$
+    donc $f$ est la composée commutative de $r_{e_{1}, \theta}$ par la réflexion $\sigma_{\Vect\left\{e_{1}\right\}\ortho}$. C’est une _réflexion-rotation_.
+%
