@@ -11,7 +11,8 @@
   Dans le cas $n=3$, $(e_{2}, e_{3})$ est une base directe du plan $D\ortho = (\Vect\left\{k\right\})\ortho$ si et seulement si $(e_{2}, e_{3}, k)$ est directe dans $E_{3}$ ou si et seulement si $(k, e_{2}, e_{3})$ (image par le cycle $\sigma = (1,2,3)$ de signature 1).
 %
 
-Soit $f \in SO(E_{3})$. ALors $\dim E_{-1}(f)$ est pair donc $\dim E_{-1}(f) \in \{0,2\}$. donc $\dim E_{-1} = 0$. Il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ de $E_{3}$ telle que $\mat_{\Bon} f = I_{3}$ i.e. $f = \id_{E_{3}}$. Or il existe $\theta \in \R$ tel que $\mat_{\Bon} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(\theta)} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}}$. Si $\Bon = (e_{1}, e_{2}, e_{3})$ est indirecte, alors $\Bon' = (e_{1}, e_{3}, e_{2})$ est directe et $\mat_{\Bon'} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(-\theta)}$
+Soit $f \in SO(E_{3})$. Alors $\dim E_{-1}(f)$ est pair donc $\dim E_{-1}(f) \in \{0,2\}$.
+- si $\dim E_{-1} = 0$, il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ de $E_{3}$ telle que $\mat_{\Bon} f = I_{3}$ i.e. $f = \id_{E_{3}}$. Or il existe $\theta \in \R$ tel que $\mat_{\Bon} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(\theta)} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta}}$. Si $\Bon = (e_{1}, e_{2}, e_{3})$ est indirecte, alors $\Bon' = (e_{1}, e_{3}, e_{2})$ est directe et $\mat_{\Bon'} f = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&\emtx{\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta}} = \arrmtx{c|c}{1 & \emtx{0&0} \\\hline \emtx{0\\0}&R(-\theta)}$
 - si $\dim E_{-1}(f) = 2$, il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{2})$ de $E_{3}$ telle que $\mat_{\Bon}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & \emtx{-1&0\\0&-1}} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\pi)}$.
 
 %prop
@@ -24,7 +25,7 @@ Soit $f \in SO(E_{3})$. ALors $\dim E_{-1}(f)$ est pair donc $\dim E_{-1}(f) \in
     @[./figures/rotations-e3_optimized.svg]
   %
   (si on choisit $(-e_{1})$ pour déterminer l’orientation induite sur $\Vect\left\{e_{2}, e_{3}\right\}$, alors $(-e_{1}, e_{2}, e_{3})$ est indirecte et $\Bon' = (-e_{1}, e_{3}, e_{2})$ est orthonormale directe, et dans cette base, $\mat_{\Bon'}f = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(-\theta)}$, i.e. $f = e_{-e_{1}, -\theta}$)
-  $(SO(E_{3}), \theta)$ est le groupe des rotations de $E_{3}$.
+  $(SO(E_{3}), \circ)$ est le groupe des rotations de $E_{3}$.
 %
 
 %prop
@@ -90,9 +91,9 @@ $$
 %offprog
   Soit $f \in O^{-}(E_{3})$. Alors $\dim E_{-1} (f) \in \{1,3\}$.
   - si $\dim E_{-1}(f) = 3$, alors $f = -\id_{\R^{3}}$
-  - si $\dim E_{-1}(f) = 1$, alors il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ telle que $\mat_{\Bon}(f) = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)}$.  Alors
+  - si $\dim E_{-1}(f) = 1$, alors il existe une base orthonormale $\Bon = (e_{1}, e_{2}, e_{3})$ telle que $\mat_{\Bon}(f) = \arrmtx{c|c}{-1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)}$.  Alors
     $$
-      \mat_{\Bon}(f) = \arrmtx{c|c}{-1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}} \times \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} \times \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}}
+      \mat_{\Bon}(f) = \arrmtx{c|c}{-1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}} \times \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} = \arrmtx{c|c}{1&\emtx{0&0}\\\hline\emtx{0\\0} & R(\theta)} \times \arrmtx{c|c}{-1&\emtx{0&0}\\\hline\emtx{0\\0} & I_{2}}
     $$
     donc $f$ est la composée commutative de $r_{e_{1}, \theta}$ par la réflexion $\sigma_{\Vect\left\{e_{1}\right\}\ortho}$. C’est une _réflexion-rotation_.
 %

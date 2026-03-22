@@ -172,7 +172,7 @@ Soit $E$ un plan euclidien orienté.
 %
 
 %proof
-  Soit $f \in O^{-}(E_{2})$. Soit $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale de $E_{2}$. On a $\mat_{\mathscr{C}} f \in O^{-(2)}$ donc il existe $(a,b) \in \R^{2}$ avec $a^{2} + b^{2} = 1$ tels que $\mat_{\mathscr{C}} f = \mtx{a&b\\b&-a}$. On a donc $\mat_{\mathscr{C}}f \in \Sym_{2}(\R)$ or $\mathscr{C}$ est orthnormale donc $f \in \Sym(E_{2})$ donc
+  Soit $f \in O^{-}(E_{2})$. Soit $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale de $E_{2}$. On a $\mat_{\mathscr{C}} f \in O^{-}(2)$ donc il existe $(a,b) \in \R^{2}$ avec $a^{2} + b^{2} = 1$ tels que $\mat_{\mathscr{C}} f = \mtx{a&b\\b&-a}$. On a donc $\mat_{\mathscr{C}}f \in \Sym_{2}(\R)$ or $\mathscr{C}$ est orthnormale donc $f \in \Sym(E_{2})$ donc
   ~ $f^{*}=f$  ~ $f^{*}\circ f = \id_{E}$
   i.e.
   ~ $f^{*} = f$  ~ $f^{2} = \id_{E_{2}}$
@@ -185,7 +185,7 @@ Soit $E$ un plan euclidien orienté.
 %
 
 %rem
-  - Concidérons $\mat_{\mathscr{C}}f = \mtx{a&b\\b&-a}$ avec $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale. $D = E_{1}(f)$ a pour équation $ax + by = x$ dans $\mathscr{C}$.
+  - Considérons $\mat_{\mathscr{C}}f = \mtx{a&b\\b&-a}$ avec $\mathscr{C} = (e_{1}, e_{2})$ une base orthonormale. $D = E_{1}(f)$ a pour équation $ax + by = x$ dans $\mathscr{C}$.
   - Si $\mat_{\mathscr{C}} f = \mtx{\cos \theta & \sin \theta \\ \sin \theta & -\cos \theta} = S(\theta)$. C’est la réflexion d’axe $D$ qui a pour équation
     $$
       (1-\cos \theta)x - \sin \theta y = 0
@@ -237,7 +237,7 @@ Soit $E$ un plan euclidien orienté.
   - $R(\theta) \times R(\theta') = R(\theta + \theta')$ car $e^{i \theta} \times e^{i \theta'} = e^{i(\theta + \theta')}$.
   - $S(\theta' ) \times S(\theta) = \mtx{\cos \theta' & \sin \theta' \\ \sin \theta' & -\cos \theta'} \times \mtx{\cos \theta & \sin \theta \\ \sin \theta & -\cos \theta} = \mtx{\cos(\theta'-\theta) & -\sin(\theta' - \theta) \\ \sin(\theta' - \theta) & \cos(\theta' - \theta)} = R(\theta'-\theta)$
     %fig
-      @[./figures/composition-reflexion.svg]
+      @[./figures/composition-reflexion_optimized.svg]
     %
   - On a
     $$
@@ -299,7 +299,7 @@ Soit $E$ un plan euclidien orienté.
 %prop
   Soit $(u,v,w) \in (E_{2} \setminus \{0\})^{3}$ avec $E_{2}$ euclidien orienté.
   1. $(\ang{u,w}) \equiv (\ang{u,v}) + (\ang{v,w}) [2 \pi]$
-  2. $\scalar{u}{v} = \norm{u}\times \norm{v} \times \cos (\ang{u,v}\})$
+  2. $\scalar{u}{v} = \norm{u}\times \norm{v} \times \cos (\ang{u,v})$
   3. $[u,v] = \norm{u} \times \norm{v} \times \sin (\ang{u,v})$
 %
 
@@ -328,7 +328,7 @@ Soit $E$ un plan euclidien orienté.
 %
 
 %eg
-  Soit $(u,v) \in (te_{2} \setminus \{0\})^{2}$. Soit $r \in SO(te_{2})$. Soit $s \in O^{-}(E_{2})$.
+  Soit $(u,v) \in (E_{2} \setminus \{0\})^{2}$. Soit $r \in SO(E_{2})$. Soit $s \in O^{-}(E_{2})$.
   $$
     \scalar{r(u)}{r(v)} = \norm{r(u)}\times \norm{r(v)} \times \cos(\ang{r(u), r_{v}})
   $$

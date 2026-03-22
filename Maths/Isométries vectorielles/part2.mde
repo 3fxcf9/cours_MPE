@@ -1,10 +1,10 @@
 ## Réduction des isométries vectorielles
 
-Soit $E_{n} f E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
+Soit $E_{n} = E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
 
 %recall
   %prop
-    Si $f \in O(E_{n})$, alors $\sp f \subset {-1,1}$
+    Si $f \in O(E_{n})$, alors $\sp f \subset \{-1,1\}$
   %
 
   %proof
@@ -13,7 +13,7 @@ Soit $E_{n} f E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
 %
 
 %prop
-  Soit $f \in O(E_{n})$. SI $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors $F\ortho$ est stable par $f$ et
+  Soit $f \in O(E_{n})$. Si $F$ est un sous-espace vectoriel de $E$ stable par $f$, alors $F\ortho$ est stable par $f$ et
   ~ $f_{|F} \in O(F)$  ~ $f_{|F\ortho} \in O(F\ortho)$
 %
 
@@ -64,7 +64,7 @@ Soit $E_{n} f E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
 %
 
 %rem
-  Soit $f \in O(E)$. Il existe une base orthonormale $\Bon$ de $E$ telle que $\mat_{\Bon f} = \diag\big(I_{p}, -I_{q}, R(\theta_{1}), \ldots, R(\theta_{k})\big)$. ALors
+  Soit $f \in O(E)$. Il existe une base orthonormale $\Bon$ de $E$ telle que $\mat_{\Bon}f = \diag\big(I_{p}, -I_{q}, R(\theta_{1}), \ldots, R(\theta_{k})\big)$. Alors
   $$
     \chi_{f} = (X-1)^{p}(X+1)^{q} \prod_{i=1}^{k}\big(X^{2} - 2\cos \theta_{k} X + 1\big)
   $$
@@ -78,7 +78,7 @@ Soit $E_{n} f E$ un espace vectoriel euclidien de dimension $n \in \N^{*}$.
   %rem
     Soit $A \in SO(n)$. Il existe $(p,q,k) \in \N^{3}$ et $P \in O(n)$ tels que $A = P \diag \big(I_{p}, -I_{2q}, R(\theta_{1}), \ldots, R(\theta_{k})\big) P^{-1}$ avec $p + 2q + 2k = n$ et $(\theta_{1}, \ldots, \theta_{k}) \in (\R \setminus \pi\Z)^{k}$. Or $-I_{2q} = \diag \big(R(\pi), \ldots, R(\pi)\big)$ (q blocs) donc $A = P\diag \big(I_{p} , R(\alpha_{1}), \ldots, R(\alpha_{\ell})\big)P^{-1}$. Posons
     $$
-      f: \applic{|cc{0,1}}{SO(n)}{t}{P \arrmtx{c|c|c|c}{I_{p} &&& \\\hline & R(t \alpha_{1}) && \\\hline && \ddots & \\ &&& R(t \alpha_{\ell})} P^{-1}}
+      f: \applic{\cc{0,1}}{SO(n)}{t}{P \arrmtx{c|c|c|c}{I_{p} &&& \\\hline & R(t \alpha_{1}) && \\\hline && \ddots & \\ &&& R(t \alpha_{\ell})} P^{-1}}
     $$
     C’est une fonction continue vérifiant $f(0) = I_{n}$ et $f(1) = A$. Ainsi, $SO(n)$ est connexe par arcs.
     L’application $\det : \applic{O(n)}{\R}{M}{\det M}$ est continue et $\det  \big(O(n)\big) = \{-1,1\}$ n’est pas connexe par arcs, donc $O(n)$ n’est pas connexe par arcs.

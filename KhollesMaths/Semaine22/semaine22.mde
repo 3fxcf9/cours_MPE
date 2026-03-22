@@ -1,0 +1,126 @@
+# Semaine 22
+
+:::
+card:
+  date: 22/03/2026
+:::
+
+
+## Formule de Taylor à l’ordre 2
+
+%def
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$. On appelle _matrice hessienne_ de $f$ en $a$ la matrice
+  $$
+    H_{f}(a) = \mtx{\partial_{i}\partial_{j}f(a)}_{i \leq i,j\leq n}
+  $$
+  D’après le théorème de Schwarz, on a $H_{f}(a) \in \Sym_{n}(\R)$.
+%
+
+On a alors, en notant $H = \mtx{h_{1} \\ \vdots \\ h_{n}}$ et $H_{f}(a):\R^{n} \longrightarrow \R^{n}$ l’endomorphisme adjoint canoniquement associé à la matrice symétrique $H_{f}(a)$~:
+$$
+  \forall t \in \cc{0,1}, \varphi''(t) = H\transp H_{f}(a+th)H = \scalar{H_{f}(a+th)\mdot h}{h}
+$$
+Or $\varphi \in \Cont^{2}(\cc{0,1})$ d’où d’après la formule de Taylor avec reste intégral,
+$$
+  \varphi(a+h) = \varphi(a) + \dd f(a)\mdot h + \int_{0}^{1}(1-t)\varphi''(t)\dd t
+$$
+On a $\int_{0}^{1}(1-t)\dd t = \left[- \frac{(1-t)^{2}}{2}\right]_{0}^{1} = \frac{1}{2}$ et
+$$
+  f(a+h) = f(a) + \dd f(a)\mdot h + \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \underbrace{\int_{0}^{1}(1-t)\scalar{H_{f}(a+th)\mdot h}{h} - \scalar{H_{f}(a)\mdot h}{h} \dd t}_{\defeq \delta(h)}
+$$
+L’application $\applic{\Omega}{\L(\R^{n})}{x}{H_{f}(x)} = \applic{\Omega}{\M_{n}(\R)}{x}{H_{f}(x)} \circ \applic{\M_{n}(\R)}{\L(\R^{n})}{H_{f}(x)}{H_{f}(x)}$ est continue car $f$ est de classe $\Cont^{2}$ donc $x \longmapsto H_{f}(x)$ est continue en $a$.
+Soit $\varepsilon > 0$. Il existe $r_{0} > 0$ avec $r_{0} < r$ tel que $\forall x \in B'(a,r_{0}), \opnorm{H_{f}(x) - H_{f}(a)} < \varepsilon$ d’où
+$$
+  \abs{\delta(h)} \leq \int_{0}^{1}(1-t)\abs{\scalar{\big(H_{f}(a+th) - H_{f}(a)\big)\mdot h}{h}}\dd t \leq \int_{0}^{1}(1-t)\varepsilon \norm{h}^{2}\dd t = \frac{1}{2}\varepsilon \norm{h}^{2}
+$$
+
+%prop Formule de Taylor-Young à l’ordre 2
+  Si $f: \Omega \longrightarrow \R$ est de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$ et si $a \in \Omega$, alors il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et
+  $$
+    \forall h \in B(0, \delta), f(a+h) = f(a) + \underbrace{\dd f(a)\mdot h}_{\scalar{\nabla f(a)}{h}} + \frac{1}{2}\scalar{H_{f}(a) \mdot h}{h} + \norm{h}^{2}\varepsilon(h)
+  $$
+  avec $\varepsilon(h) \arrowlim{h\to 0_{\R^{n}}} 0_{\R}$.
+%
+
+## Condition nécessaire d’ordre 2 à l’existence d’un extremum local
+
+%prop Condition nécessaire d’ordre 2 à l’existence d’un extremum local
+  Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$.
+  - Si $f$ présente un minimum local en $a$, alors
+    ~ $\dd f(a) = 0_{\L(\R^{n},\R)}$
+    ~ $H_{f}(a) \in \Sym_{n}^{+}(\R)$
+  - Si $f$ présente un maximum local
+    ~ $\dd f(a) = 0_{\L(\R^{n},\R)}$
+    ~ $-H_{f}(a) \in \Sym_{n}^{+}(\R)$
+%
+
+%proof
+  - Supposons qu’il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et $\forall h \in B(0,\delta), f(a+h) - f(a) \geq 0$. Alors $\dd f(a) = 0$ et
+    $$
+      \forall h \in \B(a, \delta), \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2} \varepsilon(h) \geq 0
+    $$
+    avec $\varepsilon(u)\arrowlim{u\to 0_{\R^{n}}}0$, d’où
+    $$
+      \forall h \in B(0,\delta), \forall t \in \cc{0,1}, \frac{1}{2}\underbrace{\scalar{H_{f}(a)\mdot th}{th}}_{t^{2} \scalar{H_{f}(a)\mdot h}{h}}  + t^{2} \norm{h}^{2} \varepsilon(th) \geq 0
+    $$
+    d’où
+    $$
+      \forall h \in B(0,\delta), \forall t \in \oc{0,1}, \frac{1}{2}\scalar{H_{f}(a)\mdot h}{h} + \norm{h}^{2} \varepsilon(th) \geq 0
+    $$
+    On fait alors tendre $t$ vers $0^{+}$ et on obtient
+    $$
+      \forall h \in tb(0, \delta), \scalar{H_{f}(a) \mdot h}{h} \geq 0
+    $$
+    Soit $h \in \R^{n}$.
+    $$
+      \scalar{H_{f}(a)\mdot h}{h} = \frac{\big(\norm{h}+1\big)^{2}}{\delta^{2}} \scalar{H_{f}(a)\mdot \underbrace{\delta \frac{h}{\norm{h}+1}}_{\in B(0, \delta)}}{\delta \frac{h}{\norm{h}+1}}
+    $$
+    donc $H_{f}(a) \in \Sym^{+}(\R^{n})$ donc $H_{f}(a) \in \Sym_{n}^{+}(\R)$.
+  - Si $f$ présente un maximum local en $a$, alors $-f$ présente un minimum local en $a$ donc $\dd (-f)(a) = 0$ et $H_{-f}(a) \in \Sym_{n}^{+}(\R)$, i.e. $\dd f(a) = 0$ et $-H_{f}(a) \in \Sym_{n}^{+}(\R)$ (on écrit aussi $H_{f}(a) \in \Sym_{n}^{-}\R$).
+%
+
+## Existence d’un sous-espace stable
+
+%offprog
+  %prop
+    Soit $F$ un $\R$-espace vectoriel de dimension finie non nulle $n \in \N^{*}$. Soit $f \in \L(F)$. Il existe au moins une droite vectorielle stable par $f$ ou un plan vectoriel stable par $f$.
+  %
+
+  %proof
+    $\chi_{f} \in \R[X]$ et $\det \chi_{f} = n \in \N^{*}$.
+    - si $\sp f \ne\emptyset$, prenons $\lambda \in \sp f$. Soit $x \in E \setminus \{0\}$ avec $f(x) = \lambda x$. Alors, $D = \Vect\left\{(\{x\})\right\}$ est stable par $f$.
+    - sinon, $\chi_{f} = \prod_{k=1}^{d}(X^{2} + a_{k} X + b_{k})^{\alpha_{k}}$ avec $\forall k \in \icc{1,d}, a_{k}^{2} - 4b_{k} < 0$.
+      Si on suppose $\forall i \in \icc{1,k}, f^{2} + a_{k} f + b_{k} \id_{F} \in \GL(F)$. Alors, $\chi_{f}(f) = 0_{\L(F)} \in \GL(F)$ ce qui est faux. Il existe donc $k_{0} \in \icc{1,n}$ tel que $f^{2} + a_{k_{0}}f + b_{k_{0}} \id \notin \GL(F)$.
+      Le noyau de cet endomorphisme n’est donc pas nul; prenons $x \in \ker \big(f^{2} + a_{k_{0}} f + b_{k_{0}}\id\big) \setminus {0}$. Posons $P = \Vect\left\{x, f(x)\right\}$. $f(P) = \Vect\left\{f(x), -a_{k_{0}}f(x) - b_{k_{0}} x\right\} \subset P$ donc $P$ est stable par $f$. Comme $\sp f = \emptyset$, la famille $(x, f(x))$ est libre donc $P$ est un plan.
+  %
+%
+
+## Réduction des isométries
+
+%thm Réduction des isométries
+  Soit $E_{n}$ un espace vectoriel euclidien de dimension $n \in \N^{*}$. Soit $f \in \L(E_{n})$. $f$ est une isométrie vectorielle si et seulement si il existe une base orthonormale $\Bon$ de $E_{n}$ telle que la matrice de $f$ relativement à $\Bon$ soit diagonale par blocs de la forme
+  $$
+    \mat_{\Bon}(f) = \arrmtx{c|c|c|c|c}{I_{p} & &&&\\\hline &-I_{q} &&& \\\hline && R(\theta_{1}) && \\\hline &&& \ddots & \\\hline &&&& R(\theta_{k})}
+  $$
+  avec $(p,q,k) \in \N^{3}$ tels que $p + q + 2k = n$ et $(\theta_{1}, \ldots, \theta_{k}) \in (\R \setminus \pi\Z)^{k}$.
+%
+
+%proof
+  - Si $\mat_{\B}(f) = \Omega$ est de la forme ci-dessus, on a $\Omega\transp \Omega = I_{n}$. Comme $\Bon$ est orthonormale, on a $f \in O(E_{n})$.
+  - Notons $\Prop(n)$ l’énoncé du théorème (pour $n \in \N^{*}$).
+    - $O(E_{1}) = \{\id_{E_{1}}, -\id_{E_{1}}\}$ donc pour tout vecteur $e$ de $E_{1}$, on a $\mat_{(e)}f = \mtx{1}$ ou $\mtx{-1}$ donc $\Prop(1)$ est vraie.
+    - Soit $f \in O(E_{2})$.
+      - Si $f \in O^{-}(E_{2})$, alors il existe une base orthonormale $\Bon$ telle que $\mat_{\Bon}f = \mtx{1 & 0 \\ 0 & -1}$ qui est du type recherché.
+      - Si $f \in SO(E)$, alors pour toute base orthonormale $\Bon$, il existe $\theta \in \R$ tel que $\mat_{\Bon}f = R(\theta)$. Or $R(2k \pi) = I_{2}$ et $R \big((2k+1)\pi\big) = -I_{2}$ pour tout $k \in \Z$ donc $\mat_{\Bon}f$ est bien du type recherché.
+    - Supposons l’énnoncé vrai aux rangs $n$ et $n-1$ avec $n \geq 2$. Soit $f \in O(E_{n+1})$.
+      - Si $\sp f \ne \emptyset$, prenons $\lambda \in \sp f$ (on a $\lambda \in \{1,-1\}$). Soit $e$ un vecteur unitaire tel que $f(e) = \lambda e$ ($= e$ ou $-e$). $D = \Vect\left\{e\right\}$ est une droite stable par $f$ donc $D\ortho$ est stable par $f$ car $f$ est une isométrie et $f_{|D\ortho} \in O(D\ortho)$. De plus, $\dim D\ortho = n$; on peut donc appliquer $\Prop(n)$: il existe une base orthonormale $\Bon_{n}$ de $D^{-}$ telle que $\mat_{\B_{n}}(f_{|D\ortho})$ soit de la forme recherchée. En positionnant $e$ dans $\Bon$ convenablement, on obtient alors une base $\Bon = (e) \cup \B_{n}$ orthonorlame satisfaisant l’énoncé $\Prop(n+1)$.
+      - Si $\sp f = \emptyset$, notons $P$ un plan vectoriel stable par $f$. On a $f_{|P} \in O(P)$ et $\sp f_{|P} = \emptyset$. Il existe donc une base orthonormale $\Bon_{2} = (e_{1}, e_{2})$ de $P$ et $\theta \in \R \setminus \pi\Z$ tel que $\mat_{\Bon_{2}}f = R(\theta)$. Or $P \ortho$ est stable par $f$ et $\dim  P \ortho = (n+1)-2 = n-1$ et $\Prop(n-1)$ est vraie: il existe une base orthonorlame $\Bon_{n-1}$ de $P \ortho$ telle que $\mat_{\Bon_{n-1}}(f_{|P \ortho})$ soit de la forme recherchée. On construit alors une base orthnormale permettant de vérifier $\P(n)$ à partir de $\Bon_{2}$ et de $\Bon_{n-1}$.
+%
+
+## Connexité par arcs de l’ensemble des isométries directes
+
+Soit $A \in SO(n)$. Il existe $(p,q,k) \in \N^{3}$ et $P \in O(n)$ tels que $A = P \diag \big(I_{p}, -I_{2q}, R(\theta_{1}), \ldots, R(\theta_{k})\big) P^{-1}$ avec $p + 2q + 2k = n$ et $(\theta_{1}, \ldots, \theta_{k}) \in (\R \setminus \pi\Z)^{k}$. Or $-I_{2q} = \diag \big(R(\pi), \ldots, R(\pi)\big)$ (q blocs) donc $A = P\diag \big(I_{p} , R(\alpha_{1}), \ldots, R(\alpha_{\ell})\big)P^{-1}$. Posons
+$$
+  f: \applic{\cc{0,1}}{SO(n)}{t}{P \arrmtx{c|c|c|c}{I_{p} &&& \\\hline & R(t \alpha_{1}) && \\\hline && \ddots & \\ &&& R(t \alpha_{\ell})} P^{-1}}
+$$
+C’est une fonction continue vérifiant $f(0) = I_{n}$ et $f(1) = A$. Ainsi, $SO(n)$ est connexe par arcs.

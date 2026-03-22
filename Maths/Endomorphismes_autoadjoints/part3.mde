@@ -36,7 +36,7 @@ $$
 $$
 
 %prop Formule de Taylor-Young à l’ordre 2
-  Si $f: \Omega \longrightarrow \R$ si de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$ et si $a \in \Omega$, alors il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et
+  Si $f: \Omega \longrightarrow \R$ est de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$ et si $a \in \Omega$, alors il existe $\delta > 0$ tel que $B(a, \delta) \subset \Omega$ et
   $$
     \forall h \in B(0, \delta), f(a+h) = f(a) + \underbrace{\dd f(a)\mdot h}_{\scalar{\nabla f(a)}{h}} + \frac{1}{2}\scalar{H_{f}(a) \mdot h}{h} + \norm{h}^{2}\varepsilon(h)
   $$
