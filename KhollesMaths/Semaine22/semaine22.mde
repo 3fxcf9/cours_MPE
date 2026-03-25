@@ -8,6 +8,15 @@ card:
 
 ## Formule de Taylor à l’ordre 2
 
+Plaçons-nous dans $\R^{n}$, euclidien canonique (les dérivées partielles sont calculées par rapport à la base canonique). Soit $f: \Omega \longrightarrow \R$ une fonction de classe $\Cont^{2}$ sur un ouvert non vide $\Omega$ de $\R^{n}$. Soit $a = (a_{1}, \ldots, a_{n}) \in \Omega$. Il existe $r > 0$ tel que $B'(a,2r)\subset \Omega$. Soit $h = (h_{1}, \ldots, h_{n}) \in B'(0,r)$. $\varphi: t \longmapsto  f(a+th)$ est de classe $\Cont^{2}$ sur $\oo{-2,2}$ comme composée de l’application $t \longmapsto a+th$ de classe $\Cont^{2}$ et $f$. On a, pour tout $t \in \cc{0,1}, \varphi(t) = f(a+th) = f(a_{1} + th_{1}, \ldots, a_{n} + th_{n})$ d’où
+$$
+  \forall t \in \cc{0,1}, \varphi'(t) = \dd f(a+th)\mdot h = \scalar{\nabla f(a+th)}{h} = \sum_{i=1}^{n}h_{i}\partial_{i} f(a+th)
+$$
+et
+$$
+  \forall t \in \cc{0,1}, \varphi''(t) = \sum_{i=1}^{n}h_{i} \left(\sum_{j=1}^{n}h_{j}\partial_{j}\partial_{i}f(a+th)\right) = \sum_{(i,j) \in \icc{1,n}^{2}}h_{i}h_{j}\partial_{i}\partial_{j}f(a+th)
+$$
+
 %def
   Soit $f: \Omega \longrightarrow \R$ de classe $\Cont^{2}$ sur un ouvert $\Omega$ de $\R^{n}$. Soit $a \in \Omega$. On appelle _matrice hessienne_ de $f$ en $a$ la matrice
   $$
