@@ -377,9 +377,11 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
       Ainsi, $\Z/n\Z$ n’est pas intègre.
 %
 
-%thm
+<elem_inversibles_generateurs_znz>%thm
   Soit $n \in \N$. Il y a équivalence pour $k \in \Z$ entre
-  1. $k \land  n = 1$  2. $(\Z/n\Z, +) = \grp{\bar{k}}$  3. $\bar{k}  \in (\Z/n\Z)^{\times}$
+  1. $k \land  n = 1$
+  2. $(\Z/n\Z, +) = \grp{\bar{k}}$
+  3. $\bar{k}  \in (\Z/n\Z)^{\times}$
 %
 
 %proof
@@ -430,7 +432,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   C’est donc aussi un groupe cyclique.
 %
 
-%thm Théorème d’Euler
+<thm_euler>%thm Théorème d’Euler
   Soit $n \in \N^{*}$. Soit $a \in \Z$.
   $$
     \bigl(a \land n = 1\bigr) \implies \bigl(a^{\varphi(n)} \cgm 1n\bigr)
@@ -456,7 +458,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   $$
 %
 
-%thm Petit théorème de Fermat
+<petit_thm_fermat>%thm Petit théorème de Fermat
   Soit $p$ premier. Soit $a \in \Z$.
   1. $p \nmid a \implies a^{p-1} \cgm 1p$  2. $\boxed{a^{p} \cgm ap}$
 %
@@ -633,7 +635,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
   $$
     (a_{1}, \ldots, a_{n}) \times (b_{1}, \ldots, b_{n}) = (a_{1}\times_{1}b_{1}, \ldots, a_{n}\times_{n}b_{n})
   $$
-  Ces lois munissent $(A_{1} \times  \cdots \times A_{n}, +, \times )$ d’une structure d’anneau unitaire. On appelle cet anneau *anneau produit*. Son élément unité est $(1_{A_{1}}, \ldots, 1_{A_{n}})$.
+  Ces lois munissent $(A_{1} \times  \cdots \times A_{n}, +, \times )$ d’une structure d’anneau unitaire. On appelle cet anneau _anneau produit_. Son élément unité est $(1_{A_{1}}, \ldots, 1_{A_{n}})$.
 %
 
 %lemma
@@ -683,7 +685,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
 ## Morphismes d’anneaux unitaires
 
 %def
-  Soient $(A,+, \times )$ et $(A', +', \times')$ deux anneaux unitaires. Une application $f: A \longrightarrow  A'$ est un *morphisme d’anneaux* si
+  Soient $(A,+, \times )$ et $(A', +', \times')$ deux anneaux unitaires. Une application $f: A \longrightarrow  A'$ est un _morphisme d’anneaux_ si
   1. $f(1_{A}) = 1_{A'}$  2. $\forall (a,b) \in A^{2}, \begin{cases}f(a+b) = f(a) +' f(b)\\f(a \times b) = f(a) \times ' f(b)\end{cases}$
 
   Soient $(\K, +, \times )$ et $(\K', +', \times ')$ deux corps. Une application $g: \K \longrightarrow \K'$ est appelé morphisme de corps si $g$ est un morphisme d’anneaux unitaires.
@@ -760,7 +762,7 @@ Bilan: dans $(\Z/n\Z, \bar{+}, \bar{ \times })$ et $(k,l) \in \Z^{2}$, on a
       $$
         \abs{\Z/n_{1} \cdots n_{r}\Z} = n_{1} \times  \cdots \times  n_{r} = \abs{\Z/n_{1} \Z \times  \cdots \times  \Z/n_{r} \Z}
       $$
-      donc $f$ est un isomorphisme d’anneaux unitaires (*« isomorphisme naturel »*).
+      donc $f$ est un isomorphisme d’anneaux unitaires (_« isomorphisme naturel »_).
 
   %offprog
     - Supposons que $(\Z/n_{1}\Z \times  \cdots \times \Z/n_{r} \Z, +, \times )$ soit isomorphe à $(\Z/n_{1} \cdots n_{r} \Z, \bar{+}, \bar{\times })$. Alors $(\Z/n_{1} \Z \times  \cdots \times \Z/n_{r} \Z, +)$ est un groupe cyclique, donc pour $1 \leq  i < j \leq  n$, le sous-groupe
@@ -836,13 +838,13 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
   $$
     f(x \times a) = f(x) \times' f(a)=0_{A'} \times  f(a) = 0_{A'}
   $$
-  donc $(a \times x, x \times a) \in \ker f$; on dit que $\ker f$ est un *idéal bilatère* de l’anneau $(A,+, \times )$.
+  donc $(a \times x, x \times a) \in \ker f$; on dit que $\ker f$ est un _idéal bilatère_ de l’anneau $(A,+, \times )$.
 %
 
-## Idéaux d’un anneau commutatif unitaire
+<idéaux>## Idéaux d’un anneau commutatif unitaire
 
 %def
-  Soit $(A,+, \times )$ un anneau commutatif unitaire. Une partie $I$ de $A$ est appelée *idéal* de $A$ si
+  Soit $(A,+, \times )$ un anneau commutatif unitaire. Une partie $I$ de $A$ est appelée _idéal_ de $A$ si
   1. $(I,+) < (A,+)$  2. $\forall a \in A, \forall x \in I, a \times x \;(= x \times  a) \in I$((propriété d’absorption))
 %
 
@@ -902,12 +904,12 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 %
 
 %eg
-  1. Tout anneau commutatif unitaire $(A, +, \times )$ possède au moins les idéaux $\{0_{A}\}$ et $A$ appelés *idéaux triviaux*.
+  1. Tout anneau commutatif unitaire $(A, +, \times )$ possède au moins les idéaux $\{0_{A}\}$ et $A$ appelés _idéaux triviaux_.
   2. Il y a également tous les idéaux du type
      $$
        xA = \{x \times a \mid a \in A\}
      $$
-     pour $x \in A$. On appelle ceux-ci *idéaux principaux*.
+     pour $x \in A$. On appelle ceux-ci _idéaux principaux_.
      %rem
         $0_{A}\cdot A = \{0_{A}\}$ et $1_{A}\cdot A = A$.
      %
@@ -950,7 +952,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
      Donc $\varphi$ est un morphisme d’anneaux commutatifs unitaires et $S_{0} = \ker \varphi$.
 %
 
-%prop
+<cas_z_polynommes_idéaux>%prop
   1. Les idéaux de l’anneau commutatif unitaire $(\Z,+, \times )$ sont les idéaux principaux $n\Z$ avec $n \in \N$.
   2. Les idéaux de l’anneau commutatif unitaire $(\K[X], +, \times )$ où $\K$ est un corps sont les idéaux principaux
      $$
@@ -961,7 +963,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 
 %offprog
   %def
-    Un anneau commutatif unitaire intègre ayant pour seuls idéaux les idéaux principaux est appelé *anneau principal*.
+    Un anneau commutatif unitaire intègre ayant pour seuls idéaux les idéaux principaux est appelé _anneau principal_.
   %
 %
 
@@ -1252,7 +1254,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
   $$
     P_{1} \land  \cdots \land  P_{n} = 1 \iff  \exists (Q_{1}, \ldots, Q_{n}) \in (\K[X])^{2}: Q_{1}P_{1} + \cdots + Q_{n}P_{n} = 1
   $$
-  Des polynômes vérifiant cette relation sont dits *premiers dans leur ensemble*.
+  Des polynômes vérifiant cette relation sont dits _premiers dans leur ensemble_.
 %
 
 %proof
@@ -1276,7 +1278,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 
 %offprog
   %def
-    Soit $(A,+, \times )$ un anneau commutatif unitaire intègre. Un élément $p$ de $A$ est dit *irréductible* si
+    Soit $(A,+, \times )$ un anneau commutatif unitaire intègre. Un élément $p$ de $A$ est dit _irréductible_ si
     1. $p \notin A^{\times}$  2. $\begin{cases}p = xy\\(x,y) \in A^{2}\end{cases} \implies x \in A^{\times} \text{ ou } y \in A^{\times}$
     Autrement dit, $p$ est un irréductible et les seuls diviseurs de $p$ sont ses associés et les unités.
   %
@@ -1295,7 +1297,7 @@ Il vérifie $x\cgm{a_{i} \times 1 + 0}{n_{i}}$ donc $x$ est solution de $(\star)
 
 %property Arithmétique dans $\K[X]$
   1. $\begin{cases}A \land  C &=1\\B \land  C &= 1\end{cases}\implies (AB) \land  C = 1$
-  2. (*Lemme de Gauss*) $\begin{cases}A\mid BC\\A \land  B = 1\end{cases} \implies  A\mid C$
+  2. (_Lemme de Gauss_) $\begin{cases}A\mid BC\\A \land  B = 1\end{cases} \implies  A\mid C$
   3. Pour $R$ irréductible, on a
      $$
        \forall P \in \K[X], R \land  P = 1 \text{ ou bien } R\mid P

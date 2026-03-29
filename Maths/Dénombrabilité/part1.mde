@@ -8,8 +8,8 @@ card:
 ## Ensembles dénombrables
 
 %def
-  1. Deux ensembles $E$ et $F$ sont dits *équipotents* si il existe une bijection de $E$ dans $F$. On note $E \approx F$.
-  2. Un ensemble $E$ est dit *fini* s’il est vide ou s’il existe $n \in \N^{*}$ tel que $E\approx \icc{1,n}$. On note $\#E = n$.
+  1. Deux ensembles $E$ et $F$ sont dits _équipotents_ si il existe une bijection de $E$ dans $F$. On note $E \approx F$.
+  2. Un ensemble $E$ est dit _fini_ s’il est vide ou s’il existe $n \in \N^{*}$ tel que $E\approx \icc{1,n}$. On note $\#E = n$.
   3. Un ensemble $E$ est dit infini si il n’est pas fini.
 %
 
@@ -39,8 +39,8 @@ card:
 %
 
 %def
-  1. Un ensemble est dit *dénombrable* si il est équipotent à $\N$.
-  2. Un ensemble est dit *au plus dénombrable* si il est fini ou dénombrable.
+  1. Un ensemble est dit _dénombrable_ si il est équipotent à $\N$.
+  2. Un ensemble est dit _au plus dénombrable_ si il est fini ou dénombrable.
 %
 
 %eg
@@ -49,7 +49,7 @@ card:
        \applic{\N}{a\N}{p}{ap}
      $$
      est une bijection.
-  2. Si $E$ est un ensemble dénombrable et si $\applic{\N}{E}{n}{x_{n}}$ est une bijection, alors cette bijection est appelée *énumération* de $E$ et $(x_{n})_{n \in \N}$ est *la* suite injective d’éléments de $E$.
+  2. Si $E$ est un ensemble dénombrable et si $\applic{\N}{E}{n}{x_{n}}$ est une bijection, alors cette bijection est appelée _énumération_ de $E$ et $(x_{n})_{n \in \N}$ est _la_ suite injective d’éléments de $E$.
 %
 
 %prop
@@ -71,7 +71,7 @@ card:
          $$
            \gamma(q) = \# (A \cap  \icc{0,q}) = \#(A \cap  \icc{0,p}) \uplus \{q\} = \gamma(p) + 1 = n+1
          $$
-         donc $n+1 \in \gamma(A)$. Par le *principe de récurrence*, on a $\gamma(A) = \N^{*}$, donc $\gamma$ est surjective.
+         donc $n+1 \in \gamma(A)$. Par le _principe de récurrence_, on a $\gamma(A) = \N^{*}$, donc $\gamma$ est surjective.
        - Soient $p < q$ deux éléments de $A$.
          $$
            A \cap  \icc{0,q} \supset (A \cap  \icc{0,p}) \uplus\{q\}
@@ -85,7 +85,7 @@ card:
      $f(F)$ est fini ou dénombrable.
 %
 
-## Exemples usuels
+<exemples_usuels>## Exemples usuels
 
 %prop
   $E$ et $F$ désignent des ensembles.
@@ -297,7 +297,7 @@ card:
   %
 
   %rem
-    1. Il existe toujours une injection de $E$ dans $\Part (E)$(($\applic{E}{\Part(E)}{e}{\{e\}}$)) donc d’après le *théorème de Cantor-Bernstein*, il n’existe pas d’injection de $\Part (E)$ dans $E$.
+    1. Il existe toujours une injection de $E$ dans $\Part (E)$(($\applic{E}{\Part(E)}{e}{\{e\}}$)) donc d’après le _théorème de Cantor-Bernstein_, il n’existe pas d’injection de $\Part (E)$ dans $E$.
     2. $\N \not\approx \Part(\N)$ donc $\Part(\N)$ est un ensemble infini non dénombrable ($\Part(\N)$ contient tous les singletons $\{n\}$ avec $n \in \N$).
   %
 %
@@ -371,6 +371,6 @@ card:
 
 %eg
   1. $\R \setminus \Q$ est infini non dénombrable. En effet, $\Q$ est dénombrable et $\Q \cup (\R \setminus \Q)$ n’est pas dénombrable.
-  2. $\mathbf{A}$ est dénombrable. Comme $\R$ ne l’est pas, $\mathbf{T} = \R \setminus \mathbf{A}$ est un ensemble non dénombrable appelé *ensemble des nombres transcendants*.
+  2. $\mathbf{A}$ est dénombrable. Comme $\R$ ne l’est pas, $\mathbf{T} = \R \setminus \mathbf{A}$ est un ensemble non dénombrable appelé _ensemble des nombres transcendants_.
      ~ $\pi \in \mathbf{T}$  ~ $e \in \mathbf{T}$  ~ $\{\pi+e , \pi \times e\} \cap \mathbf{T} \ne\emptyset$  ~ $e^{\pi} \in \mathbf{T}$  ~ $2^{\sqrt{2}} \in \mathbf{T}$  ~ $\ln 2 \in \mathbf{T}$  ~ $0,12345678910111213… \in \mathbf{T}$((nombre de Malher))
 %

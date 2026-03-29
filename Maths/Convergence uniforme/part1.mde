@@ -541,7 +541,7 @@ Soit $X$ un ensemble non vide et $(E, \norm{\cdot})$ un $\K$-espace vectoriel no
 
 %eg
   Pour $n \in \N^{*}$, on pose $g_{n}: \applic{\R}{\R}{x}{\frac{(-1)^{n+1}}{n^{x}}}$.
-  - *Convergence simple de $\sum_{n \geq 1}g_{n}$*. Soit $x \in \R$.
+  - _Convergence simple de $\sum_{n \geq 1}g_{n}$_. Soit $x \in \R$.
     $$
       \abs{g_{n}(x)} = \frac{1}{n^{x}} \arrowlim{n\to+\infty}0 \iff x > 0
     $$
@@ -549,7 +549,7 @@ Soit $X$ un ensemble non vide et $(E, \norm{\cdot})$ un $\K$-espace vectoriel no
     $$
       \eta: \applic{\oo{0,+\infty}}{\R}{x}{\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^{x}}}
     $$
-  - *Convergence uniforme de $\sum_{n \geq 1}g_{n}$*. $\norm{g_{n}}_{\infty, \oo{0,+\infty}} = 1$ donc $(g_{n})$ ne converge pas uniformément vers la fonction nulle sur $\oo{0,+\infty}$, donc $\sum_{n \geq 1}g_{n}$ ne converge pas uniformément sur $\oo{0,+/nff}$.
+  - _Convergence uniforme de $\sum_{n \geq 1}g_{n}$_. $\norm{g_{n}}_{\infty, \oo{0,+\infty}} = 1$ donc $(g_{n})$ ne converge pas uniformément vers la fonction nulle sur $\oo{0,+\infty}$, donc $\sum_{n \geq 1}g_{n}$ ne converge pas uniformément sur $\oo{0,+/nff}$.
     - Soit $a > 0$.
       $$
         \forall x \in \co{a,+\infty}, \forall n \in \N, \abs{R_{n}(x)} \leq \frac{1}{(n+1)^{x}} \leq \frac{1}{(n+1)^{a}}

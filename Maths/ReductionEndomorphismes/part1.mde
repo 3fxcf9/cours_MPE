@@ -26,7 +26,7 @@ $$
   E = \bigoplus_{i=1}^{r}\ker  \big((f-\lambda_{i} \id_{E})^{m(\lambda_{i})}\big)
 $$
 
-%defprop
+<sev_caractéristique>%defprop
   Soit $f \in \L(E)$ avec $\chi_{f}$ scindé dans $\K[X]$. Soit $\lambda$ une valeur propre de $f$ de multiplicité notée $m(\lambda)$.
   $$
     F_{\lambda}(f) = \ker  \big((f-\lambda \id_{E})^{m(\lambda)}\big)
@@ -122,7 +122,7 @@ $$
   Mieux: pour $\lambda \in \sp f$, $\Bigl(\big((f-\lambda \id_{E})^{k}\big)\Bigr)_{0 \leq  k \leq  n(\lambda)}$ est strictement croissante((si $1 \leq  k < n(\lambda)$, alors $Q = (X-\lambda)^{k}\prod_{\mu \in \sp(f) \setminus \{\lambda\}}(X-\mu)^{n(\mu)}$ n’est pas annulateur de $f$, donc $E\ne \ker  \big((f-\lambda \id_{E})^{k}\big)\oplus(\bigoplus_{\mu \in \sp(A)\setminus \{\lambda\}}\ker (f-\mu \id_{E}) )$ donc $\ker (f-\lambda \id_{E})^{k}\ne \ker (f-\lambda \id_{E})^{k+1}$ (sinon $\ker (f-\lambda \id_{E})^{k} = \ker (f-\lambda \id_{E})^{n(d)}$) et il y aurait égalité avec $E$ pour la somme directe.)) et $\big(\ker (f-\lambda \id_{E})\big)_{k \geq  n(\lambda)}$ est constante.
 %
 
-%thm Théorème spectral caractéristique
+<thm_spectral_caractéristique>%thm Théorème spectral caractéristique
   Soit $A \in \M_{n}(\K)$ telle que $\chi_{A}$ soit scindé dans $\K[X]$. Notons $\lambda_{1}, \ldots, \lambda_{r}$ les valeurs propres distinctes de $A$ de multiplicités respectives $m_{1}, \ldots, m_{r}$ ($r \in \N^{*}$). Alors $A$ est semblable à une matrice diagonale par blocs du type
   $$
     \arrmtx{c|c|c}{T_{1}&&0\\\hline & \ddots&\\\hline 0&&T_{r}}
@@ -226,7 +226,7 @@ $$
      qui est triangulaire inférieure.
 %
 
-%prop
+<carac_trigonalisabilité>%prop
   Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N$. Il y a équivalence entre
   1. $\chi_{f}$ est scindé dans $\K[X]$
   2. $f$ est trigonalisable
@@ -500,14 +500,14 @@ $$
        $$
 %
 
-%prop Caractérisation de la diagonalisabilité
+<carac_diagonalisabilité>%prop Caractérisation de la diagonalisabilité
   Soit $f \in \L(E)$ avec $\dim_{\K}E = n \in \N^{*}$. Il y a équivalence entre
   1. $f$ est diagonalisable
   2. $\chi_{f}$ est scindé dans $\K[X]$ et pour tout $\lambda \in \sp f$, $\dim  E_{\lambda}(f) = m(\lambda)$, i.e.
      $$
        \forall \lambda \in \sp f, E_{\lambda}(f) = F_{\lambda}(f)
      $$
-  3. $\pi_{f}$ est scindé à racines simples dans $\K[X]$ (on dit que $\pi_{f}$ est *simplement scindé*)
+  3. $\pi_{f}$ est scindé à racines simples dans $\K[X]$ (on dit que $\pi_{f}$ est _simplement scindé_)
   4. Il existe un polynôme annulateur simplement scindé dans $\K[X]$
 %
 
@@ -580,7 +580,7 @@ $$
 
      ++Si $a=1$, trouver $\R \in \M_{3}(\R)$ avec $\R^{2} = A$ où $A = \mtx{2&0&0\\-1&1&0\\0&0&2} = PDP^{-1}$++
 
-     - *Analyse :* Soit $R \in \M_{3}(\R)$ avec $\R^{2} = A$. $R \times A = A \times R = R^{3}$ donc $[R,A] = 0_{3}$, d’où $E_{1}(A)$ et $E_{2}(A)$ sont stables par $R$. Il existe donc $\R' \in \M_{2}(\R)$ et $\alpha \in \R$ tels que
+     - _Analyse :_ Soit $R \in \M_{3}(\R)$ avec $\R^{2} = A$. $R \times A = A \times R = R^{3}$ donc $[R,A] = 0_{3}$, d’où $E_{1}(A)$ et $E_{2}(A)$ sont stables par $R$. Il existe donc $\R' \in \M_{2}(\R)$ et $\alpha \in \R$ tels que
        $$
          R = P \arrmtx{c|c}{R'&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&\alpha}P^{-1}
        $$
@@ -591,7 +591,7 @@ $$
          $$
            R' = Q \mtx{\sqrt{2}&0\\0&-\sqrt{2}} Q^{-1}
          $$
-     - *Synthèse :*
+     - _Synthèse :_
        $$
          \begin{align*}
            R^{2} = A &\iff P \arrmtx{c|c}{R'^{2}&\arr{c}{0&0}\\\hline\arr{cc}{0\\0}&\alpha^{2}}P^{-1} = PDP^{-1}\\
@@ -680,11 +680,11 @@ $$
     Soit $(A,B) \in \big(\M_{n}(\K)\big)^{2}$.
     1. Si $A$ et $B$ sont deux matrices **trigonalisables qui commutent**, alors il existe une matrice inversible $P$ telle que $P^{-1} AP$ et $P^{-1} BP$ soient triangulaires supérieures.
 
-       On dit que $A$ et $B$ sont *cotriangularisables*.
+       On dit que $A$ et $B$ sont _cotriangularisables_.
 
     2. Si $A$ et $B$ sont deux matrices **diagonalisables qui commutent**, alors il existe une matrice inversible $P$ telle que $P^{-1} AP$ et $P^{-1} BP$ soient diagonales.
 
-       On dit que $A$ et $B$ sont *codiagonalisables*.
+       On dit que $A$ et $B$ sont _codiagonalisables_.
   %
 
   %proof
@@ -741,7 +741,7 @@ $$
     donc $N_{1} N_{2} = 0_{2}$
   %
 
-  %thm Décomposition de Dunford
+  <décomp_dunford>%thm Décomposition de Dunford
     Soit $A \in \M_{n}(\K)$ avec $\chi_{A}$ scindé dans $\K[X]$. Il existe un unique couple $(D, N)$ de $\M_{n}(\K)^{2}$ vérifiant
     1. $A = D+N$  2. $D$ est diagonalisable  3. $N$ nilpotente  4. $DN = ND$
   %

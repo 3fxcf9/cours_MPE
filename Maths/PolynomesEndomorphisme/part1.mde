@@ -304,7 +304,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
     donc $P(f)_{|F} = P(f_{|F}) \in \L(F)$.
 %
 
-%prop
+<stab_commute_noyau_image>%prop
   Soit $(f,g) \in \L(E)^{2}$ tels que $f\circ g = g \circ f$, i.e. $f\circ g - g\circ f = [f,g] = 0_{\L(E)}$. Alors $\ker g$ et $\img g$ sont stables par $f$.
 %
 
@@ -364,7 +364,7 @@ Alors $\img \theta_{f}$ est une sous-algèbre commutative de $\L(E)$ notée $\K[
   Ainsi, $M(f) = 0_{\L(E)}$, d’où $\pi_{f} \mid M$.
 %
 
-## Lemme de décomposition des noyaux
+<decomp_noyaux>## Lemme de décomposition des noyaux
 
 %lemma
   Soit $n \in \N$ avc $n \geq 2$. Soient $P_{1}, \ldots, P_{n}$ des éléments de $\K[X]$ **premiers entre eux deux à deux**. Posons $P = P_{1} \times \cdots \times P_{n}$. Si $f \in \L(E)$, alors
@@ -882,7 +882,7 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
        Si $\lambda \in \sp f$, alors $E_{\lambda}$ est stable par $f$.
      %
      En effet, $E_{\lambda}(f) = \ker (f-\lambda \id_{E})$ et $[f- \lambda \id_{E}, f] = 0_{\L(E)}$
-  4. %callout
+  <espaces_propres_stables>4. %callout
        Si $(f,g) \in \L(E)^{2}$ avec $[f,g] = 0_{\L_{E}}$, alors pour tout $\lambda \in \sp g$, $E_{\lambda}(g)$ est stable par $f$.
      %
      En effet, $E_{\lambda}(g) = \ker (g - \lambda \id_{E})$ et $[g- \lambda \id_{E}, f] = 0_{\L(E)}$
@@ -975,25 +975,24 @@ donc $\img \varphi_{A} = \{P(A) \mid P \in \K[X]\}$ est l’idéal des polynôme
   2. Si $p:E \longrightarrow E$ est un projecteur, i.e. $p \in \L(E)$ et $p^{2} = p$, alors $X^{2} - X = X(X-1)$ est annulateur de $p$, donc $\sp p \subset \{0,1\}$(($p = \id_{E} \implies  \sp p = \{1\}$ et $p = 0_{\L(E)} \implies  \sp p = \{0\}$)). $\pi_{f} \in \{X,X-1, X^{2}-X\}$. $\sp p = \{0\} \iff  p = 0_{\L(E)}$, $\sp p = {1} \iff  p = \id$ et $p \notin \{0,\id \} \iff  \sp p = \{0,1\}$.
 %
 
-%cor
-  Si $E$ est un $\C$-espace vectoriel de **dimension finie** non nulle et si $f \in \L_{\C}(E)$, alors
-  1. $\sp f \ne \emptyset$  2. $f \text{ nilpotent} \iff  \sp f = \{0\}$
+<carac_nilpotence_spectre>%cor
+  Si $E$ est un $\C$-espace vectoriel de **dimension finie** non nulle et si $f \in \L_{\C}(E)$, alors $\sp f \ne \emptyset$ et
+  $$
+    f \text{ nilpotent} \iff  \sp f = \{0\}
+  $$
   %offprog
     Ce résultat est vrai dans un corps algébriquement clos, peu importe la dimension tant que $f$ possède un polynôme minimal.
   %
 %
 
 %proof
-  1. Comme $\dim_{\C} E < +\infty$, $\pi_{f}$ existe et $\pi_{f} \in \C[X]$ avec $\deg  \pi_{f} \geq 1$, donc $\pi_{f}$ possède au moins une racine dans $\C$, d’où
-     $$
-       \sp f = Z_{\C}(\pi_{f}) \ne \emptyset
-     $$
-  2. $$
-       \begin{align*}
-         f \text{ nilpotent} &\iff  \exists k \in \N^{*}: \pi_{f} = X^{k}\\
-         &\iff  Z_\C(\pi_{f}) = \{0\} \\&\iff  \sp f = \{0\}
-       \end{align*}
-     $$
+  Comme $\dim_{\C} E < +\infty$, $\pi_{f}$ existe et $\pi_{f} \in \C[X]$ avec $\deg  \pi_{f} \geq 1$, donc $\pi_{f}$ possède au moins une racine dans $\C$, d’où $\sp f = Z_{\C}(\pi_{f}) \ne \emptyset$. Alors,
+  $$
+    \begin{align*}
+      f \text{ nilpotent} &\iff  \exists k \in \N^{*}: \pi_{f} = X^{k}\\
+      &\iff  Z_\C(\pi_{f}) = \{0\} \\&\iff  \sp f = \{0\}
+    \end{align*}
+  $$
 %
 
 %eg
@@ -1240,7 +1239,7 @@ $$
                              -a_{n1} & \cdots & -a_{n,n-1} & X-a_{n,n}}
   $$
   On pose $\chi_{A}(X) = \det (X \cdot I_{n}-A)$.
-  1. On a alors $\chi_{A} \in \K[X]$ et $\chi_{A}$ est unitaire de degré $n$. On nomme $\chi_{A}$ le *polynôme caractéristique de $A$*.
+  1. On a alors $\chi_{A} \in \K[X]$ et $\chi_{A}$ est unitaire de degré $n$. On nomme $\chi_{A}$ le _polynôme caractéristique de $A$_.
      - Le coefficient de $X^{n-1}$ est $-\tr  A$.
      - Le coefficient constant est $(-1)^{n} \det A$
 
@@ -1564,7 +1563,7 @@ $$
 
 %offprog
   %defprop
-    Soit $(a_{0}, \ldots, a_{n-1})\in \K^{n}$. Posons $P = a_{0} + a_{1}T + \cdots + a_{n-1}T^{n-1} + T^{n}$. La *matrice compagnon* associée à $P$ est
+    Soit $(a_{0}, \ldots, a_{n-1})\in \K^{n}$. Posons $P = a_{0} + a_{1}T + \cdots + a_{n-1}T^{n-1} + T^{n}$. La _matrice compagnon_ associée à $P$ est
     $$
       C(P) = \arrmtx{c|c}{\arr{c}{\arr{ccc}{0 & \cdots & 0}\\\hline \\ I_{n-1} \\\\} & \arr{c}{-a_{0} \\ -a_{1} \\ \vdots \\ -a_{a-1}}}_{(n)} \in \M_{n}(\K)
     $$

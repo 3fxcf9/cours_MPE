@@ -18,7 +18,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %def Partie fermée
-  Une partie $F$ d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$ est dite *fermée dans $(E, \norm{\cdot})$* si toute suite converegnte d’éléments de $F$ a sa limite dans $F$.
+  Une partie $F$ d’un $\K$-espace vectoriel normé $(E,\norm{\cdot})$ est dite _fermée dans $(E, \norm{\cdot})$_ si toute suite converegnte d’éléments de $F$ a sa limite dans $F$.
 %
 
 %rem
@@ -80,13 +80,13 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       \forall n \in \N, F_{n+1} = f(F_{n}) \cup g(F_{n})
     $$
-    $F_{n}$ est la réunion de $2^{n}$ intervalles fermés; c’est donc une partie fermée. $K = \bigcap_{n \in \N}F_{n}$ est une partie fermée; on l’appelle l’*ensemble triadique de Cantor*.
+    $F_{n}$ est la réunion de $2^{n}$ intervalles fermés; c’est donc une partie fermée. $K = \bigcap_{n \in \N}F_{n}$ est une partie fermée; on l’appelle l’_ensemble triadique de Cantor_.
     %fig Poussière de Cantor
       @[./figures/poussière-cantor.svg]
     %
   - Si $A_{1}, \ldots, A_{p}$ sont des parties respectives non vides de $E_{1}, \ldots, E_{p}$, alors $A_{1} \times  \cdots \times A_{p}$ est une partie fermée de $(E_{1}, \ldots, E_{p}, N_{\infty})$ si et seulement si pour tout $i \in \icc{1,p}$, $A_{i}$ est fermée dans $(E_{i}, \nu_{i})$.
     %proof
-      - *sens direct* Supposons $A_{1} \times \cdots \times A_{p}$ fermée. Soit $i \in \icc{1,p}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A_{i}$ avec $x_{n} \xrightarrow[n\to+\infty]{\nu_{i}}\ell \in E_{i}$. Soit $(a_{1}, \ldots, a_{p}) \in A_{1} \times  \cdots \times A_{p}\ne\emptyset$.
+      - _sens direct_ Supposons $A_{1} \times \cdots \times A_{p}$ fermée. Soit $i \in \icc{1,p}$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A_{i}$ avec $x_{n} \xrightarrow[n\to+\infty]{\nu_{i}}\ell \in E_{i}$. Soit $(a_{1}, \ldots, a_{p}) \in A_{1} \times  \cdots \times A_{p}\ne\emptyset$.
         $$
           (a_{1}, \ldots, a_{i-1}, x_{n}, a_{i+1}, \ldots, a_{n}) \xrightarrow[n\to+\infty]{N_{\infty}} (a_{1}, \ldots, a_{i-1}, \ell, a_{i+1}, \cdots, a_{n})
         $$
@@ -178,7 +178,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %proof
-  Soit une suite $(x_{n})_{n \in \N}$ d’éléments de $F$ telle que $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}} \ell \in E$. Cette suite est alors bornée dans $(E, \norm{\cdot})$ donc bornée dans $(F, \norm{\cdot})$, or $\dim_{\K} F < +\infty$. Le *théorème de Bolzano-Weierstrass* donne alors l’existence de $\lambda \in \F$ et d’une fonction $\varphi: \N \longrightarrow \N$ strictement croissante telle que $x_{\varphi(n)}\arrowlim{n\to+\infty}\lambda$ dans $(F, \norm{\cdot})$ donc dans $(E, \norm{\cdot})$ or $x_{\varphi(n)} \arrowlim{n\to+\infty} \ell$ donc $\ell = \lambda \in F$.
+  Soit une suite $(x_{n})_{n \in \N}$ d’éléments de $F$ telle que $x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot}_{E}} \ell \in E$. Cette suite est alors bornée dans $(E, \norm{\cdot})$ donc bornée dans $(F, \norm{\cdot})$, or $\dim_{\K} F < +\infty$. Le _théorème de Bolzano-Weierstrass_ donne alors l’existence de $\lambda \in \F$ et d’une fonction $\varphi: \N \longrightarrow \N$ strictement croissante telle que $x_{\varphi(n)}\arrowlim{n\to+\infty}\lambda$ dans $(F, \norm{\cdot})$ donc dans $(E, \norm{\cdot})$ or $x_{\varphi(n)} \arrowlim{n\to+\infty} \ell$ donc $\ell = \lambda \in F$.
 %
 
 %eg
@@ -230,11 +230,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
        $$
          \bar{A} = I(A) \uplus A'
        $$
-       avec *l’ensemble des points isolés de $A$*
+       avec _l’ensemble des points isolés de $A$_
        $$
          I(A) = \left\{x \in A \where \exists r > 0: B(x,r) \cap A = \{x\}\right\}
        $$
-       et *l’ensemble des points d’accumulation*((Une caractérisation séquentielle d’un point d’accumulation pourrait être: « un élément est un point d’accumulation si et seulement si il est la limite d’une suite injective (ou non stationnaire).))
+       et _l’ensemble des points d’accumulation_((Une caractérisation séquentielle d’un point d’accumulation pourrait être: « un élément est un point d’accumulation si et seulement si il est la limite d’une suite injective (ou non stationnaire).))
        $$
          A' = \left\{x \in E \where \forall r > 0, F(x,r) \cap (A \setminus \{x\}) \ne\emptyset\right\}
        $$
@@ -272,7 +272,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 ## Parties compactes
 
 %def Partie compacte
-  Une partie $K$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite compacte si toute suite à valeurs dans $K$ possède une valeur d’adhérence dans $K$, i.e. « $K$ vérifie la propriété de *Bolzano-Weierstrass* ».
+  Une partie $K$ d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$ est dite compacte si toute suite à valeurs dans $K$ possède une valeur d’adhérence dans $K$, i.e. « $K$ vérifie la propriété de _Bolzano-Weierstrass_ ».
 %
 
 %eg
@@ -299,7 +299,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
     et $y_{n} \arrowlim{n\to+\infty} +\infty$ donc toute suite extraite de $(y_{n})$ tend vers $+\infty$ donc $(y_{n})$ n’a pas de valeur d’adhérence.
   - **$A = \{0\} \cup \{1\}$ est un compact de $\R$ mais n’est pas un segment.**
-  - Soit $E$ un $\K$-espace vectoriel normé de dimension finie. Soit $A$ une partie bornée de $E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$. La suite est donc bornée et $\dim_{\K}E < +\infty$, donc d’après le *théorème de Bolzano-Weierstrass en dimension finie*, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\ell \in E$ telle que
+  - Soit $E$ un $\K$-espace vectoriel normé de dimension finie. Soit $A$ une partie bornée de $E$. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$. La suite est donc bornée et $\dim_{\K}E < +\infty$, donc d’après le _théorème de Bolzano-Weierstrass en dimension finie_, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\ell \in E$ telle que
     $$
       x_{\varphi(n)} \arrowlim{n\to+\infty} \ell
     $$
@@ -317,7 +317,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %proof
   Soit $A$ une partie compacte d’un $\K$-espace vectoriel normé $(E, \norm{\cdot})$.
-  - Montrons que $A$ est fermée. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$ de limite $\ell \in E$. $A$ est un compact donc d’après la *propriété de Bolzano-Weierstrass*, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\lambda \in A$ tels que
+  - Montrons que $A$ est fermée. Soit $(x_{n})_{n \in \N}$ une suite d’éléments de $A$ de limite $\ell \in E$. $A$ est un compact donc d’après la _propriété de Bolzano-Weierstrass_, il existe $\varphi:\N\longrightarrow\N$ strictement croissante et $\lambda \in A$ tels que
     $$
       x_{\varphi(n)}\arrowlim{n\to+\infty}\lambda
     $$
@@ -364,7 +364,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
         \Delta_{n} \subset \cc{0,1}^{n} \subset [-1,1]^{n} = \bar{B}_{\norm{\cdot}_{\infty}}\big((0, \ldots, 0), 1\big)
       $$
     Comme $\R^{n}$ est un $\R$-espace vectoriel de dimension finie, $\Delta_{n}$ est une partie compacte de $\R^{n}$.
-  - Soit l’ensemble des matrices *unimodulaires*
+  - Soit l’ensemble des matrices _unimodulaires_
     $$
       SL_{n}(\R) = \left\{M \in \M_{n}(\R) \where \det M = 1\right\}
     $$
@@ -392,7 +392,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
   1. %callout Propriété fondamentale
        Toute partie fermée incluse dans une partie compacte est une partie compacte.
      %
-  2. Toute intersection d’une famille *non vide* de parties compactes est une partie compacte
+  2. Toute intersection d’une famille _non vide_ de parties compactes est une partie compacte
   3. Toute réunion finie de parties compactes de $E$ est une partie compacte de $E$.
   4. Tout produit fini de parties compactes est une partie compacte de l’espace vectoriel normé produit.
   %offprog
@@ -479,7 +479,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       \forall n \in \N, \abs{x_{\varphi(n)}-\ell} \geq \varepsilon \tag{$\triangle$}
     $$
-    Or $(x_{\varphi(n)})_{n \in \N}$ est à termes dans le compact $A$ donc par la *propriété de Bolzano-Weierstrass*, $(x_{\varphi(n)})$ possède une valeur d’adhérence dans $A$, qui ne peut être que $\ell$ car $\adh \left((x_{n})\right) = \{\ell\}$, ce qui contredit $(\triangle)$.
+    Or $(x_{\varphi(n)})_{n \in \N}$ est à termes dans le compact $A$ donc par la _propriété de Bolzano-Weierstrass_, $(x_{\varphi(n)})$ possède une valeur d’adhérence dans $A$, qui ne peut être que $\ell$ car $\adh \left((x_{n})\right) = \{\ell\}$, ce qui contredit $(\triangle)$.
 %
 
 %cor
@@ -495,7 +495,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 ## Voisinages d’un point – Parties convexes
 
 %def Voisinage
-  Soit $V$ une partie de $E$ et $x \in V$. On dit que $V$ est un *voisinage* de $x$ si il existe $r > 0$ tel que $B(x,r) \subset V$. On écrit alors $V \in \Vois_{E}(x)$. On dit encore que $x$ est un *point intérieur* à $V$.
+  Soit $V$ une partie de $E$ et $x \in V$. On dit que $V$ est un _voisinage_ de $x$ si il existe $r > 0$ tel que $B(x,r) \subset V$. On écrit alors $V \in \Vois_{E}(x)$. On dit encore que $x$ est un _point intérieur_ à $V$.
 %
 
 %eg
@@ -594,7 +594,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
      $$
        x \in \ring A \iff A \in \Vois_{E}(x)
      $$
-  $\ring A$ est appelé *intérieur* de $A$ ou *ensemble des points intérieurs à $A$*.
+  $\ring A$ est appelé _intérieur_ de $A$ ou _ensemble des points intérieurs à $A$_.
 %
 
 %proof
@@ -698,11 +698,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %offprog
   %def Topologie
-    Une *topologie $\mathscr{T}$ sur un ensemble $X$* est une partie de $\Part (X)$ telle que
+    Une _topologie $\mathscr{T}$ sur un ensemble $X$_ est une partie de $\Part (X)$ telle que
     1. $\emptyset \in \mathscr{T}$, $X \in \mathscr{T}$.
     2. $\mathscr T$ contient toute réunion quelconque d’éléments de $\mathscr T$(($\mathscr T$ est stable par réunion quelconque.))
     3. $\mathscr T$ contient toute intersection finie d’éléments de $\mathscr T$(($\mathscr T$ est stable par intersection finie.))
-    $X$ est alors dit *topologique*.
+    $X$ est alors dit _topologique_.
   %
 %
 
@@ -721,7 +721,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
       $$
         \mathscr T_{A} = \{B \in \Part(A) \where \forall b \in B, \exists r > 0: B_{A}(b,r) \subset B\}
       $$
-      est une topologie sur $A$, appelée *topologie relative*.
+      est une topologie sur $A$, appelée _topologie relative_.
   %
   - Si $E$ est un $\K$-espace vectoriel normé de norme $\norm{\cdot}$ et si $d$ est la distance associée à cette norme, alors
     $$
@@ -758,7 +758,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 
 %defprop
   Soit $A$ une partie de $E$.
-  - Une partie $O'$ de $A$ est appelé *ouvert relatif de $A$* si $O'$ est un voisinage relatif de chacun de ses points, i.e.
+  - Une partie $O'$ de $A$ est appelé _ouvert relatif de $A$_ si $O'$ est un voisinage relatif de chacun de ses points, i.e.
     $$
       \forall x \in O', \exists r > 0: B_{A}(x,r) \subset O'
     $$
@@ -806,7 +806,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
 %
 
 %defprop
-  Soit $A$ une partie de $E$. Soit $F'$ une partie de $A$. On dit que $F'$ est un *fermé relatif* de $A$ si l’une des condition équivalentes suivantes est vérifiée
+  Soit $A$ une partie de $E$. Soit $F'$ une partie de $A$. On dit que $F'$ est un _fermé relatif_ de $A$ si l’une des condition équivalentes suivantes est vérifiée
   1. $A \setminus F'$ est un ouvert relatif de $A$.
   2. Il existe une partie fermée $F$ de $E$ telle que
      $$
@@ -885,7 +885,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, et $(E, \norm{\cdot})$ est un $\K$
     $$
       \lim_{n\to+\infty} \int_{I} f(a_{n}, t)\dd t = \int_{I}f(\alpha, t)\dd t
     $$
-    i.e. $\lim_{n\to+\infty}g(a_{n}) = g(\alpha)$, si bien que par *caractérisation séquentielle de la continuité* en $\alpha$, $g$ est continue en $\alpha$.
+    i.e. $\lim_{n\to+\infty}g(a_{n}) = g(\alpha)$, si bien que par _caractérisation séquentielle de la continuité_ en $\alpha$, $g$ est continue en $\alpha$.
 %
 
 %prop

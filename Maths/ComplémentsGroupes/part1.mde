@@ -546,13 +546,13 @@ card:
 ## Généralités
 
 %offprog
-  %thm Théorème de Lagrange
+  <thm_lagrange>%thm Théorème de Lagrange
     Si $H$ est un sous-groupe d’un groupe fini $G$, alors le cardinal de $H$ divise le cardinal de $G$.
   %
 
   %proof
     - Si $H = \{e\}$ ou $H = G$, alors la propriété est immédiate
-    - Sinon, notons $r = \abs{H}$ et numérotons les éléments de $H$~: $H = \{h_{1}, \ldots, h_{r}\}$. Soit $a_{1} \in G \setminus H$. Les éléments $h1, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}$ sont $2r$ éléments *distincts* de $G$.
+    - Sinon, notons $r = \abs{H}$ et numérotons les éléments de $H$~: $H = \{h_{1}, \ldots, h_{r}\}$. Soit $a_{1} \in G \setminus H$. Les éléments $h1, \ldots, h_{r}, a_{1}\star h_{1}, \ldots, a_{1}\star h_{r}$ sont $2r$ éléments _distincts_ de $G$.
     En effet,
     $$
       \bigl(a_{1} \star h_{i} = a_{1} \star h_{j} \implies  h_{i} = h_{j}\bigr) \quad\text{et}\quad  \bigl(a_{1}\star h_{i} = h_{j} \implies  a_{1} = \underbrace{h_{j}\star h_{i}^{-1}}_{\in H < G}\bigr)
@@ -879,7 +879,7 @@ card:
     %
 %
 
-## Ordre d’un élément dans un groupe
+<section_ordre_groupe>## Ordre d’un élément dans un groupe
 
 %def Ordre d’un élément dans un groupe
   Soit $(G, \star)$ un groupe. Soit $x \in G$. On appelle ordre de $x$ l’élément de $\N \cup \{+ \infty\}$ noté $\omega(x)$ ou $o(x)$, défini par
@@ -963,7 +963,7 @@ card:
        $$
          \varphi_{k} : \applic{G}{G}{z}{y\star z\star y^{-1}}
        $$
-       est un automorphisme (dit *intérieur*) injectif, d’où $\omega(\varphi_{y}(xy)) = \omega(xy)$ donc $\omega(yxyy^{-1}) = \omega(xy)$, ainsi $\omega(xy) = \omega(yx)$.
+       est un automorphisme (dit _intérieur_) injectif, d’où $\omega(\varphi_{y}(xy)) = \omega(xy)$ donc $\omega(yxyy^{-1}) = \omega(xy)$, ainsi $\omega(xy) = \omega(yx)$.
      %
   6. L’application
      $$
@@ -1012,7 +1012,7 @@ card:
 
        $\omega(\bar{0}) = 1$, $\omega(\bar{1}) = 4$, $\omega(\bar{2}) = \bar{2}$, $\omega(\bar{3}) = \omega(\bar{-1}) = \omega(-\bar{1}) = 4$.
 
-     - $(\U_{2}^{2}, \times )$((groupe de *Klein*)) est un groupe abélien de cardinal 4 dans lequel $\omega((1,1)) = 1$ et
+     - $(\U_{2}^{2}, \times )$((groupe de _Klein_)) est un groupe abélien de cardinal 4 dans lequel $\omega((1,1)) = 1$ et
        $$
          \forall x \in \U_{2}^{2} \setminus \{(1,1)\}, \omega(x) = 2
        $$
@@ -1051,7 +1051,7 @@ card:
 
 ## Groupes monogènes et groupes $(\Z/n\Z,\bar{+})$
 
-%def Groupe monogène
+<def_grp_cyclique>%def Groupe monogène
   Un groupe $(G,\star)$ est dit monogène si il existe $x \in G$ tel que $G = \grp{\{x\}} = \{x^{k} \mid k \in \Z\}$.
   %offprog
     Un groupe est monogène si et seulement si son rang vaut 0 ou 1.
@@ -1069,7 +1069,7 @@ card:
     $$
      \abs{G} = d = \omega(x) \quad\text{et}\quad (G,\star)\simeq(\Z/n\Z,\bar{+}) \simeq (\U_{d}, \times )
     $$
-    $G$ est donc monogène fini (i.e. *cyclique*)
+    $G$ est donc monogène fini (i.e. _cyclique_)
 %
 
 %lemma
@@ -1176,7 +1176,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
 %
 
 %offprog
-  %prop
+  <sous_groupe_cyclique>%prop
     Soit $d$ un diviseur de $n \in \N^{*}$. Tout ++groupe cyclique++ de cardinal $n$ possède un sous-groupe de cardinal $d$ et un seul. Ce dernier est cyclique.
   %
 
@@ -1227,7 +1227,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   %
 %
 
-%thm Théorème chinois
+<thm_chinois>%thm Théorème chinois
   Soit $(m,n) \in \N^{*}$.
   1. Si $m \land  n = 1$, alors
      $$
@@ -1318,7 +1318,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
        \forall n \geq 2, \varphi(n) \in \cc{1,n-1}
      $$
   2. $\varphi(n) = \#\{k \in \icc{0,n-1} \mid k \land  n = 1\}$
-  3. $\varphi(n)$ est le nombre d’éléments d’ordre $n$ du groupe cyclique $(\Z/n\Z, \bar{+}) \simeq (\U_{n}, \times )$ donc
+  <nb_elem_inversibles_phi_n>3. $\varphi(n)$ est le nombre d’éléments d’ordre $n$ du groupe cyclique $(\Z/n\Z, \bar{+}) \simeq (\U_{n}, \times )$ donc
      $$
        \begin{align*}
           \varphi(n) &=\#\{x \in \Z/n\Z \mid \Z/n\Z = \grp x\}\\
@@ -1351,7 +1351,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
      $$
        \varphi(n) = n-1 \iff n \text{ premier}
      $$
-  2. Pour $p$ premier et $\alpha \in \N^{*}$, on a
+  <varphi_p_alpha>2. Pour $p$ premier et $\alpha \in \N^{*}$, on a
      $$
        \varphi(p^{\alpha}) = p^{\alpha} - p^{\alpha-1} = p^{\alpha-1}(p-1)
      $$
@@ -1452,7 +1452,7 @@ En conclusion, pour un groupe $(G,\star)$, on a~:
   %property
     1. $\forall n \geq 3, \varphi(n)\cgm 02$
     2. Si $d$ divise $n$, alors $\varphi(d)$ divise $\varphi(n)$
-    3. *Formule d’Euler-Möbius*: pour tout $n \in \N^{*}$,
+    3. _Formule d’Euler-Möbius_: pour tout $n \in \N^{*}$,
        $$
          n = \sum_{d\mid n}\varphi(d)
        $$

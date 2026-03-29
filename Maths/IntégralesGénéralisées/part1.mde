@@ -884,7 +884,7 @@ Soient $-\infty \leq b' < a < b \leq +\infty$.
     donc $f$ est prolongeable par continuité sur $\co{1,+\infty}$.
     ~ $f(x) \usim{+\infty}\frac{\ln x}{x^{2}}$  ~ $x^{\frac{3}{2}}f(x) \usim{+\infty}\frac{\ln x}{\sqrt{x}} \arrowlim{x\to+\infty}0$  ~ $x^{\frac{3}{2}} > 1$ donc $\int_{2}^{+\infty}f(x)\dd x$ converge
     donc $\int_{1}^{+\infty}\frac{\ln x}{x \sqrt{x^{2}-1}}\dd x$ converge.
-  - *Intégrales de Bertrand.* Il y en a deux types:
+  - _Intégrales de Bertrand._ Il y en a deux types:
     ~ $\displaystyle \int_{e}^{+\infty}\frac{\dd x}{x^{\alpha}(\ln x)^{\beta}}$  ~ $\displaystyle\int_{\mangl{0}}^{e}\frac{\dd x}{x^{\alpha}\abs{\ln x}^{\beta}}$
     ~
     On a
@@ -1048,8 +1048,8 @@ Dans cette partie, $I$ est un intervalle réel de longueur non nulle.
 
 %def Fonctions intégrable
   Soit $f: I \longrightarrow \K$ une fonction continue par morceaux. Si $\int_{I}\abs{f}$ converge, alors on dit :
-  - que l’intégrale $\int_{I}f$ est *absolument convergente*
-  - que la fonction $f$ est *intégrable sur $I$*, que l’on note $f \in \L^{1}(I,\K)$
+  - que l’intégrale $\int_{I}f$ est _absolument convergente_
+  - que la fonction $f$ est _intégrable sur $I$_, que l’on note $f \in \L^{1}(I,\K)$
   On a alors
   $$
     \L^{1}(I,\K) = \{f \in \Cont_{m}(I,\K) \where \sum_{I}\abs{f} \text{ converge}\}

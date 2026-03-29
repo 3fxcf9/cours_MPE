@@ -35,11 +35,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 ## Normes sur un $\K$-espace vectoriel
 
 %def
-  Soit $E$ un $\K$-espace vectoriel. On appelle *norme sur $E$* toute application $N: E\longrightarrow \R_{+}$ vérifiant
-  - $\forall x \in E, N(x) \in \R_{+}$ et $N(x)=0 \implies x=0_{E}$ *(axiome de séparation)*
-  - $\forall (\lambda, x) \in \K \times E, N(\lambda x) = \abs{\lambda}N(x)$ *(axiome d’homogénéité positive)*
-  - $\forall (x,y) \in E^{2}, N(x+y)\leq N(x) + N(y)$ *(inégalité triangulaire)*
-  On dit alors que $(E,N)$ est un $\K$-espace vectoriel normé (*e.v.n*)
+  Soit $E$ un $\K$-espace vectoriel. On appelle _norme sur $E$_ toute application $N: E\longrightarrow \R_{+}$ vérifiant
+  - $\forall x \in E, N(x) \in \R_{+}$ et $N(x)=0 \implies x=0_{E}$ _(axiome de séparation)_
+  - $\forall (\lambda, x) \in \K \times E, N(\lambda x) = \abs{\lambda}N(x)$ _(axiome d’homogénéité positive)_
+  - $\forall (x,y) \in E^{2}, N(x+y)\leq N(x) + N(y)$ _(inégalité triangulaire)_
+  On dit alors que $(E,N)$ est un $\K$-espace vectoriel normé (_e.v.n_)
 %
 
 %rem
@@ -49,7 +49,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
        \forall x \in E, 0=N(x-x)\leq N(x) + N(-x) = 2N(x)
      $$
      donc $\forall x \in E, N(x) \in \R_{+}$.
-  3. Un vecteur $x$ d’un $\K$-espace vectoriel normé $(E,N)$ est dit *unitaire* si $N(x) = 1$.
+  3. Un vecteur $x$ d’un $\K$-espace vectoriel normé $(E,N)$ est dit _unitaire_ si $N(x) = 1$.
 
      Si $x \in E \setminus \{0\}$, alors $x' = \frac{x}{N(x)}$ est unitaire.
   4. $\forall x \in E, N(-x) = N(x)$ si $\K=\C$, alors
@@ -83,12 +83,12 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 ### Exemples fondamentaux à connaître
 %eg
   Normes sur le $\K$-espace vectoriel $\K$.
-  - *Analyse :* Soit $N:\K \longrightarrow \R_{+}$ une norme sur $\K$. On a
+  - _Analyse :_ Soit $N:\K \longrightarrow \R_{+}$ une norme sur $\K$. On a
     $$
       \forall x \in \K, N(x) = N(x \cdot 1) = \abs{x}N(1)
     $$
     or $1\ne 0$ donc $N(1) > 0$.
-  - *Synthèse :* Soit $\alpha > 0$. Posons
+  - _Synthèse :_ Soit $\alpha > 0$. Posons
     $$
       N_{\alpha}: \applic{\K}{\R_{+}}{z}{\alpha \abs{z}}
     $$
@@ -143,7 +143,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
   $$
     \norm{x}_{1} = \sum_{i=1}^{n}\abs{x_{i}} \quad\text{et}\quad \norm{x}_{2} = \left(\sum_{i=1}^{n}\abs{x_{i}}^{2}\right)^{\frac{1}{2}}
   $$
-  et $\norm{x}_{\infty} = \max_{i\in\icc{1,n}} \abs{x_{i}}$. Alors $\norm{\cdot }_{1}, \norm{\cdot }_{2}$ et $\norm{\cdot }_{\infty}$ sont des normes sur $\K^{n}$ appelées *normes usuelles*.
+  et $\norm{x}_{\infty} = \max_{i\in\icc{1,n}} \abs{x_{i}}$. Alors $\norm{\cdot }_{1}, \norm{\cdot }_{2}$ et $\norm{\cdot }_{\infty}$ sont des normes sur $\K^{n}$ appelées _normes usuelles_.
 %
 
 %proof
@@ -320,12 +320,12 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 %offprog
   %def
-    Soit $X$ un ensemble non vide. On appelle *distance* sur $X$ toute application $\delta: X^{2} \longrightarrow \R^{2}$ vérifiant
+    Soit $X$ un ensemble non vide. On appelle _distance_ sur $X$ toute application $\delta: X^{2} \longrightarrow \R^{2}$ vérifiant
     1. $\forall (x,y) \in X^{2}, \delta(x,y) \geq 0$
     2. $\forall (x,y) \in X^{2}, \delta(x,y) \in \delta(y,x)$
     3. $\forall (x,y) \in X^{2}, \delta(x,y) = 0 \iff  x =y$
     4. $\forall (x,y,z) \in X^{3}, \delta(x,z) \leq  \delta(x,y) + \delta(y,z)$
-    On dit alors que $(X, \delta)$ est un *espace métrique*.
+    On dit alors que $(X, \delta)$ est un _espace métrique_.
   %
 
   %eg

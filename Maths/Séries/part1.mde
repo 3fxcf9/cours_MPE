@@ -16,7 +16,7 @@ $$
 avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une application linéaire injective. $\img \varphi$ est appelé espace vectoriel des séries à valeurs dans $E$. Pour $u \in E^{\ico{n_{0},+\infty}}$, $\varphi(u)$ est noté $\sum_{n \geq n_{0}} u_{n}$ ou encore $\sum u_{n}$.
 
 %def
-  $\sum_{n \geq  n_{0}}u_{n}$ est dite convergente dans $(E,\norm \cdot )$ si la suite des sommes partielles $(S_{n})_{n \geq  n_{0}}$ est convergente. Si tel est le cas, on pose $\sum_{n=n_{0}}^{+\infty}u_{n} = \lim_{n\to+\infty} S_{n} \in E$. Ce vecteur est appelé *somme de la série*.
+  $\sum_{n \geq  n_{0}}u_{n}$ est dite convergente dans $(E,\norm \cdot )$ si la suite des sommes partielles $(S_{n})_{n \geq  n_{0}}$ est convergente. Si tel est le cas, on pose $\sum_{n=n_{0}}^{+\infty}u_{n} = \lim_{n\to+\infty} S_{n} \in E$. Ce vecteur est appelé _somme de la série_.
 %
 
 %rem
@@ -24,7 +24,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
   2. %callout
        Si $\sum_{n \geq n_{0}}u_{n}$ est convergente, alors $S_{n} - S_{n-1} = u_{n} \xrightarrow[n\to+\infty]{\norm\cdot}0_{E}$.
      %
-  3. Si $\sum_{n \geq n_{0}}u_{n}$ est convergente, alors on pose $R_{n} = \sum_{k=n+1}^{+\infty}u_{k} \in E$ pour $n \geq  n_{0}+1$. $R_{n}$ est appelé *reste d’ordre $n$* de la série.
+  3. Si $\sum_{n \geq n_{0}}u_{n}$ est convergente, alors on pose $R_{n} = \sum_{k=n+1}^{+\infty}u_{k} \in E$ pour $n \geq  n_{0}+1$. $R_{n}$ est appelé _reste d’ordre $n$_ de la série.
   4. %lemma
        $\sum_{n \geq n_{0}}(u_{n+1}-u_{n})$ converge si et seulement si $(u_{n})_{n \geq n_{0}}$ converge.
      %
@@ -91,7 +91,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 %
 
 %def
-  Soit $(u_{n})_{n \in \N}$ une suite à valeurs dans $(E,\norm \cdot )$. On dit que la série $\sum_{n \geq 0}u_{n}$ est *absolument convergente* si la série à termes positifs $\sum_{n \geq 0}\norm{u_{n}}$ est convergente.
+  Soit $(u_{n})_{n \in \N}$ une suite à valeurs dans $(E,\norm \cdot )$. On dit que la série $\sum_{n \geq 0}u_{n}$ est _absolument convergente_ si la série à termes positifs $\sum_{n \geq 0}\norm{u_{n}}$ est convergente.
 %
 
 %callout Attention
@@ -125,7 +125,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
   1. Si $N$ et $N'$ sont deux normes équivalentes sur un $\K$-espace vectoriel $E$ et si $(u_{n})_{n \in \N} \in E^{\N}$, alors les séries $\sum N(u_{n})$ et $\sum N'(u_{n})$ ont la même nature.
   2. Si $E$ est un $\K$-espace vectoriel normé de ++dimension finie++, alors ++toute série à valeurs dans $E$ absolument convergente est convergente++.
      %offprog
-       On dit qu’un espace vectoriel normé de dimension finie est un *espace de Banach* (ou un espace vectoriel normé *complet*).((Anecdote: M. Schwarz racontait à ses étudianst qu’un jour, il voulait prendre le bus pour la station « Banach » à Varsovie mais celui-ci était complet.))
+       On dit qu’un espace vectoriel normé de dimension finie est un _espace de Banach_ (ou un espace vectoriel normé _complet_).((Anecdote: M. Schwarz racontait à ses étudianst qu’un jour, il voulait prendre le bus pour la station « Banach » à Varsovie mais celui-ci était complet.))
      %
   3. Si $\dim E < +\infty$ et $\sum_{k \in \N}\norm{u_{k}} < +\infty$, alors $\sum_{k \in \N}u_{k}$ converge, et de plus
      $$
@@ -151,7 +151,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 %
 
 %eg
-  *Exemple classique:* Soit $(A,+, \times , \cdot )$ une $\K$-algèbre munie d’une norme $\norm \cdot $ sous-multiplicative. Soit $u \in A$ tel que $\norm u < 1$. Étiduons la série $\sum_{k \geq 0}u^{k}$.
+  _Exemple classique:_ Soit $(A,+, \times , \cdot )$ une $\K$-algèbre munie d’une norme $\norm \cdot $ sous-multiplicative. Soit $u \in A$ tel que $\norm u < 1$. Étiduons la série $\sum_{k \geq 0}u^{k}$.
 
   ---
 
@@ -884,7 +884,7 @@ avec pour tout $n \geq  n_{0}$, $S_{n} = \sum_{k=n_{0}}^{n}u_{k}$. C’est une a
 %
 
 %eg
-  Donner un équivalent *simple* de $S_{n} = \sum_{k=1}^{k}2^{k}\ln(k)$. On réalise une transformation d’Abel : posons pour $n \in \N$ la suite définie par $U_{-1} = 0$ et
+  Donner un équivalent _simple_ de $S_{n} = \sum_{k=1}^{k}2^{k}\ln(k)$. On réalise une transformation d’Abel : posons pour $n \in \N$ la suite définie par $U_{-1} = 0$ et
   $$
     U_{n} = \sum_{k=0}^{n}2^{k} = \frac{1-2^{n+1}}{1-2} = 2^{n+1}-1
   $$

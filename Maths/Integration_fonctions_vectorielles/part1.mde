@@ -153,7 +153,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
     \tag{S} \begin{cases}x' &= 2x+y \\ y' &= x+2y\end{cases}
   $$
   avec $x$ et $y$ de classe $\Cont^{1}$ sur $\R$ à valeurs réelles.
-  - *Première méthode~:* Ce système est équivalent à l’équation
+  - _Première méthode~:_ Ce système est équivalent à l’équation
     $$
       Y' = AY
     $$
@@ -194,7 +194,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $E$ est un $\K$-espace vectoriel n
       t \longmapsto a e^{2t}\mtx{\ch t\\ \sh t} + b e^{2t} \mtx{\sh t\\ \ch t}
     $$
     avec $(a,b) \in \R^{2}$.
-  - *Deuxième méthode~:*
+  - _Deuxième méthode~:_
     $$
       \begin{align*}
         (S) &\iff \begin{cases}(x+y)' = 3(x+y) \\ x' = 2x+y\end{cases}\\
@@ -530,10 +530,10 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
       est un arc rectiligne solution de $(H)$.
 
       %proof
-        - *Première méthode~:* Posons $\varphi:t \longmapsto e^{\lambda t}W$ avec $\lambda \in \sp_{\K}(A)$ tel que $AW = \lambda W$. $\varphi$ est de classe $\Cont^{1}(\R)$ et
+        - _Première méthode~:_ Posons $\varphi:t \longmapsto e^{\lambda t}W$ avec $\lambda \in \sp_{\K}(A)$ tel que $AW = \lambda W$. $\varphi$ est de classe $\Cont^{1}(\R)$ et
           ~ $\forall t \in \R, \varphi'(t) = \lambda e^{\lambda t}W$  ~ $\forall t \in \R, A \varphi(t) = e^{\lambda t}AW = \lambda e^{\lambda t}W$
           donc $\varphi'(t) = A \varphi(t)$ pour tout $t \in \R$.
-        - *Seconde méthode~:* L’ensemble des solutions de $(H)$ est
+        - _Seconde méthode~:_ L’ensemble des solutions de $(H)$ est
           $$
             \Sol_{H} = \left\{t \longmapsto e^{tA}V \where V \in \M_{n,1}(\K)\right\}
           $$
@@ -592,7 +592,7 @@ Dans cette partie, $I$ désigne un intervalle réel d’intérieur non vide, et 
     $$
       \forall t \in I, (\varphi-\varphi_{0})'(t) = A \big(\varphi(t)-\varphi_{0}(t)\big)
     $$
-    On considère alors l’*équation homogène associée à $(E)$* $(H): Y' = AY$, et on a
+    On considère alors l’_équation homogène associée à $(E)$_ $(H): Y' = AY$, et on a
     $$
       (\star) \iff \exists V \in \M_{n,1}(\K): \forall t \in I, \varphi(t) - \varphi_{0}(t) = e^{tA}V
     $$

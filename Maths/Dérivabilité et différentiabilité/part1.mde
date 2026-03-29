@@ -30,8 +30,8 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
 %
 
 %def
-  - Une application $f: \applic{I}{E}{t}{f(t)}$ est appelée *fonction vectorielle* ou *arc paramétré*.
-  - $f(I)$ est appelé *support* de l’arc.
+  - Une application $f: \applic{I}{E}{t}{f(t)}$ est appelée _fonction vectorielle_ ou _arc paramétré_.
+  - $f(I)$ est appelé _support_ de l’arc.
   - Si $f_{i} = e_{i}^{*} \circ f$, i.e.
     $$
       \forall t \in I, f(t) = \sum_{i=1}^{n}f_{i}(t)e_{i}
@@ -40,7 +40,7 @@ Dans cette partie, $I$ est un intervalle réel d’intérieur non vide, $(E,\nor
     $$
       \begin{cases}x_{1}&= f_{1}(t) \\ &\cdots\\x_{n}&= f_{n}(t)\end{cases}, t \in I
     $$
-    est appelée *représentation paramétrique de l’arc*.
+    est appelée _représentation paramétrique de l’arc_.
 %
 
 %eg
@@ -527,7 +527,7 @@ $$
 ## Différentiabilité
 
 %def
-  Soit $U$ un ouvert de $E$. Soit $f: U \longrightarrow F$ une application. Soit $a \in U$. On dit que $f$ est *différentiable* en $a$ si l’une des deux conditions équivalentes suivantes est satisfaite :
+  Soit $U$ un ouvert de $E$. Soit $f: U \longrightarrow F$ une application. Soit $a \in U$. On dit que $f$ est _différentiable_ en $a$ si l’une des deux conditions équivalentes suivantes est satisfaite :
   1. Il existe $\ell \in \L(E,F)$ telle que
      $$
        \lim_{h\to 0_{E}} \frac{f(a+h)-f(a) - \ell \mdot h}{\norm{h}_{E}} = 0_{F}
@@ -899,12 +899,16 @@ $$
     - Sinon, $U$ est connexe par arcs. Soit $a \in U$. Comme $U$ est ouvert, il existe $\varepsilon > 0$ tel que $B(a, \varepsilon) \subset U$. On a $\forall x \in U, \dd f(x) = 0$ donc $\forall x \in B(a, \varepsilon), \dd f(x) = 0$ or $B(a, \varepsilon)$ est convexe, donc $f$ est constante sur $B(a, \varepsilon)$. $f$ est donc localement constante sur $U$ convexe par arcs, donc (exercice 11), $f$ est constante sur $U$.
 %
 
-%term
+%def
   Si $f: U \longrightarrow F$ est différentiable en tout point de $U$, alors
   $$
     \dd f: \applic{U}{\L(E,F)}{x}{\dd f(x)}
   $$
-  est appelée *différentielle de $f$*. C’est un « objet compliqué ». On a alors pour $v = \sum_{i=1}^{n}v_{i}e_{i}$ où $(e_{1}, \ldots, e_{n})$ est une base de $E$ :
+  est appelée _différentielle de $f$_.
+%
+
+%rem
+  C’est un « objet compliqué ». On a alors pour $v = \sum_{i=1}^{n}v_{i}e_{i}$ où $(e_{1}, \ldots, e_{n})$ est une base de $E$ :
   $$
     \forall x \in U, \dd f(x) \mdot v = \sum_{i=1}^{n}v_{i}\dd f(x)\mdot e_{i} = \sum_{i=1}^{n}v_{i} \partial_{i}f(x)
   $$
@@ -1256,7 +1260,7 @@ $$
   $$
     \det \varphi = \vmtx{1&-1&0\\0&1&-1\\0&0&1} \ne 0
   $$
-  donc $\varphi \in \GL(\R^{3})$. Ainsi, $\varphi$ et $\varphi^{-1}$ sont différentiables. On pose $«\tilde{f}(u,v,w) = f(x,y,z)»$, i.e. $f(x,y,z) = \tilde{f}(x-y, y-z, z)$, i.e. $f = \tilde{f} \circ \varphi$ ou encore $\tilde{f} = f\circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*, on a
+  donc $\varphi \in \GL(\R^{3})$. Ainsi, $\varphi$ et $\varphi^{-1}$ sont différentiables. On pose $«\tilde{f}(u,v,w) = f(x,y,z)»$, i.e. $f(x,y,z) = \tilde{f}(x-y, y-z, z)$, i.e. $f = \tilde{f} \circ \varphi$ ou encore $\tilde{f} = f\circ \varphi^{-1}$. Comme $\varphi$ est un _difféomorphisme_, on a
   $$
     f \text{ différentiable sur } \R^{3} \iff \tilde{f} \text{ différentiable sur } \R^{3}
   $$
@@ -1294,7 +1298,7 @@ $$
   $$
     \varphi^{-1}: \applic{\R_{+}^{*} \times \R}{\R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}}{(x,y)}{\left(\sqrt{x^{2}+y^{2}}, \arctan \left(\frac{y}{x}\right)\right)}
   $$
-  donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f} = f\circ \varphi$, i.e. $f = \tilde{f} \circ \varphi^{-1}$. Comme $\varphi$ est un *difféomorphisme*,
+  donc $\varphi$ et $\varphi^{-1}$ différentiables. On pose $\tilde{f}(r, \theta) = f(x,y)$ i.e. $\tilde{f}(r, \theta) = f(r\cos \theta, r\sin \theta)$, de sorte que $\tilde{f} = f\circ \varphi$, i.e. $f = \tilde{f} \circ \varphi^{-1}$. Comme $\varphi$ est un _difféomorphisme_,
   $$
     f \text{ différentiable sur } \R_{+}^{*} \times \R \iff \tilde{f} \text{ différentiable sur } \R_{+}^{*} \times \oo{- \frac{\pi}{2}, \frac{\pi}{2}}
   $$
@@ -1327,7 +1331,7 @@ $$
 ## Matrices jacobiennes
 
 %def
-  Soit $f: U \subset \R^{n} \longrightarrow \R^{p}$ une application différentiable en $a \in U$ avec $U$ un ouvert de $\R^{n}$. La matrice de $\dd f(a) \in \L(\R^{n},\R^{p})$ relativement aux bases canoniques est appelée *matrice jacobienne* de $f$ en $a$. On la note parfois $J_{f}(a)$.
+  Soit $f: U \subset \R^{n} \longrightarrow \R^{p}$ une application différentiable en $a \in U$ avec $U$ un ouvert de $\R^{n}$. La matrice de $\dd f(a) \in \L(\R^{n},\R^{p})$ relativement aux bases canoniques est appelée _matrice jacobienne_ de $f$ en $a$. On la note parfois $J_{f}(a)$.
   $$
     J_{f}(a) = \mat_{\can,\can}(\dd f(a)) \in \M_{p,n}(\R)
   $$
@@ -1372,7 +1376,7 @@ donc
   $$
     \tr \big(\dd f(a)\big) = \tr \big(J_{f}(a)\big) = \sum_{i=1}^{n}\pdv{f_{i}}{x_{i}}(a)
   $$
-  est appelée *divergence de $f$ en $a$* :
+  est appelée _divergence de $f$ en $a$_ :
   $$
     \boxed{\tr \big(\dd f(a)\big) \defeq \div f(a)}
   $$
@@ -1380,7 +1384,7 @@ donc
   $$
     \det \big(\dd f(a)\big) = \det \big(J_{f}(a)\big)
   $$
-  est appelé *(déterminant) jacobien de $f$ en $a$*.
+  est appelé _(déterminant) jacobien de $f$ en $a$_.
   ~
   Par exemple, pour $f: \applic{\R^{2}}{\R^{2}}{(r, \theta)}{(\underbrace{r\cos \theta}_{=x(r, \theta)}, \underbrace{r\sin \theta}_{=y(r,\theta)})}$, on a
   ~ $\dd x = \cos \theta \dd r - r\sin \theta \dd \theta$  ~ $\dd y = \sin \theta \dd r + r\cos \theta \dd \theta$
@@ -1474,9 +1478,9 @@ donc
     g: \applic{\R^{2}}{\R}{(u,v)}{f(u^{2} + v^{2}, uv)}
   $$
   avec $f:\R^{2} \longrightarrow \R$ différentiable.
-  - *Première méthode~:*
+  - _Première méthode~:_
     ~ $\pdv{g}{u} = \pdv{f}{x} \times 2u + \pdv{f}{y} \times v$  ~ $\pdv{g}{v} = \pdv{f}{x} \times 2v + \pdv{f}{y}u$
-  - *Seconde méthode~:* considérons $\varphi(u,v) \longmapsto (u^{2}+v^{2}, uv)$ de sorte que $f\circ \varphi$. Alors, $J_{g}(u,v) = J_{f}(\varphi(u,v)) \times J_{\varphi}(u,v)$ d’où
+  - _Seconde méthode~:_ considérons $\varphi(u,v) \longmapsto (u^{2}+v^{2}, uv)$ de sorte que $f\circ \varphi$. Alors, $J_{g}(u,v) = J_{f}(\varphi(u,v)) \times J_{\varphi}(u,v)$ d’où
     $$
       \begin{align*}
         \mtx{\pdv{g}{u}(u,v) & \pdv{g}{v}\big(\varphi(u,v)\big)} &= \mtx{\pdv{f}{x}\big(\varphi(u,v)\big) & \pdv{f}{y}\big(\varphi(u,v)\big)} \mtx{2u & 2v \\ v&u}\\
@@ -1498,7 +1502,7 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
 
 %proof
   Supposons $E$ non nul. Soit $(e_{1}, \ldots, e_{n})$ une base orthonormale de $E$.
-  - *Analyse~:* Soit $f \in \L(E,\R)$ telle que
+  - _Analyse~:_ Soit $f \in \L(E,\R)$ telle que
     $$
       \exists x_{0} \in E: \forall x \in E, f(x) = \scalar{x_{0}}{x}
     $$
@@ -1506,7 +1510,7 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
     $$
       x_{0} = \sum_{i=1}^{n}\scalar{x_{0}}{e_{i}} e_{i} = \sum_{i=1}^{n}f(e_{i})e_{i}
     $$
-  - *Synthèse~:* Soit $f \in \L(E,\R)$. Posons $x_{0} = \sum_{i=1}^{n}f(e_{i})e_{i}$. Pour tout $x \in E$,
+  - _Synthèse~:_ Soit $f \in \L(E,\R)$. Posons $x_{0} = \sum_{i=1}^{n}f(e_{i})e_{i}$. Pour tout $x \in E$,
     $$
       \begin{align*}
         \scalar{x_{0}}{x} &= \sum_{i=1}^{n}f(e_{i})\scalar{e_{i}}{x} & \text{(linéarité à gauche de $\scalar{\cdot}{\cdot}$)}\\
@@ -1517,7 +1521,7 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
 %
 
 %eg
-  L’application $\applic{\M_{n}(\R)^{2}}{\R}{(A,B)}{\tr (A\transp B) = \scalar{A}{B}}$ est un produit scalaire de $\M_{n}(\R)^{2}$ (appelé *produit scalaire canonique*). Les formes linéaires sur $\M_{n}(\R)$ sont donc du type
+  L’application $\applic{\M_{n}(\R)^{2}}{\R}{(A,B)}{\tr (A\transp B) = \scalar{A}{B}}$ est un produit scalaire de $\M_{n}(\R)^{2}$ (appelé _produit scalaire canonique_). Les formes linéaires sur $\M_{n}(\R)$ sont donc du type
   $$
     \applic{\M_{n}(\R)}{\R}{M}{\scalar{M_{0}\transp}{M} = \tr (M_{0} M)}
   $$
@@ -1525,7 +1529,7 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
 %
 
 %def
-  Soit $f: U \subset E \longrightarrow \R$ une application différentiable en $a \in U$ où $U$ est un ouvert de l’espace euclidien $(E, \scalar{\cdot}{\cdot})$. $\dd f$ est une forme linéaire sur l’espace euclidien $E$. On appelle alors *gradient de $f$ en $a$* l’unique vecteur noté $\nabla f(a)$ tel que
+  Soit $f: U \subset E \longrightarrow \R$ une application différentiable en $a \in U$ où $U$ est un ouvert de l’espace euclidien $(E, \scalar{\cdot}{\cdot})$. $\dd f$ est une forme linéaire sur l’espace euclidien $E$. On appelle alors _gradient de $f$ en $a$_ l’unique vecteur noté $\nabla f(a)$ tel que
   $$
     \forall h \in E, \dd f(a)\mdot h = \scalar{\nabla f(a)}{h}
   $$
@@ -1556,12 +1560,12 @@ Désormais, $E$ est un **espace euclidien** muni du produit scalaire $\scalar{\c
 
 %eg
   L’application $f: \applic{E}{\R}{x}{\norm{x}^{2} = \scalar{x}{x}}$  est différentiable car égale à $\scalar{\id}{\id}$. Calculons son gradient en $x \in E$.
-  - *Première méthode~:*
+  - _Première méthode~:_
     $$
       \forall h \in E, \dd f(x)\mdot h = 2 \scalar{x}{h}  = \scalar{2x}{h}
     $$
     donc $\nabla f(x) = 2x \in E$.
-  - *Seconde méthode~:* soit $(e_{1}, \ldots, e_{n})$ une base orthonormale. Posons $x = \sum_{i=1}^{n}x_{i}e_{i}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$. Alors $f(x) = \norm{x}^{2} = \sum_{i=1}^{n}x_{i}^{2}$ donc
+  - _Seconde méthode~:_ soit $(e_{1}, \ldots, e_{n})$ une base orthonormale. Posons $x = \sum_{i=1}^{n}x_{i}e_{i}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$ avec $(x_{1}, \ldots, x_{n}) \in \R^{n}$. Alors $f(x) = \norm{x}^{2} = \sum_{i=1}^{n}x_{i}^{2}$ donc
     $$
       \nabla f(x) = \sum_{i=1}^{n}2x_{i}e_{i} = 2x
     $$

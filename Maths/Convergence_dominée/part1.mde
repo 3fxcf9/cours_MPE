@@ -12,9 +12,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 %def
   Soit $X$ un ensemble non vide. Soit $(E,\norm \cdot )$ un $\K$-espace vectoriel normé. Soit $(f_{n})_{n \in \N}$ une suite de fonctions de $X$ dans $E$.
 
-  On dit que la suite de fonctions $(f_{n})_{n \in \N}$ *converge simplement* sur $X$ si pour tout $x \in X$, la suite vectorielle $(f_{n}(x))_{n \in \N}$ converge dans $(E, \norm \cdot )$.
+  On dit que la suite de fonctions $(f_{n})_{n \in \N}$ _converge simplement_ sur $X$ si pour tout $x \in X$, la suite vectorielle $(f_{n}(x))_{n \in \N}$ converge dans $(E, \norm \cdot )$.
 
-  Si on pose $\forall x \in X, f(x) = \lim_{n\to+\infty}(f_{n}(x))$, alors $f$ est appelée *limite simple* de $(f_{n})_{n \in \N}$, et on note: $f_{n} \arrowlim{n\to+\infty}f$ simplement sur $X$. On note aussi $f_{n} \sarrowlim{n\to+\infty}f$ sur $X$.
+  Si on pose $\forall x \in X, f(x) = \lim_{n\to+\infty}(f_{n}(x))$, alors $f$ est appelée _limite simple_ de $(f_{n})_{n \in \N}$, et on note: $f_{n} \arrowlim{n\to+\infty}f$ simplement sur $X$. On note aussi $f_{n} \sarrowlim{n\to+\infty}f$ sur $X$.
 %
 
 Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
@@ -83,7 +83,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     $$
       \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi \sur I
     $$
-    ($\varphi$ est appelée *chapeau intégrable*).
+    ($\varphi$ est appelée _chapeau intégrable_).
   alors
   - $\forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)$
   - $f \in \L^{1}(I,\K)$
@@ -91,7 +91,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
 %
 
 %proof
-  *Il suffit d’utiliser la version particulière suivante :*
+  _Il suffit d’utiliser la version particulière suivante :_
   %thm Théorème de convergence majorée positive
     Soit $(f_{n})_{n \in \N}$ une suite de fonctions positives continues par morceaux sur le segment $\cc{a,b}$. Si
     - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
@@ -101,7 +101,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       \int_{a}^{b}f_{n} \arrowlim{n\to+\infty} 0
     $$
   %
-  *en effet :*
+  _en effet :_
   - On a
     ~ $\forall n \geq n_{0}, \abs{f_{n}} \leq \varphi$  ~ $\varphi \in \L^{1}(I,\R_{+})$
     donc
@@ -141,7 +141,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     $$
       \forall n \geq n_{0}, 0 \leq  \abs{f_{n} - f} \leq 2 \varphi \leq 2 \norm{\varphi}_{\infty, \cc{a,b}}
     $$
-    d’où, d’après le *théorème de convergence majorée positive*,
+    d’où, d’après le _théorème de convergence majorée positive_,
     $$
       \int_{\cc{a,b}}\abs{f_{n} - f} \arrowlim{n \to+\infty}0
     $$
@@ -167,7 +167,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     - $$\displaystyle f_{n}(x) \arrowlim{n\to+\infty} \begin{cases}\ln 3 \if x=1\\ \ln 2 \if x \in \co{0,1}\end{cases}$$
       ($f$ est en escalier sur $\cc{0,1}$).
     - $\displaystyle \forall n \in \N, \forall x \in \cc{0,1}, \abs{f(x)} \leq \ln(2+1) = \ln 3$ et $x \longmapsto \ln 3$ est intégrable sur $\cc{0,1}$.
-    Ainsi, selon le *théorème de convergence dominée*,
+    Ainsi, selon le _théorème de convergence dominée_,
     $$
       \lim_{n\to+\infty} \int_{\cc{0,1}}f_{n} = \int_{\cc{0,1}}f = \int_{0}^{1}\ln 2
     $$
@@ -189,7 +189,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       $$
       ==FIG==
     - $\forall n \in \N, \forall x \in \R_{+}, \abs{g_{n}(x)} \leq \frac{1}{1+x^{2}}$ et $x \longmapsto  \frac{1}{1+x^{2}}$ est intégrable sur $\R_{+}$.
-    Ainsi, d’après le *théorème de convergence dominée*,
+    Ainsi, d’après le _théorème de convergence dominée_,
     $$
       \lim_{n\to+\infty} \int_{0}^{+\infty}g_{n} = \int_{0}^{+\infty}g = \int_{\cc{0,1}} = \int_{\cc{0,1}}g = \int_{0}^{1}\frac{\dd x}{1+x^{2}} = \left[\arctan x\right]_{0}^{1}
     $$
@@ -208,12 +208,12 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
       h_{n} : \applic{\R_{+}}{\R}{x}{\begin{cases}\left(1+\frac{x}{n}\right)^{n}e^{-2x} \if x \in \cc{0,n}\\ 0 \if x > n\end{cases}}
     $$
     donc $h_{n}$ est continue par morceaux sur $\R_{+}$.
-    - *Convergence simple.* Soit $x \in \R_{+}$.
+    - _Convergence simple._ Soit $x \in \R_{+}$.
       $$
         \forall n \geq  \floor x + 1, g_{n}(x) = \left(1+\frac{x}{n}\right)^{n} e^{-2x} \arrowlim{n\to+\infty}e^{x}e^{-2x} = e^{-x}
       $$
       donc $(g_{n})$ converge simplement vers $\frac{1}{\exp}$.
-    - *Domination*. Soit $x \in \cc{0,n}$.
+    - _Domination_. Soit $x \in \cc{0,n}$.
       $$
         \left(1+\frac{x}{n}\right)^{n} = e^{x\ln \left(1+\frac{x}{n}\right)} \leq e^{n \left(\frac{x}{n}\right)} = e^{x}
       $$
@@ -226,7 +226,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
         \forall n \in \N^{*}, \abs{g_{n}} = g_{n} \leq \underbrace{\frac{1}{\exp}}_{\text{indépendant de } n}
       $$
       et $\frac{1}{\exp}$ est intégrable sur $\R_{+}$.
-    Le *théorème de convergence dominée* permet alors de conclure que
+    Le _théorème de convergence dominée_ permet alors de conclure que
     $$
       \lim_{n\to+\infty}\int_{\R_{+}} h_{n} = \int_{\R_{+}}e^{-x}\dd x = \left[-e^{-x}\right]_{0}^{+\infty} = 1
     $$
@@ -286,7 +286,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
     $$
       \lim_{x\to+\infty} \frac{1}{x}\int_{0}^{x}f = \lambda
     $$
-    - *Première méthode (double détente) :* Soit $\varepsilon > 0$. Il existe $A > 0$ tel que
+    - _Première méthode (double détente) :_ Soit $\varepsilon > 0$. Il existe $A > 0$ tel que
       $$
         \forall x \geq A, \abs{f(x) - \lambda} < \varepsilon
       $$
@@ -303,7 +303,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
         \abs{\frac{1}{x}\int_{0}^{x}f - \lambda} < \varepsilon + \varepsilon = 2 \varepsilon
       $$
       d’où $\frac{1}{x}\int_{0}^{x}f \arrowlim{x\to+\infty}\lambda$
-    - *Seconde méthode (théorème de convergence dominée) :*
+    - _Seconde méthode (théorème de convergence dominée) :_
       $$
         \frac{1}{x}\int_{0}^{x}f(t)\dd t \ueq{t = ux} \frac{1}{x} \int_{0}^{1}f(ux) = \int_{0}^{1}f(ux)\dd u
       $$
@@ -312,7 +312,7 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
           u \longmapsto \begin{cases}\lambda \if u \in \oc{0,1}\\ f(0)\if u=0\end{cases} \in \Cont_{m}(\cc{0,1})
         $$
       - $\forall x \in \R_{+}^{*}, \forall \underline{u \in \cc{0,1}}, \abs{f(ux)} \leq \norm f_{\infty,\R_{+}}$
-      - *Montrons l’existence de $\norm f_{\infty,\R_{+}}$* : il existe $A > 0$ tel que $\forall x \in \co{A,+\infty}, \abs{f(x) - \lambda} \leq 1$ donc
+      - _Montrons l’existence de $\norm f_{\infty,\R_{+}}$_ : il existe $A > 0$ tel que $\forall x \in \co{A,+\infty}, \abs{f(x) - \lambda} \leq 1$ donc
         $$
           \forall x \in \co{A,+\infty}, \abs{f(x)} \leq 1 + \abs{\lambda}
         $$
@@ -324,13 +324,13 @@ Dans la suite de ce chapitre, $E=\K$ et $X$ est souvent un intervalle de $\R$.
         $$
           \forall x \in \R_{+}, \abs{f(x)} \leq \max \{1+ \abs{\lambda}, \norm f_{\infty,\cc{0,A}}\}
         $$
-      or $u \longmapsto \norm f_{\infty,\R_{+}}$ est continue sur $\cc{0,1}$ donc intégrable sur ce segment, donc *théorème de convergence dominée* donne
+      or $u \longmapsto \norm f_{\infty,\R_{+}}$ est continue sur $\cc{0,1}$ donc intégrable sur ce segment, donc _théorème de convergence dominée_ donne
       $$
         \frac{1}{x} \int_{0}^{x}f(t)\dd t \arrowlim{x\to+\infty} \int_{0}^{1}\lambda = \lambda
       $$
 %
 
-On utilise souvent le *théorème de convergence dominée* pour obtenir des équivalents d’intégrales du type
+On utilise souvent le _théorème de convergence dominée_ pour obtenir des équivalents d’intégrales du type
 $$
   I(x) = \int_{I}f_{x}(t)\dd t
 $$
@@ -352,7 +352,7 @@ lorsque $x$ tend vers $\sup J$ ou $\inf J$. Le cas fréquent est $f_{x}(t) \arro
   $$
   - $(f_{n})$ converge simplement vers $\tilde{1}$ sur $\co{0,1}$
   - $\forall n \in \N, \abs{f_{n}} \leq 1$ et $\tilde{1} \in \L^{1}(\co{0,1})$
-  donc le *théorème de convergence dominée* donne
+  donc le _théorème de convergence dominée_ donne
   $$
     \lim_{n\to+\infty}u_{n} = \int_{\co{0,1}}\tilde{1} = 1
   $$
@@ -376,7 +376,7 @@ lorsque $x$ tend vers $\sup J$ ou $\inf J$. Le cas fréquent est $f_{x}(t) \arro
   $$
     \forall x \in \oc{0,1}, 0 \leq  g_{n}(x) \leq  \frac{1}{1+x}
   $$
-  et $x \longmapsto  \frac{1}{1+x}$ est intégrable sur $\oc{0,1}$ donc le *théorème de convergence dominée* donne
+  et $x \longmapsto  \frac{1}{1+x}$ est intégrable sur $\oc{0,1}$ donc le _théorème de convergence dominée_ donne
   $$
     \int_{\oc{0,1}}g_{n} \arrowlim{n\to+\infty}\int_{\oc{0,1}}\frac{\dd x}{1+x} = \left[\ln(1+x)\right]_{0}^{1} = \ln 2
   $$
@@ -397,7 +397,7 @@ lorsque $x$ tend vers $\sup J$ ou $\inf J$. Le cas fréquent est $f_{x}(t) \arro
   $$
     \forall t \in \R_{+}^{*}, \abs{\frac{e^{-xt}}{1+t}} \leq e^{-t}
   $$
-  et $t \longmapsto  e^{-t} \in \L^{1}(\oo{0,+\infty})$, donc le *théorème de convergence dominée* donne
+  et $t \longmapsto  e^{-t} \in \L^{1}(\oo{0,+\infty})$, donc le _théorème de convergence dominée_ donne
   $$
     \lim_{x\to+\infty}f(x) = \int_{0}^{+\infty}\tilde{0} = 0
   $$
@@ -415,7 +415,7 @@ lorsque $x$ tend vers $\sup J$ ou $\inf J$. Le cas fréquent est $f_{x}(t) \arro
     $$
       \forall x \in \R_{+}^{*}, \forall u \in \R_{+}, \abs{\frac{e^{-u}}{1+\frac{u}{x}}} \leq e^{-u}
     $$
-    et $u \longmapsto e^{-u}$ est intégrable sur $\R_{+}$ donc le *théorème de convergence dominée* donne
+    et $u \longmapsto e^{-u}$ est intégrable sur $\R_{+}$ donc le _théorème de convergence dominée_ donne
     $$
       \int_{0}^{+\infty}\frac{e^{-u}}{1+\frac{u}{x}} \arrowlim{x\to+\infty} \int_{0}^{+\infty}e^{-u}\dd u = 1
     $$
@@ -450,11 +450,11 @@ $$
   - pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est continue sur $\Def$
   - pour tout $x \in \Def$, la fonction $t \longmapsto f(x,t)$ est continue par morceaux sur $I$((il est inutile de justifier cette hypothèse au concours))
   - une des deux hypothèses de domination ci-dessous est vraie
-    - *domination globale :* il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+    - _domination globale :_ il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall (x,t) \in \Def \times I, \abs{f(x,t)} \leq \varphi(t)
       $$
-    - *domination locale :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+    - _domination locale :_ pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall x \in S, \underline{\forall t \in I}, \abs{f(x,t)} \leq \varphi_{S}(t)
       $$
@@ -466,7 +466,7 @@ $$
 %
 
 %proof
-  Supposons les deux premières hypothèses ainsi que l’hypothèse de *domination locale* vérifiées. Soit $x \in \Def$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
+  Supposons les deux premières hypothèses ainsi que l’hypothèse de _domination locale_ vérifiées. Soit $x \in \Def$. Posons $S = \{x\}$. Il existe alors $\varphi_{S}\in \L^{1}(I,\R_{+})$ telle que
   $$
     \forall t \in I, \abs{f(x,t)} \leq \varphi_{S}(t)
   $$
@@ -478,11 +478,11 @@ $$
   $$
     \left[t \longmapsto  f(x_{n}, t)\right] \sarrowlim{n\to+\infty} \left[t \longmapsto f(\alpha,t)\right] \sur I
   $$
-  car pour $t$ fixé dans $I$, la fonction $x \longmapsto  f(x,t)$ est continue en $\alpha$. D’après l’hypothèse de *domination locale*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  car pour $t$ fixé dans $I$, la fonction $x \longmapsto  f(x,t)$ est continue en $\alpha$. D’après l’hypothèse de _domination locale_, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
   $$
     \forall n \in \N, \forall t \in I, \abs{f(x_{n}, t)} \leq \varphi_{S}(t)
   $$
-  donc le *théorème de convergence dominée* donne
+  donc le _théorème de convergence dominée_ donne
   $$
     \int_{I} f(x_{n}\tau)\dd t = g(x_{n}) \arrowlim{n\to+\infty} \int_{I} f(\alpha,t)\dd t = g(\alpha)
   $$
@@ -555,7 +555,7 @@ $$
     $$
       \forall n \in \N, \Gamma(n+1) = n!
     $$
-    - *Continuité de $\Gamma$ sur $\Def = \oo{0,+\infty}$.* Posons
+    - _Continuité de $\Gamma$ sur $\Def = \oo{0,+\infty}$._ Posons
       $$
         g: \applic{\Def \times \oo{0,+\infty}}{\R}{(x,t)}{t^{x-1}e^{-t} = e^{(x-1)\ln t}e^{-t}}
       $$
@@ -592,11 +592,11 @@ $$
   - pour tout $t$ fixé dans $I$, $x \longmapsto f(x,t)$ est de classe $\Cont^{1}$ sur $\Def$.
   - pour tout $x$ fixé dans $\Def$, les deux applications $t \longmapsto f(x,t)$ et $t \longmapsto \pdv{f}{x}(x,t) = \partial_{1}f(x,t)$ sont intégrables sur $I$.
   - une des deux conditions ci-dessous est vérifiée
-    - *majoration globale*: il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
+    - _majoration globale_: il existe $\varphi \in \L^{1}(I,\R_{+})$ telle que
       $$
         \forall (x,t) \in \Def \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
       $$
-    - *majoration locale*: pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
+    - _majoration locale_: pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
       $$
         \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{f}{x}(x,t)} \leq \varphi(t)
       $$
@@ -620,7 +620,7 @@ $$
   $$
     \left[t \longmapsto \frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\right] \sarrowlim{n\to+\infty} \left[t \longmapsto \pdv{f}{x}(\alpha, t)\right] \sur I
   $$
-  Soit $S$ un segment de $\Def$ contenant $\alpha$ et tout élément de $(x_{n})$. Supposons l’hypothèse de *majoration locale*. Il existe donc $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  Soit $S$ un segment de $\Def$ contenant $\alpha$ et tout élément de $(x_{n})$. Supposons l’hypothèse de _majoration locale_. Il existe donc $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
   $$
     \forall (x,t) \in S \times I, \abs{\pdv{f}{x}(x,t)} \leq \varphi_{S}(t)
   $$
@@ -632,7 +632,7 @@ $$
   $$
     \forall x \in \N, \abs{\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}} \leq \varphi_{S}(t)
   $$
-  donc d’après le *théorème de convergence dominée*, on a
+  donc d’après le _théorème de convergence dominée_, on a
   $$
     \lim_{n\to+\infty}\int_{I}\frac{f(x_{n}, t) - f(\alpha, t)}{x_{n} - \alpha}\dd t = \int_{I} \pdv{f}{x}(\alpha, t)\dd t
   $$
@@ -647,8 +647,8 @@ $$
   - Traitons à présent la continuité de $g'$:
     - pour tout $t$ fixé dans $I$, la fonction $x \longmapsto \pdv{f}{x}(x,t)$ est continue sur $\Def$
     - pour tout $x \in \Def$, la fonction $t \longmapsto \pdv{f}{x}(x,t)$ est continue par morceaux
-    - l’hypothèse de *domination* est vérifiée
-    donc le *théorème de continuité d’intégrale à paramètre* donne $g' \in \Cont(\Def)$.
+    - l’hypothèse de _domination_ est vérifiée
+    donc le _théorème de continuité d’intégrale à paramètre_ donne $g' \in \Cont(\Def)$.
 %
 
 %eg
@@ -764,12 +764,12 @@ $$
 
 %thm
   Soit $f: \Def \times I \longrightarrow \K$. Soit $n \in \N^{*}$. Si
-  - *hypothèse (1|n) :* pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
-  - *hypothèse (2|n) :* pour tout $x \in \Def$,
+  - _hypothèse (1|n) :_ pour tout $t \in I$, la fonction $x \longmapsto f(x,t)$ est de classe $\Cont^{n}$ sur $\Def$.
+  - _hypothèse (2|n) :_ pour tout $x \in \Def$,
     $$
       \left(t \longmapsto f(x,t), t \longmapsto \pdv{f}{x}(x,t), \ldots, t \longmapsto \pdvN{f}{x}{n}(x,t)\right) \in \L^{1}(I)^{n}
     $$
-  - *hypothèse (3|n) :* pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  - _hypothèse (3|n) :_ pour tout segment $S \subset \Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
     $$
       \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n}(x,t)} \leq \varphi_{S}(t)
     $$
@@ -785,8 +785,8 @@ $$
 
 %proof
   - Si $n=1$, c’est le théorème précédent
-  - Supposons le résultat vrai à l’ordre $n \in \N^{*}$ et supposons les trois hypothèses *(1|n+1)*, *(2|n+1)* et *(3|n+1)*.
-    Soit $S$ un segment inclus dans $\Def$. D’après l’hypothèse *(3|n+1)*, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
+  - Supposons le résultat vrai à l’ordre $n \in \N^{*}$ et supposons les trois hypothèses _(1|n+1)_, _(2|n+1)_ et _(3|n+1)_.
+    Soit $S$ un segment inclus dans $\Def$. D’après l’hypothèse _(3|n+1)_, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ telle que
     $$
       \forall x \in S, \underline{\forall t \in I}, \abs{\pdvN{f}{x}{n+1}(x,t)} \leq \varphi_{S}(t)
     $$
@@ -813,7 +813,7 @@ $$
     $$
       \tau_{S}:t \longmapsto \abs{\pdvN{f}{x}{n}(a,t)} + \text{long}(S) \times \varphi_{S}(t) \in \L^{1}(I,\R)
     $$
-    On a donc l’hypothèse *(3|n)*. Ains,
+    On a donc l’hypothèse _(3|n)_. Ains,
     $$
       g: \applic{\Def}{\K}{x}{\int_{I} f(x,t)\dd t}
     $$
@@ -828,7 +828,7 @@ $$
 
     On a
     - pour tout $t \in I$, l’application $x \longmapsto \pdvN{f}{x}{n}(x,t)$ est de classe $\Cont^{1}$ sur $\Def$
-    - pour tout $x \in \Def$, les applications $t \longmapsto \pdvN{f}{x}{n}(x,t)$ et $t \longmapsto \pdv{}{x}\left(\pdvN{f}{x}{n}(x,t)\right) = \pdvN{f}{x}{n+1}(x,t)$ sont intégrables sur $I$ (voir *3(n+1)*).
+    - pour tout $x \in \Def$, les applications $t \longmapsto \pdvN{f}{x}{n}(x,t)$ et $t \longmapsto \pdv{}{x}\left(\pdvN{f}{x}{n}(x,t)\right) = \pdvN{f}{x}{n+1}(x,t)$ sont intégrables sur $I$ (voir _3(n+1)_).
     - pour tout segment $S$ dans $\Def$, il existe $\varphi_{S} \in \L^{1}(I,\R_{+})$ tel que
       $$
         \forall x \in S, \underline{\forall t \in I}, \abs{\pdv{}{x}\left(\pdvN{f}{x}{n}\right)(x,t)} \leq \varphi_{S}(t)
@@ -895,7 +895,7 @@ $$
     @[./figures/gamma-tabvar_optimized.svg]
   %
 
-  $\lim_{+\infty}\Gamma$ et $\lim_{0^{-}}\Gamma$ existent dans $\bar{\R_{+}}$ d’après le *théorème de la limite monotone*, donc
+  $\lim_{+\infty}\Gamma$ et $\lim_{0^{-}}\Gamma$ existent dans $\bar{\R_{+}}$ d’après le _théorème de la limite monotone_, donc
   $$
     \lim_{+\infty}\Gamma = \lim_{n\to+\infty}\Gamma(n) = \lim_{n\to+\infty}(n-1)! = +\infty
   $$

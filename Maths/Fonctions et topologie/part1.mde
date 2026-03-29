@@ -32,7 +32,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 %
 
 %eg
-  - Reprenons l’ensemble des matrices *unimodulaires*
+  - Reprenons l’ensemble des matrices _unimodulaires_
     $$
       SL_{n}(\R) = \big\{M \in \M_{n}(\R) \where \det M=1\big\}
     $$
@@ -83,7 +83,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 %
 
 %rem
-  Attention, $\arctan(\R) = \oo{-\frac{\pi}{2}, \frac{\pi}{2}}$ n’est pas fermé or $\R$ l’est donc $\arctan$ n’est pas une *application fermée*.
+  Attention, $\arctan(\R) = \oo{-\frac{\pi}{2}, \frac{\pi}{2}}$ n’est pas fermé or $\R$ l’est donc $\arctan$ n’est pas une _application fermée_.
 %
 
 %eg
@@ -271,7 +271,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
        $$
          f(x_{0}, y_{0}) = \max_{(x,y) \in K^{2}} d(x,y) = \delta(K)
        $$
-       On dit que $\delta(K)$ est le *diamètre du compact*.
+       On dit que $\delta(K)$ est le _diamètre du compact_.
 %
 
 %lemma
@@ -334,7 +334,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 
 %defprop
   Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$.
-  1. Soit $(x,y) \in X^{2}$. On appelle *chemin* (ou *arc*) *continu* joignant $x$ à $y$ tracé sur $X$ teute application continue $\gamma: \cc{a,b} \longrightarrow E$ avec $a \leq b$ deux réels telle que
+  1. Soit $(x,y) \in X^{2}$. On appelle _chemin_ (ou _arc_) _continu_ joignant $x$ à $y$ tracé sur $X$ teute application continue $\gamma: \cc{a,b} \longrightarrow E$ avec $a \leq b$ deux réels telle que
      ~ $\gamma(\cc{a,b}) \subset X$  ~ $\gamma(a) = x$ et $\gamma(b) = y$
   2. Soit $(x,y) \in X^{2}$. S’il existe un arc continu joignant $x$ à $y$ tracé sur $X$, alors on note (notation non officielle) $x \arc{X} y$. $\arc X$ est une relation d’équivalence sur $X$ et la classe de $x \in X$ est
      $$
@@ -394,7 +394,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
     ~ $\gamma(\cc{0,1}) \subset X$  ~ $\gamma(0) = x$  ~ $\gamma(1) = y$
     D’après le théorème des valeurs intermédiaires, il existe $t \in \cc{0,1}$ tel que $z = \gamma(t) \in X$, donc $X$ est convexe.
   - %def Partie étoilée
-      Soit $X$ une partie de $E$. On dit que $X$ est *étoilée* par rapport à $\omega \in X$ si
+      Soit $X$ une partie de $E$. On dit que $X$ est _étoilée_ par rapport à $\omega \in X$ si
       $$
         \forall x \in X, \cc{\omega, x} \subset X
       $$
@@ -593,7 +593,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 %
 
 %defprop
-  1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées *composantes connexes par arcs de $X$*.
+  1. Soit $X$ une partie d’un $\K$-espace vectoriel normé $E$. Les classes d’équivalence pour la relation $\arc X$ sont des parties connexes par arcs de $X$ appelées _composantes connexes par arcs de $X$_.
   2. Pour $x \in X$, notons
      $$
        C_{X}(x) = \{y \in X \where y \arc X x\}
@@ -676,8 +676,8 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 
 %eg
   - Les composantes connexe par arcs de $\R \setminus \{\frac{1}{n} \where n \in \N^{*}\}$ sont $\oc{-\infty, 0}, \oo{\frac{1}{n+1}, \frac{1}{n}}$ pour $n \in \N^{*}$ et $\oo{1,+\infty}$.
-  - Les composantes connexes par arcs de $\Q$ sont les singletons $\{r\}$ avec $r \in \Q$. On dit que $\Q$ est *totalement discontinu*.
-  - Si $f: I \longrightarrow \R$ est convexe sur l’intervalle réel $I$, alors son *épigraphe*
+  - Les composantes connexes par arcs de $\Q$ sont les singletons $\{r\}$ avec $r \in \Q$. On dit que $\Q$ est _totalement discontinu_.
+  - Si $f: I \longrightarrow \R$ est convexe sur l’intervalle réel $I$, alors son _épigraphe_
     $$
       \Epi (f) = \{(x,y) \in I \times \R \where y \geq f(x)\}
     $$
@@ -808,7 +808,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$; $(E, \norm{\cdot}_{E})$ et $(E, \n
 
 %offprog
   %prop
-    1. Si $A$ est une partie connexe par arcs d’un $\K$-espace vectoriel normé $E$, alors les seuls parties ouvertes et fermées de $A$ relativement à $A$ sont $\emptyset$ et $A$. On dit que $A$ est une *partie connexe*.
+    1. Si $A$ est une partie connexe par arcs d’un $\K$-espace vectoriel normé $E$, alors les seuls parties ouvertes et fermées de $A$ relativement à $A$ sont $\emptyset$ et $A$. On dit que $A$ est une _partie connexe_.
     2. Les seules parties ouvertes et bornées d’un $\K$-espaces vectoriel normé $E$ sont $\emptyset$ et $E$.
   %
 
@@ -1020,8 +1020,8 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
     f: \applic{\R^{2} \setminus \{(0,0)\}}{\R}{(x,y)}{\frac{x^{2}y^{2}}{x^{2}+y^{2}}}
   $$
   Elle est définie sur l’ouvert $U = \R^{2} \setminus \{(0,0)\}$ et $(0,0) \in \bar{U}$. Admet-elle une limite en $(0,0)$ ?
-  - *Première méthode.* Pour tous $(x,y) \in U$, $0 \leq f(x,y) \leq x^{2}$ et $\lim_{(x,y) \to(0,0)}x^{2} = 0^{2} = 0$ (continuité d’une fonction polynomiale) d’où $\lim_{(0,0)}f = 0$
-  - *Deuxième méthode.* Pour tous $(r,\theta) \in \R_{+}^{*} \times \R$,
+  - _Première méthode._ Pour tous $(x,y) \in U$, $0 \leq f(x,y) \leq x^{2}$ et $\lim_{(x,y) \to(0,0)}x^{2} = 0^{2} = 0$ (continuité d’une fonction polynomiale) d’où $\lim_{(0,0)}f = 0$
+  - _Deuxième méthode._ Pour tous $(r,\theta) \in \R_{+}^{*} \times \R$,
     $$
       \abs{f(r\cos \theta, r\sin \theta)} \leq \frac{r^{4}}{r^{2}} = r^{2}
     $$
@@ -1030,7 +1030,7 @@ Soient $(E,\norm{_{E}})$ et $(E', \norm{\cdot}_{E'})$ deux $\K$-espaces vectorie
       \forall (x,y) \in U, \abs{f(x,y)} \leq x^{2}+y^{2}
     $$
     et $\lim_{(x,y)\to(0,0)}x^{2}+y^{2} = 0^{2}+0^{2} = 0$ d’où $\lim_{(0,0)} f = 0$ par encadrement.
-  - *Troisième méthode.* Pour tous $(x,y) \in \R^{2}$, on a
+  - _Troisième méthode._ Pour tous $(x,y) \in \R^{2}$, on a
     $$
       2x^{2}y^{2} \leq (x^{2}+y^{2})^{2}
     $$

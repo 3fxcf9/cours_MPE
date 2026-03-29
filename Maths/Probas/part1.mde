@@ -881,7 +881,7 @@ Dans cette partie, $(\Omega,\Tribu, \P)$ est un espace probabilisé.
   Alors $X(D) = D$ est au plus dénombrable et $\forall d \in X(D), (X=d) = \{d\} \in \Part(D)$ donc $X$ est une variable aléatoire discrète. On a $\forall x \in X(D) = D$, $\P_{X}(\{x\}) = \P(X=x) = p_{x}$ donc  $\P_{X} = \P$.
 %
 
-%term
+%def
   Soient $X : (\Omega,\Tribu, \P) \longrightarrow E$ et $X': (\Omega', \Tribu', \P') \longrightarrow E'$ deux variables aléatoires discrètes. On dit que $X$ et $X'$ suivent la même loi si
   $$
     \forall x \in X(\Omega) \cap X'(\Omega'), \P(X=x) = \P'(X'=x)

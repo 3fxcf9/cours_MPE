@@ -11,7 +11,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
 
 %def
   Soit $A$ une partie non vide de $(E,\norm{\cdot}_{E})$. Soit $f: A \longrightarrow F$ une application.
-  - Soit $k \in \R_{+}^{*}$. $f$ est dite *$k$-lipschitzienne sur $A$* si
+  - Soit $k \in \R_{+}^{*}$. $f$ est dite _$k$-lipschitzienne sur $A$_ si
     $$
       \forall (x,y)\in A^{2}, \norm{f(x) - f(y)}_{F} \leq k \norm{x-y}_{E}
     $$
@@ -25,7 +25,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
         \left[x'_{n}-x_{n} \xrightarrow[n\to+\infty]{\norm{\cdot }_{E}}0_{E}\right] \implies f(x'_{n}) - f(x_{n}) \xrightarrow[n\to+\infty]{\norm{\cdot }_{F}}0_{F}
       $$
     %
-  - $f$ est dite *continue en $a \in A$* si
+  - $f$ est dite _continue en $a \in A$_ si
     $$
       \forall \varepsilon > 0, \exists \delta > 0: \begin{cases}x \in A\\ \norm{x-a}_{E} < \delta\end{cases} \implies  \norm{f(x) - f(a)}_{F} \leq \varepsilon
     $$
@@ -34,11 +34,11 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
       \forall \varepsilon > 0, \exists \delta > 0, f(A \cap B_{E}(a, \delta)) \subset B_{F}(f(a), \varepsilon)
     $$
     ou encore : pour toute suite $(x_{n})_{n \in \N}$ d’éléments de $A$ et de limite $a$, la suite $(f(x_{n}))_{n \in \N}$ converge vers $f(a)$.
-  - $f$ est dite *continue sur $A$* si elle est continue en tout point de $A$.
+  - $f$ est dite _continue sur $A$_ si elle est continue en tout point de $A$.
 %
 
 %proof
-  *(Preuve de la caractérisation séquentielle de l’uniforme continuité).*
+  _(Preuve de la caractérisation séquentielle de l’uniforme continuité)._
   - Supposons $f$ uniformément continue sur $A$. Soient $(x_{n})_{n \in \N}$ et $(x'_{n})_{n \in \N}$ deux suites d’éléments de $A$ avec $x'_{n} - x_{n} \arrowlim{n\to+\infty}0_{E}$. Soit $\varepsilon > 0$. Il existe $\delta > 0$ tel que
     $$
       \begin{cases}(x,y) \in A^{2}\\\norm{x-y}_{E} < \delta\end{cases} \implies \norm{f(x) - f(y)}_{F} < \varepsilon
@@ -183,7 +183,7 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $(E,\norm\cdot_{E})$ et $(F,\norm\
       $$
         f: \applic{E}{\K}{x = \sum_{k=1}^{p}x_{k}e_{k}}{\tilde{P}(x_{1}, \ldots, x_{k})}
       $$
-      est continue sur $E$. Il s’agit de l’*application polynomiale en les coordonnées dans une base*.
+      est continue sur $E$. Il s’agit de l’_application polynomiale en les coordonnées dans une base_.
   - Soit
     $$
       f: \applic{A}{(E_{1} \times  \cdots \times  E_{q}, N_{\infty})}{x}{(f_{1}(x), \ldots, f_{q}(x))}
@@ -366,7 +366,7 @@ Il y a mieux:
     $$
       \norm{f(x)}_{F} = \norm{\sum_{k=1}^{p}x_{k}f(e_{k})}_{F} \leq \sum_{k=1}^{p}\abs{x_{k}}\norm{f(e_{k})} \leq \underbrace{\max_{1 \leq k \leq p} \norm{f(e_{k})}}_{\in \R_{+}} \underbrace{\sum_{k=1}^{p}\abs{x_{k}}}_{N_{1,B}(x)}
     $$
-    donc $f$ est continue sur $E$ (par la *caractérisation de la continuité des applications linéaires*).
+    donc $f$ est continue sur $E$ (par la _caractérisation de la continuité des applications linéaires_).
 %
 
 %eg
@@ -456,7 +456,7 @@ Il y a mieux:
      $$
        \triplenorm{f} = \opnorm{f} = \sup_{x \in S(0_{E},1)}\norm{f(x)}_{F}
      $$
-  3. $f \longmapsto  \opnorm{f}$ est une norme sur $\L_{c}(C,F)$ appelée *norme subordonnée* (ou *norme d’opérateur*) (aux normes $\norm{\cdot}_{E}$ et $\norm{\cdot}_{F}$).
+  3. $f \longmapsto  \opnorm{f}$ est une norme sur $\L_{c}(C,F)$ appelée _norme subordonnée_ (ou _norme d’opérateur_) (aux normes $\norm{\cdot}_{E}$ et $\norm{\cdot}_{F}$).
   4. On a
      $$
        \forall f \in \L_{c}(E,F), \opnorm{f} = \sup_{x \in E \setminus \{0\}} \frac{\norm{f(x)}_{F}}{\norm{x}_{E}}
@@ -496,7 +496,7 @@ Il y a mieux:
 
 %method
   ++Calcul de $\opnorm{f}$ pour $f \in \L_{c}(E,F)$.++ On utilise les trois points suivants :
-  1. $\forall x \in E, \norm{f(x)}_{F} \leq \opnorm{f}\times \norm{x}_{E}$ *(inégalité fondamentale)*
+  1. $\forall x \in E, \norm{f(x)}_{F} \leq \opnorm{f}\times \norm{x}_{E}$ _(inégalité fondamentale)_
   2. $\opnorm{f} = \min \left\{k \in \R_{+}\where \forall x \in E, \norm{f(x)}_{F} \leq k \norm{x}_{E}\right\}$
   3. $\begin{cases}k \in \R_{+}\\ g \in \L(E,F) \\ \forall x \in E, \norm{g(x)}_{F} \leq k \norm{x}_{E}\end{cases} \implies \begin{cases}g \in \L_{c}(E,F) \\ \opnorm{g} \leq k\end{cases}$
 %
@@ -568,7 +568,7 @@ Il y a mieux:
   $$
     \applic{\M_{n}(\K)}{\R_{+}}{A}{\triplenorm{A} \defeq \opnorm{\varphi_{A}} = \sup_{X\ne 0}\frac{AX}{\norm{X}}}
   $$
-  Alors $A \longmapsto \triplenorm{A}$ est sous-multiplicative et $\triplenorm{I_{n}} = 1$. On appelle $\triplenorm{\cdot}$ la *norme matricielle*.
+  Alors $A \longmapsto \triplenorm{A}$ est sous-multiplicative et $\triplenorm{I_{n}} = 1$. On appelle $\triplenorm{\cdot}$ la _norme matricielle_.
 %
 
 %proof
@@ -614,7 +614,7 @@ Il y a mieux:
 ## Continuité des applications multilinéaires
 
 %def Application multilinéaire
-  Soit $n \in \N^{*}$. Soient $E_{1}, \ldots, E_{n}, F$ des $\K$-espaces vectoriels. Une application $f: E_{1} \times \cdots \times E_{n} \longrightarrow F$ est dite *multilinéaire* ou *$n$-linéaire* si pour tout $(x_{1}, \ldots, x_{n}) \in E_{1} \times \cdots \times E_{n}$ et tout $i \in \icc{1,n}$, l’application
+  Soit $n \in \N^{*}$. Soient $E_{1}, \ldots, E_{n}, F$ des $\K$-espaces vectoriels. Une application $f: E_{1} \times \cdots \times E_{n} \longrightarrow F$ est dite _multilinéaire_ ou _$n$-linéaire_ si pour tout $(x_{1}, \ldots, x_{n}) \in E_{1} \times \cdots \times E_{n}$ et tout $i \in \icc{1,n}$, l’application
   $$
     f_{i}: \applic{E_{i}}{F}{x}{f(x_{1}, \ldots, x_{i-1}, u, x_{i+1}, \ldots, x_{n})}
   $$
@@ -793,7 +793,7 @@ Il y a mieux:
       $$
         f_{i}: \applic{E_{1} \times  \cdots \times  E_{n}}{F}{(x_{1}, \ldots, x_{n})}{f(x_{1}, \ldots, x_{n}, \varepsilon_{i})}
       $$
-      Alors pour tout $i \in \icc{1,n}$, $f_{i} \in \L^{n}(E_{1} \times  \cdots \times E_{n}, F)$ et $\dim E_{1} < +\infty, \ldots, \dim E_{n} < +\infty$. Par hypothèse de récurrence et par *caractérisation de la continuité des applications $n$-linéaires*, il existe $(c_{1}, \ldots, c_{d}) \in (\R_{+})^{n}$ tels que
+      Alors pour tout $i \in \icc{1,n}$, $f_{i} \in \L^{n}(E_{1} \times  \cdots \times E_{n}, F)$ et $\dim E_{1} < +\infty, \ldots, \dim E_{n} < +\infty$. Par hypothèse de récurrence et par _caractérisation de la continuité des applications $n$-linéaires_, il existe $(c_{1}, \ldots, c_{d}) \in (\R_{+})^{n}$ tels que
       $$
         \forall i \in \icc{1,d}, \forall (x_{1}, \ldots, x_{n}) \in E_{1} \times  \cdots \times E_{n}, \norm{f_{i}(x_{1}, \ldots, x_{n})}_{F} \leq c_{i} \nu_{i}(x_{i}) \times  \cdots \times  \nu_{n}(x_{n})
       $$
