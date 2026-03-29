@@ -1,0 +1,21 @@
+# Aide-Mémoire
+
+1. Obtention des sous-groupes de $(\R,+)$ (TD)
+2. [Définition d’un groupe monogène, cyclique](../../mathematiques/complements-sur-les-groupes#def_grp_cyclique)
+3. [Ordre d’un élément d’un groupe](../../mathematiques/complements-sur-les-groupes#section_ordre_groupe) et propriétés
+4. Tout sous-groupe d’un groupe cyclique de cardinal $n$ est cyclique ([théorème de Lagrange](../../mathematiques/complements-sur-les-groupes#thm_lagrange) + [ce résultat](../../mathematiques/complements-sur-les-groupes#sous_groupe_cyclique)). Générateurs d’un groupe cyclique.
+5. [Les éléments inversibles de l’anneau $\Z/n\Z$ sont les générateurs du groupe additif $\Z/n\Z$. Caractérisation de ces éléments](../../mathematiques/complements-sur-les-anneaux#elem_inversibles_generateurs_znz). [Il y en a $\varphi(n)$](../../mathematiques/complements-sur-les-groupes#nb_elem_inversibles_phi_n). [Détermination de $\varphi(p^{\alpha})$ avec $p$ premier.](../../mathematiques/complements-sur-les-groupes#varphi_p_alpha)
+6. [Théorème chinois](../../mathematiques/complements-sur-les-groupes#thm_chinois)
+7. [Définition d’un idéal](../../mathematiques/complements-sur-les-anneaux#idéaux). [Cas de $\Z$ et de $\K[X]$ où $\K$ est un corps](../../mathematiques/complements-sur-les-anneaux#cas_z_polynommes_idéaux).
+8. [Théorème d’Euler](../../mathematiques/complements-sur-les-anneaux#thm_euler) et [petit théorème de Fermat](../../mathematiques/complements-sur-les-anneaux#petit_thm_fermat).
+9. [Si $f$ et $i$ son deux endomorphismes qui commutent, alors $\ker g$ et $\img g$ sont stables par $f$](../../mathematiques/polynomes-dun-endomorphisme#stab_commute_noyau_image).
+10. [Lemme de décomposition des noyaux.](../../mathematiques/polynomes-dun-endomorphisme#decomp_noyaux)
+11. [Si $f$ et $g$ sont deux endomorphismes qui commutent, alors tout sous-espace propre de l’un est stable par l’autre.](../../mathematiques/polynomes-dun-endomorphisme#espaces_propres_stables)
+12. [Sous-espaces caractéristiques et dimensions.](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#sev_caractéristique)
+13. [Théorème spectral caractéristique.](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#thm_spectral_caractéristique)
+14. [$f$ diagonalisable: il existe un polynôme annulateur de $f$ simplement scindé.](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#carac_diagonalisabilité)
+15. [$f$ diagonalisable: le polynôme minimal de $f$ est simplement scindé.](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#carac_diagonalisabilité)
+16. [$f$ trigonalisable: le polynôme caractéristique de $f$ est scindé.](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#carac_trigonalisabilité)
+17. [$f$ nilpotent si et seulement si 0 est la seule valeur propre et $\chi_{f}$ est scindé dans $\K[X]$.](../../mathematiques/polynomes-dun-endomorphisme#carac_nilpotence_spectre)
+18. [Décomposition de Dunford](../../mathematiques/reductions-des-endomorphismes-en-dimension-finie#décomp_dunford)
+19. [Si $f: E \longrightarrow F$ est surjective et $E$ dénombrable, alors $F$ est au plus dénombrable.](../../mathematiques/denombrabilite#exemples_usuels)

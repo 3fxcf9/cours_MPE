@@ -64,7 +64,7 @@ card:
     $$
       \forall n \geq n_{0}, \abs{f_{n}} \leq \varphi
     $$
-    ($\varphi$ est appelée *chapeau intégrable*).
+    ($\varphi$ est appelée _chapeau intégrable_).
   alors
   - $\forall n \geq n_{0}, f_{n} \in \L^{1}(I,\K)$
   - $f \in \L^{1}(I,\K)$
@@ -72,7 +72,7 @@ card:
 %
 
 %proof
-  *On admet la version particulière suivante :*
+  _On admet la version particulière suivante :_
   %thm Théorème de convergence majorée positive
     Soit $(f_{n})_{n \in \N}$ une suite de fonctions continues par morceaux sur le segment $\cc{a,b}$ à valeurs dans $\R_{+}$. Si
     - $(f_{n})$ converge simplement vers $\tilde{0}$ sur $\cc{a,b}$
